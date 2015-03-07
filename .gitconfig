@@ -1,0 +1,15 @@
+[core]
+  autocrlf = false
+[include]
+  path = ~/.gitconfig.local
+[alias]
+  ci = commit
+  co = checkout
+  st = status
+  di = diff
+  br = branch
+[color]
+  diff        = auto
+  status      = auto
+  branch      = auto
+  interactive = auto
