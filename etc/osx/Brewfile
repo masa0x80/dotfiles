@@ -1,0 +1,47 @@
+# Install packages
+brew 'caskroom/cask/brew-cask'
+
+brew 'coreutils'
+brew 'libevent'
+brew 'libyaml'
+brew 'readline'
+brew 'openssl'
+
+brew 'zsh'
+brew 'vim'
+brew 'git'
+brew 'mysql'
+brew 'autojump'
+
+brew 'less'
+brew 'wget'
+brew 'curl'
+brew 'rsync'
+brew 'tree'
+brew 'lsof'
+
+brew 'tmux'
+brew 'ansible'
+
+tap 'monochromegane/pt'
+brew 'pt'
+brew 'peco'
+brew 'direnv'
+brew 'jq'
+
+brew 'rbenv'
+brew 'ruby-build'
+
+brew 'pyenv'
+brew 'pyenv-virtualenv'
+
+brew 'go'
+
+cask 'google-japanese-ime'
+cask 'google-chrome'
+cask 'kobito'
+cask 'virtualbox'
+cask 'vagrant'
+cask 'dropbox'
+cask 'yorufukurou'
+cask 'skype'
