@@ -1,0 +1,3 @@
+mysql:bind '^w' ed-delete-prev-word # enable word delete
+mysql:bind '^u' vi-kill-line-prev   # enable line delete
+mysql:bind "^r" em-inc-search-prev  # enable incremental backward search
