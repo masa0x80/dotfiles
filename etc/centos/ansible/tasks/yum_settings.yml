@@ -1,0 +1,18 @@
+- name: check fastestmirror settings
+  shell: grep '^include_only=.jp$' /etc/yum/pluginconf.d/fastestmirror.conf
+  register: result
+  failed_when:  result.rc not in [0, 1]
+  changed_when: result.rc not in [0, 1]
+- name: use jp fastestmirror
+  shell: echo 'include_only=.jp' >> /etc/yum/pluginconf.d/fastestmirror.conf
+  sudo: yes
+  when: result|failed
+- name: check proxy settings
+  shell: test -z "{{ lookup('env', 'http_proxy') }}" || grep "proxy={{ lookup('env', 'http_proxy') }}" /etc/yum.conf
+  register: proxy_conf
+  failed_when:  proxy_conf.rc not in [0, 1]
+  changed_when: proxy_conf.rc not in [0, 1]
+- name: set proxy
+  shell: echo "proxy={{ lookup('env', 'http_proxy') }}" >> /etc/yum.conf
+  sudo: yes
+  when: proxy_conf|failed

@@ -1,0 +1,26 @@
+- name: uninstall previous version
+  yum: name=git state=absent
+  sudo: yes
+- name: prepare to install git
+  yum: name={{ item }} state=present
+  with_items:
+    - gcc-c++
+    - curl-devel
+    - expat-devel
+    - gettext-devel
+    - openssl-devel
+    - zlib-devel
+    - perl-ExtUtils-MakeMaker
+    - xmlto
+    - asciidoc
+  sudo: yes
+- name: download git source file
+  get_url: url=https://www.kernel.org/pub/software/scm/git/git-{{ git_version }}.tar.gz dest={{ src_dir }}/git-{{ git_version }}.tar.gz
+- name: extract git source file
+  unarchive: src={{ src_dir }}/git-{{ git_version }}.tar.gz dest={{ src_dir }}
+- name: install git
+  shell: ./configure --prefix=/usr/local && make && make install chdir={{ src_dir }}/git-{{ git_version }}
+  sudo: yes
+- name: install git man
+  shell: make install-man chdir={{ src_dir }}/git-{{ git_version }}
+  sudo: yes

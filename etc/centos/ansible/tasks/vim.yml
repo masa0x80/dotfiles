@@ -1,0 +1,15 @@
+- name: uninstall vim
+  yum: name=vim state=absent
+  sudo: yes
+- get_url: url=ftp://ftp.vim.org/pub/vim/unix/vim-{{ vim_version }}.tar.bz2 dest={{ src_dir }}
+  environment: proxy_env
+- unarchive: src={{ src_dir }}/vim-{{ vim_version }}.tar.bz2 dest={{ src_dir }}
+- name: install vim
+  shell: ./configure --enable-fail-if-missing --enable-fontset --enable-cscope --enable-multibyte --with-x=no --disable-gui --disable-xim --with-features=huge --disable-selinux --disable-gpm --disable-darwin && make && make install chdir={{ src_dir }}/vim{{ vim_version | regex_replace('\.', '') }}
+  sudo: yes
+- name: check neobundle
+  stat: path={{ home_dir }}/.vim/bundle/neobundle.vim
+  register: neobundle
+- name: install neobundle
+  git: repo=https://github.com/Shougo/neobundle.vim dest={{ home_dir }}/.vim/bundle/neobundle.vim
+  when: neobundle.stat.exists == False
