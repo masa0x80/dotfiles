@@ -1,0 +1,15 @@
+- name: install basic tools
+  yum: name={{ item }} state=present
+  with_items:
+    - epel-release
+    - man
+    - man-pages
+    - zsh
+    - autojump-zsh
+    - tree
+    - wget
+    - tmpwatch
+    - ntp
+    - cronie-anacron
+    - libselinux-python
+  sudo: yes

@@ -1,0 +1,4 @@
+- get_url: url=https://github.com/monochromegane/the_platinum_searcher/releases/download/{{ pt_version }}/pt_linux_amd64.tar.gz dest={{ src_dir }}
+- unarchive: src={{ src_dir }}/pt_linux_amd64.tar.gz dest={{ src_dir }}
+- copy: src={{ src_dir }}/pt_linux_amd64/pt dest={{ bin_dir }}/pt mode=0755
+  sudo: yes

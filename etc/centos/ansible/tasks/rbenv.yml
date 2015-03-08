@@ -1,0 +1,18 @@
+- name: prepare to install rbenv
+  yum: name={{ item }} state=latest
+  with_items:
+    - gcc-c++
+    - openssl-devel
+    - readline-devel
+    - libffi-devel
+    - libxslt-devel
+    - gecode-devel
+  sudo: yes
+- name: install rbenv
+  git: repo=https://github.com/sstephenson/rbenv.git dest={{ home_dir }}/.rbenv
+- name: install ruby-build
+  git: repo=https://github.com/sstephenson/ruby-build.git dest={{ home_dir }}/.rbenv/plugins/ruby-build
+- name: fix ruby version
+  shell: "{{ home_dir }}/.rbenv/bin/rbenv install {{ ruby_version }}; {{ home_dir }}/.rbenv/bin/rbenv global {{ ruby_version }}"
+- name: bundler
+  shell: "{{ home_dir }}/.rbenv/bin/rbenv exec gem install bundler"
