@@ -1,0 +1,30 @@
+#!/bin/bash
+
+echo 'Downloading dotfiles...'
+url='https://github.com/masa0x80/dotfiles/archive/master.zip'
+mkdir -p /tmp/$$ && cd /tmp/$$
+
+if type curl > /dev/null 2>&1; then
+  curl -Lo dotfiles.zip "$url"
+  if type unzip > /dev/null 2>&1; then
+    unzip dotfiles.zip
+    mv dotfiles-master $HOME/.dotfiles
+    cd $_
+    echo 'Installing tools...'
+    if make init; then
+      if make deploy; then
+        echo 'Complete settings!'
+      else
+        echo 'error: make deploy'
+      fi
+    else
+      echo 'error: make init'
+    fi
+  else
+    echo 'error: unzip not found'
+    echo '*** Please install unzip ***'
+  fi
+else
+  echo 'error: curl not found'
+  echo '*** Please install curl ***'
+fi
