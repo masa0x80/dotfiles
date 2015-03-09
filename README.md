@@ -19,14 +19,22 @@
 
 ## Installation
 
-事前にsudoできるように設定して下さい。
-また、プロキシーの設定が必要な場合は別途行って下さい。
+事前にsudoできるように設定し、プロキシーの設定が必要な場合は別途行って下さい。
 
-1. `git clone https://github.com/masa0x80/dotfiles.git ~/dotfiles`
-2. `cd ~/dotfiles && make init`
-3. `cd ~/dotfiles && make deploy`
+```
+curl https://raw.githubusercontent.com/masa0x80/dotfiles/master/etc/install | bash
+```
 
-gitのユーザー設定などは、`$HOME/.gitconfig.local` に書いて下さい。
+or
+
+```
+git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+make init
+make deploy
+```
+
+gitのユーザー設定は、`$HOME/.gitconfig.local` に書いて下さい。
 
 ```
 # .gitconfig.local の例
