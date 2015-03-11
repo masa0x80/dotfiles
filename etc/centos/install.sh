@@ -5,8 +5,15 @@ if [ -z `grep '^include_only=.jp$' /etc/yum/pluginconf.d/fastestmirror.conf` ]; 
   sudo sh -c "echo 'include_only=.jp' >> /etc/yum/pluginconf.d/fastestmirror.conf"
 fi
 
+# gitのインストール
+if type git > /dev/null 2>&1; then
+  echo 'skip git install'
+else
+  sudo -E yum install -y git
+fi
+
 # pyenvのインストール
-sudo -E yum install -y git patch readline-devel zlib-devel openssl-devel gcc-c++ bzip2-devel sqlite-devel
+sudo -E yum install -y patch readline-devel zlib-devel openssl-devel gcc-c++ bzip2-devel sqlite-devel
 if type pyenv > /dev/null 2>&1; then
   echo 'skip pyenv install'
 else
