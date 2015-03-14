@@ -1,6 +1,6 @@
 # 色設定
 if type dircolors > /dev/null 2>&1; then
-  eval $(dircolors $HOME/.zsh/dircolors.256dark)
+  eval $(dircolors $HOME/.zsh/custom/dircolors.256dark)
 fi
 if [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}

@@ -46,17 +46,18 @@ setopt brace_ccl               # {a-c} を a b c に展開する
 zstyle ':completion:*:default' menu select=1                                        # 補完候補をカーソルで選べるように
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z} r:|[-_.]=**' # -_. の前は末尾に * を付けていい感じに補完する
 
-# プロンプト設定を読み込む
-source $HOME/.zsh/prompt.zsh
-
 # カスタム設定を読み込む
-for config_file ($HOME/.zsh/custom/*.zsh(N)); do
-  source $config_file
+for CONFIG_FILE ($HOME/.zsh/custom/*.zsh(N)); do
+  source $CONFIG_FILE
 done
-unset config_file
 
-# エイリアス設定の読み込み
-test -r $HOME/.zsh/alias.zsh && source $HOME/.zsh/alias.zsh
+CONFIG_FILE="$HOME/.zsh/prompt.zsh" && test -r $CONFIG_FILE && source $CONFIG_FILE # プロンプト設定を読み込む
+CONFIG_FILE="$HOME/.zsh/alias.zsh"  && test -r $CONFIG_FILE && source $CONFIG_FILE # エイリアス設定の読み込み
 
-# 環境ローカルの設定の読み込み
-test -r $HOME/.zshrc.local && source $HOME/.zshrc.local
+# OSごとの設定の読み込み
+for CONFIG_FILE ($HOME/.zsh/os/$(uname | tr A-Z a-z)/*.zsh(N)); do
+  source $CONFIG_FILE
+done
+
+CONFIG_FILE="$HOME/.zshrc.local" && test -r $CONFIG_FILE && source $CONFIG_FILE # 環境ローカルの設定の読み込み
+unset CONFIG_FILE
