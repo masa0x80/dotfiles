@@ -1,12 +1,19 @@
 # 色設定
 if type dircolors > /dev/null 2>&1; then
   eval $(dircolors $HOME/.zsh/custom/dircolors.256dark)
+elif type gdircolors > /dev/null 2>&1; then
+  eval $(gdircolors $HOME/.zsh/custom/dircolors.256dark)
 fi
 if [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
 
-alias ls='ls --color=auto'
+# ls
+if type gls > /dev/null 2>&1; then
+  alias ls='gls --color=auto'
+else
+  alias ls='ls --color=auto'
+fi
 alias ll='ls -l'
 
 alias glp='git log --decorate --stat -p --max-count=30'
