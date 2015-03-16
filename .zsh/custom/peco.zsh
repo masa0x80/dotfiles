@@ -18,7 +18,7 @@ bindkey "^g^a" peco-git-add
 # ref: http://shibayu36.hatenablog.com/entry/2014/07/26/151106
 function peco-git-recent-branches() {
   local SELECTED_BRANCH="$(git for-each-ref --format='%(refname)' --sort=-committerdate refs/heads | \
-                           sed -e 's|^refs/heads/|'                                                | \
+                           sed -e 's|^refs/heads/||'                                               | \
                            peco)"
   if [ -n "$SELECTED_BRANCH" ]; then
     if [ -n "$BUFFER" ]; then
