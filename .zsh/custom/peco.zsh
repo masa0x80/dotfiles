@@ -35,8 +35,8 @@ bindkey "^gb"  peco-git-recent-branches
 bindkey "^g^b" peco-git-recent-branches
 
 function peco-git-recent-all-branches() {
-  local SELECTED_BRANCH="$(git for-each-ref --format='%(refname)' --sort=-committerdate refs/heads | \
-                           sed -e 's|^refs/\(heads\|remotes\)/||'                                  | \
+  local SELECTED_BRANCH="$(git for-each-ref --format='%(refname)' --sort=-committerdate | \
+                           sed -e 's|^refs/\(heads\|remotes\)/||'                       | \
                            peco)"
   if [ -n "$SELECTED_BRANCH" ]; then
     if [ -n "$BUFFER" ]; then
