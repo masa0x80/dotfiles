@@ -83,7 +83,7 @@ function peco-ssh() {
   BUFFER="ssh $(
     ruby -e "File.read('$HOME/.ssh/config').scan(/#[ \t]+Host|Host ([^*?\s]+)\n\s+(# [^\n]+)\n|Host ([^*?\s]+)\n/).each do |info|
       unless info.first.nil?
-        puts "#{info[0]}\t#{info[1]}"
+        puts \"#{info[0]}\t#{info[1]}\"
       else
         puts info.last
       end
