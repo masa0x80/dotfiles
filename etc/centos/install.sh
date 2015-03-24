@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Proxy設定
+if [ -n $http_proxy ]; then
+  if [ -z `grep "proxy=$http_proxy" /etc/yum.conf` ]; then
+    sudo sh -c "echo 'proxy=$http_proxy' >> /etc/yum.conf"
+  fi
+fi
+
 # 日本のサーバーを使うように
 if [ -z `grep '^include_only=.jp$' /etc/yum/pluginconf.d/fastestmirror.conf` ]; then
   sudo sh -c "echo 'include_only=.jp' >> /etc/yum/pluginconf.d/fastestmirror.conf"
