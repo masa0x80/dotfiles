@@ -83,11 +83,11 @@ function peco-ssh() {
   BUFFER="ssh $(
     ruby -e "File.read('$HOME/.ssh/config').scan(/#[ \t]+Host|Host ([^*?\s]+)\n\s+(# [^\n]+)\n|Host ([^*?\s]+)\n/).each do |info|
       unless info.first.nil?
-        puts \"#{info[0]}\t#{info[1]}\"
+        puts sprintf('%s %s', info[0].ljust(30, ' '), info[1])
       else
         puts info.last
       end
-    end" | sort | peco | cut -f 1
+    end" | sort | peco | cut -d ' ' -f 1
   )"
   CURSOR=4
   if [[ $#BUFFER = 4 ]]; then
@@ -119,7 +119,7 @@ function peco-pt-vim () {
     echo $SELECTED_FILES | awk -F : '{print "-c " $2 " " $1}'
     FILES=$(echo $SELECTED_FILES | awk -F : '{print "-c " $2 " " $1}')
   elif [ $N -gt 1 ]; then
-    # 複数ファイルを開く
+    # 複数ファイルを開く (ファイル名に空白が含まれている場合はうまく動かない)
     FILES=$(echo $SELECTED_FILES | awk -F : '{print $1}' | sort)
   fi
   if [ -n "$FILES" ]; then
