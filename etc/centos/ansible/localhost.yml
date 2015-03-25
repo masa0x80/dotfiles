@@ -10,7 +10,7 @@
       ftp_proxy: "{{ lookup('env', 'http_proxy') }}"
 
     ruby_version:     2.2.0
-    git_version:      2.2.0
+    git_version:      2.3.4
     libevent_version: 2.0.21-stable
     tmux_version:     1.9a
     peco_version:     v0.2.11
