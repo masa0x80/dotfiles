@@ -321,5 +321,5 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " rubyデバッグ用
-abbreviate bb require 'pry-byebug'; binding.pry
-abbreviate bB require 'byebug'; byebug
+abbreviate bb require 'pry-byebug'; binding.pry<Esc>
+abbreviate bB require 'byebug'; byebug<Esc>
