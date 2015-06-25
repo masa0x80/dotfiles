@@ -16,6 +16,8 @@ else
 fi
 alias ll='ls -l'
 
+alias gsh='git fetch'
+compdef _git gf=git-fetch
 alias glp='git log --decorate --stat -p --max-count=30'
 compdef _git glp=git-log
 alias gsh='git show'
