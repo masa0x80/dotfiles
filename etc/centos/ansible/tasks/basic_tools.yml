@@ -2,12 +2,15 @@
   yum: name={{ item }} state=present
   with_items:
     - epel-release
+    - http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
     - man
     - man-pages
     - zsh
     - autojump-zsh
     - tree
     - wget
+    - bind-utils
+    - nc
     - tmpwatch
     - ntp
     - cronie-anacron
