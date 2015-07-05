@@ -1,6 +1,7 @@
 - name: install ImageMagick
-  yum: name={{ item }} state=present
+  yum: name={{ item }} state=present enablerepo=remi
   with_items:
-    - ImageMagick
-    - ImageMagick-devel
+    - ImageMagick-last
+    - ImageMagick-last-devel
+    - ImageMagick-last-libs
   sudo: yes
