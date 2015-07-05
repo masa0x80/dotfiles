@@ -1,0 +1,5 @@
+- name: install basic tools
+  yum: name={{ item }} state=present
+  with_items:
+    - s3cmd
+  sudo: yes

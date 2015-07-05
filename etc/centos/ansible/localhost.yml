@@ -22,6 +22,7 @@
     - include: tasks/yum_update.yml
     - include: tasks/basic_tools.yml
     - include: tasks/imagemagick.yml
+    - include: tasks/aws.yml
 
     - name: check git
       shell: PATH=$PATH:{{ bin_dir }} type -a git && git --version | grep {{ git_version }}
