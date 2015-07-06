@@ -320,6 +320,11 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" SEGV対策
+if v:version >= 704
+  set regexpengine=1
+endif
+
 " rubyデバッグ用
 abbreviate bb require 'pry-byebug'; binding.pry<Esc>
 abbreviate bB require 'byebug'; byebug<Esc>
