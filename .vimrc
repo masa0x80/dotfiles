@@ -328,3 +328,5 @@ endif
 " rubyデバッグ用
 abbreviate bb require 'pry-byebug'; binding.pry<Esc>
 abbreviate bB require 'byebug'; byebug<Esc>
+abbreviate Bb require 'byebug'; byebug<Esc>
+abbreviate BB require 'byebug'; byebug<Esc>
