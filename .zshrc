@@ -46,12 +46,20 @@ setopt brace_ccl               # {a-c} を a b c に展開する
 zstyle ':completion:*:default' menu select=1                                        # 補完候補をカーソルで選べるように
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z} r:|[-_.]=**' # -_. の前は末尾に * を付けていい感じに補完する
 
+# Antigen
+source $HOME/.zsh/antigen/antigen.zsh
+antigen use oh-my-zsh
+antigen bundle https://github.com/mollifier/anyframe
+antigen bundle https://github.com/zsh-users/zsh-syntax-highlighting
+antigen bundle git
+antigen theme ys
+antigen apply
+
 # カスタム設定を読み込む
 for CONFIG_FILE ($HOME/.zsh/custom/*.zsh(N)); do
   source $CONFIG_FILE
 done
 
-CONFIG_FILE="$HOME/.zsh/prompt.zsh" && test -r $CONFIG_FILE && source $CONFIG_FILE # プロンプト設定を読み込む
 CONFIG_FILE="$HOME/.zsh/alias.zsh"  && test -r $CONFIG_FILE && source $CONFIG_FILE # エイリアス設定の読み込み
 
 # OSごとの設定の読み込み
