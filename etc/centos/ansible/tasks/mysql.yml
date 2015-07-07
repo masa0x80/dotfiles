@@ -13,3 +13,5 @@
     - mysql-utilities
     - libselinux-python
   sudo: yes
+- name: make sure mysql is running
+  service: name=mysqld state=running
