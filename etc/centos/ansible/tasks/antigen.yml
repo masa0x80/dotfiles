@@ -1,0 +1,6 @@
+- name: check Antigen
+  stat: path={{ home_dir }}/.zsh/antigen
+  register: antigen
+- name: install Antigen
+  git: repo=https://github.com/zsh-users/antigen.git dest={{ home_dir }}/.zsh/antigen
+  when: antigen.stat.exists == False
