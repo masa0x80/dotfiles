@@ -158,8 +158,8 @@ set noswapfile
 " 変更があったら読み込み直す
 set autoread
 
-" 行番号の表示
-set number
+" 行番号を表示しない
+set nonumber
 " デフォルトインデント設定
 set autoindent smartindent
 " タブ設定
