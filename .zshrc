@@ -50,7 +50,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z} r:|[-_.]=
 source $HOME/.zsh/antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle https://github.com/mollifier/anyframe
-antigen bundle https://github.com/zsh-users/zsh-syntax-highlighting
 antigen bundle git
 antigen theme ys
 antigen apply
