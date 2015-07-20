@@ -2,8 +2,9 @@
 bindkey '^r'   anyframe-widget-put-history
 
 # git branch
-bindkey '^gb'  anyframe-widget-insert-git-branch
-bindkey '^g^b' anyframe-widget-insert-git-branch
+bindkey '^gb'  anyframe-widget-checkout-git-branch
+bindkey '^g^b' anyframe-widget-checkout-git-branch
+bindkey '^g^b^b' anyframe-widget-insert-git-branch
 
 # kill
 bindkey '^p^k' anyframe-widget-kill
@@ -121,3 +122,15 @@ function psp() {
     ps -ef | peco --query "$*"
   fi
 }
+
+# tmux with peco
+function peco-tmux() {
+  local i=$(tmux lsw | awk '/active.$/ {print NR-1}')
+  local f='#{window_index}: #{window_name}#{window_flags} #{pane_current_path}'
+  tmux lsw -F "$f" \
+    | anyframe-selector-auto '' --initial-index $i \
+    | cut -d ':' -f 1 \
+    | anyframe-action-execute tmux select-window -t
+}
+zle -N peco-tmux
+bindkey '^l^l' peco-tmux
