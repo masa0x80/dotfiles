@@ -3,11 +3,16 @@
 [include]
   path = ~/.gitconfig.local
 [alias]
-  ci = commit
+  ci = commit -v
   co = checkout
   st = status
   di = diff
   br = branch
+  df = diff
+  a  = add
+  d  = diff
+  dc = diff --cached
+  f  = fetch
 [color]
   diff        = auto
   status      = auto
