@@ -16,12 +16,10 @@ else
 fi
 alias ll='ls -l'
 
-alias gf='git fetch'
-compdef _git gf=git-fetch
-alias glp='git log --decorate --stat -p --max-count=30'
-compdef _git glp=git-log
 alias gsh='git show'
 compdef _git gsh=git-show
+alias gdc='git diff --cached'
+compdef _git gdc=git-diff
 
 function git-review() {
   local N=$(git log --pretty=format:"%H %h" | grep -n $1 | cut -d : -f 1)
