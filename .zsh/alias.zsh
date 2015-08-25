@@ -37,3 +37,11 @@ alias j='jump-and-tmux-rename-window'
 alias s='spring stop && spring rails s'
 alias c='rails c'
 alias db='rails db'
+
+alias h='\history -n -r 1 | grep "$@"'
+
+alias -g L='| less'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g P='| peco'
