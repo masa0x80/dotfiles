@@ -1,0 +1,2 @@
+- name: fix node.js version
+  shell: "{{ home_dir }}/.anyenv/envs/ndenv/bin/ndenv install {{ node_version }}; {{ home_dir }}/.anyenv/envs/ndenv/bin/ndenv global {{ node_version }}"

@@ -10,6 +10,7 @@
       ftp_proxy: "{{ lookup('env', 'http_proxy') }}"
 
     ruby_version:     2.2.0
+    node_version:     v0.12.4
     git_version:      2.3.4
     libevent_version: 2.0.21-stable
     tmux_version:     1.9a
@@ -75,10 +76,16 @@
       when: pt.stat.exists == False
 
     - name: check ruby version
-      stat: path={{ home_dir }}/.rbenv
+      stat: path={{ home_dir }}/.anyenv/envs/rbenv
       register: rbenv_dir
     - include: tasks/rbenv.yml
       when: rbenv_dir.stat.exists == False
+
+    - name: check node version
+      stat: path={{ home_dir }}/.anyenv/envs/ndenv
+      register: ndenv_dir
+    - include: tasks/ndenv.yml
+      when: ndenv_dir.stat.exists == False
 
     - name: check vim
       shell: PATH=$PATH:{{ bin_dir }} type -a vim && vim --version | grep 'VIM - Vi IMproved {{ vim_version }}'

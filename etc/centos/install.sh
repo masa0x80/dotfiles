@@ -19,24 +19,27 @@ else
   sudo -E yum install -y git
 fi
 
-# pyenvのインストール
+# pythonのインストール
 sudo -E yum install -y patch readline-devel zlib-devel openssl-devel gcc-c++ bzip2-devel sqlite-devel
-if type pyenv > /dev/null 2>&1; then
-  echo 'skip pyenv install'
+if type anyenv > /dev/null 2>&1; then
+  echo 'skip anyenv install'
 else
-  git clone https://github.com/yyuu/pyenv.git            $HOME/.pyenv
-  git clone https://github.com/yyuu/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyenv-virtualenv.git
+  git clone https://github.com/riywo/anyenv $HOME/.anyenv
 
-  echo ''                                   >> $HOME/.bashrc
-  echo '# pyenv settings'                   >> $HOME/.bashrc
-  echo 'export PATH=$HOME/.pyenv/bin:$PATH' >> $HOME/.bashrc
-  echo 'eval "$(pyenv init -)"'             >> $HOME/.bashrc
+  echo ''                                    >> $HOME/.bashrc
+  echo '# anyenv settings'                   >> $HOME/.bashrc
+  echo 'export PATH=$HOME/.anyenv/bin:$PATH' >> $HOME/.bashrc
+  echo 'eval "$(anyenv init -)"'             >> $HOME/.bashrc
   source $HOME/.bashrc
 
-  # pyenvの設定
-  pyenv install 2.7.6
-  pyenv global  2.7.6
-  pyenv rehash
+  if type pyenv > /dev/null 2>&1; then
+    echo 'skip pyenv install'
+  else
+    # pyenvの設定
+    pyenv install 2.7.10
+    pyenv global  2.7.10
+    pyenv rehash
+  fi
 fi
 
 # ansibleのインストール
