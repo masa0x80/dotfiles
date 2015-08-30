@@ -1,16 +1,10 @@
 # path
 export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin:$HOME/bin
 
-# pyenv
-export PATH=$HOME/.pyenv/bin:$PATH
-if type pyenv > /dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-# rbenv
-export PATH=$HOME/.rbenv/bin:$PATH
-if type rbenv > /dev/null 2>&1; then
-  eval "$(rbenv init -)"
+# anyenv
+export PATH=$HOME/.anyenv/bin:$PATH
+if type anyenv > /dev/null 2>&1; then
+  eval "$(anyenv init -)"
 fi
 
 # editor
