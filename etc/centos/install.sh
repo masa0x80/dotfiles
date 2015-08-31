@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Proxy設定
-if [ -n $http_proxy ]; then
+if [ ! -z $http_proxy ]; then
   if [ -z `grep "proxy=$http_proxy" /etc/yum.conf` ]; then
     sudo sh -c "echo 'proxy=$http_proxy' >> /etc/yum.conf"
   fi
