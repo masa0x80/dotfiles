@@ -36,6 +36,7 @@ else
     echo 'skip pyenv install'
   else
     # pyenvの設定
+    anyenv install pyenv
     pyenv install 2.7.10
     pyenv global  2.7.10
     pyenv rehash
