@@ -27,6 +27,14 @@
     - include: tasks/aws.yml
     - include: tasks/antigen.yml
 
+    - name: check autojump
+      shell: PATH=$PATH:{{ bin_dir }} type -a autojump
+      register: autojump
+      failed_when:  autojump.rc not in [0, 1]
+      changed_when: autojump.rc not in [0, 1]
+    - include: tasks/autojump.yml
+      when: autojump|failed
+
     - name: check git
       shell: PATH=$PATH:{{ bin_dir }} type -a git && git --version | grep {{ git_version }}
       register: git
