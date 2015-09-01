@@ -6,7 +6,6 @@
     - man
     - man-pages
     - zsh
-    - autojump-zsh
     - tree
     - wget
     - bind-utils
