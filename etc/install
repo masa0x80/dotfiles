@@ -4,6 +4,10 @@ echo 'Downloading dotfiles...'
 url='https://github.com/masa0x80/dotfiles/archive/master.zip'
 mkdir -p /tmp/$$ && cd /tmp/$$
 
+if type yum > /dev/null 2>&1; then
+  sudo -E yum install -y unzip
+fi
+
 if type curl > /dev/null 2>&1; then
   curl -Lo dotfiles.zip "$url"
   if type unzip > /dev/null 2>&1; then
