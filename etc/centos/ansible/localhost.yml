@@ -104,7 +104,12 @@
       when: vim|failed
 
     - name: check mysql version
-      shell: mysqld --version | sed -e 's/.*Ver \([0-9.]\+\) .\+/\1/'
+      shell: mysql --version | sed -e 's/.*Distrib \([0-9.]\+\), .\+/\1/'
       register: installed_mysql_version
+    - name: check mysql
+      shell: PATH=$PATH:{{ bin_dir }} type -a mysql
+      register: mysql
+      failed_when:  mysql.rc not in [0, 1]
+      changed_when: mysql.rc not in [0, 1]
     - include: tasks/mysql.yml
-      when: installed_mysql_version.stdout | version_compare(mysql_version, '>')
+      when: mysql|failed or installed_mysql_version.stdout | version_compare(mysql_version, '<')
