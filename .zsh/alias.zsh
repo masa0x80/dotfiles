@@ -21,6 +21,8 @@ compdef _git gsh=git-show
 alias gdc='git diff --cached'
 compdef _git gdc=git-diff
 
+alias diff='diff -u'
+
 function git-review() {
   local N=$(git log --pretty=format:"%H %h" | grep -n $1 | cut -d : -f 1)
   git log --decorate --stat --reverse -p -$N
