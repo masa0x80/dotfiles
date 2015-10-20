@@ -37,6 +37,7 @@ function jump-and-tmux-rename-window() {
 alias j='jump-and-tmux-rename-window'
 
 alias s='spring stop && spring rails s'
+alias ss='spring stop'
 alias c='rails c'
 alias db='rails db'
 
