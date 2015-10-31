@@ -4,7 +4,7 @@
     - ncurses-devel
   sudo: yes
 - name: download tmux source file
-  get_url: url=http://downloads.sourceforge.net/tmux/tmux-{{ tmux_version }}.tar.gz dest={{ src_dir }}/tmux-{{ tmux_version }}.tar.gz
+  get_url: url=https://github.com/tmux/tmux/releases/download/{{ tmux_version }}/tmux-{{ tmux_version }}.tar.gz dest={{ src_dir }}/tmux-{{ tmux_version }}.tar.gz
 - name: extract tmux source file
   unarchive: src={{ src_dir }}/tmux-{{ tmux_version }}.tar.gz dest={{ src_dir }}
 - name: install tmux
