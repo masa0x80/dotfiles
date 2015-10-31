@@ -8,3 +8,7 @@ end
 if defined?(ActiveRecord)
   ActiveRecord::Base.logger = Logger.new(STDOUT)
 end
+
+if defined?(AwesomePrint)
+  AwesomePrint.pry!
+end
