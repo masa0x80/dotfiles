@@ -14,4 +14,5 @@
     - ntp
     - cronie-anacron
     - libselinux-python
+    - fuse-libs
   sudo: yes
