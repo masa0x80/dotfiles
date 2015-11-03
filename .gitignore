@@ -1,1 +1,13 @@
+# Vim swap files
+.DS_Store
+*~
+*.swp
+
+# Ruby
+/vendor/bundle
+/vendor/bin
+/.envrc
+/infra
+
+# Zsh
 /.zsh/antigen
