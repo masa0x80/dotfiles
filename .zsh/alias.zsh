@@ -36,6 +36,17 @@ function jump-and-tmux-rename-window() {
 }
 alias j='jump-and-tmux-rename-window'
 
+function rm-and-git-checkout() {
+  rm -rf $@
+  git checkout $@
+}
+alias rco='rm-and-git-checkout'
+
+function direnv-init() {
+  echo 'export PATH=$PWD/bin:$PWD/vendor/bin:$PATH' > .envrc && direnv allow
+}
+alias env_init='direnv-init'
+
 alias s='spring rails s'
 alias ss="pkill -f 'ruby .*/bin/spring'; pkill -f 'spring app'; pkill -f 'spring server'"
 alias c='rails c'
