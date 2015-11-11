@@ -1,6 +1,8 @@
 [core]
   autocrlf = false
   excludesfile = ~/.gitignore
+[credential]
+  helper = cache
 [include]
   path = ~/.gitconfig.local
 [alias]
