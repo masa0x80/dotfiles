@@ -37,6 +37,7 @@ NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'editorconfig/editorconfig-vim'
 
 NeoBundle 'Shougo/vimproc.vim', {
   \ 'build' : {
