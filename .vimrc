@@ -34,7 +34,7 @@ NeoBundle 'vim-scripts/Align'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-visualstar'
-NeoBundle 'tyru/caw.vim'
+NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
@@ -313,8 +313,8 @@ if executable('pt')
 endif
 
 " コメントアウト
-nmap <Leader>c <Plug>(caw:i:toggle)
-vmap <Leader>c <Plug>(caw:i:toggle)
+nmap <Leader>c :TComment<cr>
+vmap <Leader>c :TComment<cr>
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
