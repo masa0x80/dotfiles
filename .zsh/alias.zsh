@@ -35,12 +35,6 @@ function git-pull-and-prune() {
 }
 alias ggpull='git-pull-and-prune'
 
-function rm-and-git-checkout() {
-  rm -rf $@
-  git checkout $@
-}
-alias rco='rm-and-git-checkout'
-
 # autojumpした時はtmuxのwindow名をディレクトリー名に変更する
 function jump-and-tmux-rename-window() {
   \j "$@"
@@ -56,6 +50,9 @@ alias env_init='direnv-init'
 alias s='spring rails s -p $RAILS_SERVER_PORT'
 alias ss="pkill -f 'ruby .*/bin/spring'; pkill -f 'spring app'; pkill -f 'spring server'"
 alias c='rails c'
+alias t='rspec'
+alias bi='bundle install --path=vendor/bundle'
+alias bil='bundle install --path=vendor/bundle --local'
 alias db='rails db'
 
 alias h='\history -n -r 1 | grep "$@"'
