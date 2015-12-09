@@ -1,4 +1,4 @@
 - name: install ndenv
-  shell: "anyenv install ndenv"
+  shell: bash -lc "anyenv install ndenv"
 - name: fix node.js version
-  shell: "ndenv install {{ node_version }} && ndenv global {{ node_version }}"
+  shell: bash -lc "ndenv install {{ node_version }} && ndenv global {{ node_version }}"
