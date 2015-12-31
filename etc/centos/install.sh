@@ -38,8 +38,8 @@ else
     # pyenvの設定
     anyenv install pyenv
     source $HOME/.bashrc
-    pyenv install 2.7.10
-    pyenv global  2.7.10
+    pyenv install 2.7.11
+    pyenv global  2.7.11
     pyenv rehash
   fi
 fi
