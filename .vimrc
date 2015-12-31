@@ -39,6 +39,8 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'haya14busa/vim-operator-flashy'
 
 NeoBundle 'Shougo/vimproc.vim', {
   \ 'build' : {
@@ -332,6 +334,10 @@ let g:indent_guides_start_level = 2
 if v:version >= 704
   set regexpengine=1
 endif
+
+" https://github.com/haya14busa/vim-operator-flashy
+map  y <Plug>(operator-flashy)
+nmap Y <Plug>(operator-flashy)$
 
 " rubyデバッグ用
 abbreviate bb require 'pry-byebug'; binding.pry<Esc>
