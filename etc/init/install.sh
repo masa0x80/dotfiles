@@ -27,7 +27,8 @@ case `uname` in
     bash centos/install.sh
     cd centos/ansible
     source $HOME/.bashrc
-    ansible-playbook -i hosts localhost.yml
+    ansible-playbook -i hosts base.yml
+    ansible-playbook -i hosts append.yml
     ;;
 esac
 
