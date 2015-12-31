@@ -1,0 +1,71 @@
+- include: yum_settings.yml
+- include: yum_update.yml
+- include: basic_tools.yml
+- include: antigen.yml
+
+- name: check git
+  shell: PATH=$PATH:{{ bin_dir }} type -a git && git --version | grep {{ git_version }}
+  register: git
+  failed_when:  git.rc not in [0, 1]
+  changed_when: git.rc not in [0, 1]
+- include: git.yml
+  when: git|failed
+
+- name: check libevent
+  shell: ldconfig -p | grep '/usr/lib64/libevent-2.0.so.5'
+  register: libevent
+  failed_when:  libevent.rc not in [0, 1]
+  changed_when: libevent.rc not in [0, 1]
+- include: libevent.yml
+  when: libevent|failed
+
+- name: check tmux
+  shell: PATH=$PATH:{{ bin_dir }} type -a tmux
+  register: tmux
+  failed_when:  tmux.rc not in [0, 1]
+  changed_when: tmux.rc not in [0, 1]
+- include: tmux.yml
+  when: tmux|failed
+
+- name: check peco
+  stat: path={{ bin_dir }}/peco
+  register: peco
+- include: peco.yml
+  when: peco.stat.exists == False
+
+- name: check direnv
+  stat: path={{ bin_dir }}/direnv
+  register: direnv
+- include: direnv.yml
+  when: direnv.stat.exists == False
+
+- name: check pt
+  stat: path={{ bin_dir }}/pt
+  register: pt
+- include: pt.yml
+  when: pt.stat.exists == False
+
+- name: check ruby version
+  stat: path={{ home_dir }}/.anyenv/envs/rbenv
+  register: rbenv_dir
+- include: rbenv.yml
+  when: rbenv_dir.stat.exists == False
+
+- name: check vim
+  shell: PATH=$PATH:{{ bin_dir }} type -a vim && vim --version | grep 'VIM - Vi IMproved {{ vim_version }}'
+  register: vim
+  failed_when:  vim.rc not in [0, 1]
+  changed_when: vim.rc not in [0, 1]
+- include: vim.yml
+  when: vim|failed
+
+- name: check mysql version
+  shell: mysql --version | sed -e 's/.*Distrib \([0-9.]\+\), .\+/\1/'
+  register: installed_mysql_version
+- name: check mysql
+  shell: PATH=$PATH:{{ bin_dir }} type -a mysql
+  register: mysql
+  failed_when:  mysql.rc not in [0, 1]
+  changed_when: mysql.rc not in [0, 1]
+- include: mysql.yml
+  when: mysql|failed or installed_mysql_version.stdout | version_compare(mysql_version, '<')

@@ -1,0 +1,17 @@
+home_dir: "{{ lookup('env', 'HOME') }}"
+src_dir:  "{{ home_dir }}/src"
+bin_dir:  /usr/local/bin
+
+proxy_env:
+  ftp_proxy: "{{ lookup('env', 'http_proxy') }}"
+
+ruby_version:     2.3.0
+node_version:     v5.0.0
+git_version:      2.6.4
+libevent_version: 2.0.21-stable
+tmux_version:     2.1
+peco_version:     v0.3.5
+direnv_version:   v2.6.0
+pt_version:       v1.7.9
+vim_version:      7.4
+mysql_version:    5.6.25

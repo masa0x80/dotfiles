@@ -1,0 +1,13 @@
+- name: apply common configuration to all nodes
+  hosts: all
+  connection: local
+  gather_facts: no
+  roles:
+    - common
+
+- name: configure development settings
+  hosts: dev
+  connection: local
+  gather_facts: no
+  roles:
+    - append
