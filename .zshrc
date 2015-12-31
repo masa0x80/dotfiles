@@ -21,8 +21,8 @@ unsetopt promptcr           # 文字列末尾に改行コードが無い場合�
 
 # 履歴
 HISTFILE="$HOME/.zhistory"                     # history保存ファイル
-HISTSIZE=10000                                 # メモリーに保存されるhistory件数
-SAVEHIST=10000                                 # 保存されるhistory件数
+HISTSIZE=1000000                               # メモリーに保存されるhistory件数
+SAVEHIST=1000000                               # 保存されるhistory件数
 bindkey '^P' history-beginning-search-backward # <C-p>でhistoryをbackward検索
 bindkey '^N' history-beginning-search-forward  # <C-n>でhistoryをforward検索
 setopt hist_find_no_dups                       # history検索中に重複を飛ばす
@@ -38,13 +38,15 @@ setopt hist_no_store                           # history (fc -l) コマンドを
 autoload -U compinit; compinit # 補完を有効に
 setopt menu_complete           # 補完候補が複数ある時、一覧表示 (auto_list) せず、すぐに最初の候補を補完する
 setopt list_types              # auto_list の補完候補一覧で、ls -F のようにファイルの種別をマーク表示
-setopt auto_list               # 補完候補を一覧表示
+setopt always_last_prompt      # 補完候補を一覧表示
+setopt auto_list               # 補完候補をリストアップ
 setopt auto_menu               # <Tab>で補完
 setopt auto_param_keys         # カッコ対応などを自動で補完
 setopt auto_param_slash        # 最後がディレクトリー名の場合に / を追加
 setopt mark_dirs               # ファイル名の展開でディレクトリにマッチした場合末尾に / を付加する
 setopt magic_equal_subst       # コマンドラインの引数で --prefix=/usr などの = 以降でも補完する
 setopt brace_ccl               # {a-c} を a b c に展開する
+setopt correct                 # スペルミスを訂正する
 
 zstyle ':completion:*:default' menu select=1                                        # 補完候補をカーソルで選べるように
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z} r:|[-_.]=**' # -_. の前は末尾に * を付けていい感じに補完する
