@@ -38,6 +38,7 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 NeoBundle 'Shougo/vimproc.vim', {
   \ 'build' : {
@@ -66,8 +67,8 @@ NeoBundleCheck
 " highlight
 augroup HighlightSpaces
   autocmd!
-  autocmd ColorScheme * highlight Spaces term=underline guibg=Gray ctermbg=Gray
-  autocmd VimEnter,WinEnter * match Spaces /　\|[　 ]\+$/
+  autocmd ColorScheme * highlight Spaces term=underline guibg=lightblue ctermbg=lightblue
+  autocmd VimEnter,WinEnter,BufRead * match Spaces /　\|[　 ]\+$/
 augroup END
 
 " color
@@ -320,6 +321,12 @@ vmap <Leader>c :TComment<cr>
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" vim-indent-guidesの設定
+let g:indent_guides_enable_on_vim_startup = 1
+highlight IndentGuidesEven guibg=green ctermbg=green
+let g:indent_guides_guide_size  = 1
+let g:indent_guides_start_level = 2
 
 " SEGV対策
 if v:version >= 704
