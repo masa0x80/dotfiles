@@ -9,8 +9,8 @@
     - gecode-devel
   sudo: yes
 - name: install rbenv
-  shell: bash -lc "anyenv install rbenv"
+  shell: zsh -lc "anyenv install rbenv"
 - name: fix ruby version
-  shell: bash -lc "rbenv install {{ ruby_version }} && rbenv global {{ ruby_version }}"
+  shell: zsh -lc "rbenv install {{ ruby_version }} && rbenv global {{ ruby_version }}"
 - name: bundler
-  shell: bash -lc "rbenv rehash && rbenv exec gem install bundler"
+  shell: zsh -lc "rbenv rehash && rbenv exec gem install bundler"

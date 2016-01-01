@@ -5,13 +5,21 @@ bin_dir:  /usr/local/bin
 proxy_env:
   ftp_proxy: "{{ lookup('env', 'http_proxy') }}"
 
+remi_url: http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+
 ruby_version:     2.3.0
 node_version:     v5.0.0
+
 git_version:      2.6.4
+
 libevent_version: 2.0.21-stable
 tmux_version:     2.1
+
 peco_version:     v0.3.5
 direnv_version:   v2.6.0
 pt_version:       v1.7.9
+
 vim_version:      7.4
-mysql_version:    5.6.25
+
+mysql_rpm_url: http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+mysql_version: 5.7
