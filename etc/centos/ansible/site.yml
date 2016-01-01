@@ -5,7 +5,7 @@
   roles:
     - common
 
-- name: configure development settings
+- name: configure appended development settings
   hosts: dev
   connection: local
   gather_facts: no

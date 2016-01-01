@@ -2,7 +2,7 @@
   yum: name={{ item }} state=present
   with_items:
     - epel-release
-    - http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+    - "{{ remi_url }}"
     - man
     - man-pages
     - zsh

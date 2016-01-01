@@ -1,16 +1,14 @@
 - name: prepare to install mysql
-  yum: name={{ item }} state=absent
+  yum: name={{ item }} state=present
   with_items:
-    - mysql*
+    - "{{ mysql_rpm_url }}"
   sudo: yes
 - name: install mysql
   yum: name={{ item }} state=present
   with_items:
-    - http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
-    - mysql
-    - mysql-devel
-    - mysql-server
-    - mysql-utilities
+    - mysql-community-devel
+    - mysql-community-server
+    - mysql-community-libs
     - libselinux-python
   sudo: yes
 - name: make sure mysql is running
