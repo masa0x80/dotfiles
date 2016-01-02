@@ -9,9 +9,11 @@
 - tmux
 - peco
 - pt
+- jq
 - direnv
 - rbenv
 - pyenv
+- ndenv
 - dotfiles
 
 ツールのインストールにはMacではHomebrewを、CentOSではAnsibleを使います。
@@ -30,8 +32,8 @@ or
 ```
 git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-make init
 make deploy
+make init
 ```
 
 gitのユーザー設定は、`$HOME/.gitconfig.local` に書いて下さい。
