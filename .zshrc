@@ -57,6 +57,7 @@ antigen use oh-my-zsh
 antigen bundle https://github.com/mollifier/anyframe
 antigen bundle git
 antigen theme ys
+antigen bundle b4b4r07/enhancd
 antigen apply
 
 # カスタム設定を読み込む
