@@ -1,7 +1,7 @@
 - include: yum_settings.yml
 - include: yum_update.yml
 - include: basic_tools.yml
-- include: antigen.yml
+- include: zplug.yml
 
 - name: check git
   shell: PATH=$PATH:{{ bin_dir }} type -a git && git --version | grep {{ git_version }}
