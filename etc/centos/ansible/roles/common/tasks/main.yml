@@ -69,3 +69,5 @@
   changed_when: mysql.rc not in [0, 1]
 - include: mysql.yml
   when: mysql|failed or installed_mysql_version.stdout | version_compare(mysql_version, '<')
+
+- include: fzf.yml
