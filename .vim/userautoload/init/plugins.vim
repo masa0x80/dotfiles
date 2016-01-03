@@ -18,6 +18,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'kana/vim-operator-user'
 Plug 'haya14busa/vim-operator-flashy'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 call plug#end()
