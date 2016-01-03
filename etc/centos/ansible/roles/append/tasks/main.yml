@@ -17,12 +17,6 @@
 - include: autojump.yml
   when: autojump|failed
 
-- name: check jq
-  stat: path={{ bin_dir }}/jq
-  register: jq
-- include: jq.yml
-  when: jq.stat.exists == False
-
 - name: check node version
   stat: path={{ home_dir }}/.anyenv/envs/ndenv
   register: ndenv_dir
