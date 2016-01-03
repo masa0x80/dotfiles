@@ -1,61 +1,71 @@
-filetype off
-filetype plugin indent off
+call plug#begin('$HOME/.vim/plugged')
 
-if has('vim_starting')
-  if &compatible
-    set nocompatible  " Be iMproved
-  endif
+Plug 'Shougo/neocomplcache'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'tpope/vim-fugitive'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/Align'
+Plug 'junegunn/vim-easy-align'
+Plug 'thinca/vim-quickrun'
+Plug 'thinca/vim-visualstar'
+Plug 'tomtom/tcomment_vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'itchyny/lightline.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'kana/vim-operator-user'
+Plug 'haya14busa/vim-operator-flashy'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
-  " Required:
-  set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
+call plug#end()
+
+
+" plugin installation check
+let s:plug = {
+      \ "plugs": get(g:, 'plugs', {})
+      \ }
+
+function! s:plug.is_installed(name)
+  return has_key(self.plugs, a:name) ? isdirectory(self.plugs[a:name].dir) : 0
+endfunction
+
+if s:plug.is_installed("vim-myplugin")
+  " setting
 endif
 
-" Required:
-call neobundle#begin(expand('$HOME/.vim/bundle'))
+function! s:plug.check_installation()
+  if empty(self.plugs)
+    return
+  endif
 
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+  let list = []
+  for [name, spec] in items(self.plugs)
+    if !isdirectory(spec.dir)
+      call add(list, spec.uri)
+    endif
+  endfor
 
-" Add or remove your Bundles here:
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'vim-scripts/Align'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'thinca/vim-visualstar'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'haya14busa/vim-operator-flashy'
+  if len(list) > 0
+    let unplugged = map(list, 'substitute(v:val, "^.*github\.com/\\(.*/.*\\)\.git$", "\\1", "g")')
 
-NeoBundle 'Shougo/vimproc.vim', {
-  \ 'build' : {
-  \     'windows' : 'tools\\update-dll-mingw',
-  \     'cygwin' : 'make -f make_cygwin.mak',
-  \     'mac' : 'make -f make_mac.mak',
-  \     'linux' : 'make',
-  \     'unix' : 'gmake',
-  \    },
-  \ }
+    " Ask whether installing plugs like NeoBundle
+    echomsg 'Not installed plugs: ' . string(unplugged)
+    if confirm('Install plugs now?', "yes\nNo", 2) == 1
+      PlugInstall
+      " Close window for vim-plug
+      silent! close
+      " Restart vim
+      silent! !vim
+      quit!
+    endif
 
-" You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+  endif
+endfunction
 
-" Required:
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+augroup check-plug
+  autocmd!
+  autocmd VimEnter * if !argc() | call s:plug.check_installation() | endif
+augroup END
