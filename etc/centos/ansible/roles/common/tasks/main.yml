@@ -2,7 +2,6 @@
 - include: yum_update.yml
 - include: basic_tools.yml
 - include: zplug.yml
-- include: fzf.yml
 
 - name: check libevent
   shell: ldconfig -p | grep '/usr/lib64/libevent-2.0.so.5'
@@ -19,6 +18,12 @@
   changed_when: tmux.rc not in [0, 1]
 - include: tmux.yml
   when: tmux|failed
+
+- name: check fzf
+  stat: path={{ home_dir }}/.fzf
+  register: fzf
+- include: fzf.yml
+  when: fzf.stat.exists == False
 
 - name: check peco
   stat: path={{ bin_dir }}/peco
