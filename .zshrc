@@ -48,7 +48,7 @@ setopt magic_equal_subst       # コマンドラインの引数で --prefix=/usr
 setopt brace_ccl               # {a-c} を a b c に展開する
 setopt correct                 # スペルミスを訂正する
 
-zstyle ':completion:*:default' menu select=1                                        # 補完候補をカーソルで選べるように
+zstyle ':completion:*:default' menu select=2                                        # 補完候補をカーソルで選べるように; 候補が2つ以上の場合は即補完
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z} r:|[-_.]=**' # -_. の前は末尾に * を付けていい感じに補完する
 
 # zplug
