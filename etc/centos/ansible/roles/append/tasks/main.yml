@@ -1,5 +1,6 @@
 - include: imagemagick.yml
 - include: aws.yml
+- include: redis.yml
 
 - name: check autojump
   shell: PATH=$PATH:{{ bin_dir }} type -a autojump
