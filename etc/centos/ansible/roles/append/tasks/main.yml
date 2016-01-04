@@ -1,14 +1,6 @@
 - include: imagemagick.yml
 - include: aws.yml
 
-- name: check git man
-  shell: PATH=$PATH:{{ bin_dir }} man git
-  register: git_man
-  failed_when:  git_man.rc not in [0, 1]
-  changed_when: git_man.rc not in [0, 1]
-- include: git_man.yml
-  when: git_man|failed
-
 - name: check autojump
   shell: PATH=$PATH:{{ bin_dir }} type -a autojump
   register: autojump
@@ -22,3 +14,11 @@
   register: ndenv_dir
 - include: ndenv.yml
   when: ndenv_dir.stat.exists == False
+
+- name: check git
+  shell: PATH=$PATH:{{ bin_dir }} type -a git && git --version | grep {{ git_version }}
+  register: git
+  failed_when:  git.rc not in [0, 1]
+  changed_when: git.rc not in [0, 1]
+- include: git.yml
+  when: git|failed

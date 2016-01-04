@@ -21,3 +21,6 @@
 - name: install git
   shell: ./configure --prefix=/usr/local && make && make install chdir={{ src_dir }}/git-{{ git_version }}
   sudo: yes
+- name: install git man
+  shell: make install-man chdir={{ src_dir }}/git-{{ git_version }}
+  sudo: yes

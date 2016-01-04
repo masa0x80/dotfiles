@@ -2,14 +2,7 @@
 - include: yum_update.yml
 - include: basic_tools.yml
 - include: zplug.yml
-
-- name: check git
-  shell: PATH=$PATH:{{ bin_dir }} type -a git && git --version | grep {{ git_version }}
-  register: git
-  failed_when:  git.rc not in [0, 1]
-  changed_when: git.rc not in [0, 1]
-- include: git.yml
-  when: git|failed
+- include: fzf.yml
 
 - name: check libevent
   shell: ldconfig -p | grep '/usr/lib64/libevent-2.0.so.5'
@@ -69,5 +62,3 @@
   changed_when: mysql.rc not in [0, 1]
 - include: mysql.yml
   when: mysql|failed or installed_mysql_version.stdout | version_compare(mysql_version, '<')
-
-- include: fzf.yml
