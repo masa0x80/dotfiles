@@ -69,6 +69,9 @@ fi
 
 zplug load
 
+# load fzf
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+
 # カスタム設定を読み込む
 for CONFIG_FILE ($HOME/.zsh/custom/*.zsh(N)); do
   source $CONFIG_FILE
@@ -83,5 +86,3 @@ done
 
 CONFIG_FILE="$HOME/.zshrc.local" && test -r $CONFIG_FILE && source $CONFIG_FILE # 環境ローカルの設定の読み込み
 unset CONFIG_FILE
-
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
