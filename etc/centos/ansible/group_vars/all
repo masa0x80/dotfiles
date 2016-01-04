@@ -1,3 +1,4 @@
+user:     "{{ lookup('env', 'USER') }}"
 home_dir: "{{ lookup('env', 'HOME') }}"
 src_dir:  "{{ home_dir }}/src"
 bin_dir:  /usr/local/bin

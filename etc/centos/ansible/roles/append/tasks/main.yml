@@ -16,6 +16,14 @@
 - include: ndenv.yml
   when: ndenv_dir.stat.exists == False
 
+- name: check postgres
+  shell: PATH=$PATH:{{ bin_dir }} type -a postgres
+  register: postgres
+  failed_when:  postgres.rc not in [0, 1]
+  changed_when: postgres.rc not in [0, 1]
+- include: postgres.yml
+  when: postgres|failed
+
 - name: check git
   shell: PATH=$PATH:{{ bin_dir }} type -a git && git --version | grep {{ git_version }}
   register: git
