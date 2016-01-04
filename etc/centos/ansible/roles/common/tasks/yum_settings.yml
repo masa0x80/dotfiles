@@ -8,11 +8,11 @@
   sudo: yes
   when: result|failed
 - name: check proxy settings
-  shell: test -z "{{ lookup('env', 'http_proxy') }}" || grep "proxy={{ lookup('env', 'http_proxy') }}" /etc/yum.conf
+  shell: test -z "{{ lookup('env', 'HTTP_PROXY') }}" || grep "proxy={{ lookup('env', 'HTTP_PROXY') }}" /etc/yum.conf
   register: proxy_conf
   failed_when:  proxy_conf.rc not in [0, 1]
   changed_when: proxy_conf.rc not in [0, 1]
 - name: set proxy
-  shell: echo "proxy={{ lookup('env', 'http_proxy') }}" >> /etc/yum.conf
+  shell: echo "proxy={{ lookup('env', 'HTTP_PROXY') }}" >> /etc/yum.conf
   sudo: yes
   when: proxy_conf|failed

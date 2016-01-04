@@ -15,4 +15,10 @@
     - cronie-anacron
     - libselinux-python
     - fuse-libs
+    - bzip2
+  sudo: yes
+- name: install basic tools in epel
+  yum: name={{ item }} state=present enablerepo=epel
+  with_items:
+    - lbzip2
   sudo: yes
