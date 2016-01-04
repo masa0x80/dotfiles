@@ -23,5 +23,8 @@ export RAILS_SERVER_PORT=3000
 # fzf
 export FZF_DEFAULT_OPTS='--extended --ansi --multi --cycle --bind=ctrl-u:page-up --bind=ctrl-d:page-down --bind=ctrl-z:toggle-all'
 
+# load proxy settings
+test -r $HOME/.proxy && source $HOME/.proxy
+
 # 環境ローカルの設定の読み込み
 test -r $HOME/.zshenv.local && source $HOME/.zshenv.local

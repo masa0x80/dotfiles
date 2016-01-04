@@ -17,11 +17,4 @@ alias -g G='| egrep --color'
 alias -g P='| peco'
 alias -g F='| fzf'
 
-# autojumpした時はtmuxのwindow名をディレクトリー名に変更する
-function jump-and-tmux-rename-window() {
-  \j "$@"
-  tmux rename-window ${PWD:t}
-}
-alias j='jump-and-tmux-rename-window'
-
 alias h='\history -n -r 1 | grep "$@"'

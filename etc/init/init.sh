@@ -32,6 +32,9 @@ case `uname` in
     else
       ansible-playbook -i hosts site.yml -t "$TAGS"
     fi
+    cd ../../../
+    # vim-plug管理のプラグインをインストールするためにvimを起動
+    vim
     ;;
 esac
 
