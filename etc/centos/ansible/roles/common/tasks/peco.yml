@@ -1,4 +1,4 @@
-- get_url: url=https://github.com/peco/peco/releases/download/{{ peco_version }}/peco_linux_amd64.tar.gz dest={{ src_dir }}
-- unarchive: src={{ src_dir }}/peco_linux_amd64.tar.gz dest={{ src_dir }}
+- command: zsh -lc "curl -LO https://github.com/peco/peco/releases/download/{{ peco_version }}/peco_linux_amd64.tar.gz" chdir={{ src_dir }}
+- unarchive: src={{ src_dir }}/peco_linux_amd64.tar.gz dest={{ src_dir }} copy=no
 - copy: src={{ src_dir }}/peco_linux_amd64/peco dest={{ bin_dir }}/peco mode=0755
   sudo: yes

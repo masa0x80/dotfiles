@@ -4,9 +4,9 @@
     - ncurses-devel
   sudo: yes
 - name: download tmux source file
-  get_url: url=https://github.com/tmux/tmux/releases/download/{{ tmux_version }}/tmux-{{ tmux_version }}.tar.gz dest={{ src_dir }}/tmux-{{ tmux_version }}.tar.gz
+  command: zsh -lc "curl -LO https://github.com/tmux/tmux/releases/download/{{ tmux_version }}/tmux-{{ tmux_version }}.tar.gz" chdir={{ src_dir }}
 - name: extract tmux source file
-  unarchive: src={{ src_dir }}/tmux-{{ tmux_version }}.tar.gz dest={{ src_dir }}
+  unarchive: src={{ src_dir }}/tmux-{{ tmux_version }}.tar.gz dest={{ src_dir }} copy=no
 - name: install tmux
   shell: ./configure && make && make install chdir={{ src_dir }}/tmux-{{ tmux_version }}
   sudo: yes

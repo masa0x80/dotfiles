@@ -1,33 +1,34 @@
 - include: imagemagick.yml
+  tags: imagemagick
 - include: aws.yml
+  tags: aws
 - include: redis.yml
-
-- name: check autojump
-  shell: PATH=$PATH:{{ bin_dir }} type -a autojump
-  register: autojump
-  failed_when:  autojump.rc not in [0, 1]
-  changed_when: autojump.rc not in [0, 1]
-- include: autojump.yml
-  when: autojump|failed
+  tags: redis
 
 - name: check node version
   stat: path={{ home_dir }}/.anyenv/envs/ndenv
   register: ndenv_dir
+  tags: ndenv
 - include: ndenv.yml
   when: ndenv_dir.stat.exists == False
+  tags: ndenv
 
-- name: check postgres
+- name: check postgresql
   shell: PATH=$PATH:{{ bin_dir }} type -a postgres
-  register: postgres
-  failed_when:  postgres.rc not in [0, 1]
-  changed_when: postgres.rc not in [0, 1]
-- include: postgres.yml
-  when: postgres|failed
+  register: postgresql
+  failed_when:  postgresql.rc not in [0, 1]
+  changed_when: postgresql.rc not in [0, 1]
+  tags: postgresql
+- include: postgresql.yml
+  when: postgresql|failed
+  tags: postgresql
 
 - name: check git
   shell: PATH=$PATH:{{ bin_dir }} type -a git && git --version | grep {{ git_version }}
   register: git
   failed_when:  git.rc not in [0, 1]
   changed_when: git.rc not in [0, 1]
+  tags: git
 - include: git.yml
   when: git|failed
+  tags: git

@@ -27,7 +27,11 @@ case `uname` in
     bash centos/install.sh
     cd centos/ansible
     source $HOME/.bashrc
-    ansible-playbook -i hosts site.yml
+    if [ -z "$TAGS" ]; then
+      ansible-playbook -i hosts site.yml
+    else
+      ansible-playbook -i hosts site.yml -t "$TAGS"
+    fi
     ;;
 esac
 
