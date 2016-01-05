@@ -13,14 +13,6 @@
   when: fzf.stat.exists == False
   tags: fzf
 
-- name: check peco
-  stat: path={{ bin_dir }}/peco
-  register: peco
-  tags: peco
-- include: peco.yml
-  when: peco.stat.exists == False
-  tags: peco
-
 - name: check direnv
   stat: path={{ bin_dir }}/direnv
   register: direnv
