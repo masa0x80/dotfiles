@@ -4,28 +4,6 @@
   tags: yum_update
 - include: basic_tools.yml
   tags: basic_tools
-- include: zplug.yml
-  tags: zplug
-
-- name: check libevent
-  shell: ldconfig -p | grep '/usr/lib64/libevent-2.0.so.5'
-  register: libevent
-  failed_when:  libevent.rc not in [0, 1]
-  changed_when: libevent.rc not in [0, 1]
-  tags: libevent
-- include: libevent.yml
-  when: libevent|failed
-  tags: libevent
-
-- name: check tmux
-  shell: PATH=$PATH:{{ bin_dir }} type -a tmux
-  register: tmux
-  failed_when:  tmux.rc not in [0, 1]
-  changed_when: tmux.rc not in [0, 1]
-  tags: tmux
-- include: tmux.yml
-  when: tmux|failed
-  tags: tmux
 
 - name: check fzf
   stat: path={{ home_dir }}/.fzf
@@ -66,16 +44,6 @@
 - include: rbenv.yml
   when: rbenv_dir.stat.exists == False
   tags: rbenv
-
-- name: check vim
-  shell: PATH=$PATH:{{ bin_dir }} type -a vim && vim --version | grep 'VIM - Vi IMproved {{ vim_version }}'
-  register: vim
-  failed_when:  vim.rc not in [0, 1]
-  changed_when: vim.rc not in [0, 1]
-  tags: vim
-- include: vim.yml
-  when: vim|failed
-  tags: vim
 
 - name: check mysql version
   shell: mysql --version | sed -e 's/.*Distrib \([0-9.]\+\), .\+/\1/'
