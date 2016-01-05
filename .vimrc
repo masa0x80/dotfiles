@@ -4,7 +4,9 @@ if 0 | endif
 scriptencoding utf-8
 
 runtime! userautoload/init/*.vim
-runtime! userautoload/plugins/*.vim
+if isdirectory(expand('$HOME/.vim/plugged'))
+  runtime! userautoload/plugins/*.vim
+endif
 
 " SEGV対策
 if v:version >= 704

@@ -1,13 +1,17 @@
-zstyle ":anyframe:selector:" use fzf
+if type fzf > /dev/null 2>&1; then
+  bindkey '^E' fzf-file-widget
+fi
 
-bindkey '^E' fzf-file-widget
+if [ -r $HOME/.zplug/zplug ]; then
+  if type fzf > /dev/null 2>&1; then
+    zstyle ":anyframe:selector:" use fzf
+  fi
 
-bindkey '^L' anyframe-widget-tmux-attach
-
-# git branch
-bindkey '^gb'  anyframe-widget-checkout-git-branch
-bindkey '^g^b' anyframe-widget-checkout-git-branch
-bindkey '^b^b' anyframe-widget-insert-git-branch
+  # git branch
+  bindkey '^gb'  anyframe-widget-checkout-git-branch
+  bindkey '^g^b' anyframe-widget-checkout-git-branch
+  bindkey '^b^b' anyframe-widget-insert-git-branch
+fi
 
 # git-add with peco
 # ref: http://petitviolet.hatenablog.com/entry/20140722/1406034439
