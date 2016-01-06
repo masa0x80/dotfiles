@@ -37,6 +37,14 @@
   when: pt.stat.exists == False
   tags: pt
 
+- name: check jq
+  stat: path={{ bin_dir }}/jq
+  register: jq
+  tags: jq
+- include: jq.yml
+  when: jq.stat.exists == False
+  tags: jq
+
 - name: check ruby version
   stat: path={{ home_dir }}/.anyenv/envs/rbenv
   register: rbenv_dir
