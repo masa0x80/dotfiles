@@ -5,8 +5,6 @@ if [ -r $HOME/.zplug/zplug ]; then
   zplug 'themes/ys', from:oh-my-zsh
   zplug 'mollifier/anyframe'
   zplug 'b4b4r07/enhancd', of:enhancd.sh
-  zplug 'peco/peco', as:command
-  zplug 'stedolan/jq', as:command, file:jq
   zplug 'zsh-users/zsh-completions'
 
   if ! zplug check --verbose; then
