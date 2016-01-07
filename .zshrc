@@ -1,6 +1,15 @@
 # load common configuration
 CONFIG_FILE="$HOME/.zsh/common.zsh" && test -r $CONFIG_FILE && source $CONFIG_FILE
 
+# load history configuration
+CONFIG_FILE="$HOME/.zsh/history.zsh" && test -r $CONFIG_FILE && source $CONFIG_FILE
+
+# load completion configuration
+CONFIG_FILE="$HOME/.zsh/completion.zsh" && test -r $CONFIG_FILE && source $CONFIG_FILE
+
+# load hook configuration
+CONFIG_FILE="$HOME/.zsh/hook.zsh" && test -r $CONFIG_FILE && source $CONFIG_FILE
+
 # load plugins
 CONFIG_FILE="$HOME/.zsh/plugins.zsh" && test -r $CONFIG_FILE && source $CONFIG_FILE
 

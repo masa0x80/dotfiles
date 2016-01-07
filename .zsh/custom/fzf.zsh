@@ -6,7 +6,7 @@ if [ -r $HOME/.zplug/zplug ]; then
   # git branch
   bindkey '^gb'  anyframe-widget-checkout-git-branch
   bindkey '^g^b' anyframe-widget-checkout-git-branch
-  bindkey '^gB' anyframe-widget-insert-git-branch
+  bindkey '^gB'  anyframe-widget-insert-git-branch
 fi
 
 if type fzf > /dev/null 2>&1; then
