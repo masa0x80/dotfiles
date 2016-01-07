@@ -1,0 +1,27 @@
+# 補完
+fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
+autoload -U compinit; compinit # 補完を有効に
+setopt menu_complete           # 補完候補が複数ある時、一覧表示 (auto_list) せず、すぐに最初の候補を補完する
+setopt list_types              # auto_list の補完候補一覧で、ls -F のようにファイルの種別をマーク表示
+setopt always_last_prompt      # 補完候補を一覧表示
+setopt auto_list               # 補完候補をリストアップ
+setopt auto_menu               # <Tab>で補完
+setopt auto_param_keys         # カッコ対応などを自動で補完
+setopt auto_param_slash        # 最後がディレクトリー名の場合に / を追加
+setopt mark_dirs               # ファイル名の展開でディレクトリにマッチした場合末尾に / を付加する
+setopt magic_equal_subst       # コマンドラインの引数で --prefix=/usr などの = 以降でも補完する
+setopt brace_ccl               # {a-c} を a b c に展開する
+setopt correct                 # スペルミスを訂正する
+
+zstyle ':completion:*:default' menu select=2                                        # 補完候補をカーソルで選べるように; 候補が2つ以上の場合は即補完
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z} r:|[-_.]=**' # -_. の前は末尾に * を付けていい感じに補完する
+
+# 色設定
+if type dircolors > /dev/null 2>&1; then
+  eval $(dircolors $HOME/.zsh/misc/dircolors.256dark)
+elif type gdircolors > /dev/null 2>&1; then
+  eval $(gdircolors $HOME/.zsh/misc/dircolors.256dark)
+fi
+if [ -n "$LS_COLORS" ]; then
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi
