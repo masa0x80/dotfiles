@@ -18,3 +18,9 @@ setopt rm_star_wait         # rm * 時に、10秒間反応しなくなり、頭�
 setopt short_loops          # for, repeat, select, if, function などで簡略文法が使えるようになる
 setopt prompt_subst         # 色を使う
 unsetopt promptcr           # 文字列末尾に改行コードが無い場合でも表示する
+
+autoload -Uz smart-insert-last-word
+zle -N insert-last-word smart-insert-last-word
+# include words that is at least two characters long
+zstyle :insert-last-word match '*([[:alpha:]/\\]?|?[[:alpha:]/\\])*'
+bindkey '^]' insert-last-word
