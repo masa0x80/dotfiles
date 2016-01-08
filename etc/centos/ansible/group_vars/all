@@ -12,6 +12,7 @@ mysql_rpm_url: http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.r
 mysql_version: 5.7
 
 ruby_version:     2.3.0
+bundler_option:   '-v 1.10.6'
 node_version:     v5.0.0
 
 git_version:      2.6.4
