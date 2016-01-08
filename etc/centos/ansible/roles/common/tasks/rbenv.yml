@@ -6,11 +6,11 @@
     - readline-devel
     - libffi-devel
     - libxslt-devel
-    - gecode-devel
+    - autoconf
   sudo: yes
 - name: install rbenv
   shell: zsh -lc "anyenv install rbenv"
 - name: fix ruby version
   shell: zsh -lc "rbenv install {{ ruby_version }} && rbenv global {{ ruby_version }}"
 - name: bundler
-  shell: zsh -lc "rbenv rehash && rbenv exec gem install bundler"
+  shell: zsh -lc "rbenv rehash && rbenv exec gem install bundler {{ bundler_option }}"
