@@ -9,5 +9,5 @@
 /.envrc
 /infra
 
-# Zsh
-/.zsh/antigen
+# Windows
+Thumbs.db
