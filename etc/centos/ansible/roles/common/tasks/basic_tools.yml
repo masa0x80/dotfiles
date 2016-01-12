@@ -7,7 +7,7 @@
   yum: name={{ item }} state=present
   with_items:
     - "{{ remi_url }}"
-  sudo: yes
+  become: yes
   when: remi_repo|failed
 - name: install basic tools
   yum: name={{ item }} state=present
@@ -26,7 +26,7 @@
     - libselinux-python
     - fuse-libs
     - bzip2
-  sudo: yes
+  become: yes
 - name: install basic tools in epel
   yum: name={{ item }} state=present enablerepo=epel
   with_items:
