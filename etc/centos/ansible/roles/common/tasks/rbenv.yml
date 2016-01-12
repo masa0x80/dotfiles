@@ -7,7 +7,7 @@
     - libffi-devel
     - libxslt-devel
     - autoconf
-  sudo: yes
+  become: yes
 - name: install rbenv
   shell: zsh -lc "anyenv install rbenv"
 - name: fix ruby version

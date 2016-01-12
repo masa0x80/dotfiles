@@ -1,12 +1,12 @@
 - name: uninstall vim
   yum: name=vim state=absent
-  sudo: yes
+  become: yes
 - get_url: url=ftp://ftp.vim.org/pub/vim/unix/vim-{{ vim_version }}.tar.bz2 dest={{ src_dir }}
   environment: proxy_env
 - unarchive: src={{ src_dir }}/vim-{{ vim_version }}.tar.bz2 dest={{ src_dir }} copy=no
 - name: install vim
   shell: ./configure --enable-fail-if-missing --enable-fontset --enable-cscope --enable-multibyte --with-x=no --disable-gui --disable-xim --with-features=huge --disable-selinux --disable-gpm --disable-darwin && make && make install chdir={{ src_dir }}/vim{{ vim_version | regex_replace('\.', '') }}
-  sudo: yes
+  become: yes
 - name: check vim-plug
   stat: path={{ home_dir }}/.vim/autoload/plug.vim
   register: vim_plug

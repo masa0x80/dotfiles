@@ -4,4 +4,4 @@
     - ImageMagick-last
     - ImageMagick-last-devel
     - ImageMagick-last-libs
-  sudo: yes
+  become: yes

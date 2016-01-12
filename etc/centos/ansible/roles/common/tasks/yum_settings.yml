@@ -5,7 +5,7 @@
   changed_when: result.rc not in [0, 1]
 - name: use jp fastestmirror
   shell: echo 'include_only=.jp' >> /etc/yum/pluginconf.d/fastestmirror.conf
-  sudo: yes
+  become: yes
   when: result|failed
 - name: check proxy settings
   shell: test -z "{{ lookup('env', 'HTTP_PROXY') }}" || grep "proxy={{ lookup('env', 'HTTP_PROXY') }}" /etc/yum.conf
@@ -14,5 +14,5 @@
   changed_when: proxy_conf.rc not in [0, 1]
 - name: set proxy
   shell: echo "proxy={{ lookup('env', 'HTTP_PROXY') }}" >> /etc/yum.conf
-  sudo: yes
+  become: yes
   when: proxy_conf|failed

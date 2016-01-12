@@ -2,7 +2,7 @@
   yum: name={{ item }} state=present
   with_items:
     - "{{ mysql_rpm_url }}"
-  sudo: yes
+  become: yes
 - name: install mysql
   yum: name={{ item }} state=present
   with_items:
@@ -10,7 +10,7 @@
     - mysql-community-server
     - mysql-community-libs
     - libselinux-python
-  sudo: yes
+  become: yes
 - name: make sure mysql is running
   service: name=mysqld enabled=yes state=started
-  sudo: yes
+  become: yes
