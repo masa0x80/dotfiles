@@ -1,13 +1,15 @@
-# Vim swap files
+# Mac
 .DS_Store
+
+# Windows
+Thumbs.db
+
+# Vim swap files
 *~
 *.swp
 
 # Ruby
 /vendor/bundle
 /vendor/bin
-/.envrc
-/infra
 
-# Windows
-Thumbs.db
+/.envrc
