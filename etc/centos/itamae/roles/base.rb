@@ -3,6 +3,7 @@ def build_path(path)
 end
 
 %w[
+  yum/update.rb
   basic_tools/install.rb
   mysql/install.rb
 ].each do |path|
