@@ -24,6 +24,7 @@ sudo -E yum install -y patch readline-devel zlib-devel openssl-devel gcc-c++ bzi
 if type anyenv > /dev/null 2>&1; then
   echo 'skip anyenv install'
 else
+  sudo -E yum install -y gcc-c++ openssl-devel readline-devel libffi-devel libxslt-devel autoconf
   git clone https://github.com/riywo/anyenv $HOME/.anyenv
 
   echo ''                                    >> $HOME/.bashrc
