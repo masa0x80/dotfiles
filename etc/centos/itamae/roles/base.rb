@@ -7,6 +7,7 @@ end
   basic_tools/install.rb
   mysql/install.rb
   fzf/install.rb
+  peco/install.rb
 ].each do |path|
   include_recipe build_path(path)
 end
