@@ -1,25 +1,31 @@
 RECIPES = [
   {
     path: 'yum/update.rb',
-    tags: %w[common yum]
+    tags: %w[common yum],
   }, {
     path: 'basic_tools/install.rb',
-    tags: %w[common basic_tools]
-  }, {
-    path: 'mysql/install.rb',
-    tags: %w[common mysql]
+    tags: %w[common basic_tools],
   }, {
     path: 'fzf/install.rb',
-    tags: %w[common fzf]
+    tags: %w[common fzf],
   }, {
     path: 'peco/install.rb',
-    tags: %w[common peco]
+    tags: %w[common peco],
   }, {
     path: 'pt/install.rb',
-    tags: %w[common pt]
+    tags: %w[common pt],
   }, {
     path: 'jq/install.rb',
-    tags: %w[common jq]
+    tags: %w[common jq],
+  }, {
+    path: 'mysql/install.rb',
+    tags: %w[common mysql],
+  }, {
+    path: 'imagemagick/install.rb',
+    tags: %w[append imagemagick],
+  }, {
+    path: 'aws/install.rb',
+    tags: %w[append aws],
   },
 ]
 TAGS = ENV.fetch('TAGS', '').split(/,/)
