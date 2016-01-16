@@ -26,6 +26,15 @@ RECIPES = [
   }, {
     path: 'aws/install.rb',
     tags: %w[append aws],
+  }, {
+    path: 'redis/install.rb',
+    tags: %w[append redis],
+  }, {
+    path: 'zplug/install.rb',
+    tags: %w[append zplug],
+  }, {
+    path: 'vim/install.rb',
+    tags: %w[append vim],
   },
 ]
 TAGS = ENV.fetch('TAGS', '').split(/,/)
