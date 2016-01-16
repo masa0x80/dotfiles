@@ -26,8 +26,8 @@ case `uname` in
   Linux)
     bash centos/install.sh
     cd centos/itamae
-    bundle install --path=vendor/bundle
     source $HOME/.bashrc
+    bundle install --path=vendor/bundle
     if [ -z "$TAGS" ]; then
       bundle exec itamae local entrypoint.rb -y nodes/localhost.yml
     else
