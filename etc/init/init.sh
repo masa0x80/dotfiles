@@ -31,7 +31,7 @@ case `uname` in
     if [ -z "$TAGS" ]; then
       bundle exec itamae local entrypoint.rb -y nodes/localhost.yml
     else
-      bundle exec itamae local entrypoint.rb -y nodes/localhost.yml
+      TAGS="$TAGS" bundle exec itamae local entrypoint.rb -y nodes/localhost.yml
     fi
     cd ../../../
     ;;
