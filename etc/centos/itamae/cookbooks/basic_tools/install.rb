@@ -2,6 +2,7 @@ include_recipe './attributes.rb'
 
 package node[:remi][:rpm_url] do
   action :install
+  user   'root'
   not_if 'rpm -q %s' % node[:remi][:package]
 end
 
@@ -24,5 +25,6 @@ end
 ].each do |name|
   package name do
     action :install
+    user   'root'
   end
 end

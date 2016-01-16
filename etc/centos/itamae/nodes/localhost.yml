@@ -1,4 +1,25 @@
+:src_dir: '~/src'
+:bin_dir: '/usr/local/bin'
+
 :mysql:
   :rpm_url: http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+
+:version:
+  :ruby: 2.3.0
+  :bundler_option: ''
+
+  :nodejs:     v5.0.0
+
+  :git:      2.7.0
+
+  :libevent: 2.0.21-stable
+  :tmux:     2.1
+
+  :peco:     v0.3.5
+  :direnv:   v2.6.0
+  :pt:       v1.7.9
+
+  :vim:      7.4
+
 :recipes:
   - ./roles/base.rb
