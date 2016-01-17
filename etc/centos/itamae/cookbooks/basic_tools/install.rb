@@ -1,9 +1,7 @@
-include_recipe './attributes.rb'
-
-package node[:remi][:rpm_url] do
+package node[:remi_repo][:rpm_url] do
   action :install
   user   'root'
-  not_if 'rpm -q %s' % node[:remi][:package]
+  not_if 'rpm -q %s' % node[:remi_repo][:package]
 end
 
 %w[

@@ -1,5 +1,5 @@
 execute 'download peco' do
-  command "cd #{node[:src_dir]} && curl -LO https://github.com/peco/peco/releases/download/#{node[:version][:peco]}/peco_linux_amd64.tar.gz"
+  command "cd #{node[:src_dir]} && curl -LO https://github.com/peco/peco/releases/download/#{node[:peco][:version]}/peco_linux_amd64.tar.gz"
   not_if  'type -a peco'
 end
 
