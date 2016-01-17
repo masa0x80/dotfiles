@@ -41,6 +41,18 @@ RECIPES = [
   }, {
     path: 'tmux/install.rb',
     tags: %w[append tmux],
+  }, {
+    path: 'ndenv/install.rb',
+    tags: %w[append ndenv],
+  }, {
+    path: 'postgresql/install.rb',
+    tags: %w[append postgresql],
+  }, {
+    path: 'git/install.rb',
+    tags: %w[append git],
+  }, {
+    path: 'pyenv/install.rb',
+    tags: %w[common pyenv],
   },
 ]
 TAGS = ENV.fetch('TAGS', '').split(/,/)
