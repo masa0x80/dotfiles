@@ -1,5 +1,5 @@
 execute 'download pt' do
-  command "cd #{node[:src_dir]} && curl -LO https://github.com/monochromegane/the_platinum_searcher/releases/download/#{node[:version][:pt]}/pt_linux_amd64.tar.gz"
+  command "cd #{node[:src_dir]} && curl -LO https://github.com/monochromegane/the_platinum_searcher/releases/download/#{node[:pt][:version]}/pt_linux_amd64.tar.gz"
   not_if  'type -a pt'
 end
 

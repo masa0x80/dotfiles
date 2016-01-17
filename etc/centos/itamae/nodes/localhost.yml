@@ -3,25 +3,35 @@
 
 :mysql:
   :rpm_url: http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+  :package: mysql57-community-release-el7-7.noarch
 
-:version:
-  :ruby: 2.3.0
-  :bundler_option: ''
+:remi_repo:
+  :rpm_url: http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+  :package: remi-release-7.1-3.el7.remi.noarch
 
-  :nodejs:     v5.0.0
-  :python:     2.7.11
+:git:
+  :version: 2.7.0
 
-  :git:      2.7.0
+:nodejs:
+  :version: v5.0.0
 
-  :tmux:     2.1
+:python:
+  :version: 2.7.11
 
-  :peco:     v0.3.5
-  :direnv:   v2.6.0
-  :pt:       v1.7.9
+:tmux:
+  :version: 2.1
 
-  :vim:      7.4
+:peco:
+  :version: v0.3.5
+
+:direnv:
+  :version: v2.6.0
+
+:pt:
+  :version: v1.7.9
 
 :vim:
+  :version: 7.4
   :make_options: '--enable-fail-if-missing --enable-fontset --enable-cscope --enable-multibyte --with-x=no --disable-gui --disable-xim --with-features=huge --disable-selinux --disable-gpm --disable-darwin'
 
 :recipes:

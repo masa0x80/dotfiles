@@ -1,5 +1,3 @@
-include_recipe './attributes.rb'
-
 package node[:mysql][:rpm_url] do
   action :install
   user   'root'
