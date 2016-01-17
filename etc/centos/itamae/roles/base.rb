@@ -34,7 +34,13 @@ RECIPES = [
     tags: %w[append zplug],
   }, {
     path: 'vim/install.rb',
-    tags: %w[append vim],
+    tags: %w[append vim vim-only],
+  }, {
+    path: 'vim-plug/install.rb',
+    tags: %w[append vim vim-plug-only],
+  }, {
+    path: 'tmux/install.rb',
+    tags: %w[append tmux],
   },
 ]
 TAGS = ENV.fetch('TAGS', '').split(/,/)
