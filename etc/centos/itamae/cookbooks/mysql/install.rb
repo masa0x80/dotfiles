@@ -1,7 +1,7 @@
-package node[:mysql][:rpm_url] do
+package node[:mysql][node[:os_version]][:rpm_url] do
   action :install
   user   'root'
-  not_if 'rpm -q %s' % node[:mysql][:package]
+  not_if 'rpm -q %s' % node[:mysql][node[:os_version]][:package]
 end
 
 %w[
