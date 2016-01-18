@@ -18,7 +18,7 @@
 - dotfiles
 
 まず、dotfilesへのシンボリックリンクを $HOME の下に作成します。
-その後、MacではHomebrewを、CentOSではAnsibleを使い各種ツールのインストールを行います。
+その後、MacではHomebrewを、CentOSではItamaeを使い各種ツールのインストールを行います。
 
 ## Installation
 
