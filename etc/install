@@ -5,7 +5,7 @@ url='https://github.com/masa0x80/dotfiles/archive/master.zip'
 mkdir -p /tmp/$$ && cd /tmp/$$
 
 if type yum > /dev/null 2>&1; then
-  sudo -E yum install -y unzip
+  sudo -E yum install -y sudo which make bzip2 unzip curl
 fi
 
 if type curl > /dev/null 2>&1; then
