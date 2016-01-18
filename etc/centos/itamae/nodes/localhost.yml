@@ -33,6 +33,3 @@
 :vim:
   :version: 7.4
   :make_options: '--enable-fail-if-missing --enable-fontset --enable-cscope --enable-multibyte --with-x=no --disable-gui --disable-xim --with-features=huge --disable-selinux --disable-gpm --disable-darwin'
-
-:recipes:
-  - ./roles/base.rb
