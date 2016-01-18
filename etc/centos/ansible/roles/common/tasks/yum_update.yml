@@ -1,3 +1,0 @@
-- name: yum update
-  yum: name=* state=latest
-  become: yes
