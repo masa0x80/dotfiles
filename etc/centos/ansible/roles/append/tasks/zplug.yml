@@ -1,6 +1,0 @@
-- name: check zplug
-  stat: path={{ home_dir }}/.zplug
-  register: zplug
-- name: install zplug
-  command: zsh -lc "curl -fLo {{ home_dir }}/.zplug/zplug --create-dirs https://git.io/zplug"
-  when: zplug.stat.exists == False

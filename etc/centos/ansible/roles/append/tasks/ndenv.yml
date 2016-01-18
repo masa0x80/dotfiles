@@ -1,4 +1,0 @@
-- name: install ndenv
-  shell: zsh -lc "anyenv install ndenv"
-- name: fix node.js version
-  shell: zsh -lc "ndenv install {{ node_version }} && ndenv global {{ node_version }}"

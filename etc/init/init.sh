@@ -25,12 +25,13 @@ case `uname` in
     ;;
   Linux)
     bash centos/install.sh
-    cd centos/ansible
+    cd centos/itamae
     source $HOME/.bashrc
+    bundle install --path=vendor/bundle
     if [ -z "$TAGS" ]; then
-      ansible-playbook -i hosts site.yml
+      bundle exec itamae local entrypoint.rb -y nodes/localhost.yml
     else
-      ansible-playbook -i hosts site.yml -t "$TAGS"
+      TAGS="$TAGS" bundle exec itamae local entrypoint.rb -y nodes/localhost.yml
     fi
     cd ../../../
     ;;
