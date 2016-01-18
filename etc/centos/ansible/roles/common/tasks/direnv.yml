@@ -1,3 +1,0 @@
-- command: zsh -lc "curl -LO https://github.com/zimbatm/direnv/releases/download/{{ direnv_version }}/direnv.linux-amd64" chdir={{ src_dir }}
-- copy: src={{ src_dir }}/direnv.linux-amd64 dest={{ bin_dir }}/direnv mode=0755
-  become: yes

@@ -1,4 +1,0 @@
-- name: prepare to install fzf
-  command: git clone --depth 1 https://github.com/junegunn/fzf.git {{ home_dir }}/.fzf
-- name: install fzf
-  command: zsh -lc "{{ home_dir }}/.fzf/install --no-update-rc --completion --key-bindings"

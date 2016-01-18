@@ -1,4 +1,0 @@
-- name: prepare to install autojump
-  git: repo=https://github.com/joelthelion/autojump.git dest={{ src_dir }}/autojump
-- name: install autojump
-  shell: cd {{ src_dir }}/autojump && ./install.py
