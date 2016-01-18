@@ -12,6 +12,9 @@ RECIPES = [
     path: 'peco/install.rb',
     tags: %w[common peco],
   }, {
+    path: 'direnv/install.rb',
+    tags: %w[common direnv],
+  }, {
     path: 'pt/install.rb',
     tags: %w[common pt],
   }, {
