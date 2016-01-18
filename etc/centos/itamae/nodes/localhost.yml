@@ -1,13 +1,16 @@
 :src_dir: '~/src'
 :bin_dir: '/usr/local/bin'
+:os_version: :centos7
 
 :mysql:
-  :rpm_url: http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
-  :package: mysql57-community-release-el7-7.noarch
+  :centos7:
+    :rpm_url: http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+    :package: mysql57-community-release-el7-7.noarch
 
 :remi_repo:
-  :rpm_url: http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-  :package: remi-release-7.1-3.el7.remi.noarch
+  :centos7:
+    :rpm_url: http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+    :package: remi-release-7.1-3.el7.remi.noarch
 
 :git:
   :version: 2.7.0

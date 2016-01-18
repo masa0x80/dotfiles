@@ -1,7 +1,7 @@
-package node[:remi_repo][:rpm_url] do
+package node[:remi_repo][node[:os_version]][:rpm_url] do
   action :install
   user   'root'
-  not_if 'rpm -q %s' % node[:remi_repo][:package]
+  not_if 'rpm -q %s' % node[:remi_repo][node[:os_version]][:package]
 end
 
 %w[
