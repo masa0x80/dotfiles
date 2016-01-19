@@ -1,5 +1,5 @@
 execute 'download jq' do
-  command "cd #{node[:src_dir]} && curl -LO http://stedolan.github.io/jq/download/linux64/jq"
+  command "cd #{node[:src_dir]} && curl -LO https://stedolan.github.io/jq/download/linux64/jq"
   not_if  'type -a jq'
 end
 
