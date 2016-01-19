@@ -31,6 +31,9 @@ node[:recipes] = node[:recipes].concat(
       path: 'docker/install.rb',
       tags: %w[append docker],
     }, {
+      path: 'vagrant/install.rb',
+      tags: %w[append vagrant],
+    }, {
       path: 'git/install.rb',
       tags: %w[append git],
     }, {
