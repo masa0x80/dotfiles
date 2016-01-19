@@ -28,6 +28,9 @@ node[:recipes] = node[:recipes].concat(
       path: 'postgresql/install.rb',
       tags: %w[append postgresql],
     }, {
+      path: 'docker/install.rb',
+      tags: %w[append docker],
+    }, {
       path: 'git/install.rb',
       tags: %w[append git],
     }, {
