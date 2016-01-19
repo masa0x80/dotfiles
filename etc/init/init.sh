@@ -2,21 +2,7 @@
 
 mkdir -p $HOME/src
 
-# 実行ファイルのあるディレクトリーを調べる
-abs_dirname() {
-  local CWD="$(pwd)"
-  local FILE_PATH="$1"
-
-  while [ -n "$FILE_PATH" ]; do
-    cd "${FILE_PATH%/*}"
-    local NAME="${FILE_PATH##*/}"
-    FILE_PATH="$(readlink "$NAME" || true)"
-  done
-
-  pwd -P
-  cd "$CWD"
-}
-export SCRIPT_DIR="$(abs_dirname "$0")"
+export SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 cd $SCRIPT_DIR/..
 case `uname` in

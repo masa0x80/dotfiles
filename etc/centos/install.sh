@@ -16,7 +16,7 @@ fi
 if type git > /dev/null 2>&1; then
   echo 'skip git install'
 else
-  sudo -E yum install -y git
+  sudo -E yum install -y git which bzip2 unzip curl
 fi
 
 # rubyのインストール
