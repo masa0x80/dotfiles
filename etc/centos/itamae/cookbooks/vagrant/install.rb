@@ -8,14 +8,19 @@
   end
 end
 
-package node[:virtualbox][node[:os_version]][:rpm_url] do
+package node[node[:os_version]][:virtualbox][:rpm_url] do
   action :install
   user   'root'
-  not_if 'rpm -q %s' % node[:virtualbox][node[:os_version]][:package]
+  not_if 'rpm -q %s' % node[node[:os_version]][:virtualbox][:package]
 end
 
-package node[:vagrant][node[:os_version]][:rpm_url] do
+package node[:vagrant][:rpm_url] do
   action :install
   user   'root'
-  not_if 'rpm -q %s' % node[:vagrant][node[:os_version]][:package]
+  not_if 'rpm -q %s' % node[:vagrant][:package]
+end
+
+execute 'setup virtualbox' do
+  command '/sbin/rcvboxdrv setup'
+  user    'root'
 end

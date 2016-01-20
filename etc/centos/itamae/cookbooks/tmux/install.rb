@@ -9,9 +9,17 @@
   end
 end
 
-%w[
+libevent_packages = %w[
   libevent-devel
-].each do |name|
+]
+
+case node[:os_version]
+when :centos6_7
+  libevent_packages = %w[
+    libevent-last-devel
+  ]
+end
+libevent_packages.each do |name|
   package name do
     action  :install
     options '--enablerepo=remi'

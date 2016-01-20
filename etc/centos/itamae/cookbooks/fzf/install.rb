@@ -5,5 +5,5 @@ end
 
 execute 'install fzf' do
   command 'zsh -lc "~/.fzf/install --no-update-rc --completion --key-bindings"'
-  not_if  'test -e ~/.fzf'
+  not_if  'type -a fzf'
 end
