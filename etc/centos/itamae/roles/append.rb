@@ -10,6 +10,9 @@ node[:recipes] = node[:recipes].concat(
       path: 'redis/install.rb',
       tags: %w[append redis],
     }, {
+      path: 'postgresql/install.rb',
+      tags: %w[append postgresql],
+    }, {
       path: 'zplug/install.rb',
       tags: %w[append zplug],
     }, {
@@ -22,23 +25,20 @@ node[:recipes] = node[:recipes].concat(
       path: 'tmux/install.rb',
       tags: %w[append tmux],
     }, {
+      path: 'git/install.rb',
+      tags: %w[append git],
+    }, {
       path: 'ndenv/install.rb',
       tags: %w[append ndenv],
     }, {
-      path: 'postgresql/install.rb',
-      tags: %w[append postgresql],
+      path: 'pyenv/install.rb',
+      tags: %w[append pyenv],
     }, {
       path: 'docker/install.rb',
       tags: %w[append docker],
     }, {
       path: 'vagrant/install.rb',
       tags: %w[append vagrant],
-    }, {
-      path: 'git/install.rb',
-      tags: %w[append git],
-    }, {
-      path: 'pyenv/install.rb',
-      tags: %w[append pyenv],
     },
   ]
 )
