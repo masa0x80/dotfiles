@@ -1,9 +1,3 @@
-package node[:remi_repo][node[:os_version]][:rpm_url] do
-  action :install
-  user   'root'
-  not_if 'rpm -q %s' % node[:remi_repo][node[:os_version]][:package]
-end
-
 %w[
   epel-release
   git
@@ -25,4 +19,10 @@ end
     action :install
     user   'root'
   end
+end
+
+package node[node[:os_version]][:remi_repo][:rpm_url] do
+  action :install
+  user   'root'
+  not_if 'rpm -q %s' % node[node[:os_version]][:remi_repo][:package]
 end
