@@ -16,6 +16,9 @@ node[:recipes] = node[:recipes].concat(
       path: 'zplug/install.rb',
       tags: %w[append zplug],
     }, {
+      path: 'neovim/install.rb',
+      tags: %w[append neovim],
+    }, {
       path: 'vim/install.rb',
       tags: %w[append vim vim-only],
     }, {
