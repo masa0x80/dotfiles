@@ -1,6 +1,6 @@
 call plug#begin('$HOME/.vim/plugged')
 
-Plug 'Shougo/neocomplcache'
+Plug has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'tpope/vim-fugitive'
@@ -23,19 +23,10 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 call plug#end()
 
-
 " plugin installation check
 let s:plug = {
       \ "plugs": get(g:, 'plugs', {})
       \ }
-
-function! s:plug.is_installed(name)
-  return has_key(self.plugs, a:name) ? isdirectory(self.plugs[a:name].dir) : 0
-endfunction
-
-if s:plug.is_installed("vim-myplugin")
-  " setting
-endif
 
 function! s:plug.check_installation()
   if empty(self.plugs)
