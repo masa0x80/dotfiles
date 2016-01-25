@@ -3,9 +3,24 @@ package 'vim' do
   user   'root'
 end
 
-execute "cd #{node[:src_dir]} && wget ftp://ftp.vim.org/pub/vim/unix/vim-#{node[:vim][:version]}.tar.bz2"
+%w[
+  lua
+  lua-devel
+].each do |name|
+  package name do
+    action :install
+    user   'root'
+  end
+end
 
-execute "cd #{node[:src_dir]} && tar jxf vim-#{node[:vim][:version]}.tar.bz2"
+execute 'download vim' do
+  command "cd #{node[:src_dir]} && wget ftp://ftp.vim.org/pub/vim/unix/vim-#{node[:vim][:version]}.tar.bz2"
+  not_if "#{node[:src_dir]}/vim-#{node[:vim][:version]}.tar.bz2"
+end
+
+execute 'extract vim' do
+  command "cd #{node[:src_dir]} && tar jxf vim-#{node[:vim][:version]}.tar.bz2"
+end
 
 local_ruby_block 'install vim' do
   block do
