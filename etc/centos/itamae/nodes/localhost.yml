@@ -39,7 +39,7 @@
   :version: v1.7.9
 :vim:
   :version: 7.4
-  :make_options: '--enable-fail-if-missing --enable-fontset --enable-cscope --enable-multibyte --with-x=no --disable-gui --disable-xim --with-features=huge --disable-selinux --disable-gpm --disable-darwin'
+  :make_options: '--enable-fail-if-missing --enable-fontset --enable-cscope --enable-multibyte --enable-luainterp --with-x=no --disable-gui --disable-xim --with-features=huge --disable-selinux --disable-gpm --disable-darwin'
 :vagrant:
   :rpm_url: https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.rpm
   :package: vagrant-1.8.1-1.x86_64
