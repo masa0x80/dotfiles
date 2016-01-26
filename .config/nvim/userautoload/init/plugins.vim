@@ -1,6 +1,12 @@
-call plug#begin('$HOME/.vim/plugged')
+call plug#begin('$HOME/.config/nvim/plugged')
 
-Plug has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+if has('lua')
+  Plug 'Shougo/neocomplete.vim'
+elseif has('nvim')
+  Plug 'Shougo/deoplete.nvim'
+else
+  Plug 'Shougo/neocomplcache.vim'
+endif
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'tpope/vim-fugitive'

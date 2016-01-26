@@ -10,6 +10,10 @@ else
 fi
 alias ll='ls -l'
 
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
+
 alias -g L='| less'
 alias -g H='| head'
 alias -g T='| tail'

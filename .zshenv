@@ -10,6 +10,9 @@ fi
 # editor
 export EDITOR=vim
 
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME=$HOME/.config
+
 # term color
 export TERM=xterm-256color
 
