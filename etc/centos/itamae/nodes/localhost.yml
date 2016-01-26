@@ -28,7 +28,8 @@
 :nodejs:
   :version: v5.0.0
 :python:
-  :version: 2.7.11
+  :version2: 2.7.11
+  :version3: 3.5.1
 :tmux:
   :version: 2.1
 :peco:
