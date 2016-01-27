@@ -1,4 +1,34 @@
+if [ -r $HOME/.zplug/zplug ]; then
+  if type peco > /dev/null 2>&1; then
+    zstyle ":anyframe:selector:" use peco
+  fi
+
+  # history
+  bindkey '^r'   anyframe-widget-put-history
+
+  # git branch
+  bindkey '^gb'  anyframe-widget-checkout-git-branch
+  bindkey '^g^b' anyframe-widget-checkout-git-branch
+  bindkey '^gB'  anyframe-widget-insert-git-branch
+fi
+
 if type peco > /dev/null 2>&1; then
+  # git-add with peco
+  # ref: http://petitviolet.hatenablog.com/entry/20140722/1406034439
+  function peco-git-add() {
+    local SELECTED_FILE_TO_ADD="$(git status --porcelain  | \
+                                  peco --query "$LBUFFER" | \
+                                  awk -F ' ' '{print $NF}')"
+    if [ -n "$SELECTED_FILE_TO_ADD" ]; then
+      BUFFER="git add $(echo "$SELECTED_FILE_TO_ADD" | tr '\n' ' ')"
+      CURSOR=$#BUFFER
+      zle accept-line
+    fi
+  }
+  zle -N peco-git-add
+  bindkey "^ga"  peco-git-add
+  bindkey "^g^a" peco-git-add
+
   # ssh with peco
   # ref: http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
   function peco-ssh() {
