@@ -52,12 +52,7 @@ function! s:plug.check_installation()
     " Ask whether installing plugs like NeoBundle
     echomsg 'Not installed plugs: ' . string(unplugged)
     if confirm('Install plugs now?', "yes\nNo", 2) == 1
-      PlugInstall
-      " Close window for vim-plug
-      silent! close
-      " Restart vim
-      silent! !vim
-      quit!
+      silent! PlugInstall
     endif
 
   endif
