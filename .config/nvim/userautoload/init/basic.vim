@@ -84,5 +84,8 @@ set listchars+=precedes:<,extends:>
 set foldmethod=marker
 set commentstring=%s
 
+" disable mouse
+set mouse=
+
 " mapleader
 let g:mapleader=","
