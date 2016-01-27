@@ -1,6 +1,9 @@
 {
   "Keymap": {
-    "C-s": "peco.ToggleSelectionAndSelectNext",
+    "C-z": "peco.InvertSelection",
+    "C-i": "peco.ToggleSelectionAndSelectNext",
+    "C-u": "peco.ScrollPageUp",
+    "C-d": "peco.ScrollPageDown",
     "C-j": "peco.Finish",
     "C-m": "peco.Finish"
   }
