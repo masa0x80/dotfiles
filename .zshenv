@@ -1,3 +1,6 @@
+# lang
+export LANG=ja_JP.UTF-8
+
 # path
 export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin:$HOME/bin
 

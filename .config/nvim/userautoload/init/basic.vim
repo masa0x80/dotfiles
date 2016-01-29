@@ -66,8 +66,6 @@ set display=lastline
 " ステータス表示用変数
 set laststatus=2
 
-set termencoding=utf-8
-set encoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,ucs-2le,ucs-2
 
 set hidden
