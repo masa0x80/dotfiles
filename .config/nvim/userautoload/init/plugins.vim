@@ -30,11 +30,11 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 call plug#end()
 
 " plugin installation check
-let s:plug = {
+let g:plug = {
       \ "plugs": get(g:, 'plugs', {})
       \ }
 
-function! s:plug.check_installation()
+function! g:plug.check_installation()
   if empty(self.plugs)
     return
   endif
@@ -58,7 +58,11 @@ function! s:plug.check_installation()
   endif
 endfunction
 
+function! g:plug.is_installed(name)
+  return has_key(self.plugs, a:name) ? isdirectory(self.plugs[a:name].dir) : 0
+endfunction
+
 augroup check-plug
   autocmd!
-  autocmd VimEnter * if !argc() | call s:plug.check_installation() | endif
+  autocmd VimEnter * if !argc() | call g:plug.check_installation() | endif
 augroup END

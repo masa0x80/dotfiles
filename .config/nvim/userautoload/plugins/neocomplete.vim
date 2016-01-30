@@ -1,25 +1,16 @@
-" plugin installation check
-let s:plug = {
-      \ "plugs": get(g:, 'plugs', {})
-      \ }
-
-function! s:plug.is_installed(name)
-  return has_key(self.plugs, a:name) ? isdirectory(self.plugs[a:name].dir) : 0
-endfunction
-
-if s:plug.is_installed('neocomplete')
+if g:plug.is_installed('neocomplete')
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
   let g:neocomplete#enable_camel_case_completion = 1
   let g:neocomplete#enable_underbar_completion = 1
   let g:neocomplete#min_syntax_length = 3
   let g:neocomplete#manual_completion_start_length = 0
-elseif s:plug.is_installed('deoplete')
+elseif g:plug.is_installed('deoplete')
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#enable_smart_case = 1
 
   let g:deoplete#auto_completion_start_length = 0
-elseif s:plug.is_installed('neocomplcache')
+elseif g:plug.is_installed('neocomplcache')
   " Use neocomplcache.
   let g:neocomplcache_enable_at_startup = 1
   " Use smartcase.
