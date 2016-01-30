@@ -9,6 +9,6 @@ if isdirectory(expand('$HOME/.vim/plugged'))
 endif
 
 " SEGV対策
-if v:version >= 704
+if !has('nvim') && v:version >= 704
   set regexpengine=1
 endif
