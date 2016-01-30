@@ -6,8 +6,14 @@ nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>
 
 augroup vimrc
   autocmd!
-  autocmd FileType unite nnoremap <silent> <buffer> <ESC> :q<CR>
-  autocmd FileType unite inoremap <silent> <buffer> <ESC> <ESC>:q<CR>
+  autocmd FileType unite nmap <buffer> <ESC> <Plug>(unite_exit)
+  autocmd FileType unite imap <buffer> <ESC> <Plug>(unite_exit)
+  autocmd FileType unite nmap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  autocmd FileType unite nmap <buffer> <C-u> <Plug>(unite_delete_backward_path)
+  autocmd FileType unite nmap <buffer> <C-n> <Plug>(unite_loop_cursor_down)
+  autocmd FileType unite nmap <buffer> <C-p> <Plug>(unite_loop_cursor_up)
+  autocmd FileType unite nmap <buffer> <C-j> <Plug>(unite_do_default_action)
+  autocmd FileType unite imap <buffer> <C-j> <Plug>(unite_do_default_action)
 augroup END
 
 " grep系
