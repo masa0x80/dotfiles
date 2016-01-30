@@ -1,9 +1,14 @@
-" color
-set background=dark
-colorscheme solarized
-"let g:solarized_termcolors=256
+" colorscheme
+if g:plug.is_installed('vim-colors-solarized')
+  set background=dark
+  colorscheme solarized
+  "let g:solarized_termcolors=256
+else
+  colorscheme desert
+endif
+
 let g:lightline = {
-  \   'colorscheme': 'solarized',
+  \   'colorscheme': g:colors_name,
   \   'mode_map': {'c': 'NORMAL'},
   \   'active': {
   \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
