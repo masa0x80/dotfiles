@@ -11,8 +11,11 @@ if [ -r $HOME/.zplug/zplug ]; then
   bindkey '^g^b' anyframe-widget-checkout-git-branch
   bindkey '^gB'  anyframe-widget-insert-git-branch
 fi
-
 if type peco > /dev/null 2>&1; then
+  function PECO() {
+    (git ls-tree -r --name-only HEAD || find . -path '*/\.*' -prune -o -type f -print -o -type l -print) 2> /dev/null | peco --query "$*"
+  }
+
   # git-add with peco
   # ref: http://petitviolet.hatenablog.com/entry/20140722/1406034439
   function peco-git-add() {
@@ -28,6 +31,11 @@ if type peco > /dev/null 2>&1; then
   zle -N peco-git-add
   bindkey "^ga"  peco-git-add
   bindkey "^g^a" peco-git-add
+
+  function peco-gst(){
+    git status -s -uno | peco --query "$*" | cut -d ' ' -f 3
+  }
+  alias GST=peco-gst
 
   # ssh with peco
   # ref: http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
@@ -88,18 +96,7 @@ if type peco > /dev/null 2>&1; then
   alias pv='peco-pt-vim'
 
   # vim open with peco
-  function peco-find-vim () {
-    local FILES
-    if [ $(git rev-parse --is-inside-work-tree 2> /dev/null) = 'true' ]; then
-      FILES=$(echo $(git ls-files -o --exclude-standard) $(git ls-files) | tr ' ' '\n' | peco --query "$*" | tr '\n' ' ')
-    else
-      FILES=$(find . | peco --query "$*" | tr '\n' ' ')
-    fi
-    if [ -n "$FILES" ]; then
-      vim $(echo $FILES)
-    fi
-  }
-  alias v='peco-find-vim'
+  alias v='vim $(PECO)'
 
   # ps with peco
   function psp() {
