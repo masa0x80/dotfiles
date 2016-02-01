@@ -27,7 +27,18 @@ export PATH=$PATH:$GOPATH/bin
 export RAILS_SERVER_PORT=3000
 
 # fzf
-export FZF_DEFAULT_OPTS='--extended --ansi --multi --cycle --bind=ctrl-u:page-up --bind=ctrl-d:page-down --bind=ctrl-z:toggle-all'
+export FZF_DEFAULT_OPTS='
+--reverse
+--extended
+--ansi
+--multi
+--cycle
+--bind=ctrl-u:page-up
+--bind=ctrl-d:page-down
+--bind=ctrl-z:toggle-all
+--color dark,hl:33,hl+:37,fg+:235,bg+:234,fg+:254
+--color info:254,prompt:37,spinner:108,pointer:168,marker:168
+'
 
 # load proxy settings
 test -r $HOME/.proxy && source $HOME/.proxy
