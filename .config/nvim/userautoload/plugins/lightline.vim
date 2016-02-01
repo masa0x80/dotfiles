@@ -2,7 +2,6 @@
 if g:plug.is_installed('vim-colors-solarized')
   set background=dark
   colorscheme solarized
-  "let g:solarized_termcolors=256
 else
   colorscheme desert
 endif
