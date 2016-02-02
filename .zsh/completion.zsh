@@ -18,9 +18,9 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z} r:|[-_.]=
 
 # 色設定
 if type dircolors > /dev/null 2>&1; then
-  eval $(dircolors $HOME/.zsh/misc/dircolors.256dark)
+  eval $(dircolors $HOME/.zsh/misc/dircolors.ansi-dark)
 elif type gdircolors > /dev/null 2>&1; then
-  eval $(gdircolors $HOME/.zsh/misc/dircolors.256dark)
+  eval $(gdircolors $HOME/.zsh/misc/dircolors.ansi-dark)
 fi
 if [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
