@@ -18,7 +18,10 @@ nnoremap <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>noh<CR>
 nnoremap <Leader>, :<C-u>set nopaste<CR>:<C-u>update<CR>
 
 " rubyデバッグ用
-abbreviate bb require 'pry-byebug'; binding.pry<Esc>
-abbreviate bB require 'byebug'; byebug<Esc>
-abbreviate Bb require 'byebug'; byebug<Esc>
-abbreviate BB require 'byebug'; byebug<Esc>
+augroup RubyDebug
+  autocmd!
+  autocmd Filetype ruby,spec abbreviate bb require 'pry-byebug'; binding.pry<Esc>
+  autocmd Filetype ruby,spec abbreviate bB require 'byebug'; byebug<Esc>
+  autocmd Filetype ruby,spec abbreviate Bb require 'byebug'; byebug<Esc>
+  autocmd Filetype ruby,spec abbreviate BB require 'byebug'; byebug<Esc>
+augroup END
