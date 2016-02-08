@@ -16,8 +16,10 @@ augroup vimrc
   autocmd FileType unite imap <buffer> <C-j> <Plug>(unite_do_default_action)
 augroup END
 
-" grep系
+" grep
 nnoremap <silent> <Leader>g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> <leader>r :<C-u>UniteResume search-buffer<CR><Esc>
+nnoremap <silent> <leader>cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-r><C-w>
 if executable('pt')
   let g:unite_source_grep_command = 'pt'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor'
