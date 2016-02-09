@@ -1,3 +1,6 @@
+# profiling start
+zmodload zsh/zprof
+
 # lang
 export LANG=ja_JP.UTF-8
 

@@ -33,3 +33,8 @@ done
 
 CONFIG_FILE="$HOME/.zshrc.local" && test -r $CONFIG_FILE && source $CONFIG_FILE # 環境ローカルの設定の読み込み
 unset CONFIG_FILE
+
+# profiling end
+# if type zprof > /dev/null 2>&1; then
+#   zprof | less
+# fi
