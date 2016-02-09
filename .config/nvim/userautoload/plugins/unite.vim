@@ -1,8 +1,18 @@
 " Unite
-nnoremap <silent> <Leader>r :<C-u>Unite file_mru<CR>
+nnoremap <silent> <Leader>E :<C-u>Unite file_mru<CR>
 nnoremap <silent> <Leader>f :<C-u>Unite file<CR>
 nnoremap <silent> <Leader>F :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>
+
+" grep
+nnoremap <silent> <Leader>g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> <leader>r :<C-u>UniteResume search-buffer<CR><Esc>
+nnoremap <silent> <leader>G :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-r><C-w>
+if executable('pt')
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+  let g:unite_source_grep_recursive_opt = ''
+endif
 
 augroup vimrc
   autocmd!
@@ -15,13 +25,3 @@ augroup vimrc
   autocmd FileType unite nmap <buffer> <C-j> <Plug>(unite_do_default_action)
   autocmd FileType unite imap <buffer> <C-j> <Plug>(unite_do_default_action)
 augroup END
-
-" grep
-nnoremap <silent> <Leader>g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-nnoremap <silent> <leader>r :<C-u>UniteResume search-buffer<CR><Esc>
-nnoremap <silent> <leader>cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-r><C-w>
-if executable('pt')
-  let g:unite_source_grep_command = 'pt'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
-  let g:unite_source_grep_recursive_opt = ''
-endif

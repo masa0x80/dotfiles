@@ -11,7 +11,7 @@ autocmd Filetype json setl conceallevel=0
 " Reload vimrc
 noremap <Leader>R :<C-u>source $HOME/.vimrc<CR>:noh<CR>
 
-nnoremap <Leader>P :<C-u>set paste<CR>o
+nnoremap <Leader>p :<C-u>set paste<CR>
 nnoremap <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>noh<CR>
 
 " Save
