@@ -19,28 +19,5 @@ else
   sudo -E yum install -y git which bzip2 unzip curl
 fi
 
-# rubyのインストール
-sudo -E yum install -y patch readline-devel zlib-devel openssl-devel gcc-c++ bzip2-devel sqlite-devel
-if type anyenv > /dev/null 2>&1; then
-  echo 'skip anyenv install'
-else
-  sudo -E yum install -y gcc-c++ openssl-devel readline-devel libffi-devel libxslt-devel autoconf
-  git clone https://github.com/riywo/anyenv $HOME/.anyenv
-
-  echo ''                                    >> $HOME/.bashrc
-  echo '# anyenv settings'                   >> $HOME/.bashrc
-  echo 'export PATH=$HOME/.anyenv/bin:$PATH' >> $HOME/.bashrc
-  echo 'eval "$(anyenv init -)"'             >> $HOME/.bashrc
-  source $HOME/.bashrc
-
-  if type rbenv > /dev/null 2>&1; then
-    echo 'skip rbenv install'
-  else
-    # rbenvの設定
-    anyenv install rbenv
-    source $HOME/.bashrc
-    rbenv install 2.3.0
-    rbenv global  2.3.0
-    gem install bundler
-  fi
-fi
+# rubyのインストールの準備
+sudo -E yum install -y patch readline-devel zlib-devel openssl-devel gcc-c++ bzip2-devel sqlite-devel libffi-devel libxslt-devel autoconf
