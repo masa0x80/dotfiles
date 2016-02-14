@@ -28,6 +28,8 @@ brew update
 # Upgrade formula
 brew upgrade
 
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 # Install tools
 sh -lc 'brew file install'
 

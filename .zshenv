@@ -43,6 +43,9 @@ export FZF_DEFAULT_OPTS='
 --color info:254,prompt:37,spinner:108,pointer:168,marker:168
 '
 
+# Homebrew cask configuration
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 # load proxy settings
 test -r $HOME/.proxy && source $HOME/.proxy
 
