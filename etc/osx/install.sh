@@ -1,33 +1,68 @@
 #!/bin/bash
 
-if type xcode-select > /dev/null 2>&1; then
-  # Homebrewのインストール
-  xcode-select --install
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+RUBY_VERSION=2.3.0
 
-  # Update homebrew
-  brew update
-  # Upgrade formula
-  brew upgrade
-
-  cd $SCRIPT_DIR/../osx
-  brew brewdle
-
-  # cleanup
-  brew brewdle cleanup
-
-  # pyenvの設定
-  pyenv install 2.7.6
-  pyenv global  2.7.6
-
-  # rbenvの設定
-  rbenv install 2.2.0
-  rbenv global  2.2.0
-
-  # solarized
-  git clone https://github.com/tomislav/osx-terminal.app-colors-solarized $HOME/src/solarized.git
-  echo 'Edit terminal.app profile settings.'
-  open $HOME/src/solarized.git
+# Install xcode
+if type -a xcode-select > /dev/null 2>&1; then
+  echo '*** Skip xcode install'
 else
-  echo "Error: Install 'Command Line Tools for Xcode'"
+  xcode-select --install
 fi
+
+# prepare to install homebrew
+# ref: https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Troubleshooting.md
+if test -z "$(ls -l /usr/local | grep bin | grep $(whoami))"; then
+  if test -e /usr/local; then
+    sudo mkdir -p /usr/local
+  fi
+  sudo chflags norestricted /usr/local && sudo chown -R $(whoami):admin /usr/local
+fi
+
+# Install brew-file
+if type -a brew > /dev/null 2>&1; then
+  echo '*** Skip brew-file install'
+else
+  curl -fsSL https://raw.github.com/rcmdnk/homebrew-file/install/install.sh | sh
+fi
+
+# Update homebrew
+brew update
+# Upgrade formula
+brew upgrade
+
+# Install tools
+sh -lc 'brew file install'
+
+# Install anyanv & ruby
+if type -a anyenv > /dev/null 2>&1; then
+  echo '*** Skip anyenv install'
+else
+  git clone https://github.com/riywo/anyenv $HOME/.anyenv
+
+  echo ''                                    >> $HOME/.bashrc
+  echo '# anyenv settings'                   >> $HOME/.bashrc
+  echo 'export PATH=$HOME/.anyenv/bin:$PATH' >> $HOME/.bashrc
+  echo 'eval "$(anyenv init -)"'             >> $HOME/.bashrc
+  source $HOME/.bashrc
+
+  if type -a rbenv > /dev/null 2>&1; then
+    echo '*** Skip rbenv install'
+  else
+    # rbenv configuration
+    anyenv install rbenv
+    source $HOME/.bashrc
+    rbenv install $RUBY_VERSION
+    rbenv global  $RUBY_VERSION
+    gem install bundler
+  fi
+fi
+
+# Solarized for terminal
+SOLARIZED_GIT_DIR="$HOME/src/solarized.git"
+if ! test -e $SOLARIZED_GIT_DIR; then
+  git clone https://github.com/tomislav/osx-terminal.app-colors-solarized $SOLARIZED_GIT_DIR
+  echo -e '\033[1;37mEdit terminal.app profile settings.\033[1;37m'
+  open $SOLARIZED_GIT_DIR
+fi
+unset SOLARIZED_GIT_DIR
+unset RUBY_VERSION

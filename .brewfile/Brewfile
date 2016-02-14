@@ -1,0 +1,49 @@
+# tap repositories and their packages
+tap argon/mas
+brew mas
+
+tap caskroom/cask
+file $HOME/.brewfile/cask
+
+tap homebrew/dupes
+brew less
+brew lsof
+brew rsync
+
+tap neovim/neovim
+brew neovim
+
+tap peco/peco
+brew peco
+
+
+tap rcmdnk/file
+brew brew-file
+
+# Other Homebrew packages
+brew autoconf
+brew automake
+brew cmake
+brew coreutils
+brew curl
+brew direnv
+brew gdbm
+brew gettext
+brew git
+brew go
+brew jq
+brew libevent
+brew libtool
+brew libyaml
+brew mysql
+brew oniguruma
+brew openssl
+brew pcre
+brew pkg-config
+brew readline
+brew the_platinum_searcher
+brew tmux
+brew tree
+brew vim --with-lua
+brew wget
+brew zsh

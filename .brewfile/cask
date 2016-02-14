@@ -1,0 +1,10 @@
+cask appcleaner
+cask dropbox
+cask firefox
+cask google-chrome
+cask google-japanese-ime
+cask night-owl
+cask skype
+cask slack
+cask vagrant
+cask virtualbox
