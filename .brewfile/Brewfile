@@ -16,7 +16,6 @@ brew neovim
 tap peco/peco
 brew peco
 
-
 tap rcmdnk/file
 brew brew-file
 

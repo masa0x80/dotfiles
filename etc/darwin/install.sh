@@ -1,7 +1,5 @@
 #!/bin/bash
 
-RUBY_VERSION=2.3.0
-
 # Install xcode
 if type -a xcode-select > /dev/null 2>&1; then
   echo '*** Skip xcode install'
@@ -33,30 +31,6 @@ brew upgrade
 # Install tools
 sh -lc 'brew file install'
 
-# Install anyanv & ruby
-if type -a anyenv > /dev/null 2>&1; then
-  echo '*** Skip anyenv install'
-else
-  git clone https://github.com/riywo/anyenv $HOME/.anyenv
-
-  echo ''                                    >> $HOME/.bashrc
-  echo '# anyenv settings'                   >> $HOME/.bashrc
-  echo 'export PATH=$HOME/.anyenv/bin:$PATH' >> $HOME/.bashrc
-  echo 'eval "$(anyenv init -)"'             >> $HOME/.bashrc
-  source $HOME/.bashrc
-
-  if type -a rbenv > /dev/null 2>&1; then
-    echo '*** Skip rbenv install'
-  else
-    # rbenv configuration
-    anyenv install rbenv
-    source $HOME/.bashrc
-    rbenv install $RUBY_VERSION
-    rbenv global  $RUBY_VERSION
-    gem install bundler
-  fi
-fi
-
 # Solarized for terminal
 SOLARIZED_GIT_DIR="$HOME/src/solarized.git"
 if ! test -e $SOLARIZED_GIT_DIR; then
@@ -65,4 +39,3 @@ if ! test -e $SOLARIZED_GIT_DIR; then
   open $SOLARIZED_GIT_DIR
 fi
 unset SOLARIZED_GIT_DIR
-unset RUBY_VERSION
