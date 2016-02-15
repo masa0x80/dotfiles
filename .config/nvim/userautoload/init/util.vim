@@ -20,8 +20,8 @@ nnoremap <Leader>, :<C-u>set nopaste<CR>:<C-u>update<CR>
 " rubyデバッグ用
 augroup RubyDebug
   autocmd!
-  autocmd Filetype ruby,spec abbreviate bb require 'pry-byebug'; binding.pry<Esc>
-  autocmd Filetype ruby,spec abbreviate bB require 'byebug'; byebug<Esc>
-  autocmd Filetype ruby,spec abbreviate Bb require 'byebug'; byebug<Esc>
-  autocmd Filetype ruby,spec abbreviate BB require 'byebug'; byebug<Esc>
+  autocmd BufRead *.rb,*.spec,*.erb,*.slim abbreviate bb require 'pry-byebug'; binding.pry<Esc>
+  autocmd BufRead *.rb,*.spec,*.erb,*.slim abbreviate bB require 'byebug'; byebug<Esc>
+  autocmd BufRead *.rb,*.spec,*.erb,*.slim abbreviate Bb require 'byebug'; byebug<Esc>
+  autocmd BufRead *.rb,*.spec,*.erb,*.slim abbreviate BB require 'byebug'; byebug<Esc>
 augroup END
