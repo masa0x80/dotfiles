@@ -21,9 +21,9 @@ bmark -title="ALC" -keyword=a http://eow.alc.co.jp/%s/UTF-8/
 set defsearch=g
 " GUI options
 set gui=none
-set gui+=tabs
+set gui+=menu,tabs
 
-set hintchars=asdfghjkl
+set hintchars=asdfghktyuopnmwerxcvbz
 
 " IME off
 style -name commandline-ime chrome://* #liberator-commandline-command input { ime-mode: inactive; }
@@ -37,7 +37,7 @@ bmark -title="Twitter Search" -keyword=ts http://search.twitter.com/search?q=%s
 map ,R :source ~/.vimperatorrc<CR>
 
 " Bookmarks
-map ,b :bmarks
+map ,b :bmarks<Space>
 
 " アクセスキーを無効に
 set! ui.key.generalAccessKey=0
@@ -78,28 +78,19 @@ inoremap <C-h> <BS>
 cnoremap <C-h> <BS>
 inoremap <C-d> <Del>
 cnoremap <C-d> <Del>
-nnoremap <C-r> <M-r>
+nnoremap <C-r> r
 
 
 " タブ追加アイコンを非表示に
 sty chrome://* .tabs-newtab-button {display: none;}
 
 
-" qmark go + ○ でアクセス
-qmark c http://calendar.google.com/
-qmark g http://mail.google.com/
-qmark G http://mail.yahoo.com/
-qmark t http://twitter.com/
-
-
 " Hatena::Bookmark
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 
 
-"" feedSomeKeys_3.js
-:command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
-:lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc I
-:lazy fmaps -u='b\.hatena\.ne\.jp/' j k o e b
+source ~/.vimperator/config/qmarks.vimp
+source ~/.vimperator/config/feed_some_keys.vimp
 
 
 "" タブ自体を移動，メニュー関係をいじる設定
