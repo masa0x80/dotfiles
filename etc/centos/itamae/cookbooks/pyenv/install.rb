@@ -3,7 +3,7 @@ execute 'install pyenv' do
   not_if 'type -a pyenv'
 end
 
-execute 'fix python2 version' do
-  command "zsh -lc 'pyenv install #{node[:python][:version2]} && pyenv global #{node[:python][:version2]}'"
-  not_if  "type -a pyenv && pyenv versions | grep #{node[:python][:version2]}"
+execute 'fix python version' do
+  command "zsh -lc 'pyenv install #{node[:python][:version]} && pyenv global #{node[:python][:version]}'"
+  not_if  "type -a pyenv && pyenv versions | grep #{node[:python][:version]}"
 end

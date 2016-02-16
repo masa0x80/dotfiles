@@ -4,5 +4,4 @@
 :nodejs:
   :version: v5.0.0
 :python:
-  :version2: 2.7.11
-  :version3: 3.5.1
+  :version: 3.5.1
