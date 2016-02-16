@@ -29,6 +29,7 @@ else
   echo 'export PATH=$HOME/.anyenv/bin:$PATH' >> $HOME/.bashrc
   echo 'eval "$(anyenv init -)"'             >> $HOME/.bashrc
   source $HOME/.bashrc
+  git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
 
   if type -a rbenv > /dev/null 2>&1; then
     echo '*** Skip rbenv install'
@@ -36,9 +37,10 @@ else
     # rbenv configuration
     anyenv install rbenv
     source $HOME/.bashrc
+    git clone https://github.com/sstephenson/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
+    echo 'bundler' > $(rbenv root)/default-gems
     rbenv install $RUBY_VERSION
     rbenv global  $RUBY_VERSION
-    gem install bundler
   fi
 fi
 
