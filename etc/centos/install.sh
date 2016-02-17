@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo sh -c "echo 'export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin' >> /root/.bashrc"
+
 # Proxy設定
 if [ ! -z $HTTP_PROXY ]; then
   if [ -z `grep "proxy=$HTTP_PROXY" /etc/yum.conf` ]; then
