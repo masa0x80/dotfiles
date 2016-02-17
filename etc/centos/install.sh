@@ -1,6 +1,12 @@
 #!/bin/bash
 
-sudo sh -c "echo 'export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin' >> /root/.bashrc"
+# setup PATH for sudo
+sudo sed -i 's/Defaults    secure_path = \/sbin:\/bin:\/usr\/sbin:\/usr\/bin/Defaults    env_keep += "PATH"/' /etc/sudoers
+
+# setup PATH for root
+if [ -z "$(sudo sh -c 'grep "export PATH=" /root/.zshrc 2> /dev/null')" ]; then
+  sudo sh -c "echo 'export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin' >> /root/.zshrc"
+fi
 
 # Proxy設定
 if [ ! -z $HTTP_PROXY ]; then
