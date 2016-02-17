@@ -1,5 +1,5 @@
 # profiling start
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
 # lang
 export LANG=ja_JP.UTF-8
@@ -42,9 +42,6 @@ export FZF_DEFAULT_OPTS='
 --color dark,hl:33,hl+:37,fg+:235,bg+:234,fg+:254
 --color info:254,prompt:37,spinner:108,pointer:168,marker:168
 '
-
-# Homebrew cask configuration
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # load proxy settings
 test -r $HOME/.proxy && source $HOME/.proxy
