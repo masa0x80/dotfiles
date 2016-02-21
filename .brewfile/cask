@@ -4,6 +4,7 @@ cask firefox
 cask google-chrome
 cask google-japanese-ime
 cask night-owl
+cask thunderbird
 cask skype
 cask slack
 cask vagrant
