@@ -1,46 +1,46 @@
 node[:recipes] = node[:recipes].concat(
   [
     {
-      path: 'imagemagick/install.rb',
+      path: 'linux/imagemagick/install.rb',
       tags: %w[append imagemagick],
     }, {
-      path: 'aws/install.rb',
+      path: 'linux/aws/install.rb',
       tags: %w[append aws],
     }, {
-      path: 'redis/install.rb',
+      path: 'linux/redis/install.rb',
       tags: %w[append redis],
     }, {
-      path: 'postgresql/install.rb',
+      path: 'linux/postgresql/install.rb',
       tags: %w[append postgresql],
     }, {
-      path: 'zplug/install.rb',
+      path: 'common/zplug/install.rb',
       tags: %w[append zplug],
     }, {
-      path: 'neovim/install.rb',
+      path: 'linux/neovim/install.rb',
       tags: %w[append neovim],
     }, {
-      path: 'vim/install.rb',
+      path: 'linux/vim/install.rb',
       tags: %w[append vim vim-only],
     }, {
-      path: 'vim-plug/install.rb',
+      path: 'common/vim-plug/install.rb',
       tags: %w[append vim vim-plug-only],
     }, {
-      path: 'tmux/install.rb',
+      path: 'linux/tmux/install.rb',
       tags: %w[append tmux],
     }, {
-      path: 'git/install.rb',
+      path: 'linux/git/install.rb',
       tags: %w[append git],
     }, {
-      path: 'ndenv/install.rb',
+      path: 'common/ndenv/install.rb',
       tags: %w[append ndenv],
     }, {
-      path: 'pyenv/install.rb',
+      path: 'common/pyenv/install.rb',
       tags: %w[append pyenv],
     }, {
-      path: 'docker/install.rb',
+      path: 'linux/docker/install.rb',
       tags: %w[append docker],
     }, {
-      path: 'vagrant/install.rb',
+      path: 'linux/vagrant/install.rb',
       tags: %w[append vagrant],
     },
   ]

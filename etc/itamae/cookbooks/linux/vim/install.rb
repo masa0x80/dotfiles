@@ -22,7 +22,7 @@ execute 'extract vim' do
   command "cd #{node[:src_dir]} && tar jxf vim-#{node[:vim][:version]}.tar.bz2"
 end
 
-include_recipe '../pyenv/install.rb'
+include_recipe '../../common/pyenv/install.rb'
 
 local_ruby_block 'install vim' do
   block do

@@ -1,19 +1,19 @@
 node[:recipes] = node[:recipes].concat(
   [
     {
-      path: 'zplug/install.rb',
+      path: 'common/zplug/install.rb',
       tags: %w[append zplug],
     }, {
-      path: 'pyenv-neovim/install.rb',
+      path: 'common/pyenv-neovim/install.rb',
       tags: %w[append pyenv-neovim],
     }, {
-      path: 'vim-plug/install.rb',
+      path: 'common/vim-plug/install.rb',
       tags: %w[append vim vim-plug-only],
     }, {
-      path: 'ndenv/install.rb',
+      path: 'common/ndenv/install.rb',
       tags: %w[append ndenv],
     }, {
-      path: 'pyenv/install.rb',
+      path: 'common/pyenv/install.rb',
       tags: %w[append pyenv],
     },
   ]

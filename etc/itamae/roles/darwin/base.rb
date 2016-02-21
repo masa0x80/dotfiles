@@ -1,7 +1,7 @@
 node[:recipes] = node[:recipes].concat(
   [
     {
-      path: 'fzf/install.rb',
+      path: 'common/fzf/install.rb',
       tags: %w[common fzf],
     },
   ]
