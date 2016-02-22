@@ -1,6 +1,8 @@
 # profiling start
 # zmodload zsh/zprof
 
+fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
+
 # lang
 export LANG=ja_JP.UTF-8
 

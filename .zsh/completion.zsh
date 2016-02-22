@@ -1,5 +1,4 @@
 # 補完
-fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
 autoload -U compinit; compinit # 補完を有効に
 setopt menu_complete           # 補完候補が複数ある時、一覧表示 (auto_list) せず、すぐに最初の候補を補完する
 setopt list_types              # auto_list の補完候補一覧で、ls -F のようにファイルの種別をマーク表示
