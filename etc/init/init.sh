@@ -9,12 +9,10 @@ export RUBY_VERSION=2.3.0
 cd $SCRIPT_DIR/..
 case `uname` in
   Darwin)
-    # ref: https://github.com/yyuu/pyenv/wiki/Common-build-problems#build-failed-error-the-python-zlib-extension-was-not-compiled-missing-the-zlib
-    export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
-    bash darwin/install.sh
+    sh -lc 'bash darwin/install.sh'
     ;;
   Linux)
-    bash centos/install.sh
+    sh -lc 'bash centos/install.sh'
     ;;
 esac
 
@@ -32,6 +30,9 @@ else
   echo 'eval "$(anyenv init -)"'             >> $HOME/.bashrc
   source $HOME/.bashrc
   git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+
+  # update *env
+  anyenv update
 
   if type -a rbenv > /dev/null 2>&1; then
     echo '*** Skip rbenv install'
