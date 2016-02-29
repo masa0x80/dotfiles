@@ -1,0 +1,43 @@
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets']
+on_map = "<Plug>(neosnipet"
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = "has('nvim')"
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+if = '!has("nvim") && has("lua")'
+on_i = 1
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+on_map = "<Plug>(EasyA"
+
+[[plugins]]
+repo = 'haya14busa/vim-operator-flashy'
+on_map = "<Plug>(operator-f"
+
+[[plugins]]
+repo = 'Shougo/vinarise.vim'
+on_cmd = 'Vinarise'
+
+[[plugins]]
+repo = 'lambdalisue/vim-gita'
+on_cmd = 'Gita'
+
+[[plugins]]
+repo = 'slim-template/vim-slim'
+on_ft = 'slim'

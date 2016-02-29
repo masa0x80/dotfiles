@@ -1,68 +1,29 @@
-call plug#begin('$HOME/.config/nvim/plugged')
+let s:dein_dir = expand('~/.cache/dein')
 
-if has('lua')
-  Plug 'Shougo/neocomplete.vim'
-elseif has('nvim')
-  Plug 'Shougo/deoplete.nvim'
-else
-  Plug 'Shougo/neocomplcache.vim'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+call plug#begin('$HOME/.config/nvim/userautoload/plugins')
+
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'tpope/vim-fugitive'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neomru.vim'
-Plug 'tpope/vim-surround'
-Plug 'vim-scripts/Align'
-Plug 'junegunn/vim-easy-align'
-Plug 'thinca/vim-quickrun'
-Plug 'thinca/vim-visualstar'
-Plug 'tomtom/tcomment_vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'itchyny/lightline.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'kana/vim-operator-user'
-Plug 'haya14busa/vim-operator-flashy'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
-call plug#end()
+call dein#begin(s:dein_dir)
 
-" plugin installation check
-let g:plug = {
-      \ "plugs": get(g:, 'plugs', {})
-      \ }
+let s:toml_path      = '$HOME/.config/nvim/userautoload/plugins/dein.toml'
+let s:lazy_toml_path = '$HOME/.config/nvim/userautoload/plugins/dein_lazy.toml'
 
-function! g:plug.check_installation()
-  if empty(self.plugs)
-    return
-  endif
+if dein#load_cache([expand('<sfile>'), s:toml_path, s:lazy_toml_path])
+  call dein#load_toml(s:toml_path,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml_path, {'lazy': 1})
+  call dein#save_cache()
+endif
 
-  let list = []
-  for [name, spec] in items(self.plugs)
-    if !isdirectory(spec.dir)
-      call add(list, spec.uri)
-    endif
-  endfor
+call dein#end()
 
-  if len(list) > 0
-    let unplugged = map(list, 'substitute(v:val, "^.*github\.com/\\(.*/.*\\)\.git$", "\\1", "g")')
-
-    " Ask whether installing plugs like NeoBundle
-    echomsg 'Not installed plugs: ' . string(unplugged)
-    if confirm('Install plugs now?', "yes\nNo", 2) == 1
-      silent! PlugInstall
-    endif
-
-  endif
-endfunction
-
-function! g:plug.is_installed(name)
-  return has_key(self.plugs, a:name) ? isdirectory(self.plugs[a:name].dir) : 0
-endfunction
-
-augroup check-plug
-  autocmd!
-  autocmd VimEnter * if !argc() | call g:plug.check_installation() | endif
-augroup END
+if dein#check_install()
+  call dein#install()
+endif

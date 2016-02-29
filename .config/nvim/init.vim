@@ -8,6 +8,9 @@ if isdirectory(expand('$HOME/.vim/plugged'))
   runtime! userautoload/plugins/*.vim
 endif
 
+syntax on
+filetype plugin indent on
+
 " SEGV対策
 if !has('nvim') && v:version >= 704
   set regexpengine=1
