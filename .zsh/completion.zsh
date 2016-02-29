@@ -16,9 +16,9 @@ zstyle ':completion:*:default' menu select=2                                    
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z} r:|[-_.]=**' # -_. の前は末尾に * を付けていい感じに補完する
 
 # 色設定
-if type dircolors > /dev/null 2>&1; then
+if (( $+commands[dircolors] )); then
   eval $(dircolors $HOME/.zsh/misc/dircolors.ansi-dark)
-elif type gdircolors > /dev/null 2>&1; then
+elif (( $+commands[gdircolors] )); then
   eval $(gdircolors $HOME/.zsh/misc/dircolors.ansi-dark)
 fi
 if [ -n "$LS_COLORS" ]; then

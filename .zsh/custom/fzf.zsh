@@ -1,4 +1,4 @@
-if type fzf > /dev/null 2>&1; then
+if (( $+commands[fzf] )); then
   bindkey '^Q' fzf-file-widget
 
   function peco-git-recent-all-branches() {

@@ -11,7 +11,7 @@ export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin:$HOME/b
 
 # anyenv
 export PATH=$HOME/.anyenv/bin:$PATH
-if type anyenv > /dev/null 2>&1; then
+if (( $+commands[anyenv] )); then
   eval "$(anyenv init -)"
 fi
 

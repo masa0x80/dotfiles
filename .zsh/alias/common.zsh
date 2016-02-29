@@ -6,7 +6,7 @@ alias rd=rmdir
 alias rf='rm -rf'
 
 # ls
-if type gls > /dev/null 2>&1; then
+if (( $+commands[gls] )); then
   alias ls='gls --color=auto'
 else
   alias ls='ls --color=auto'
@@ -15,7 +15,7 @@ alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
 
-if type nvim > /dev/null 2>&1; then
+if (( $+commands[nvim] )); then
   alias vim='nvim'
 fi
 

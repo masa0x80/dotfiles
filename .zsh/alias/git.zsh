@@ -232,7 +232,7 @@ alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit -m "--wip--"'
 
 
-if type -a fzf > /dev/null 2>&1; then
+if (( $+commands[fzf] )); then
   # fshow - git commit browser (enter for show, ctrl-d for diff)
   fshow() {
     local out shas sha q k

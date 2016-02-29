@@ -1,5 +1,5 @@
 if [ -r $HOME/.zplug/zplug ]; then
-  if type peco > /dev/null 2>&1; then
+  if (( $+commands[peco] )); then
     zstyle ":anyframe:selector:" use peco
   fi
 
@@ -11,7 +11,8 @@ if [ -r $HOME/.zplug/zplug ]; then
   bindkey '^g^b' anyframe-widget-checkout-git-branch
   bindkey '^gB'  anyframe-widget-insert-git-branch
 fi
-if type peco > /dev/null 2>&1; then
+
+if (( $+commands[peco] )); then
   function PECO() {
     (git ls-tree -r --name-only HEAD || find . -path '*/\.*' -prune -o -type f -print -o -type l -print) 2> /dev/null | peco --query "$*"
   }
