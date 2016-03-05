@@ -6,6 +6,7 @@ if [ -r $HOME/.zplug/zplug ]; then
   zplug 'mollifier/anyframe'
   zplug 'b4b4r07/enhancd', of:enhancd.sh
   zplug 'zsh-users/zsh-completions'
+  zplug 'zsh-users/zsh-autosuggestions'
 
   if ! zplug check --verbose; then
     printf "Install? [y/N]: "
