@@ -23,6 +23,9 @@ set defsearch=g
 set gui=none
 set gui+=menu,tabs
 
+" No focus
+set focuscontent
+
 set hintchars=asdfghktyuopnmwerxcvbz
 
 " IME off
