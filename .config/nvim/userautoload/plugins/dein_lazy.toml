@@ -9,7 +9,7 @@ depends = 'neomru.vim'
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets']
-on_map = "<Plug>(neosnipet"
+on_ft = ['snippet']
 on_i = 1
 
 [[plugins]]
@@ -24,11 +24,11 @@ on_i = 1
 
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
-on_map = "<Plug>(EasyA"
+on_map = '<Plug>(EasyA'
 
 [[plugins]]
 repo = 'haya14busa/vim-operator-flashy'
-on_map = "<Plug>(operator-f"
+on_map = '<Plug>'
 
 [[plugins]]
 repo = 'Shougo/vinarise.vim'
@@ -53,3 +53,7 @@ on_ft = 'json'
 [[plugins]]
 repo = 'rcmdnk/vim-markdown'
 on_ft = ['markdown', 'mkd', 'md']
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+on_map = '<Plug>'

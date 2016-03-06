@@ -1,6 +1,5 @@
 " colorscheme
 if dein#tap('vim-colors-solarized')
-" if g:plug.is_installed('vim-colors-solarized')
   set background=dark
   colorscheme solarized
 else

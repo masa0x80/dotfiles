@@ -15,7 +15,7 @@ let g:quickrun_config._ = {
 
 " rspec
 let g:quickrun_config['ruby.rspec'] = {
-  \   'command': 'rspec',
+  \   'exec': 'bundle exec rspec',
   \ }
 let g:quickrun_config.rspecl = {
   \   'type': 'rspec',
@@ -25,4 +25,5 @@ augroup RSpecQuickrun
   autocmd!
   autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
 augroup END
+nnoremap <silent> <Leader>S :<C-u>QuickRun ruby.rspec<CR>
 nnoremap <silent> <Leader>s :<C-u>QuickRun rspecl<CR>

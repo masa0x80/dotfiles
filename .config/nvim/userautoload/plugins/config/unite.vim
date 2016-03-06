@@ -1,6 +1,6 @@
 " Unite
 nnoremap <silent> <Leader>E :<C-u>Unite file_mru<CR>
-nnoremap <silent> <Leader>f :<C-u>Unite file<CR>
+nnoremap <silent> <Leader>f :<C-u>Unite file/async<CR>
 nnoremap <silent> <Leader>F :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>
 

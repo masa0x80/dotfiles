@@ -18,9 +18,6 @@ repo = 'tpope/vim-surround'
 repo = 'vim-scripts/Align'
 
 [[plugins]]
-repo = 'thinca/vim-quickrun'
-
-[[plugins]]
 repo = 'thinca/vim-visualstar'
 
 [[plugins]]

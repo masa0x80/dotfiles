@@ -1,8 +1,5 @@
 let s:dein_dir = expand('~/.cache/dein')
-
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-call plug#begin('$HOME/.config/nvim/userautoload/plugins')
 
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_repo_dir)

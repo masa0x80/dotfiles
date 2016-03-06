@@ -3,10 +3,9 @@ if 0 | endif
 
 scriptencoding utf-8
 
-runtime! userautoload/init/*.vim
-if isdirectory(expand('$HOME/.vim/plugged'))
-  runtime! userautoload/plugins/*.vim
-endif
+runtime! userautoload/common/*.vim
+runtime! userautoload/plugins/init.vim
+runtime! userautoload/plugins/config/*.vim
 
 syntax on
 filetype plugin indent on

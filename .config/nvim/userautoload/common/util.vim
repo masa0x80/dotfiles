@@ -1,9 +1,9 @@
 " highlight
 augroup HighlightSpaces
-  autocmd!
-  autocmd ColorScheme * highlight Spaces term=underline guibg=lightblue ctermbg=lightblue
-  autocmd VimEnter,ColorScheme * highlight IndentGuidesEven guibg=black ctermbg=black
-  autocmd VimEnter,WinEnter,BufRead * match Spaces /　\|[　 ]\+$/
+ autocmd!
+ autocmd ColorScheme * highlight Spaces term=underline guibg=lightblue ctermbg=lightblue
+ autocmd VimEnter,ColorScheme * highlight IndentGuidesEven guibg=black ctermbg=black
+ autocmd VimEnter,WinEnter,BufRead * match Spaces /　\|[　 ]\+$/
 augroup END
 
 autocmd Filetype json setl conceallevel=0
