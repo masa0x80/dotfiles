@@ -57,3 +57,7 @@ on_ft = ['markdown', 'mkd', 'md']
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 on_map = '<Plug>'
+
+[[plugins]]
+repo = 'LeafCage/foldCC'
+on_ft = ['vim', 'markdown', 'mkd', 'md']

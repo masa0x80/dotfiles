@@ -1,2 +1,2 @@
 set runtimepath+=~/.fzf
-nnoremap <silent> <Leader>e :<C-u>FZF<CR>
+nnoremap <silent> <Leader>E :<C-u>FZF!<CR>
