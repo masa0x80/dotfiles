@@ -11,3 +11,4 @@ alias bil='bundle install --local'
 alias db='rails db'
 
 alias -g BO='--path=vendor/bundle --binstubs=vendor/bin --jobs=4'
+alias -g RET='RAILS_ENV=test'
