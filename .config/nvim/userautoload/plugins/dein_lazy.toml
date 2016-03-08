@@ -39,6 +39,10 @@ repo = 'lambdalisue/vim-gita'
 on_cmd = 'Gita'
 
 [[plugins]]
+repo = 'jelera/vim-javascript-syntax'
+on_ft = 'javascript'
+
+[[plugins]]
 repo = 'slim-template/vim-slim'
 on_ft = 'slim'
 

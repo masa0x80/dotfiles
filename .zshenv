@@ -16,7 +16,7 @@ if (( $+commands[anyenv] )); then
 fi
 
 # editor
-export EDITOR=vim
+export EDITOR=nvim
 
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME=$HOME/.config
