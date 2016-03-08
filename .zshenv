@@ -45,6 +45,12 @@ export FZF_DEFAULT_OPTS='
 --color info:254,prompt:37,spinner:108,pointer:168,marker:168
 '
 
+# OSごとの設定の読み込み
+for CONFIG_FILE ($HOME/.zsh/os/$(uname | tr A-Z a-z)/zshenv.zsh(N)); do
+  source $CONFIG_FILE
+done
+unset CONFIG_FILE
+
 # load proxy settings
 test -r $HOME/.proxy && source $HOME/.proxy
 

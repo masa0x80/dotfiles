@@ -27,7 +27,7 @@ for CONFIG_FILE ($HOME/.zsh/alias/*.zsh(N)); do
 done
 
 # OSごとの設定の読み込み
-for CONFIG_FILE ($HOME/.zsh/os/$(uname | tr A-Z a-z)/*.zsh(N)); do
+for CONFIG_FILE ($HOME/.zsh/os/$(uname | tr A-Z a-z)/zshrc.zsh(N)); do
   source $CONFIG_FILE
 done
 
