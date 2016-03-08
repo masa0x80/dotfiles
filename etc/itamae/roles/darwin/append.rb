@@ -7,9 +7,6 @@ node[:recipes] = node[:recipes].concat(
       path: 'common/pyenv-neovim/install.rb',
       tags: %w[append pyenv-neovim],
     }, {
-      path: 'common/vim-plug/install.rb',
-      tags: %w[append vim vim-plug-only],
-    }, {
       path: 'common/ndenv/install.rb',
       tags: %w[append ndenv],
     }, {

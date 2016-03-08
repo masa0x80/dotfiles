@@ -20,10 +20,7 @@ node[:recipes] = node[:recipes].concat(
       tags: %w[append neovim],
     }, {
       path: 'linux/vim/install.rb',
-      tags: %w[append vim vim-only],
-    }, {
-      path: 'common/vim-plug/install.rb',
-      tags: %w[append vim vim-plug-only],
+      tags: %w[append vim],
     }, {
       path: 'linux/tmux/install.rb',
       tags: %w[append tmux],
