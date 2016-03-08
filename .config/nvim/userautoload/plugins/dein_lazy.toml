@@ -23,6 +23,10 @@ if = '!has("nvim") && has("lua")'
 on_i = 1
 
 [[plugins]]
+repo = 'ConradIrwin/vim-bracketed-paste'
+on_i = 1
+
+[[plugins]]
 repo = 'junegunn/vim-easy-align'
 on_map = '<Plug>(EasyA'
 
