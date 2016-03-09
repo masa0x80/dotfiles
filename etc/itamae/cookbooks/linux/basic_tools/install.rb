@@ -14,6 +14,7 @@
   libselinux-python
   fuse-libs
   lbzip2
+  automake
 ].each do |name|
   package name do
     action :install
