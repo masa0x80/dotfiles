@@ -1,9 +1,6 @@
 node[:recipes] = node[:recipes].concat(
   [
     {
-      path: 'common/zplug/install.rb',
-      tags: %w[append zplug],
-    }, {
       path: 'common/pyenv-neovim/install.rb',
       tags: %w[append pyenv-neovim],
     }, {

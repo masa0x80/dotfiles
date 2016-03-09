@@ -13,9 +13,6 @@ node[:recipes] = node[:recipes].concat(
       path: 'linux/postgresql/install.rb',
       tags: %w[append postgresql],
     }, {
-      path: 'common/zplug/install.rb',
-      tags: %w[append zplug],
-    }, {
       path: 'linux/neovim/install.rb',
       tags: %w[append neovim],
     }, {

@@ -13,9 +13,6 @@ brew rsync
 tap neovim/neovim
 brew neovim
 
-tap peco/peco
-brew peco
-
 tap rcmdnk/file
 brew brew-file
 
@@ -30,7 +27,6 @@ brew gdbm
 brew gettext
 brew git
 brew go
-brew jq
 brew libevent
 brew libtool
 brew libyaml
@@ -40,7 +36,6 @@ brew openssl
 brew pcre
 brew pkg-config
 brew readline
-brew the_platinum_searcher
 brew tmux
 brew tree
 brew vim --with-lua

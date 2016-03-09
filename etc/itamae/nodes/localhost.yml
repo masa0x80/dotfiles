@@ -32,12 +32,8 @@
   :version3: 3.5.1
 :tmux:
   :version: 2.1
-:peco:
-  :version: v0.3.5
 :direnv:
   :version: v2.6.0
-:pt:
-  :version: v1.7.9
 :vim:
   :version: 7.4
   :make_options: '--enable-fail-if-missing --enable-fontset --enable-cscope --enable-multibyte --enable-rubyinterp --enable-luainterp --enable-pythoninterp --with-x=no --disable-gui --disable-xim --with-features=huge --disable-selinux --disable-gpm --disable-darwin'
