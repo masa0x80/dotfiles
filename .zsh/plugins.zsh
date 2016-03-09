@@ -7,6 +7,9 @@ if [ -r $HOME/.zplug/zplug ]; then
   zplug 'b4b4r07/enhancd', of:enhancd.sh
   zplug 'zsh-users/zsh-completions'
   zplug 'zsh-users/zsh-autosuggestions'
+  zplug 'jpmens/jo', \
+    as:command, \
+    do:'cd ~/.zplug/repos/jpmens/jo && autoreconf -i && ./configure && make check && make install'
 
   if ! zplug check --verbose; then
     printf "Install? [y/N]: "
