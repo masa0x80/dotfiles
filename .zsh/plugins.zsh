@@ -20,7 +20,7 @@ if [ -r $HOME/.zplug/zplug ]; then
     from:gh-r
   zplug 'jpmens/jo', \
     as:command, \
-    do:'cd $HOME/.zplug/repos/jpmens/jo && autoreconf -i && ./configure && make check && make install'
+    do:'cd $HOME/.zplug/repos/jpmens/jo && autoreconf -i && ./configure --prefix=$HOME/.zplug && make check && make install'
 
   zplug 'junegunn/fzf-bin', \
     as:command, \
