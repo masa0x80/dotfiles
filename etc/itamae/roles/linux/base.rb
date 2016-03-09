@@ -7,9 +7,6 @@ node[:recipes] = node[:recipes].concat(
       path: 'linux/basic_tools/install.rb',
       tags: %w[common basic_tools],
     }, {
-      path: 'linux/direnv/install.rb',
-      tags: %w[common direnv],
-    }, {
       path: 'linux/mysql/install.rb',
       tags: %w[common mysql],
     },

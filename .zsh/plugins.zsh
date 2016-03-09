@@ -37,6 +37,10 @@ if [ -r $HOME/.zplug/zplug ]; then
     from:gh-r, \
     do:"mkdir -p $HOME/.zplug/bin; ln -s $HOME/.zplug/{repos/**/*/pt,bin/pt}"
 
+  zplug 'direnv/direnv', \
+    as:command, \
+    at:v2.6.0, \
+    from:gh-r
 
   if ! zplug check --verbose; then
     printf "Install? [y/N]: "
