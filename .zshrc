@@ -13,9 +13,6 @@ CONFIG_FILE="$HOME/.zsh/hook.zsh" && test -r $CONFIG_FILE && source $CONFIG_FILE
 # load plugins
 CONFIG_FILE="$HOME/.zsh/plugins.zsh" && test -r $CONFIG_FILE && source $CONFIG_FILE
 
-# load fzf
-CONFIG_FILE="$HOME/.fzf.zsh" && test -r $CONFIG_FILE && source $CONFIG_FILE
-
 # カスタム設定を読み込む
 for CONFIG_FILE ($HOME/.zsh/custom/*.zsh(N)); do
   source $CONFIG_FILE
