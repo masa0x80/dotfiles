@@ -21,7 +21,7 @@ if [ -z `grep '^include_only=.jp$' /etc/yum/pluginconf.d/fastestmirror.conf` ]; 
 fi
 
 # gitのインストール
-if type git > /dev/null 2>&1; then
+if type -a git > /dev/null 2>&1; then
   echo 'skip git install'
 else
   sudo -E yum install -y git which bzip2 unzip curl

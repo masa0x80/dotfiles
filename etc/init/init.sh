@@ -3,7 +3,6 @@
 mkdir -p $HOME/src
 
 export SCRIPT_DIR=$(cd $(dirname $0); pwd)
-
 export RUBY_VERSION=2.3.0
 
 cd $SCRIPT_DIR/..
@@ -24,10 +23,6 @@ if type -a anyenv > /dev/null 2>&1; then
 else
   git clone https://github.com/riywo/anyenv $HOME/.anyenv
 
-  echo ''                                    >> $HOME/.bashrc
-  echo '# anyenv settings'                   >> $HOME/.bashrc
-  echo 'export PATH=$HOME/.anyenv/bin:$PATH' >> $HOME/.bashrc
-  echo 'eval "$(anyenv init -)"'             >> $HOME/.bashrc
   source $HOME/.bashrc
   git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
 
