@@ -13,6 +13,8 @@ function tmux_attach_session() {
           read
           if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
             tmux attach-session
+          elif [[ "$REPLY" =~ ^[Nn]$ ]]; then
+            return 0
           else
             tmux attach -t "$REPLY"
           fi
