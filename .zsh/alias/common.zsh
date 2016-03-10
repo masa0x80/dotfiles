@@ -19,6 +19,11 @@ if (( $+commands[nvim] )); then
   alias vim='nvim'
 fi
 
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+
 alias -g F='| fzf'
 alias -g G='| egrep --color=auto'
 alias -g H='| head'
