@@ -35,6 +35,7 @@ brew openssl
 brew pcre
 brew pkg-config
 brew readline
+brew reattach-to-user-namespace
 brew tmux
 brew tree
 brew vim --with-lua
