@@ -3,7 +3,7 @@ let g:foldCCtext_enable_autofdc_adjuster = 1
 augroup FileTypeGroup
   autocmd!
   autocmd VimEnter,WinEnter,BufRead * :set foldcolumn=0
-  autocmd VimEnter,WinEnter,BufRead *.md,*.mkd,*.markdown,*.vim :set foldcolumn=3
+  autocmd VimEnter,WinEnter,BufRead *.md,*.mkd,*.markdown,*.vim :set foldcolumn=2
 augroup END
 set foldtext=foldCCtext()
 
