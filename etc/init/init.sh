@@ -3,7 +3,7 @@
 mkdir -p $HOME/src
 
 export SCRIPT_DIR=$(cd $(dirname $0); pwd)
-export RUBY_VERSION=2.3.0
+export RUBY_VERSION=`cat $SCRIPT_DIR/../itamae/.ruby-version`
 
 cd $SCRIPT_DIR/..
 case `uname` in
@@ -43,7 +43,7 @@ else
 fi
 
 source $HOME/.bashrc
-bundle install --path=vendor/bundle
+bundle install --path=vendor/bundle --local
 if [ -z "$TAGS" ]; then
   bundle exec itamae local entrypoint.rb -y nodes/localhost.yml
 else
