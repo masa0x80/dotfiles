@@ -16,16 +16,26 @@ if [ -r $HOME/.zplug/zplug ]; then
 
   zplug 'stedolan/jq', \
     as:command, \
-    file:jq, \
     from:gh-r
   zplug 'jpmens/jo', \
     as:command, \
     do:'cd $HOME/.zplug/repos/jpmens/jo && autoreconf -i && ./configure --prefix=$HOME/.zplug && make check && make install'
 
-  zplug 'junegunn/fzf-bin', \
-    as:command, \
-    from:gh-r, \
-    file:fzf
+  if [[ $OSTYPE == darwin* ]]; then
+    zplug 'junegunn/fzf-bin', \
+      as:command, \
+      from:gh-r, \
+      file:fzf, \
+      of:"*darwin*amd64*", \
+      on:junegunn/fzf
+  else
+    zplug 'junegunn/fzf-bin', \
+      as:command, \
+      from:gh-r, \
+      file:fzf, \
+      of:"*linux*amd64*", \
+      on:junegunn/fzf
+  fi
   zplug 'junegunn/fzf', \
     as:command, \
     of:bin/fzf-tmux
