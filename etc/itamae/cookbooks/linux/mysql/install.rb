@@ -19,3 +19,4 @@ service 'mysqld' do
   user   'root'
   action [:enable, :restart]
 end
+

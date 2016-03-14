@@ -9,6 +9,9 @@ node[:recipes] = node[:recipes].concat(
     }, {
       path: 'linux/mysql/install.rb',
       tags: %w[common mysql],
+    }, {
+      path: 'common/mysql/initialize.rb',
+      tags: %w[append mysql_init],
     },
   ]
 )
