@@ -1,10 +1,10 @@
 [core]
   autocrlf = false
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.config/git/ignore
 [credential]
   helper = cache
 [include]
-  path = ~/.gitconfig.local
+  path = ~/.config/git/local
 [alias]
   ci = commit -v
   co = checkout

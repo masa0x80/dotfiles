@@ -3,3 +3,5 @@
 !/.gitignore
 !/nvim
 !/peco
+!/git
+/git/local
