@@ -2,7 +2,7 @@
 
 ## Overview
 
-下記ツールをインストールします。
+各種dotfilesの配置と下記ツールのインストールを行います。
 
 - zsh
 - vim
@@ -11,14 +11,15 @@
 - peco
 - pt
 - jq
+- jo
 - direnv
 - rbenv
 - pyenv
+- ndenv
 - mysql
-- dotfiles
-
-まず、dotfilesへのシンボリックリンクを $HOME の下に作成します。
-その後、MacではHomebrewを、CentOSではItamaeを使い各種ツールのインストールを行います。
+- postgresql
+- redis
+- vagrant
 
 ## Installation
 
@@ -45,25 +46,17 @@ make deploy
 make init
 ```
 
-gitのユーザー設定は、`$HOME/.gitconfig.local` に書いて下さい。
+gitのユーザー設定は、`$HOME/.config/git/local` に書いて下さい。
 
 ```
-# .gitconfig.local の例
+# $HOME/.config/git/local の例
 [user]
 	name  = masa0x80
 	email = masa0x80@gmail.com
 ```
 
-## Appended Installation
+## Note
 
-下記コマンドを実行すると、追加で
+`make deploy` 時に `TAGS` を指定することで特定のツールのインストールを行うことができます。
 
-- redis
-- postgresql
-- ndenv
-
-などを追加でインストールできます。
-
-`TAGS=append make init`
-
-また `TAGS=git make init` というように特定のツールを指定して実行することもできます。
+`TAGS=common make init` を実行すると代表的なツールのみを短時間でインストールすることができます。

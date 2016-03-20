@@ -16,7 +16,6 @@ if type curl > /dev/null 2>&1; then
     cd $_
     echo 'Installing tools...'
     if make deploy; then
-      export TAGS='common'
       if make init; then
         echo 'Complete settings!'
       else
