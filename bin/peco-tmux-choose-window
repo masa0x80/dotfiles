@@ -1,0 +1,7 @@
+#!/bin/sh
+
+local peco
+peco=$HOME/.zplug/bin/peco
+local num
+num=$(tmux list-windows | $peco --initial-index $(tmux list-windows | awk '/active.$/ {print NR-1}') | cut -d':' -f 1)
+tmux select-window -t $num
