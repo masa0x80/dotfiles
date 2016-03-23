@@ -46,10 +46,10 @@ make deploy
 make init
 ```
 
-gitのユーザー設定は、`$HOME/.config/git/local` に書いて下さい。
+gitのユーザー設定は、`$HOME/.private/git/config` に書いて下さい。
 
 ```
-# $HOME/.config/git/local の例
+# $HOME/.private/git/config の例
 [user]
 	name  = masa0x80
 	email = masa0x80@gmail.com
