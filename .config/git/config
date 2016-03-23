@@ -4,7 +4,7 @@
 [credential]
   helper = cache
 [include]
-  path = ~/.config/git/local
+  path = ~/.private/git/config
 [alias]
   ci = commit -v
   co = checkout
