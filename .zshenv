@@ -1,6 +1,10 @@
 # profiling start
 # zmodload zsh/zprof
 
+load_file() {
+  test -r $1 && source $1
+}
+
 fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
 
 # lang
@@ -50,13 +54,12 @@ export FZF_DEFAULT_OPTS='
 '
 
 # OSごとの設定の読み込み
-for CONFIG_FILE ($HOME/.zsh/os/$(uname | tr A-Z a-z)/zshenv.zsh(N)); do
-  source $CONFIG_FILE
+for config_file ($HOME/.zsh/os/$(uname | tr A-Z a-z)/env/*.zsh(N)); do
+  load_file $config_file
 done
-unset CONFIG_FILE
 
 # load proxy settings
-test -r $HOME/.proxy && source $HOME/.proxy
+load_file $HOME/.proxy
 
 # 環境ローカルの設定の読み込み
-test -r $HOME/.zshenv.local && source $HOME/.zshenv.local
+load_file $HOME/.private/zsh/env
