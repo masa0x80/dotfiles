@@ -6,6 +6,5 @@ cask google-japanese-ime
 cask night-owl
 cask thunderbird
 cask skype
-cask slack
 cask vagrant
 cask virtualbox
