@@ -16,6 +16,8 @@ brew neovim
 tap rcmdnk/file
 brew brew-file
 
+tap homebrew/services
+
 # Other Homebrew packages
 brew autoconf
 brew automake
