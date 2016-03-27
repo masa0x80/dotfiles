@@ -49,6 +49,7 @@ if [ -z "$TAGS" ]; then
 else
   TAGS="$TAGS" bundle exec itamae local entrypoint.rb -y nodes/localhost.yml
 fi
+bundle exec itamae local cookbooks/common/mysql/initialize.rb -y nodes/localhost.yml
 cd ../../
 
 unset RUBY_VERSION
