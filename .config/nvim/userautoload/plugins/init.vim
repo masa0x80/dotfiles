@@ -1,9 +1,12 @@
 let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
+let s:dein_sha = '0a9bfe63f60789b6036fe58da74d5faba0269e29'
+
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_repo_dir)
     execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+    execute '!cd' s:dein_repo_dir '&& git checkout' s:dein_sha
   endif
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
