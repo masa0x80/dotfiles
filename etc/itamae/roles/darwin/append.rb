@@ -9,6 +9,9 @@ node[:recipes] = node[:recipes].concat(
     }, {
       path: 'common/pyenv/install.rb',
       tags: %w[append pyenv],
+    }, {
+      path: 'darwin/redis/initialize.rb',
+      tags: %w[append redis_init],
     },
   ]
 )
