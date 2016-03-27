@@ -1,9 +1,9 @@
 # ref: http://qiita.com/b4b4r07/items/01359e8a3066d1c37edc
-function is_tmux_running() { [ ! -z "$TMUX" ]; }
-function shell_has_started_interactively() { [ ! -z "$PS1" ]; }
-function is_ssh_running() { [ ! -z "$SSH_CONNECTION" ]; }
+is_tmux_running() { [ ! -z "$TMUX" ]; }
+shell_has_started_interactively() { [ ! -z "$PS1" ]; }
+is_ssh_running() { [ ! -z "$SSH_CONNECTION" ]; }
 
-function tmux_attach_session() {
+tmux_attach_session() {
   if ! is_tmux_running; then
     if shell_has_started_interactively && ! is_ssh_running; then
       if (( $+commands[tmux] )); then

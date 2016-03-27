@@ -1,4 +1,4 @@
-function s() {
+s() {
   local window_name=$(tmux display -p '#{window_name}')
   tmux rename-window ${window_name}/server
   command spring rails s -p $RAILS_SERVER_PORT

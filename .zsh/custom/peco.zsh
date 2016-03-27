@@ -13,13 +13,13 @@ if [ -r $HOME/.zplug/zplug ]; then
 fi
 
 if (( $+commands[peco] )); then
-  function PECO() {
+  PECO() {
     (git ls-tree -r --name-only HEAD || find . -path '*/\.*' -prune -o -type f -print -o -type l -print) 2> /dev/null | peco --query "$*"
   }
 
   # git-add with peco
   # ref: http://petitviolet.hatenablog.com/entry/20140722/1406034439
-  function peco-git-add() {
+  peco-git-add() {
     local SELECTED_FILE_TO_ADD="$(git status --porcelain  | \
                                   peco --query "$LBUFFER" | \
                                   awk -F ' ' '{print $NF}')"
@@ -33,7 +33,7 @@ if (( $+commands[peco] )); then
   bindkey "^ga"  peco-git-add
   bindkey "^g^a" peco-git-add
 
-  function peco-git-recent-all-branches() {
+  peco-git-recent-all-branches() {
     local SELECTED_BRANCH="$(git for-each-ref --format='%(refname)' --sort=-committerdate | \
                              sed -e 's|^refs/\(heads\|remotes\)/||'                       | \
                              peco)"
@@ -50,14 +50,14 @@ if (( $+commands[peco] )); then
   zle -N peco-git-recent-all-branches
   bindkey "^g^g^b"  peco-git-recent-all-branches
 
-  function peco-gst(){
+  peco-gst(){
     git status -s -uno | peco --query "$*" | cut -d ' ' -f 3
   }
   alias GST=peco-gst
 
   # ssh with peco
   # ref: http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
-  function peco-ssh() {
+  peco-ssh() {
     # Hostの次の行にあるコメントをホスト名と一緒に表示するためのrubyワンライナー
     #
     # Host {KEYWORD}
@@ -85,7 +85,7 @@ if (( $+commands[peco] )); then
 
   # pt and vim with peco
   # ref: http://qiita.com/fmy/items/b92254d14049996f6ec3
-  function peco-pt-vim () {
+  peco-pt-vim () {
     local SELECTED_FILES
     if [[ $# = 0 ]]; then
       SELECTED_FILES=$(pt '' | peco)
@@ -117,7 +117,7 @@ if (( $+commands[peco] )); then
   alias v='vim $(PECO)'
 
   # ps with peco
-  function psp() {
+  psp() {
     if [[ $# = 0 ]]; then
       ps -ef | peco
     else

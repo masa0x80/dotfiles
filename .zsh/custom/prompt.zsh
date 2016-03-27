@@ -1,4 +1,4 @@
-function _prompt() {
+_prompt() {
   counter=$(expr $(expr ${counter:-2} + 1) % 2)
   PROMPT_SUFFIX='匚＞'
   if [ $counter -eq 0 ]; then

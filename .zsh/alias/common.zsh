@@ -37,7 +37,7 @@ alias -g T='| tail'
 alias h='\history -n -r 1 | grep "$@"'
 
 # refs: http://qiita.com/yuku_t/items/4ffaa516914e7426419a
-function ssh() {
+ssh() {
   local window_name=$(tmux display -p '#{window_name}')
   command ssh $@
   tmux rename-window $window_name
