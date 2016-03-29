@@ -16,6 +16,9 @@ brew neovim
 tap rcmdnk/file
 brew brew-file
 
+tap peco/peco
+brew peco
+
 tap homebrew/services
 
 # Other Homebrew packages
@@ -24,10 +27,14 @@ brew automake
 brew cmake
 brew coreutils
 brew curl
+brew direnv
+brew fzf
 brew gdbm
 brew gettext
 brew git
 brew go
+brew jo
+brew jq
 brew keychain
 brew libevent
 brew libtool
@@ -38,6 +45,7 @@ brew openssl
 brew pcre
 brew pkg-config
 brew postgresql
+brew pt
 brew readline
 brew reattach-to-user-namespace
 brew redis

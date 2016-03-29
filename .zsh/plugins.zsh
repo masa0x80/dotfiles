@@ -14,43 +14,36 @@ if [ -r $HOME/.zplug/zplug ]; then
   zplug 'zsh-users/zsh-autosuggestions'
   zplug 'zsh-users/zsh-completions'
 
-  zplug 'stedolan/jq', \
-    as:command, \
-    from:gh-r
-  zplug 'jpmens/jo', \
-    as:command, \
-    do:'cd $HOME/.zplug/repos/jpmens/jo && autoreconf -i && ./configure --prefix=$HOME/.zplug && make check && make install'
-
-  if [[ $OSTYPE == darwin* ]]; then
-    zplug 'junegunn/fzf-bin', \
+  if [[ $OSTYPE != darwin* ]]; then
+    zplug 'stedolan/jq', \
       as:command, \
-      from:gh-r, \
-      file:fzf, \
-      of:"*darwin*amd64*", \
-      on:junegunn/fzf
-  else
+      from:gh-r
+    zplug 'jpmens/jo', \
+      as:command, \
+      do:'cd $HOME/.zplug/repos/jpmens/jo && autoreconf -i && ./configure --prefix=$HOME/.zplug && make check && make install'
+
     zplug 'junegunn/fzf-bin', \
       as:command, \
       from:gh-r, \
       file:fzf, \
       of:"*linux*amd64*", \
       on:junegunn/fzf
+    zplug 'junegunn/fzf', \
+      as:command, \
+      of:bin/fzf-tmux
+    zplug 'peco/peco', \
+      as:command, \
+      from:gh-r
+
+    zplug 'direnv/direnv', \
+      as:command, \
+      at:v2.6.0, \
+      from:gh-r
+
+    zplug 'monochromegane/the_platinum_searcher', \
+      from:gh-r, \
+      do:"mkdir -p $HOME/.zplug/bin; ln -s $HOME/.zplug/{repos/**/*/pt,bin/pt}"
   fi
-  zplug 'junegunn/fzf', \
-    as:command, \
-    of:bin/fzf-tmux
-  zplug 'peco/peco', \
-    as:command, \
-    from:gh-r
-
-  zplug 'monochromegane/the_platinum_searcher', \
-    from:gh-r, \
-    do:"mkdir -p $HOME/.zplug/bin; ln -s $HOME/.zplug/{repos/**/*/pt,bin/pt}"
-
-  zplug 'direnv/direnv', \
-    as:command, \
-    at:v2.6.0, \
-    from:gh-r
 
   if ! zplug check --verbose; then
     printf "Install? [y/N]: "
