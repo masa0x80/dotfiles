@@ -8,6 +8,9 @@ augroup END
 
 let g:vim_json_syntax_conceal = 0
 
+" Use vim-parenmatch instead of parenmatch
+let g:loaded_matchparen = 1
+
 " Reload vimrc
 noremap <Leader>R :<C-u>source $HOME/.vimrc<CR>:noh<CR>
 

@@ -40,3 +40,9 @@ repo = 'tpope/vim-rails'
 
 [[plugins]]
 repo = 'basyura/unite-rails'
+
+[[plugins]]
+repo = 'itchyny/vim-parenmatch'
+
+[[plugins]]
+repo = 'itchyny/vim-cursorword'
