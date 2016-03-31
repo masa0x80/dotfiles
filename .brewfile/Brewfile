@@ -11,7 +11,7 @@ brew lsof
 brew rsync
 
 tap neovim/neovim
-brew neovim
+brew neovim --HEAD
 
 tap rcmdnk/file
 brew brew-file
@@ -45,12 +45,12 @@ brew openssl
 brew pcre
 brew pkg-config
 brew postgresql
-brew pt
 brew readline
 brew reattach-to-user-namespace
 brew redis
+brew the_platinum_searcher
 brew tmux
 brew tree
-brew vim --with-lua
+# brew vim --with-lua
 brew wget
-brew zsh
+brew zsh --disable-etcdir

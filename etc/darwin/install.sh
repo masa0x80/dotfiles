@@ -7,7 +7,7 @@ else
   xcode-select --install
 fi
 
-# prepare to install homebrew
+# Prepare to install homebrew
 # ref: https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Troubleshooting.md
 if test -z "$(ls -l /usr/local | grep bin | grep $(whoami))"; then
   if test -e /usr/local; then
