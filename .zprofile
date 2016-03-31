@@ -1,9 +1,7 @@
 # profiling start
 # zmodload zsh/zprof
 
-load_file() {
-  test -r $1 && source $1
-}
+load_file() { test -r $1 && source $1 }
 
 fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
 
@@ -54,7 +52,7 @@ export FZF_DEFAULT_OPTS='
 '
 
 # OSごとの設定の読み込み
-for config_file ($HOME/.zsh/os/$(uname | tr A-Z a-z)/env/*.zsh(N)); do
+for config_file ($HOME/.zsh/os/$(uname | tr A-Z a-z)/profile/*.zsh(N)); do
   load_file $config_file
 done
 
@@ -62,4 +60,4 @@ done
 load_file $HOME/.proxy
 
 # 環境ローカルの設定の読み込み
-load_file $HOME/.private/zsh/env
+load_file $HOME/.private/zsh/profile
