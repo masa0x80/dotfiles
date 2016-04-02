@@ -2,8 +2,6 @@
 if dein#tap('vim-colors-solarized')
   set background=dark
   colorscheme solarized
-else
-  colorscheme desert
 endif
 
 let g:lightline = {

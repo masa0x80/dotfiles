@@ -5,6 +5,7 @@ augroup HighlightSpaces
  autocmd VimEnter,ColorScheme * highlight IndentGuidesEven guibg=black ctermbg=black
  autocmd VimEnter,WinEnter,BufRead * match Spaces /　\|[　 ]\+$/
 augroup END
+colorscheme desert
 
 let g:vim_json_syntax_conceal = 0
 
