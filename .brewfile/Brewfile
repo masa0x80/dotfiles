@@ -1,7 +1,4 @@
 # tap repositories and their packages
-tap argon/mas
-brew mas
-
 tap caskroom/cask
 file $HOME/.brewfile/cask
 
@@ -54,3 +51,7 @@ brew tree
 # brew vim --with-lua
 brew wget
 brew zsh --disable-etcdir
+
+tap argon/mas
+brew mas
+file $HOME/.brewfile/appstore
