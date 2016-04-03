@@ -50,7 +50,7 @@ brew redis
 brew the_platinum_searcher
 brew tmux
 brew tree
-# brew vim --with-lua
+brew vim --with-lua --without-python
 brew wget
 brew zsh --disable-etcdir
 
