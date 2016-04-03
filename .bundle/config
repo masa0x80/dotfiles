@@ -1,0 +1,2 @@
+---
+BUNDLE_BUILD__LIBV8: "--with-cxx=/usr/local/bin/g++-4.2"
