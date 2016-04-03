@@ -9,7 +9,7 @@ fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
 export LANG=ja_JP.UTF-8
 
 # path
-export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin:$HOME/bin
+export PATH=/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/sbin:$HOME/bin
 
 # anyenv
 export PATH=$HOME/.anyenv/bin:$PATH
