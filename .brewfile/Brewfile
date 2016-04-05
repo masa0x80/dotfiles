@@ -1,6 +1,8 @@
 # tap repositories and their packages
-tap caskroom/cask
-file $HOME/.brewfile/cask
+tap rcmdnk/file
+brew brew-file
+
+tap homebrew/services
 
 tap homebrew/dupes
 brew less
@@ -9,16 +11,8 @@ brew rsync
 # gcc for therubyracer installation
 brew apple-gcc42
 
-tap neovim/neovim
-brew neovim --HEAD
-
-tap rcmdnk/file
-brew brew-file
-
 tap peco/peco
 brew peco
-
-tap homebrew/services
 
 # Other Homebrew packages
 brew autoconf
@@ -53,6 +47,12 @@ brew tree
 brew vim --with-lua --without-python
 brew wget
 brew zsh --disable-etcdir
+
+tap neovim/neovim
+brew neovim --HEAD
+
+tap caskroom/cask
+file $HOME/.brewfile/cask
 
 tap argon/mas
 brew mas
