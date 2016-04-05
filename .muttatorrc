@@ -6,7 +6,7 @@ set gui=all
 nnoremap gi :goto Inbox<CR>
 nnoremap gt :goto Sent Mail<CR>
 nnoremap gs <C-b>status:Marked<CR><ESC>
-nnoremap / <C-b>
+nnoremap / <C-b><M-b>
 
 nnoremap <C-S-n> <C-TAB>
 nnoremap <C-S-p> <S-C-TAB>
