@@ -43,6 +43,11 @@ if [ -r $HOME/.zplug/zplug ]; then
     zplug 'monochromegane/the_platinum_searcher', \
       from:gh-r, \
       do:"mkdir -p $HOME/.zplug/bin; ln -s $HOME/.zplug/{repos/**/*/pt,bin/pt}"
+
+    zplug 'monwhitaker/gibo', \
+      file:gibo, \
+      as:command, \
+      do:'$HOME/.zplug/repos/simonwhitaker/gibo/gibo -u'
   fi
 
   if ! zplug check --verbose; then

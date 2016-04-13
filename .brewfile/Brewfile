@@ -25,6 +25,7 @@ brew fzf
 brew gdbm
 brew gettext
 brew git
+brew gibo
 brew go
 brew jo
 brew jq
