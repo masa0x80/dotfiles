@@ -31,6 +31,9 @@ node[:recipes] = node[:recipes].concat(
       path: 'common/pyenv/install.rb',
       tags: %w[append pyenv],
     }, {
+      path: 'linux/phantomjs/install.rb',
+      tags: %w[append phantomjs],
+    }, {
       path: 'linux/docker/install.rb',
       tags: %w[append docker],
     }, {

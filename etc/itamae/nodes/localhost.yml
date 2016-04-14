@@ -38,3 +38,5 @@
 :vagrant:
   :rpm_url: https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.rpm
   :package: vagrant-1.8.1-1.x86_64
+:phantomjs:
+  :version: 2.1.1

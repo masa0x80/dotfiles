@@ -37,6 +37,7 @@ brew mysql
 brew oniguruma
 brew openssl
 brew pcre
+brew phantomjs
 brew pkg-config
 brew postgresql
 brew readline
