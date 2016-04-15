@@ -27,6 +27,7 @@ brew gettext
 brew git
 brew gibo
 brew go
+brew imagemagick
 brew jo
 brew jq
 brew keychain
