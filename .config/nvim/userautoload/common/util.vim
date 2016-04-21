@@ -36,7 +36,7 @@ noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('
 " noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
 " noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
-augroup FileTypeGroup
+augroup EraseTrailingSpaces
   autocmd!
   " 行末のスペース削除
   " ref: http://qiita.com/mktakuya/items/2a6cd35ca0c1b217e28c
