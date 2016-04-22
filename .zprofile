@@ -24,6 +24,12 @@ elif (( $+commands[vim] )); then
   export EDITOR=vim
 fi
 
+# pager
+if (( $+commands[less] )); then
+  export PAGER=less
+fi
+export LESS='-R'
+
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME=$HOME/.config
 
