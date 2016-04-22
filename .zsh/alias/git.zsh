@@ -232,6 +232,8 @@ alias glum='git pull upstream master'
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit -m "--wip--"'
 
+alias gfx='git fixup'
+
 
 if (( $+commands[fzf] )); then
   # fshow - git commit browser (enter for show, ctrl-d for diff)
