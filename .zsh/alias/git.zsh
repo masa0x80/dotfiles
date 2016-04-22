@@ -130,6 +130,7 @@ fi
 }
 compdef _git ggp=git-checkout
 alias ggpush='git push origin $(git_current_branch)'
+alias ggpush!='git push --force-with-lease origin $(git_current_branch)'
 compdef _git ggpush=git-checkout
 ggpnp() {
 if [[ "$#" == 0 ]]; then
