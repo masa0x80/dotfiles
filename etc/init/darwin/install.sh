@@ -17,7 +17,7 @@ if test -z "$(ls -l /usr/local | grep bin | grep $(whoami))"; then
 fi
 
 # Install brew-file
-if type -a brew > /dev/null 2>&1; then
+if type -a brew-file > /dev/null 2>&1; then
   echo '*** Skip brew-file install'
 else
   curl -fsSL https://raw.github.com/rcmdnk/homebrew-file/install/install.sh | sh
