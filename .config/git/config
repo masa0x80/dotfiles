@@ -1,8 +1,6 @@
 [core]
   autocrlf = false
   excludesfile = ~/.config/git/ignore
-[credential]
-  helper = cache
 [include]
   path = ~/.private/git/config
 [alias]
@@ -22,4 +20,4 @@
   branch      = auto
   interactive = auto
 [rebase]
-	autosquash = true
+  autosquash = true
