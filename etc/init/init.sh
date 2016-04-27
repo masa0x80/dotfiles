@@ -52,5 +52,15 @@ fi
 bundle exec itamae local cookbooks/common/mysql/initialize.rb -y nodes/localhost.yml
 cd ../../
 
+case `uname` in
+  Darwin)
+    echo ''
+    echo '-------------------------------------------'
+    echo -e '  \033[1;37mEdit terminal.app profile settings.\033[0;39m'
+    echo -e '  \033[1;37mUse ./etc/data/terminal/Hybrid.terminal\033[0;39m'
+    echo '-------------------------------------------'
+    ;;
+esac
+
 unset RUBY_VERSION
 unset SCRIPT_DIR
