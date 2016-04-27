@@ -5,7 +5,7 @@ set gui=all
 " Shortcut
 nnoremap gi :goto Inbox<CR>
 nnoremap gt :goto Sent Mail<CR>
-nnoremap gs <C-b>status:Marked<CR><ESC>
+nnoremap gs <C-b><M-b>status:Marked<CR><ESC>
 nnoremap / <C-b><M-b>
 
 nnoremap <C-S-n> <C-TAB>
@@ -31,7 +31,7 @@ cnoremap <C-p> <S-TAB>
 
 inoremap <C-s> status:Marked
 
-noremap ,r :source .muttatorrc<CR>
+noremap ,r :source ~/.muttatorrc<CR>
 noremap ,,r :restart<CR>
 
 " IME disable
