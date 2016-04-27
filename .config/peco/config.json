@@ -1,4 +1,11 @@
 {
+  "Style": {
+    "Basic":          ["on_default", "default"],
+    "SavedSelection": ["yellow"],
+    "Selected":       ["underline", "green"],
+    "Query":          ["bold", "white"],
+    "Matched":        ["underline", "bold", "white"]
+  },
   "Keymap": {
     "C-z": "peco.InvertSelection",
     "C-i": "peco.ToggleSelectionAndSelectNext",

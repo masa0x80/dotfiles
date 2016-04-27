@@ -53,8 +53,8 @@ export FZF_DEFAULT_OPTS='
 --bind=ctrl-u:page-up
 --bind=ctrl-d:page-down
 --bind=ctrl-z:toggle-all
---color dark,hl:33,hl+:37,fg+:235,bg+:234,fg+:254
---color info:254,prompt:37,spinner:108,pointer:168,marker:168
+--color fg:-1,bg:-1,hl:229,fg+:3,bg+:233,hl+:103
+--color info:150,prompt:110,spinner:150,pointer:167,marker:174
 '
 
 # OSごとの設定の読み込み

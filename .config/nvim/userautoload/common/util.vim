@@ -1,7 +1,7 @@
 " highlight
 augroup HighlightSpaces
  autocmd!
- autocmd ColorScheme * highlight Spaces term=underline guibg=lightblue ctermbg=lightblue
+ autocmd ColorScheme * highlight Spaces term=underline guibg=white ctermbg=white
  autocmd VimEnter,ColorScheme * highlight IndentGuidesEven guibg=black ctermbg=black
  autocmd VimEnter,WinEnter,BufRead * match Spaces /　\|[　 ]\+$/
 augroup END

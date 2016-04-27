@@ -1,11 +1,10 @@
 " colorscheme
-if dein#tap('vim-colors-solarized')
+if dein#tap('vim-hybrid')
   set background=dark
-  colorscheme solarized
+  colorscheme hybrid
 endif
 
 let g:lightline = {
-  \   'colorscheme': g:colors_name,
   \   'mode_map': {'c': 'NORMAL'},
   \   'active': {
   \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]

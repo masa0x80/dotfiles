@@ -60,3 +60,7 @@ gitのユーザー設定は、`$HOME/.private/git/config` に書いて下さい�
 `make deploy` 時に `TAGS` を指定することで特定のツールのインストールを行うことができます。
 
 `TAGS=common make init` を実行すると代表的なツールのみを短時間でインストールすることができます。
+
+## Terminal Profile for Mac
+
+下記ファイルを読み込みTerminal.appのプロファイル設定を行ってください。

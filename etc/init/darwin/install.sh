@@ -30,12 +30,3 @@ brew upgrade
 
 # Install tools
 sh -lc 'brew file install'
-
-# Solarized for terminal
-SOLARIZED_GIT_DIR="$HOME/src/solarized.git"
-if ! test -e $SOLARIZED_GIT_DIR; then
-  git clone https://github.com/tomislav/osx-terminal.app-colors-solarized $SOLARIZED_GIT_DIR
-  echo -e '\033[1;37mEdit terminal.app profile settings.\033[1;37m'
-  open $SOLARIZED_GIT_DIR
-fi
-unset SOLARIZED_GIT_DIR
