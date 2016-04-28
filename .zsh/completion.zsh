@@ -24,3 +24,6 @@ fi
 if [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
+
+# Source: https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
+load_file $HOME/.zsh/misc/fzf_completion.zsh
