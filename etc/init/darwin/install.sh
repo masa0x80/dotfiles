@@ -24,9 +24,9 @@ else
 fi
 
 # Update homebrew
-brew update
+sh -lc 'brew update'
 # Upgrade formula
-brew upgrade
+sh -lc 'brew upgrade'
 
 # Install tools
 sh -lc 'brew file install'
