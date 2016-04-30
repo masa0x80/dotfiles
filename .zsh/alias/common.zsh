@@ -34,6 +34,10 @@ alias -g N2=" 2>/dev/null"
 alias -g P='| peco'
 alias -g T='| tail'
 
+if (( $+commands[htop] )); then
+  alias top=htop
+fi
+
 alias h='\history -n -r 1 | grep "$@"'
 
 # refs: http://qiita.com/yuku_t/items/4ffaa516914e7426419a
