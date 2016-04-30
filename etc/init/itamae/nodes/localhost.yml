@@ -24,7 +24,7 @@
     :package: VirtualBox-5.0-5.0.12_104815_el7-1
 
 :git:
-  :version: 2.7.1
+  :version: 2.8.2
 :nodejs:
   :version: v5.0.0
 :python:
