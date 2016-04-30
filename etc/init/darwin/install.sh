@@ -30,3 +30,4 @@ sh -lc 'brew upgrade'
 
 # Install tools
 sh -lc 'brew file install'
+sh -lc 'brew cask cleanup'
