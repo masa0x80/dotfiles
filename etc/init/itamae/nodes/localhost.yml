@@ -27,6 +27,8 @@
   :version: 2.8.2
 :nodejs:
   :version: v5.0.0
+:perl:
+  version: 5.22.1
 :python:
   :version2: 2.7.11
   :version3: 3.5.1
