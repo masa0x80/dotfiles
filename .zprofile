@@ -60,6 +60,11 @@ export FZF_DEFAULT_OPTS='
 --color info:150,prompt:110,spinner:150,pointer:167,marker:174
 '
 
+# enhancd
+if (( $+commands[fzf-tmux] )); then
+  export ENHANCD_FILTER=fzf-tmux
+fi
+
 # OSごとの設定の読み込み
 for config_file ($HOME/.zsh/os/$(uname | tr A-Z a-z)/profile/*.zsh(N)); do
   load_file $config_file
