@@ -1,6 +1,7 @@
+:os_version: :centos7_2
+
 :src_dir: '~/src'
 :bin_dir: '/usr/local/bin'
-:os_version: :centos7_2
 
 :centos6_7:
   :mysql:
@@ -27,6 +28,8 @@
   :version: 2.8.2
 :nodejs:
   :version: v5.0.0
+:phantomjs:
+  :version: 2.1.1
 :perl:
   version: 5.22.1
 :python:
@@ -34,11 +37,9 @@
   :version3: 3.5.1
 :tmux:
   :version: 2.1
-:vim:
-  :version: 7.4
-  :make_options: '--enable-fail-if-missing --enable-fontset --enable-cscope --enable-multibyte --enable-rubyinterp --enable-luainterp --enable-pythoninterp --with-x=no --disable-gui --disable-xim --with-features=huge --disable-selinux --disable-gpm --disable-darwin'
 :vagrant:
   :rpm_url: https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.rpm
   :package: vagrant-1.8.1-1.x86_64
-:phantomjs:
-  :version: 2.1.1
+:vim:
+  :version: 7.4
+  :make_options: '--enable-fail-if-missing --enable-fontset --enable-cscope --enable-multibyte --enable-rubyinterp --enable-luainterp --enable-pythoninterp --with-x=no --disable-gui --disable-xim --with-features=huge --disable-selinux --disable-gpm --disable-darwin'
