@@ -27,3 +27,6 @@ fi
 
 # Source: https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
 load_file $HOME/.zsh/misc/fzf_completion.zsh
+
+# Source: https://github.com/simonwhitaker/gibo/blob/master/gibo-completion.zsh
+load_file $HOME/.zsh/misc/gibo-completion.zsh
