@@ -40,6 +40,9 @@ export TERM=xterm-256color
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
+# gtags (GNU Global)
+export GTAGSLABEL=pygments
+
 # rails (for rails server alias)
 export RAILS_SERVER_PORT=3000
 

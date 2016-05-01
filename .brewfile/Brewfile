@@ -26,6 +26,7 @@ brew gdbm
 brew gettext
 brew git
 brew gibo
+brew global --with-exuberant-ctags --with-pygments
 brew go
 brew htop
 brew imagemagick

@@ -19,6 +19,9 @@ node[:recipes] = node[:recipes].concat(
       path: 'linux/vim/install.rb',
       tags: %w[append vim],
     }, {
+      path: 'linux/global/install.rb',
+      tags: %w[append global],
+    }, {
       path: 'linux/tmux/install.rb',
       tags: %w[append tmux],
     }, {

@@ -13,3 +13,8 @@ Thumbs.db
 /vendor/bin
 
 /.envrc
+
+# gtags (GNU Global)
+GTAGS
+GRTAGS
+GPATH
