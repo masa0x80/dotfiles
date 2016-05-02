@@ -19,15 +19,17 @@ cd itamae
 
 # Install anyanv & ruby
 if type -a anyenv > /dev/null 2>&1; then
-  echo '*** Skip anyenv install'
+  # update *env
+  anyenv update
+  if [ -z "$(rbenv version | grep $RUBY_VERSION)" ]; then
+    rbenv install $RUBY_VERSION
+    rbenv global  $RUBY_VERSION
+  fi
 else
   git clone https://github.com/riywo/anyenv $HOME/.anyenv
 
   source $HOME/.bashrc
   git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
-
-  # update *env
-  anyenv update
 
   if type -a rbenv > /dev/null 2>&1; then
     echo '*** Skip rbenv install'
