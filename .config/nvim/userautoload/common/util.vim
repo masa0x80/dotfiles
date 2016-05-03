@@ -21,6 +21,8 @@ nnoremap <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>noh<CR>
 " Save
 nnoremap <Leader>, :<C-u>set nopaste<CR>:<C-u>update<CR>
 
+nnoremap ;; :<C-u>cclose<CR>
+
 " rubyデバッグ用
 augroup RubyDebug
   autocmd!
