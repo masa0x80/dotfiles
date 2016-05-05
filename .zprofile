@@ -65,6 +65,9 @@ if (( $+commands[fzf-tmux] )); then
   export ENHANCD_FILTER=fzf-tmux
 fi
 
+# zplug
+export ZPLUG_HOME=$HOME/.zplug
+
 # OSごとの設定の読み込み
 for config_file ($HOME/.zsh/os/$(uname | tr A-Z a-z)/profile/*.zsh(N)); do
   load_file $config_file

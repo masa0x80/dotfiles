@@ -1,7 +1,8 @@
-if [ ! -e $HOME/.zplug/zplug ]; then
-  ZPLUG_REVISION='a9a82619549fa03fb1d315490169f89e9d7898a6'
-  git clone https://github.com/b4b4r07/zplug $HOME/.zplug --depth=1
-  cd $HOME/.zplug/ && git checkout $ZPLUG_REVISION
+if [ ! -e $ZPLUG_HOME ]; then
+  ZPLUG_REVISION='d8199dd4b910f00c325a050134dcf93a072f158b'
+  git clone https://github.com/zplug/zplug.git $ZPLUG_HOME
+  cd $ZPLUG_HOME && git checkout $ZPLUG_REVISION
+  source $ZPLUG_HOME/init.zsh
 fi
 
 if [ -r $HOME/.zplug/zplug ]; then
