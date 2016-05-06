@@ -1,11 +1,11 @@
+set foldtext=FoldCCtext()
 let g:foldCCtext_enable_autofdc_adjuster = 1
 
 augroup FileTypeGroup
   autocmd!
   autocmd VimEnter,WinEnter,BufRead * :set foldcolumn=0
-  autocmd VimEnter,WinEnter,BufRead *.md,*.mkd,*.markdown,*.vim :set foldcolumn=2
+  autocmd VimEnter,WinEnter,BufRead *.md,*.mkd,*.markdown,*.vim :set foldcolumn=3
 augroup END
-set foldtext=foldCCtext()
 
 nnoremap <expr>l foldclosed('.') != -1 ? 'zo' : 'l'
 nnoremap <silent>_ :<C-u>call <SID>smart_foldcloser()<CR>
