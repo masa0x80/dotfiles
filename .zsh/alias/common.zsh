@@ -46,3 +46,15 @@ ssh() {
   command ssh $@
   tmux rename-window $window_name
 }
+
+sudo() {
+  if [[ $1 == -- ]]; then
+    shift
+    command sudo "$@"
+  elif [[ $1 =~ ^vim?$ ]] && (( $+commands[sudo] )); then
+    shift
+    command sudo -e "$@"
+  else
+    command sudo "$@"
+  fi
+}
