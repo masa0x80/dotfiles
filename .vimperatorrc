@@ -70,7 +70,6 @@ map <C-d> 20<C-e>
 map <C-u> 20<C-y>
 " 使わないので無効化
 map a <NOP>
-map D <NOP>
 map <C-g> <NOP>
 " 再起動
 map ,,r :restart<CR>
