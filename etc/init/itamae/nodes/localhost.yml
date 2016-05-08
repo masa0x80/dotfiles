@@ -29,7 +29,7 @@
 :global:
   :version: 6.5.4
 :nodejs:
-  :version: v5.0.0
+  :version: v6.1.0
 :phantomjs:
   :version: 2.1.1
 :perl:
