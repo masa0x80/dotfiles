@@ -1,7 +1,7 @@
 s() {
   local window_name=$(tmux display -p '#{window_name}')
   tmux rename-window ${window_name}/server
-  command spring rails s -p $RAILS_SERVER_PORT
+  command rails s -p $RAILS_SERVER_PORT
 }
 alias ss="pkill -f 'ruby .*/bin/spring'; pkill -f 'spring app'; pkill -f 'spring server'"
 alias c='rails c'
