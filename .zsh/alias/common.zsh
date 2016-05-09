@@ -1,4 +1,5 @@
 alias diff='diff -u'
+alias watch='watch -n 0.5'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias md='mkdir -p'

@@ -50,6 +50,7 @@ brew the_platinum_searcher
 brew tmux
 brew tree
 brew vim --with-lua --without-python
+brew watch
 brew wget
 brew zsh --disable-etcdir
 
