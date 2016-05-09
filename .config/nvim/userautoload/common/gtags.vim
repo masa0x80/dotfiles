@@ -10,15 +10,9 @@ augroup AutoExecGlobal
 augroup END
 
 function! s:global()
-  if !s:is_global_running()
-    let s:global_pid = vimproc#popen2('global -uv')['pid']
-  endif
-endfunction
-
-function! s:is_global_running()
-  if exists('s:global_pid')
-    return vimproc#kill('s:global_pid', 0) == 0
+  if has('nvim')
+    call jobstart('type -a global && global -uv')
   else
-    return 0
+    call vimproc#system_bg('type -a global && global -uv')
   endif
 endfunction
