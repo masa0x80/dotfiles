@@ -1,7 +1,7 @@
 # profiling start
 # zmodload zsh/zprof
 
-load_file() { test -r $1 && source $1 }
+load_file() { test -r $1 && . $1 }
 
 fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
 
