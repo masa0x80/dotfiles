@@ -61,8 +61,8 @@ export FZF_DEFAULT_OPTS='
 '
 
 # enhancd
-if (( $+commands[fzf-tmux] )); then
-  export ENHANCD_FILTER=fzf-tmux
+if (( $+commands[fzf] )); then
+  export ENHANCD_FILTER=fzf
 fi
 
 # zplug
