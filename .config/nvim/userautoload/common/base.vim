@@ -82,5 +82,8 @@ set commentstring=%s
 " disable mouse
 set mouse=
 
+" clipboard
+set clipboard+=unnamed
+
 " mapleader
 let g:mapleader=","
