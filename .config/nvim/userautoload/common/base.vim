@@ -34,12 +34,8 @@ set backspace=indent,eol,start
 
 " よしなに検索
 set ignorecase smartcase
-" インクメンタルサーチ
-set incsearch
 " 検索文字の強調表示
 set hlsearch
-" 検索で一番下まで行ったら上に戻る
-set wrapscan
 
 " 対応する括弧の表示
 set showmatch

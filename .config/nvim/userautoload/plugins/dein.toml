@@ -46,3 +46,15 @@ repo = 'itchyny/vim-parenmatch'
 
 [[plugins]]
 repo = 'itchyny/vim-cursorword'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'
+
+[[plugins]]
+repo = 'haya14busa/incsearch-easymotion.vim'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'

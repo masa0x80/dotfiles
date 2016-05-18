@@ -13,13 +13,10 @@ let g:vim_json_syntax_conceal = 0
 let g:loaded_matchparen = 1
 
 " Reload vimrc
-noremap <Leader>R :<C-u>source $HOME/.vimrc<CR>:noh<CR>
-
-nnoremap <Leader>p :<C-u>set paste<CR>
-nnoremap <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>noh<CR>
+noremap <Leader>R :<C-u>source $HOME/.vimrc<CR>
 
 " Save
-nnoremap <Leader>, :<C-u>set nopaste<CR>:<C-u>update<CR>
+nnoremap <Leader>, :<C-u>update<CR>
 
 nnoremap ;; :<C-u>cclose<CR>
 
