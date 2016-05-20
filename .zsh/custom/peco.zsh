@@ -53,7 +53,7 @@ if (( $+commands[peco] )); then
   peco-gst(){
     git status -s -uno | peco --query "$*" | cut -d ' ' -f 3
   }
-  alias GST=peco-gst
+  alias -g GST='$(peco-gst)'
 
   # ssh with peco
   # ref: http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
