@@ -1,11 +1,7 @@
 %w[
   epel-release
-  git
-  zsh
   man
   man-pages
-  tree
-  wget
   bind-utils
   nc
   tmpwatch
@@ -14,7 +10,6 @@
   libselinux-python
   fuse-libs
   lbzip2
-  automake
 ].each do |name|
   package name do
     action :install

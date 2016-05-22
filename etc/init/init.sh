@@ -5,6 +5,9 @@ mkdir -p $HOME/src
 export SCRIPT_DIR=$(cd $(dirname $0); pwd)
 export RUBY_VERSION=`cat $SCRIPT_DIR/itamae/.ruby-version`
 
+# Disable analytics
+export HOMEBREW_NO_ANALYTICS=1
+
 cd $SCRIPT_DIR
 case `uname` in
   Darwin)

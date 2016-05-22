@@ -20,12 +20,4 @@ if [ -z `grep '^include_only=.jp$' /etc/yum/pluginconf.d/fastestmirror.conf` ]; 
   sudo sh -c "echo 'include_only=.jp' >> /etc/yum/pluginconf.d/fastestmirror.conf"
 fi
 
-# gitのインストール
-if type -a git > /dev/null 2>&1; then
-  echo 'skip git install'
-else
-  sudo -E yum install -y git which bzip2 unzip curl
-fi
-
-# rubyのインストールの準備
-sudo -E yum install -y patch readline-devel zlib-devel openssl-devel gcc-c++ bzip2-devel sqlite-devel libffi-devel libxslt-devel autoconf
+sh -lc 'bash $SCRIPT_DIR/centos/brew.sh'
