@@ -241,7 +241,7 @@ if (( $+commands[fzf] )); then
     local out shas sha q k
     while out=$(
         git log --graph --color=always \
-            --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+            --format=format:'%C(auto)%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d'"$@" |
         fzf --ansi --multi --no-sort --reverse --query="$q" \
             --print-query --expect=ctrl-d); do
       q=$(head -1 <<< "$out")
