@@ -6,12 +6,14 @@ s() {
 
 bundle() {
   command bundle $@
-  if (( $+commands[gtags] )); then
-    local log_file=/tmp/gtags-$$
-    echo ''
-    echo "${fg[magenta]}gtags error log: $log_file${fg[default]}"
-    echo ''
-    (gtags 2> $log_file) &
+  if [[ $1 == install ]]; then
+    if (( $+commands[gtags] )); then
+      local log_file=/tmp/gtags-$$
+      echo ''
+      echo "${fg[magenta]}gtags error log: $log_file${fg[default]}"
+      echo ''
+      (cpulimit -i -l 30 gtags 2> $log_file) &
+    fi
   fi
 }
 
