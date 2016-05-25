@@ -60,6 +60,9 @@ export FZF_DEFAULT_OPTS='
 --color info:150,prompt:110,spinner:150,pointer:167,marker:174
 '
 
+# Disable homebrew analytics
+export HOMEBREW_NO_ANALYTICS=1
+
 # enhancd
 if (( $+commands[fzf] )); then
   export ENHANCD_FILTER=fzf
