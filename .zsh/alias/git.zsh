@@ -259,3 +259,6 @@ if (( $+commands[fzf] )); then
   }
   alias lg='fshow'
 fi
+
+# fetch git commit hash
+alias -g GH='$(git log --oneline | peco | cut -d " " -f 1)'
