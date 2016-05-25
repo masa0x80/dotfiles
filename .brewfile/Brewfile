@@ -11,14 +11,12 @@ brew rsync
 # gcc for therubyracer installation
 brew apple-gcc42
 
-tap peco/peco
-brew peco
-
 # Other Homebrew packages
 brew autoconf
 brew automake
 brew cmake
 brew coreutils
+brew cpulimit
 brew curl
 brew direnv
 brew fzf
@@ -26,7 +24,7 @@ brew gdbm
 brew gettext
 brew git
 brew gibo
-brew global --with-exuberant-ctags --with-pygments
+brew global --with-ctags --with-pygments
 brew go
 brew htop
 brew imagemagick
@@ -40,6 +38,7 @@ brew mysql
 brew oniguruma
 brew openssl
 brew pcre
+brew peco
 brew phantomjs
 brew pkg-config
 brew postgresql
@@ -52,7 +51,7 @@ brew tree
 brew vim --with-lua --without-python
 brew watch
 brew wget
-brew zsh --disable-etcdir
+brew zsh --without-etcdir
 
 tap neovim/neovim
 brew neovim --HEAD
