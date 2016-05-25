@@ -4,6 +4,9 @@
 :bin_dir: '/usr/local/bin'
 
 :centos6_7:
+  :mysql:
+    :rpm_url: http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
+    :package: mysql-community-release
   :remi_repo:
     :rpm_url: http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
     :package: remi-release
@@ -11,6 +14,9 @@
     :rpm_url: http://download.virtualbox.org/virtualbox/5.0.12/VirtualBox-5.0-5.0.12_104815_el6-1.x86_64.rpm
     :package: VirtualBox-5.0-5.0.12_104815_el6-1
 :centos7_2:
+  :mysql:
+    :rpm_url: http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+    :package: mysql57-community-release
   :remi_repo:
     :rpm_url: http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
     :package: remi-release
@@ -18,13 +24,24 @@
     :rpm_url: http://download.virtualbox.org/virtualbox/5.0.12/VirtualBox-5.0-5.0.12_104815_el7-1.x86_64.rpm
     :package: VirtualBox-5.0-5.0.12_104815_el7-1
 
+:git:
+  :version: 2.8.3
+:global:
+  :version: 6.5.4
 :nodejs:
   :version: v6.2.0
+:phantomjs:
+  :version: 2.1.1
 :perl:
   version: 5.22.1
 :python:
   :version2: 2.7.11
   :version3: 3.5.1
+:tmux:
+  :version: 2.1
 :vagrant:
   :rpm_url: https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.rpm
   :package: vagrant-1.8.1-1.x86_64
+:vim:
+  :version: 7.4
+  :make_options: '--enable-fail-if-missing --enable-fontset --enable-cscope --enable-multibyte --enable-rubyinterp --enable-luainterp --enable-pythoninterp --with-x=no --disable-gui --disable-xim --with-features=huge --disable-selinux --disable-gpm --disable-darwin'

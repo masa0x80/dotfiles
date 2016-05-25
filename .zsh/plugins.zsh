@@ -1,5 +1,5 @@
 if [ ! -e $ZPLUG_HOME ]; then
-  ZPLUG_REVISION='1516fa695feafdc69efa6cb50e3c1bf7508a7518'
+  ZPLUG_REVISION='d8199dd4b910f00c325a050134dcf93a072f158b'
   git clone https://github.com/zplug/zplug.git $ZPLUG_HOME
   cd $ZPLUG_HOME && git checkout $ZPLUG_REVISION
   source $ZPLUG_HOME/init.zsh
@@ -16,6 +16,37 @@ if [ -r $HOME/.zplug/zplug ]; then
 
   zplug 'zsh-users/zsh-autosuggestions'
   zplug 'zsh-users/zsh-completions'
+
+  if [[ $OSTYPE != darwin* ]]; then
+    zplug 'stedolan/jq', \
+      as:command, \
+      from:gh-r
+    zplug 'jpmens/jo', \
+      as:command, \
+      hook-build:'cd $HOME/.zplug/repos/jpmens/jo && autoreconf -i && ./configure --prefix=$HOME/.zplug && make check && make install'
+
+    zplug 'junegunn/fzf-bin', \
+      as:command, \
+      from:gh-r, \
+      rename-to:fzf, \
+      use:"*linux*amd64*", \
+      on:junegunn/fzf
+    zplug 'junegunn/fzf', \
+      as:command, \
+      use:bin/fzf-tmux
+    zplug 'peco/peco', \
+      as:command, \
+      from:gh-r
+
+    zplug 'direnv/direnv', \
+      as:command, \
+      at:v2.6.0, \
+      from:gh-r
+
+    zplug 'monochromegane/the_platinum_searcher', \
+      from:gh-r, \
+      hook-build:"mkdir -p $HOME/.zplug/bin; ln -s $HOME/.zplug/{repos/**/*/pt,bin/pt}"
+  fi
 
   if ! zplug check --verbose; then
     printf "Install? [y/N]: "
