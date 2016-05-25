@@ -26,3 +26,6 @@ zstyle :insert-last-word match '*([[:alpha:]/\\]?|?[[:alpha:]/\\])*'
 bindkey '^]' insert-last-word
 
 bindkey "^[[Z" reverse-menu-complete
+
+bindkey "^[F" vi-find-next-char
+bindkey "^[^[F" vi-find-prev-char
