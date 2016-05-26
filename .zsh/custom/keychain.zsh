@@ -1,5 +1,5 @@
 if (( $+commands[keychain] )); then
-  eval `keychain -q --eval --agents ssh $KEYCHAIN_OPTION $SSH_KEY_FILE`
+  eval `keychain -q --eval --agents ssh $SSH_KEY_FILE`
 fi
 
 TRAPEXIT() {
