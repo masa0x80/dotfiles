@@ -42,6 +42,9 @@ fi
 
 alias h='\history -n -r 1 | grep "$@"'
 
+alias sshconfig='vim ~/.ssh/config'
+alias sconf='sshconfig'
+
 # refs: http://qiita.com/yuku_t/items/4ffaa516914e7426419a
 ssh() {
   local window_name=$(tmux display -p '#{window_name}')
