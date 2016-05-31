@@ -81,3 +81,6 @@ load_file $HOME/.proxy
 
 # 環境ローカルの設定の読み込み
 load_file $HOME/.private/zsh/profile
+
+# keychain
+load_file $HOME/.zsh/profile/keychain.zsh
