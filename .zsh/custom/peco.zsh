@@ -9,6 +9,7 @@ if [ -r $HOME/.zplug/zplug ]; then
   # git branch
   bindkey '^gb'  anyframe-widget-checkout-git-branch
   bindkey '^g^b' anyframe-widget-checkout-git-branch
+  bindkey '^g^gb'  anyframe-widget-insert-git-branch
   bindkey '^gB'  anyframe-widget-insert-git-branch
 fi
 
