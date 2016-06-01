@@ -3,6 +3,9 @@
   excludesfile = ~/.config/git/ignore
 [include]
   path = ~/.private/git/config
+[ghq]
+  root = ~/.ghq
+  root = ~/.go/src
 [alias]
   ci = commit -v
   co = checkout

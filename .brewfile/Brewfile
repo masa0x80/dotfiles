@@ -22,6 +22,7 @@ brew direnv
 brew fzf
 brew gdbm
 brew gettext
+brew ghq
 brew git
 brew gibo
 brew global --with-ctags --with-pygments
