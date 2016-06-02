@@ -8,8 +8,6 @@ tap homebrew/dupes
 brew less
 brew lsof
 brew rsync
-# gcc for therubyracer installation
-brew apple-gcc42
 
 # Other Homebrew packages
 brew autoconf
