@@ -234,31 +234,7 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 
 alias gfx='git fixup'
 
+alias lg='git fzf show'
 
-if (( $+commands[fzf] )); then
-  # fshow - git commit browser (enter for show, ctrl-d for diff)
-  fshow() {
-    local out shas sha q k
-    while out=$(
-        git log --graph --color=always \
-            --format=format:'%C(auto)%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d'"$@" |
-        fzf --ansi --multi --no-sort --reverse --query="$q" \
-            --print-query --expect=ctrl-d); do
-      q=$(head -1 <<< "$out")
-      k=$(head -2 <<< "$out" | tail -1)
-      shas=$(sed '1,2d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
-      [ -z "$shas" ] && continue
-      if [ "$k" = ctrl-d ]; then
-        git diff --color=always $shas | less -R
-      else
-        for sha in $shas; do
-          git show --color=always $sha | less -R
-        done
-      fi
-    done
-  }
-  alias lg='fshow'
-
-  # fetch git commit hash
-  alias -g GH='$(git log --oneline | fzf | cut -d " " -f 1)'
-fi
+# ref: bin/git-fzf
+alias -g GH='$(git fzf)'
