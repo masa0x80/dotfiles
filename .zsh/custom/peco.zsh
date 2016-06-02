@@ -7,16 +7,14 @@ if [ -r $HOME/.zplug/zplug ]; then
   bindkey '^r'   anyframe-widget-put-history
 
   # git branch
-  bindkey '^gb'  anyframe-widget-checkout-git-branch
-  bindkey '^g^b' anyframe-widget-checkout-git-branch
-  bindkey '^g^gb'  anyframe-widget-insert-git-branch
-  bindkey '^gB'  anyframe-widget-insert-git-branch
+  bindkey '^gb'   anyframe-widget-checkout-git-branch
+  bindkey '^g^b'  anyframe-widget-checkout-git-branch
+  bindkey '^g^gb' anyframe-widget-insert-git-branch
+  bindkey '^gB'   anyframe-widget-insert-git-branch
 fi
 
 if (( $+commands[peco] )); then
-  PECO() {
-    (git ls-tree -r --name-only HEAD || find . -path '*/\.*' -prune -o -type f -print -o -type l -print) 2> /dev/null | peco --query "$*"
-  }
+  alias -g PECO='$((git ls-tree -r --name-only HEAD || find . -path "*/\.*" -prune -o -type f -print -o -type l -print) 2> /dev/null | peco --query "$*")'
 
   # git-add with peco
   # ref: http://petitviolet.hatenablog.com/entry/20140722/1406034439
@@ -51,10 +49,7 @@ if (( $+commands[peco] )); then
   zle -N peco-git-recent-all-branches
   bindkey "^g^g^b"  peco-git-recent-all-branches
 
-  peco-gst(){
-    git status -s -uno | peco --query "$*" | cut -d ' ' -f 3
-  }
-  alias -g GST='$(peco-gst)'
+  alias -g GST='$(git status -s -uno | peco --query "$*" | cut -d " " -f 3)'
 
   peco-ghq-cd () {
     local selected_dir=$(ghq list --full-path | sed -e "s|$HOME/||g" | peco --query "$LBUFFER")
@@ -127,7 +122,7 @@ if (( $+commands[peco] )); then
   alias pv='peco-pt-vim'
 
   # vim open with peco
-  alias v='vim $(PECO)'
+  alias v='vim PECO'
 
   # ps with peco
   psp() {
