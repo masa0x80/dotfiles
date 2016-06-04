@@ -12,7 +12,7 @@ bundle() {
       echo ''
       echo "${fg[magenta]}gtags error log: $log_file${fg[default]}"
       echo ''
-      (cpulimit -i -l 30 gtags 2> $log_file) &
+      tmux new-window cpulimit -i -l 30 gtags -v &> $log_file
     fi
   fi
 }
