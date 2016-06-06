@@ -1,5 +1,6 @@
 if (( $+commands[keychain] )); then
-  eval `keychain -q --eval --agents ssh $KEYCHAIN_OPTION $SSH_KEY_FILE`
+  keychain -q $KEYCHAIN_OPTION $SSH_KEY_FILE
+  load_file $HOME/.keychain/${HOST}-sh
 fi
 
 TRAPEXIT() {
