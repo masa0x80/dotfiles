@@ -7,7 +7,7 @@ s() {
 bundle() {
   command bundle $@
   if [[ $1 == install ]]; then
-    if (( $+commands[gtags] )); then
+    if (( $+commands[gtags] && $+commands[cpulimit] && $+commands[tmux] )); then
       local log_file=/tmp/gtags-$$
       echo ''
       echo "${fg[magenta]}gtags error log: $log_file${fg[default]}"
