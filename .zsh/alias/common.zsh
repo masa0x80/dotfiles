@@ -43,6 +43,7 @@ fi
 alias h='\history -n -r 1 | grep "$@"'
 
 alias sshconfig='vim ~/.ssh/config'
+alias sconfig='sshconfig'
 alias sconf='sshconfig'
 
 # refs: http://qiita.com/yuku_t/items/4ffaa516914e7426419a
