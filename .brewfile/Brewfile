@@ -36,6 +36,8 @@ brew libyaml
 brew mysql
 brew oniguruma
 brew openssl
+brew parallel
+brew pass
 brew pcre
 brew peco
 brew phantomjs
