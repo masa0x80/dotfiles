@@ -1,6 +1,7 @@
 [core]
   autocrlf = false
   excludesfile = ~/.config/git/ignore
+  pager = diff-highlight | less -RFX
 [include]
   path = ~/.private/git/config
 [ghq]
