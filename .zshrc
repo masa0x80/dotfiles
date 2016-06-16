@@ -7,9 +7,6 @@ load_file $HOME/.zsh/history.zsh
 # load completion configuration
 load_file $HOME/.zsh/completion.zsh
 
-# load hook configuration
-load_file $HOME/.zsh/hook.zsh
-
 # load plugins
 load_file $HOME/.zsh/plugins.zsh
 
@@ -30,6 +27,9 @@ done
 
 # 環境ローカルの設定の読み込み
 load_file $HOME/.private/zsh/rc
+
+# load hook configuration
+load_file $HOME/.zsh/hook.zsh
 
 # profiling end
 # if type zprof > /dev/null 2>&1; then
