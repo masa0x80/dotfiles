@@ -16,8 +16,10 @@ let g:loaded_matchparen = 1
 noremap <Leader>R :<C-u>source $HOME/.vimrc<CR>
 
 " Save
-nnoremap <Leader>, :<C-u>update<CR>
+nnoremap <Leader>, :<C-u>set nopaste<CR>:<C-u>update<CR>
 
+nnoremap <Leader>R :<C-u>source $HOME/.vimrc<CR>
+nnoremap <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>noh<CR>
 nnoremap ;; :<C-u>cclose<CR>
 
 " rubyデバッグ用
