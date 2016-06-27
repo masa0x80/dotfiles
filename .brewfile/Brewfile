@@ -29,7 +29,6 @@ brew htop
 brew imagemagick
 brew jo
 brew jq
-brew keychain
 brew libevent
 brew libtool
 brew libyaml
