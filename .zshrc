@@ -21,7 +21,7 @@ for config_file ($HOME/.zsh/alias/*.zsh(N)); do
 done
 
 # OSごとの設定の読み込み
-for config_file ($HOME/.zsh/os/$(uname | tr A-Z a-z)/rc/*.zsh(N)); do
+for config_file ($HOME/.zsh/os/$(uname | tr '[:upper:]' '[:lower:]')/rc/*.zsh(N)); do
   load_file $config_file
 done
 
