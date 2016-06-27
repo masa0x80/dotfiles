@@ -2,6 +2,9 @@
   autocrlf = false
   excludesfile = ~/.config/git/ignore
   pager = diff-highlight | less -RFX
+[credential]
+  helper = osxkeychain
+  helper = cache
 [include]
   path = ~/.private/git/config
 [ghq]
