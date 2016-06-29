@@ -1,4 +1,4 @@
-let s:dein_sha = '41caca94b82a0b1e7b76ee6248024d43c23a998b'
+let s:dein_sha = 'be226d268a47e79f3452a7e286d040cbca68b7bf'
 
 let s:dein_dir       = expand('~/.cache/dein')
 let s:dein_repo_dir  = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
@@ -25,6 +25,7 @@ endif
 call dein#begin(s:dein_dir, [expand('<sfile>'), s:toml_path, s:lazy_toml_path])
 call dein#load_toml(s:toml_path,      {'lazy': 0})
 call dein#load_toml(s:lazy_toml_path, {'lazy': 1})
+
 call dein#end()
 call dein#save_state()
 
