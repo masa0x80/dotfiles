@@ -12,7 +12,7 @@ bundle() {
       echo ''
       echo "${fg[magenta]}gtags error log: $log_file${fg[default]}"
       echo ''
-      tmux new-window cpulimit -i -l 30 gtags -v &> $log_file
+      tmux split-window -v -l 1 "tmux select-pane -t :.-; cpulimit -i -l 30 gtags -v 2>&1 | tee $log_file"
     fi
   fi
 }
