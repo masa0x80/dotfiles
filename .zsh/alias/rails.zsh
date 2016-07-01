@@ -1,10 +1,14 @@
 s() {
+  local t_window=$(tmux list-windows | grep -E '\(active\)$' | cut -d ':' -f1)
+  local t_pane=$(tmux list-pane | grep -E '\(active\)$' | cut -d ':' -f1)
   local window_name=$(tmux display -p '#{window_name}')
   tmux rename-window ${window_name}/server
-  command rails s -p $RAILS_SERVER_PORT
+  tmux split-window -t ":$t_window.$t_pane" -v -p 10 "command rails s -p $RAILS_SERVER_PORT"
 }
 
 bundle() {
+  local t_window=$(tmux list-windows | grep -E '\(active\)$' | cut -d ':' -f1)
+  local t_pane=$(tmux list-pane | grep -E '\(active\)$' | cut -d ':' -f1)
   command bundle $@
   if [[ $1 == install ]]; then
     if (( $+commands[gtags] && $+commands[cpulimit] && $+commands[tmux] )); then
@@ -12,7 +16,7 @@ bundle() {
       echo ''
       echo "${fg[magenta]}gtags error log: $log_file${fg[default]}"
       echo ''
-      tmux split-window -v -l 1 "tmux select-pane -t :.-; cpulimit -i -l 30 gtags -v 2>&1 | tee $log_file"
+      tmux split-window -t ":$t_window.$t_pane" -v -l 1 "tmux select-pane -t :.-; cpulimit -i -l 30 gtags -v 2>&1 | tee $log_file"
     fi
   fi
 }
