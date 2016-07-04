@@ -4,10 +4,20 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "bento/centos-7.1"
 
+  config.proxy.http     = ENV['http_proxy']  if ENV['http_proxy']
+  config.proxy.https    = ENV['https_proxy'] if ENV['https_proxy']
+  config.proxy.no_proxy = ENV['no_proxy']    if ENV['no_proxy']
+
   config.vm.provider "virtualbox" do |vb|
     vb.memory = ENV.fetch('VAGRANT_MEMORY', 1024)
     vb.cpus   = ENV.fetch('VAGRANT_CPUS',   2)
   end
+
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
+
+  config.vm.box_check_update = false
 
   config.vm.provision "shell", inline: <<-SHELL
     sudo yum install -y git
