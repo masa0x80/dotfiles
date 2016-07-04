@@ -19,11 +19,13 @@ if (( $+commands[peco] )); then
   # git-add with peco
   # ref: http://petitviolet.hatenablog.com/entry/20140722/1406034439
   peco-git-add() {
-    local SELECTED_FILE_TO_ADD="$(git status --porcelain  | \
-                                  peco --query "$LBUFFER" | \
-                                  awk -F ' ' '{print $NF}')"
-    if [ -n "$SELECTED_FILE_TO_ADD" ]; then
-      BUFFER="git add $(echo "$SELECTED_FILE_TO_ADD" | tr '\n' ' ')"
+    local git_root="$(git rev-parse --show-cdup)"
+    local selected_file_to_add="$(git status --porcelain   | \
+                                  peco --query "$LBUFFER"  | \
+                                  awk -F ' ' '{print $NF}' | \
+                                  xargs -I % echo "$git_root%")"
+    if [ -n "$selected_file_to_add" ]; then
+      BUFFER="git add $(echo "$selected_file_to_add" | tr '\n' ' ')"
       CURSOR=$#BUFFER
       zle accept-line
     fi
