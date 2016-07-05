@@ -51,8 +51,10 @@ gitのユーザー設定は、`$HOME/.private/git/config` に書いて下さい�
 ```
 # $HOME/.private/git/config の例
 [user]
-	name  = masa0x80
-	email = masa0x80@gmail.com
+  name  = masa0x80
+  email = masa0x80@gmail.com
+[core]
+  hooksPath = ~/.private/git/hooks
 ```
 
 ## Note
