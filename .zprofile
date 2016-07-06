@@ -3,6 +3,9 @@
 
 load_file() { test -r $1 && . $1 }
 
+# load useful functions
+load_file $HOME/.zsh/util.zsh
+
 fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
 
 # lang

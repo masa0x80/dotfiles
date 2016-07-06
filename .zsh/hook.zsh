@@ -1,7 +1,3 @@
-is_tmux_running() {
-  [ ! -z "$TMUX" ]
-}
-
 check_private_git_config() {
   if [ ! -f $HOME/.private/git/config ]; then
     echo -e '\033[7;36m[WARN] Private git config file is not found.\033[0;39m'

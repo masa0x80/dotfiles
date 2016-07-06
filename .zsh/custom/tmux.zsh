@@ -1,8 +1,4 @@
 # ref: http://qiita.com/b4b4r07/items/01359e8a3066d1c37edc
-is_tmux_running() { [ ! -z "$TMUX" ]; }
-shell_has_started_interactively() { [ ! -z "$PS1" ]; }
-is_ssh_running() { [ ! -z "$SSH_CONNECTION" ]; }
-
 tmux_attach_session() {
   if ! is_tmux_running; then
     if shell_has_started_interactively && ! is_ssh_running; then
