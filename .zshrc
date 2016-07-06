@@ -10,6 +10,9 @@ load_file $HOME/.zsh/completion.zsh
 # load plugins
 load_file $HOME/.zsh/plugins.zsh
 
+# keychain
+load_file $HOME/.zsh/keychain.zsh
+
 # カスタム設定を読み込む
 for config_file ($HOME/.zsh/custom/*.zsh(N)); do
   load_file $config_file
