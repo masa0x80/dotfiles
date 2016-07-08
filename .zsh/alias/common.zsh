@@ -42,14 +42,22 @@ fi
 
 alias h='\history -n -r 1 | grep "$@"'
 
-alias sshconfig='vim ~/.ssh/config'
+if (( $+commands[assh] )) && [ -d $HOME/.ssh/assh.d ]; then
+  alias sshconfig='vim ~/.ssh/assh.d'
+else
+  alias sshconfig='vim ~/.ssh/config'
+fi
 alias sconfig='sshconfig'
 alias sconf='sshconfig'
 
 # refs: http://qiita.com/yuku_t/items/4ffaa516914e7426419a
 ssh() {
   local window_name=$(tmux display -p '#{window_name}')
-  command ssh $@
+  if (( $+commands[assh] )) && [ -f $HOME/.ssh/assh.yml ]; then
+    assh wrapper ssh $@
+  else
+    command ssh $@
+  fi
   tmux rename-window $window_name
 }
 

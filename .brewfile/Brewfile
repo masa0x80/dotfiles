@@ -10,6 +10,7 @@ brew lsof
 brew rsync
 
 # Other Homebrew packages
+brew assh
 brew autoconf
 brew automake
 brew cmake
