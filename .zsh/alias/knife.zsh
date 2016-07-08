@@ -1,12 +1,22 @@
+target_host() {
+  find nodes | grep json | fzf -1 | sed -E 's/nodes\/(.*).json/\1/'
+}
+
 vagrant_host() {
   find nodes | grep vagrant | fzf -1 | sed -E 's/nodes\/(.*).json/vagrant@\1/'
 }
 
+alias -g TH='$(target_host)'
 alias -g VH='$(vagrant_host)'
 alias -g kook='knife solo cook'
 alias -g krepare='knife solo prepare'
 
 knife-solo-provision-vagrant() {
-  local VH="$(echo VH)"
-  vagrant destroy -f && vagrant up && krepare $VH && kook $VH
+  local vagrant_host="$(echo VH)"
+  vagrant destroy -f && vagrant up && krepare $vagrant_host && kook $vagrant_host
+}
+
+knife-solo-provision-target() {
+  local target_host="$(echo TH)"
+  krepare $target_host && kook $target_host
 }
