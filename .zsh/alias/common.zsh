@@ -50,6 +50,10 @@ fi
 alias sconfig='sshconfig'
 alias sconf='sshconfig'
 
+web_server() {
+  ruby -run -e httpd . -p ${1:-8080}
+}
+
 # refs: http://qiita.com/yuku_t/items/4ffaa516914e7426419a
 ssh() {
   local window_name=$(tmux display -p '#{window_name}')
