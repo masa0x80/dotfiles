@@ -28,6 +28,8 @@
   :version: 2.8.3
 :global:
   :version: 6.5.4
+:golang:
+  :version: 1.6.2
 :nodejs:
   :version: v6.2.0
 :phantomjs:

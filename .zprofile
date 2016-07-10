@@ -40,6 +40,9 @@ export XDG_CONFIG_HOME=$HOME/.config
 export TERM=xterm-256color
 
 # golang
+if [[ $OSTYPE == linux* ]]; then
+  export PATH=$PATH:/usr/local/go/bin
+fi
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 

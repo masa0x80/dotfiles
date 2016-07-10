@@ -4,6 +4,9 @@ node[:recipes] = node[:recipes].concat(
       path: 'linux/imagemagick/install.rb',
       tags: %w[append imagemagick],
     }, {
+      path: 'linux/golang/install.rb',
+      tags: %w[append golang],
+    }, {
       path: 'linux/aws/install.rb',
       tags: %w[append aws],
     }, {
