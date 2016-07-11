@@ -3,7 +3,7 @@ s() {
   local t_pane=$(tmux list-pane | grep -E '\(active\)$' | cut -d ':' -f1)
   local window_name=$(tmux display -p '#{window_name}')
   tmux rename-window ${window_name}/server
-  tmux split-window -t ":$t_window.$t_pane" -v -p 10 "command rails s -p $RAILS_SERVER_PORT"
+  tmux split-window -t ":$t_window.$t_pane" -v -p 10 "tmux select-pane -t :.-; command rails s -p $RAILS_SERVER_PORT"
 }
 
 bundle() {
