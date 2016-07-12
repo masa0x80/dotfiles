@@ -68,21 +68,10 @@ if (( $+commands[peco] )); then
   # ssh with peco
   # ref: http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
   peco-ssh() {
-    # Hostの次の行にあるコメントをホスト名と一緒に表示するためのrubyワンライナー
-    #
-    # Host {KEYWORD}
-    #   # {COMMENT}
-    #   HostName {HOST_NAME}
-    #
-    # 上記フォーマットをパースして "KEYWORD  # COMMENT" に変換します
     BUFFER="ssh $(
-      ruby -e "File.read('$HOME/.ssh/config').scan(/#[ \t]+Host|Host ([^*?\s]+)\n\s+(# [^\n]+)\n|Host ([^*?\s]+)\n/).each do |info|
-        unless info.first.nil?
-          puts sprintf('%s %s', info[0].ljust(30, ' '), info[1])
-        else
-          puts info.last
-        end
-      end" | sort | peco | cut -d ' ' -f 1
+      ruby -e "File.read('$HOME/.ssh/config').scan(/Host ([^*?\s]+)\n(?:  .*\n)*  # HostName: ([^\n]+)\n/).each do |info|
+        puts '%s # %s' % [info[0].ljust(30, ' '), info[1]]
+      end" | sort | peco
     )"
     CURSOR=4
     if [[ $#BUFFER = 4 ]]; then
