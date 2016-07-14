@@ -68,16 +68,20 @@ if (( $+commands[peco] )); then
   # ssh with peco
   # ref: http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
   peco-ssh() {
-    BUFFER="ssh $(
+    local res="$(
       ruby -e "File.read('$HOME/.ssh/config').scan(/Host ([^*?\s]+)\n(?:  .*\n)*  # HostName: ([^\n]+)\n/).each do |info|
         puts '%s # %s' % [info[0].ljust(30, ' '), info[1]]
       end" | sort | peco
     )"
-    CURSOR=4
-    if [[ $#BUFFER = 4 ]]; then
-      BUFFER=''
+
+    local host=$(echo "$res" | cut -d ' ' -f1)
+    local memo=$(echo "$res" | cut -d '#' -f2)
+
+    if [ ! -z "$res" ]; then
+      LBUFFER+="$host"
+      BUFFER+=" #$memo"
     fi
-    zle clear-screen
+    zle reset-prompt
   }
   zle -N peco-ssh
   bindkey '^s^s' peco-ssh
