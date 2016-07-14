@@ -15,7 +15,7 @@ tmux_attach_session() {
             tmux attach -t "$REPLY"
           fi
         else
-          tmux
+          tmux new -s dev
         fi
       fi
     fi
