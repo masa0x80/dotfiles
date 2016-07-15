@@ -2,7 +2,8 @@
 # ref: http://motemen.hatenablog.com/entry/2015/07/mackerel-mkr-peco-zsh
 
 cache_file=~/.cache/mkr-hosts-tsv/cache
-cache_minutes=1440
+cache_minutes=${MKR_HOSTS_TSV_CACHE_MINUTES:-1440}
+mackerel_hosts_api_uri=https://mackerel.io/api/v0/hosts
 
 if [ -n "$MACKEREL_APIKEY_NAME" ]; then
   cache_file="$cache_file.$MACKEREL_APIKEY_NAME"
@@ -12,7 +13,11 @@ if [ ! -r "$cache_file" -o -n "$(find \"$cache_file\" -mmin +$cache_minutes 2>/d
   mkdir -p $(dirname $cache_file)
 
   echo 'cache file is too old, updating...' >&2
-  mkr hosts -f '{{range .}}{{if (len .Interfaces)}}{{range .Interfaces}}{{if (eq .Name "eth0")}}{{.IPAddress}}{{end}}{{end}}{{"\t"}}{{.Name}}{{"\t"}}{{range $s,$rr := .Roles}}{{range $r := $rr}}{{$s}}:{{$r}} {{end}}{{end}}{{"\n"}}{{end}}{{end}}' | tee $cache_file
+  if [ ${MKR_HOSTS_TSV_GIP:-false} == true ]; then
+    curl -s -H "X-Api-Key: $MACKEREL_APIKEY" $mackerel_hosts_api_uri | jq -r -c '.hosts[] | if (.meta.cloud.metadata."public-ipv4") then [.meta.cloud.metadata."public-ipv4", .name, [.roles | keys], .roles[]] | flatten else empty end | @tsv' | tee $cache_file
+  else
+    mkr hosts -f '{{range .}}{{if (len .Interfaces)}}{{range .Interfaces}}{{if (eq .Name "eth0")}}{{.IPAddress}}{{end}}{{end}}{{"\t"}}{{.Name}}{{"\t"}}{{range $s,$rr := .Roles}}{{range $r := $rr}}{{$s}}:{{$r}} {{end}}{{end}}{{"\n"}}{{end}}{{end}}' | tee $cache_file
+  fi
   chmod go-r $cache_file
 else
   cat $cache_file

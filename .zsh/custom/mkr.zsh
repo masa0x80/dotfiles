@@ -2,7 +2,7 @@ if (( $+commands[fzf] )); then
   # ref: http://motemen.hatenablog.com/entry/2015/07/mackerel-mkr-peco-zsh
   autoload -U modify-current-argument
   autoload -U split-shell-arguments
-  complete-mackerel-host-ip () {
+  complete-mackerel-host-ip() {
     local apikey=$1
     local apikey_name=$2
 
