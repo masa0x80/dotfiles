@@ -1,7 +1,7 @@
 alias diff='diff -u'
 alias watch='watch -n 0.5'
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
+alias grep='\grep -v grep | grep --color=auto'
+alias egrep='\grep -v grep | egrep --color=auto'
 alias mkdir='mkdir -p'
 alias md=mkdir
 alias rd=rmdir
