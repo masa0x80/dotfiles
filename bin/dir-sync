@@ -1,0 +1,12 @@
+#!/bin/sh
+
+[[ $# == 2 ]] || (echo "Check number of arguments" && exit 1)
+
+SRC_DIR="$1"
+DEST_DIR="$2"
+
+ls -1 "${SRC_DIR}" | while read file; do
+echo $file
+  trap 'exit 1' SIGHUP SIGINT SIGQUIT SIGTERM
+  rsync -av --delete --stats --bwlimit=${BWLIMIT:-0} "${SRC_DIR}/${file}/" "${DEST_DIR}/${file}"
+done
