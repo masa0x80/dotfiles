@@ -25,6 +25,13 @@ if (( $+commands[fzf] )); then
       mode_append_only=1
     fi
 
+    # return if apikey is blank
+    if [ -z "${apikey:-$MACKEREL_APIKEY}" ]; then
+      echo 'MACKEREL_APIKEY environment variable is not set. (Try "export MACKEREL_APIKEY=<Your apikey>")'
+      zle reset-prompt
+      return 1
+    fi
+
     res=$(MACKEREL_APIKEY=${apikey:-$MACKEREL_APIKEY} MACKEREL_APIKEY_NAME=${apikey_name:-$MACKEREL_APIKEY_NAME} mkr-hosts-tsv | eval $filter "$query_arg")
     if [ -z "$res" ]; then
       zle reset-prompt
