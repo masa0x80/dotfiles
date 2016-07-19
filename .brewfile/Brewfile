@@ -26,6 +26,7 @@ brew git
 brew gibo
 brew global --with-ctags --with-pygments
 brew go
+brew graphviz
 brew htop
 brew imagemagick
 brew jo
