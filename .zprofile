@@ -52,6 +52,8 @@ export GTAGSLABEL=pygments
 # rails (for rails server alias)
 export RAILS_SERVER_PORT=3000
 
+export USE_ASSH=true
+
 # fzf
 export FZF_DEFAULT_OPTS='
 --reverse

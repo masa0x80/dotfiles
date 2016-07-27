@@ -56,6 +56,11 @@ web_server() {
 
 # refs: http://qiita.com/yuku_t/items/4ffaa516914e7426419a
 ssh() {
+  if [[ ${USE_ASSH:-false} == false ]]; then
+    command ssh $@
+    return
+  fi
+
   local window_name=$(tmux display -p '#{window_name}')
   if (( $+commands[assh] )) && [ -f $HOME/.ssh/assh.yml ]; then
     assh wrapper ssh $@
