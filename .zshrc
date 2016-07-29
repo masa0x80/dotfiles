@@ -34,6 +34,10 @@ load_file $HOME/.private/zsh/rc
 # load hook configuration
 load_file $HOME/.zsh/hook.zsh
 
+if [ ${DOTFILES:=$HOME/.dotfiles}/.zshrc -nt ~/.zshrc.zwc ]; then
+  zcompile ~/.zshrc
+fi
+
 # profiling end
 # if type zprof > /dev/null 2>&1; then
 #   zprof | less
