@@ -2,23 +2,23 @@ GEM
   remote: https://rubygems.org/
   specs:
     ansi (1.5.0)
-    hashie (3.4.3)
-    itamae (1.9.2)
+    hashie (3.4.4)
+    itamae (1.9.9)
       ansi
       hashie
       schash (~> 0.1.0)
       specinfra (>= 2.37.0, < 3.0.0)
       thor
-    json (1.8.3)
+    json (2.0.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (3.0.2)
+    net-ssh (3.2.0)
     net-telnet (0.1.1)
     schash (0.1.2)
     sfl (2.2)
-    specinfra (2.49.0)
+    specinfra (2.60.3)
       net-scp
-      net-ssh (>= 2.7, < 3.1)
+      net-ssh (>= 2.7, < 4.0)
       net-telnet
       sfl
     thor (0.19.1)
@@ -31,4 +31,4 @@ DEPENDENCIES
   json
 
 BUNDLED WITH
-   1.11.2
+   1.12.1
