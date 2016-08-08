@@ -19,9 +19,6 @@ node[:recipes] = node[:recipes].concat(
       path: 'linux/neovim/install.rb',
       tags: %w[append neovim],
     }, {
-      path: 'linux/vim/install.rb',
-      tags: %w[append vim],
-    }, {
       path: 'linux/global/install.rb',
       tags: %w[append global],
     }, {
