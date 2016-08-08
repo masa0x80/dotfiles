@@ -1,6 +1,6 @@
 execute 'remove go' do
-  command "[ -e /usr/local/go ] && sudo rm /usr/local/go"
-  only_if 'type -a go'
+  command "[ -e /usr/local/go ] && sudo rm -r /usr/local/go"
+  only_if "type -a go && go version | grep -v #{node[:golang][:version]}"
 end
 
 execute 'download go' do
