@@ -17,10 +17,14 @@ if [ -r $HOME/.zplug/zplug ]; then
   zplug 'zsh-users/zsh-autosuggestions'
   zplug 'zsh-users/zsh-completions'
 
+  zplug 'stedolan/jq', \
+    as:command, \
+    from:gh-r, \
+    rename-to:jq
+  zplug 'b4b4r07/emoji-cli', \
+    on:'stedolan/jq'
+
   if [[ $OSTYPE != darwin* ]]; then
-    zplug 'stedolan/jq', \
-      as:command, \
-      from:gh-r
     zplug 'jpmens/jo', \
       as:command, \
       hook-build:'cd $HOME/.zplug/repos/jpmens/jo && autoreconf -i && ./configure --prefix=$HOME/.zplug && make check && make install'

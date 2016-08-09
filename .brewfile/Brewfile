@@ -16,6 +16,7 @@ brew cmake
 brew coreutils
 brew cpulimit
 brew curl
+brew emojify
 brew fzf
 brew gdbm
 brew gettext
@@ -27,7 +28,6 @@ brew graphviz
 brew htop
 brew imagemagick
 brew jo
-brew jq
 brew keychain
 brew libevent
 brew libtool
