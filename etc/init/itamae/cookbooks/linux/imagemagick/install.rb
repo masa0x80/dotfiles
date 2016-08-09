@@ -7,7 +7,7 @@
     package name do
       action  type
       options '--enablerepo=remi'
-      user   'root'
+      user    'root'
     end
   end
 end
