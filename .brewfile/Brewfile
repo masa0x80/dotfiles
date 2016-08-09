@@ -10,18 +10,15 @@ brew lsof
 brew rsync
 
 # Other Homebrew packages
-brew assh
 brew autoconf
 brew automake
 brew cmake
 brew coreutils
 brew cpulimit
 brew curl
-brew direnv
 brew fzf
 brew gdbm
 brew gettext
-brew ghq
 brew git
 brew gibo
 brew global --with-ctags --with-pygments
@@ -41,14 +38,12 @@ brew openssl
 brew parallel
 brew pass
 brew pcre
-brew peco
 brew phantomjs
 brew pkg-config
 brew postgresql
 brew readline
 brew reattach-to-user-namespace
 brew redis
-brew the_platinum_searcher
 brew tmux
 brew tree
 brew vim --with-lua --without-python

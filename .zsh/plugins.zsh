@@ -34,18 +34,6 @@ if [ -r $HOME/.zplug/zplug ]; then
     zplug 'junegunn/fzf', \
       as:command, \
       use:bin/fzf-tmux
-    zplug 'peco/peco', \
-      as:command, \
-      from:gh-r
-
-    zplug 'direnv/direnv', \
-      as:command, \
-      at:v2.6.0, \
-      from:gh-r
-
-    zplug 'monochromegane/the_platinum_searcher', \
-      from:gh-r, \
-      hook-build:"mkdir -p $HOME/.zplug/bin; ln -s $HOME/.zplug/{repos/**/*/pt,bin/pt}"
   fi
 
   if ! zplug check --verbose; then

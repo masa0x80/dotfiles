@@ -54,6 +54,8 @@ fi
 bundle exec itamae local cookbooks/common/mysql/initialize.rb -y nodes/localhost.yml
 cd ../../
 
+sh -lc 'sh init/golang/install_tools.sh'
+
 case `uname` in
   Darwin)
     echo ''
