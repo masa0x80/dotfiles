@@ -15,6 +15,7 @@
   fuse-libs
   lbzip2
   automake
+  xsel
 ].each do |name|
   package name do
     action :install
