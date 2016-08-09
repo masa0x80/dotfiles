@@ -79,7 +79,9 @@ set commentstring=%s
 set mouse=
 
 " clipboard
-set clipboard+=unnamed
+if has('mac')
+  set clipboard+=unnamedplus
+endif
 
 " mapleader
 let g:mapleader=","
