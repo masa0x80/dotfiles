@@ -1,4 +1,4 @@
-let s:dein_sha = 'be226d268a47e79f3452a7e286d040cbca68b7bf'
+let s:dein_sha = 'a1bc04858a4312485dbbc00fdccbea5f16d01b99'
 
 let s:dein_dir       = expand('~/.cache/dein')
 let s:dein_repo_dir  = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
