@@ -1,5 +1,5 @@
 if [ ! -e $ZPLUG_HOME ]; then
-  ZPLUG_REVISION='d8199dd4b910f00c325a050134dcf93a072f158b'
+  ZPLUG_REVISION='305b88c02b255bcf9c817749b0e3ca1e7f981dee'
   git clone https://github.com/zplug/zplug.git $ZPLUG_HOME
   cd $ZPLUG_HOME && git checkout $ZPLUG_REVISION
   source $ZPLUG_HOME/init.zsh
@@ -12,7 +12,7 @@ if [ -r $HOME/.zplug/zplug ]; then
   zplug 'sindresorhus/pure'
 
   zplug 'mollifier/anyframe'
-  zplug 'b4b4r07/enhancd', use:enhancd.sh
+  zplug 'b4b4r07/enhancd', use:init.sh
 
   zplug 'zsh-users/zsh-autosuggestions'
   zplug 'zsh-users/zsh-completions'
