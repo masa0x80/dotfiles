@@ -5,7 +5,7 @@ if [ "$1" = 'show' ]; then
   # fshow - git commit browser
   # ref: https://github.com/junegunn/fzf/wiki/Examples
   git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" | emojify |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
       --bind "ctrl-m:execute:
                 (grep -o '[a-f0-9]\{7\}' | head -1 |
@@ -15,7 +15,7 @@ if [ "$1" = 'show' ]; then
 else
   # fetch git commit hash
   git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" | emojify |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort |
   grep -o '[a-f0-9]\{7\}' | head -1
 fi
