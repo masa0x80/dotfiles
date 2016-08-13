@@ -1,7 +1,7 @@
-DOTFILES_EXCLUDES := .DS_Store .git
-DOTFILES_TARGET   := $(wildcard .??*)
-DOTFILES_DIR      := $(PWD)
-DOTFILES_FILES    := $(filter-out $(DOTFILES_EXCLUDES), $(DOTFILES_TARGET))
+DOTPATH  := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+EXCLUDES := .DS_Store .git
+TARGETS  := $(wildcard .??*)
+DOTFILES := $(filter-out $(EXCLUDES), $(TARGETS))
 
 all: install
 
@@ -14,7 +14,7 @@ help:
 	@echo "make clean          #=> Remove the dotfiles"
 
 list:
-	@$(foreach val, $(DOTFILES_FILES), ls -dF $(val);)
+	@$(foreach val, $(DOTFILES), ls -dF $(val);)
 
 update:
 	git pull origin master
@@ -22,15 +22,14 @@ update:
 deploy:
 	@echo 'Deploy dotfiles.'
 	@echo ''
-	@$(foreach val, $(DOTFILES_FILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 init:
-	bash ./etc/init/init.sh
+	@DOTPATH=$(DOTPATH) bash ./etc/init/init.sh
 
 install: update deploy init
-	@exec $$SHELL
 
 clean:
 	@echo 'Remove dot files in your home directory...'
-	@-$(foreach val, $(DOTFILES_FILES), rm -vrf $(HOME)/$(val);)
-	-rm -rf $(DOTFILES_DIR)
+	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
+	-rm -rf $(DOTPATH)

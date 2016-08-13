@@ -14,10 +14,10 @@ if type curl > /dev/null 2>&1; then
     unzip dotfiles.zip
     mv dotfiles-master $HOME/.dotfiles
     cd $_
-    echo 'Installing tools...'
+    echo 'Initialize and install tools...'
     if make deploy; then
       if make init; then
-        echo 'Complete settings!'
+        echo 'Complete!!'
       else
         echo 'error: make init'
       fi
