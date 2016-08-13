@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p $HOME/src
+mkdir -p /tmp/src
 
 export SCRIPT_DIR=$(cd $(dirname $0); pwd)
 export RUBY_VERSION=`cat $SCRIPT_DIR/itamae/.ruby-version`

@@ -1,6 +1,6 @@
 :os_version: :centos7_2
 
-:src_dir: '~/src'
+:src_dir: '/tmp/src'
 :bin_dir: '/usr/local/bin'
 
 :centos6_7:
