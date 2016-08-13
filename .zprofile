@@ -12,7 +12,7 @@ fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
 export LANG=ja_JP.UTF-8
 
 # path
-export PATH=/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/sbin:$HOME/bin
+export PATH=/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/sbin
 
 # anyenv
 export PATH=$HOME/.anyenv/bin:$PATH
@@ -89,3 +89,7 @@ load_file $HOME/.proxy
 
 # 環境ローカルの設定の読み込み
 load_file $HOME/.private/zsh/profile
+
+# Append $DOTPATH/bin to $PATH
+export DOTPATH=${DOTPATH:-$HOME/.dotfiles}
+export PATH=$PATH:$DOTPATH/bin
