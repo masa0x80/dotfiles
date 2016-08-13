@@ -1,5 +1,7 @@
 # Dotfiles
 
+[![MIT LICENSE](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
+
 ## Overview
 
 各種dotfilesの配置と下記ツールのインストールを行います。
