@@ -1,70 +1,111 @@
 # Dotfiles
 
 [![MIT LICENSE](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
+[![macOS | CentOS](https://img.shields.io/badge/platform-macOS%20|%20CentOS-8c8c8c.svg?style=flat-square)](#installation)
 
 ## Overview
 
-各種dotfilesの配置と下記ツールのインストールを行います。
-
-- zsh
-- vim
-- tmux
-- fzf
-- peco
-- pt
-- jq
-- jo
-- direnv
-- rbenv
-- pyenv
-- ndenv
-- mysql
-- postgresql
-- redis
-- vagrant
+Install dotfiles and useful commands.
 
 ## Installation
 
-事前にsudoできるように設定してください。
-CentOSの場合、sudoresへの追加は `sudo visudo` を実行し、下記の行のコメントアウトを解除し `sudo usermod -G wheel $USER` を実行すれば完了します。
-また、プロキシーの設定が必要な場合は別途行ってください。
+### Only CentOS
+
+If you use CentOS, add your account as sudoers in advance.
+Do the following 3 steps to change sudoers.
+
+**Step 1:** Open the sudoers file.
+
+```
+$ sudo visudo
+```
+
+**Step 2:** Comment out the line below.
 
 ```
 # %wheel  ALL=(ALL)       NOPASSWD: ALL
 ```
 
-下記コマンドを実行すると各種ツールのインストールが始まります。
+**Step 3:** Run the following command to add the user to the wheel group.
 
 ```
-curl https://raw.githubusercontent.com/masa0x80/dotfiles/master/etc/install | bash
+$ sudo usermod -G wheel $USER
 ```
 
-or
+### Common (macOS / CentOS)
+
+In advance, configure the proxy settings as may be necessary.
+
+#### Quick Installation
+
+The easiest way to install this dotfiles is to run the following commmand in terminal.
 
 ```
-git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-make deploy
-make init
+$ curl https://raw.githubusercontent.com/masa0x80/dotfiles/master/etc/install | bash
 ```
 
-gitのユーザー設定は、`$HOME/.private/git/config` に書いて下さい。
+#### Manual Installation
+
+The different way of *Quick Installation* is to run the following commands.
 
 ```
-# $HOME/.private/git/config の例
+$ git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
+$ cd ~/.dotfiles
+$ make install
+```
+
+#### After Installation
+
+After running `make install`, make your personal configuration file for git.
+
+```
+$ mkdir -p $HOME/.private/git
+$ cat <<EOF > $HOME/.private/git/config
 [user]
   name  = masa0x80
   email = masa0x80@gmail.com
 [core]
   hooksPath = ~/.private/git/hooks
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+EOF
 ```
 
-## Note
+### Only macOS
 
-`make deploy` 時に `TAGS` を指定することで特定のツールのインストールを行うことができます。
+After running `make install`, load `./etc/data/terminal/Hybrid.terminal` for **Terminal.app** profile.
 
-`TAGS=common make init` を実行すると代表的なツールのみを短時間でインストールすることができます。
+## Appendix
 
-## Terminal Profile for Mac
+### Inside of `make install`
 
-`./etc/data/terminal/Hybrid.terminal` を読み込みTerminal.appのプロファイル設定を行ってください。
+`make install` execute the following tasks.
+
+- `make update`
+  - Update dotfiles repository
+- `make deploy`
+  - Deploy dotfiles
+- `make init`
+  - Initialize and install tools
+
+Install specified tools instead of running `make init`.
+
+e.g. To install basic tools, run the command below.
+
+```
+$ TAGS=basic make init
+```
+
+e.g. To install additional tools, run the command below.
+
+```
+$ TAGS=addition make init
+```
+
+e.g. To install only ndenv, run the command below.
+
+```
+$ TAGS=ndenv make init
+```
+
+**Note:** `make init` is exactly the same as running `TAGS=basic,additional make init`.
