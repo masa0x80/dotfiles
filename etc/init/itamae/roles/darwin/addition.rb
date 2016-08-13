@@ -2,19 +2,19 @@ node[:recipes] = node[:recipes].concat(
   [
     {
       path: 'common/pyenv-neovim/install.rb',
-      tags: %w[append pyenv-neovim],
+      tags: %w[addition pyenv-neovim],
     }, {
       path: 'common/ndenv/install.rb',
-      tags: %w[append ndenv],
+      tags: %w[addition ndenv],
     }, {
       path: 'common/plenv/install.rb',
-      tags: %w[append perl],
+      tags: %w[addition perl],
     }, {
       path: 'common/pyenv/install.rb',
-      tags: %w[append pyenv],
+      tags: %w[addition pyenv],
     }, {
-      path: 'darwin/redis/initialize.rb',
-      tags: %w[append redis_init],
+      path: 'macos/redis/initialize.rb',
+      tags: %w[addition redis_init],
     },
   ]
 )

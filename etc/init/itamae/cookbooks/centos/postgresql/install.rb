@@ -10,5 +10,5 @@ end
 
 execute 'initialize postgresql' do
   command "sudo postgresql-setup initdb && sudo -u posgress createuser #{ENV['USER']}"
-  not_if 'type -a psql'
+  not_if  'type -a psql'
 end

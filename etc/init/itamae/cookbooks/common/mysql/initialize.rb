@@ -9,5 +9,5 @@ execute 'initialize mysql' do
     mysql -uroot -p${TEMP_PASSWORD} -e "UNINSTALL PLUGIN validate_password;"
     mysql -uroot -p${TEMP_PASSWORD} -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '' PASSWORD EXPIRE NEVER;"
   EOF
-  only_if  "mysql -uroot -e 'exit'; [ $? == 1 ] && sudo grep 'password is generated' /var/log/mysqld.log"
+  only_if "mysql -uroot -e 'exit'; [ $? == 1 ] && sudo grep 'password is generated' /var/log/mysqld.log"
 end

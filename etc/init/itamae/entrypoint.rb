@@ -5,8 +5,8 @@ TAGS = ENV.fetch('TAGS', '').split(/,/)
 uname = `uname`.downcase.chomp
 
 %w[
-  base
-  append
+  basic
+  addition
 ].each do |role|
   include_recipe 'roles/%s/%s.rb' % [uname, role]
 end

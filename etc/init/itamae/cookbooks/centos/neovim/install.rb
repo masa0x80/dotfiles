@@ -17,7 +17,7 @@ end
 
 execute 'git clone neovim' do
   command "cd #{node[:src_dir]} && zsh -lc 'git clone https://github.com/neovim/neovim.git'"
-  not_if "test -e #{node[:src_dir]}/neovim"
+  not_if  "test -e #{node[:src_dir]}/neovim"
 end
 
 execute 'install neovim' do

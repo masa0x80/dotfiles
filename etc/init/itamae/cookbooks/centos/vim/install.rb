@@ -15,7 +15,7 @@ end
 
 execute 'download vim' do
   command "cd #{node[:src_dir]} && wget ftp://ftp.vim.org/pub/vim/unix/vim-#{node[:vim][:version]}.tar.bz2"
-  not_if "ls #{node[:src_dir]}/vim-#{node[:vim][:version]}.tar.bz2"
+  not_if  "ls #{node[:src_dir]}/vim-#{node[:vim][:version]}.tar.bz2"
 end
 
 execute 'extract vim' do

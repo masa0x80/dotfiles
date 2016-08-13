@@ -1,6 +1,6 @@
 execute 'install pyenv' do
   command 'anyenv install pyenv'
-  not_if 'type -a pyenv'
+  not_if  'type -a pyenv'
 end
 
 execute 'fix python2 version' do

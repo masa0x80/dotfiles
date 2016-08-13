@@ -1,6 +1,6 @@
 execute 'git clone keychain' do
   command "cd #{node[:src_dir]} && zsh -lc 'git clone https://github.com/funtoo/keychain.git'"
-  not_if "test -e #{node[:src_dir]}/keychain"
+  not_if  "test -e #{node[:src_dir]}/keychain"
 end
 
 execute 'install keychain' do
