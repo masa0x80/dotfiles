@@ -17,6 +17,7 @@ brew coreutils
 brew cpulimit
 brew curl
 brew emojify
+brew fish
 brew fzf
 brew gdbm
 brew gettext
