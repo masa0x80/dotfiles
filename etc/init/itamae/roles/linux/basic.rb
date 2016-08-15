@@ -7,6 +7,9 @@ node[:recipes] = node[:recipes].concat(
       path: 'centos/basic_tools/install.rb',
       tags: %w[basic basic_tools],
     }, {
+      path: 'centos/fish/install.rb',
+      tags: %w[basic fish],
+    }, {
       path: 'centos/keychain/install.rb',
       tags: %w[basic keychain],
     }, {
