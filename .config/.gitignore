@@ -1,6 +1,8 @@
 /*
 /.*
+/fish/fishd.*
 !/.gitignore
+!/fish
 !/nvim
 !/peco
 !/git
