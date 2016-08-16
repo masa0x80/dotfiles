@@ -3,9 +3,9 @@ test -r /etc/bashrc && source /etc/bashrc
 
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
-# start zsh
+# start fish
 # ref: http://blog.kenichimaehashi.com/?article=12851025960
 if [ -z "${BASH_EXECUTION_STRING}" ]; then
-  ZSH=`which zsh`
-  test -x "${ZSH}" && SHELL="${ZSH}" exec "${ZSH}" -l
+  SHELL=`which fish`
+  test -x "${SHELL}" && exec "${SHELL}" -l
 fi
