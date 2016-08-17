@@ -25,24 +25,24 @@ function git_dirty
   git_repo; and test -n (echo (command git status --porcelain))
 end
 
-# function git_ahead
-#   not git_repo; and return
-#
-#   set -l commit_count (command git rev-list --count --left-right "@{upstream}...HEAD" ^/dev/null)
-#
-#   switch "$commit_count"
-#   case ""
-#     # no upstream
-#   case "0"\t"0"
-#     test -n "$none"; and echo "$none"; or echo ""
-#   case "*"\t"0"
-#     test -n "$behind"; and echo "$behind"; or echo "-"
-#   case "0"\t"*"
-#     test -n "$ahead"; and echo "$ahead"; or echo "+"
-#   case "*"
-#     test -n "$diverged"; and echo "$diverged"; or echo "±"
-#   end
-# end
+function git_ahead
+  not git_repo; and return
+
+  set -l commit_count (command git rev-list --count --left-right "@{upstream}...HEAD" ^/dev/null)
+
+  switch "$commit_count"
+  case ""
+    # no upstream
+  case "0"\t"0"
+    test -n "$none"; and echo "$none"; or echo ""
+  case "*"\t"0"
+    test -n "$behind"; and echo "$behind"; or echo "-"
+  case "0"\t"*"
+    test -n "$ahead"; and echo "$ahead"; or echo "+"
+  case "*"
+    test -n "$diverged"; and echo "$diverged"; or echo "±"
+  end
+end
 #
 # # The name of the current branch
 # # Back-compatibility wrapper for when this function was defined here in
