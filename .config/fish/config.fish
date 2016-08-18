@@ -20,14 +20,14 @@ if test -d $HOME/.anyenv/bin
 end
 
 # EDITOR
-if type -a nvim > /dev/null
+if type -qa nvim
   set -gx EDITOR nvim
-else if type -a vim
+else if type -qa vim
   set -gx EDITOR vim
 end
 
 # PAGER
-if type -a less > /dev/null
+if type -qa less
   set -gx PAGER less
 end
 set -gx LESS '-R'
@@ -100,7 +100,7 @@ alias md 'mkdir'
 alias rd 'rmdir'
 alias rf 'rm -rf'
 
-# if type -a gls > /dev/null
+# if type -qa gls
 #   alias ls 'gls --color=auto'
 # else
 #   alias ls 'ls --color=auto'
@@ -109,7 +109,7 @@ alias l  'ls -lah'
 alias ll 'ls -lh'
 alias la 'ls -lAh'
 
-if type -a nvim > /dev/null
+if type -qa nvim
   alias vim nvim
 end
 
@@ -129,7 +129,7 @@ alias ...... 'cd ../../../../..'
 # alias -g P='| peco'
 # alias -g T='| tail'
 
-if type -a htop > /dev/null
+if type -qa htop
   alias top htop
 end
 
@@ -157,7 +157,7 @@ function bundle
   set -l t_pane    (tmux list-pane    | command grep -E '\(active\)$' | cut -d ':' -f1)
   command bundle $argv
   if string match $argv[1] 'install'
-    if type -a gtags > /dev/null; and type -a cpulimit > /dev/null; and type -a tmux > /dev/null
+    if type -qa gtags; and type -qa cpulimit; and type -qa tmux
       set -l pid %self
       set -l log_file /tmp/gtags-$pid
       echo ''
@@ -183,7 +183,7 @@ alias bil 'bi --local'
 ### direnv
 # {{{
 
-if type -a direnv > /dev/null
+if type -qa direnv
   eval (direnv hook fish)
 end
 
@@ -194,7 +194,7 @@ alias direnv-init 'echo \'export PATH=$PWD/bin:$PWD/vendor/bin:$PATH\' > .envrc;
 ### Scrapbook
 # {{{
 
-if type -a fzf > /dev/null; and type -a mdv > /dev/null; and test -e $SCRAPBOOK_DIR
+if type -qa fzf; and type -qa mdv; and test -e $SCRAPBOOK_DIR
   function scrapbook
     set -q $SCRAPBOOK_DIR; and set -gx SCRAPBOOK_DIR $HOME/.scrapbook
     find $SCRAPBOOK_DIR -type f | fzf --query "$argv" | read -l selected_line
