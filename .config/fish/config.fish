@@ -39,7 +39,7 @@ set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx TERM xterm-256color
 
 # golang
-if string match $OS_TYPE 'linux'
+if string match -q $OS_TYPE 'linux'
   set PATH $PATH /usr/local/go/bin
 end
 set -gx GOPATH $HOME/.go
@@ -156,7 +156,7 @@ function bundle
   set -l  t_window (tmux list-windows | command grep -E '\(active\)$' | cut -d ':' -f1)
   set -l t_pane    (tmux list-pane    | command grep -E '\(active\)$' | cut -d ':' -f1)
   command bundle $argv
-  if string match $argv[1] 'install'
+  if string match -q $argv[1] 'install'
     if type -qa gtags; and type -qa cpulimit; and type -qa tmux
       set -l pid %self
       set -l log_file /tmp/gtags-$pid
