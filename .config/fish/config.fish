@@ -193,13 +193,13 @@ alias direnv-init 'echo \'export PATH=$PWD/bin:$PWD/vendor/bin:$PATH\' > .envrc;
 
 ### Scrapbook
 # {{{
-#
+
 if type -a fzf > /dev/null; and type -a mdv > /dev/null; and test -e $SCRAPBOOK_DIR
   function scrapbook
     set -q $SCRAPBOOK_DIR; and set -gx SCRAPBOOK_DIR $HOME/.scrapbook
-    fish -c "find $SCRAPBOOK_DIR -type f | fzf --query \"$argv\"" | read -l selects
-    if not set -q $selects
-      mdv $selects
+    find $SCRAPBOOK_DIR -type f | fzf --query "$argv" | read -l selected_line
+    if not set -q $selected_line
+      mdv $selected_line
     end
     commandline -f repaint
   end

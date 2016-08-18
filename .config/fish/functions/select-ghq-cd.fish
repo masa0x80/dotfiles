@@ -5,7 +5,7 @@ function select-ghq-cd
         fzf --query "$buffer" | \
         read -l repository_path
   if test -n "$repository_path"
-    builtin cd ~/(echo $repository_path | sed -e 's/ /\\ /g')
+    cd ~/(echo $repository_path | sed -e 's/ /\\ /g')
   end
   commandline -f repaint
 end
