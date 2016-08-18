@@ -9,7 +9,7 @@ if [ -n "$MACKEREL_APIKEY_NAME" ]; then
   cache_file="$cache_file.$MACKEREL_APIKEY_NAME"
 fi
 
-if [ ! -r "$cache_file" -o -n "$(find \"$cache_file\" -mmin +$cache_minutes 2>/dev/null)" ]; then
+if [ ! -r "$cache_file" -o -n "$(find \"$cache_file\" -mmin -$cache_minutes 2>/dev/null)" ]; then
   mkdir -p $(dirname $cache_file)
 
   echo 'cache file is too old, updating...' >&2
