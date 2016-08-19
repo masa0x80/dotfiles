@@ -1,21 +1,18 @@
 #!/bin/bash
 
 if [ "$1" = 'show' ]; then
-  shift
   # fshow - git commit browser
   # ref: https://github.com/junegunn/fzf/wiki/Examples
+  shift
   git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" | emojify |
-  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-      --bind "ctrl-m:execute:
-                (grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | diff-highlight | less -R') << 'FZF-EOF'
-                {}
-      FZF-EOF"
+        --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" | emojify |
+        fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+              --bind "ctrl-m:execute:
+                    sh -c \"echo {} | grep -o '[a-f0-9]\{7\}' | xargs -I _ git show --color=always _ | diff-highlight | emojify | less -RX\""
 else
   # fetch git commit hash
   git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" | emojify |
-  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort |
-  grep -o '[a-f0-9]\{7\}' | head -1
+        --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" | emojify |
+        fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort |
+        head -1 | grep -o '[a-f0-9]\{7\}'
 fi
