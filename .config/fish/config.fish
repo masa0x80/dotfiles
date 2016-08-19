@@ -1,6 +1,9 @@
 ### Environment Variables
 # {{{
 
+# Disable greeting
+set fish_greeting
+
 # OSTYPE
 set -gx OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
 
