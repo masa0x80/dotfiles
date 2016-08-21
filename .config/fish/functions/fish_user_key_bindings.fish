@@ -12,4 +12,6 @@ function fish_user_key_bindings
   bind \cg\cg\cb git-recent-all-branches
   bind \cgb   git-recent-branches
   bind \cg\cb git-recent-branches
+
+  bind \cg global-alias
 end

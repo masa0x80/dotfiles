@@ -121,17 +121,6 @@ alias ....   'cd ../../..'
 alias .....  'cd ../../../..'
 alias ...... 'cd ../../../../..'
 
-# FIXME: global aliases
-# alias -g F='| fzf'
-# alias -g G='| egrep --color=auto'
-# alias -g H='| head'
-# alias -g L='| less'
-# alias -g N=" >/dev/null 2>&1"
-# alias -g N1=" >/dev/null"
-# alias -g N2=" 2>/dev/null"
-# alias -g P='| peco'
-# alias -g T='| tail'
-
 if type -qa htop
   alias top htop
 end
@@ -163,10 +152,10 @@ function bundle
     if type -qa gtags; and type -qa cpulimit; and type -qa tmux
       set -l pid %self
       set -l log_file /tmp/gtags-$pid
-      echo ''
+      echo
       set_color magenta;
       echo gtags error log: $log_file
-      echo ''
+      echo
       tmux split-window -t ":$t_window.$t_pane" -v -l 1 "tmux select-pane -t :.-; cpulimit -i -l 30 gtags -v 2>&1 | tee $log_file"
     end
   end
@@ -178,8 +167,6 @@ alias db 'rails db'
 alias t  'rspec'
 alias bi  'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4'
 alias bil 'bi --local'
-
-# alias -g RET='RAILS_ENV=test'
 
 # }}}
 
