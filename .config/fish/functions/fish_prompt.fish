@@ -1,6 +1,7 @@
 function fish_prompt
+  set -l status_code $status
   set -q $prompt_counter; and set -gx prompt_counter 1
-  set prompt_counter (expr (expr $prompt_counter + 1) \% 2)
+  set prompt_counter (math \($prompt_counter + 1\) \% 2)
 
   set -l prompt_prefix
   set -l prompt_suffix '匚＞'
@@ -39,7 +40,7 @@ function fish_prompt
     set prompt_prefix '彡'
   end
 
-  if test $status -eq 0
+  if test $status_code -eq 0
     echo -n -s $success_color $prompt_prefix : $prompt_suffix $normal_color
   else
     echo -n -s $error_color $prompt_prefix X $prompt_suffix $normal_color
