@@ -1,4 +1,4 @@
-function kill_keychain
+function keychain_kill
   if test (ps | command grep '[t]mux' | wc -l) -eq 0
     keychain -q -k all
   end

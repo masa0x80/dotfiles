@@ -123,11 +123,6 @@ alias md 'mkdir'
 alias rd 'rmdir'
 alias rf 'rm -rf'
 
-# if type -qa gls
-#   alias ls 'gls --color=auto'
-# else
-#   alias ls 'ls --color=auto'
-# end
 alias l  'ls -lah'
 alias ll 'ls -lh'
 alias la 'ls -lAh'
@@ -146,10 +141,10 @@ if type -qa htop
 end
 
 if test -e $HOME/.ssh/config
-  alias sshconfig 'vim ~/.ssh/config'
+  alias ssh_config 'vim ~/.ssh/config'
 end
-alias sconfig sshconfig
-alias sconf   sshconfig
+alias sconfig ssh_config
+alias sconf   ssh_config
 
 # }}}
 
@@ -197,7 +192,7 @@ if type -qa direnv
   eval (direnv hook fish)
 end
 
-alias direnv-init 'echo \'export PATH=$PWD/bin:$PWD/vendor/bin:$PATH\' > .envrc; and direnv allow'
+alias direnv_init 'echo \'export PATH=$PWD/bin:$PWD/vendor/bin:$PATH\' > .envrc; and direnv allow'
 
 # }}}
 
@@ -220,8 +215,8 @@ end
 ### keychain
 # {{{
 
-start_keychain
-trap 'kill_keychain' EXIT
+keychain_start
+trap 'keychain_kill' EXIT
 
 # }}}
 

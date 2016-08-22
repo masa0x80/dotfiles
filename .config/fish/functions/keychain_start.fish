@@ -1,4 +1,4 @@
-function start_keychain
+function keychain_start
   if type -qa keychain
     keychain -q $SSH_KEY_FILE; and load_file $HOME/.keychain/(hostname)-fish
   end

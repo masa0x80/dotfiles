@@ -1,3 +1,3 @@
 function tmux_is_running
-  not test -z "$TMUX"
+  test -n "$TMUX"
 end
