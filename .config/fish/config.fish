@@ -225,4 +225,23 @@ trap 'keychain_kill' EXIT
 
 tmux_attach_session
 
+function check_private_git_config
+  if not test -f $HOME/.private/git/config
+    set_color -o black
+    set_color -b cyan
+    echo -e '[WARN] Private git config file is not found.'
+    set_color normal
+  end
+end
+
+function rename_window --on-event fish_preexec
+  check_private_git_config
+  if tmux_is_running
+    if test -e .git
+      pwd | string split -r -m 2 '/' | grep -v '/' | string join '/' | read -l window_name
+      tmux rename-window "$window_name"
+    end
+  end
+end
+
 # }}}
