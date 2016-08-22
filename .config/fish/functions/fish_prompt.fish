@@ -6,33 +6,16 @@ function fish_prompt
   set -l prompt_prefix
   set -l prompt_suffix '匚＞'
 
-  set -l normal_color     (set_color normal)
-  set -l success_color    (set_color $fish_pager_color_progress ^/dev/null; or set_color cyan)
-  set -l error_color      (set_color $fish_color_error ^/dev/null; or set_color red --bold)
-  set -l directory_color  (set_color $fish_color_quote ^/dev/null; or set_color brown)
-  set -l repository_color (set_color $fish_color_cwd ^/dev/null; or set_color green)
+  set -l color_normal     (set_color normal)
+  set -l color_success    (set_color cyan)
+  set -l color_error      (set_color red --bold)
+  set -l color_time       (set_color white)
+  set -l color_directory  (set_color blue)
 
-  set -l ahead    '↑'
-  set -l behind   '↓'
-  set -l diverged '⥄ '
-  set -l dirty    '⨯'
-  set -l none     '◦'
-
-  if git_repo
-    echo -n -s $directory_color (pwd) $normal_color ' '
-    echo -n -s [ (date '+%H:%M:%S') ]
-    echo -n -s ' on ' $repository_color (git_current_branch) $normal_color ' '
-
-    if git_dirty
-      echo -n $dirty
-    else
-      echo -n (git_ahead $ahead $behind $diverged $none)
-    end
-  else
-    echo -n -s $directory_color (pwd) $normal_color
-  end
-
-  echo
+  echo -n -s $color_directory (pwd) $color_normal ' '
+  echo -n -s $color_time (date '+%H:%M:%S') $color_normal
+  echo -n -s (__fish_git_prompt)
+  echo ' '
 
   if test $prompt_counter -eq 1
     set prompt_prefix 'ミ'
@@ -41,9 +24,9 @@ function fish_prompt
   end
 
   if test $status_code -eq 0
-    echo -n -s $success_color $prompt_prefix : $prompt_suffix $normal_color
+    echo -n -s $color_success $prompt_prefix : $prompt_suffix $color_normal
   else
-    echo -n -s $error_color $prompt_prefix X $prompt_suffix $normal_color
+    echo -n -s $color_error $prompt_prefix X $prompt_suffix $color_normal
   end
 
   echo -n ' '
