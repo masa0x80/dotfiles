@@ -13,5 +13,6 @@ function fish_user_key_bindings
   bind \cgb   git-recent-branches
   bind \cg\cb git-recent-branches
 
-  bind \cg global-alias
+  bind \cj execute_wrapper
+  bind \r  execute_wrapper
 end
