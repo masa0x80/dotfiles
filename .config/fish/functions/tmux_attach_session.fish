@@ -4,7 +4,11 @@ function tmux_attach_session
     if not tmux_is_running
       if not ssh_is_running
         if tmux has-session >/dev/null ^/dev/null
-          tmux attach-session
+          if test (tmux list-sessions | wc -l | string trim) -eq 1
+            tmux attach-session
+          else
+            tmux list-sessions
+          end
         else
           tmux new -s dev
         end
