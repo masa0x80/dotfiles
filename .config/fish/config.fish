@@ -4,14 +4,28 @@
 # Disable greeting
 set fish_greeting
 
+# Colors
+# {{{
+set -x red          (set_color red)
+set -x magenta      (set_color magenta)
+set -x yellow       (set_color yellow)
+set -x green        (set_color green)
+set -x blue         (set_color blue)
+set -x cyan         (set_color cyan)
+set -x white        (set_color white)
+set -x grey         (set_color grey)
+set -x black        (set_color black)
+set -x color_normal (set_color normal)
+# }}}
+
 # OSTYPE
-set -gx OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
+set -x OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
 
 # LANG
-set -gx LANG ja_JP.UTF-8
+set -x LANG ja_JP.UTF-8
 
 # PATH
-set -gx PATH /usr/local/bin /bin /usr/bin /sbin /usr/sbin
+set -x PATH /usr/local/bin /bin /usr/bin /sbin /usr/sbin
 if test -d /usr/local/sbin
   set PATH $PATH /usr/local/sbin
 end
@@ -24,55 +38,50 @@ end
 
 # EDITOR
 if type -qa nvim
-  set -gx EDITOR nvim
+  set -x EDITOR nvim
 else if type -qa vim
-  set -gx EDITOR vim
+  set -x EDITOR vim
 end
 
 # PAGER
 if type -qa less
-  set -gx PAGER less
+  set -x PAGER less
 end
-set -gx LESS '-R'
+set -x LESS '-R'
 
 # XDG Base Directory Specification
-set -gx XDG_CONFIG_HOME $HOME/.config
+set -x XDG_CONFIG_HOME $HOME/.config
 
 # TERM
-set -gx TERM xterm-256color
+set -x TERM xterm-256color
 
 # golang
 if string match -q $OS_TYPE 'linux'
   set PATH $PATH /usr/local/go/bin
 end
-set -gx GOPATH $HOME/.go
+set -x GOPATH $HOME/.go
 set PATH $PATH $GOPATH/bin
 
 # gtags (GNU Global)
-set -gx GTAGSLABEL pygments
+set -x GTAGSLABEL pygments
 
 # rails (for rails server alias)
-set -gx RAILS_SERVER_PORT 3000
+set -x RAILS_SERVER_PORT 3000
 
 # Use assh flag
-set -gx USE_ASSH true
+set -x USE_ASSH true
 
 # fzf options
-set -gx FZF_DEFAULT_OPTS '
+set -x FZF_DEFAULT_OPTS '
 --reverse
 --extended
 --ansi
 --multi
 --cycle
---bind=ctrl-u:page-up
---bind=ctrl-d:page-down
---bind=ctrl-z:toggle-all
+--bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all
 --color fg:-1,bg:-1,hl:229,fg+:3,bg+:233,hl+:103
 --color info:150,prompt:110,spinner:150,pointer:167,marker:174
 '
-
-# Disable homebrew analytics
-set -gx HOMEBREW_NO_ANALYTICS 1
 
 # Load OS settings
 for config_file in $HOME/.config/fish/conf.d/$OS_TYPE/*
@@ -86,7 +95,7 @@ load_file $HOME/.proxy
 load_file $HOME/.private/fish/config.fish
 
 # Append $DOTPATH/bin to $PATH
-set -q $DOTPATH; and set -gx DOTPATH $HOME/.dotfiles
+set -q $DOTPATH; and set -x DOTPATH $HOME/.dotfiles
 set PATH $PATH $DOTPATH/bin
 
 # }}}
@@ -94,20 +103,21 @@ set PATH $PATH $DOTPATH/bin
 ### prompt
 # {{{
 
-set normal (set_color normal)
-set magenta (set_color magenta)
-set yellow (set_color yellow)
-set green (set_color green)
-set red (set_color red)
-set gray (set_color -o black)
-
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
 set __fish_git_prompt_showuntrackedfiles 'yes'
 set __fish_git_prompt_showupstream 'yes'
-set __fish_git_prompt_color_branch yellow
-set __fish_git_prompt_color_upstream_ahead green
+
+set __fish_git_prompt_color_branch          yellow
+set __fish_git_prompt_color_upstream_ahead  green
 set __fish_git_prompt_color_upstream_behind red
+
+set __fish_git_prompt_char_dirtystate '⨯'
+set __fish_git_prompt_char_stagedstate '→'
+set __fish_git_prompt_char_untrackedfiles 'u'
+set __fish_git_prompt_char_stashstate 's'
+set __fish_git_prompt_char_upstream_ahead '↑'
+set __fish_git_prompt_char_upstream_behind '↓'
 
 # }}}
 
@@ -140,48 +150,33 @@ if type -qa htop
   alias top htop
 end
 
+# ssh
+# {{{
 if test -e $HOME/.ssh/config
   alias ssh_config 'vim ~/.ssh/config'
 end
 alias sconfig ssh_config
 alias sconf   ssh_config
-
 # }}}
 
-### Aliases for rails
+alias direnv_init 'echo \'export PATH=$PWD/bin:$PWD/vendor/bin:$PATH\' > .envrc; and direnv allow'
+
+# knife solo
 # {{{
+alias krepare 'knife solo prepare'
+alias kook    'knife solo cook'
+# }}}
 
-function s
-  set -l t_window    (tmux list-windows | command grep -E '\(active\)$' | cut -d ':' -f1)
-  set -l t_pane      (tmux list-pane    | command grep -E '\(active\)$' | cut -d ':' -f1)
-  set -l window_name (tmux display -p '#{window_name}')
-  tmux rename-window $window_name/server
-  tmux split-window -t ":$t_window.$t_pane" -v -p 10 "tmux select-pane -t :.-; rails s -p $RAILS_SERVER_PORT"
-end
-
-function bundle
-  set -l  t_window (tmux list-windows | command grep -E '\(active\)$' | cut -d ':' -f1)
-  set -l t_pane    (tmux list-pane    | command grep -E '\(active\)$' | cut -d ':' -f1)
-  command bundle $argv
-  if string match -q $argv[1] 'install'
-    if type -qa gtags; and type -qa cpulimit; and type -qa tmux
-      set -l pid %self
-      set -l log_file /tmp/gtags-$pid
-      echo
-      set_color magenta;
-      echo gtags error log: $log_file
-      echo
-      tmux split-window -t ":$t_window.$t_pane" -v -l 1 "tmux select-pane -t :.-; cpulimit -i -l 30 gtags -v 2>&1 | tee $log_file"
-    end
-  end
-end
-
-alias ss "pkill -f 'bin/rails'; pkill -f 'bin/spring'"
+# rails
+# {{{
+alias s  "rails s -p $RAILS_SERVER_PORT"
 alias c  'rails c'
 alias db 'rails db'
 alias t  'rspec'
+alias ss "pkill -f 'bin/rails'; pkill -f 'bin/spring'"
 alias bi  'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4'
 alias bil 'bi --local'
+# }}}
 
 # }}}
 
@@ -190,24 +185,6 @@ alias bil 'bi --local'
 
 if type -qa direnv
   eval (direnv hook fish)
-end
-
-alias direnv_init 'echo \'export PATH=$PWD/bin:$PWD/vendor/bin:$PATH\' > .envrc; and direnv allow'
-
-# }}}
-
-### Scrapbook
-# {{{
-
-if type -qa fzf; and type -qa mdv; and test -e $SCRAPBOOK_DIR
-  function scrapbook
-    set -q $SCRAPBOOK_DIR; and set -gx SCRAPBOOK_DIR $HOME/.scrapbook
-    find $SCRAPBOOK_DIR -type f | fzf --query "$argv" | read -l selected_line
-    if not set -q $selected_line
-      mdv $selected_line
-    end
-    commandline -f repaint
-  end
 end
 
 # }}}
@@ -225,16 +202,7 @@ trap 'keychain_kill' EXIT
 
 tmux_attach_session
 
-function check_private_git_config
-  if not test -f $HOME/.private/git/config
-    set_color -o black
-    set_color -b cyan
-    echo -e '[WARN] Private git config file is not found.'
-    set_color normal
-  end
-end
-
-function rename_window --on-event fish_preexec
+function rename_window --on-event fish_prompt
   check_private_git_config
   if tmux_is_running
     if test -e .git

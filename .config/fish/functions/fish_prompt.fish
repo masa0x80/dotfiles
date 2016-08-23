@@ -6,11 +6,10 @@ function fish_prompt
   set -l prompt_prefix
   set -l prompt_suffix '匚＞'
 
-  set -l color_normal     (set_color normal)
-  set -l color_success    (set_color cyan)
+  set -l color_success    $cyan
   set -l color_error      (set_color red --bold)
-  set -l color_time       (set_color white)
-  set -l color_directory  (set_color blue)
+  set -l color_time       $white
+  set -l color_directory  $blue
 
   echo -n -s $color_directory (pwd) $color_normal ' '
   echo -n -s $color_time (date '+%H:%M:%S') $color_normal
