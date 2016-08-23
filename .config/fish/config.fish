@@ -6,16 +6,20 @@ set fish_greeting
 
 # Colors
 # {{{
-set -x red          (set_color red)
-set -x magenta      (set_color magenta)
-set -x yellow       (set_color yellow)
-set -x green        (set_color green)
-set -x blue         (set_color blue)
-set -x cyan         (set_color cyan)
-set -x white        (set_color white)
-set -x grey         (set_color grey)
-set -x black        (set_color black)
-set -x color_normal (set_color normal)
+set -x color_red     (set_color red)
+set -x color_magenta (set_color magenta)
+set -x color_yellow  (set_color yellow)
+set -x color_green   (set_color green)
+set -x color_blue    (set_color blue)
+set -x color_cyan    (set_color cyan)
+set -x color_white   (set_color white)
+set -x color_grey    (set_color grey)
+set -x color_black   (set_color black)
+set -x color_normal  (set_color normal)
+set -x color_success $color_magenta
+set -x color_error   (set_color red --bold)
+
+set -x fish_color_command cyan
 # }}}
 
 # OSTYPE
