@@ -10,6 +10,12 @@ node[:recipes] = node[:recipes].concat(
       path: 'centos/fish/install.rb',
       tags: %w[basic fish],
     }, {
+      path: 'centos/neovim/install.rb',
+      tags: %w[basic neovim],
+    }, {
+      path: 'centos/tmux/install.rb',
+      tags: %w[basic tmux],
+    }, {
       path: 'centos/keychain/install.rb',
       tags: %w[basic keychain],
     }, {
@@ -18,6 +24,9 @@ node[:recipes] = node[:recipes].concat(
     }, {
       path: 'centos/mysql/install.rb',
       tags: %w[basic mysql],
+    }, {
+      path: 'centos/redis/install.rb',
+      tags: %w[basic redis],
     },
   ]
 )
