@@ -1,0 +1,4 @@
+#!/bin/sh
+
+num=$(git log --pretty=format:"%H %h" | grep -n $1 | cut -d : -f 1)
+git log --decorate --stat --reverse -p -$num

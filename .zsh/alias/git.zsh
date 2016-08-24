@@ -4,44 +4,11 @@
 # Functions
 #
 
-# Outputs the name of the current branch
-# Usage example: git pull origin $(git_current_branch)
-# Using '--quiet' with 'symbolic-ref' will not cause a fatal error (128) if
-# it's not a symbolic ref, but in a Git repo.
-function git_current_branch() {
-  local ref
-  ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
-  local ret=$?
-  if [[ $ret != 0 ]]; then
-    [[ $ret == 128 ]] && return  # no git repo.
-    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
-  fi
-  echo ${ref#refs/heads/}
-}
-
-# The name of the current branch
-# Back-compatibility wrapper for when this function was defined here in
-# the plugin, before being pulled in to core lib/git.zsh as git_current_branch()
-# to fix the core -> git plugin dependency.
-function current_branch() {
-  git_current_branch
-}
-
 # Pretty log messages
 function _git_log_prettily(){
   if ! [ -z $1 ]; then
     git log --pretty=$1
   fi
-}
-
-function git-review() {
-  local N=$(git log --pretty=format:"%H %h" | grep -n $1 | cut -d : -f 1)
-  git log --decorate --stat --reverse -p -$N
-}
-
-function git-pull-and-prune() {
-  git pull origin $(current_branch)
-  git fetch --prune --tags --all && git branch --merged | egrep -v '^\*|\smaster$|\sdevelop$' | xargs git branch -d
 }
 
 #
@@ -119,7 +86,7 @@ fi
 compdef _git ggl=git-checkout
 # alias ggpull='git pull origin $(git_current_branch)'
 # compdef _git ggpull=git-checkout
-alias ggpull='git-pull-and-prune'
+alias ggpull='git_pull_and_prune'
 ggp() {
 if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
 git push origin "${*}"
@@ -193,7 +160,7 @@ alias grbc='git rebase --continue'
 alias grbi='git rebase -i'
 alias grbm='git rebase master'
 alias grbs='git rebase --skip'
-alias gre='git-review'
+alias gre='git review'
 alias grh='git reset HEAD'
 alias grhh='git reset HEAD --hard'
 alias grmv='git remote rename'

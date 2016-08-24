@@ -1,0 +1,4 @@
+#!/bin/bash
+
+git pull origin $(git_current_branch)
+git fetch --prune --tags --all && git branch --merged | egrep -v '^\*|\smaster$|\sdevelop$' | xargs git branch -d
