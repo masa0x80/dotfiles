@@ -104,7 +104,7 @@ set PATH $PATH $DOTPATH/bin
 
 # }}}
 
-### prompt
+### Prompt
 # {{{
 
 set __fish_git_prompt_showdirtystate 'yes'
@@ -184,25 +184,15 @@ alias bil 'bi --local'
 
 # }}}
 
-### direnv
+### Hooks
 # {{{
 
 if type -qa direnv
   eval (direnv hook fish)
 end
 
-# }}}
-
-### keychain
-# {{{
-
 keychain_start
 trap 'keychain_kill' EXIT
-
-# }}}
-
-### tmux
-# {{{
 
 tmux_attach_session
 
@@ -214,6 +204,10 @@ function rename_window --on-event fish_prompt
       tmux rename-window "$window_name"
     end
   end
+end
+
+function rename_window --on-event fish_preexec
+  history --merge
 end
 
 # }}}
