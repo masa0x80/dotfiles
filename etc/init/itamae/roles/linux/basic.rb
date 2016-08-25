@@ -27,6 +27,9 @@ node[:recipes] = node[:recipes].concat(
     }, {
       path: 'centos/redis/install.rb',
       tags: %w[basic redis],
+    }, {
+      path: 'centos/jq/install.rb',
+      tags: %w[basic jq],
     },
   ]
 )

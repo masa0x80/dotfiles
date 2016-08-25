@@ -30,6 +30,8 @@
   :version: 6.5.4
 :golang:
   :version: 1.6.3
+:jo:
+  :version: 1.0
 :nodejs:
   :version: v6.2.0
 :phantomjs:

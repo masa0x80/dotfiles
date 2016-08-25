@@ -28,6 +28,7 @@ brew go
 brew graphviz
 brew htop
 brew imagemagick
+brew jq
 brew jo
 brew keychain
 brew libevent

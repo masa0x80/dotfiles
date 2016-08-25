@@ -7,6 +7,9 @@ node[:recipes] = node[:recipes].concat(
       path: 'centos/aws/install.rb',
       tags: %w[addition aws],
     }, {
+      path: 'centos/jo/install.rb',
+      tags: %w[addition jo],
+    }, {
       path: 'centos/postgresql/install.rb',
       tags: %w[addition postgresql],
     }, {
