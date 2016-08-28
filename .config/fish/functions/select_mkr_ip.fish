@@ -2,12 +2,6 @@
 function select_mkr_ip
   commandline | read -l buffer
 
-  if test -z "$MACKEREL_APIKEY"
-    builtin echo 'MACKEREL_APIKEY environment variable is not set. (Try "set MACKEREL_APIKEY=<Your apikey>")'
-    commandline ''
-    return 1
-  end
-
   mkr-hosts-tsv | fzf --nth=2,3 --delimiter='\t' --query "$buffer" | read -l selected_line
 
   if test -n "$selected_line"

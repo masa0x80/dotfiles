@@ -1,9 +1,15 @@
 #!/bin/sh
 # ref: http://motemen.hatenablog.com/entry/2015/07/mackerel-mkr-peco-zsh
 
-cache_file=~/.cache/mkr-hosts-tsv/cache
+cache_dir=~/.cache/mkr-hosts-tsv
+cache_file=${cache_dir}/cache
 cache_minutes=${MKR_HOSTS_TSV_CACHE_MINUTES:-1440}
 mackerel_hosts_api_uri=https://mackerel.io/api/v0/hosts
+
+if [ -z "$MACKEREL_APIKEY" ]; then
+  cat $cache_dir/*
+  return 0
+fi
 
 if [ -n "$MACKEREL_APIKEY_NAME" ]; then
   cache_file="$cache_file.$MACKEREL_APIKEY_NAME"
