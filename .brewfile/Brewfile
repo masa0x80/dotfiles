@@ -51,6 +51,7 @@ brew tree
 brew vim --with-lua --without-python
 brew watch
 brew wget
+brew xz
 brew zsh --without-etcdir
 
 tap neovim/neovim

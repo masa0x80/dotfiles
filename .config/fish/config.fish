@@ -28,18 +28,6 @@ set -x OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
 # LANG
 set -x LANG ja_JP.UTF-8
 
-# PATH
-set -x PATH /usr/local/bin /bin /usr/bin /sbin /usr/sbin
-if test -d /usr/local/sbin
-  set PATH $PATH /usr/local/sbin
-end
-
-# anyenv
-if test -d $HOME/.anyenv/bin
-  set PATH $HOME/.anyenv/bin $PATH
-  status --is-interactive; and source (anyenv init - | psub)
-end
-
 # EDITOR
 if type -qa nvim
   set -x EDITOR nvim
@@ -58,13 +46,6 @@ set -x XDG_CONFIG_HOME $HOME/.config
 
 # TERM
 set -x TERM xterm-256color
-
-# golang
-if string match -q $OS_TYPE 'linux'
-  set PATH $PATH /usr/local/go/bin
-end
-set -x GOPATH $HOME/.go
-set PATH $PATH $GOPATH/bin
 
 # gtags (GNU Global)
 set -x GTAGSLABEL pygments
@@ -91,9 +72,6 @@ set -x FZF_DEFAULT_OPTS '
 for config_file in $HOME/.config/fish/conf.d/$OS_TYPE/*
   source $config_file
 end
-
-# load proxy settings if exists
-load_file $HOME/.proxy
 
 # load private configurations
 load_file $HOME/.private/fish/config.fish
@@ -206,7 +184,7 @@ function rename_window --on-event fish_prompt
   end
 end
 
-function rename_window --on-event fish_preexec
+function __history_merge --on-event fish_preexec
   history --merge
 end
 

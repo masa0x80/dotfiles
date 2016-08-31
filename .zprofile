@@ -11,15 +11,6 @@ fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
 # lang
 export LANG=ja_JP.UTF-8
 
-# path
-export PATH=/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/sbin
-
-# anyenv
-export PATH=$HOME/.anyenv/bin:$PATH
-if (( $+commands[anyenv] )); then
-  eval "$(anyenv init -)"
-fi
-
 # editor
 if (( $+commands[nvim] )); then
   export EDITOR=nvim
@@ -38,13 +29,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 # term color
 export TERM=xterm-256color
-
-# golang
-if [[ $OSTYPE == linux* ]]; then
-  export PATH=$PATH:/usr/local/go/bin
-fi
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin
 
 # gtags (GNU Global)
 export GTAGSLABEL=pygments
@@ -83,9 +67,6 @@ export ZPLUG_HOME=$HOME/.zplug
 for config_file ($HOME/.zsh/os/$(uname | tr '[:upper:]' '[:lower:]')/profile/*.zsh(N)); do
   load_file $config_file
 done
-
-# load proxy settings
-load_file $HOME/.proxy
 
 # 環境ローカルの設定の読み込み
 load_file $HOME/.private/zsh/profile
