@@ -1,12 +1,12 @@
-%w[
+%w(
   github.com/direnv/direnv
   github.com/masa0x80/mdv/...
   github.com/mackerelio/mkr
   github.com/mattn/qq/...
   github.com/motemen/ghq
   github.com/monochromegane/the_platinum_searcher/...
-  github.com/moul/advanced-ssh-config/...
+  github.com/moul/advanced-ssh-config/cmd/assh
   github.com/peco/peco/...
-].each do |repo|
-  execute "zsh -lc 'go get -u #{repo}'"
+).each do |repo|
+  execute "go get #{ENV.fetch('GO_GET_OPTION', '')} #{repo}"
 end

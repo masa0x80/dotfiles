@@ -8,5 +8,5 @@ execute 'install jo' do
     make check
     sudo make install
   EOF
-  not_if "zsh -lc 'type -a jo'"
+  not_if 'type -a jo'
 end

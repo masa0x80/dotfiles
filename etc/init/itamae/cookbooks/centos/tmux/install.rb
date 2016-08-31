@@ -1,30 +1,26 @@
-%w[
+%w(
   libevent
   libevent-devel
   libevent-headers
-].each do |name|
+).each do |name|
   package name do
     action :remove
     user   'root'
   end
 end
 
-%w[
-  libevent-devel
-].each do |name|
-  package name do
-    action  :install
-    options '--enablerepo=remi'
-    user    'root'
-  end
+package 'libevent-devel' do
+  action  :install
+  options '--enablerepo=remi'
+  user    'root'
 end
 
-%w[
+%w(
   gcc-c++
   openssl
   openssl-devel
   ncurses-devel
-].each do |name|
+).each do |name|
   package name do
     action :install
     user   'root'

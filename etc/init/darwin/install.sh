@@ -24,10 +24,10 @@ else
 fi
 
 # Update homebrew
-sh -lc 'brew update'
+brew update
 # Upgrade formula
-sh -lc 'brew upgrade'
+brew upgrade
 
 # Install tools
-sh -lc 'brew file install'
-sh -lc 'brew cask cleanup'
+brew file install
+brew cask cleanup

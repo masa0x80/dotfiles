@@ -3,10 +3,10 @@ package 'vim' do
   user   'root'
 end
 
-%w[
+%w(
   lua
   lua-devel
-].each do |name|
+).each do |name|
   package name do
     action :install
     user   'root'

@@ -19,8 +19,8 @@
 :perl:
   version: 5.22.1
 :python:
-  :version2: 2.7.11
-  :version3: 3.5.1
+  :version2: 2.7.12
+  :version3: 3.5.2
 :remi_repo:
   :rpm_url: http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
   :package: remi-release

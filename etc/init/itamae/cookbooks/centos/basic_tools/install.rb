@@ -1,4 +1,4 @@
-%w[
+%w(
   epel-release
   git
   zsh
@@ -16,7 +16,7 @@
   lbzip2
   automake
   xsel
-].each do |name|
+).each do |name|
   package name do
     action :install
     user   'root'

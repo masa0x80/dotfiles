@@ -8,12 +8,15 @@ execute 'install global' do
     make
     sudo make install
   EOF
-  not_if "zsh -lc 'type -a global'"
+  not_if 'type -a global'
 end
 
 include_recipe '../../common/pyenv/install.rb'
 
 execute 'pip install pygments' do
-  command "zsh -lc 'pip install pygments'"
-  not_if  "zsh -lc 'pip list | grep -i pygments'"
+  command <<-"EOF"
+    source $HOME/.bash_env
+    pip install pygments
+  EOF
+  not_if "source $HOME/.bash_env && pip list | grep -i pygments"
 end

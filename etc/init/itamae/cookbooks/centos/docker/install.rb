@@ -1,6 +1,6 @@
-%w[
+%w(
   docker
-].each do |name|
+).each do |name|
   package name do
     action :install
     user   'root'

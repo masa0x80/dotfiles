@@ -1,4 +1,4 @@
-%w[
+%w(
   gcc-c++
   curl-devel
   expat-devel
@@ -8,7 +8,7 @@
   perl-ExtUtils-MakeMaker
   xmlto
   asciidoc
-].each do |name|
+).each do |name|
   package name do
     action :install
     user   'root'
@@ -29,11 +29,7 @@ execute 'install git' do
   not_if "type -a git && git version | grep #{node[:git][:version]}"
 end
 
-%w[
-  git
-].each do |name|
-  package name do
-    action :remove
-    user   'root'
-  end
+package 'git' do
+  action :remove
+  user   'root'
 end

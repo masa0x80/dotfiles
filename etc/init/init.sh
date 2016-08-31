@@ -1,5 +1,8 @@
 #!/bin/bash
 
+SHELL_TEMP=$SHELL
+SHELL=/bin/bash
+
 mkdir -p /tmp/src
 
 export SCRIPT_DIR=$(cd $(dirname $0); pwd)
@@ -8,27 +11,23 @@ export RUBY_VERSION=`cat $SCRIPT_DIR/itamae/.ruby-version`
 cd $SCRIPT_DIR
 case `uname` in
   Darwin)
-    sh -lc 'bash darwin/install.sh'
+    bash darwin/install.sh
     ;;
   Linux)
-    sh -lc 'bash centos/install.sh'
+    bash centos/install.sh
     ;;
 esac
 
-cd itamae
+source $HOME/.bash_env
 
 # Install anyanv & ruby
 if type -a anyenv > /dev/null 2>&1; then
   # update *env
   anyenv update
-  if [ -z "$(rbenv version | grep $RUBY_VERSION)" ]; then
-    rbenv install $RUBY_VERSION
-    rbenv global  $RUBY_VERSION
-  fi
 else
   git clone https://github.com/riywo/anyenv $HOME/.anyenv
 
-  source $HOME/.bashrc
+  source $HOME/.bash_env
   git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
 
   if type -a rbenv > /dev/null 2>&1; then
@@ -36,15 +35,18 @@ else
   else
     # rbenv configuration
     anyenv install rbenv
-    source $HOME/.bashrc
+    source $HOME/.bash_env
     git clone https://github.com/sstephenson/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
     echo 'bundler' > $(rbenv root)/default-gems
-    rbenv install $RUBY_VERSION
-    rbenv global  $RUBY_VERSION
   fi
 fi
 
-source $HOME/.bashrc
+if [ -z "$(rbenv version | grep $RUBY_VERSION)" ]; then
+  rbenv install $RUBY_VERSION
+  rbenv global  $RUBY_VERSION
+fi
+
+cd itamae
 bundle install --path=vendor/bundle --local
 if [ -z "$TAGS" ]; then
   bundle exec itamae local entrypoint.rb -y nodes/localhost.yml
@@ -66,3 +68,5 @@ esac
 
 unset RUBY_VERSION
 unset SCRIPT_DIR
+
+SHELL=$SHELL_TEMP

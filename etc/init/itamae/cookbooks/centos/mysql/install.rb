@@ -4,11 +4,11 @@ package node[:mysql][:rpm_url] do
   not_if 'rpm -q %s' % node[:mysql][:package]
 end
 
-%w[
+%w(
   mysql-community-devel
   mysql-community-server
   mysql-community-libs
-].each do |name|
+).each do |name|
   package name do
     action :install
     user   'root'

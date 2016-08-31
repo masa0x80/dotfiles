@@ -5,5 +5,5 @@ execute 'install jq' do
     chmod 755 jq
     sudo mv #{node[:src_dir]}/jq #{node[:bin_dir]}/
   EOF
-  not_if "zsh -lc 'type -a jq'"
+  not_if 'type -a jq'
 end

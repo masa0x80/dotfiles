@@ -1,5 +1,5 @@
 execute 'git clone keychain' do
-  command "zsh -lc 'git clone https://github.com/funtoo/keychain.git'"
+  command 'git clone https://github.com/funtoo/keychain.git'
   cwd     node[:src_dir]
   not_if  "test -e #{node[:src_dir]}/keychain"
 end

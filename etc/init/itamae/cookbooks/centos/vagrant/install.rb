@@ -1,8 +1,8 @@
-%w[
+%w(
   kernel-headers
   kernel-devel
   dkms
-].each do |name|
+).each do |name|
   package name do
     action :install
     user   'root'
@@ -33,5 +33,5 @@ end
 execute 'setup virtualbox' do
   command '/usr/lib/virtualbox/vboxdrv.sh setup'
   user    'root'
-  not_if 'rpm -q %s' % node[:virtualbox][:package]
+  not_if  'rpm -q %s' % node[:virtualbox][:package]
 end

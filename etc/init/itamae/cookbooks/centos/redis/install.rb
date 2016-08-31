@@ -1,11 +1,7 @@
-%w[
-  redis
-].each do |name|
-  package name do
-    action  :install
-    options '--enablerepo=remi'
-    user    'root'
-  end
+package 'redis' do
+  action  :install
+  options '--enablerepo=remi'
+  user    'root'
 end
 
 service 'redis' do
