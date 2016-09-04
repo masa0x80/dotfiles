@@ -1,4 +1,4 @@
-function select_vagrant_host
+function __select_vagrant_host
   find nodes | \
         grep vagrant | \
         fzf -1 | \

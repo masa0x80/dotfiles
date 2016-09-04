@@ -1,4 +1,4 @@
-function select_git_add
+function __select_git_add
   commandline | read -l buffer
   git status --porcelain | \
         fzf --query "$buffer" | \

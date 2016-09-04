@@ -1,4 +1,4 @@
-function check_private_git_config
+function __check_private_git_config
   if not test -f $HOME/.private/git/config
     set_color -o black
     set_color -b cyan

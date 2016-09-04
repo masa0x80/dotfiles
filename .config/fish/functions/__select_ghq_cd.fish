@@ -1,4 +1,4 @@
-function select_ghq_cd
+function __select_ghq_cd
   commandline | read -l buffer
   ghq list --full-path | \
         sed -e "s|$HOME/||g" | \

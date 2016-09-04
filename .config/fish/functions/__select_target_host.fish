@@ -1,4 +1,4 @@
-function select_target_host
+function __select_target_host
   find nodes | \
         grep json | \
         fzf -1 | \

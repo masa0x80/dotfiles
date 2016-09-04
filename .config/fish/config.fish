@@ -74,7 +74,7 @@ for config_file in $HOME/.config/fish/conf.d/$OS_TYPE/*
 end
 
 # load private configurations
-load_file $HOME/.private/fish/config.fish
+__load_file $HOME/.private/fish/config.fish
 
 # Append $DOTPATH/bin to $PATH
 set -q $DOTPATH; and set -x DOTPATH $HOME/.dotfiles
@@ -103,61 +103,120 @@ set __fish_git_prompt_char_upstream_behind '↓'
 
 # }}}
 
-### Aliases
-#{{{
+### Abbreviations
+# {{{
 
-alias diff 'diff -u'
-alias watch 'watch -n 0.5'
-alias grep  'command grep -v grep | command grep  --color=auto'
-alias egrep 'command grep -v grep | command egrep --color=auto'
-alias mkdir 'mkdir -p'
-alias md 'mkdir'
-alias rd 'rmdir'
-alias rf 'rm -rf'
-
-alias l  'ls -lah'
-alias ll 'ls -lh'
-alias la 'ls -lAh'
+abbr -a diff 'diff -u'
+abbr -a watch 'watch -n 0.5'
+abbr -a grep  'command grep -v grep | command grep  --color=auto'
+abbr -a egrep 'command grep -v grep | command egrep --color=auto'
+abbr -a mkdir 'mkdir -p'
 
 if type -qa nvim
-  alias vim nvim
+  abbr -a vim 'nvim'
 end
-
-alias ...    'cd ../..'
-alias ....   'cd ../../..'
-alias .....  'cd ../../../..'
-alias ...... 'cd ../../../../..'
 
 if type -qa htop
-  alias top htop
+  abbr -a top 'htop'
 end
+
+abbr -a md 'mkdir'
+abbr -a rd 'rmdir'
+abbr -a rf 'rm -rf'
+
+abbr -a l  'ls -lah'
+abbr -a ll 'ls -lh'
+abbr -a la 'ls -lAh'
+
+abbr -a ...    'cd ../..'
+abbr -a ....   'cd ../../..'
+abbr -a .....  'cd ../../../..'
+abbr -a ...... 'cd ../../../../..'
+
+abbr -a dinit 'echo \'export PATH=$PWD/bin:$PWD/vendor/bin:$PATH\' > .envrc; and direnv allow'
 
 # ssh
 # {{{
 if test -e $HOME/.ssh/config
-  alias ssh_config 'vim ~/.ssh/config'
+  abbr -a ssh_config 'vim ~/.ssh/config'
+  abbr -a sconfig    'vim ~/.ssh/config'
+  abbr -a sconf      'vim ~/.ssh/config'
 end
-alias sconfig ssh_config
-alias sconf   ssh_config
 # }}}
 
-alias direnv_init 'echo \'export PATH=$PWD/bin:$PWD/vendor/bin:$PATH\' > .envrc; and direnv allow'
+# git
+# {{{
+abbr -a g 'git'
+
+abbr -a ga  'git add'
+abbr -a gaa 'git add --all'
+
+abbr -a gb  'git branch'
+abbr -a gba 'git branch -a'
+abbr -a gbr 'git branch --remote'
+
+abbr -a gc  'git commit -v'
+abbr -a gc! 'git commit -v --amend'
+abbr -a gcb 'git checkout -b'
+abbr -a gcm 'git checkout master'
+abbr -a gco 'git checkout'
+abbr -a gcp 'git cherry-pick'
+
+abbr -a gd  'git diff'
+abbr -a gdc 'git diff --cached'
+abbr -a gds 'git diff --staged'
+
+abbr -a gf 'git fetch'
+
+abbr -a gfx 'git fixup'
+
+abbr -a gl  'git fzf show'
+abbr -a lg  'git fzf show'
+abbr -a glg  'git log --stat --color'
+abbr -a glgp 'git log --stat --color -p'
+abbr -a glog 'git log --oneline --decorate --color --graph'
+
+abbr -a gm 'git merge --no-ff'
+
+abbr -a gp 'git push'
+abbr -a gpull 'git_pull_and_prune'
+abbr -a gpush  'git push origin (git_current_branch)'
+abbr -a gpush! 'git push --force-with-lease origin (git_current_branch)'
+
+abbr -a grb  'git rebase'
+abbr -a grba 'git rebase --abort'
+abbr -a grbc 'git rebase --continue'
+abbr -a grbi 'git rebase -i'
+abbr -a grbm 'git rebase master'
+abbr -a grbs 'git rebase --skip'
+
+abbr -a gre 'git review'
+
+abbr -a grh  'git reset HEAD'
+abbr -a grhh 'git reset HEAD --hard'
+
+abbr -a gru 'git reset --'
+
+abbr -a gsh 'git show'
+abbr -a gst 'git status -sb'
+abbr -a gts 'git tag -s'
+# }}}
 
 # knife solo
 # {{{
-alias krepare 'knife solo prepare'
-alias kook    'knife solo cook'
+abbr -a krepare 'knife solo prepare'
+abbr -a kook    'knife solo cook'
 # }}}
 
 # rails
 # {{{
-alias s  "rails s -p $RAILS_SERVER_PORT"
-alias c  'rails c'
-alias db 'rails db'
-alias t  'rspec'
-alias ss "pkill -f 'bin/rails'; pkill -f 'bin/spring'"
-alias bi  'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4'
-alias bil 'bi --local'
+abbr -a s  "rails s -p $RAILS_SERVER_PORT"
+abbr -a c  'rails c'
+abbr -a db 'rails db'
+abbr -a t  'rspec'
+abbr -a ss "pkill -f 'bin/rails'; pkill -f 'bin/spring'"
+abbr -a bi  'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4'
+abbr -a bil 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4 --local'
 # }}}
 
 # }}}
@@ -169,14 +228,14 @@ if type -qa direnv
   eval (direnv hook fish)
 end
 
-keychain_start
-trap 'keychain_kill' EXIT
+__keychain_start
+trap '__keychain_kill' EXIT
 
-tmux_attach_session
+__tmux_attach_session
 
-function rename_window --on-event fish_prompt
-  check_private_git_config
-  if tmux_is_running
+function __rename_window --on-event fish_prompt
+  __check_private_git_config
+  if __tmux_is_running
     if test -e .git
       pwd | string split -r -m 2 '/' | grep -v '/' | string join '/' | read -l window_name
       tmux rename-window "$window_name"

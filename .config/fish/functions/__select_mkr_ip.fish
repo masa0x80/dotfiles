@@ -1,5 +1,5 @@
 # ref: http://motemen.hatenablog.com/entry/2015/07/mackerel-mkr-peco-zsh
-function select_mkr_ip
+function __select_mkr_ip
   commandline | read -l buffer
 
   mkr-hosts-tsv | fzf --nth=2,3 --delimiter='\t' --query "$buffer" | read -l selected_line
