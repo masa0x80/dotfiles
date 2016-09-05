@@ -33,6 +33,9 @@ repo = 'itchyny/lightline.vim'
 repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
+repo = 'neomake/neomake'
+
+[[plugins]]
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
