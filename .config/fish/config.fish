@@ -237,8 +237,11 @@ function __rename_window --on-event fish_prompt
   __check_private_git_config
   if __tmux_is_running
     if test -e .git
-      pwd | string split -r -m 2 '/' | grep -v '/' | string join '/' | read -l window_name
-      tmux rename-window "$window_name"
+      # disable auto rename
+      if not string match -r '^\*' (tmux list-windows | grep active | cut -d ' ' -f 2)
+        __tmux_window_name | read -l window_name
+        tmux rename-window "$window_name"
+      end
     end
   end
 end
