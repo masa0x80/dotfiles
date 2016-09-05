@@ -6,7 +6,7 @@ function __git_recent_branches
         fzf | read -l selected_branch
   if test -n "$selected_branch"
     if test -n "$buffer"
-      commandline -a $selected_branch
+      commandline -i $selected_branch
     else
       commandline "git checkout $selected_branch"
       commandline -f execute
