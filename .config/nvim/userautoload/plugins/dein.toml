@@ -39,6 +39,9 @@ repo = 'neomake/neomake'
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
+repo = 'dag/vim-fish'
+
+[[plugins]]
 repo = 'tpope/vim-rails'
 
 [[plugins]]
