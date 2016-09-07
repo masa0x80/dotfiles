@@ -4,6 +4,9 @@ execute 'install plenv' do
 end
 
 execute 'fix perl version' do
-  command "zsh -lc 'plenv install #{node[:perl][:version]} && plenv global #{node[:perl][:version]}'"
-  not_if  "type -a plenv && plenv versions | grep #{node[:perl][:version]}"
+  command <<-"EOF"
+    zsh -lc 'plenv install #{node[:perl][:version]}'
+    zsh -lc 'plenv global  #{node[:perl][:version]}'
+  EOF
+  not_if "type -a plenv && plenv versions | grep #{node[:perl][:version]}"
 end

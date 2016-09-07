@@ -1,4 +1,5 @@
 %w[
+  kernel-headers
   kernel-devel
   dkms
 ].each do |name|
@@ -8,10 +9,19 @@
   end
 end
 
-package node[node[:os_version]][:virtualbox][:rpm_url] do
+execute 'download repo file' do
+  command <<-"EOF"
+    cd /etc/yum.repos.d
+    curl -LO #{node[:virtualbox][:yum_repository]}
+  EOF
+  user   'root'
+  not_if 'test -e /etc/yum.repos.d/virtualbox.repo'
+end
+
+package "#{node[:virtualbox][:package]}" do
   action :install
   user   'root'
-  not_if 'rpm -q %s' % node[node[:os_version]][:virtualbox][:package]
+  not_if 'rpm -q %s' % node[:virtualbox][:package]
 end
 
 package node[:vagrant][:rpm_url] do
@@ -21,6 +31,7 @@ package node[:vagrant][:rpm_url] do
 end
 
 execute 'setup virtualbox' do
-  command '/sbin/rcvboxdrv setup'
+  command '/usr/lib/virtualbox/vboxdrv.sh setup'
   user    'root'
+  not_if 'rpm -q %s' % node[:virtualbox][:package]
 end

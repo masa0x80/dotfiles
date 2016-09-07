@@ -16,12 +16,14 @@
 end
 
 execute 'git clone neovim' do
-  command "cd #{node[:src_dir]} && zsh -lc 'git clone https://github.com/neovim/neovim.git'"
+  command "zsh -lc 'git clone https://github.com/neovim/neovim.git'"
+  cwd     node[:src_dir]
   not_if  "test -e #{node[:src_dir]}/neovim"
 end
 
 execute 'install neovim' do
-  command "cd #{node[:src_dir]}/neovim && make && sudo make install"
+  command "make && sudo make install"
+  cwd     "#{node[:src_dir]}/neovim"
   not_if  'typo -a nvim'
 end
 

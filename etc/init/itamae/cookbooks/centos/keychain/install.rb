@@ -1,9 +1,11 @@
 execute 'git clone keychain' do
-  command "cd #{node[:src_dir]} && zsh -lc 'git clone https://github.com/funtoo/keychain.git'"
+  command "zsh -lc 'git clone https://github.com/funtoo/keychain.git'"
+  cwd     node[:src_dir]
   not_if  "test -e #{node[:src_dir]}/keychain"
 end
 
 execute 'install keychain' do
-  command "cd #{node[:src_dir]}/keychain && make && sudo cp keychain /usr/local/bin"
+  command 'make && sudo cp keychain /usr/local/bin'
+  cwd     "#{node[:src_dir]}/keychain"
   not_if  'typo -a keychain'
 end

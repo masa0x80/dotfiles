@@ -22,6 +22,9 @@ node[:recipes] = node[:recipes].concat(
       path: 'centos/golang/install.rb',
       tags: %w[basic golang],
     }, {
+      path: 'common/golang_tools/install.rb',
+      tags: %w[basic golang_tools],
+    }, {
       path: 'centos/mysql/install.rb',
       tags: %w[basic mysql],
     }, {

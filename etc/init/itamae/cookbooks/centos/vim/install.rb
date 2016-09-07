@@ -13,14 +13,13 @@ end
   end
 end
 
-execute 'download vim' do
-  command "cd #{node[:src_dir]} && wget ftp://ftp.vim.org/pub/vim/unix/vim-#{node[:vim][:version]}.tar.bz2"
-  not_if  "ls #{node[:src_dir]}/vim-#{node[:vim][:version]}.tar.bz2"
-end
-
-execute 'extract vim' do
-  command "cd #{node[:src_dir]} && tar jxf vim-#{node[:vim][:version]}.tar.bz2"
-  only_if "ls #{node[:src_dir]}/vim-#{node[:vim][:version]}.tar.bz2"
+execute 'install vim' do
+  command <<-"EOF"
+    wget ftp://ftp.vim.org/pub/vim/unix/vim-#{node[:vim][:version]}.tar.bz2
+    tar jxf vim-#{node[:vim][:version]}.tar.bz2
+  EOF
+  cwd    node[:src_dir]
+  not_if "ls #{node[:src_dir]}/vim-#{node[:vim][:version]}.tar.bz2"
 end
 
 local_ruby_block 'install vim' do
