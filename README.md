@@ -59,13 +59,13 @@ $ make install
 After running `make install`, make your personal configuration file for git.
 
 ```
-$ mkdir -p $HOME/.private/git
-$ cat <<EOF > $HOME/.private/git/config
+$ mkdir -p $HOME/.local_config/git
+$ cat <<EOF > $HOME/.local_config/git/config
 [user]
   name  = masa0x80
   email = masa0x80@gmail.com
 [core]
-  hooksPath = ~/.private/git/hooks
+  hooksPath = ~/.local_config/git/hooks
 [url "git@github.com:"]
   insteadOf = https://github.com/
 EOF

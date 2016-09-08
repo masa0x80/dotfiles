@@ -76,8 +76,8 @@ for config_file in $HOME/.config/fish/conf.d/$OS_TYPE/*
   source $config_file
 end
 
-# load private configurations
-__load_file $HOME/.private/fish/config.fish
+# load local configurations
+__load_file $HOME/.local_config/fish/config.fish
 
 # Append $DOTFILE to $PATH
 set -q $DOTFILE; and set -x DOTFILE $HOME/.dotfiles
@@ -238,7 +238,7 @@ trap '__keychain_kill' EXIT
 __tmux_attach_session
 
 function __rename_window --on-event fish_prompt
-  __check_private_git_config
+  __check_local_git_config
   if __tmux_is_running
     if test -e .git
       # disable auto rename

@@ -69,7 +69,7 @@ for config_file ($HOME/.zsh/os/$(uname | tr '[:upper:]' '[:lower:]')/profile/*.z
 done
 
 # 環境ローカルの設定の読み込み
-load_file $HOME/.private/zsh/profile
+load_file $HOME/.local_config/zsh/profile
 
 # Append $DOTFILE/bin to $PATH
 export DOTFILE=${DOTFILE:-$HOME/.dotfiles}
