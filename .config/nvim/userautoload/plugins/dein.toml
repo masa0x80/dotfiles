@@ -2,6 +2,9 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'fuenor/qfixhowm'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 

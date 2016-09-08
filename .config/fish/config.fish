@@ -56,6 +56,9 @@ set -x RAILS_SERVER_PORT 3000
 # Use assh flag
 set -x USE_ASSH true
 
+# Set scrapbook dir path
+set -q $SCRAPBOOK_DIR; and set -x SCRAPBOOK_DIR $HOME/.scrapbook
+
 # fzf options
 set -x FZF_DEFAULT_OPTS '
 --reverse
