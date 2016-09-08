@@ -4,21 +4,19 @@ function __execute_wrapper
   echo "$buffer_entire" | string replace -r " $alias_name" '' | string trim | read -l command
 
   switch $alias_name
-  case 'GST'
+  case GST
     __select_git_status | read -l files
     commandline "$command $files"
     commandline -f execute
-  case 'RET'
-    commandline "env RAILS_ENV=test $command"
-  case 'TH'
+  case TH
     __select_target_host | read -l host
     commandline "$command $host"
     commandline -f execute
-  case 'VH'
+  case VH
     __select_vagrant_host | read -l host
     commandline "$command $host"
     commandline -f execute
-  case 'GH'
+  case GH
     git fzf | read -l git_hash
     commandline "$command $git_hash"
     commandline -f execute
