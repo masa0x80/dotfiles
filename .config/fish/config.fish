@@ -79,9 +79,9 @@ end
 # load private configurations
 __load_file $HOME/.private/fish/config.fish
 
-# Append $DOTPATH/bin to $PATH
-set -q $DOTPATH; and set -x DOTPATH $HOME/.dotfiles
-set PATH $PATH $DOTPATH/bin
+# Append $DOTFILE to $PATH
+set -q $DOTFILE; and set -x DOTFILE $HOME/.dotfiles
+set PATH $PATH $DOTFILE/bin
 
 # }}}
 

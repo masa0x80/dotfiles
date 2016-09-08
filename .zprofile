@@ -71,6 +71,6 @@ done
 # 環境ローカルの設定の読み込み
 load_file $HOME/.private/zsh/profile
 
-# Append $DOTPATH/bin to $PATH
-export DOTPATH=${DOTPATH:-$HOME/.dotfiles}
-export PATH=$PATH:$DOTPATH/bin
+# Append $DOTFILE/bin to $PATH
+export DOTFILE=${DOTFILE:-$HOME/.dotfiles}
+export PATH=$PATH:$DOTFILE/bin

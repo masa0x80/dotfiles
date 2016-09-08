@@ -25,7 +25,7 @@ deploy:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 init:
-	@DOTPATH=$(DOTPATH) bash ./etc/init/init.sh
+	@DOTFILE=$(DOTPATH) bash ./etc/init/init.sh
 
 install: update deploy init
 
