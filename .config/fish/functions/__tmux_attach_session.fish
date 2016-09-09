@@ -4,10 +4,20 @@ function __tmux_attach_session
     if not __tmux_is_running
       if not __ssh_is_running
         if tmux has-session >/dev/null ^/dev/null
-          if test (tmux list-sessions | wc -l | string trim) -eq 1
-            tmux attach-session
-          else
-            tmux list-sessions
+          set -q TMUX_ATTACHE_SESSION; and return
+          set -g TMUX_ATTACHE_SESSION ''
+          tmux list-sessions
+          read -p 'echo "Tmux: attach? (y/n/num) > "' -l reply
+          not set -q reply; set -g TMUX_ATTACHE_SESSION ''; and return
+          switch $reply
+            case Y y
+              tmux attach-session
+              return
+            case N n ''
+              return
+            case '*'
+              tmux attach -t "$reply"
+              return
           end
         else
           tmux new -s dev
