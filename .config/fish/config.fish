@@ -3,6 +3,7 @@
 
 # Disable greeting
 set fish_greeting
+set fish_prompt_pwd_dir_length 0
 
 # Colors
 # {{{
@@ -239,13 +240,8 @@ function __rename_window --on-event fish_prompt
   __check_local_git_config
   __tmux_attach_session
   if __tmux_is_running
-    if test -e .git
-      # disable auto rename
-      if not string match -r '^\*' (tmux list-windows | grep active | cut -d ' ' -f 2)
-        __tmux_window_name | read -l window_name
-        tmux rename-window "$window_name"
-      end
-    end
+    __tmux_window_name | read -l window_name
+    tmux rename-window "$window_name"
   end
 end
 

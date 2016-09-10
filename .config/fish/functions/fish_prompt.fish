@@ -9,7 +9,7 @@ function fish_prompt
   set -l color_time       $color_white
   set -l color_directory  $color_blue
 
-  echo -n -s $color_directory (pwd) $color_normal ' '
+  echo -n -s $color_directory (prompt_pwd) $color_normal ' '
   echo -n -s $color_time (date '+%H:%M:%S') $color_normal
   echo -n -s (__fish_git_prompt)
   echo ' '
