@@ -13,7 +13,7 @@ alias -g krepare='knife solo prepare'
 
 knife-solo-provision-vagrant() {
   local vagrant_host="$(echo VH)"
-  vagrant destroy -f && vagrant up && krepare $vagrant_host && kook $vagrant_host
+  vagrant destroy -f && vagrant up && vagrant snapshot save init && krepare $vagrant_host && vagrant snapshot save prepared && kook $vagrant_host && vagrant snapshot save cooked
 }
 
 knife-solo-provision-target() {
