@@ -55,11 +55,6 @@ export FZF_DEFAULT_OPTS='
 # Disable homebrew analytics
 export HOMEBREW_NO_ANALYTICS=1
 
-# enhancd
-if (( $+commands[fzf] )); then
-  export ENHANCD_FILTER=fzf
-fi
-
 # zplug
 export ZPLUG_HOME=$HOME/.zplug
 
