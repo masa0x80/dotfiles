@@ -18,7 +18,7 @@ case `uname` in
     ;;
 esac
 
-source $HOME/.bash_env
+source $HOME/.sh_env
 
 # Install anyanv & ruby
 if type -a anyenv > /dev/null 2>&1; then
@@ -27,7 +27,7 @@ if type -a anyenv > /dev/null 2>&1; then
 else
   git clone https://github.com/riywo/anyenv $HOME/.anyenv
 
-  source $HOME/.bash_env
+  source $HOME/.sh_env
   git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
 
   if type -a rbenv > /dev/null 2>&1; then
@@ -35,7 +35,7 @@ else
   else
     # rbenv configuration
     anyenv install rbenv
-    source $HOME/.bash_env
+    source $HOME/.sh_env
     git clone https://github.com/sstephenson/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
     echo 'bundler' > $(rbenv root)/default-gems
   fi

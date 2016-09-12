@@ -15,8 +15,8 @@ include_recipe '../../common/pyenv/install.rb'
 
 execute 'pip install pygments' do
   command <<-"EOF"
-    source $HOME/.bash_env
+    source $HOME/.sh_env
     pip install pygments
   EOF
-  not_if "source $HOME/.bash_env && pip list | grep -i pygments"
+  not_if "source $HOME/.sh_env && pip list | grep -i pygments"
 end

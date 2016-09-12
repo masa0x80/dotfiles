@@ -75,18 +75,40 @@ EOF
 
 After running `make install`, load `./etc/data/terminal/Hybrid.terminal` for **Terminal.app** profile.
 
-## Appendix
+## Structure
 
-### Inside of `make install`
+### Shell Invocation
+
+`bash` is set as Default shell, but `bash` kick-start `fish` as following steps:
+
+1. Start `bash` after starting termial
+2. Read `.bash_profile` at first
+3. Read basic environment variables from `.sh_env`
+  - Load proxy config if necessary
+  - Set PATH
+  - Initialize anyenv
+  - Set environemnt variables for golang
+4. Kick-start `fish`
+5. Start or attach `tmux` session by `__tmux_attach_session` function
+
+### Provisioning local machine
 
 `make install` execute the following tasks.
 
-- `make update`
+1. `make update`
   - Update dotfiles repository
-- `make deploy`
-  - Deploy dotfiles
-- `make init`
-  - Initialize and install tools
+2. `make deploy`
+  - Deploy dotfiles: create symlink to dotfiles under your home directory
+3. `make init`
+  - Initialize and install tools as following steps:
+    1. Execute `etc/init/init.sh` at first
+    2. Execute `etc/init/darwin/install.sh` or `etc/init/centos/install.sh`
+    3. Install anyenv
+    4. Install rbenv and ruby
+    5. Install itamae and provision local machine
+    6. Install development tools accoding to itamae recipes
+
+## Appendix
 
 Install specified tools instead of running `make init`.
 

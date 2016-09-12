@@ -1,6 +1,6 @@
 execute 'install ndenv' do
   command <<-"EOF"
-    source $HOME/.bash_env
+    source $HOME/.sh_env
     anyenv install ndenv
   EOF
   not_if 'type -a ndenv'
@@ -8,7 +8,7 @@ end
 
 execute 'fix node.js version' do
   command <<-"EOF"
-    source $HOME/.bash_env
+    source $HOME/.sh_env
     ndenv install #{node[:nodejs][:version]}
     ndenv global  #{node[:nodejs][:version]}
   EOF
