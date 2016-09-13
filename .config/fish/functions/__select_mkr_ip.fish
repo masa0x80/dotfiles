@@ -2,7 +2,7 @@
 function __select_mkr_ip
   commandline | read -l buffer
 
-  mkr-hosts-tsv | fzf --nth=2,3 --delimiter='\t' --query "$buffer" | read -l selected_line
+  mkr-hosts-tsv | fzf --nth=2,3 --delimiter='\t' | read -l selected_line
 
   if test -n "$selected_line"
     set -l ip   (echo $selected_line | cut -f 1)
