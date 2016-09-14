@@ -51,7 +51,7 @@ if (( $+commands[peco] )); then
   zle -N peco-git-recent-all-branches
   bindkey "^g^g^b"  peco-git-recent-all-branches
 
-  alias -g GST='$(git status -s -uno | peco --query "$*" | cut -d " " -f 3)'
+  alias -g GST='$(git status -s -uno | peco --query "$*" | awk "{print \$2}")'
 
   peco-ghq-cd () {
     local selected_dir=$(ghq list --full-path | sed -e "s|$HOME/||g" | peco --query "$LBUFFER")
