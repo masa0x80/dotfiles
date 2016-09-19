@@ -23,54 +23,42 @@ set -x color_error   (set_color red --bold)
 set -x fish_color_command cyan
 # }}}
 
-# OSTYPE
-set -x OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
-
 # LANG
 set -x LANG ja_JP.UTF-8
-
-# EDITOR
-if type -qa nvim
-  set -x EDITOR nvim
-else if type -qa vim
-  set -x EDITOR vim
-end
-
-# PAGER
-if type -qa less
-  set -x PAGER less
-end
-set -x LESS '-R'
-
-# XDG Base Directory Specification
-set -x XDG_CONFIG_HOME $HOME/.config
 
 # TERM
 set -x TERM xterm-256color
 
+# OSTYPE
+set -U OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
+
+# EDITOR
+if type -qa nvim
+  set -U EDITOR nvim
+else if type -qa vim
+  set -U EDITOR vim
+end
+
+# PAGER
+if type -qa less
+  set -U PAGER less
+end
+set -U LESS '-R'
+
+# XDG Base Directory Specification
+set -U XDG_CONFIG_HOME $HOME/.config
+
 # gtags (GNU Global)
-set -x GTAGSLABEL pygments
+set -U GTAGSLABEL pygments
 
 # rails (for rails server alias)
-set -x RAILS_SERVER_PORT 3000
+set -U RAILS_SERVER_PORT 3000
 
 # Use assh flag
-set -x USE_ASSH true
+set -U USE_ASSH true
 
 # Set scrapbook dir path
-set -q $SCRAPBOOK_DIR; and set -x SCRAPBOOK_DIR $HOME/.scrapbook
-
-# fzf options
-set -x FZF_DEFAULT_OPTS '
---reverse
---extended
---ansi
---multi
---cycle
---bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all
---color fg:-1,bg:-1,hl:229,fg+:3,bg+:233,hl+:103
---color info:150,prompt:110,spinner:150,pointer:167,marker:174
-'
+set -q $SCRAPBOOK_DIR; and set -g SCRAPBOOK_DIR $HOME/.scrapbook
 
 # Load OS settings
 for config_file in $HOME/.config/fish/conf.d/$OS_TYPE/*
@@ -81,7 +69,7 @@ end
 __load_file $HOME/.local_config/fish/config.fish
 
 # Append $DOTFILE to $PATH
-set -q $DOTFILE; and set -x DOTFILE $HOME/.dotfiles
+set -q $DOTFILE; and set -g DOTFILE $HOME/.dotfiles
 set PATH $PATH $DOTFILE/bin
 
 # }}}

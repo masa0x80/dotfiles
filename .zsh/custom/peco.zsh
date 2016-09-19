@@ -53,17 +53,16 @@ if (( $+commands[peco] )); then
 
   alias -g GST='$(git status -s -uno | peco --query "$*" | awk "{print \$2}")'
 
-  peco-ghq-cd () {
-    local selected_dir=$(ghq list --full-path | sed -e "s|$HOME/||g" | peco --query "$LBUFFER")
-    if [ -n "$selected_dir" ]; then
-      BUFFER="cd ~/$(echo $selected_dir | sed -e 's/ /\\ /g')"
+  peco-ghq-cd() {
+    local repository_path=$(ghq list --full-path | sed -e "s|$HOME/||g" | peco --query "$LBUFFER")
+    if [ -n "$repository_path" ]; then
+      BUFFER="cd ~/$repository_path"
       zle accept-line
     fi
     zle clear-screen
   }
   zle -N peco-ghq-cd
-  bindkey '^gc'  peco-ghq-cd
-  bindkey '^g^c' peco-ghq-cd
+  bindkey '^gc' peco-ghq-cd
 
   # ssh with peco
   # ref: http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38

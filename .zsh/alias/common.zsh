@@ -30,9 +30,9 @@ alias -g F='| fzf'
 alias -g G='| egrep --color=auto'
 alias -g H='| head'
 alias -g L='| less'
-alias -g N=" >/dev/null 2>&1"
-alias -g N1=" >/dev/null"
-alias -g N2=" 2>/dev/null"
+alias -g N=' >/dev/null 2>&1'
+alias -g N1=' >/dev/null'
+alias -g N2=' 2>/dev/null'
 alias -g P='| peco'
 alias -g T='| tail'
 

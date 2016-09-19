@@ -28,6 +28,18 @@ export GO_GET_OPTION='-u'
 # ref: https://github.com/yyuu/pyenv/wiki/Common-build-problems#make-your-pythons-a-little-faster
 CFLAGS='-O2'
 
+# fzf options
+export FZF_DEFAULT_OPTS='
+--reverse
+--extended
+--ansi
+--multi
+--cycle
+--bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all
+--color fg:-1,bg:-1,hl:229,fg+:3,bg+:233,hl+:103
+--color info:150,prompt:110,spinner:150,pointer:167,marker:174
+'
+
 case `uname` in
   Darwin)
     export HOMEBREW_CASK_OPTS='--appdir=/Applications --caskroom=/opt/homebrew-cask/Caskroom'

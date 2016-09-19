@@ -11,6 +11,9 @@ fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
 # lang
 export LANG=ja_JP.UTF-8
 
+# term color
+export TERM=xterm-256color
+
 # editor
 if (( $+commands[nvim] )); then
   export EDITOR=nvim
@@ -27,9 +30,6 @@ export LESS='-R'
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME=$HOME/.config
 
-# term color
-export TERM=xterm-256color
-
 # gtags (GNU Global)
 export GTAGSLABEL=pygments
 
@@ -37,23 +37,6 @@ export GTAGSLABEL=pygments
 export RAILS_SERVER_PORT=3000
 
 export USE_ASSH=true
-
-# fzf
-export FZF_DEFAULT_OPTS='
---reverse
---extended
---ansi
---multi
---cycle
---bind=ctrl-u:page-up
---bind=ctrl-d:page-down
---bind=ctrl-z:toggle-all
---color fg:-1,bg:-1,hl:229,fg+:3,bg+:233,hl+:103
---color info:150,prompt:110,spinner:150,pointer:167,marker:174
-'
-
-# Disable homebrew analytics
-export HOMEBREW_NO_ANALYTICS=1
 
 # zplug
 export ZPLUG_HOME=$HOME/.zplug
