@@ -7,8 +7,6 @@ cask gyazo
 cask google-chrome
 cask google-japanese-ime
 cask itsycal
-cask near-lock
-cask thunderbird
 cask skype
 cask vagrant
 cask virtualbox
