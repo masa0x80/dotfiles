@@ -7,9 +7,9 @@ tmux_attach_session() {
           tmux list-sessions
           echo -n "Tmux: attach? (y/N/num) "
           read
-          if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
+          if [[ "$REPLY" =~ ^[Yy]$ ]]; then
             tmux attach-session
-          elif [[ "$REPLY" =~ ^[Nn]$ ]]; then
+          elif [[ "$REPLY" =~ ^[Nn]$ ]] || [[ "$REPLY" == '' ]]; then
             return 0
           else
             tmux attach -t "$REPLY"
