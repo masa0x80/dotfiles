@@ -7,27 +7,21 @@ set fish_prompt_pwd_dir_length 0
 
 # Colors
 # {{{
-set -x color_red     (set_color red)
-set -x color_magenta (set_color magenta)
-set -x color_yellow  (set_color yellow)
-set -x color_green   (set_color green)
-set -x color_blue    (set_color blue)
-set -x color_cyan    (set_color cyan)
-set -x color_white   (set_color white)
-set -x color_grey    (set_color grey)
-set -x color_black   (set_color black)
-set -x color_normal  (set_color normal)
-set -x color_success $color_magenta
-set -x color_error   (set_color red --bold)
+set -U color_red     (set_color red)
+set -U color_magenta (set_color magenta)
+set -U color_yellow  (set_color yellow)
+set -U color_green   (set_color green)
+set -U color_blue    (set_color blue)
+set -U color_cyan    (set_color cyan)
+set -U color_white   (set_color white)
+set -U color_grey    (set_color grey)
+set -U color_black   (set_color black)
+set -U color_normal  (set_color normal)
+set -U color_success $color_magenta
+set -U color_error   (set_color red --bold)
 
-set -x fish_color_command cyan
+set -U fish_color_command cyan
 # }}}
-
-# LANG
-set -x LANG ja_JP.UTF-8
-
-# TERM
-set -x TERM xterm-256color
 
 # OSTYPE
 set -U OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
@@ -45,12 +39,6 @@ if type -qa less
 end
 set -U LESS '-R'
 
-# XDG Base Directory Specification
-set -U XDG_CONFIG_HOME $HOME/.config
-
-# gtags (GNU Global)
-set -U GTAGSLABEL pygments
-
 # rails (for rails server alias)
 set -U RAILS_SERVER_PORT 3000
 
@@ -58,7 +46,7 @@ set -U RAILS_SERVER_PORT 3000
 set -U USE_ASSH true
 
 # Set scrapbook dir path
-set -q $SCRAPBOOK_DIR; and set -g SCRAPBOOK_DIR $HOME/.scrapbook
+not set -q SCRAPBOOK_DIR; and set -U SCRAPBOOK_DIR $HOME/.scrapbook
 
 # Load OS settings
 for config_file in $HOME/.config/fish/conf.d/$OS_TYPE/*
@@ -69,7 +57,7 @@ end
 __load_file $HOME/.local_config/fish/config.fish
 
 # Append $DOTFILE to $PATH
-set -q $DOTFILE; and set -g DOTFILE $HOME/.dotfiles
+not set -q DOTFILE; and set -U DOTFILE $HOME/.dotfiles
 set PATH $PATH $DOTFILE/bin
 
 # }}}

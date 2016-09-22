@@ -28,17 +28,25 @@ export GO_GET_OPTION='-u'
 # ref: https://github.com/yyuu/pyenv/wiki/Common-build-problems#make-your-pythons-a-little-faster
 CFLAGS='-O2'
 
+# lang
+export LANG=ja_JP.UTF-8
+
+# term color
+export TERM=xterm-256color
+
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME=$HOME/.config
+
+# gtags (GNU Global)
+export GTAGSLABEL=pygments
+
 # fzf options
-export FZF_DEFAULT_OPTS='
---reverse
+export FZF_DEFAULT_OPTS='--reverse
 --extended
 --ansi
 --multi
 --cycle
---bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all
---color fg:-1,bg:-1,hl:229,fg+:3,bg+:233,hl+:103
---color info:150,prompt:110,spinner:150,pointer:167,marker:174
-'
+--bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'
 
 case `uname` in
   Darwin)
