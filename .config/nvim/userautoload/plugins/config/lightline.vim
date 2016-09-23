@@ -1,9 +1,3 @@
-" colorscheme
-if dein#tap('vim-hybrid')
-  set background=dark
-  colorscheme hybrid
-endif
-
 let g:lightline = {
   \   'mode_map': {'c': 'NORMAL'},
   \   'active': {

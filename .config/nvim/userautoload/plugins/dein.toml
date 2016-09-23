@@ -27,9 +27,6 @@ repo = 'thinca/vim-visualstar'
 repo = 'tomtom/tcomment_vim'
 
 [[plugins]]
-repo = 'w0ng/vim-hybrid'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
