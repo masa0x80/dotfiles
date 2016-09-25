@@ -68,4 +68,4 @@ on_map = '<Plug>'
 
 [[plugins]]
 repo = 'LeafCage/foldCC'
-on_ft = ['vim', 'markdown', 'mkd', 'md']
+on_ft = ['vim', 'markdown', 'mkd', 'md', 'fish']

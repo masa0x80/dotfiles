@@ -1,12 +1,10 @@
-### Environment Variables
-# {{{
+# Environment Variables {{{
 
 # Disable greeting
 set fish_greeting
 set fish_prompt_pwd_dir_length 0
 
-# Colors
-# {{{
+# Colors {{{
 set -U color_red     (set_color red)
 set -U color_magenta (set_color magenta)
 set -U color_yellow  (set_color yellow)
@@ -62,8 +60,7 @@ set PATH $PATH $DOTFILE/bin
 
 # }}}
 
-### Prompt
-# {{{
+### Prompt {{{
 
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
@@ -83,8 +80,7 @@ set __fish_git_prompt_char_upstream_behind '↓'
 
 # }}}
 
-### Abbreviations
-# {{{
+### Abbreviations {{{
 
 abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'
@@ -115,8 +111,7 @@ abbr -a ...... 'cd ../../../../..'
 
 abbr -a dinit 'echo \'export PATH=$PWD/bin:$PWD/vendor/bin:$PATH\' > .envrc; and direnv allow'
 
-# ssh
-# {{{
+# ssh {{{
 if test -e $HOME/.ssh/config
   abbr -a ssh_config 'vim ~/.ssh/config'
   abbr -a sconfig    'vim ~/.ssh/config'
@@ -124,8 +119,7 @@ if test -e $HOME/.ssh/config
 end
 # }}}
 
-# git
-# {{{
+# git {{{
 abbr -a g 'git'
 
 abbr -a ga  'git add'
@@ -182,14 +176,12 @@ abbr -a gst 'git status -sb'
 abbr -a gts 'git tag -s'
 # }}}
 
-# knife solo
-# {{{
+# knife solo {{{
 abbr -a krepare 'knife solo prepare'
 abbr -a kook    'knife solo cook'
 # }}}
 
-# rails
-# {{{
+# rails {{{
 abbr -a s  "rails s -p $RAILS_SERVER_PORT"
 abbr -a c  'rails c'
 abbr -a db 'rails db'
@@ -201,8 +193,7 @@ abbr -a bil 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4 
 
 # }}}
 
-### Hooks
-# {{{
+### Hooks {{{
 
 if type -qa direnv
   eval (direnv hook fish)
