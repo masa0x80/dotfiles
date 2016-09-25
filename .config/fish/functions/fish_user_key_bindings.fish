@@ -1,9 +1,6 @@
 function fish_user_key_bindings
   bind \cs\cb scrapbook
 
-  bind \cs\cs __select_ssh
-  bind \co\co __select_mkr_ip
-
   bind \cg\ca __select_git_add
   bind \cga   __select_git_add
   bind \cgc __select_ghq_cd
