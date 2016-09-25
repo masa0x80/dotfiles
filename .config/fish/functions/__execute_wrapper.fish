@@ -5,7 +5,7 @@ function __execute_wrapper
 
   for word in (string split ' ' $buffer)
     for keyword in F G H L N N1 N2 P T GST TH VH GH
-      if test "$word" = "$keyword"
+      if string match -q $keyword -- $word
         switch $word
           case F
             set replacement '| fzf'
@@ -41,7 +41,7 @@ function __execute_wrapper
 
   for word in (string split ' ' $buffer)
     set -l keyword 'RET'
-    if test "$word" = "$keyword"
+    if string match -q $keyword -- $word
       string replace $keyword '' $buffer | read buffer
       string replace 'env'    '' $buffer | read buffer
       echo "env RAILS_ENV=test $buffer" | read buffer
