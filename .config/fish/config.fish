@@ -84,8 +84,6 @@ set __fish_git_prompt_char_upstream_behind '↓'
 
 abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'
-abbr -a grep  'command grep -v grep | command grep  --color=auto'
-abbr -a egrep 'command grep -v grep | command egrep --color=auto'
 abbr -a mkdir 'mkdir -p'
 
 if type -qa nvim

@@ -10,7 +10,7 @@ function __execute_wrapper
           case F
             set replacement '| fzf'
           case G
-            set replacement '| egrep --color=auto'
+            set replacement '| rg'
           case H
             set replacement '| head'
           case L
