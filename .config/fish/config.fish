@@ -86,10 +86,6 @@ abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'
 abbr -a mkdir 'mkdir -p'
 
-if type -qa nvim
-  abbr -a vim 'nvim'
-end
-
 if type -qa htop
   abbr -a top 'htop'
 end
