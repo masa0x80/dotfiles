@@ -116,4 +116,6 @@ EOM
 
 hi Hint font-family: "Lucida Grande", "Segoe UI", sans-serif; font-size: 13px; font-weight: bold; background: -moz-linear-gradient(top, #6BA7EF, #3163AA); text-shadow: 0 1px #1D3C66; text-transform: uppercase; color: white; background-color: red; padding: 2px 5px; border-radius: 3px; border: 1px solid #3366AD;
 
+js services.services.autoCompleteSearch.class_="@mozilla.org/autocomplete/search;1?name=unifiedcomplete"
+
 echo "###  Finish loading settings.  ###"
