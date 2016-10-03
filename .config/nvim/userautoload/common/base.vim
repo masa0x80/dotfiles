@@ -71,6 +71,8 @@ set nowrap
 set sidescroll=5
 set listchars+=precedes:<,extends:>
 
+set synmaxcol=128
+
 " folding
 set foldmethod=marker
 set commentstring=%s
