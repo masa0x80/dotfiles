@@ -4,3 +4,4 @@ masa0x80/complement_ssh_host.fish
 masa0x80/complement_mkr_host_ip.fish
 masa0x80/git_checkout_keybind.fish
 masa0x80/ghq_cd_keybind.fish
+masa0x80/fzf_history_keybind.fish
