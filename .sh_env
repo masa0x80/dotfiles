@@ -40,8 +40,11 @@ export XDG_CONFIG_HOME=$HOME/.config
 # gtags (GNU Global)
 export GTAGSLABEL=pygments
 
+export LESS='-RX'
+
 # fzf options
 export FZF_DEFAULT_OPTS='--reverse
+--no-sort
 --extended
 --ansi
 --multi

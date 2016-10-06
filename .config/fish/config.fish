@@ -35,7 +35,6 @@ end
 if type -qa less
   set -U PAGER less
 end
-set -U LESS '-R'
 
 # rails (for rails server alias)
 set -U RAILS_SERVER_PORT 3000
