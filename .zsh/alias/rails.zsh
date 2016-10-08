@@ -21,7 +21,7 @@ bundle() {
   fi
 }
 
-alias ss="pkill -f 'bin/rails'; pkill -f 'bin/spring'"
+alias ss='spring stop'
 alias c='rails c'
 alias t='rspec'
 alias bi='bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4'
