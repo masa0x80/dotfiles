@@ -13,6 +13,12 @@ if [ ! -z $HTTP_PROXY ]; then
   if [ -z `grep "proxy=$HTTP_PROXY" /etc/yum.conf` ]; then
     sudo sh -c "echo 'proxy=$HTTP_PROXY' >> /etc/yum.conf"
   fi
+  if [ -z `grep ".proxy" /root/.bashrc` ]; then
+    sudo sh -c "echo 'test -r $HOME/.proxy && source $HOME/.proxy' >> /root/.bashrc"
+  fi
+fi
+if [ -e $HOME/.proxy ]; then
+  sudo sh -c "cp $HOME/.proxy /root/"
 fi
 
 # Use jp servers
