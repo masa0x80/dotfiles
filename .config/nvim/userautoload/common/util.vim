@@ -1,12 +1,3 @@
-" highlight
-augroup HighlightSpaces
- autocmd!
- autocmd ColorScheme * highlight Spaces term=underline guibg=white ctermbg=white
- autocmd VimEnter,ColorScheme * highlight IndentGuidesEven guibg=black ctermbg=black
- autocmd VimEnter,WinEnter,BufRead * match Spaces /　\|[　 ]\+$/
-augroup END
-colorscheme desert
-
 let g:vim_json_syntax_conceal = 0
 
 " Use vim-parenmatch instead of parenmatch

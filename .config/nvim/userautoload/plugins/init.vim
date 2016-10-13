@@ -18,7 +18,7 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-if v:version < 704 && !dein#load_state(s:dein_dir)
+if !dein#load_state(s:dein_dir)
   finish
 endif
 
@@ -32,5 +32,3 @@ call dein#save_state()
 if dein#check_install()
   call dein#install()
 endif
-
-runtime! userautoload/plugins/config/*.vim

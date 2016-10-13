@@ -3,6 +3,7 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'fuenor/qfixhowm'
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/qfixhowm.vim'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
@@ -10,6 +11,9 @@ build = 'make'
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -25,15 +29,15 @@ repo = 'thinca/vim-visualstar'
 
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
-
-[[plugins]]
-repo = 'itchyny/lightline.vim'
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/tcomment.vim'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/vim-indent-guides.vim'
 
 [[plugins]]
 repo = 'neomake/neomake'
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/neomake.vim'
 
 [[plugins]]
 repo = 'kana/vim-operator-user'
@@ -46,6 +50,7 @@ repo = 'tpope/vim-rails'
 
 [[plugins]]
 repo = 'basyura/unite-rails'
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/unite-rails.vim'
 
 [[plugins]]
 repo = 'itchyny/vim-parenmatch'
@@ -55,6 +60,7 @@ repo = 'itchyny/vim-cursorword'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/vim-easymotion.vim'
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'

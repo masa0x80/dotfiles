@@ -1,7 +1,9 @@
 let g:lightline = {
+  \   'colorscheme': 'jellybeans',
   \   'mode_map': {'c': 'NORMAL'},
   \   'active': {
-  \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+  \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+  \     'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
   \   },
   \   'component_function': {
   \     'modified':     'MyModified',
@@ -14,6 +16,7 @@ let g:lightline = {
   \     'mode':         'MyMode',
   \   },
   \ }
+
 function! MyModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
@@ -56,4 +59,5 @@ endfunction
 function! MyMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+
 let g:unite_force_overwrite_statusline = 0
