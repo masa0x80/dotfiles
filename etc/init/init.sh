@@ -61,7 +61,7 @@ case `uname` in
     echo ''
     echo '-------------------------------------------'
     echo -e '  \033[1;37mEdit terminal.app profile settings.\033[0;39m'
-    echo -e '  \033[1;37mUse ./etc/data/terminal/Hybrid.terminal\033[0;39m'
+    echo -e '  \033[1;37mUse ./etc/data/terminal/jellybeans.terminal\033[0;39m'
     echo '-------------------------------------------'
     ;;
 esac
