@@ -3,10 +3,6 @@ repo = 'Shougo/neomru.vim'
 on_path = '.*'
 
 [[plugins]]
-repo = 'tomasr/molokai'
-on_path = '.*'
-
-[[plugins]]
 repo = 'nanotech/jellybeans.vim'
 on_path = '.*'
 hook_source = '''

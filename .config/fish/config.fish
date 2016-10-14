@@ -26,18 +26,18 @@ set -U OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
 
 # EDITOR
 if type -qa nvim
-  set -U EDITOR nvim
+  set -x EDITOR nvim
 else if type -qa vim
-  set -U EDITOR vim
+  set -x EDITOR vim
 end
 
 # PAGER
 if type -qa less
-  set -U PAGER less
+  set -x PAGER less
 end
 
 # rails (for rails server alias)
-set -U RAILS_SERVER_PORT 3000
+set -x RAILS_SERVER_PORT 3000
 
 # Use assh flag
 set -U USE_ASSH true

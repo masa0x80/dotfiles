@@ -21,10 +21,6 @@ if (( $+commands[less] )); then
 fi
 export LESS='-R'
 
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS
---color fg:-1,bg:-1,hl:229,fg+:3,bg+:233,hl+:103
---color info:150,prompt:110,spinner:150,pointer:167,marker:174"
-
 # rails (for rails server alias)
 export RAILS_SERVER_PORT=3000
 
