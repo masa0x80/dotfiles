@@ -1,21 +1,21 @@
 let g:lightline = {
-  \   'colorscheme': 'jellybeans',
-  \   'mode_map': {'c': 'NORMAL'},
-  \   'active': {
-  \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
-  \     'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-  \   },
-  \   'component_function': {
-  \     'modified':     'MyModified',
-  \     'readonly':     'MyReadonly',
-  \     'fugitive':     'MyFugitive',
-  \     'filename':     'MyFilename',
-  \     'fileformat':   'MyFileformat',
-  \     'filetype':     'MyFiletype',
-  \     'fileencoding': 'MyFileencoding',
-  \     'mode':         'MyMode',
-  \   },
-  \ }
+\   'colorscheme': 'hybrid',
+\   'mode_map': {'c': 'NORMAL'},
+\   'active': {
+\     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+\     'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+\   },
+\   'component_function': {
+\     'modified':     'MyModified',
+\     'readonly':     'MyReadonly',
+\     'fugitive':     'MyFugitive',
+\     'filename':     'MyFilename',
+\     'fileformat':   'MyFileformat',
+\     'filetype':     'MyFiletype',
+\     'fileencoding': 'MyFileencoding',
+\     'mode':         'MyMode',
+\   },
+\ }
 
 function! MyModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'

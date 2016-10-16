@@ -3,14 +3,6 @@ repo = 'Shougo/neomru.vim'
 on_path = '.*'
 
 [[plugins]]
-repo = 'nanotech/jellybeans.vim'
-on_path = '.*'
-hook_source = '''
-  source ~/.config/nvim/userautoload/plugins/config/jellybeans.vim
-  source ~/.config/nvim/userautoload/plugins/config/lightline.vim
-'''
-
-[[plugins]]
 repo = 'Shougo/unite.vim'
 depends = 'neomru.vim'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/unite.vim'

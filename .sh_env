@@ -31,9 +31,6 @@ CFLAGS='-O2'
 # lang
 export LANG=ja_JP.UTF-8
 
-# term color
-export TERM=xterm-256color
-
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME=$HOME/.config
 

@@ -8,6 +8,9 @@ load_file $HOME/.zsh/util.zsh
 
 fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
 
+# term color
+export TERM=xterm-256color
+
 # editor
 if (( $+commands[nvim] )); then
   export EDITOR=nvim
