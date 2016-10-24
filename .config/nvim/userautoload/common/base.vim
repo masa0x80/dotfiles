@@ -80,10 +80,5 @@ set commentstring=%s
 " disable mouse
 set mouse=
 
-" clipboard
-if has('mac')
-  set clipboard+=unnamedplus
-endif
-
 " mapleader
 let g:mapleader=","
