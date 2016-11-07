@@ -58,13 +58,6 @@ repo = 'kana/vim-operator-user'
 repo = 'dag/vim-fish'
 
 [[plugins]]
-repo = 'tpope/vim-rails'
-
-[[plugins]]
-repo = 'basyura/unite-rails'
-hook_add = 'source ~/.config/nvim/userautoload/plugins/config/unite-rails.vim'
-
-[[plugins]]
 repo = 'itchyny/vim-parenmatch'
 
 [[plugins]]
@@ -76,7 +69,10 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/vim-easymotion.vim
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
-hook_add = 'source ~/.config/nvim/userautoload/plugins/config/incsearch.vim'
+
+[[plugins]]
+repo = 'justinmk/vim-dirvish'
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/vim-dirvish.vim'
 
 [[plugins]]
 repo = 'tpope/vim-repeat'

@@ -1,11 +1,14 @@
+# [[plugins]]
+# repo = 'Shougo/neomru.vim'
+# on_path = '.*'
+#
 [[plugins]]
-repo = 'Shougo/neomru.vim'
-on_path = '.*'
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
-depends = 'neomru.vim'
-hook_add = 'source ~/.config/nvim/userautoload/plugins/config/unite.vim'
+repo = 'Shougo/denite.nvim'
+build = 'env PY3=ON ./install.sh'
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/denite.vim'
+# depends = 'neomru.vim'
+# hook_add = 'source ~/.config/nvim/userautoload/plugins/config/unite.vim'
+# build = 'env PY3=ON ./install.sh'
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
