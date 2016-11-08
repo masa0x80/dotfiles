@@ -50,8 +50,6 @@ export FZF_DEFAULT_OPTS='--reverse
 
 case `uname` in
   Darwin)
-    export HOMEBREW_CASK_OPTS='--appdir=/Applications --caskroom=/opt/homebrew-cask/Caskroom'
-
     # Disable homebrew analytics
     export HOMEBREW_NO_ANALYTICS=1
     ;;
