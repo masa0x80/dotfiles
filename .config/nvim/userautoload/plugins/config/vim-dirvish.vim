@@ -10,10 +10,10 @@ augroup DirvishConfig
   " Map `gh` to hide dot-prefixed files.
   " To "toggle" this, just press `R` to reload.
   autocmd FileType dirvish nnoremap <buffer>
-    \ gh :keeppatterns g@\v/\.[^\/]+/?$@d<cr>
+    \ gh :keeppatterns g@\v/\.[^\/]+/?$@d<CR>
 augroup END
 
-nnoremap <Leader>F :edit %
+nnoremap <Leader>e :edit %
 
 nnoremap <Leader>C :edit app/controllers<CR>
 nnoremap <Leader>D :edit db<CR>

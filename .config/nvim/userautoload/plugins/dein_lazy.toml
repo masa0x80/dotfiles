@@ -1,14 +1,23 @@
-# [[plugins]]
-# repo = 'Shougo/neomru.vim'
-# on_path = '.*'
-#
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_path = '.*'
+
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-build = 'env PY3=ON ./install.sh'
+on_event = 'BufRead'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/denite.vim'
-# depends = 'neomru.vim'
-# hook_add = 'source ~/.config/nvim/userautoload/plugins/config/unite.vim'
-# build = 'env PY3=ON ./install.sh'
+hook_post_source = '''
+  call denite#custom#var('source', 'file_rec/git', 'file_rec')
+  call denite#custom#var('file_rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
+  nnoremap <silent> <C-p> :<C-u>Denite `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
+  call denite#custom#source('file_rec', 'matcher', ['matcher_cpsm'])
+  if executable('pt')
+    call denite#custom#var('file_rec', 'command', ['pt', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', ''])
+    call denite#custom#var('grep', 'command', ['pt', '--nogroup', '--nocolor', '--smart-case', '--hidden'])
+    call denite#custom#var('grep', 'default_opts', [])
+    call denite#custom#var('grep', 'recursive_opts', [])
+  endif
+'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
