@@ -5,7 +5,7 @@ augroup DirvishConfig
   autocmd FileType dirvish call fugitive#detect(@%)
 
   " Map CTRL-R to reload the Dirvish buffer.
-  autocmd FileType dirvish nnoremap <buffer> <C-R> :<C-U>Dirvish %<CR>
+  autocmd FileType dirvish nnoremap <buffer> <C-r> :<C-u>Dirvish %<CR>
 
   " Map `gh` to hide dot-prefixed files.
   " To "toggle" this, just press `R` to reload.
@@ -13,6 +13,7 @@ augroup DirvishConfig
     \ gh :keeppatterns g@\v/\.[^\/]+/?$@d<CR>
 augroup END
 
+map <Leader>F -
 nnoremap <Leader>e :edit %
 
 nnoremap <Leader>C :edit app/controllers<CR>
