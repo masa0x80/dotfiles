@@ -10,8 +10,8 @@ noremap <Leader>R :<C-u>source $HOME/.vimrc<CR>
 nnoremap <Leader>, :<C-u>set nopaste<CR>:<C-u>update<CR>
 
 nnoremap <Leader>R :<C-u>source $HOME/.vimrc<CR>
-nnoremap <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>noh<CR>
-nnoremap ;; :<C-u>set nopaste<CR>:<C-u>noh<CR>:<C-u>cclose<CR>
+nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>noh<CR>:<C-u>cclose<CR>
+nnoremap <silent> ;; :<C-u>set nopaste<CR>:<C-u>noh<CR>:<C-u>cclose<CR>
 
 " rubyデバッグ用
 augroup RubyDebug

@@ -12,7 +12,5 @@ augroup END
 function! s:global()
   if has('nvim')
     call jobstart('type -a global && test -s $(global -pr)/GTAGS && pkill -f global && global -uv')
-  else
-    call vimproc#system_bg('type -a global && test -s $(global -pr)/GTAGS && pkill -f global && global -uv')
   endif
 endfunction
