@@ -23,23 +23,23 @@ hook_post_source = '''
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets']
 on_ft = ['snippet']
-on_i = 1
+on_event = 'InsertEnter'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/neosnippet.vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 if = "has('nvim')"
-on_i = 1
+on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 if = '!has("nvim") && has("lua")'
-on_i = 1
+on_event = 'InsertEnter'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/neocomplete.vim'
 
 [[plugins]]
 repo = 'ConradIrwin/vim-bracketed-paste'
-on_i = 1
+on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
