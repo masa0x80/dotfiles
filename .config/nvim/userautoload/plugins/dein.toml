@@ -76,3 +76,7 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/vim-dirvish.vim'
 
 [[plugins]]
 repo = 'tpope/vim-repeat'
+
+[[plugins]]
+repo = 'nixprime/cpsm'
+build = 'env PY3=ON ./install.sh'
