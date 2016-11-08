@@ -12,6 +12,7 @@ brew rsync
 # Other Homebrew packages
 brew autoconf
 brew automake
+brew boost
 brew cmake
 brew coreutils
 brew cpulimit
