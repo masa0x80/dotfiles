@@ -54,7 +54,6 @@ brew watch
 brew wget
 brew xz
 brew zsh --without-etcdir
-brew https://raw.githubusercontent.com/BurntSushi/ripgrep/master/pkg/brew/ripgrep.rb
 
 tap neovim/neovim
 brew neovim --HEAD
