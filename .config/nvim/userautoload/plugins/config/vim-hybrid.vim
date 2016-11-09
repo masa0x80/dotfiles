@@ -3,15 +3,12 @@ augroup HighlightSpaces
   autocmd CursorMoved * match Spaces /　\|[　 ]\+$/
 augroup END
 
-if dein#tap('vim-hybrid')
-  let g:hybrid_reduced_contrast = 1
-  set background=dark
-  colorscheme hybrid
-  highlight IndentGuidesEven guibg=Black ctermbg=Black
-  highlight Spaces guibg=DarkGrey ctermbg=DarkGrey
+let g:hybrid_reduced_contrast = 1
+set background=dark
+colorscheme hybrid
+highlight IndentGuidesEven guibg=White ctermbg=White
+highlight Spaces guibg=DarkGrey ctermbg=DarkGrey
+highlight CursorLine ctermfg=LightBlue
+highlight Search cterm=underline ctermfg=LightGrey ctermbg=NONE gui=underline guifg=LightGrey guibg=NONE
 
-  " for denite.vim
-  highlight CursorLine ctermfg=LightBlue
-
-  source ~/.config/nvim/userautoload/plugins/config/lightline.vim
-endif
+source ~/.config/nvim/userautoload/plugins/config/lightline.vim
