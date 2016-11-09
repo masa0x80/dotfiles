@@ -13,15 +13,4 @@ augroup DirvishConfig
     \ gh :keeppatterns g@\v/\.[^\/]+/?$@d<CR>
 augroup END
 
-map <Leader>F -
 nnoremap <Leader>e :edit %
-
-nnoremap <Leader>C :edit app/controllers<CR>
-nnoremap <Leader>D :edit db<CR>
-nnoremap <Leader>H :edit app/helpers<CR>
-nnoremap <Leader>I :edit config/initializers<CR>
-nnoremap <Leader>J :edit app/assets/javascripts<CR>
-nnoremap <Leader>M :edit app/models<CR>
-nnoremap <Leader>S :edit app/assets//stylesheets<CR>
-nnoremap <Leader>T :edit spec<CR>
-nnoremap <Leader>V :edit app/views<CR>
