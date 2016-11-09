@@ -206,8 +206,4 @@ function __rename_window --on-event fish_prompt
   end
 end
 
-function __history_merge --on-event fish_preexec
-  history --merge
-end
-
 # }}}
