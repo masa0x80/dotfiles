@@ -4,18 +4,8 @@ on_path = '.*'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-on_event = 'BufRead'
-hook_add = 'source ~/.config/nvim/userautoload/plugins/config/denite.vim'
-hook_post_source = '''
-  call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-  call denite#custom#var('file_rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
-  call denite#custom#source('file_rec', 'matcher', ['matcher_fuzzy', 'matcher_cpsm'])
-  if executable('pt')
-    call denite#custom#var('grep', 'command', ['pt', '--nogroup', '--nocolor', '--smart-case', '--hidden'])
-    call denite#custom#var('grep', 'default_opts', [])
-    call denite#custom#var('grep', 'recursive_opts', [])
-  endif
-'''
+on_event = 'VimEnter'
+hook_post_source = 'source ~/.config/nvim/userautoload/plugins/config/denite.vim'
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
