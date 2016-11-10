@@ -41,6 +41,11 @@ augroup ExpandTab
   autocmd BufWritePre * :retab
 augroup END
 
+augroup VsplitHelp
+  autocmd!
+  autocmd FileType help wincmd L
+augroup END
+
 " ref: http://qiita.com/tekkoc/items/324d736f68b0f27680b8
 command! -nargs=? Jq call s:Jq(<f-args>)
 function! s:Jq(...)
