@@ -9,6 +9,9 @@ if executable('pt')
   call denite#custom#var('grep', 'recursive_opts', [])
 endif
 
+call denite#custom#map('insert', "\<C-n>", 'move_to_next_line')
+call denite#custom#map('insert', "\<C-p>", 'move_to_prev_line')
+
 function! s:file_rec()
   return finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'
 endfunction
