@@ -11,6 +11,10 @@ endif
 
 call denite#custom#map('insert', "\<C-n>", 'move_to_next_line')
 call denite#custom#map('insert', "\<C-p>", 'move_to_prev_line')
+call denite#custom#map('insert', "\<C-f>", 'scroll_page_forwards')
+call denite#custom#map('insert', "\<C-u>", 'scroll_window_upwards')
+call denite#custom#map('insert', "\<C-b>", 'scroll_page_backwards')
+call denite#custom#map('insert', "\<C-d>", 'scroll_window_downwards')
 
 function! s:file_rec()
   return finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'
