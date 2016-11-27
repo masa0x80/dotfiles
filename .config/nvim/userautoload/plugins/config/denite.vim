@@ -16,6 +16,16 @@ call denite#custom#map('insert', "\<C-u>", 'scroll_window_upwards')
 call denite#custom#map('insert', "\<C-b>", 'scroll_page_backwards')
 call denite#custom#map('insert', "\<C-d>", 'scroll_window_downwards')
 
+function! s:denite_option()
+  if s:parent_dir() == fnamemodify(getcwd(), ':~:p')
+    return ''
+  elseif fnamemodify(expand('%:p:h'), ':~:p') =~ fnamemodify(getcwd(), ':~:p')
+    return '-input=' . s:parent_dir() . '/'
+  else
+    return '-path=' . s:parent_dir() . '/'
+  endif
+endfunction
+
 function! s:file_rec()
   return finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'
 endfunction
@@ -27,7 +37,7 @@ endfunction
 nnoremap <silent> <Leader>b :<C-u>Denite -mode=normal buffer<CR>
 nnoremap <silent> <Leader>E :<C-u>Denite -mode=normal file_mru<CR>
 nnoremap <silent> <Leader>f :<C-u>Denite `<SID>file_rec()`<CR>
-nnoremap <silent> <Leader>F :<C-u>Denite -input=`<SID>parent_dir() != fnamemodify(getcwd(), ':~:p') ? <SID>parent_dir() . '/' : ''` `<SID>file_rec()`<CR>
+nnoremap <silent> <Leader>F :<C-u>Denite `<SID>denite_option()` file_rec<CR>
 nnoremap <silent> <Leader>j :<C-u>Denite line<CR>
 nnoremap <silent> <Leader>r :<C-u>Denite -resume<CR>
 
