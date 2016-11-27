@@ -71,7 +71,7 @@ set nowrap
 set sidescroll=5
 set listchars+=precedes:<,extends:>
 
-set synmaxcol=1024
+set synmaxcol=512
 
 " folding
 set foldmethod=marker
