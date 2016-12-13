@@ -2,9 +2,9 @@
 :bin_dir: '/usr/local/bin'
 
 :git:
-  :version: 2.9.3
+  :version: 2.11.0
 :global:
-  :version: 6.5.4
+  :version: 6.5.5
 :golang:
   :version: 1.7
 :jo:
@@ -25,12 +25,12 @@
   :rpm_url: http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
   :package: remi-release
 :tmux:
-  :version: 2.2
+  :version: 2.3
 :vagrant:
   :rpm_url: https://releases.hashicorp.com/vagrant/1.8.5/vagrant_1.8.5_x86_64.rpm
   :package: vagrant-1.8.5-1.x86_64
 :vim:
-  :version: 7.4
+  :version: 8.0
   :make_options: '--enable-fail-if-missing --enable-fontset --enable-cscope --enable-multibyte --enable-rubyinterp --enable-luainterp --with-x=no --disable-gui --disable-xim --with-features=huge --disable-selinux --disable-gpm --disable-darwin'
 :virtualbox:
   :yum_repository: http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
