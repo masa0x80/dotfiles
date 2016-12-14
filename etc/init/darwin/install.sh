@@ -30,4 +30,6 @@ brew upgrade
 
 # Install tools
 brew file install
-brew cask cleanup
+
+# Upgrade cask and cleanup
+brew file cask_upgrade -C
