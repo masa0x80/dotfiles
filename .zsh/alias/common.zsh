@@ -56,7 +56,7 @@ web_server() {
 
 # refs: http://qiita.com/yuku_t/items/4ffaa516914e7426419a
 ssh() {
-  if [[ ${USE_ASSH:-false} == false ]]; then
+  if [[ ${DISABLE_ASSH:-} != '' ]]; then
     command ssh $@
     return
   fi

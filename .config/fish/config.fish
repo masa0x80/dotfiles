@@ -41,9 +41,6 @@ end
 # rails (for rails server alias)
 set -x RAILS_SERVER_PORT 3000
 
-# Use assh flag
-set -U USE_ASSH true
-
 # Set scrapbook dir path
 not set -q SCRAPBOOK_DIR; and set -U SCRAPBOOK_DIR $HOME/.scrapbook
 

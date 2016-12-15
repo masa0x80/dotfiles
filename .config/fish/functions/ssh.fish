@@ -1,6 +1,5 @@
 function ssh
-  set -q $USE_ASSH; and set USE_ASSH false
-  if string match $USE_ASSH 'false'
+  if set -q $DISABLE_ASSH
     command ssh $argv
     return
   end

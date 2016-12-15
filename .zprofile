@@ -27,8 +27,6 @@ export LESS='-R'
 # rails (for rails server alias)
 export RAILS_SERVER_PORT=3000
 
-export USE_ASSH=true
-
 # zplug
 export ZPLUG_HOME=$HOME/.zplug
 
