@@ -68,17 +68,17 @@ if (( $+commands[peco] )); then
   # ref: http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
   peco-ssh() {
     local res="$(
-      ruby -e "File.read('$HOME/.ssh/config').scan(/Host ([^*?\s]+)\n(?:  .*\n)*  # HostName: ([^\n]+)\n/).each do |info|
-        puts '%s # %s' % [info[0].ljust(30, ' '), info[1]]
+      ruby -e "Dir.glob('$HOME/.ssh/{config,conf.d/**/*}').map do |file|
+        File.read(file).scan(/Host ([^*?\s]+)\n(?:[^#H\s][^\n]*\n)*/i).each do |m|
+          puts m[0]
+        end
       end" | sort | peco
     )"
 
     local host=$(echo "$res" | cut -d ' ' -f1)
-    local memo=$(echo "$res" | cut -d '#' -f2)
 
     if [ ! -z "$res" ]; then
       LBUFFER+="$host"
-      BUFFER+=" #$memo"
     fi
     zle reset-prompt
   }
