@@ -64,27 +64,6 @@ if (( $+commands[peco] )); then
   zle -N peco-ghq-cd
   bindkey '^gc' peco-ghq-cd
 
-  # ssh with peco
-  # ref: http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
-  peco-ssh() {
-    local res="$(
-      ruby -e "Dir.glob('$HOME/.ssh/{config,conf.d/**/*}').map do |file|
-        File.read(file).scan(/Host ([^*?\s]+)\n(?:[^#H\s][^\n]*\n)*/i).each do |m|
-          puts m[0]
-        end
-      end" | sort | peco
-    )"
-
-    local host=$(echo "$res" | cut -d ' ' -f1)
-
-    if [ ! -z "$res" ]; then
-      LBUFFER+="$host"
-    fi
-    zle reset-prompt
-  }
-  zle -N peco-ssh
-  bindkey '^s^s' peco-ssh
-
   # pt and vim with peco
   # ref: http://qiita.com/fmy/items/b92254d14049996f6ec3
   peco-pt-vim () {
