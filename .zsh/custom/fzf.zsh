@@ -5,17 +5,9 @@ if (( $+commands[fzf] )); then
 
   # ref: http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
   complete-ssh-host() {
-    local res="$(
-      ruby -e "Dir.glob('$HOME/.ssh/{config,conf.d/**/*}').map do |file|
-        File.read(file).scan(/Host ([^*?\s]+)\n(?:[^#H\s][^\n]*\n)*/i).each do |m|
-          puts m[0]
-        end
-      end" | sort | fzf
-    )"
+    local host="$(command egrep -i '^Host\s+.+' $HOME/.ssh/config $HOME/.ssh/conf.d/**/* 2>/dev/null | command egrep -v '[*?]' | awk '{print $2}' | sort | fzf)"
 
-    local host=$(echo "$res" | cut -d ' ' -f1)
-
-    if [ ! -z "$res" ]; then
+    if [ ! -z "$host" ]; then
       LBUFFER+="$host"
     fi
     zle reset-prompt
