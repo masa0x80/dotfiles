@@ -5,7 +5,7 @@ if (( $+commands[fzf] )); then
 
   # ref: http://qiita.com/d6rkaiz/items/46e9c61c412c89e84c38
   complete-ssh-host() {
-    local host="$(command egrep -i '^Host\s+.+' $HOME/.ssh/config $HOME/.ssh/conf.d/**/* 2>/dev/null | command egrep -v '[*?]' | awk '{print $2}' | sort | fzf)"
+    local host="$(command egrep -i '^Host\s+.+' $HOME/.ssh/config $(find $HOME/.ssh/conf.d -type f 2>/dev/null) | command egrep -v '[*?]' | awk '{print $2}' | sort | fzf)"
 
     if [ ! -z "$host" ]; then
       LBUFFER+="$host"
