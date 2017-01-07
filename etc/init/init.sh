@@ -11,7 +11,7 @@ export RUBY_VERSION=`cat $SCRIPT_DIR/itamae/.ruby-version`
 cd $SCRIPT_DIR
 case `uname` in
   Darwin)
-    bash darwin/install.sh
+    bash macos/install.sh
     ;;
   Linux)
     bash centos/install.sh
