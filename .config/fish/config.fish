@@ -96,11 +96,6 @@ abbr -a l  'ls -lah'
 abbr -a ll 'ls -lh'
 abbr -a la 'ls -lAh'
 
-abbr -a ...    'cd ../..'
-abbr -a ....   'cd ../../..'
-abbr -a .....  'cd ../../../..'
-abbr -a ...... 'cd ../../../../..'
-
 abbr -a dinit 'echo \'export PATH=$PWD/bin:$PWD/vendor/bin:$PATH\' > .envrc; and direnv allow'
 
 # ssh {{{
@@ -171,6 +166,10 @@ abbr -a gts 'git tag -s'
 # knife solo {{{
 abbr -a krepare 'knife solo prepare'
 abbr -a kook    'knife solo cook'
+
+# knife zero {{{
+abbr -a kboot 'knife zero bootstrap'
+abbr -a kconv 'knife zero converge'
 # }}}
 
 # rails {{{
