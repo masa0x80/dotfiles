@@ -190,9 +190,6 @@ if type -qa direnv
   eval (direnv hook fish)
 end
 
-__keychain_start
-trap '__keychain_kill' EXIT
-
 function __rename_window --on-event fish_prompt
   __check_local_git_config
   __tmux_attach_session
