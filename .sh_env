@@ -37,6 +37,8 @@ export XDG_CONFIG_HOME=$HOME/.config
 # gtags (GNU Global)
 export GTAGSLABEL=pygments
 
+export TERM=xterm-256color
+
 export LESS='-RX'
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;33m'

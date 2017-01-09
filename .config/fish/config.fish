@@ -24,8 +24,6 @@ set -U fish_color_command cyan
 # OSTYPE
 set -U OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
 
-set -x TERM screen-256color
-
 # EDITOR
 if type -qa nvim
   set -x EDITOR nvim
