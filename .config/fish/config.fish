@@ -94,8 +94,6 @@ abbr -a l  'ls -lah'
 abbr -a ll 'ls -lh'
 abbr -a la 'ls -lAh'
 
-abbr -a dinit 'echo \'export PATH=$PWD/bin:$PWD/vendor/bin:$PATH\' > .envrc; and direnv allow'
-
 # ssh {{{
 if test -e $HOME/.ssh/config
   abbr -a ssh_config 'vim ~/.ssh/config'
