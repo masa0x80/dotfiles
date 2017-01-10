@@ -52,7 +52,7 @@ __load_file $HOME/.local_config/fish/config.fish
 
 # Append $DOTFILE to $PATH
 not set -q DOTFILE; and set -U DOTFILE $HOME/.dotfiles
-set PATH $PATH $DOTFILE/bin
+set fish_user_paths $fish_user_paths $DOTFILE/bin
 
 # }}}
 
@@ -98,7 +98,6 @@ abbr -a la 'ls -lAh'
 if test -e $HOME/.ssh/config
   abbr -a ssh_config 'vim ~/.ssh/config'
   abbr -a sconfig    'vim ~/.ssh/config'
-  abbr -a sconf      'vim ~/.ssh/config'
 end
 # }}}
 
