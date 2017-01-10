@@ -1,15 +1,10 @@
-cask adium
 cask alfred
 cask appcleaner
 cask bettertouchtool
-cask dropbox
-cask duet
 cask firefox
-cask gyazo
 cask google-chrome
 cask google-japanese-ime
 cask itsycal
-cask skype
 cask vagrant
 cask virtualbox
 cask vivaldi

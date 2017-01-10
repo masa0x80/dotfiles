@@ -58,9 +58,13 @@ brew zsh --without-etcdir
 tap neovim/neovim
 brew neovim --HEAD
 
+file $HOME/.local_config/brewfile.d/Brewfile
+
 tap caskroom/cask
 file $HOME/.brewfile/cask
+file $HOME/.local_config/brewfile.d/cask
 
 tap argon/mas
 brew mas
 file $HOME/.brewfile/appstore
+file $HOME/.local_config/brewfile.d/appstore
