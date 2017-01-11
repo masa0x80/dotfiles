@@ -6,6 +6,14 @@ execute 'install ndenv' do
   not_if 'type -a ndenv'
 end
 
+execute 'install ndenv-default-npms' do
+  command <<-"EOF"
+    git clone https://github.com/kaave/ndenv-default-npms.git $(ndenv root)/plugins/ndenv-default-npms
+    echo 'yarn' > $(ndenv root)/default-npms
+  EOF
+  not_if 'test -r $(ndenv root)/default-npms'
+end
+
 execute 'fix node.js version' do
   command <<-"EOF"
     source $HOME/.sh_env
