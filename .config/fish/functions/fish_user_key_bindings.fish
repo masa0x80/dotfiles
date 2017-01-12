@@ -4,6 +4,7 @@ function fish_user_key_bindings
 
   bind \cs\cb scrapbook
 
-  bind \cj __execute_wrapper
+  bind \cj execute
+  bind \cm __execute_wrapper
   bind \r  __execute_wrapper
 end
