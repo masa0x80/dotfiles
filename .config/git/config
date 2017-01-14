@@ -61,3 +61,5 @@
   default = current
 [rebase]
   autosquash = true
+[harrow]
+  disabled = true
