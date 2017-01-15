@@ -8,6 +8,7 @@ end
 
 execute 'install ndenv-default-npms' do
   command <<-"EOF"
+    source $HOME/.sh_env
     git clone https://github.com/kaave/ndenv-default-npms.git $(ndenv root)/plugins/ndenv-default-npms
     echo 'yarn' > $(ndenv root)/default-npms
   EOF
