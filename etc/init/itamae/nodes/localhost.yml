@@ -4,7 +4,7 @@
 :git:
   :version: 2.11.0
 :global:
-  :version: 6.5.5
+  :version: 6.5.6
 :golang:
   :version: 1.7
 :jo:
@@ -27,8 +27,8 @@
 :tmux:
   :version: 2.3
 :vagrant:
-  :rpm_url: https://releases.hashicorp.com/vagrant/1.8.5/vagrant_1.8.5_x86_64.rpm
-  :package: vagrant-1.8.5-1.x86_64
+  :rpm_url: https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1_x86_64.rpm
+  :package: vagrant-1.9.1-1.x86_64
 :vim:
   :version: 8.0
   :make_options: '--enable-fail-if-missing --enable-fontset --enable-cscope --enable-multibyte --enable-rubyinterp --enable-luainterp --with-x=no --disable-gui --disable-xim --with-features=huge --disable-selinux --disable-gpm --disable-darwin'
