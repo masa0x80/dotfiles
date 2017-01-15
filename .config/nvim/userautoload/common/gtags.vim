@@ -1,4 +1,4 @@
-nnoremap <C-g> :GtagsCursor<CR>
+nnoremap <Leader>j :GtagsCursor<CR>
 nnoremap <C-n> :cn<CR>
 nnoremap <C-p> :cp<CR>
 
