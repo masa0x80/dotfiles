@@ -1,8 +1,8 @@
 %i(remove install).each do |type|
   %w(
-    ImageMagick-last
-    ImageMagick-last-devel
-    ImageMagick-last-libs
+    ImageMagick7
+    ImageMagick7-devel
+    ImageMagick7-libs
   ).each do |name|
     package name do
       action  type
