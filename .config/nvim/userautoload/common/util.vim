@@ -16,10 +16,10 @@ nnoremap <silent> ;; :<C-u>set nopaste<CR>:<C-u>noh<CR>:<C-u>cclose<CR>
 " rubyデバッグ用
 augroup RubyDebug
   autocmd!
-  autocmd VimEnter,BufRead *.rb,*.spec,*.erb,*.slim abbreviate bb require 'pry-byebug'; binding.pry<Esc>
-  autocmd VimEnter,BufRead *.rb,*.spec,*.erb,*.slim abbreviate bB require 'byebug'; byebug<Esc>
-  autocmd VimEnter,BufRead *.rb,*.spec,*.erb,*.slim abbreviate Bb require 'byebug'; byebug<Esc>
-  autocmd VimEnter,BufRead *.rb,*.spec,*.erb,*.slim abbreviate BB require 'byebug'; byebug<Esc>
+  autocmd VimEnter,BufRead * abbreviate bb require 'pry-byebug'; binding.pry<Esc>
+  autocmd VimEnter,BufRead * abbreviate bB require 'byebug'; byebug<Esc>
+  autocmd VimEnter,BufRead * abbreviate Bb require 'byebug'; byebug<Esc>
+  autocmd VimEnter,BufRead * abbreviate BB require 'byebug'; byebug<Esc>
 augroup END
 
 augroup SSHConfig
