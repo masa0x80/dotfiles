@@ -24,7 +24,7 @@ augroup END
 
 augroup SSHConfig
   autocmd!
-  autocmd BufEnter $HOME/.ssh/conf.d/* set syntax=sshconfig
+  autocmd BufEnter $HOME/.ssh/conf.d/* set filetype=sshconfig
 augroup END
 
 " ref: http://itchyny.hatenablog.com/entry/2016/02/02/210000
