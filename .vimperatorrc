@@ -92,6 +92,7 @@ javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://h
 
 
 source ~/.vimperator/config/qmarks.vimp
+source ~/.local_config/vimp.d/qmarks.vimp
 source ~/.vimperator/config/feed_some_keys.vimp
 
 
