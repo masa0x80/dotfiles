@@ -5,9 +5,6 @@ test -r $HOME/.proxy && source $HOME/.proxy
 
 # PATH
 export PATH=/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin
-if test -d /usr/local/sbin; then
-  PATH=$PATH:/usr/local/sbin
-fi
 
 # anyenv settings
 if test -d $HOME/.anyenv; then
