@@ -4,7 +4,7 @@ when 'darwin'
     vagrant
     virtualbox
   ).each do |pkg|
-    execute "brew cask install #{pkg}"
+    cask pkg
   end
 when 'redhat'
   %w(
