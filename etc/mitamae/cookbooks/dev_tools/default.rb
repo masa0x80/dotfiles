@@ -1,6 +1,8 @@
 case node[:platform]
 when 'darwin'
-  execute 'brew tap homebrew/services'
+  execute 'brew tap homebrew/services' do
+    not_if 'brew tap | grep -q homebrew/services'
+  end
 
   package 'homebrew/dupes/less'
   package 'homebrew/dupes/lsof'

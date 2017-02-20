@@ -1,7 +1,9 @@
 case node[:platform]
 when 'darwin'
   package 'mysql'
-  execute 'brew services start mysql'
+  execute 'brew services start mysql' do
+    only_if 'brew services list mysql | grep mysql | grep stopped'
+  end
 when 'redhat'
   package node[:mysql][:rpm_url] do
     not_if 'rpm -q %s' % node[:mysql][:package]
