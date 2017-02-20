@@ -97,37 +97,7 @@ After running `make install`, load `./etc/data/terminal/Hybrid.terminal` for **T
 
 1. `make update`
   - Update dotfiles repository
-2. `make deploy`
+2. `make init`
+  - Install tools by `MItamae`
+3. `make deploy`
   - Deploy dotfiles: create symlink to dotfiles under your home directory
-3. `make init`
-  - Initialize and install tools as following steps:
-    1. Execute `etc/init/init.sh` at first
-    2. Execute `etc/init/darwin/install.sh` or `etc/init/centos/install.sh`
-    3. Install anyenv
-    4. Install rbenv and ruby
-    5. Install itamae and provision local machine
-    6. Install development tools accoding to itamae recipes
-
-## Appendix
-
-Install specified tools instead of running `make init`.
-
-e.g. To install basic tools, run the command below.
-
-```
-$ TAGS=basic make init
-```
-
-e.g. To install additional tools, run the command below.
-
-```
-$ TAGS=addition make init
-```
-
-e.g. To install only ndenv, run the command below.
-
-```
-$ TAGS=ndenv make init
-```
-
-**Note:** `make init` is exactly the same as running `TAGS=basic,additional make init`.
