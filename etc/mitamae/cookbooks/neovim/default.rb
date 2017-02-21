@@ -18,7 +18,7 @@ when 'redhat'
     package pkg
   end
 
-  git "#{node[:src_dir]}/neovim" do
+  git_clone "#{node[:src_dir]}/neovim" do
     repository 'https://github.com/neovim/neovim.git'
   end
 

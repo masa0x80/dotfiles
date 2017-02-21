@@ -6,7 +6,6 @@ if node[:platform] == 'darwin'
       bettertouchtool
       firefox
       google-chrome
-      google-japanese-ime
       iterm2
       itsycal
     )
@@ -94,3 +93,10 @@ def build_paths
 end
 ENV['PATH'] = build_paths
 ENV['GOPATH'] = File.join(home_dir, '.go')
+
+node[:proxy_config] = %w(
+  HTTP_PROXY
+  HTTPS_PROXY
+).map do |key|
+  "export #{key}=#{ENV['HTTP_PROXY']}" if ENV['HTTP_PROXY']
+end.compact.join(' ')

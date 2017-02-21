@@ -10,12 +10,10 @@ execute 'anyenv update' do
   only_if "test -d #{node[:home]}/.anyenv"
 end
 
-git "#{node[:home]}/.anyenv" do
+git_clone "#{node[:home]}/.anyenv" do
   repository 'https://github.com/riywo/anyenv'
-  user node[:user]
 end
 
-git "#{node[:home]}/.anyenv/plugins/anyenv-update" do
+git_clone "#{node[:home]}/.anyenv/plugins/anyenv-update" do
   repository 'https://github.com/znz/anyenv-update.git'
-  user node[:user]
 end

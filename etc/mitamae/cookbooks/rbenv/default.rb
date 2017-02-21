@@ -10,9 +10,8 @@ execute 'install rbenv' do
   not_if "test -d #{node[:home]}/.anyenv/envs/rbenv"
 end
 
-git "#{node[:home]}/.anyenv/envs/rbenv/plugins/rbenv-default-gems" do
+git_clone "#{node[:home]}/.anyenv/envs/rbenv/plugins/rbenv-default-gems" do
   repository 'https://github.com/sstephenson/rbenv-default-gems.git'
-  user node[:user]
 end
 
 file "#{node[:home]}/.anyenv/envs/rbenv/default-gems" do
