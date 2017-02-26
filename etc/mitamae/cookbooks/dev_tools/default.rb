@@ -1,56 +1,18 @@
-case node[:platform]
-when 'darwin'
-  execute 'brew tap homebrew/services' do
-    not_if 'brew tap | grep -q homebrew/services'
+packages = node[:packages]
+platform = node[:platform].to_sym
+
+case platform
+when :darwin
+  packages[platform][:tap_list].each do |pkg|
+    brew_tap pkg
   end
 
-  package 'homebrew/dupes/less'
-  package 'homebrew/dupes/lsof'
-  package 'homebrew/dupes/rsync'
-
-  package 'autoconf'
-  package 'automake'
-  package 'boost'
-  package 'cmake'
-  package 'coreutils'
-  package 'cpulimit'
-  package 'curl'
-  package 'emojify'
-  package 'gdbm'
-  package 'gettext'
-  package 'zsh' do
-    options '--without-etcdir'
+  packages[platform][:brew_list].each do |pkg|
+    pkg pkg
   end
-when 'redhat'
-  package 'epel-release'
-
-  %w(
-    automake
-    autoconf
-    bind-utils
-    bzip2-devel
-    cronie-anacron
-    fuse-libs
-    gcc-c++
-    libffi-devel
-    libselinux-python
-    libxslt-devel
-    nc
-    ntp
-    man
-    man-pages
-    openssl-devel
-    patch
-    readline-devel
-    sqlite-devel
-    tmpwatch
-    tree
-    wget
-    xsel
-    zlib-devel
-    zsh
-  ).each do |pkg|
-    package pkg
+when :redhat
+  packages[platform][:yum_list].each do |pkg|
+    pkg pkg
   end
 
   package node[:remi_repo][:rpm_url] do
