@@ -47,15 +47,12 @@ define :cask do
     only_if "brew cask info #{pkg} | grep -q 'Not installed'"
   end
 
-  # remove old dir
+  # reinstall app
   caskroom_dir = '/usr/local/Caskroom'
   app_dir = File.join(caskroom_dir, pkg)
-  current = `brew cask info #{pkg} | grep '#{app_dir}' | cut -d ' ' -f 1`.chomp
-  Dir.glob(File.join(app_dir, '*')).each do |dir|
-    version = File.basename(dir)
-    execute "rm -rf #{File.join(app_dir, version)}" do
-      only_if "test '#{current} != '#{dir}'"
-    end
+  latest_version = `brew cask info #{pkg} | grep '#{pkg}:' | cut -d ' ' -f 2`.chomp
+  execute "brew cask reinstall #{pkg}" do
+    not_if "test -d #{app_dir}/#{latest_version}"
   end
 end
 
