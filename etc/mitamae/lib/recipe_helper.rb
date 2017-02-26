@@ -8,6 +8,37 @@ define :include_role do
   include_recipe File.join(root_dir, 'roles', params[:name], 'default')
 end
 
+define :include_attribute do
+  root_dir = File.expand_path('../..', __FILE__)
+  include_recipe File.join(root_dir, 'attributes', params[:name])
+end
+
+define :brew_tap do
+  pkg = params[:name]
+  execute "brew tap #{pkg}" do
+    not_if "brew tap | grep -q #{pkg}"
+  end
+end
+
+define :pkg do
+  pkg, *options = params[:name].split(' ')
+  if options.empty?
+    package pkg
+  else
+    package pkg do
+      options options.join(' ')
+    end
+  end
+end
+
+define :mas do
+  id, pkg = params[:name].split(' ')
+  execute "mas[install #{pkg}]" do
+    command "mas install #{id}"
+    only_if 'mas account'
+  end
+end
+
 define :cask do
   pkg = params[:name]
 
