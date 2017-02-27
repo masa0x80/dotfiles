@@ -3,6 +3,7 @@ include_cookbook 'anyenv'
 
 execute 'install ndenv' do
   command <<-"EOF"
+    #{node[:proxy_config]}
     export PATH=#{node[:home]}/.anyenv/bin:$PATH
     eval "$(anyenv init -)"
     anyenv install ndenv
@@ -22,6 +23,7 @@ end
 
 execute 'fix node version' do
   command <<-"EOF"
+    #{node[:proxy_config]}
     export PATH=#{node[:home]}/.anyenv/bin:$PATH
     eval "$(anyenv init -)"
     type -a ndenv > /dev/null 2>&1 && ndenv versions | grep #{node[:nodejs][:version]} || ndenv install #{node[:nodejs][:version]}

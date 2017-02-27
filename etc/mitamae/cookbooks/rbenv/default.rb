@@ -2,6 +2,7 @@ include_cookbook 'anyenv'
 
 execute 'install rbenv' do
   command <<-"EOF"
+    #{node[:proxy_config]}
     export PATH=#{node[:home]}/.anyenv/bin:$PATH
     eval "$(anyenv init -)"
     anyenv install rbenv
@@ -21,6 +22,7 @@ end
 
 execute 'fix ruby version' do
   command <<-"EOF"
+    #{node[:proxy_config]}
     export PATH=#{node[:home]}/.anyenv/bin:$PATH
     eval "$(anyenv init -)"
     type -a rbenv > /dev/null 2>&1 && rbenv versions | grep #{node[:ruby][:version]} || rbenv install #{node[:ruby][:version]}

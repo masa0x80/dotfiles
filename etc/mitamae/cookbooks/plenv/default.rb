@@ -2,6 +2,7 @@ include_cookbook 'anyenv'
 
 execute 'install plenv' do
   command <<-"EOF"
+    #{node[:proxy_config]}
     export PATH=#{node[:home]}/.anyenv/bin:$PATH
     eval "$(anyenv init -)"
     anyenv install plenv
@@ -12,6 +13,7 @@ end
 
 execute 'fix perl version' do
   command <<-"EOF"
+    #{node[:proxy_config]}
     export PATH=#{node[:home]}/.anyenv/bin:$PATH
     eval "$(anyenv init -)"
     type -a plenv > /dev/null 2>&1 && plenv versions | grep #{node[:perl][:version]} || plenv install #{node[:perl][:version]}
