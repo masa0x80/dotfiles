@@ -41,12 +41,4 @@ execute 'install python3' do
   user node[:user]
 end
 
-execute 'pip install neovim' do
-  command <<-"EOF"
-    #{node[:proxy_config]}
-    export PATH=#{node[:home]}/.anyenv/bin:$PATH
-    eval "$(anyenv init -)"
-    pip3 list | grep neovim || pip3 install neovim
-  EOF
-  user node[:user]
-end
+pip3 'neovim'

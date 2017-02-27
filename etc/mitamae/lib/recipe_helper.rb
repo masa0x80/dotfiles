@@ -56,6 +56,19 @@ define :cask do
   end
 end
 
+define :pip3 do
+  pkg = params[:name]
+  execute "pip[install #{pkg}]" do
+    command <<-"EOF"
+      #{node[:proxy_config]}
+      export PATH=#{node[:home]}/.anyenv/bin:$PATH
+      eval "$(anyenv init -)"
+      pip3 list | grep -i #{pkg} || pip3 install #{pkg}
+    EOF
+    user node[:user]
+  end
+end
+
 define :git_clone, repository: nil, user: nil do
   dest_path = params[:name]
   execute "git_clone[#{dest_path}]" do

@@ -22,12 +22,5 @@ when 'redhat'
 
   include_cookbook 'pyenv'
 
-  execute 'pip install pygments' do
-    command <<-"EOF"
-      export PATH=#{node[:home]}/.anyenv/bin:$PATH
-      eval "$(anyenv init -)"
-      type -a pip > /dev/null 2>&1 && pip list | grep -i pygments || pip install pygments
-    EOF
-    user node[:user]
-  end
+  pip3 'pygments'
 end
