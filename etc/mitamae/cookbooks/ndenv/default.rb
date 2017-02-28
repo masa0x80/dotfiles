@@ -12,12 +12,12 @@ execute 'install ndenv' do
   not_if "test -d #{node[:home]}/.anyenv/envs/ndenv"
 end
 
-git_clone "#{node[:home]}/.anyenv/envs/ndenv/plugins/plugins/ndenv-default-npms" do
+git_clone "#{node[:home]}/.anyenv/envs/ndenv/plugins/ndenv-default-npms" do
   repository 'https://github.com/kaave/ndenv-default-npms.git'
 end
 
 file "#{node[:home]}/.anyenv/envs/ndenv/default-npms" do
-  content 'yarn'
+  content "yarn\n"
   owner node[:user]
 end
 
