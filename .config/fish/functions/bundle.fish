@@ -1,6 +1,6 @@
 function bundle
-  set -l  t_window (tmux list-windows | command grep -E '\(active\)$' | cut -d ':' -f1)
-  set -l t_pane    (tmux list-pane    | command grep -E '\(active\)$' | cut -d ':' -f1)
+  set -l t_window (tmux list-windows | command grep -E '\(active\)$' | cut -d ':' -f1)
+  set -l t_pane   (tmux list-pane    | command grep -E '\(active\)$' | cut -d ':' -f1)
   command bundle $argv
   if string match -q $argv[1] 'install'
     if type -qa gtags; and type -qa cpulimit; and type -qa tmux
