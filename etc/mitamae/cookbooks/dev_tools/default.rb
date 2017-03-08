@@ -19,5 +19,3 @@ when :redhat
     not_if 'rpm -q %s' % node[:remi_repo][:package]
   end
 end
-
-include_cookbook 'git'

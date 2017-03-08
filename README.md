@@ -71,6 +71,8 @@ $ cat <<EOF > $HOME/.config.local/git/config
 EOF
 ```
 
+ref: https://github.com/masa0x80/dotfiles.local
+
 ### Only macOS
 
 After running `make install`, load `./etc/data/terminal/Hybrid.terminal` for **Terminal.app** profile.

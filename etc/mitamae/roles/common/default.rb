@@ -1,4 +1,5 @@
 include_cookbook 'dev_tools'
+include_cookbook 'git'
 
 include_cookbook 'anyenv'
 include_cookbook 'docker'
