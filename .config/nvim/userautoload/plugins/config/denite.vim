@@ -34,6 +34,16 @@ function! s:parent_dir()
   return fnamemodify(expand('%:p:h'), ':~:.')
 endfunction
 
+function! s:git_root()
+  let git_root_path = system('git rev-parse --show-toplevel')
+  if v:shell_error == 128
+    let root_path = getcwd()
+  else
+    let root_path = substitute(git_root_path, "\n", '', 'g')
+  end
+  return root_path
+endfunction
+
 nnoremap <silent> <Leader>b :<C-u>Denite -mode=normal buffer<CR>
 nnoremap <silent> <Leader>E :<C-u>Denite -mode=normal file_mru<CR>
 nnoremap <silent> <Leader>f :<C-u>Denite `<SID>file_rec()`<CR>
@@ -46,12 +56,12 @@ nnoremap <silent> <Leader>g :<C-u>Denite grep:.<CR>
 nnoremap <silent> <leader>G :<C-u>Denite -mode=normal grep:. -input=<C-r><C-w><CR><CR>
 
 " Rails
-nnoremap <silent> <Leader>C :<C-u>Denite -path=`getcwd()`/app/controllers        file_rec/git<CR>
-nnoremap <silent> <Leader>D :<C-u>Denite -path=`getcwd()`/db                     file_rec/git<CR>
-nnoremap <silent> <Leader>H :<C-u>Denite -path=`getcwd()`/app/helpers            file_rec/git<CR>
-nnoremap <silent> <Leader>I :<C-u>Denite -path=`getcwd()`/config/initializers    file_rec/git<CR>
-nnoremap <silent> <Leader>J :<C-u>Denite -path=`getcwd()`/app/assets/javascripts file_rec/git<CR>
-nnoremap <silent> <Leader>M :<C-u>Denite -path=`getcwd()`/app/models             file_rec/git<CR>
-nnoremap <silent> <Leader>S :<C-u>Denite -path=`getcwd()`/app/assets/stylesheets file_rec/git<CR>
-nnoremap <silent> <Leader>T :<C-u>Denite -path=`getcwd()`/spec                   file_rec/git<CR>
-nnoremap <silent> <Leader>V :<C-u>Denite -path=`getcwd()`/app/views              file_rec/git<CR>
+nnoremap <silent> <Leader>C :<C-u>Denite -path=`<SID>git_root()`/app/controllers        file_rec/git<CR>
+nnoremap <silent> <Leader>D :<C-u>Denite -path=`<SID>git_root()`/db                     file_rec/git<CR>
+nnoremap <silent> <Leader>H :<C-u>Denite -path=`<SID>git_root()`/app/helpers            file_rec/git<CR>
+nnoremap <silent> <Leader>I :<C-u>Denite -path=`<SID>git_root()`/config/initializers    file_rec/git<CR>
+nnoremap <silent> <Leader>J :<C-u>Denite -path=`<SID>git_root()`/app/assets/javascripts file_rec/git<CR>
+nnoremap <silent> <Leader>M :<C-u>Denite -path=`<SID>git_root()`/app/models             file_rec/git<CR>
+nnoremap <silent> <Leader>S :<C-u>Denite -path=`<SID>git_root()`/app/assets/stylesheets file_rec/git<CR>
+nnoremap <silent> <Leader>T :<C-u>Denite -path=`<SID>git_root()`/spec                   file_rec/git<CR>
+nnoremap <silent> <Leader>V :<C-u>Denite -path=`<SID>git_root()`/app/views              file_rec/git<CR>
