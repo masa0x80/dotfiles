@@ -92,8 +92,9 @@ javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://h
 
 
 source ~/.vimperator/config/qmarks.vimp
-source ~/.local_config/vimp.d/qmarks.vimp
 source ~/.vimperator/config/feed_some_keys.vimp
+source ~/.config.local/vimperator/qmarks.vimp
+source ~/.config.local/vimperator/feed_some_keys.vimp
 
 
 "" タブ自体を移動，メニュー関係をいじる設定

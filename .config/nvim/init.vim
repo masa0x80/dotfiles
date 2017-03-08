@@ -4,8 +4,8 @@ if 0 | endif
 scriptencoding utf-8
 
 runtime! userautoload/common/*.vim
-if filereadable(findfile('$HOME/.local_config/nvim/common.vim'))
-  source $HOME/.local_config/nvim/common.vim
+if filereadable(findfile('$HOME/.config.local/nvim/common.vim'))
+  source $HOME/.config.local/nvim/common.vim
 endif
 runtime! userautoload/plugins/init.vim
 

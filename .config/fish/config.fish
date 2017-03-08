@@ -48,7 +48,7 @@ for config_file in $HOME/.config/fish/conf.d/$OS_TYPE/*
 end
 
 # load local configurations
-__load_file $HOME/.local_config/fish/config.fish
+__load_file $HOME/.config.local/fish/config.fish
 
 # Append $DOTFILE to $PATH
 not set -q DOTFILE; and set -U DOTFILE $HOME/.dotfiles

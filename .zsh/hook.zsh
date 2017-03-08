@@ -1,6 +1,6 @@
 check_local_git_config() {
-  if [ ! -f $HOME/.local_config/git/config ]; then
-    echo -e '\033[7;36m[WARN] Local git config file is not found. Create ~/.local_config/git/config file.'
+  if [ ! -f $HOME/.config.local/git/config ]; then
+    echo -e '\033[7;36m[WARN] Local git config file is not found. Create ~/.config.local/git/config file.'
     echo -e '       Check https://github.com/masa0x80/dotfiles#after-installation\033[0;39m'
   fi
 }

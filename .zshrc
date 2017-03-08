@@ -26,7 +26,7 @@ for config_file ($HOME/.zsh/os/$(uname | tr '[:upper:]' '[:lower:]')/rc/*.zsh(N)
 done
 
 # 環境ローカルの設定の読み込み
-load_file $HOME/.local_config/zsh/rc
+load_file $HOME/.config.local/zsh/rc
 
 # load hook configuration
 load_file $HOME/.zsh/hook.zsh

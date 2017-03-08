@@ -6,7 +6,7 @@
 [credential]
   helper = cache
 [include]
-  path = ~/.local_config/git/config
+  path = ~/.config.local/git/config
 [ghq]
   root = ~/.ghq
   root = ~/.go/src
