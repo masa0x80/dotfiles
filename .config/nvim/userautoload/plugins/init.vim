@@ -12,10 +12,11 @@ let g:dein#enable_notification   = 1
 
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-    execute '!cd' s:dein_repo_dir '&& git checkout' s:dein_sha
+    call execute('!git clone https://github.com/Shougo/dein.vim ' . s:dein_repo_dir)
+    call execute('!cd ' . s:dein_repo_dir)
+    call execute('!git checkout ' . s:dein_sha)
   endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+  call execute('set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p'))
 endif
 
 if !dein#load_state(s:dein_dir)
