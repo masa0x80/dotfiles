@@ -22,7 +22,7 @@ set -U fish_color_command cyan
 # }}}
 
 # OSTYPE
-set -U OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
+set -x OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
 
 # EDITOR
 if type -qa nvim
@@ -40,7 +40,7 @@ end
 set -x RAILS_SERVER_PORT 3000
 
 # Set scrapbook dir path
-not set -q SCRAPBOOK_DIR; and set -U SCRAPBOOK_DIR $HOME/.scrapbook
+not set -q SCRAPBOOK_DIR; and set -x SCRAPBOOK_DIR $HOME/.scrapbook
 
 # Load OS settings
 for config_file in $HOME/.config/fish/conf.d/$OS_TYPE/*
@@ -51,7 +51,7 @@ end
 __load_file $HOME/.config.local/fish/config.fish
 
 # Append $DOTFILE to $PATH
-not set -q DOTFILE; and set -U DOTFILE $HOME/.dotfiles
+not set -q DOTFILE; and set -x DOTFILE $HOME/.dotfiles
 set fish_user_paths $fish_user_paths $DOTFILE/bin
 
 # }}}
