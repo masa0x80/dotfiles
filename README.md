@@ -86,10 +86,10 @@ After running `make install`, load `./etc/data/terminal/Hybrid.terminal` for **T
 1. Start `bash` after starting termial
 2. Read `.bash_profile` at first
 3. Read basic environment variables from `.sh_env`
-  - Load proxy config if necessary
-  - Set PATH
-  - Initialize anyenv
-  - Set environemnt variables for golang
+    - Load proxy config if necessary
+    - Set PATH
+    - Initialize anyenv
+    - Set environemnt variables for golang
 4. Kick-start `fish`
 5. Start or attach `tmux` session by `__tmux_attach_session` function
 
@@ -98,8 +98,8 @@ After running `make install`, load `./etc/data/terminal/Hybrid.terminal` for **T
 `make install` execute the following tasks.
 
 1. `make update`
-  - Update dotfiles repository
+    - Update dotfiles repository
 2. `make init`
-  - Install tools by `MItamae`
+    - Install tools by `MItamae`
 3. `make deploy`
-  - Deploy dotfiles: create symlink to dotfiles under your home directory
+    - Deploy dotfiles: create symlink to dotfiles under your home directory
