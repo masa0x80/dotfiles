@@ -52,7 +52,7 @@ __load_file $HOME/.config.local/fish/config.fish
 
 # Append $DOTFILE to $PATH
 not set -q DOTFILE; and set -x DOTFILE $HOME/.dotfiles
-set fish_user_paths $fish_user_paths $DOTFILE/bin
+set -U fish_user_paths $fish_user_paths $DOTFILE/bin
 
 # }}}
 
