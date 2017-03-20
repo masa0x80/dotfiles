@@ -5,42 +5,42 @@ set fish_greeting
 set fish_prompt_pwd_dir_length 0
 
 # Colors {{{
-set -U color_red     (set_color red)
-set -U color_magenta (set_color magenta)
-set -U color_yellow  (set_color yellow)
-set -U color_green   (set_color green)
-set -U color_blue    (set_color blue)
-set -U color_cyan    (set_color cyan)
-set -U color_white   (set_color white)
-set -U color_grey    (set_color grey)
-set -U color_black   (set_color black)
-set -U color_normal  (set_color normal)
-set -U color_success $color_magenta
-set -U color_error   (set_color red --bold)
+set -gx color_red     (set_color red)
+set -gx color_magenta (set_color magenta)
+set -gx color_yellow  (set_color yellow)
+set -gx color_green   (set_color green)
+set -gx color_blue    (set_color blue)
+set -gx color_cyan    (set_color cyan)
+set -gx color_white   (set_color white)
+set -gx color_grey    (set_color grey)
+set -gx color_black   (set_color black)
+set -gx color_normal  (set_color normal)
+set -gx color_success $color_magenta
+set -gx color_error   (set_color red --bold)
 
-set -U fish_color_command cyan
+set -gx fish_color_command cyan
 # }}}
 
 # OSTYPE
-set -x OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
+set -gx OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
 
 # EDITOR
 if type -qa nvim
-  set -x EDITOR nvim
+  set -gx EDITOR nvim
 else if type -qa vim
-  set -x EDITOR vim
+  set -gx EDITOR vim
 end
 
 # PAGER
 if type -qa less
-  set -x PAGER less
+  set -gx PAGER less
 end
 
 # rails (for rails server alias)
-set -x RAILS_SERVER_PORT 3000
+set -gx RAILS_SERVER_PORT 3000
 
 # Set scrapbook dir path
-not set -q SCRAPBOOK_DIR; and set -x SCRAPBOOK_DIR $HOME/.scrapbook
+not set -q SCRAPBOOK_DIR; and set -gx SCRAPBOOK_DIR $HOME/.scrapbook
 
 # Load OS settings
 for config_file in $HOME/.config/fish/conf.d/$OS_TYPE/*
@@ -51,8 +51,8 @@ end
 __load_file $HOME/.config.local/fish/config.fish
 
 # Append $DOTFILE to $PATH
-not set -q DOTFILE; and set -x DOTFILE $HOME/.dotfiles
-set -U fish_user_paths $fish_user_paths $DOTFILE/bin
+not set -q DOTFILE; and set -gx DOTFILE $HOME/.dotfiles
+set -gx fish_user_paths $fish_user_paths $DOTFILE/bin
 
 # }}}
 
