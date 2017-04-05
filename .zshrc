@@ -1,3 +1,5 @@
+export SHELL=`which zsh`
+
 # load common configuration
 load_file $HOME/.zsh/common.zsh
 

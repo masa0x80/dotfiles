@@ -1,5 +1,7 @@
 # Environment Variables {{{
 
+set -gx SHELL (which fish)
+
 # Disable greeting
 set fish_greeting
 set fish_prompt_pwd_dir_length 0
