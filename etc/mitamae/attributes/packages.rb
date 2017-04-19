@@ -19,6 +19,7 @@ node.reverse_merge!(
         'emojify',
         'gdbm',
         'gettext',
+        'rust',
         'zsh --without-etcdir'
       ]
     },
