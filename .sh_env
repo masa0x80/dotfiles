@@ -19,8 +19,8 @@ fi
 export GOPATH=$HOME/.go
 PATH=$PATH:$GOPATH/bin
 
-# ref: https://github.com/yyuu/pyenv/wiki/Common-build-problems#make-your-pythons-a-little-faster
-CFLAGS='-O2'
+# rust
+PATH=$PATH:$HOME/.cargo/bin
 
 # lang
 export LANG=ja_JP.UTF-8

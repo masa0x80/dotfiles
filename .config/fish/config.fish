@@ -163,6 +163,7 @@ abbr -a gts 'git tag -s'
 # knife solo {{{
 abbr -a krepare 'knife solo prepare'
 abbr -a kook    'knife solo cook'
+# }}}
 
 # knife zero {{{
 abbr -a kboot 'knife zero bootstrap'

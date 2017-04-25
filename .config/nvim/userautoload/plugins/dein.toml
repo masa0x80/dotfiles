@@ -80,3 +80,7 @@ build = 'env PY3=ON ./install.sh'
 [[plugins]]
 repo = 'cocopon/vaffle.vim'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/vaffle.vim'
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/rust.vim'

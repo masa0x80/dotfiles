@@ -6,3 +6,7 @@ when 'redhat'
     not_if 'type -a rustc > /dev/null 2>&1'
   end
 end
+
+execute 'cargo install rustfmt' do
+  not_if 'type -a rustfmt > /dev/null 2>&1'
+end

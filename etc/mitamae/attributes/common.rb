@@ -14,6 +14,7 @@ node.reverse_merge!(
 )
 
 paths = []
+paths << File.join(node[:home], '.cargo', 'bin')
 paths << File.join(node[:home], '.go', 'bin')
 paths << '/usr/local/go/bin'
 paths << '/usr/local/bin'
