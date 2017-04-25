@@ -17,6 +17,7 @@ end
 
 file "#{node[:home]}/.anyenv/envs/rbenv/default-gems" do
   content "bundler\n"
+  content "forman\n"
   owner node[:user]
 end
 
