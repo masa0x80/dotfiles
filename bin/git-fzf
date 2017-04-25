@@ -6,6 +6,7 @@ if [ "$1" = 'show' ]; then
   shift
   git log --graph --color=always \
         --format="%C(auto)%h%d %s %C(blue)%C(bold)%cr" "$@" |
+        sed -e 's/\$/\\$/g' |
         fzf --ansi --no-sort --tiebreak=index \
               --bind "ctrl-m:execute:
                     sh -c \"echo {} | grep -o '[a-f0-9]\{7\}' | xargs -I _ git show --color=always _ | diff-highlight | less -RX\""
