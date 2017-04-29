@@ -1,5 +1,4 @@
 oh-my-fish/plugin-osx
-oh-my-fish/plugin-cd
 masa0x80/angler.fish
 masa0x80/complete_ssh_host.fish
 masa0x80/complete_mkr_host_ip.fish
