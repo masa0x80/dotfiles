@@ -5,10 +5,6 @@ node.reverse_merge!(
         'homebrew/services'
       ],
       brew_list: [
-        'homebrew/dupes/less',
-        'homebrew/dupes/lsof',
-        'homebrew/dupes/rsync',
-
         'autoconf',
         'automake',
         'boost',
@@ -19,6 +15,9 @@ node.reverse_merge!(
         'emojify',
         'gdbm',
         'gettext',
+        'less',
+        'lsof',
+        'rsync',
         'rust',
         'zsh --without-etcdir'
       ]
