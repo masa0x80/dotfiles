@@ -10,7 +10,7 @@ function __execute_wrapper
           case F
             set replacement '| fzf'
           case G
-            set replacement '| rg'
+            set replacement '| grep'
           case H
             set replacement '| head'
           case L
@@ -53,5 +53,4 @@ function __execute_wrapper
 
   commandline $buffer
   commandline -f execute
-  commandline -f repaint
 end

@@ -1,6 +1,6 @@
 function fish_prompt
   set -l status_code $status
-  set -q $prompt_counter; and set -gx prompt_counter 1
+  not set -q prompt_counter; and set -gx prompt_counter 1
   set prompt_counter (math \($prompt_counter + 1\) \% 2)
 
   set -l prompt_prefix
