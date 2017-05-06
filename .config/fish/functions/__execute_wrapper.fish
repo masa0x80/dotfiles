@@ -10,7 +10,7 @@ function __execute_wrapper
           case F
             set replacement '| fzf'
           case G
-            set replacement '| grep'
+            set replacement '| pt'
           case H
             set replacement '| head'
           case L
