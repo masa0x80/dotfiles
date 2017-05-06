@@ -2,15 +2,15 @@
 
 base_dir=$(cd $(dirname $0); pwd)
 
-mitamae_version=1.4.1
+mitamae_version=1.4.3
 case $(uname) in
   Linux)
     mitamae_bin=mitamae-x86_64-linux
-    mitamae_sha256=03b0f79354cd6ab4bc16a6b9d54fc38c51012039cabfd3bd530ec490b095b59b
+    mitamae_sha256=feeb17b56a22bef767277545f577520af6bb6bd3faf2488d22fd465df2645cb5
     ;;
   Darwin)
     mitamae_bin=mitamae-x86_64-darwin
-    mitamae_sha256=174be76e4d1054bed18c66d79dc73ec7a61c43aafd0a241e31ba666a7eb839b3
+    mitamae_sha256=5d3379f47f38758da2b7a93cb2c5099df59377c9dbe74724350ffd5db4a6dee9
     ;;
   *)
     echo "unexpected uname: $(uname)"
