@@ -1,10 +1,11 @@
+no_active_vagrant = system('vagrant global-status | grep "There are no active Vagrant environments on this computer" >/dev/null')
+
 case node[:platform]
 when 'darwin'
-  %w(
-    vagrant
-    virtualbox
-  ).each do |pkg|
-    cask pkg
+  cask 'vagrant'
+
+  if no_active_vagrant
+    cask 'virtualbox'
   end
 when 'redhat'
   %w(
@@ -29,8 +30,10 @@ when 'redhat'
     not_if 'rpm -q %s' % node[:vagrant][:package]
   end
 
-  execute 'setup virtualbox' do
-    command '/usr/lib/virtualbox/vboxdrv.sh setup'
-    not_if 'rpm -q %s' % node[:virtualbox][:package]
+  if no_active_vagrant
+    execute 'setup virtualbox' do
+      command '/usr/lib/virtualbox/vboxdrv.sh setup'
+      not_if 'rpm -q %s' % node[:virtualbox][:package]
+    end
   end
 end
