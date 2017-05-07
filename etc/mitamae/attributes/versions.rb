@@ -36,7 +36,7 @@ node.reverse_merge!(
     package: 'remi-release'
   },
   tmux: {
-    version: '2.3'
+    version: '2.4'
   },
   vagrant: {
     rpm_url: 'https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1_x86_64.rpm',
