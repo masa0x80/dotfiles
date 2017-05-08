@@ -1,0 +1,31 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+/* Change VimFx's hit colors */
+#VimFxMarkersContainer .marker {
+  padding: 1px 2px 0 2px !important;
+  background-color: #000 !important;
+  border: #fff 1px #000 !important;
+  border-radius: 2px !important;
+  font-size: 16px !important;
+  color: #fff !important;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", "Sans" !important;
+  font-weight: bold !important;
+}
+#VimFxMarkersContainer .marker--matched,
+#VimFxMarkersContainer .marker-char--matched {
+  color: #ffa22a !important;
+}
+#VimFxMarkersContainer .marker--highlighted {
+  color: #ffa22a !important;
+  background-color: #000 !important;
+}
+
+/* Change url bar when in disable */
+#main-window[vimfx-mode="ignore"] #urlbar {
+  background: yellow !important;
+}
+
+/* Disable IME on url bar */
+#urlbar {
+  ime-mode: inactive;
+}

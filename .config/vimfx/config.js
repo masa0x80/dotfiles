@@ -1,9 +1,13 @@
 const {classes: Cc, interfaces: Ci, utils: Cu} = Components
+const nsIStyleSheetService = Cc['@mozilla.org/content/style-sheet-service;1'].getService(Ci.nsIStyleSheetService)
 const {Preferences} = Cu.import('resource://gre/modules/Preferences.jsm', {})
 
 const MAPPINGS = {
-  'tab_select_previous': 'K gT <c-p>',
-  'tab_select_next': 'J gt <c-n>',
+  'tab_select_previous': 'K gT <c-k> <s-c-tab>',
+  'tab_select_next': 'J gt <c-j> <c-tab>',
+  'tab_move_backward': 'gJ <c-,>',
+  'tab_move_forward': 'gK <c-.>',
+  "exit": ['<s-escape> I', 'mode.ignore'],
 }
 
 const VIMFX_PREFS = {
@@ -44,6 +48,10 @@ const CUSTOM_COMMANDS = [
   ],
 ]
 
+const CSS = [
+  `${__dirname}/style.css`,
+]
+
 CUSTOM_COMMANDS.forEach(([options, fn]) => {
   vimfx.addCommand(options, fn)
 })
@@ -63,6 +71,17 @@ Object.entries(VIMFX_PREFS).forEach(([pref, valueOrFunction]) => {
 })
 
 Preferences.set(FIREFOX_PREFS)
+
+CSS.forEach(uriString => {
+  const uri = Services.io.newURI(uriString, null, null)
+  const method = nsIStyleSheetService.AUTHOR_SHEET
+  if (!nsIStyleSheetService.sheetRegistered(uri, method)) {
+    nsIStyleSheetService.loadAndRegisterSheet(uri, method)
+  }
+  vimfx.on('shutdown', () => {
+    nsIStyleSheetService.unregisterSheet(uri, method)
+  })
+})
 
 let map = (shortcuts, command, custom=false) => {
   vimfx.set(`${custom ? 'custom.' : ''}mode.normal.${command}`, shortcuts)
