@@ -37,3 +37,12 @@ when 'redhat'
     end
   end
 end
+
+%w[
+  vagrant-cachier
+  vagrant-proxyconf
+].each do |plugin|
+  execute "vagrant plugin install #{plugin}" do
+    not_if "vagrant plugin list | grep -q #{plugin}"
+  end
+end
