@@ -3,11 +3,13 @@ const nsIStyleSheetService = Cc['@mozilla.org/content/style-sheet-service;1'].ge
 const {Preferences} = Cu.import('resource://gre/modules/Preferences.jsm', {})
 
 const MAPPINGS = {
+  'follow': 'f <c-F>',
   'tab_select_previous': 'K gT <c-k> <s-c-tab>',
   'tab_select_next': 'J gt <c-j> <c-tab>',
   'tab_move_backward': 'gJ <c-,>',
   'tab_move_forward': 'gK <c-.>',
-  "exit": ['<s-escape> I', 'mode.ignore'],
+  'quote': 'I <c-v>',
+  'exit': ['<s-escape> I', 'mode.ignore'],
 }
 
 const VIMFX_PREFS = {
