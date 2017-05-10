@@ -3,6 +3,7 @@ const nsIStyleSheetService = Cc['@mozilla.org/content/style-sheet-service;1'].ge
 const {Preferences} = Cu.import('resource://gre/modules/Preferences.jsm', {})
 
 const MAPPINGS = {
+  'focus_location_bar': 'o <c-o>',
   'follow': 'f <c-F>',
   'tab_select_previous': 'K gT <c-k> <s-c-tab>',
   'tab_select_next': 'J gt <c-j> <c-tab>',
