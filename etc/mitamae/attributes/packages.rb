@@ -21,7 +21,8 @@ node.reverse_merge!(
         'pandoc',
         'rsync',
         'rust',
-        'zsh --without-etcdir'
+        'zsh --without-etcdir',
+        'greymd/tools/tmux-xpanes'
       ]
     },
     redhat: {
