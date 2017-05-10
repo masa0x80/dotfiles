@@ -15,8 +15,10 @@ node.reverse_merge!(
         'emojify',
         'gdbm',
         'gettext',
+        'graphviz',
         'less',
         'lsof',
+        'pandoc',
         'rsync',
         'rust',
         'zsh --without-etcdir'
