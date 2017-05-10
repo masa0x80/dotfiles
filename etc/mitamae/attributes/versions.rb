@@ -1,12 +1,12 @@
 node.reverse_merge!(
   git: {
-    version: '2.11.0'
+    version: '2.13.0'
   },
   global: {
     version: '6.5.6'
   },
   golang: {
-    version: '1.7'
+    version: '1.8'
   },
   jo: {
     version: '1.0'
