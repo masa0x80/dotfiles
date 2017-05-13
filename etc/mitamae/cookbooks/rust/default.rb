@@ -10,3 +10,7 @@ end
 execute 'cargo install rustfmt' do
   not_if 'type -a rustfmt > /dev/null 2>&1'
 end
+
+execute 'cargo install racer' do
+  not_if 'type -a racer > /dev/null 2>&1'
+end
