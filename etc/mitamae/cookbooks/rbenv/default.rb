@@ -16,6 +16,7 @@ git_clone "#{node[:home]}/.anyenv/envs/rbenv/plugins/rbenv-default-gems" do
 end
 
 file "#{node[:home]}/.anyenv/envs/rbenv/default-gems" do
+  content "rails\n"
   content "bundler\n"
   content "forman\n"
   owner node[:user]
