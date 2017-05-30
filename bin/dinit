@@ -1,14 +1,13 @@
 #!/bin/bash
 
-echo -n 'export PATH=' > .envrc
+echo -n '' > .envrc
 if [ -d bin ]; then
-  echo -n '$PWD/bin:' >> .envrc
+  echo 'PATH_add bin' >> .envrc
 fi
 if [ -d vendor/bin ]; then
-  echo -n '$PWD/vendor/bin:' >> .envrc
+  echo 'PATH_add vendor/bin' >> .envrc
 fi
 if [ -d node_modules/.bin ]; then
-  echo -n '$PWD/node_modules/.bin:' >> .envrc
+  echo 'PATH_add node_modules/.bin' >> .envrc
 fi
-echo '$PATH' >> .envrc
 direnv allow
