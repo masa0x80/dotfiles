@@ -1,13 +1,13 @@
 #!/bin/bash
 
 echo -n '' > .envrc
-if [ -d bin ]; then
-  echo 'PATH_add bin' >> .envrc
-fi
 if [ -d vendor/bin ]; then
   echo 'PATH_add vendor/bin' >> .envrc
 fi
 if [ -d node_modules/.bin ]; then
   echo 'PATH_add node_modules/.bin' >> .envrc
+fi
+if [ -d bin ]; then
+  echo 'PATH_add bin' >> .envrc
 fi
 direnv allow
