@@ -5,7 +5,7 @@ node.reverse_merge!(
     dash
     firefox
     google-chrome
-    iterm2
+    caskroom/versions/iterm2-nightly
     itsycal
   )
 )
