@@ -8,3 +8,7 @@ include_role 'append'
 include_cookbook 'cask'
 include_cookbook 'atom'
 include_cookbook 'mas'
+
+include_cookbook 'cask' do
+  recipe 'cleanup'
+end
