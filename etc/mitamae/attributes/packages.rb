@@ -8,6 +8,7 @@ node.reverse_merge!(
         'autoconf',
         'automake',
         'boost',
+        'chromedriver',
         'cmake',
         'coreutils',
         'cpulimit',
