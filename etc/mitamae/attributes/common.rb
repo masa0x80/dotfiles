@@ -13,8 +13,9 @@ node.reverse_merge!(
         end
 )
 
+ENV['CARGO_HOME'] = File.join(node[:home], '.cargo')
 paths = []
-paths << File.join(node[:home], '.cargo', 'bin')
+paths << File.join(ENV['CARGO_HOME'], 'bin')
 paths << File.join(node[:home], '.go', 'bin')
 paths << '/usr/local/go/bin'
 paths << '/usr/local/bin'
