@@ -61,7 +61,7 @@ define :pip3 do
   execute "pip[install #{pkg}]" do
     command <<-"EOF"
       #{node[:proxy_config]}
-      export PATH=#{node[:home]}/.anyenv/bin:$PATH
+      export PATH=#{node[:env][:home]}/.anyenv/bin:$PATH
       eval "$(anyenv init -)"
       pip3 list | grep -i #{pkg} || pip3 install #{pkg}
     EOF

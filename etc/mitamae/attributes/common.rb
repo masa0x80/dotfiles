@@ -1,30 +1,35 @@
 node.reverse_merge!(
   user: ENV['SUDO_USER'] || ENV['USER'],
   src_dir: '/tmp/src',
-  bin_dir: '/usr/local'
+  bin_dir: '/usr/local',
+  env: {}
 )
 
-node.reverse_merge!(
-  home: case node[:platform]
-        when 'darwin'
-          File.join('/Users', node[:user])
-        else
-          File.join('/home', node[:user])
-        end
+node[:env][:home] = case node[:platform]
+                    when 'darwin'
+                      File.join('/Users', node[:user])
+                    else
+                      File.join('/home', node[:user])
+                    end
+node[:env].reverse_merge!(
+  cargo_home: File.join(node[:env][:home], '.cargo'),
+  gopath: File.join(node[:env][:home], '.go')
 )
+node[:env][:path] = %W[
+                      #{File.join(node[:env][:home], '.anyenv', 'bin')}
+                      #{File.join(node[:env][:cargo_home], 'bin')}
+                      #{File.join(node[:env][:home], '.go', 'bin')}
+                      /usr/local/go/bin
+                      /usr/local/bin
+                      /usr/bin
+                      /bin
+                      /usr/local/sbin
+                      /usr/sbin
+                    ].join(':')
 
-ENV['CARGO_HOME'] = File.join(node[:home], '.cargo')
-paths = []
-paths << File.join(ENV['CARGO_HOME'], 'bin')
-paths << File.join(node[:home], '.go', 'bin')
-paths << '/usr/local/go/bin'
-paths << '/usr/local/bin'
-paths << '/usr/bin'
-paths << '/bin'
-paths << '/usr/local/sbin'
-paths << '/usr/sbin'
-ENV['PATH'] = paths.join(':')
-ENV['GOPATH'] = File.join(node[:home], '.go')
+ENV['CARGO_HOME'] = node[:env][:cargo_home]
+ENV['PATH'] = node[:env][:path]
+ENV['GOPATH'] = node[:env][:gopath]
 
 node.reverse_merge!(
   proxy_config: %w(

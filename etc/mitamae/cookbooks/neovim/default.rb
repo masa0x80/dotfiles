@@ -33,7 +33,7 @@ include_cookbook 'pyenv'
 execute 'install python3' do
   command <<-"EOF"
     #{node[:proxy_config]}
-    export PATH=#{node[:home]}/.anyenv/bin:$PATH
+    export PATH=#{node[:env][:home]}/.anyenv/bin:$PATH
     eval "$(anyenv init -)"
     type -a pyenv > /dev/null 2>&1 && pyenv versions | grep #{node[:python][:version3]} || pyenv install #{node[:python][:version3]}
     pyenv global #{node[:python][:version2]} #{node[:python][:version3]}
