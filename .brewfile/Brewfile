@@ -1,0 +1,58 @@
+tap "caskroom/cask"
+tap "caskroom/versions"
+tap "homebrew/core"
+tap "homebrew/dupes"
+tap "homebrew/services"
+tap "neovim/neovim"
+tap "greymd/tools"
+
+cask "alfred"
+cask "atom"
+cask "chefdk"
+cask "dash"
+cask "firefox"
+cask "google-chrome"
+cask "iterm2-nightly"
+cask "itsycal"
+cask "vagrant"
+cask "virtualbox"
+
+brew "autoconf"
+brew "automake"
+brew "boost"
+brew "chromedriver"
+brew "coreutils"
+brew "cpulimit"
+brew "curl"
+brew "emojify"
+brew "fish"
+brew "fzf"
+brew "gdbm"
+brew "gettext"
+brew "gibo"
+brew "git"
+brew "global", args: ["with-ctags", "with-pygments"]
+brew "go"
+brew "htop"
+brew "graphviz"
+brew "imagemagick"
+brew "jo"
+brew "jq"
+brew "less"
+brew "lsof"
+brew "mysql", restart_service: true
+brew "neovim", args: ["HEAD"]
+brew "pandoc"
+brew "phantomjs"
+brew "postgresql"
+brew "reattach-to-user-namespace"
+brew "redis", restart_service: true
+brew "rsync"
+brew "rust"
+brew "s3cmd"
+brew "tmux"
+brew "tmux-xpanes"
+brew "vim", args: ["with-lua", "without-python"]
+brew "zsh", args: ["without-etcdir"]
+mas "Slack", id: 803453959
+mas "Xcode", id: 497799835

@@ -1,6 +1,6 @@
 case node[:platform]
 when 'darwin'
-  package 'postgresql'
+  # Install postgres via brew bundle
 when 'redhat'
   %w(
     postgresql-server

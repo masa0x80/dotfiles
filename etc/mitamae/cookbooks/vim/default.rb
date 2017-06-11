@@ -1,8 +1,6 @@
 case node[:platform]
 when 'darwin'
-  package 'vim' do
-    options '--with-lua --without-python'
-  end
+  # Install vim via brew bundle
 when 'centos'
   package 'vim' do
     action :remove

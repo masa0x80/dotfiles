@@ -1,8 +1,6 @@
 case node[:platform]
 when 'darwin'
-  package 'neovim/neovim/neovim' do
-    options '--HEAD'
-  end
+  # Install neovim via brew bundle
 when 'redhat'
   %w(
     libtool

@@ -1,6 +1,6 @@
 case node[:platform]
 when 'darwin'
-  package 'tmux'
+  # Install tmux via brew bundle
 when 'redhat'
   %w(
     libevent

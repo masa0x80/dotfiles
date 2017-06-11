@@ -1,4 +1,4 @@
-cask 'atom'
+# Install atom via brew bundle
 
 %w[
   vim-mode-plus

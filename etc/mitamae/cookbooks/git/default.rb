@@ -1,6 +1,6 @@
 case node[:platform]
 when 'darwin'
-  package 'git'
+  # Install git via brew bundle
 when 'redhat'
   %w(
     gcc-c++

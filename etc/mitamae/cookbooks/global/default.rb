@@ -1,8 +1,6 @@
 case node[:platform]
 when 'darwin'
-  package 'global' do
-    options '--with-ctags --with-pygments'
-  end
+  # Install global via brew bundle
 when 'redhat'
   package 'ncurses-devel'
 

@@ -13,13 +13,6 @@ define :include_attribute do
   include_recipe File.join(root_dir, 'attributes', params[:name])
 end
 
-define :brew_tap do
-  pkg = params[:name]
-  execute "brew tap #{pkg}" do
-    not_if "brew tap | grep -q #{pkg}"
-  end
-end
-
 define :pkg do
   pkg, *options = params[:name].split(' ')
   if options.empty?
@@ -28,31 +21,6 @@ define :pkg do
     package pkg do
       options options.join(' ')
     end
-  end
-end
-
-define :mas do
-  id, pkg = params[:name].split(' ')
-  execute "mas[install #{pkg}]" do
-    command "mas install #{id}"
-    only_if 'mas account'
-  end
-end
-
-define :cask do
-  pkg = params[:name]
-
-  # install app
-  execute "brew cask install #{pkg}" do
-    only_if "brew cask info #{pkg} | grep -q 'Not installed'"
-  end
-
-  # reinstall app
-  caskroom_dir = '/usr/local/Caskroom'
-  app_dir = File.join(caskroom_dir, pkg)
-  latest_version = `brew cask info #{pkg} | grep '#{pkg}:' | cut -d ' ' -f 2`.chomp
-  execute "brew cask reinstall #{pkg}" do
-    not_if "test -d #{app_dir}/#{latest_version}"
   end
 end
 

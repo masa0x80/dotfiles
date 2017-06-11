@@ -1,6 +1,6 @@
 case node[:platform]
 when 'darwin'
-  package 'fish'
+  # Install fish via brew bundle
 when 'redhat'
   execute 'download fish repo' do
     command 'curl -LO http://download.opensuse.org/repositories/shells:fish:release:2/CentOS_7/shells:fish:release:2.repo'

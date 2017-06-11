@@ -1,6 +1,6 @@
 case node[:platform]
 when 'darwin'
-  package 'jo'
+  # Install jo via brew bundle
 when 'redhat'
   execute 'download jo' do
     command <<-"EOF"

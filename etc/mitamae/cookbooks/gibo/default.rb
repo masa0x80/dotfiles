@@ -1,6 +1,6 @@
 case node[:platform]
 when 'darwin'
-  package 'gibo'
+  # Install gibo via brew bundle
 when 'redhat'
   include_cookbook 'git'
 

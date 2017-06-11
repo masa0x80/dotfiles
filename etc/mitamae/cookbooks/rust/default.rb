@@ -1,5 +1,6 @@
 case node[:platform]
 when 'darwin'
+  # Install rust via brew bundle
 when 'redhat'
   execute 'install rust' do
     command 'curl https://sh.rustup.rs -s -o /tmp/rustup.sh; chmod +x /tmp/rustup.sh; /tmp/rustup.sh -y'

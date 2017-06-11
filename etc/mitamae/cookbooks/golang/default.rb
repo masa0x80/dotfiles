@@ -1,6 +1,6 @@
 case node[:platform]
 when 'darwin'
-  package 'go'
+  # Install go via brew bundle
 when 'redhat'
   execute 'remove go' do
     command '[ -e /usr/local/go ] && rm -rf /usr/local/go'

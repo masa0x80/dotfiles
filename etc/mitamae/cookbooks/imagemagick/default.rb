@@ -1,5 +1,5 @@
 case node[:platform]
 when 'darwin'
-  package 'imagemagick'
+  # Install imagemagick via brew bundle
 when 'redhat'
 end

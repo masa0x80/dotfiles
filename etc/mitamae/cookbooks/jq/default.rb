@@ -1,6 +1,6 @@
 case node[:platform]
 when 'darwin'
-  package 'jq'
+  # Install jq via brew bundle
 when 'redhat'
   execute 'install jq' do
     command <<-"EOF"

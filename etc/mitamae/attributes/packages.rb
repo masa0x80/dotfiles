@@ -1,30 +1,6 @@
 node.reverse_merge!(
   packages: {
-    darwin: {
-      tap_list: [
-        'homebrew/services'
-      ],
-      brew_list: [
-        'autoconf',
-        'automake',
-        'boost',
-        'chromedriver',
-        'cmake',
-        'coreutils',
-        'cpulimit',
-        'curl',
-        'emojify',
-        'gdbm',
-        'gettext',
-        'graphviz',
-        'less',
-        'lsof',
-        'pandoc',
-        'rsync',
-        'rust',
-        'zsh --without-etcdir',
-        'greymd/tools/tmux-xpanes'
-      ]
+    dawrin: {
     },
     redhat: {
       yum_list: %w(

@@ -1,6 +1,6 @@
 case node[:platform]
 when 'darwin'
-  package 'phantomjs'
+  # Install phantomjs via brew bundle
 when 'redhat'
   execute 'install phantomjs' do
     command <<-"EOF"
