@@ -27,9 +27,7 @@ node[:env][:path] = %W[
                       /usr/sbin
                     ].join(':')
 
-ENV['CARGO_HOME'] = node[:env][:cargo_home]
 ENV['PATH'] = node[:env][:path]
-ENV['GOPATH'] = node[:env][:gopath]
 
 node.reverse_merge!(
   proxy_config: %w(

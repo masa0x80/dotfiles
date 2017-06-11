@@ -4,14 +4,21 @@ when 'redhat'
   execute 'install rust' do
     command 'curl https://sh.rustup.rs -s -o /tmp/rustup.sh; chmod +x /tmp/rustup.sh; /tmp/rustup.sh -y'
     user node[:user]
-    not_if 'type -a rustc > /dev/null 2>&1'
+    not_if "test -f #{node[:env][:cargo_home]}/bin/rustc"
   end
 end
 
-execute 'cargo install rustfmt' do
-  not_if 'type -a rustfmt > /dev/null 2>&1'
-end
-
-execute 'cargo install racer' do
-  not_if 'type -a racer > /dev/null 2>&1'
+%w[
+  rustfmt
+  racer
+].each do |pkg|
+  execute "cargo install #{pkg}" do
+    command <<-"EOF"
+      #{node[:proxy_config]}
+      export PATH=#{node[:env][:path]}
+      cargo install #{pkg}
+    EOF
+    user node[:user]
+    not_if "test -f #{node[:env][:cargo_home]}/bin/#{pkg}"
+  end
 end
