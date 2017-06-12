@@ -39,8 +39,8 @@ end
 
 define :git_clone, repository: nil, user: nil, depth: nil do
   dest_path = params[:name]
-  depth = '-depth %d' % params[:depth] if params[:depth]
-  cmd = ['git', 'clone', depth, params[:repository], dest_path].compact.join(' ')
+  depth_option = '-depth %d' % params[:depth] if params[:depth]
+  cmd = ['git', 'clone', depth_option, params[:repository], dest_path].compact.join(' ')
   execute "git_clone[#{dest_path}]" do
     command <<-"EOF"
       #{node[:proxy_config]}
