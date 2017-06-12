@@ -24,6 +24,7 @@ brew "chromedriver"
 brew "coreutils"
 brew "cpulimit"
 brew "curl"
+brew 'docker'
 brew "emojify"
 brew "fish"
 brew "fzf"
