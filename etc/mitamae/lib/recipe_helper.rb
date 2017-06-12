@@ -37,12 +37,14 @@ define :pip3 do
   end
 end
 
-define :git_clone, repository: nil, user: nil do
+define :git_clone, repository: nil, user: nil, depth: nil do
   dest_path = params[:name]
+  epth = '-depth %d' % params[:depth] if params[:depth]
+  cmd = ['git', 'clone', depth, params[:repository], dest_path].compact.join(' ')
   execute "git_clone[#{dest_path}]" do
     command <<-"EOF"
       #{node[:proxy_config]}
-      git clone #{params[:repository]} #{dest_path}
+      #{cmd}
     EOF
     user user || node[:user]
     not_if "test -d #{dest_path}"
