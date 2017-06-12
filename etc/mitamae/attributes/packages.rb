@@ -1,6 +1,6 @@
 node.reverse_merge!(
   packages: {
-    dawrin: {
+    darwin: {
     },
     redhat: {
       yum_list: %w(

@@ -27,7 +27,7 @@ deploy:
 init:
 	@DOTFILE=$(DOTPATH) cd ./etc/mitamae; bash init.sh
 
-install: update deploy init
+install: update init deploy
 
 clean:
 	@echo 'Remove dot files in your home directory...'
