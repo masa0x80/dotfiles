@@ -3,9 +3,6 @@ execute 'xcode --install' do
 end
 
 include_role 'common'
-include_role 'append'
-
-include_cookbook 'atom'
 
 include_cookbook 'cask' do
   recipe 'cleanup'

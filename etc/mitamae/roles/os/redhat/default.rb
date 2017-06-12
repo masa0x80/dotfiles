@@ -5,4 +5,3 @@ end
 include_cookbook 'yum'
 
 include_role 'common'
-include_role 'append'

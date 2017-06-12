@@ -29,7 +29,6 @@ node.reverse_merge!(
         wget
         xsel
         zlib-devel
-        zsh
       )
     }
   }
