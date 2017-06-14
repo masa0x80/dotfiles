@@ -8,9 +8,18 @@ node.reverse_merge!(
   golang: {
     version: '1.8'
   },
+  jo: {
+    version: '1.0'
+  },
   mysql: {
     rpm_url: 'http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm',
     package: 'mysql57-community-release'
+  },
+  nodejs: {
+    version: 'v6.5.0'
+  },
+  perl: {
+    version: '5.22.1'
   },
   phantomjs: {
     version: '2.1.1'
@@ -36,5 +45,23 @@ node.reverse_merge!(
   virtualbox: {
     yum_repository: 'http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo',
     package: 'VirtualBox-5.1'
+  },
+  vim: {
+    version: '8.0',
+    make_options: %w[
+      --enable-fail-if-missing
+      --enable-fontset
+      --enable-cscope
+      --enable-multibyte
+      --enable-rubyinterp
+      --enable-luainterp
+      --with-x=no
+      --disable-gui
+      --disable-xim
+      --with-features=huge
+      --disable-selinux
+      --disable-gpm
+      --disable-darwin
+    ].join(' ')
   }
 )

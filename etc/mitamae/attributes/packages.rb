@@ -3,7 +3,7 @@ node.reverse_merge!(
     darwin: {
     },
     redhat: {
-      yum_list: %w(
+      common: %w(
         epel-release
 
         automake
@@ -29,6 +29,9 @@ node.reverse_merge!(
         wget
         xsel
         zlib-devel
+      ),
+      append: %w(
+        zsh
       )
     }
   }

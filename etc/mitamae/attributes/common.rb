@@ -1,3 +1,5 @@
+node[:roles] = ENV.fetch('ROLES', 'common,append').split(',')
+
 node.reverse_merge!(
   user: ENV['SUDO_USER'] || ENV['USER'],
   src_dir: '/tmp/src',
