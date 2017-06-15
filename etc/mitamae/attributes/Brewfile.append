@@ -1,14 +1,16 @@
-tap "greymd/tools"
+tap 'greymd/tools'
 
-cask "atom"
-cask "dash"
+cask 'atom'
+cask 'dash'
 
-brew "gibo"
-brew "graphviz"
-brew "imagemagick"
-brew "jo"
-brew "pandoc"
-brew "rust"
-brew "tmux-xpanes"
-brew "zsh", args: ["without-etcdir"]
-mas "Xcode", id: 497799835
+brew 'gibo'
+brew 'graphviz'
+brew 'imagemagick'
+brew 'jo'
+brew 'pandoc'
+brew 'rust'
+brew 'tmux-xpanes'
+brew 'vim', args: ['with-lua', 'without-python']
+brew 'zsh', args: ['without-etcdir']
+
+mas 'Xcode', id: 497799835

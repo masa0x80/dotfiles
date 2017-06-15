@@ -1,46 +1,47 @@
-tap "caskroom/cask"
-tap "caskroom/versions"
-tap "homebrew/core"
-tap "homebrew/dupes"
-tap "homebrew/services"
-tap "neovim/neovim"
+tap 'caskroom/cask'
+tap 'caskroom/versions'
+tap 'homebrew/core'
+tap 'homebrew/dupes'
+tap 'homebrew/services'
+tap 'neovim/neovim'
 
-cask "alfred"
-cask "chefdk"
-cask "firefox"
-cask "google-chrome"
-cask "iterm2-nightly"
-cask "itsycal"
-cask "vagrant"
-cask "virtualbox"
+cask 'alfred'
+cask 'chefdk'
+cask 'firefox'
+cask 'google-chrome'
+cask 'iterm2-nightly'
+cask 'itsycal'
+cask 'vagrant'
+cask 'virtualbox'
 
-brew "autoconf"
-brew "automake"
-brew "boost"
-brew "chromedriver"
-brew "coreutils"
-brew "cpulimit"
-brew "curl"
+brew 'autoconf'
+brew 'automake'
+brew 'boost'
+brew 'chromedriver'
+brew 'coreutils'
+brew 'cpulimit'
+brew 'curl'
 brew 'docker'
-brew "emojify"
-brew "fish"
-brew "fzf"
-brew "gdbm"
-brew "gettext"
-brew "git"
-brew "global", args: ["with-ctags", "with-pygments"]
-brew "go"
-brew "htop"
-brew "jq"
-brew "less"
-brew "lsof"
-brew "mysql", restart_service: true
-brew "neovim", args: ["HEAD"]
-brew "phantomjs"
-brew "postgresql"
-brew "reattach-to-user-namespace"
-brew "redis", restart_service: true
-brew "rsync"
-brew "s3cmd"
-brew "tmux"
-mas "Slack", id: 803453959
+brew 'emojify'
+brew 'fish'
+brew 'fzf'
+brew 'gdbm'
+brew 'gettext'
+brew 'git'
+brew 'global', args: ['with-ctags', 'with-pygments']
+brew 'go'
+brew 'htop'
+brew 'jq'
+brew 'less'
+brew 'lsof'
+brew 'mysql', restart_service: true
+brew 'neovim', args: ['HEAD']
+brew 'phantomjs'
+brew 'postgresql'
+brew 'reattach-to-user-namespace'
+brew 'redis', restart_service: true
+brew 'rsync'
+brew 's3cmd'
+brew 'tmux'
+
+mas 'Slack', id: 803453959
