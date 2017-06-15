@@ -1,4 +1,4 @@
-node[:roles] = ENV.fetch('ROLES', 'common,append').split(',')
+node[:roles] = ENV.fetch('DOTFILE_ROLE', 'common').split(',')
 
 node.reverse_merge!(
   user: ENV['SUDO_USER'] || ENV['USER'],

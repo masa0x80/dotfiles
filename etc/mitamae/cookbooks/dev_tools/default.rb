@@ -1,9 +1,8 @@
 define :dev_tools do
-  platform = node[:platform].to_sym
   role = params[:name].to_sym
 
-  case platform
-  when :darwin
+  case node[:platform]
+  when 'darwin'
     execute 'brew bundle' do
       command <<-"EOF"
         #{node[:proxy_config]}
@@ -13,8 +12,8 @@ define :dev_tools do
       EOF
       user node[:user]
     end
-  when :redhat
-    node[:packages][platform][role].each do |pkg|
+  when 'redhat'
+    node[:yum_packages][role].each do |pkg|
       package pkg
     end
   end

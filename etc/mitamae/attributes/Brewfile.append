@@ -9,6 +9,7 @@ brew 'imagemagick'
 brew 'jo'
 brew 'pandoc'
 brew 'rust'
+brew 's3cmd'
 brew 'tmux-xpanes'
 brew 'vim', args: ['with-lua', 'without-python']
 brew 'zsh', args: ['without-etcdir']

@@ -36,6 +36,9 @@ Vagrant.configure(2) do |config|
     echo 'alias vim=vi' >> /home/vagrant/.bashrc
     echo 'git clone https://github.com/masa0x80/dotfiles.git $HOME/.dotfiles' > /home/vagrant/install
     echo 'cd $HOME/.dotfiles' >> /home/vagrant/install
+    echo 'export DOTFILE_ROLE=common' >> /home/vagrant/install
+    echo 'make init'          >> /home/vagrant/install
+    echo 'export DOTFILE_ROLE=append' >> /home/vagrant/install
     echo 'make init'          >> /home/vagrant/install
     echo 'make deploy'        >> /home/vagrant/install
     chown vagrant: /home/vagrant/install
