@@ -11,7 +11,6 @@ define :dev_tools do
         brew tap homebrew/bundle
         brew bundle --file=#{File.join(File.expand_path('../../..', __FILE__), 'attributes', "Brewfile.#{role}")}
       EOF
-      cwd File.join(node[:env][:home], '.brewfile')
       user node[:user]
     end
   when :redhat
