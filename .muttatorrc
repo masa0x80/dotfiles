@@ -1,0 +1,40 @@
+mapc
+
+set gui=all
+
+" Shortcut
+nnoremap gi :goto Inbox<CR>
+nnoremap gt :goto Sent Mail<CR>
+nnoremap gs <C-b><M-b>status:Marked<CR><ESC>
+nnoremap / <C-b><M-b>
+
+nnoremap <C-S-n> <C-TAB>
+nnoremap <C-S-p> <S-C-TAB>
+
+" Start & Archive
+nnoremap s ls<ESC>
+nnoremap e ia<ESC>
+nnoremap a <S-r>
+
+nnoremap c :compose<CR>
+
+" Message
+nnoremap J 10<DOWN>
+nnoremap K 10<UP>
+
+nnoremap <C-F> <NOP>
+nnoremap d <NOP>
+
+" 補完リストの<C-n>, <C-p>でできるように
+cnoremap <C-n> <TAB>
+cnoremap <C-p> <S-TAB>
+
+inoremap <C-s> status:Marked
+
+noremap ,r :source ~/.muttatorrc<CR>
+noremap ,,r :restart<CR>
+
+" IME disable
+style -nmae commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
+
+echo "### Finish loading rc file. ###"

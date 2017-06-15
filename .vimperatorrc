@@ -1,0 +1,123 @@
+mapclear
+
+" ブラウザタイトルを変更
+set titlestring=Firefox
+" 検索語を強調表示
+set hlsearch
+" ビープ音を無効化
+set visualbell
+hi Bell display:none;
+" 常にタブ表示
+set showtabline=2
+" アドレス補完
+"set complete=lbsS
+set complete=lb
+" エラー出力レベル
+set verbose=9
+" Search Engine
+bmark -title="Google" -keyword=g http://www.google.com/search?q=%s
+" ALC
+bmark -title="ALC" -keyword=a http://eow.alc.co.jp/%s/UTF-8/
+set defsearch=g
+" GUI options
+set gui=none
+set gui+=menu,tabs
+
+" No focus
+set focuscontent
+
+set hintchars=asdfghktyuopnmwerxcvbz
+
+" IME off
+style -name commandline-ime chrome://* #liberator-commandline-command input { ime-mode: inactive; }
+
+" bmark
+bmark -title="Google Maps" -keyword=maps http://maps.google.com/
+bmark -title="Twitter" -keyword=t http://twitter.com/%s
+bmark -title="Twitter Search" -keyword=ts http://search.twitter.com/search?q=%s
+
+" .vimperatorrcリロード
+map ,R :source ~/.vimperatorrc<CR>
+
+" Bookmarks
+map ,b :bmarks<Space>
+
+" アクセスキーを無効に
+set! ui.key.generalAccessKey=0
+" リンクをバックグランドで開く
+set! browser.tabs.loadDivertedInBackground=true
+
+
+" タブの切り替え
+inoremap <C-n> <C-TAB>
+inoremap <C-p> <C-S-TAB>
+nnoremap gn :tablast<CR>
+nnoremap gp :tabfirst<CR>
+" tabopen
+map <C-t> :tabopen<CR>
+inoremap <C-t> <ESC>:tabopen<CR>
+
+" 補完リストの選択を<C-n>や<C-p>で
+cmap <C-n> <TAB>
+cmap <C-p> <S-TAB>
+
+
+" J, K でもスクロール
+map J 10<C-e>
+map K 10<C-y>
+" <C-d>, <C-u>
+map <C-d> 20<C-e>
+map <C-u> 20<C-y>
+" 使わないので無効化
+map a <NOP>
+map <C-g> <NOP>
+" 再起動
+map ,,r :restart<CR>
+" Stop loading
+map ,c :stop<CR>
+
+inoremap <C-h> <BS>
+cnoremap <C-h> <BS>
+inoremap <C-d> <Del>
+cnoremap <C-d> <Del>
+nnoremap <C-r> r
+
+
+" タブ追加アイコンを非表示に
+sty chrome://* .tabs-newtab-button {display: none;}
+
+
+" Hatena::Bookmark
+javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+
+
+source ~/.vimperator/config/qmarks.vimp
+source ~/.vimperator/config/feed_some_keys.vimp
+source ~/.config.local/vimperator/qmarks.vimp
+source ~/.config.local/vimperator/feed_some_keys.vimp
+
+
+"" タブ自体を移動，メニュー関係をいじる設定
+" cf. http://d.hatena.ne.jp/mickey24/20081122/1227365637
+js <<EOM
+[
+  ['>', ':tabmove! +1', true],
+  ['<', ':tabmove! -1', true],
+].forEach(function([key,command,exec]) {
+  mappings.addUserMap([modes.NORMAL], [key],
+    'User defined mapping', function() {
+      exec ? liberator.execute(command) :
+      liberator.commandline.open(command.substring(0, 1), command.substring(1), liberator.modes.EX); },
+      {
+        rhs: command,
+        noremap: true
+      }
+  );
+});
+EOM
+
+hi Hint font-family: "Lucida Grande", "Segoe UI", sans-serif; font-size: 13px; font-weight: bold; background: -moz-linear-gradient(top, #6BA7EF, #3163AA); text-shadow: 0 1px #1D3C66; text-transform: uppercase; color: white; background-color: red; padding: 2px 5px; border-radius: 3px; border: 1px solid #3366AD;
+
+js services.services.autoCompleteSearch.class_="@mozilla.org/autocomplete/search;1?name=unifiedcomplete"
+
+echo "###  Finish loading settings.  ###"
