@@ -12,6 +12,7 @@ Thumbs.db
 *.swp
 
 # Ruby
+.bundle
 /vendor/bundle
 /vendor/bin
 
