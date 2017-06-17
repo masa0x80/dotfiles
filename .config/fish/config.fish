@@ -100,6 +100,7 @@ abbr -a la 'ls -lAh'
 if test -e $HOME/.ssh/config
   abbr -a ssh_config 'vim ~/.ssh/config'
   abbr -a sconfig    'vim ~/.ssh/config'
+  abbr -a sconf      'vim ~/.ssh/config'
 end
 # }}}
 

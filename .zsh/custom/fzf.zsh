@@ -14,4 +14,18 @@ if (( $+commands[fzf] )); then
   }
   zle -N complete-ssh-host
   bindkey '^s^s' complete-ssh-host
+
+  # vim open with fzf
+  fzf-vim() {
+    local files=$(fzf --query "$*")
+    if [ -n "$files" ]; then
+      vim $(echo $files)
+    fi
+  }
+  alias v='fzf-vim'
+
+  # ps with fzf
+  psp() {
+    ps -ef | fzf --query "$*"
+  }
 fi

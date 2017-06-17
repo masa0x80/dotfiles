@@ -42,16 +42,12 @@ fi
 
 alias h='\history -n -r 1 | grep "$@"'
 
-if (( $+commands[assh] )) && [ -d $HOME/.ssh/assh.d ]; then
-  alias sshconfig='vim ~/.ssh/assh.d'
-else
-  alias sshconfig='vim ~/.ssh/config'
-fi
+alias sshconfig='vim ~/.ssh/config'
 alias sconfig='sshconfig'
 alias sconf='sshconfig'
 
 web_server() {
-  ruby -run -e httpd . -p ${1:-8080}
+  ruby -run -e httpd . -p ${1:-3000}
 }
 
 # refs: http://qiita.com/yuku_t/items/4ffaa516914e7426419a

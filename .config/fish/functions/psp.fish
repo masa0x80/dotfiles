@@ -1,4 +1,4 @@
 function psp
-  commandline "ps -ef | peco --query '$argv'"
+  commandline "ps -ef | fzf --query '$argv'"
   commandline -f execute
 end

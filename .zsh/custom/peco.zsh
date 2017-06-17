@@ -63,46 +63,4 @@ if (( $+commands[peco] )); then
   }
   zle -N peco-ghq-cd
   bindkey '^gc' peco-ghq-cd
-
-  # pt and vim with peco
-  # ref: http://qiita.com/fmy/items/b92254d14049996f6ec3
-  peco-pt-vim () {
-    local SELECTED_FILES
-    if [[ $# = 0 ]]; then
-      SELECTED_FILES=$(pt '' | peco)
-    else
-      local ARG=$1
-      [[ $# > 0 ]] && shift
-      SELECTED_FILES=$(pt "$ARG" | peco --query "$*")
-    fi
-    if [ -z $SELECTED_FILES ]; then
-      return
-    fi
-    local N="$(echo $SELECTED_FILES | awk '{print $1}' | sort -u | wc -l)" # ファイル数を調べる
-    local FILES
-    if [ $N -eq 1 ]; then
-      # 1ファイルなら行指定で開く
-      echo $SELECTED_FILES | awk -F : '{print "-c " $2 " " $1}'
-      FILES=$(echo $SELECTED_FILES | awk -F : '{print "-c " $2 " " $1}')
-    elif [ $N -gt 1 ]; then
-      # 複数ファイルを開く (ファイル名に空白が含まれている場合はうまく動かない)
-      FILES=$(echo $SELECTED_FILES | awk -F : '{print $1}' | sort)
-    fi
-    if [ -n "$FILES" ]; then
-      vim $(echo $FILES)
-    fi
-  }
-  alias pv='peco-pt-vim'
-
-  # vim open with peco
-  alias v='vim PECO'
-
-  # ps with peco
-  psp() {
-    if [[ $# = 0 ]]; then
-      ps -ef | peco
-    else
-      ps -ef | peco --query "$*"
-    fi
-  }
 fi
