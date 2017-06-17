@@ -18,7 +18,9 @@ when 'redhat'
     not_if 'type -a global > /dev/null 2>&1'
   end
 
-  include_cookbook 'pyenv'
+  include_cookbook 'pyenv' do
+    recipe 'python3'
+  end
 
   pip3 'pygments'
 end
