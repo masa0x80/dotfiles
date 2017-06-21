@@ -2,7 +2,7 @@
   autocrlf = false
   excludesfile = ~/.config/git/ignore
   editor = nvim
-  pager = diff-highlight | less -RFX
+  pager = diff-highlight | less -RIXc
 [credential]
   helper = cache
 [include]
