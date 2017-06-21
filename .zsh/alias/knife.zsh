@@ -8,15 +8,23 @@ vagrant_host() {
 
 alias -g TH='$(target_host)'
 alias -g VH='$(vagrant_host)'
-alias -g kook='knife solo cook'
-alias -g krepare='knife solo prepare'
 
-knife-solo-provision-vagrant() {
+ksv() {
   local vagrant_host="$(echo VH)"
-  vagrant destroy -f && vagrant up && vagrant snapshot save init && krepare $vagrant_host && vagrant snapshot save prepared && kook $vagrant_host && vagrant snapshot save cooked
+  vagrant destroy -f && vagrant up && vagrant snapshot save init && knife solo prepare $vagrant_host && vagrant snapshot save prepared && knife solo cook $vagrant_host && vagrant snapshot save cooked
 }
 
-knife-solo-provision-target() {
+kst() {
   local target_host="$(echo TH)"
-  krepare $target_host && kook $target_host
+  knife solo prepare $target_host && knife solo cook $target_host
+}
+
+kzv() {
+  local vagrant_host="$(echo VH)"
+  vagrant destroy -f && vagrant up && vagrant snapshot save init && knife zero bootstrap $vagrant_host --node-name $vagrant_host --no-converge && vagrant snapshot save prepared && knife zero converge nmae:$vagrant_host && vagrant snapshot save cooked
+}
+
+kzt() {
+  local target_host="$(echo TH)"
+  knife zero bootstrap $target_host --node-name $target_host --no-converge && knife zero converge name:$target_host
 }
