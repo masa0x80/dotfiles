@@ -14,12 +14,12 @@
 # Written by Sebastian Schulz <https://github.com/yilazius>
 
 function gibocompletionlist
-  set gitignores (ls ~/.gitignore-boilerplates/**.gitignore)
-  set completions
-  for val in $gitignores
-    set completions $completions (basename $val | cut -d '.' -f1)
-  end
-  echo $completions
+    set gitignores (ls ~/.gitignore-boilerplates/**.gitignore)
+    set completions
+    for val in $gitignores
+        set completions $completions (basename $val | cut -d '.' -f1)
+    end
+    echo $completions
 end
 
 complete -c gibo -a (gibocompletionlist)
