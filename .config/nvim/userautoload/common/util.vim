@@ -51,6 +51,18 @@ augroup VsplitHelp
   autocmd FileType help wincmd L
 augroup END
 
+augroup AutoFishIndent
+  autocmd!
+  " タブをスペースに
+  autocmd BufWritePre *.fish call s:exec_fish_indent()
+augroup END
+
+function! s:exec_fish_indent()
+  let l:line = line('.')
+  execute '%! fish_indent'
+  execute ':' . l:line
+endfunction
+
 " ref: http://qiita.com/tekkoc/items/324d736f68b0f27680b8
 command! -nargs=? Jq call s:Jq(<f-args>)
 function! s:Jq(...)
