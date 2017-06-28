@@ -41,6 +41,9 @@ end
 # rails (for rails server alias)
 set -gx RAILS_SERVER_PORT 3000
 
+# Set config path for gabbr
+set -gx gabbr_config $HOME/.config/fish/gabbr.conf
+
 # Set scrapbook dir path
 not set -q SCRAPBOOK_DIR
 and set -gx SCRAPBOOK_DIR $HOME/.scrapbook
