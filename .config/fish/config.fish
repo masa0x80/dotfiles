@@ -7,6 +7,8 @@ set fish_greeting
 set fish_prompt_pwd_dir_length 0
 
 # Colors {{{
+set fish_pager_color_completion grey
+
 set -gx color_red (set_color red)
 set -gx color_magenta (set_color magenta)
 set -gx color_yellow (set_color yellow)
