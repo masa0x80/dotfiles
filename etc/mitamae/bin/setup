@@ -2,15 +2,15 @@
 
 base_dir=$(cd $(dirname $0); pwd)
 
-mitamae_version=1.4.3
+mitamae_version=1.4.5
 case $(uname) in
   Linux)
     mitamae_bin=mitamae-x86_64-linux
-    mitamae_sha256=feeb17b56a22bef767277545f577520af6bb6bd3faf2488d22fd465df2645cb5
+    mitamae_sha256=29bbf2a0d045dbcda0f346a3f4fa708c788c8072cb0006abbd1e4293f55caed8
     ;;
   Darwin)
     mitamae_bin=mitamae-x86_64-darwin
-    mitamae_sha256=5d3379f47f38758da2b7a93cb2c5099df59377c9dbe74724350ffd5db4a6dee9
+    mitamae_sha256=a017d1ce8b6953eb66ba2f8247c2bc9d92112517c2b0f8c61d0a16c15f28d954
     ;;
   *)
     echo "unexpected uname: $(uname)"
@@ -18,7 +18,7 @@ case $(uname) in
 esac
 
 if ! [ -f "${base_dir}/${mitamae_bin}" ]; then
-  curl -o "${base_dir}/${mitamae_bin}.tar.gz" -fL "https://github.com/k0kubun/mitamae/releases/download/v${mitamae_version}/${mitamae_bin}.tar.gz"
+  curl -o "${base_dir}/${mitamae_bin}.tar.gz" -fL "https://github.com/itamae-kitchen/mitamae/releases/download/v${mitamae_version}/${mitamae_bin}.tar.gz"
   sha256=$(/usr/bin/openssl dgst -sha256 ${base_dir}/${mitamae_bin}.tar.gz | cut -d ' ' -f 2)
   if [ "$mitamae_sha256" != "$sha256" ]; then
     echo "checksum verification failed!\nexpected: ${mitamae_sha256}\n  actual: ${sha256}"
