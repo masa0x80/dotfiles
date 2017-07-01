@@ -53,7 +53,6 @@ augroup END
 
 augroup AutoFishIndent
   autocmd!
-  " タブをスペースに
   autocmd BufWritePre *.fish call s:exec_fish_indent()
 augroup END
 

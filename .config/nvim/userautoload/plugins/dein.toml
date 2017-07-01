@@ -55,9 +55,6 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/neomake.vim'
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
-repo = 'dag/vim-fish'
-
-[[plugins]]
 repo = 'itchyny/vim-parenmatch'
 
 [[plugins]]

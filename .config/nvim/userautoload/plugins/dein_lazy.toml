@@ -77,3 +77,11 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/quickrun.vim'
 repo = 'LeafCage/foldCC'
 on_ft = ['vim', 'markdown', 'mkd', 'md', 'fish']
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/foldCC.vim'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = ['go']
+
+[[plugins]]
+repo = 'dag/vim-fish'
+on_ft = ['fish']
