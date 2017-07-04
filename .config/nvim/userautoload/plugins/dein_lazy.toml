@@ -16,6 +16,9 @@ on_event = 'InsertEnter'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/neosnippet.vim'
 
 [[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 if = "has('nvim')"
 on_event = 'InsertEnter'
@@ -66,7 +69,23 @@ on_ft = 'json'
 
 [[plugins]]
 repo = 'rcmdnk/vim-markdown'
+depends = ['tabular', 'vim-markdown-quote-syntax']
 on_ft = ['markdown', 'mkd', 'md']
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/markdown.vim'
+
+[[plugins]]
+repo = 'godlygeek/tabular'
+
+[[plugins]]
+repo = 'joker1007/vim-markdown-quote-syntax'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = ['go']
+
+[[plugins]]
+repo = 'dag/vim-fish'
+on_ft = ['fish']
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -77,11 +96,3 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/quickrun.vim'
 repo = 'LeafCage/foldCC'
 on_ft = ['vim', 'markdown', 'mkd', 'md', 'fish']
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/foldCC.vim'
-
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = ['go']
-
-[[plugins]]
-repo = 'dag/vim-fish'
-on_ft = ['fish']
