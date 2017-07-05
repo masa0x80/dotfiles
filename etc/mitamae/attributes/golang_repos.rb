@@ -6,5 +6,6 @@ node.reverse_merge!(
     github.com/monochromegane/the_platinum_searcher/cmd/pt
     github.com/peco/peco/cmd/peco
     github.com/github/hub
+    github.com/hashicorp/packer
   )
 )
