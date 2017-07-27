@@ -1,0 +1,19 @@
+#!/bin/bash
+
+LOG=/tmp/update-casks.log
+echo '' > $LOG
+
+: ${caskroom_dir:=/usr/local/Caskroom}
+if type -a brew >/dev/null && type -a fzf >/dev/null; then
+  packages=$(brew cask list | fzf --query "$*")
+  for pkg in $packages; do
+    app_dir=$caskroom_dir/$pkg
+    latest_version=$(brew cask info $pkg | grep "$pkg:" | cut -d ' ' -f 2)
+    if ! test -d $app_dir/$latest_version; then
+      brew cask reinstall $pkg | tee $LOG
+    else
+      echo -e "INFO: \033[0;32m$pkg\033[0;39m already updated" | tee $LOG
+    fi
+  done
+fi
+
