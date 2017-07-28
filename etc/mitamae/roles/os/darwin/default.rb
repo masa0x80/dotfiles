@@ -8,7 +8,3 @@ node[:roles].each do |r|
   dev_tools r
   include_role r
 end
-
-include_cookbook 'cask' do
-  recipe 'cleanup'
-end

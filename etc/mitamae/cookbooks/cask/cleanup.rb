@@ -1,1 +1,0 @@
-execute 'brew cask cleanup'

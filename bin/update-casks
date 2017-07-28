@@ -15,5 +15,6 @@ if type -a brew >/dev/null && type -a fzf >/dev/null; then
       echo -e "INFO: \033[0;32m$pkg\033[0;39m already updated" | tee $LOG
     fi
   done
-fi
 
+  brew cask cleanup
+fi
