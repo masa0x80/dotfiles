@@ -16,8 +16,6 @@ Thumbs.db
 /vendor/bundle
 /vendor/bin
 
-/.envrc
-
 # gtags (GNU Global)
 GTAGS
 GRTAGS
