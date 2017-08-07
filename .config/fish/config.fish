@@ -99,9 +99,17 @@ abbr -a md 'mkdir'
 abbr -a rd 'rmdir'
 abbr -a rf 'rm -rf'
 
-abbr -a l 'ls -lah'
-abbr -a ll 'ls -lh'
-abbr -a la 'ls -lAh'
+if type -qa exa
+    abbr -a l 'exa -la --git'
+    abbr -a la 'exa -la --git'
+    abbr -a ll 'exa -l --git'
+    abbr -a ls 'exa'
+    abbr -a tree 'exa -T'
+else
+    abbr -a l 'ls -lAh'
+    abbr -a la 'ls -lAh'
+    abbr -a ll 'ls -lh'
+end
 
 # ssh {{{
 if test -e $HOME/.ssh/config

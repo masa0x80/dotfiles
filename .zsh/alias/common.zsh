@@ -13,9 +13,17 @@ if (( $+commands[gls] )); then
 else
   alias ls='ls --color=auto'
 fi
-alias l='ls -lah'
-alias ll='ls -lh'
-alias la='ls -lAh'
+if (( $+commands[exa] )); then
+  alias l='exa -la --git'
+  alias la='exa -la --git'
+  alias ll='exa -l --git'
+  alias ls='exa'
+  alias tree='exa -T'
+else
+  alias l='ls -lAh'
+  alias la='ls -lAh'
+  alias ll='ls -lh'
+fi
 
 if (( $+commands[nvim] )); then
   alias vim='nvim'
