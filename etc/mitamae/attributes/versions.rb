@@ -6,7 +6,7 @@ node.reverse_merge!(
     version: '6.5.6'
   },
   golang: {
-    version: '1.8'
+    version: '1.9'
   },
   jo: {
     version: '1.0'
