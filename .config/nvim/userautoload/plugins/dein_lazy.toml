@@ -9,6 +9,11 @@ on_event = 'VimEnter'
 hook_post_source = 'source ~/.config/nvim/userautoload/plugins/config/denite.vim'
 
 [[plugins]]
+repo = 'Shougo/neoyank.vim'
+depends = 'denite.nvim'
+on_event = 'VimEnter'
+
+[[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets']
 on_ft = ['snippet']

@@ -30,6 +30,7 @@ nnoremap <silent> <Leader>b :<C-u>Denite -mode=normal buffer<CR>
 nnoremap <silent> <Leader>E :<C-u>Denite -mode=normal file_mru<CR>
 nnoremap <silent> <Leader>j :<C-u>Denite line<CR>
 nnoremap <silent> <Leader>r :<C-u>Denite -resume<CR>
+nnoremap <silent> <Leader>y :<C-u>Denite neoyank<CR>
 
 " grep
 nnoremap <silent> <Leader>g :<C-u>Denite grep:.<CR>
