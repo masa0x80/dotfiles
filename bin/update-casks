@@ -6,6 +6,10 @@ echo '' > $LOG
 : ${caskroom_dir:=/usr/local/Caskroom}
 if type -a brew >/dev/null && type -a fzf >/dev/null; then
   packages=$(brew cask list | fzf --query "$*")
+  if [ -n "$packages" ]; then
+    brew update | tee $LOG
+  fi
+
   for pkg in $packages; do
     app_dir=$caskroom_dir/$pkg
     latest_version=$(brew cask info $pkg | grep "$pkg:" | cut -d ' ' -f 2)
@@ -16,5 +20,7 @@ if type -a brew >/dev/null && type -a fzf >/dev/null; then
     fi
   done
 
-  brew cask cleanup
+  if [ -n "$packages" ]; then
+    brew cask cleanup | tee $LOG
+  fi
 fi
