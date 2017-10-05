@@ -1,6 +1,5 @@
 tap 'greymd/tools'
 
-cask 'atom'
 cask 'boostnote'
 cask 'dash'
 
