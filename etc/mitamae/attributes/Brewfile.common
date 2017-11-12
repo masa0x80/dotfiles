@@ -11,6 +11,7 @@ cask 'firefox'
 cask 'google-chrome'
 cask 'iterm2-nightly'
 cask 'itsycal'
+cask 'karabiner-elements'
 cask 'vagrant'
 cask 'virtualbox'
 
