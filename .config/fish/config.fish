@@ -73,6 +73,10 @@ set __fish_git_prompt_char_upstream_behind '↓'
 
 ### Abbreviations {{{
 
+if type -qa open
+    abbr -a o 'open'
+end
+
 abbr -a tailf 'tail -f'
 abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'

@@ -1,3 +1,7 @@
+if (( $+commands[open] )); then
+  alias o='open'
+fi
+
 alias tailf='tail -f'
 alias diff='diff -u'
 alias watch='watch -n 0.5'
