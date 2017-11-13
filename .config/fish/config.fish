@@ -8,20 +8,6 @@ set fish_prompt_pwd_dir_length 0
 
 # Colors {{{
 set fish_pager_color_completion grey
-
-set -gx color_red (set_color red)
-set -gx color_magenta (set_color magenta)
-set -gx color_yellow (set_color yellow)
-set -gx color_green (set_color green)
-set -gx color_blue (set_color blue)
-set -gx color_cyan (set_color cyan)
-set -gx color_white (set_color white)
-set -gx color_grey (set_color grey)
-set -gx color_black (set_color black)
-set -gx color_normal (set_color normal)
-set -gx color_success $color_magenta
-set -gx color_error (set_color red --bold)
-
 set -gx fish_color_command cyan
 # }}}
 
