@@ -10,14 +10,14 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'w0ng/vim-hybrid'
+repo = 'cocopon/iceberg.vim'
 hook_add = '''
   augroup MyColorscheme
     autocmd!
     " ref: https://teratail.com/questions/3738://teratail.com/questions/37382
     " colorscheme設定はsource後に行う必要があるので確実に読まれているVimEnterのタイミングで行う。
     " ただし、Colorschemeイベントの発生が抑制されないようnentedを付ける。
-    autocmd VimEnter * nested source ~/.config/nvim/userautoload/plugins/config/vim-hybrid.vim
+    autocmd VimEnter * nested source ~/.config/nvim/userautoload/plugins/config/iceberg.vim
   augroup END
 '''
 
