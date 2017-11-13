@@ -1,3 +1,4 @@
+alias tailf='tail -f'
 alias diff='diff -u'
 alias watch='watch -n 0.5'
 alias grep='command grep --color=auto'

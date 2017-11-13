@@ -73,6 +73,7 @@ set __fish_git_prompt_char_upstream_behind '↓'
 
 ### Abbreviations {{{
 
+abbr -a tailf 'tail -f'
 abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'
 abbr -a mkdir 'mkdir -p'
