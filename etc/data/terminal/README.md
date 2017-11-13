@@ -1,3 +1,3 @@
-# Customized Terminal Profile
+# Customized iTerm2 Profile
 
-This profile is based on https://raw.githubusercontent.com/lysyi3m/osx-terminal-themes/master/schemes/Hybrid.terminal
+This profile is based on https://github.com/aseom/dotfiles/blob/master/osx/iterm2/iceberg.itermcolors
