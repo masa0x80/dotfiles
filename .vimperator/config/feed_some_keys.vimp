@@ -1,5 +1,0 @@
-"" feedSomeKeys_3.js
-:command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
-:lazy fmaps -u='b\.hatena\.ne\.jp/' j k o e b
-:lazy fmaps -u='calendar\.google\.com' -e 'vkeydown' j k t a w m x c e / + q s ?
-:lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc <S-i> <S-u>
