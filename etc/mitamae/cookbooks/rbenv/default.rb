@@ -19,6 +19,7 @@ gem_list = <<-EOF
 rails
 bundler
 foreman
+pry
 EOF
 file "#{node[:env][:home]}/.anyenv/envs/rbenv/default-gems" do
   content gem_list
