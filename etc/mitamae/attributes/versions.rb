@@ -1,9 +1,9 @@
 node.reverse_merge!(
   git: {
-    version: '2.13.0'
+    version: '2.15.0'
   },
   global: {
-    version: '6.5.6'
+    version: '6.5.7'
   },
   golang: {
     version: '1.9'
@@ -29,7 +29,7 @@ node.reverse_merge!(
     version3: '3.5.2'
   },
   ruby: {
-    version: '2.4.1'
+    version: '2.4.2'
   },
   remi_repo: {
     rpm_url: 'http://rpms.famillecollet.com/enterprise/remi-release-7.rpm',
