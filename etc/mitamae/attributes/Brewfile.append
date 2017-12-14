@@ -3,6 +3,7 @@ tap 'greymd/tools'
 cask 'boostnote'
 cask 'brave'
 cask 'dash'
+cask 'docker'
 
 brew 'gibo'
 brew 'graphviz'
