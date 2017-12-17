@@ -4,6 +4,7 @@ cask 'boostnote'
 cask 'brave'
 cask 'dash'
 cask 'docker'
+cask 'insomnia'
 
 brew 'gibo'
 brew 'graphviz'
