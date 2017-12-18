@@ -3,6 +3,7 @@
   excludesfile = ~/.config/git/ignore
   editor = nvim
   pager = diff-highlight | less -RIXc
+  hooksPath = ~/.config/git/hooks
 [credential]
   helper = cache
 [include]
