@@ -1,0 +1,3 @@
+[main]
+syntax_style = native
+prompt = 'database: \d\n\t> '
