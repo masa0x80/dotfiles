@@ -77,6 +77,10 @@ if type -qa open
     abbr -a o 'open'
 end
 
+if type -qa mycli
+    abbr -a mysql 'mycli'
+end
+
 abbr -a tailf 'tail -f'
 abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'
