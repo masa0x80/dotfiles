@@ -17,7 +17,6 @@ end
 
 gem_list = <<-EOF
 rails
-bundler
 foreman
 pry
 EOF
