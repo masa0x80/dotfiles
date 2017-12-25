@@ -29,7 +29,7 @@ node.reverse_merge!(
     version3: '3.5.2'
   },
   ruby: {
-    version: '2.4.2'
+    version: '2.5.0'
   },
   remi_repo: {
     rpm_url: 'http://rpms.famillecollet.com/enterprise/remi-release-7.rpm',
