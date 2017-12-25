@@ -1,6 +1,6 @@
 _prompt() {
   counter=$(expr $(expr ${counter:-2} + 1) % 2)
-  PROMPT_SUFFIX='匚＞'
+  PROMPT_SUFFIX='(Z)＞'
   if [ $counter -eq 0 ]; then
     PROMPT_PREFIX='ミ'
   else
