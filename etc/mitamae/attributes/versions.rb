@@ -26,7 +26,7 @@ node.reverse_merge!(
   },
   python: {
     version2: '2.7.12',
-    version3: '3.5.2'
+    version3: '3.6.3'
   },
   ruby: {
     version: '2.5.0'
