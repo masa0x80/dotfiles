@@ -2,6 +2,14 @@ if (( $+commands[open] )); then
   alias o='open'
 fi
 
+if (( $+commands[tldr] )); then
+  alias man='tldr'
+fi
+
+if (( $+commands[mycli] )); then
+  alias mysql='mycli'
+fi
+
 alias tailf='tail -f'
 alias diff='diff -u'
 alias watch='watch -n 0.5'
