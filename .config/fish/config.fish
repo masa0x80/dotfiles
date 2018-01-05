@@ -51,6 +51,9 @@ set -gx fish_user_paths $fish_user_paths $DOTFILE/bin
 
 # venv (global config)
 source $XDG_DATA_HOME/venv/python3/bin/activate.fish
+if type -qa pokemon
+    pokemon 635
+end
 
 # }}}
 
