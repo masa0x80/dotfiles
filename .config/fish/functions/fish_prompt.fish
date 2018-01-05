@@ -7,11 +7,15 @@ function fish_prompt
     set -l prompt_prefix
     set -l prompt_suffix '匚＞'
 
-    set -l color_time $color_white
-    set -l color_directory $color_blue
+    set -l color_venv (set_color grey)
+    set -l color_directory (set_color blue)
+    set -l color_normal (set_color normal)
 
+    if test "$VIRTUAL_ENV" != ''
+        echo -n -s $color_venv (basename $VIRTUAL_ENV) $color_normal ' '
+    end
     echo -n -s $color_directory (prompt_pwd) $color_normal ' '
-    echo -n -s $color_time (date '+%H:%M:%S') $color_normal
+    echo -n -s (date '+%H:%M:%S')
     echo -n -s (__fish_git_prompt)
     echo ' '
 
