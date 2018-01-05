@@ -23,6 +23,7 @@ bundle() {
 
 alias ss='spring stop'
 alias c='rails c'
+alias r='rails routes'
 alias t='rspec'
 alias bi='bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4'
 alias bil='bi --local'

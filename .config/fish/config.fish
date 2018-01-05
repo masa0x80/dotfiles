@@ -190,6 +190,7 @@ abbr -a vst 'vagrant global-status'
 abbr -a s "rails s -p $RAILS_SERVER_PORT"
 abbr -a c 'rails c'
 abbr -a db 'rails db'
+abbr -a r 'rails routes'
 abbr -a t 'rspec'
 abbr -a ss 'spring stop'
 abbr -a bi 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4'
