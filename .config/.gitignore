@@ -1,9 +1,11 @@
 /*
 /.*
-/fish/fishd.*
+
 !/.gitignore
 !/fish
-!/nvim
-!/peco
 !/git
 !/hub.tmpl
+!/nvim
+!/peco
+
+/fish/fishd.*
