@@ -1,11 +1,15 @@
-/*
-/.*
+*
+.*
 
-!/.gitignore
-!/fish
-!/git
-!/hub.tmpl
-!/nvim
-!/peco
+!.gitignore
+!fish
+!git
+!hub.tmpl
+!nvim
+!peco
 
-/fish/fishd.*
+fish/fishd.*
+
+!pip
+pip/*
+!pip/global-requirements
