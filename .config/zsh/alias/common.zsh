@@ -3,7 +3,7 @@ if (( $+commands[open] )); then
 fi
 
 if (( $+commands[tldr] )); then
-  alias man='tldr'
+  alias m='tldr'
 fi
 
 if (( $+commands[mycli] )); then

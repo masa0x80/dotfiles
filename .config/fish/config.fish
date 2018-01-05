@@ -84,7 +84,7 @@ if type -qa open
 end
 
 if type -qa tldr
-    abbr -a man 'tldr'
+    abbr -a m 'tldr'
 end
 
 if type -qa mycli
