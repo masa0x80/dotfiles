@@ -7,6 +7,8 @@
 !hub.tmpl
 !nvim
 !peco
+!zsh
+!zsh/**
 
 fish/fishd.*
 

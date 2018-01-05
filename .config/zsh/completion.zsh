@@ -17,16 +17,16 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z} r:|[-_.]=
 
 # 色設定
 if (( $+commands[dircolors] )); then
-  eval $(dircolors $HOME/.zsh/misc/dircolors.ansi-dark)
+  eval $(dircolors $XDG_CONFIG_HOME/zsh/misc/dircolors.ansi-dark)
 elif (( $+commands[gdircolors] )); then
-  eval $(gdircolors $HOME/.zsh/misc/dircolors.ansi-dark)
+  eval $(gdircolors $XDG_CONFIG_HOME/zsh/misc/dircolors.ansi-dark)
 fi
 if [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
 
 # Source: https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
-load_file $HOME/.zsh/misc/fzf_completion.zsh
+load_file $XDG_CONFIG_HOME/zsh/misc/fzf_completion.zsh
 
 # Source: https://github.com/simonwhitaker/gibo/blob/master/gibo-completion.zsh
-load_file $HOME/.zsh/misc/gibo-completion.zsh
+load_file $XDG_CONFIG_HOME/zsh/misc/gibo-completion.zsh

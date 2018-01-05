@@ -1,4 +1,4 @@
-HISTFILE="$HOME/.zhistory"                     # history保存ファイル
+HISTFILE="$XDG_CONFIG_FILE/zsh/.zhistory"                     # history保存ファイル
 HISTSIZE=1000000                               # メモリーに保存されるhistory件数
 SAVEHIST=1000000                               # 保存されるhistory件数
 bindkey '^P' history-beginning-search-backward # <C-p>でhistoryをbackward検索

@@ -30,6 +30,8 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+
 # venv
 export VIRTUAL_ENV_DISABLE_PROMPT=disabled
 VENV_PATH=$XDG_DATA_HOME/venv/python3

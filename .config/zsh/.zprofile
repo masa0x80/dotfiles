@@ -4,7 +4,7 @@
 load_file() { test -r $1 && . $1 }
 
 # load useful functions
-load_file $HOME/.zsh/util.zsh
+load_file $XDG_CONFIG_HOME/zsh/util.zsh
 
 fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
 
@@ -28,7 +28,7 @@ export RAILS_SERVER_PORT=3000
 export ZPLUG_HOME=$HOME/.zplug
 
 # OSごとの設定の読み込み
-for config_file ($HOME/.zsh/os/$(uname | tr '[:upper:]' '[:lower:]')/profile/*.zsh(N)); do
+for config_file ($XDG_CONFIG_HOME/zsh/os/$(uname | tr '[:upper:]' '[:lower:]')/profile/*.zsh(N)); do
   load_file $config_file
 done
 
