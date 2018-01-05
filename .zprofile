@@ -38,3 +38,5 @@ load_file $HOME/.config.local/zsh/profile
 # Append $DOTFILE/bin to $PATH
 export DOTFILE=${DOTFILE:-$HOME/.dotfiles}
 export PATH=$PATH:$DOTFILE/bin
+
+source $XDG_DATA_HOME/venv/python3/bin/activate

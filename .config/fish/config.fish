@@ -49,6 +49,9 @@ not set -q DOTFILE
 and set -gx DOTFILE $HOME/.dotfiles
 set -gx fish_user_paths $fish_user_paths $DOTFILE/bin
 
+# venv (global config)
+source $XDG_DATA_HOME/venv/python3/bin/activate.fish
+
 # }}}
 
 ### Prompt {{{
