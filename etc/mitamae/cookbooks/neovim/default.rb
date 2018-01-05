@@ -25,8 +25,3 @@ when 'redhat'
     not_if 'typo -a nvim > /dev/null 2>&1'
   end
 end
-
-include_cookbook 'pyenv' do
-  recipe 'python3'
-end
-pip3 'neovim'
