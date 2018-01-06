@@ -1,23 +1,24 @@
-*
-.*
+/*
+/.*
 
-!.gitignore
-!fish
-!git
-!hub.tmpl
-!nvim
-!peco
-!tmux
-!tmux/**
-!zsh
-!zsh/**
+!/.gitignore
+!/git
+!/nvim
+!/peco
+!/tmux
+!/zsh
 
-fish/fishd.*
+!/fish
+/fish/fishd.*
 
-!pgcli
-pgcli/*
-!pgcli/config
+!/hub
+/hub/*
+!/hub/config.tmpl
 
-!pip
-pip/*
-!pip/global-requirements
+!/pgcli
+/pgcli/*
+!/pgcli/config
+
+!/pip
+/pip/*
+!/pip/global-requirements
