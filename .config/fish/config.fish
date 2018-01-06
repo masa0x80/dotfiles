@@ -83,10 +83,6 @@ if type -qa open
     abbr -a o 'open'
 end
 
-if type -qa tldr
-    abbr -a m 'tldr'
-end
-
 if type -qa mycli
     abbr -a mysql 'mycli'
 end
