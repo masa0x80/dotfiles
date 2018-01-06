@@ -10,6 +10,10 @@ if (( $+commands[mycli] )); then
   alias mysql='mycli'
 fi
 
+if (( $+commands[pgcli] )); then
+  alias psql='pgcli'
+fi
+
 alias tailf='tail -f'
 alias diff='diff -u'
 alias watch='watch -n 0.5'

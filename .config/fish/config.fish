@@ -91,6 +91,10 @@ if type -qa mycli
     abbr -a mysql 'mycli'
 end
 
+if type -qa pgcli
+    abbr -a psql 'pgcli'
+end
+
 abbr -a tailf 'tail -f'
 abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'
