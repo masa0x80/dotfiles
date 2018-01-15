@@ -3,7 +3,7 @@
 pre_push() {
   local git_root=`git rev-parse --show-cdup`
 
-  if test -n $DISABLE_RUBOCOP; then
+  if test "$DISABLE_RUBOCOP" = ''; then
     if test -e "${git_root}.rubocop.yml"; then
       bundle exec rubocop `git diff --staged --name-only`
       local rubocop_status=$?
@@ -13,7 +13,7 @@ pre_push() {
     fi
   fi
 
-  if test -n $DISABLE_RSPEC; then
+  if test "$DISABLE_RSPEC" = ''; then
     if test -d "${git_root}spec/"; then
       bundle exec rspec
       local rspec_status=$?
