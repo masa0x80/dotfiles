@@ -29,6 +29,12 @@ end
 # rails (for rails server alias)
 set -gx RAILS_SERVER_PORT 3000
 
+# Set fresco config
+if type -qa ghq
+    set -U fresco_root (ghq root)
+end
+set -U fresco_plugin_list_path $HOME/.config/fish/plugins.fish
+
 # Set config path for gabbr
 set -gx gabbr_config $HOME/.config/fish/gabbr.conf
 
