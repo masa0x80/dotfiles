@@ -14,6 +14,7 @@ brew 'pandoc'
 brew 'python3'
 brew 'rust'
 brew 's3cmd'
+brew 'sshrc'
 brew 'tmux-xpanes'
 brew 'vim', args: ['with-lua', 'without-python']
 brew 'zsh', args: ['without-etcdir']

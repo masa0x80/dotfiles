@@ -42,6 +42,9 @@ if test ! -d $VENV_PATH; then
   deactivate
 fi
 
+# sshrc config
+export SSHHOME=$XDG_CONFIG_HOME/sshrc
+
 # gtags (GNU Global)
 export GTAGSLABEL=pygments
 
