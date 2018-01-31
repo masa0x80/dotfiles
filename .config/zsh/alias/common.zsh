@@ -44,6 +44,7 @@ fi
 
 if (( $+commands[nvim] )); then
   alias vim='nvim'
+  alias vi='nvim'
 fi
 
 alias -g ...='../..'
