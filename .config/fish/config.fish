@@ -42,10 +42,6 @@ set -gx gabbr_config $HOME/.config/fish/gabbr.conf
 not set -q SCRAPBOOK_DIR
 and set -gx SCRAPBOOK_DIR $HOME/.scrapbook
 
-# Set fresco_root
-set -gx fresco_root (ghq root)
-set -gx fresco_plugin_list_path $HOME/.config/fish/plugins.fish
-
 # Load OS settings
 for config_file in $HOME/.config/fish/conf.d/$OS_TYPE/*
     source $config_file
