@@ -16,6 +16,7 @@ git_clone "#{node[:env][:home]}/.anyenv/envs/rbenv/plugins/rbenv-default-gems" d
 end
 
 gem_list = <<-EOF
+bundler
 rails
 foreman
 pry
