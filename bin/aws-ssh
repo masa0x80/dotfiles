@@ -1,0 +1,6 @@
+#!/bin/bash
+
+hosts=$(aws ec2 describe-instances | jq -r -c '.Reservations[].Instances[] | select(.State.Name == "running") | [.PrivateIpAddress, [.Tags[] | join(":")]] | flatten | @tsv' | fzf | cut -f1)
+if [ "$hosts" != '' ]; then
+  xpanes --ssh $hosts
+fi
