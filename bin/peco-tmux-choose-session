@@ -1,5 +1,5 @@
 #!/bin/sh
 
 local num
-num==$(tmux list-sessions | peco --initial-index $(tmux list-sessions | awk '/attached.$/ {print NR-1}') | cut -d':' -f 1)
+num=$(tmux list-sessions | peco --initial-index $(tmux list-sessions | awk '/attached.$/ {print NR-1}') | cut -d':' -f 1)
 tmux switch-client -t $num
