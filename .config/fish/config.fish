@@ -17,8 +17,10 @@ set -gx OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
 # EDITOR
 if type -qa nvim
     set -gx EDITOR nvim
+    abbr -a vi 'nvim'
 else if type -qa vim
     set -gx EDITOR vim
+    abbr -a vi 'vim'
 end
 
 # PAGER
@@ -102,8 +104,6 @@ abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'
 abbr -a mkdir 'mkdir -p'
 
-abbr -a vi 'vim'
-
 if type -qa htop
     abbr -a top 'htop'
 end
@@ -126,9 +126,9 @@ end
 
 # ssh {{{
 if test -e $HOME/.ssh/config
-    abbr -a ssh_config 'vim ~/.ssh/config'
-    abbr -a sconfig 'vim ~/.ssh/config'
-    abbr -a sconf 'vim ~/.ssh/config'
+    abbr -a ssh_config 'eval $EDITOR ~/.ssh/config'
+    abbr -a sconfig 'eval $EDITOR ~/.ssh/config'
+    abbr -a sconf 'eval $EDITOR ~/.ssh/config'
 end
 # }}}
 
