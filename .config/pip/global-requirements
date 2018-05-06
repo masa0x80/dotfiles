@@ -38,4 +38,5 @@ tabulate==0.8.2
 terminaltables==3.1.0
 urllib3==1.22
 wcwidth==0.1.7
-git+https://github.com/LazoCoder/Pokemon-Terminal.git
+xmltodict==0.11.0
+yq==2.6.0
