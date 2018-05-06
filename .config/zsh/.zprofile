@@ -40,6 +40,3 @@ export DOTFILE=${DOTFILE:-$HOME/.dotfiles}
 export PATH=$PATH:$DOTFILE/bin
 
 source $XDG_DATA_HOME/venv/python3/bin/activate
-if (( $+commands[pokemon] )); then
-  pokemon 635
-fi
