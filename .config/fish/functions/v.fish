@@ -1,12 +1,15 @@
 function v
     if type -qa fzf
-        fzf --query "$argv" | tr '\n' ' ' | read -l files
-        set -q files
-        or return
-        commandline "vim $files"
+        find . -not -path '*/.git/*' | sed -e 's/^\.\///' | fzf --exact --query "$argv" | tr '\n' ' ' | read files
     else
-        commandline "vim $argv"
+        set files $argv
     end
 
+    if not set -q files
+        or test "$files" = ''
+        return
+    end
+
+    commandline "vi $files"
     commandline -f execute
 end

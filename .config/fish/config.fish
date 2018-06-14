@@ -17,10 +17,8 @@ set -gx OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
 # EDITOR
 if type -qa nvim
     set -gx EDITOR nvim
-    abbr -a vi 'nvim'
 else if type -qa vim
     set -gx EDITOR vim
-    abbr -a vi 'vim'
 end
 
 # PAGER
