@@ -38,7 +38,6 @@ brew 'less'
 brew 'libgit2'
 brew 'lsof'
 brew 'mysql', restart_service: true
-brew 'neovim', args: ['HEAD']
 brew 'phantomjs'
 brew 'postgresql'
 brew 'reattach-to-user-namespace'

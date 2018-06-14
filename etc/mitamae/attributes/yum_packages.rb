@@ -30,6 +30,8 @@ node.reverse_merge!(
     append: %w(
       s3cmd
       zsh
-    )
+    ),
+    nvim: %w(
+    ),
   }
 )

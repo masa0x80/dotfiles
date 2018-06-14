@@ -1,0 +1,2 @@
+tap 'neovim/neovim'
+brew 'neovim', args: ['HEAD']
