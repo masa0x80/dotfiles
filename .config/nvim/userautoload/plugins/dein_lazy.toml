@@ -44,11 +44,6 @@ on_map = '<Plug>(EasyA'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/easy-align.vim'
 
 [[plugins]]
-repo = 'haya14busa/vim-operator-flashy'
-on_map = '<Plug>'
-hook_add = 'source ~/.config/nvim/userautoload/plugins/config/vim-operator-flashy.vim'
-
-[[plugins]]
 repo = 'Shougo/vinarise.vim'
 on_cmd = 'Vinarise'
 
