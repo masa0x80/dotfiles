@@ -20,6 +20,6 @@ echo 'cache file is too old, updating...' >&2
 if [ ${MKR_HOSTS_TSV_GIP:-false} == true ]; then
   curl -s -H "X-Api-Key: $MACKEREL_APIKEY" $mackerel_hosts_api_uri | jq -r -c '.hosts[] | if (.meta.cloud.metadata."public-ipv4") then [.meta.cloud.metadata."public-ipv4", .name, [.roles | keys], .roles[]] | flatten else empty end | @tsv' | tee $cache_file
 else
-  mkr hosts -f '{{range .}}{{if (len .Interfaces)}}{{range .Interfaces}}{{if (eq .Name "eth0")}}{{.IPAddress}}{{end}}{{end}}{{"\t"}}{{.Name}}{{"\t"}}{{range $s,$rr := .Roles}}{{range $r := $rr}}{{$s}}:{{$r}} {{end}}{{end}}{{"\n"}}{{end}}{{end}}' | tee $cache_file
+  mkr hosts -f '{{range .}}{{if (len .Interfaces)}}{{(index .Interfaces 0).IPAddress}}{{"\t"}}{{.Name}}{{"\\t"}}{{range $s,$rr := .Roles}}{{range $r := $rr}}{{$s}}:{{$r}}{{end}}{{end}}{{"\n"}}{{end}}{{end}}' | tee $cache_file
 fi
 chmod go-r $cache_file
