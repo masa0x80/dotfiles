@@ -32,6 +32,9 @@ for config_file ($XDG_CONFIG_HOME/zsh/os/$(uname | tr '[:upper:]' '[:lower:]')/p
   load_file $config_file
 done
 
+# gcloud設定の読み込み
+load_file $HOME/google-cloud-sdk/path.zsh.inc
+
 # 環境ローカルの設定の読み込み
 load_file $HOME/.config.local/zsh/profile
 
