@@ -6,6 +6,7 @@ cask 'dash'
 cask 'diskwave'
 cask 'docker'
 cask 'insomnia'
+cask 'visual-studio-code'
 
 brew 'gibo'
 brew 'graphviz'
