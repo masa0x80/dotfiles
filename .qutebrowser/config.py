@@ -19,16 +19,23 @@ c.url.default_page = 'about:blank'
 c.url.searchengines = {'DEFAULT': 'https://google.com/search?q={}'}
 c.url.start_pages = 'https://google.com'
 
+config.unbind('<Ctrl-t>')
+
 config.bind('<Ctrl-n>', 'tab-next')
 config.bind('<Ctrl-p>', 'tab-prev')
+config.bind('<Ctrl-j>', 'tab-next')
+config.bind('<Ctrl-k>', 'tab-prev')
 config.bind('<Ctrl-w>', 'tab-give')
 config.bind('<Ctrl-e>', 'scroll down')
 config.bind('<Ctrl-y>', 'scroll up')
 config.bind('>', 'tab-move +')
 config.bind('<', 'tab-move -')
-config.bind('tt', 'tab-focus last')
+config.bind('<Ctrl-t><Ctrl-t>', 'tab-focus last')
 config.bind('gp', 'tab-pin')
 config.bind('O', 'set-cmd-text :open {url:pretty}')
-config.bind('t', 'set-cmd-text :open -t ')
+config.bind('t', 'set-cmd-text -s :open -t')
 config.bind('T', 'set-cmd-text :open -t {url:pretty}')
 config.bind('b', 'set-cmd-text -s :buffer')
+
+config.bind('<Ctrl-n>', 'completion-item-focus next', mode='command')
+config.bind('<Ctrl-p>', 'completion-item-focus prev', mode='command')
