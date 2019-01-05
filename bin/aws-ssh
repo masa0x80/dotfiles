@@ -1,6 +1,6 @@
 #!/bin/bash
 
-hosts=$(aws ec2 describe-instances --filter Name=instance-state-name,Values=running --query 'Reservations[].Instances[].[join(`\t`, [PrivateIpAddress, join(`\t`,Tags[].join(`:`, [Key,Value]))])]' --output text | fzf --query "$*" | cut -f 1)
+hosts=$(aws ec2 describe-instances --filter Name=instance-state-name,Values=running --query 'Reservations[].Instances[].[join(`\t`, [PrivateIpAddress, join(`\t`, [Tags[].join(`:`, *)][])])]' --output text | fzf --query "$*" | cut -f 1)
 if [ "$hosts" != '' ]; then
   xpanes --ssh $hosts
 fi
