@@ -23,7 +23,7 @@ if [ -r $HOME/.zplug/zplug ]; then
   zplug 'b4b4r07/emoji-cli', \
     on:'stedolan/jq'
 
-  if [[ $OSTYPE != darwin* ]]; then
+  if [[ $UNAME_S != 'darwin' ]]; then
     zplug 'jpmens/jo', \
       as:command, \
       hook-build:'cd $HOME/.zplug/repos/jpmens/jo && autoreconf -i && ./configure --prefix=$HOME/.zplug && make check && make install'

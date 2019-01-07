@@ -1,4 +1,5 @@
 # 補完
+fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
 autoload -U compinit; compinit # 補完を有効に
 setopt menu_complete           # 補完候補が複数ある時、一覧表示 (auto_list) せず、すぐに最初の候補を補完する
 setopt list_types              # auto_list の補完候補一覧で、ls -F のようにファイルの種別をマーク表示
@@ -17,16 +18,16 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z} r:|[-_.]=
 
 # 色設定
 if (( $+commands[dircolors] )); then
-  eval $(dircolors $XDG_CONFIG_HOME/zsh/misc/dircolors.ansi-dark)
+  eval $(dircolors $ZDOTDIR/misc/dircolors.ansi-dark)
 elif (( $+commands[gdircolors] )); then
-  eval $(gdircolors $XDG_CONFIG_HOME/zsh/misc/dircolors.ansi-dark)
+  eval $(gdircolors $ZDOTDIR/misc/dircolors.ansi-dark)
 fi
 if [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
 
 # Source: https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
-load_file $XDG_CONFIG_HOME/zsh/misc/fzf_completion.zsh
+load_file $ZDOTDIR/misc/fzf_completion.zsh
 
 # Source: https://github.com/simonwhitaker/gibo/blob/master/gibo-completion.zsh
-load_file $XDG_CONFIG_HOME/zsh/misc/gibo-completion.zsh
+load_file $ZDOTDIR/misc/gibo-completion.zsh

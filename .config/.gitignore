@@ -10,7 +10,7 @@
 !/zsh
 
 !/fish
-/fish/fishd.*
+/fish/fish_variables
 
 !/hub
 /hub/*

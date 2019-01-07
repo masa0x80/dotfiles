@@ -1,4 +1,5 @@
 function scrapbook
+    not set -q SCRAPBOOK_DIR && set -gx SCRAPBOOK_DIR $HOME/.scrapbook
     if type -qa fzf
         and type -qa mdv
         and test -e $SCRAPBOOK_DIR

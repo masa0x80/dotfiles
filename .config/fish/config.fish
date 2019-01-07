@@ -1,49 +1,5 @@
-# Environment Variables {{{
-
-set -gx SHELL (which fish)
-
-# Disable greeting
-set fish_greeting
-set fish_prompt_pwd_dir_length 0
-
-# Colors {{{
-set fish_pager_color_completion grey
-set -gx fish_color_command cyan
-# }}}
-
-# OSTYPE
-set -gx OS_TYPE (uname | tr '[:upper:]' '[:lower:]')
-
-# EDITOR
-if type -qa nvim
-    set -gx EDITOR nvim
-else if type -qa vim
-    set -gx EDITOR vim
-end
-
-# PAGER
-if type -qa less
-    set -gx PAGER less
-end
-
-# rails (for rails server alias)
-set -gx RAILS_SERVER_PORT 3000
-
-# Set fresco config
-if type -qa ghq
-    set -U fresco_root (ghq root)
-end
-set -U fresco_plugin_list_path $HOME/.config/fish/plugins.fish
-
-# Set config path for gabbr
-set -gx gabbr_config $HOME/.config/fish/gabbr.conf
-
-# Set scrapbook dir path
-not set -q SCRAPBOOK_DIR
-and set -gx SCRAPBOOK_DIR $HOME/.scrapbook
-
 # Load OS settings
-for config_file in $HOME/.config/fish/conf.d/$OS_TYPE/*
+for config_file in $HOME/.config/fish/conf.d/$UNAME_S/*
     source $config_file
 end
 
@@ -51,12 +7,8 @@ end
 __load_file $HOME/.config.local/fish/config.fish
 
 # Append $DOTFILE to $PATH
-not set -q DOTFILE
-and set -gx DOTFILE $HOME/.dotfiles
+not set -q DOTFILE && export DOTFILE=$HOME/.dotfiles
 set -gx fish_user_paths $fish_user_paths $DOTFILE/bin
-
-# venv (global config)
-source $XDG_DATA_HOME/venv/python3/bin/activate.fish
 
 # }}}
 
