@@ -1,69 +1,40 @@
-# XDG Base Directory Specification
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
+# Global Environment Variables {{{
 
 export UNAME_S=(uname -s | tr '[:upper:]' '[:lower:]')
 
-# Global Environment Variables {{{
+# NOTE: must place after setting UNAME_S
+source $HOME/.common_variables
 
-# load proxy settings
-[ -r $HOME/.proxy ] && source $HOME/.proxy
-
-# PATH
-set -gx PATH /usr/local/bin /bin /usr/bin /sbin /usr/sbin
-
+# NOTE: must place after adding `/usr/local/bin` to PATH
 export SHELL=(which fish)
 
+# }}}
+
 # anyenv settings
-if test -d $HOME/.anyenv
-    set -gx fish_user_paths $fish_user_paths $HOME/.anyenv/bin
-end
-if type -qa anyenv && status --is-interactive
+[ -d $HOME/.anyenv ] && set -gx fish_user_paths $fish_user_paths $HOME/.anyenv/bin
+if type -qa anyenv && status is-interactive
     source (anyenv init - | psub)
 end
 
 # golang
-[ $UNAME_S = 'linux' ] && set -gx fish_user_paths $fish_user_paths /usr/local/go/bin
-export GOPATH=$HOME/.go
-set -gx fish_user_paths $fish_user_paths $GOPATH/bin
+if test -d $HOME/.go
+    export GOPATH=$HOME/.go
+    set -gx fish_user_paths $fish_user_paths $GOPATH/bin
+    [ $UNAME_S = 'linux' ] && set -gx fish_user_paths $fish_user_paths /usr/local/go/bin
+end
 
 # rust
 [ -d $HOME/.cargo ] && set -gx fish_user_paths $fish_user_paths $HOME/.cargo/bin
 
-# lang
-export LANG=ja_JP.UTF-8
-
 # venv
 export VIRTUAL_ENV_DISABLE_PROMPT=disabled
-set VENV_PATH $XDG_DATA_HOME/venv/python3
+export VENV_PATH=$XDG_DATA_HOME/venv/python3
 if test ! -d $VENV_PATH
     python3 -m venv $VENV_PATH
-    source $VENV_PATH/bin/activate
-    pip install -r $HOME/.config/pip/global-requirements
-    deactivate
-end
-
-# sshrc config
-export SSHHOME=$XDG_CONFIG_HOME/sshrc
-
-# gtags (GNU Global)
-export GTAGSLABEL=pygments
-
-export TERM=xterm-256color
-
-export LESS='-RIXc'
-
-# fzf options
-export FZF_DEFAULT_OPTS='--reverse --no-sort --extended --ansi --multi --cycle --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'
-
-switch $UNAME_S
-    case darwin
-        # Disable homebrew analytics
-        export HOMEBREW_NO_ANALYTICS=1
-    case linux
-        # gtags (GNU Global)
-        export GTAGSCONF=/usr/local/share/gtags/gtags.conf
+    source $VENV_PATH/bin/activate.fish
+    pip install -r $XDG_CONFIG_HOME/pip/global-requirements
+else
+    source $VENV_PATH/bin/activate.fish
 end
 
 # EDITOR
@@ -74,14 +45,7 @@ else if type -qa vim
 end
 
 # PAGER
-if type -qa less
-    export PAGER=less
-end
-
-# rails (for rails server alias)
-export RAILS_SERVER_PORT=3000
-
-# }}}
+type -qa less && export PAGER=less
 
 # Environment Variables for fish {{{
 
@@ -94,6 +58,26 @@ set fish_pager_color_completion grey
 export fish_color_command=cyan
 # }}}
 
+### Prompt {{{
+
+set __fish_git_prompt_showdirtystate 'yes'
+set __fish_git_prompt_showstashstate 'yes'
+set __fish_git_prompt_showuntrackedfiles 'yes'
+set __fish_git_prompt_showupstream 'yes'
+
+set __fish_git_prompt_color_branch yellow
+set __fish_git_prompt_color_upstream_ahead green
+set __fish_git_prompt_color_upstream_behind red
+
+set __fish_git_prompt_char_dirtystate '⨯'
+set __fish_git_prompt_char_stagedstate '→'
+set __fish_git_prompt_char_untrackedfiles 'u'
+set __fish_git_prompt_char_stashstate 's'
+set __fish_git_prompt_char_upstream_ahead '↑'
+set __fish_git_prompt_char_upstream_behind '↓'
+
+# }}}
+
 # Set fresco config
 type -qa ghq && set -U fresco_root (ghq root)
 set -U fresco_plugin_list_path $HOME/.config/fish/plugins.fish
@@ -102,6 +86,3 @@ set -U fresco_plugin_list_path $HOME/.config/fish/plugins.fish
 export gabbr_config=$HOME/.config/fish/gabbr.conf
 
 # }}}
-
-# venv (global config)
-source $XDG_DATA_HOME/venv/python3/bin/activate.fish

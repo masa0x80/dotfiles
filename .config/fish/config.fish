@@ -3,57 +3,28 @@ for config_file in $HOME/.config/fish/conf.d/$UNAME_S/*
     source $config_file
 end
 
-# load local configurations
+# Load local configurations
 __load_file $HOME/.config.local/fish/config.fish
 
-# Append $DOTFILE to $PATH
+# Append $DOTFILE/bin to $PATH
+# NOTE: must place after loading `$HOME/.config.local/fish/config.fish`
 not set -q DOTFILE && export DOTFILE=$HOME/.dotfiles
 set -gx fish_user_paths $fish_user_paths $DOTFILE/bin
 
-# }}}
-
-### Prompt {{{
-
-set __fish_git_prompt_showdirtystate 'yes'
-set __fish_git_prompt_showstashstate 'yes'
-set __fish_git_prompt_showuntrackedfiles 'yes'
-set __fish_git_prompt_showupstream 'yes'
-
-set __fish_git_prompt_color_branch yellow
-set __fish_git_prompt_color_upstream_ahead green
-set __fish_git_prompt_color_upstream_behind red
-
-set __fish_git_prompt_char_dirtystate '⨯'
-set __fish_git_prompt_char_stagedstate '→'
-set __fish_git_prompt_char_untrackedfiles 'u'
-set __fish_git_prompt_char_stashstate 's'
-set __fish_git_prompt_char_upstream_ahead '↑'
-set __fish_git_prompt_char_upstream_behind '↓'
-
-# }}}
-
 ### Abbreviations {{{
 
-if type -qa open
-    abbr -a o 'open'
-end
+type -qa open && abbr -a o 'open'
 
-if type -qa mycli
-    abbr -a mysql 'mycli'
-end
+type -qa mycli && abbr -a mysql 'mycli'
 
-if type -qa pgcli
-    abbr -a psql 'pgcli'
-end
+type -qa pgcli && abbr -a psql 'pgcli'
 
 abbr -a tailf 'tail -f'
 abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'
 abbr -a mkdir 'mkdir -p'
 
-if type -qa htop
-    abbr -a top 'htop'
-end
+type -qa htop && abbr -a top 'htop'
 
 abbr -a md 'mkdir'
 abbr -a rd 'rmdir'
@@ -156,9 +127,7 @@ abbr -a bil 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4 
 
 ### Hooks {{{
 
-if type -qa direnv
-    eval (direnv hook fish)
-end
+type -qa direnv && eval (direnv hook fish)
 
 function __rename_window --on-event fish_prompt
     __check_local_git_config

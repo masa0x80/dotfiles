@@ -25,7 +25,7 @@ for config_file ($ZDOTDIR/os/$UNAME_S/rc/*.zsh(N)); do
   load_file $config_file
 done
 
-# 環境ローカルの設定の読み込み
+# load local configurations (rc)
 load_file $HOME/.config.local/zsh/rc
 
 # load hook configuration
