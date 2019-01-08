@@ -23,9 +23,6 @@ if test -d $HOME/.go; then
   [ $UNAME_S = 'linux' ] && PATH=/usr/local/go/bin:$PATH
 fi
 
-# rust
-[ -d $HOME/.cargo ] && PATH=$HOME/.cargo/bin:$PATH
-
 # venv
 export VIRTUAL_ENV_DISABLE_PROMPT=disabled
 export VENV_PATH=$XDG_DATA_HOME/venv/python3

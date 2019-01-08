@@ -23,9 +23,6 @@ if test -d $HOME/.go
     [ $UNAME_S = 'linux' ] && set -gx fish_user_paths $fish_user_paths /usr/local/go/bin
 end
 
-# rust
-[ -d $HOME/.cargo ] && set -gx fish_user_paths $fish_user_paths $HOME/.cargo/bin
-
 # venv
 export VIRTUAL_ENV_DISABLE_PROMPT=disabled
 export VENV_PATH=$XDG_DATA_HOME/venv/python3
