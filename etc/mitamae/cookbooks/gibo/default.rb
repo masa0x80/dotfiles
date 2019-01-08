@@ -9,7 +9,7 @@ when 'redhat'
       curl -LO https://raw.github.com/simonwhitaker/gibo/master/gibo
       chmod +x gibo
       mv gibo #{node[:bin_dir]}/bin
-      #{node[:bin_dir]}/bin/gibo -u
+      #{node[:bin_dir]}/bin/gibo update
     EOF
     cwd node[:src_dir]
     not_if 'type -a gibo > /dev/null 2>&1'

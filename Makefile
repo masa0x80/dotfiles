@@ -1,4 +1,4 @@
-DOTPATH  := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+DOTFILE  := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 EXCLUDES := .DS_Store .git
 TARGETS  := $(wildcard .??*)
 DOTFILES := $(filter-out $(EXCLUDES), $(TARGETS))
@@ -25,11 +25,11 @@ deploy:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 init:
-	@DOTFILE=$(DOTPATH) cd $(DOTFILE)/etc/mitamae; bash init.sh
+	@cd $(DOTFILE)/etc/mitamae; bash init.sh
 
 install: update init deploy
 
 clean:
 	@echo 'Remove dot files in your home directory...'
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
-	-rm -rf $(DOTPATH)
+	-rm -rf $(DOTFILE)

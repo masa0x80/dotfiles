@@ -25,7 +25,7 @@ when 'redhat'
     not_if "test -d #{File.join(node[:src_dir], "git-#{node[:git][:version]}")}"
   end
 
-  execute "./configure --prefix=#{node[:bin_dir]} && make && make install && make install-man" do
+  execute "./configure --prefix=#{node[:bin_dir]} && make && make install" do
     cwd File.join(node[:src_dir], "git-#{node[:git][:version]}")
     not_if "type -a git > /dev/null 2>&1 && git version | grep #{node[:git][:version]}"
   end
