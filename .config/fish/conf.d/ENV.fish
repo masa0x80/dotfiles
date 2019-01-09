@@ -1,3 +1,6 @@
+# Reset fish_user_paths
+set fish_user_paths
+
 # Global Environment Variables {{{
 
 export UNAME_S=(uname -s | tr '[:upper:]' '[:lower:]')
