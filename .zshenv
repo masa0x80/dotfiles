@@ -46,6 +46,9 @@ fi
 
 # Configurations for zsh {{{
 
+# NOTE: Do not load global rc files
+setopt no_global_rcs
+
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 # zplug

@@ -20,7 +20,7 @@ brew 's3cmd'
 brew 'sshrc'
 brew 'tmux-xpanes'
 brew 'vim', args: ['with-lua', 'without-python']
-brew 'zsh', args: ['without-etcdir']
+brew 'zsh'
 
 mas 'Bear', id: 1091189122
 mas 'Xcode', id: 497799835
