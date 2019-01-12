@@ -1,9 +1,7 @@
 tap 'caskroom/cask'
 tap 'caskroom/versions'
 tap 'homebrew/core'
-tap 'homebrew/dupes'
 tap 'homebrew/services'
-tap 'neovim/neovim'
 
 cask 'alfred'
 cask 'chefdk'
@@ -43,7 +41,7 @@ brew 'phantomjs'
 brew 'postgresql'
 brew 'redis', restart_service: true
 brew 'rsync'
-brew 's3cmd'
+brew 'tig'
 brew 'tldr'
 brew 'tmux'
 

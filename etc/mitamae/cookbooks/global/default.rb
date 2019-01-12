@@ -17,4 +17,10 @@ when 'redhat'
     cwd File.join(node[:src_dir], "global-#{node[:global][:version]}")
     not_if 'type -a global > /dev/null 2>&1'
   end
+
+  include_cookbook 'pyenv' do
+    recipe 'python3'
+  end
+
+  pip3 'pygments'
 end

@@ -23,17 +23,6 @@ if test -d $HOME/.go; then
   [ $UNAME_S = 'linux' ] && PATH=/usr/local/go/bin:$PATH
 fi
 
-# venv
-export VIRTUAL_ENV_DISABLE_PROMPT=disabled
-export VENV_PATH=$XDG_DATA_HOME/venv/python3
-if test ! -d $VENV_PATH; then
-  python3 -m venv $VENV_PATH
-  source $VENV_PATH/bin/activate
-  pip install -r $XDG_CONFIG_HOME/pip/global-requirements
-else
-  source $VENV_PATH/bin/activate
-fi
-
 # EDITOR
 if (( $+commands[nvim] )); then
   export EDITOR=nvim

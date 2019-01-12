@@ -4,7 +4,7 @@ execute 'install plenv' do
   command <<-"EOF"
     #{node[:proxy_config]}
     export PATH=#{node[:env][:path]}
-    eval "$(anyenv init -)"
+    eval "$(anyenv init - bash)"
     anyenv install plenv
   EOF
   user node[:user]
@@ -15,7 +15,7 @@ execute 'fix perl version' do
   command <<-"EOF"
     #{node[:proxy_config]}
     export PATH=#{node[:env][:path]}
-    eval "$(anyenv init -)"
+    eval "$(anyenv init - bash)"
     type -a plenv > /dev/null 2>&1 && plenv versions | grep #{node[:perl][:version]} || plenv install #{node[:perl][:version]}
     plenv global #{node[:perl][:version]}
   EOF

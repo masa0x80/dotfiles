@@ -1,0 +1,2 @@
+#!/bin/bash
+type pyenv &>/dev/null && echo -n "$(pyenv root)/versions/$(cat $(pyenv root)/version | head -n 1)/bin/python" || echo -n $(which python)

@@ -4,7 +4,7 @@ execute 'install rbenv' do
   command <<-"EOF"
     #{node[:proxy_config]}
     export PATH=#{node[:env][:path]}
-    eval "$(anyenv init -)"
+    eval "$(anyenv init - bash)"
     anyenv install rbenv
   EOF
   user node[:user]
@@ -30,9 +30,9 @@ execute 'fix ruby version' do
   command <<-"EOF"
     #{node[:proxy_config]}
     export PATH=#{node[:env][:path]}
-    eval "$(anyenv init -)"
+    eval "$(anyenv init - bash)"
     type -a rbenv > /dev/null 2>&1 && rbenv versions | grep #{node[:ruby][:version]} || rbenv install #{node[:ruby][:version]}
-    rbenv global  #{node[:ruby][:version]}
+    rbenv global #{node[:ruby][:version]}
   EOF
   user node[:user]
 end

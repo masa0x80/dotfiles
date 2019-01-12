@@ -4,7 +4,7 @@ execute 'anyenv update' do
   command <<-"EOF"
     #{node[:proxy_config]}
     export PATH=#{node[:env][:path]}
-    eval "$(anyenv init -)"
+    eval "$(anyenv init - bash)"
     anyenv update
   EOF
   user node[:user]

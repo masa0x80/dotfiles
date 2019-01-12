@@ -19,7 +19,3 @@
 !/pgcli
 /pgcli/*
 !/pgcli/config
-
-!/pip
-/pip/*
-!/pip/global-requirements

@@ -24,6 +24,10 @@ node.reverse_merge!(
   phantomjs: {
     version: '2.1.1'
   },
+  python: {
+    version2: '2.7.15',
+    version3: '3.7.2'
+  },
   ruby: {
     version: '2.6.0'
   },

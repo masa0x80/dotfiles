@@ -5,7 +5,7 @@ execute 'install nodenv' do
   command <<-"EOF"
     #{node[:proxy_config]}
     export PATH=#{node[:env][:path]}
-    eval "$(anyenv init -)"
+    eval "$(anyenv init - bash)"
     anyenv install nodenv
   EOF
   user node[:user]
@@ -28,7 +28,7 @@ execute 'fix node version' do
   command <<-"EOF"
     #{node[:proxy_config]}
     export PATH=#{node[:env][:path]}
-    eval "$(anyenv init -)"
+    eval "$(anyenv init - bash)"
     type -a nodenv > /dev/null 2>&1 && nodenv versions | grep #{node[:nodejs][:version]} || nodenv install #{node[:nodejs][:version]}
     nodenv global  #{node[:nodejs][:version]}
   EOF

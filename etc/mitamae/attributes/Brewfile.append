@@ -15,11 +15,8 @@ brew 'graphviz'
 brew 'imagemagick'
 brew 'jo'
 brew 'pandoc'
-brew 'python3'
-brew 's3cmd'
 brew 'sshrc'
 brew 'tmux-xpanes'
-brew 'vim', args: ['with-lua', 'without-python']
 brew 'zsh'
 
 mas 'Bear', id: 1091189122

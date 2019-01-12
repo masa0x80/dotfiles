@@ -26,17 +26,6 @@ if test -d $HOME/.go
     [ $UNAME_S = 'linux' ] && set -gx fish_user_paths $fish_user_paths /usr/local/go/bin
 end
 
-# venv
-export VIRTUAL_ENV_DISABLE_PROMPT=disabled
-export VENV_PATH=$XDG_DATA_HOME/venv/python3
-if test ! -d $VENV_PATH
-    python3 -m venv $VENV_PATH
-    source $VENV_PATH/bin/activate.fish
-    pip install -r $XDG_CONFIG_HOME/pip/global-requirements
-else
-    source $VENV_PATH/bin/activate.fish
-end
-
 # EDITOR
 if type -qa nvim
     export EDITOR=nvim

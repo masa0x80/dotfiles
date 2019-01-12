@@ -14,20 +14,18 @@ node[:env][:home] = case node[:platform]
                       File.join('/home', node[:user])
                     end
 node[:env].reverse_merge!(
-  cargo_home: File.join(node[:env][:home], '.cargo'),
   gopath: File.join(node[:env][:home], '.go')
 )
 node[:env][:path] = %W[
-                      #{File.join(node[:env][:home], '.anyenv', 'bin')}
-                      #{File.join(node[:env][:cargo_home], 'bin')}
-                      #{File.join(node[:env][:home], '.go', 'bin')}
-                      /usr/local/go/bin
-                      /usr/local/bin
-                      /usr/bin
-                      /bin
-                      /usr/local/sbin
-                      /usr/sbin
-                    ].join(':')
+  #{File.join(node[:env][:home], '.anyenv', 'bin')}
+  #{File.join(node[:env][:home], '.go', 'bin')}
+  /usr/local/go/bin
+  /usr/local/bin
+  /usr/bin
+  /bin
+  /usr/local/sbin
+  /usr/sbin
+].join(':')
 
 ENV['PATH'] = node[:env][:path]
 
