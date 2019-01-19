@@ -1,6 +1,5 @@
 case node[:platform]
 when 'darwin'
-  # Install vim via brew bundle
 when 'centos'
   package 'vim' do
     action :remove

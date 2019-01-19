@@ -37,7 +37,6 @@ brew 'less'
 brew 'libgit2'
 brew 'lsof'
 brew 'mysql', restart_service: true
-brew 'phantomjs'
 brew 'postgresql'
 brew 'redis', restart_service: true
 brew 'rsync'
