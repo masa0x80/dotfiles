@@ -29,7 +29,6 @@ brew 'fzf'
 brew 'gdbm'
 brew 'gettext'
 brew 'git'
-brew 'global', args: ['with-ctags', 'with-pygments']
 brew 'go'
 brew 'htop'
 brew 'jq'

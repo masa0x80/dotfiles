@@ -1,5 +1,4 @@
 include_cookbook 'awscli'
-include_cookbook 'global'
 include_cookbook 'gibo'
 include_cookbook 'httpie'
 include_cookbook 'imagemagick'
