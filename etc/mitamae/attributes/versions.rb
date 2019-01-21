@@ -44,7 +44,7 @@ node.reverse_merge!(
   },
   virtualbox: {
     yum_repository: 'http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo',
-    package: 'VirtualBox-5.1'
+    package: 'VirtualBox-6.0'
   },
   vim: {
     version: '8.1',
