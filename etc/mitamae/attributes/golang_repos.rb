@@ -1,5 +1,6 @@
 node.reverse_merge!(
   golang_repos: %w(
+    github.com/mithrandie/csvq
     github.com/direnv/direnv
     github.com/mackerelio/mkr
     github.com/motemen/ghq
