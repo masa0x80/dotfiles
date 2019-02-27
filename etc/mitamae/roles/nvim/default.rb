@@ -8,6 +8,5 @@ when 'darwin'
       EOF
       user node[:user]
     end
-when 'redhat'
-  include_cookbook 'neovim'
 end
+include_cookbook 'neovim'
