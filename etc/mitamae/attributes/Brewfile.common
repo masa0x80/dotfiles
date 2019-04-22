@@ -34,9 +34,9 @@ brew 'jq'
 brew 'less'
 brew 'libgit2'
 brew 'lsof'
-brew 'mysql', restart_service: true
+brew 'mysql'
 brew 'postgresql'
-brew 'redis', restart_service: true
+brew 'redis'
 brew 'rsync'
 brew 'tig'
 brew 'tldr'

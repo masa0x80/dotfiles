@@ -1,4 +1,4 @@
-execute 'xcode --install' do
+execute 'xcode-select --install' do
   not_if 'type -a xcode-select > /dev/null 2>&1'
 end
 
