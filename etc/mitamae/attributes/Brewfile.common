@@ -4,6 +4,7 @@ tap 'homebrew/core'
 tap 'homebrew/services'
 
 cask 'alfred'
+cask 'clipy'
 cask 'chefdk'
 cask 'firefox'
 cask 'google-chrome'
