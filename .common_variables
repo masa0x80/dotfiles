@@ -18,7 +18,7 @@ export TERM=xterm-256color
 export LESS='-RIXc'
 
 # fzf options
-export FZF_DEFAULT_OPTS='--reverse --no-sort --extended --ansi --multi --cycle --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'
+export FZF_DEFAULT_OPTS='--reverse --no-sort --extended --ansi --multi --cycle --height 60% --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'
 
 # gtags (GNU Global)
 export GTAGSLABEL=pygments
