@@ -13,8 +13,4 @@ when 'redhat'
   ).each do |pkg|
     package pkg
   end
-
-  service 'mysqld' do
-    action [:enable, :restart]
-  end
 end

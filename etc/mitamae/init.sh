@@ -7,7 +7,7 @@ case $(uname) in
   Darwin)
     brew update
     brew upgrade
-    ${dir_name}/bin/mitamae local bootstrap.rb -l debug
+    ${dir_name}/bin/mitamae local bootstrap.rb
     ;;
   *)
     sudo -E ${dir_name}/bin/mitamae local bootstrap.rb

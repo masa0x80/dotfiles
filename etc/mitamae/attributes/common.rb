@@ -27,6 +27,8 @@ node[:env][:path] = %W[
   /usr/sbin
 ].join(':')
 
+node[:env][:python_configure_opts] = ENV['PYTHON_CONFIGURE_OPTS']
+
 ENV['PATH'] = node[:env][:path]
 
 node.reverse_merge!(

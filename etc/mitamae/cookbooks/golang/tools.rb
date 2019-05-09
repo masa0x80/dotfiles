@@ -7,5 +7,6 @@ node[:golang_repos].each do |repo|
       go get #{repo}
     EOF
     user node[:user]
+    not_if "test -d #{File.join(node[:env][:home], '.go', 'src', repo)}"
   end
 end

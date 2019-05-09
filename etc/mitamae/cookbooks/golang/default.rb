@@ -4,7 +4,7 @@ when 'darwin'
 when 'redhat'
   execute 'remove go' do
     command '[ -e /usr/local/go ] && rm -rf /usr/local/go'
-    only_if "type -a go  > /dev/null 2>&1 && go version | grep -v #{node[:golang][:version]}"
+    only_if "type -a go > /dev/null 2>&1 && go version | grep -q #{node[:golang][:version]}"
   end
 
   execute 'install go' do

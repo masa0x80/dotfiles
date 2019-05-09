@@ -1,3 +1,7 @@
+if node[:platform] == 'redhat'
+  include_cookbook 'yum'
+end
+
 define :dev_tools do
   role = params[:name].to_sym
 

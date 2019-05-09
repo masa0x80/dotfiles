@@ -15,4 +15,3 @@ when 'redhat'
     not_if "test -d #{File.join(node[:src_dir], 'fzf')}"
   end
 end
-

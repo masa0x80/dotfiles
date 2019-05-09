@@ -23,6 +23,6 @@ when 'centos'
 
   execute "./configure #{node[:vim][:make_options]} && make && make install" do
     cwd File.join(node[:src_dir], "vim#{node[:vim][:version].to_s.gsub(/\./, '')}")
-    not_if "type -a vim > /dev/null 2>&1 && command vim --version | grep #{node[:vim][:version]}"
+    not_if "type -a vim > /dev/null 2>&1 && command vim --version | grep -q #{node[:vim][:version]}"
   end
 end

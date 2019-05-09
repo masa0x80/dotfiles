@@ -27,11 +27,11 @@ when 'redhat'
 
   execute "./configure --prefix=#{node[:bin_dir]} && make && make install" do
     cwd File.join(node[:src_dir], "git-#{node[:git][:version]}")
-    not_if "type -a git > /dev/null 2>&1 && git version | grep #{node[:git][:version]}"
+    not_if "type -a git > /dev/null 2>&1 && git version | grep -q #{node[:git][:version]}"
   end
 
   package 'git' do
     action :remove
-    not_if "type -a git > /dev/null 2>&1 && git version | grep #{node[:git][:version]}"
+    not_if "type -a git > /dev/null 2>&1 && git version | grep -q #{node[:git][:version]}"
   end
 end
