@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true' ]; then
+  if [ "$1" = 'project' ]; then
+    toplevel=($(git rev-parse --show-toplevel | tr '/' ' '))
+    num=$((${#toplevel[@]} - 2))
+    echo ${toplevel[@]:$num} | tr ' ' '/'
+  else
+    cdup=($(git rev-parse --show-cdup | tr '/' ' '))
+    pwd=($(pwd | tr '/' ' '))
+    num=$((${#pwd[@]} - ${#cdup[@]} - 2))
+    echo ${pwd[@]:$num} | tr ' ' '/'
+  fi
+else
+  pwd=$(pwd)
+  echo ${pwd##*/}
+fi
