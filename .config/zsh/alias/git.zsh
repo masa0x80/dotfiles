@@ -23,8 +23,9 @@ alias gf='git fetch'
 
 alias gfx='git fixup'
 
-alias gl='git fzf show'
 alias lg='git fzf show'
+
+alias gl='tig'
 alias glg='git log --stat --color'
 alias glgp='git log --stat --color -p'
 alias glog='git log --oneline --decorate --color --graph'

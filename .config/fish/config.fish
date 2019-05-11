@@ -75,9 +75,10 @@ abbr -a gf 'git fetch'
 
 abbr -a gfx 'git fixup'
 
-abbr -a lg 'tig'
 
-abbr -a gl 'git fzf show'
+abbr -a lg 'git fzf show'
+
+abbr -a gl 'tig'
 abbr -a glg 'git log --stat --color'
 abbr -a glgp 'git log --stat --color -p'
 abbr -a glog 'git log --oneline --decorate --color --graph'
