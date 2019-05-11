@@ -114,13 +114,19 @@ abbr -a vdf 'vagrant destroy -f'
 abbr -a vst 'vagrant global-status'
 # }}}
 
-# rails {{{
-abbr -a s "rails s -p $RAILS_SERVER_PORT"
+# ruby {{{
+abbr -a r 'rails'
+
 abbr -a c 'rails c'
+abbr -a s "rails s -p $RAILS_SERVER_PORT"
+
 abbr -a db 'rails db'
-abbr -a r 'rails routes'
+abbr -a rr 'rails routes'
+
 abbr -a t 'rspec'
 abbr -a ss 'spring stop'
+
+abbr -a b 'bundle'
 abbr -a bi 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4'
 abbr -a bil 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4 --local'
 # }}}
