@@ -1,12 +1,7 @@
 augroup NeomakeAug
   autocmd!
-  autocmd BufWritePre *.rb,*.spec,*.rake call s:neomake_wrapper()
+  autocmd BufReadPost,BufWritePre * Neomake
 augroup END
 
-function! s:neomake_wrapper()
-  if filereadable(findfile('.rubocop.yml'))
-    Neomake
-  endif
-endfunction
-
+call neomake#configure#automake('nrw', 500)
 let g:neomake_ruby_enabled_makers = ['rubocop']

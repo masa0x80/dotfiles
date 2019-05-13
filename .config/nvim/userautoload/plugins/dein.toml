@@ -45,10 +45,6 @@ repo = 'nathanaelkane/vim-indent-guides'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/vim-indent-guides.vim'
 
 [[plugins]]
-repo = 'neomake/neomake'
-hook_add = 'source ~/.config/nvim/userautoload/plugins/config/neomake.vim'
-
-[[plugins]]
 repo = 'itchyny/vim-parenmatch'
 
 [[plugins]]
