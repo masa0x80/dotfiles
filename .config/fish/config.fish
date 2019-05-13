@@ -1,15 +1,21 @@
-# Load OS settings
-for config_file in $HOME/.config/fish/conf.d/$UNAME_S/*
-    source $config_file
+# Load OS settings {{
+
+# NOTE: nvimがrbenvを使えるように is-interactive-job-control の場合も実行する
+if status is-interactive || status is-interactive-job-control
+    for config_file in $HOME/.config/fish/conf.d/$UNAME_S/*
+        source $config_file
+    end
+
+    # Append $DOTFILE/bin to $PATH
+    # NOTE: must place before loading `$HOME/.config.local/fish/config.fish`
+    not set -q DOTFILE && export DOTFILE=$HOME/.dotfiles
+    set -gx PATH $DOTFILE/bin $PATH
+
+    # Load local configurations
+    __load_file $HOME/.config.local/fish/config.fish
 end
 
-# Load local configurations
-__load_file $HOME/.config.local/fish/config.fish
-
-# Append $DOTFILE/bin to $PATH
-# NOTE: must place after loading `$HOME/.config.local/fish/config.fish`
-not set -q DOTFILE && export DOTFILE=$HOME/.dotfiles
-set -gx fish_user_paths $fish_user_paths $DOTFILE/bin
+## }}
 
 ### Abbreviations {{{
 

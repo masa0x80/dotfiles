@@ -1,6 +1,3 @@
-# Reset fish_user_paths
-set fish_user_paths
-
 # Global Environment Variables {{{
 
 export UNAME_S=(uname -s | tr '[:upper:]' '[:lower:]')
@@ -14,16 +11,17 @@ export SHELL=(which fish)
 # }}}
 
 # anyenv settings
-[ -d $HOME/.anyenv ] && set -gx fish_user_paths $fish_user_paths $HOME/.anyenv/bin
-if type -qa anyenv && status is-interactive
+# [ -d $HOME/.anyenv ] && set -gx fish_user_paths $fish_user_paths $HOME/.anyenv/bin
+[ -d $HOME/.anyenv ] && set -gx PATH $HOME/.anyenv/bin $PATH
+if type -qa anyenv
     source (anyenv init - | psub)
 end
 
 # golang
 if test -d $HOME/.go
     export GOPATH=$HOME/.go
-    set -gx fish_user_paths $fish_user_paths $GOPATH/bin
-    [ $UNAME_S = 'linux' ] && set -gx fish_user_paths $fish_user_paths /usr/local/go/bin
+    set -gx PATH $GOPATH/bin $PATH
+    [ $UNAME_S = 'linux' ] && set -gx PATH /usr/local/go/bin $PATH
 end
 
 # EDITOR
