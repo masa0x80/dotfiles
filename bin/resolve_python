@@ -1,2 +1,0 @@
-#!/bin/bash
-[ -n "$PYENV_ROOT" ] && echo -n "$PYENV_ROOT/versions/$(cat $PYENV_ROOT/version | sort -V | tail -n 1)/bin/python" || echo -n $(which python)

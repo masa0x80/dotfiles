@@ -1,10 +1,9 @@
 set expandtab
 
+set list
 set listchars=tab:>.
-"set list
 
-" zshっぽい補完に
-set wildmode=longest,list
+set wildmode=list:full
 
 " 「東アジアの文字幅」でA特性を持つものは全角幅で扱う
 set ambiwidth=double
@@ -76,12 +75,6 @@ set synmaxcol=512
 " folding
 set foldmethod=marker
 set commentstring=%s
-
-" Python
-" NOTE: Variable for Python3
-let g:python3_host_prog = system('resolve_python')
-" NOTE: Do not use python2
-let g:python_host_prog = ''
 
 " mapleader
 let g:mapleader=","
