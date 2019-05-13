@@ -27,5 +27,9 @@ export GTAGSLABEL=pygments
 # Disable homebrew analytics
 [ $UNAME_S = 'darwin' ] && export HOMEBREW_NO_ANALYTICS=1
 
+# NOTE: dynamic library support
+#       ref https://github.com/nixprime/cpsm
+export PYTHON_CONFIGURE_OPTS='--enable-framework'
+
 # rails (for rails server alias)
 export RAILS_SERVER_PORT=3000
