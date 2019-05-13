@@ -1,11 +1,31 @@
 [[plugins]]
-repo = 'Shougo/neomru.vim'
-on_path = '.*'
-
-[[plugins]]
 repo = 'Shougo/denite.nvim'
-rev = '0b89436a1d0003eda4ae0cd29bb8d608b534a609'
-on_event = 'VimEnter'
+rev = 'e75dea76e488d9208ed73c53c46a4abee2695115'
+on_cmd = 'Denite'
+hook_add = '''
+  nnoremap <silent> <Leader>b :<C-u>Denite buffer<CR>
+  nnoremap <silent> <Leader>E :<C-u>Denite file/rec<CR>
+  nnoremap <silent> <Leader>f :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
+  nnoremap <silent> <Leader>F :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` -input=`substitute(expand('%:p:h'), getcwd() . '/', '', '')`<CR>
+  nnoremap <silent> <Leader>r :<C-u>Denite -resume<CR>
+  nnoremap <silent> <Leader>y :<C-u>Denite neoyank<CR>
+  nnoremap <silent> <Leader>* :<C-u>Denite line -input=<C-r><C-w><CR>
+  nnoremap <silent> <Leader>g :<C-u>Denite grep<CR>
+  nnoremap <silent> <Leader>G :<C-u>DeniteCursorWord grep -input=<C-r><C-w><CR><CR>
+
+  nnoremap <silent> >> :<C-u>Denite -resume -immediately -select=+1<CR>
+  nnoremap <silent> << :<C-u>Denite -resume -immediately -select=-1<CR>
+
+  " Rails
+  nnoremap <silent> <Leader>A :<C-u>Denite file/rec/git -input=app/assets/<CR>
+  nnoremap <silent> <Leader>C :<C-u>Denite file/rec/git -input=app/controllers/<CR>
+  nnoremap <silent> <Leader>D :<C-u>Denite file/rec/git -input=db/<CR>
+  nnoremap <silent> <Leader>H :<C-u>Denite file/rec/git -input=app/helpers/<CR>
+  nnoremap <silent> <Leader>M :<C-u>Denite file/rec/git -input=app/models/<CR>
+  nnoremap <silent> <Leader>S :<C-u>Denite file/rec/git -input=app/serializer/<CR>
+  nnoremap <silent> <Leader>T :<C-u>Denite file/rec/git -input=spec/<CR>
+  nnoremap <silent> <Leader>V :<C-u>Denite file/rec/git -input=app/views/<CR>
+'''
 hook_post_source = 'source ~/.config/nvim/userautoload/plugins/config/denite.vim'
 
 [[plugins]]
