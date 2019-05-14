@@ -1,6 +1,7 @@
 include_cookbook 'git'
 
 include_cookbook 'anyenv'
+include_cookbook 'ctags'
 include_cookbook 'fish'
 include_cookbook 'jq'
 include_cookbook 'golang'
