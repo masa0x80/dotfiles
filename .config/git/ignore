@@ -20,3 +20,6 @@ Thumbs.db
 GTAGS
 GRTAGS
 GPATH
+
+# ctags
+tags
