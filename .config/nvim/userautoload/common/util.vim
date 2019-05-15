@@ -3,12 +3,10 @@ let g:vim_json_syntax_conceal = 0
 " Use vim-parenmatch instead of parenmatch
 let g:loaded_matchparen = 1
 
-" Reload vimrc
-noremap <Leader>R :<C-u>source $HOME/.vimrc<CR>
-
 " Save
 nnoremap <Leader>, :<C-u>set nopaste<CR>:<C-u>update<CR>
 
+" Reload vimrc
 nnoremap <Leader>R :<C-u>source $HOME/.vimrc<CR>
 nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>noh<CR>:<C-u>cclose<CR>
 nnoremap <silent> ;; :<C-u>set nopaste<CR>:<C-u>noh<CR>:<C-u>cclose<CR>
@@ -16,10 +14,10 @@ nnoremap <silent> ;; :<C-u>set nopaste<CR>:<C-u>noh<CR>:<C-u>cclose<CR>
 " rubyデバッグ用
 augroup RubyDebug
   autocmd!
-  autocmd VimEnter,BufRead * abbreviate bb require 'pry-byebug'; binding.pry<Esc>
-  autocmd VimEnter,BufRead * abbreviate bB require 'byebug'; byebug<Esc>
-  autocmd VimEnter,BufRead * abbreviate Bb require 'byebug'; byebug<Esc>
-  autocmd VimEnter,BufRead * abbreviate BB require 'byebug'; byebug<Esc>
+  autocmd FileType ruby abbreviate bb binding.pry<Esc>
+  autocmd FileType ruby abbreviate bB byebug<Esc>
+  autocmd FileType ruby abbreviate Bb byebug<Esc>
+  autocmd FileType ruby abbreviate BB byebug<Esc>
 augroup END
 
 augroup SSHConfig
@@ -59,7 +57,7 @@ augroup END
 
 augroup AutoFishIndent
   autocmd!
-  autocmd BufWritePre *.fish call s:exec_fish_indent()
+  autocmd BufWritePre fish call s:exec_fish_indent()
 augroup END
 
 function! s:exec_fish_indent()
