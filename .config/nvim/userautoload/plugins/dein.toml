@@ -11,18 +11,7 @@ build = 'make'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
-hook_add = '''
-  augroup MyColorscheme
-    autocmd!
-    " ref: https://teratail.com/questions/3738://teratail.com/questions/37382
-    " colorscheme設定はsource後に行う必要があるので確実に読まれているVimEnterのタイミングで行う。
-    " ただし、Colorschemeイベントの発生が抑制されないようnentedを付ける。
-    autocmd VimEnter * nested source ~/.config/nvim/userautoload/plugins/config/iceberg.vim
-  augroup END
-'''
-
-[[plugins]]
-repo = 'itchyny/lightline.vim'
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/iceberg.vim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -72,3 +61,6 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/rust.vim'
 [[plugins]]
 repo = 'rhysd/devdocs.vim'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/devdocs.vim'
+
+[[plugins]]
+repo = 'ludovicchabant/vim-gutentags'

@@ -1,21 +1,39 @@
 let g:lightline = {
-\   'colorscheme': 'iceberg',
-\   'mode_map': {'c': 'NORMAL'},
-\   'active': {
-\     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
-\     'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-\   },
-\   'component_function': {
-\     'modified':     'MyModified',
-\     'readonly':     'MyReadonly',
-\     'fugitive':     'MyFugitive',
-\     'filename':     'MyFilename',
-\     'fileformat':   'MyFileformat',
-\     'filetype':     'MyFiletype',
-\     'fileencoding': 'MyFileencoding',
-\     'mode':         'MyMode',
-\   },
-\ }
+  \   'colorscheme': g:colors_name,
+  \   'mode_map': {
+  \     'c': 'NORMAL'
+  \   },
+  \   'active': {
+  \     'left': [
+  \       ['mode', 'paste'],
+  \       ['fugitive', 'readonly', 'filename', 'modified']
+  \     ],
+  \     'right': [
+  \       ['syntastic', 'lineinfo'],
+  \       ['percent'],
+  \       ['ctags', 'fileformat', 'fileencoding', 'filetype']
+  \     ]
+  \   },
+  \   'inactive': {
+  \     'left': [
+  \       ['relativepath']
+  \     ],
+  \     'right': [
+  \       ['syntastic', 'lineinfo'],
+  \       ['percent']
+  \     ]
+  \   },
+  \   'component_function': {
+  \     'modified':     'MyModified',
+  \     'readonly':     'MyReadonly',
+  \     'fugitive':     'MyFugitive',
+  \     'fileformat':   'MyFileformat',
+  \     'fileencoding': 'MyFileencoding',
+  \     'filetype':     'MyFiletype',
+  \     'mode':         'MyMode',
+  \     'ctags':        'MyCtagsStatus'
+  \   }
+  \ }
 
 function! MyModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -23,15 +41,6 @@ endfunction
 
 function! MyReadonly()
   return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
-endfunction
-
-function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-       \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-       \  &ft == 'unite' ? unite#get_status_string() :
-       \  &ft == 'vimshell' ? vimshell#get_status_string() :
-       \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-       \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
 function! MyFugitive()
@@ -57,7 +66,29 @@ function! MyFileencoding()
 endfunction
 
 function! MyMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
+  if &ft == 'denite'
+    let l:mode_name = substitute(denite#get_status_mode(), '[^A-Z]', '', 'g')
+    call lightline#link(tolower(l:mode_name[0]))
+    return l:mode_name
+  else
+    return winwidth(0) > 60 ? lightline#mode() : ''
+  endif
 endfunction
 
-let g:unite_force_overwrite_statusline = 0
+function! MyCtagsStatus()
+  let l:status = dein#tap('vim-gutentags') == 1 ? gutentags#statusline() : ''
+  return winwidth(0) > 50 ? l:status : ''
+endfunction
+
+augroup LightlineColorscheme
+  autocmd!
+  autocmd Colorscheme * call <SID>lightline_update()
+augroup END
+
+function! s:lightline_update()
+  let g:lightline.colorscheme =
+    \ substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '')
+  call lightline#init()
+  call lightline#colorscheme()
+  call lightline#update()
+endfunction

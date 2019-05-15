@@ -4,4 +4,3 @@ augroup NeomakeAug
 augroup END
 
 call neomake#configure#automake('nrw', 500)
-let g:neomake_ruby_enabled_makers = ['rubocop']

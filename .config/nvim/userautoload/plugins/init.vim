@@ -24,8 +24,8 @@ if !dein#load_state(s:dein_dir)
 endif
 
 call dein#begin(s:dein_dir, [expand('<sfile>'), s:toml_path, s:lazy_toml_path])
-call dein#load_toml(s:toml_path,      {'lazy': 0})
-call dein#load_toml(s:lazy_toml_path, {'lazy': 1})
+call dein#load_toml(s:toml_path,      { 'lazy': 0 })
+call dein#load_toml(s:lazy_toml_path, { 'lazy': 1 })
 
 call dein#end()
 call dein#save_state()
