@@ -36,6 +36,8 @@ abbr -a md 'mkdir'
 abbr -a rd 'rmdir'
 abbr -a rf 'rm -rf'
 
+abbr -a vim 'vi'
+
 if type -qa exa
     abbr -a l 'exa -la --git'
     abbr -a la 'exa -la --git'
@@ -80,7 +82,6 @@ abbr -a gds 'git diff --staged'
 abbr -a gf 'git fetch'
 
 abbr -a gfx 'git fixup'
-
 
 abbr -a lg 'git fzf show'
 
