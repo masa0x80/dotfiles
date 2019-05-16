@@ -1,38 +1,5 @@
-# Global Environment Variables {{{
-
-export UNAME_S=(uname -s | tr '[:upper:]' '[:lower:]')
-
-# NOTE: must place after setting UNAME_S
-source $HOME/.common_variables
-
 # NOTE: must place after adding `/usr/local/bin` to PATH
 export SHELL=(which fish)
-
-# }}}
-
-# anyenv settings
-# [ -d $HOME/.anyenv ] && set -gx fish_user_paths $fish_user_paths $HOME/.anyenv/bin
-[ -d $HOME/.anyenv ] && set -gx PATH $HOME/.anyenv/bin $PATH
-if type -qa anyenv
-    source (anyenv init - | psub)
-end
-
-# golang
-if test -d $HOME/.go
-    export GOPATH=$HOME/.go
-    set -gx PATH $GOPATH/bin $PATH
-    [ $UNAME_S = 'linux' ] && set -gx PATH /usr/local/go/bin $PATH
-end
-
-# EDITOR
-if type -qa nvim
-    export EDITOR=nvim
-else if type -qa vim
-    export EDITOR=vim
-end
-
-# PAGER
-type -qa less && export PAGER=less
 
 # Environment Variables for fish {{{
 

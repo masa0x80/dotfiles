@@ -1,37 +1,5 @@
-# Global Environment Variables {{{
-
-export UNAME_S=$(uname -s | tr '[:upper:]' '[:lower:]')
-
-# NOTE: must place after setting UNAME_S
-source $HOME/.common_variables
-
 # NOTE: must place after adding `/usr/local/bin` to PATH
 export SHELL=$(which zsh)
-
-# }}}
-
-# anyenv settings
-[ -d $HOME/.anyenv ] && PATH=$HOME/.anyenv/bin:$PATH
-if type -a anyenv > /dev/null 2>&1; then
-  eval "$(anyenv init -)"
-fi
-
-# golang
-if test -d $HOME/.go; then
-  export GOPATH=$HOME/.go
-  PATH=$GOPATH/bin:$PATH
-  [ $UNAME_S = 'linux' ] && PATH=/usr/local/go/bin:$PATH
-fi
-
-# EDITOR
-if (( $+commands[nvim] )); then
-  export EDITOR=nvim
-elif (( $+commands[vim] )); then
-  export EDITOR=vim
-fi
-
-# PAGER
-(( $+commands[less] )) && export PAGER=less
 
 # Configurations for zsh {{{
 

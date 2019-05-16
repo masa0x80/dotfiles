@@ -1,0 +1,62 @@
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+
+export UNAME_S=$(uname -s | tr '[:upper:]' '[:lower:]')
+
+# load proxy settings
+[ -r $HOME/.proxy ] && source $HOME/.proxy
+
+# PATH
+export PATH=/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin
+
+export LANG=ja_JP.UTF-8
+export TERM=xterm-256color
+
+export LESS='-RIXc'
+
+# fzf options
+export FZF_DEFAULT_OPTS='--reverse --no-sort --extended --ansi --multi --cycle --height 60% --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'
+
+# gtags (GNU Global)
+export GTAGSLABEL=pygments
+if [ "$UNAME_S" = 'linux' ] && [ -d /usr/local/share/gtags ]; then
+  export GTAGSCONF=/usr/local/share/gtags/gtags.conf
+fi
+
+# Disable homebrew analytics
+[ "$UNAME_S" = 'darwin' ] && export HOMEBREW_NO_ANALYTICS=1
+
+# anyenv
+if [ -d $HOME/.anyenv ]; then
+  export PATH=$HOME/.anyenv/bin:$PATH
+  eval "$(anyenv init -)"
+fi
+
+# golang
+if [ -d $HOME/.go ]; then
+  export GOPATH=$HOME/.go
+  export PATH=$GOPATH/bin:$PATH
+  [ "$UNAME_S" = 'linux' ] && export PATH=/usr/local/go/bin:$PATH
+fi
+
+# EDITOR
+if type -a nvim >/dev/null 2>&1; then
+  export EDITOR=nvim
+elif type -a vim >/dev/null 2>&1; then
+  export EDITOR=vim
+fi
+
+# PAGER
+type -a less >/dev/null 2>&1 && export PAGER=less
+
+# sshrc config
+export SSHHOME=$XDG_CONFIG_HOME/sshrc
+
+# NOTE: dynamic library support
+#       ref https://github.com/nixprime/cpsm
+export PYTHON_CONFIGURE_OPTS='--enable-framework'
+
+# rails (for rails server alias)
+export RAILS_SERVER_PORT=3000
