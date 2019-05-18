@@ -104,6 +104,8 @@ abbr -a grbi 'git rebase -i'
 abbr -a grbm 'git rebase master'
 abbr -a grbs 'git rebase --skip'
 
+abbr -a gri 'git rebase -i (git fzf)'
+
 abbr -a gre 'git review'
 
 abbr -a grh 'git reset HEAD'
