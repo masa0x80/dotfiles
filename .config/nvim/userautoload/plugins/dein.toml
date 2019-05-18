@@ -10,10 +10,6 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'cocopon/iceberg.vim'
-hook_add = 'source ~/.config/nvim/userautoload/plugins/config/iceberg.vim'
-
-[[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
@@ -64,3 +60,10 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/devdocs.vim'
 
 [[plugins]]
 repo = 'ludovicchabant/vim-gutentags'
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+hook_add = '''
+  set background=dark
+  colorscheme solarized
+'''
