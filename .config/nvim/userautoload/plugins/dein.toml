@@ -55,10 +55,6 @@ repo = 'rust-lang/rust.vim'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/rust.vim'
 
 [[plugins]]
-repo = 'rhysd/devdocs.vim'
-hook_add = 'source ~/.config/nvim/userautoload/plugins/config/devdocs.vim'
-
-[[plugins]]
 repo = 'ludovicchabant/vim-gutentags'
 
 [[plugins]]

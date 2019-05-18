@@ -11,6 +11,14 @@ nnoremap <Leader>R :<C-u>source $HOME/.vimrc<CR>
 nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>noh<CR>:<C-u>cclose<CR>
 nnoremap <silent> ;; :<C-u>set nopaste<CR>:<C-u>noh<CR>:<C-u>cclose<CR>
 
+" 行番号トグル
+nnoremap <Leader>N :<C-u>setlocal relativenumber!<CR>
+
+" 無名レジスターを保護
+nnoremap x "_x
+nnoremap dd "_dd
+nnoremap D "_D
+
 " rubyデバッグ用
 augroup RubyDebug
   autocmd!
@@ -37,6 +45,23 @@ noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('
 " noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
 " noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
+" Save cursor position
+augroup KeepLastPosition
+  autocmd!
+  autocmd BufRead * if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal g`\"" | endif
+augroup END
+
+" ref: https://vim-jp.org/vim-users-jp/2010/07/19/Hack-162.html
+if has('persistent_undo')
+  set undodir=./.vimundo,~/.vimundo
+  set undofile
+endif
+
+" Enable spell check in git-commit
+augroup GitSpellCheck
+  autocmd!
+  autocmd FileType gitcommit setlocal spell
+augroup END
 
 augroup HighlightSpaces
   autocmd!
