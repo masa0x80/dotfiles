@@ -1,3 +1,3 @@
-# Customized iTerm2 Profile
+# iTerm2 colorscheme
 
-This profile is based on https://github.com/aseom/dotfiles/blob/master/osx/iterm2/iceberg.itermcolors
+ref: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
