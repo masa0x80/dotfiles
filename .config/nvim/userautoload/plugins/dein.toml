@@ -56,6 +56,7 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/rust.vim'
 
 [[plugins]]
 repo = 'ludovicchabant/vim-gutentags'
+hook_add = 'let g:gutentags_cache_dir = "/tmp/gutentags"'
 
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
