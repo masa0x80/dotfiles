@@ -10,6 +10,7 @@ cask 'insomnia'
 cask 'vanilla'
 cask 'visual-studio-code'
 
+brew 'bluetoothconnector'
 brew 'gibo'
 brew 'graphviz'
 brew 'imagemagick'
