@@ -60,3 +60,6 @@ hook_add = '''
   set background=dark
   colorscheme solarized
 '''
+
+[[plugins]]
+repo = 'sgur/vim-editorconfig'
