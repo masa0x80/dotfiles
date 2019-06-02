@@ -11,6 +11,7 @@ call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--
 call denite#custom#source('buffer', 'matchers', ['matcher/cpsm'])
 call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
 call denite#custom#source('file/rec/git', 'matchers', ['matcher/cpsm'])
+
 if executable('pt')
   call denite#custom#var('grep', 'command', ['pt', '--nogroup', '--nocolor', '--smart-case', '--hidden'])
   call denite#custom#var('grep', 'default_opts', [])
@@ -40,11 +41,11 @@ nnoremap <silent> >> :<C-u>Denite -resume -immediately -select=+1<CR>
 nnoremap <silent> << :<C-u>Denite -resume -immediately -select=-1<CR>
 
 " Rails
-nnoremap <silent> <Leader>A :<C-u>Denite file/rec/git -input=app/assets/<CR>
-nnoremap <silent> <Leader>C :<C-u>Denite file/rec/git -input=app/controllers/<CR>
-nnoremap <silent> <Leader>D :<C-u>Denite file/rec/git -input=db/<CR>
-nnoremap <silent> <Leader>H :<C-u>Denite file/rec/git -input=app/helpers/<CR>
-nnoremap <silent> <Leader>M :<C-u>Denite file/rec/git -input=app/models/<CR>
-nnoremap <silent> <Leader>S :<C-u>Denite file/rec/git -input=app/serializer/<CR>
-nnoremap <silent> <Leader>T :<C-u>Denite file/rec/git -input=spec/<CR>
-nnoremap <silent> <Leader>V :<C-u>Denite file/rec/git -input=app/views/<CR>
+nnoremap <silent> <Leader>a :<C-u>Denite file/rec/git -input=app/assets/<CR>
+nnoremap <silent> <Leader>c :<C-u>Denite file/rec/git -input=app/controllers/<CR>
+nnoremap <silent> <Leader>d :<C-u>Denite file/rec/git -input=db/<CR>
+nnoremap <silent> <Leader>h :<C-u>Denite file/rec/git -input=app/helpers/<CR>
+nnoremap <silent> <Leader>m :<C-u>Denite file/rec/git -input=app/models/<CR>
+nnoremap <silent> <Leader>s :<C-u>Denite file/rec/git -input=app/serializer/<CR>
+nnoremap <silent> <Leader>t :<C-u>Denite file/rec/git -input=spec/<CR>
+nnoremap <silent> <Leader>v :<C-u>Denite file/rec/git -input=app/views/<CR>

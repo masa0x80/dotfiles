@@ -1,3 +1,3 @@
 " コメントアウト
-nmap <Leader>c :TComment<CR>
-vmap <Leader>c :TComment<CR>
+nmap <Leader>C :TComment<CR>
+vmap <Leader>C :TComment<CR>

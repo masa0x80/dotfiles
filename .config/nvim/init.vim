@@ -7,7 +7,9 @@ runtime! userautoload/common/*.vim
 if filereadable(findfile('$HOME/.config.local/nvim/common.vim'))
   source $HOME/.config.local/nvim/common.vim
 endif
-runtime! userautoload/plugins/init.vim
+if has('nvim')
+  runtime! userautoload/plugins/init.vim
+endif
 
 syntax on
 filetype plugin indent on

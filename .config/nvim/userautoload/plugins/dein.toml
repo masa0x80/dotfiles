@@ -2,10 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'fuenor/qfixhowm'
-hook_add = 'source ~/.config/nvim/userautoload/plugins/config/qfixhowm.vim'
-
-[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
@@ -44,7 +40,7 @@ repo = 'tpope/vim-repeat'
 
 [[plugins]]
 repo = 'nixprime/cpsm'
-build = 'env PY3=ON ./install.sh'
+build = 'sh -c "PY3=ON ./install.sh"'
 
 [[plugins]]
 repo = 'cocopon/vaffle.vim'
