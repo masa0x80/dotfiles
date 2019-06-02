@@ -12,6 +12,8 @@ end
 not set -q DOTFILE && export DOTFILE=$HOME/.dotfiles
 set -gx PATH $DOTFILE/bin $PATH
 
+type -qa diff-highlight && export GITPAGER='diff-highlight'
+
 # Load local configurations
 __load_file $HOME/.config.local/fish/config.fish
 

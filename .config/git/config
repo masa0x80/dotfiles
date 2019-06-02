@@ -1,8 +1,8 @@
 [core]
   autocrlf = false
   excludesfile = ~/.config/git/ignore
-  editor = nvim
-  pager = diff-highlight | less -RIXc
+  editor = $EDITOR
+  pager = $GITPAGER | less -RIXc
   hooksPath = ~/.config/git/hooks
 [credential]
   helper = cache

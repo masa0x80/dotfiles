@@ -24,4 +24,8 @@ load_file $HOME/.config.local/zsh/profile
 export DOTFILE=${DOTFILE:-$HOME/.dotfiles}
 export PATH=$PATH:$DOTFILE/bin
 
+if (( $+commands[diff-highlight] )); then
+  export GITPAGER='diff-highlight'
+fi
+
 # }}}
