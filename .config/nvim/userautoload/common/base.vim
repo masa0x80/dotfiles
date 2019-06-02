@@ -37,6 +37,7 @@ set backspace=indent,eol,start
 set ignorecase smartcase
 " 検索文字の強調表示
 set hlsearch
+set nowrapscan
 
 " 対応する括弧の表示
 set showmatch

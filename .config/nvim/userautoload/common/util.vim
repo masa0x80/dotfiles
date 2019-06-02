@@ -68,19 +68,6 @@ augroup HighlightSpaces
   autocmd ColorScheme * match Visual /　\|[　 ]\+$/
 augroup END
 
-augroup EraseTrailingSpaces
-  autocmd!
-  " 行末のスペース削除
-  " ref: http://qiita.com/mktakuya/items/2a6cd35ca0c1b217e28c
-  autocmd BufWritePre * :%s/\s\+$//ge
-augroup END
-
-augroup ExpandTab
-  autocmd!
-  " タブをスペースに
-  autocmd BufWritePre * :retab
-augroup END
-
 augroup VsplitHelp
   autocmd!
   autocmd FileType help wincmd L
@@ -89,6 +76,11 @@ augroup END
 augroup AutoFishIndent
   autocmd!
   autocmd BufWritePre fish call s:exec_fish_indent()
+augroup END
+
+augroup GitCmd
+  autocmd!
+  autocmd filetype gitcommit setlocal spell
 augroup END
 
 function! s:exec_fish_indent()
