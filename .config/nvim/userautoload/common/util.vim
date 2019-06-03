@@ -57,12 +57,6 @@ if has('persistent_undo')
   set undofile
 endif
 
-" Enable spell check in git-commit
-augroup GitSpellCheck
-  autocmd!
-  autocmd FileType gitcommit setlocal spell
-augroup END
-
 augroup HighlightSpaces
   autocmd!
   autocmd ColorScheme * match Visual /　\|[　 ]\+$/
@@ -76,11 +70,6 @@ augroup END
 augroup AutoFishIndent
   autocmd!
   autocmd BufWritePre fish call s:exec_fish_indent()
-augroup END
-
-augroup GitCmd
-  autocmd!
-  autocmd filetype gitcommit setlocal spell
 augroup END
 
 function! s:exec_fish_indent()
