@@ -1,0 +1,23 @@
+map("<Ctrl-f>", "d");
+map("<Ctrl-b>", "e");
+map("<Ctrl-d>", "d");
+map("<Ctrl-u>", "e");
+map("<Ctrl-y>", "k");
+map("<Ctrl-e>", "j");
+map("<Ctrl-n>", "R");
+map("<Ctrl-p>", "E");
+map(">>", "R");
+map("<<", "E");
+map("d", "x");
+map("H", "S");
+map("O", "on");
+map("<Ctrl-t><Ctrl-t>", "<Ctrl-6>");
+map("L", "D");
+map("u", "X");
+map("F", "cf");
+map("o", "t");
+map('<Ctrl-[>', "<Esc>");
+Hints.style('border: solid 3px #552a48; color:#efe1eb; background: initial; background-color: #552a48;');
+mapkey('<Ctrl-;>', 'Choose a tab with omnibar', function() {
+  Front.openOmnibar({type: "Tabs"});
+});
