@@ -78,6 +78,14 @@ function! s:exec_fish_indent()
   execute ':' . l:line
 endfunction
 
+function! s:generate_confluence_markup()
+  let l:in = expand('%:p')
+  let l:out = expand('%:p:r') . '.confluence'
+  execute ':e confluence'
+  execute '0r!markdown2confluence ' . l:in
+endfunction
+command! Md2Confluence call s:generate_confluence_markup()
+
 " ref: http://qiita.com/tekkoc/items/324d736f68b0f27680b8
 function! s:Jq(...)
   if 0 == a:0
