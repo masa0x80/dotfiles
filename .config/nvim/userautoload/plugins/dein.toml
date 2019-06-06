@@ -59,10 +59,9 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'altercation/vim-colors-solarized'
+repo = 'cocopon/iceberg.vim'
 hook_add = '''
-  set background=dark
-  colorscheme solarized
+  colorscheme iceberg
 '''
 
 [[plugins]]
