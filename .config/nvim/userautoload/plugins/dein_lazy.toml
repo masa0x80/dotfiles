@@ -1,8 +1,44 @@
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-rev = '3637cbc4665276aa5d0f085d00cdccb2dd96e0ee'
-on_event = 'VimEnter'
-on_source = ['lightline.vim']
+rev = '6937f1d9186a4d464b158368a3f38d9a7c5c14eb'
+on_cmd   = ['Denite', 'DeniteBufferDir', 'DeniteCursorWord']
+hook_add = ''' " {{{{
+  nnoremap <silent> <Leader>b :<C-u>Denite buffer<CR>
+  nnoremap <silent> <Leader>E :<C-u>Denite file/rec<CR>
+  nnoremap <silent> <Leader>f :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
+  nnoremap <silent> <Leader>F :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` -input=`expand('%:t') != '' ? substitute(expand('%:p:h'), '^' . getcwd() . '/', '', '') : ''`<CR>
+  nnoremap <silent> <Leader>r :<C-u>Denite -resume<CR>
+  nnoremap <silent> <Leader>y :<C-u>Denite neoyank<CR>
+  nnoremap <silent> <Leader>* :<C-u>Denite line -input=<C-r><C-w><CR>
+  nnoremap <silent> <Leader>g :<C-u>Denite grep<CR>
+  nnoremap <silent> <Leader>G :<C-u>DeniteCursorWord grep -input=<C-r><C-w><CR><CR>
+
+  nnoremap <silent> >> :<C-u>Denite -resume -immediately -select=+1<CR>
+  nnoremap <silent> << :<C-u>Denite -resume -immediately -select=-1<CR>
+
+  " Rails
+  nnoremap <silent> <Leader>a :<C-u>Denite file/rec/git -input=app/assets/<CR>
+  nnoremap <silent> <Leader>c :<C-u>Denite file/rec/git -input=app/controllers/<CR>
+  nnoremap <silent> <Leader>d :<C-u>Denite file/rec/git -input=db/<CR>
+  nnoremap <silent> <Leader>h :<C-u>Denite file/rec/git -input=app/helpers/<CR>
+  nnoremap <silent> <Leader>m :<C-u>Denite file/rec/git -input=app/models/<CR>
+  nnoremap <silent> <Leader>s :<C-u>Denite file/rec/git -input=app/serializer/<CR>
+  nnoremap <silent> <Leader>t :<C-u>Denite file/rec/git -input=spec/<CR>
+  nnoremap <silent> <Leader>v :<C-u>Denite file/rec/git -input=app/views/<CR>
+
+  augroup Denite
+    autocmd!
+    autocmd FileType denite call s:denite_settings()
+  augroup END
+
+  function! s:denite_settings() abort
+    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+  endfunction
+" }}} '''
 hook_post_source = 'source ~/.config/nvim/userautoload/plugins/config/denite.vim'
 
 [[plugins]]
