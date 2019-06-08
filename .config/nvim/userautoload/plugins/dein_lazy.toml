@@ -148,3 +148,8 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/foldCC.vim'
 repo = 'itchyny/lightline.vim'
 on_event = 'VimEnter'
 hook_source = 'source ~/.config/nvim/userautoload/plugins/config/lightline.vim'
+
+[[plugins]]
+repo = 'rhysd/git-messenger.vim'
+on_cmd = 'GitMessenger'
+on_map ='<Plug>(git-messenger'
