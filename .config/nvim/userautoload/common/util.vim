@@ -48,7 +48,8 @@ noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('
 " Save cursor position
 augroup KeepLastPosition
   autocmd!
-  autocmd BufRead * if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal g`\"" | endif
+  autocmd BufRead * if &filetype != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") | execute "normal g`\"" | endif
+  autocmd FileType gitcommit call cursor(1, 128)
 augroup END
 
 " ref: https://vim-jp.org/vim-users-jp/2010/07/19/Hack-162.html
