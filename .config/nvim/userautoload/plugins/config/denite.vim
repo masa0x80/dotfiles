@@ -1,16 +1,9 @@
-let s:denite_win_width_percent = 0.5
-let s:denite_win_height_percent = 0.7
-
 call denite#custom#option('_', {
   \ 'prompt': '> ',
   \ 'cached_filter': v:true,
   \ 'cursor_shape': v:true,
   \ 'cursor_wrap': v:true,
-  \ 'split': 'floating',
-  \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
-  \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
-  \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
-  \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
+  \ 'split': 'floating'
   \ })
 
 " NOTE: depends = 'lightline.vim'
