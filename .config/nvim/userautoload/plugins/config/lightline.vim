@@ -1,3 +1,5 @@
+set noshowmode
+
 let g:lightline = {
   \   'colorscheme': g:colors_name,
   \   'mode_map': {
