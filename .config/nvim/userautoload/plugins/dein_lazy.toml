@@ -13,8 +13,8 @@ hook_add = ''' " {{{{
   nnoremap <silent> <Leader>g :<C-u>Denite grep<CR>
   nnoremap <silent> <Leader>G :<C-u>DeniteCursorWord grep -input=<C-r><C-w><CR><CR>
 
-  nnoremap <silent> >> :<C-u>Denite -resume -immediately -select=+1<CR>
-  nnoremap <silent> << :<C-u>Denite -resume -immediately -select=-1<CR>
+  nnoremap <silent> >> :<C-u>Denite -resume -cursor-pos=+1 -immediately<CR>
+  nnoremap <silent> << :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
 
   " Rails
   nnoremap <silent> <Leader>a :<C-u>Denite file/rec/git -input=app/assets/<CR>
@@ -30,7 +30,6 @@ hook_add = ''' " {{{{
     autocmd!
     autocmd FileType denite call s:denite_settings()
   augroup END
-
   function! s:denite_settings() abort
     nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
     nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
