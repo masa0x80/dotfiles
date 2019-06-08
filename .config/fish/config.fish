@@ -32,8 +32,6 @@ abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'
 abbr -a mkdir 'mkdir -p'
 
-type -qa htop && abbr -a top 'htop'
-
 abbr -a md 'mkdir'
 abbr -a rd 'rmdir'
 abbr -a rf 'rm -rf'

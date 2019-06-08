@@ -62,10 +62,6 @@ alias -g N2=' 2>/dev/null'
 alias -g P='| peco'
 alias -g T='| tail'
 
-if (( $+commands[htop] )); then
-  alias top=htop
-fi
-
 alias h='\history -n -r 1 | grep "$@"'
 
 alias sshconfig='vim ~/.ssh/config'
