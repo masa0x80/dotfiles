@@ -10,11 +10,6 @@ let g:lightline = {
   \       ['mode', 'paste'],
   \       ['fugitive', 'readonly', 'filename', 'modified']
   \     ],
-  \     'right': [
-  \       ['syntastic', 'lineinfo'],
-  \       ['percent'],
-  \       ['fileformat', 'fileencoding', 'filetype']
-  \     ]
   \   },
   \   'inactive': {
   \     'left': [

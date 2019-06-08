@@ -66,3 +66,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'sgur/vim-editorconfig'
+
+[[plugins]]
+repo = 'w0rp/ale'
