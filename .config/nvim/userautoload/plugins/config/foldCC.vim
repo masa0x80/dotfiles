@@ -29,7 +29,7 @@ endfunction
 "}}}
 
 nnoremap z[ :<C-u>call <SID>put_foldmarker(0)<CR>
-nnoremap z] :<C-u>call <SID>put_foldmarker(1)<CR>
+nnoremap z] :<C-u>call <SID>put_foldmarker(1)<CR>zc
 function! s:put_foldmarker(foldclose_p) "{{{
   let crrstr = getline('.')
   let padding = crrstr=='' ? '' : crrstr=~'\s$' ? '' : ' '
