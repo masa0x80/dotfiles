@@ -8,8 +8,30 @@ export UNAME_S=$(uname -s | tr '[:upper:]' '[:lower:]')
 # load proxy settings
 [ -r $HOME/.proxy ] && source $HOME/.proxy
 
-# PATH
+# {{{ PATH
 export PATH=/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin
+
+# brew install coreutils
+[ -d /usr/local/opt/coreutils/libexec/gnubin ] && PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+
+# brew install curl
+[ -d /usr/local/opt/curl/bin ] && PATH=/usr/local/opt/curl/bin:$PATH
+
+# brew install ncurses
+[ -d /usr/local/opt/ncurses/bin ] && PATH=/usr/local/opt/ncurses/bin:$PATH
+
+# brew install openssl
+[ -d /usr/local/opt/openssl/bin ] && PATH=/usr/local/opt/openssl/bin:$PATH
+
+# brew install sqlite
+[ -d /usr/local/opt/sqlite/bin ] && PATH=/usr/local/opt/sqlite/bin:$PATH
+
+# brew install gettext
+[ -d /usr/local/opt/gettext/bin ] && PATH=/usr/local/opt/gettext/bin:$PATH
+
+# brew install gnu-getopt
+[ -d /usr/local/opt/gnu-getopt/bin ] && PATH=/usr/local/opt/gnu-getopt/bin:$PATH
+# }}} PATH
 
 export LANG=ja_JP.UTF-8
 export TERM=xterm-256color
