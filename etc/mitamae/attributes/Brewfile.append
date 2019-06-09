@@ -17,6 +17,7 @@ brew 'imagemagick'
 brew 'jo'
 brew 'pandoc'
 brew 'sshrc'
+brew 'tfenv'
 brew 'tmux-xpanes'
 brew 'zsh'
 
