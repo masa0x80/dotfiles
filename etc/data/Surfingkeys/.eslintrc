@@ -1,0 +1,29 @@
+{
+  'extends': 'eslint:recommended',
+  'env': {
+    'browser': true,
+    'es6': true
+  },
+  'parserOptions': {
+    'ecmaVersion': 2016
+  },
+  'globals': {
+    'RUNTIME': true,
+    'Clipboard': true,
+    'Front': true,
+    'Hints': true,
+    'map': true,
+    'mapkey': true,
+    'imap': true,
+    'iunmap': true,
+    'unmap': true,
+    'unmapAllExcept': true,
+    'tabOpenLink': true,
+    'addSearchAliasX': true,
+    'removeSearchAliasX': true,
+    'settings': true
+  },
+  'rules': {
+    'semi': ['error', 'never']
+  }
+}
