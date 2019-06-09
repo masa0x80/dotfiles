@@ -18,6 +18,7 @@ end
 
 npm_list = <<-EOF
 yarn
+eslint
 markdown2confluence
 EOF
 file "#{node[:env][:home]}/.anyenv/envs/nodenv/default-packages" do
