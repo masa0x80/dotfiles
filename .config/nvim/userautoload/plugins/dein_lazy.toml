@@ -136,7 +136,7 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/quickrun.vim'
 
 [[plugins]]
 repo = 'LeafCage/foldCC'
-on_ft = ['vim', 'markdown', 'mkd', 'md', 'fish']
+on_event = 'VimEnter'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/foldCC.vim'
 
 [[plugins]]

@@ -1,5 +1,6 @@
 set foldtext=FoldCCtext()
 let g:foldCCtext_enable_autofdc_adjuster = 1
+let g:foldCCtext_tail = 'v:foldend-v:foldstart+1'
 
 augroup FileTypeGroup
   autocmd!
