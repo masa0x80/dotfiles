@@ -1,8 +1,5 @@
 # Load OS settings {{
 
-# NOTE: Use preloaded path
-set PATH $_PATH
-
 for config_file in $HOME/.config/fish/conf.d/$UNAME_S/*
     source $config_file
 end

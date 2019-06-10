@@ -1,3 +1,6 @@
+# NOTE: Use preloaded path
+set PATH $_PATH
+
 # NOTE: must place after adding `/usr/local/bin` to PATH
 export SHELL=(which fish)
 
@@ -10,6 +13,8 @@ set fish_prompt_pwd_dir_length 0
 # Colors {{{
 set fish_pager_color_completion grey
 export fish_color_command=cyan
+
+export ANGLER_QUERY_OPTION='--no-sort --query'
 # }}}
 
 ### Prompt {{{
