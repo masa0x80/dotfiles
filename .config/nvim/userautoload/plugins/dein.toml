@@ -69,3 +69,10 @@ repo = 'sgur/vim-editorconfig'
 
 [[plugins]]
 repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'raghur/fruzzy'
+hook_post_update = '''
+  call fruzzy#install()
+  let g:fruzzy#usenative = 1
+'''
