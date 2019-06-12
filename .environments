@@ -40,7 +40,7 @@ export LESS='-RIXc'
 export GITPAGER='cat'
 
 # fzf options
-export FZF_DEFAULT_OPTS='--border --reverse --extended --ansi --multi --cycle --height 30% --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'
+export FZF_DEFAULT_OPTS='--reverse --extended --ansi --multi --cycle --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'
 
 # gtags (GNU Global)
 export GTAGSLABEL=pygments
