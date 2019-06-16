@@ -68,6 +68,12 @@ augroup VsplitHelp
   autocmd FileType help wincmd L
 augroup END
 
+augroup MarkdownKeybindins
+  autocmd!
+  autocmd FileType markdown inoremap <buffer> <Tab> <Esc><S-v>>A
+  autocmd FileType markdown inoremap <buffer> <S-Tab> <Esc><S-v><A
+augroup END
+
 augroup AutoFishIndent
   autocmd!
   autocmd BufWritePre fish call s:exec_fish_indent()
