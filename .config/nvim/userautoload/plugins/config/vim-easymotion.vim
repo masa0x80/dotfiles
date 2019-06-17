@@ -12,12 +12,10 @@ let g:EasyMotion_use_upper = 1
 
 let g:EasyMotion_smartcase = 1
 
-nmap f <Plug>(easymotion-s)
-
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade  Comment
-
-hi link EasyMotionTarget2First MatchParen
-hi link EasyMotionTarget2Second MatchParen
-
-hi link EasyMotionMoveHL Search
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+nmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
+nmap <Leader>l <Plug>(easymotion-overwin-line)
+nmap s <Plug>(easymotion-overwin-f2)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
