@@ -70,11 +70,26 @@ augroup VsplitHelp
   autocmd FileType help wincmd L
 augroup END
 
+" {{{ markdown
 augroup MarkdownKeybindins
   autocmd!
-  autocmd FileType markdown inoremap <buffer> <Tab> <Esc><S-v>>A
-  autocmd FileType markdown inoremap <buffer> <S-Tab> <Esc><S-v><A
+  autocmd FileType markdown inoremap <silent> <buffer> <Tab> <Esc>:<C-u>call <SID>markdown_indent('>')<CR>
+  autocmd FileType markdown inoremap <silent> <buffer> <S-Tab> <Esc>:<C-u>call <SID>markdown_indent('<')<CR>
 augroup END
+
+function! s:markdown_indent(op)
+  let l:col = col('.')
+  call cursor(0, 1)
+  if a:op == '>'
+    execute(':normal ' . &shiftwidth . 'i' . ' ')
+    call cursor('.', l:col + &shiftwidth)
+  elseif a:op == '<'
+    execute(':normal ' . &shiftwidth . 'x')
+    call cursor('.', l:col - &shiftwidth)
+  endif
+  startinsert!
+endfunction
+" }}}
 
 augroup AutoFishIndent
   autocmd!
