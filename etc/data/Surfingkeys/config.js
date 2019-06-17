@@ -6,60 +6,6 @@ settings.hintAlign = 'left'
 settings.focusAfterClosed = 'right'
 // }}}
 
-// {{{ MapKeys
-map('<Ctrl-f>', 'd')
-map('<Ctrl-b>', 'e')
-map('<Ctrl-u>', 'e')
-map('<Ctrl-d>', 'd')
-map('<Ctrl-e>', 'j')
-map('<Ctrl-y>', 'k')
-map('<Ctrl-n>', 'R')
-map('<Ctrl-p>', 'E')
-map('H', 'S')
-map('L', 'D')
-map('d', 'x')
-map('u', 'X')
-map('F', 'gf')
-map('P', 'sg')
-map('<Ctrl-t><Ctrl-t>', '<Ctrl-6>')
-map('<Ctrl-[>', '<Esc>')
-
-iunmap('<Ctrl-f>')
-imap('<Ctrl-f>', '<Right>')
-// }}}
-
-// {{{ UnmapKeys
-const unmapKeys = keys => keys.forEach(key => unmap(key))
-unmapKeys(['ob', 'sb', 'ow', 'sw'])
-
-const commonUnmapKeys = [
-  '<Ctrl-f>', '<Ctrl-b>',
-  '<Ctrl-d>', '<Ctrl-u>',
-  '<Ctrl-y>', '<Ctrl-e>',
-  '<Ctrl-n>', '<Ctrl-p>',
-  '<Ctrl-t><Ctrl-t>',
-  '<Ctrl-;>',
-  'go', 't',
-  'oT', 'oa', 'od', 'og',
-  'oh', 'oi', 'om', 'on',
-  'or', 'ot', 'ox', 'oy',
-  'H', 'L',
-  'G', 'gg',
-  'f', 'F',
-  'x', 'X', 'd',
-]
-
-unmapAllExcept(
-  commonUnmapKeys,
-  /mail\.google\.com/
-)
-
-unmapAllExcept(
-  commonUnmapKeys.concat(['u', 'gn']),
-  /outlook\.office\.com|b\.hatena\.ne\.jp|twitter\.com/
-)
-// }}}
-
 // {{{ SearchAlias & MapKeys
 removeSearchAliasX('b')
 removeSearchAliasX('w')
@@ -251,7 +197,7 @@ if (/youtube\.com/.test(window.location.hostname)) {
 
 // {{{ Modify the page's URL
 if (/www.amazon.co.jp/.test(window.location.hostname)) {
-  mapkey('=s', '#14Shorten the URL', () => {
+  mapkey('==', '#14Shorten the URL', () => {
     location.href = `https://www.amazon.co.jp/dp/${
       document.querySelectorAll("[name='ASIN'], [name='ASIN.0']")[0].value
     }`
@@ -263,4 +209,57 @@ mapkey('=?', '#14Delete query string', () => shortenURL(/\?.*/))
 mapkey('=q', '#14Delete query string', () => shortenURL(/\?.*/))
 mapkey('=#', '#14Delete hash', () => shortenURL(/#.*/))
 mapkey('=h', '#14Delete hash', () => shortenURL(/#.*/))
+// }}}
+
+// {{{ MapKeys
+map('<Ctrl-f>', 'd')
+map('<Ctrl-b>', 'e')
+map('<Ctrl-u>', 'e')
+map('<Ctrl-d>', 'd')
+map('<Ctrl-e>', 'j')
+map('<Ctrl-y>', 'k')
+map('<Ctrl-n>', 'R')
+map('<Ctrl-p>', 'E')
+map('H', 'S')
+map('L', 'D')
+map('d', 'x')
+map('u', 'X')
+map('F', 'gf')
+map('P', 'sg')
+map('<Ctrl-t><Ctrl-t>', '<Ctrl-6>')
+map('<Ctrl-[>', '<Esc>')
+// }}}
+
+// {{{ UnmapKeys
+iunmap('<Ctrl-f>')
+iunmap('<Ctrl-e>')
+
+const unmapKeys = keys => keys.forEach(key => unmap(key))
+unmapKeys(['ob', 'sb', 'ow', 'sw'])
+
+const commonUnmapKeys = [
+  '<Ctrl-f>', '<Ctrl-b>',
+  '<Ctrl-d>', '<Ctrl-u>',
+  '<Ctrl-y>', '<Ctrl-e>',
+  '<Ctrl-n>', '<Ctrl-p>',
+  '<Ctrl-t><Ctrl-t>',
+  '<Ctrl-;>',
+  't',
+  'oT', 'oa', 'od', 'og',
+  'oh', 'oi', 'om', 'on',
+  'or', 'ot', 'ox', 'oy',
+  'H', 'L',
+  'f', 'F',
+  'x', 'X', 'd',
+]
+
+unmapAllExcept(
+  commonUnmapKeys,
+  /mail.google.com/
+)
+
+unmapAllExcept(
+  commonUnmapKeys.concat(['u', 'go', 'gn', 'G', 'gg']),
+  /outlook\.office\.com|b\.hatena\.ne\.jp|twitter\.com/
+)
 // }}}
