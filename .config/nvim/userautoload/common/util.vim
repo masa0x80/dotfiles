@@ -70,9 +70,10 @@ augroup VsplitHelp
   autocmd FileType help wincmd L
 augroup END
 
-" {{{ markdown
+" {{{ Markdown
 augroup MarkdownKeybindins
   autocmd!
+  autocmd VimEnter * if &filetype == '' | execute 'set filetype=markdown' | endif
   autocmd FileType markdown inoremap <silent> <buffer> <Tab> <Esc>:<C-u>call <SID>markdown_indent('>')<CR>
   autocmd FileType markdown inoremap <silent> <buffer> <S-Tab> <Esc>:<C-u>call <SID>markdown_indent('<')<CR>
 augroup END
@@ -89,6 +90,18 @@ function! s:markdown_indent(op)
   endif
   startinsert!
 endfunction
+
+function! s:generate_confluence_markup()
+  let l:out = '/tmp/' . strftime('%FT%T') . '.confluence'
+  silent execute '%y'
+  execute 'edit ' . l:out
+  silent execute 'put!'
+  silent execute 'write'
+  silent execute '0read !cat ' . l:out . ' | markdown2confluence'
+  silent execute (line('.') + 1) . ',$d'
+  silent execute '%y'
+endfunction
+command! Md2Confluence call s:generate_confluence_markup()
 " }}}
 
 augroup AutoFishIndent
@@ -101,14 +114,6 @@ function! s:exec_fish_indent()
   execute '%! fish_indent'
   execute ':' . l:line
 endfunction
-
-function! s:generate_confluence_markup()
-  let l:in = expand('%:p')
-  let l:out = expand('%:p:r') . '.confluence'
-  execute ':e confluence'
-  execute '0r!markdown2confluence ' . l:in
-endfunction
-command! Md2Confluence call s:generate_confluence_markup()
 
 " ref: http://qiita.com/tekkoc/items/324d736f68b0f27680b8
 function! s:Jq(...)
