@@ -6,6 +6,13 @@ settings.hintAlign = 'left'
 settings.focusAfterClosed = 'right'
 // }}}
 
+// {{{ UnmapKeys
+const unmapKeys = keys => keys.forEach(key => unmap(key))
+unmapKeys(['ob', 'sb', 'ow', 'sw'])
+const iunmapKeys = keys => keys.forEach(key => iunmap(key))
+iunmapKeys(['<Ctrl-f>', '<Ctrl-e>'])
+// }}}
+
 // {{{ SearchAlias & MapKeys
 removeSearchAliasX('b')
 removeSearchAliasX('w')
@@ -230,13 +237,7 @@ map('<Ctrl-t><Ctrl-t>', '<Ctrl-6>')
 map('<Ctrl-[>', '<Esc>')
 // }}}
 
-// {{{ UnmapKeys
-iunmap('<Ctrl-f>')
-iunmap('<Ctrl-e>')
-
-const unmapKeys = keys => keys.forEach(key => unmap(key))
-unmapKeys(['ob', 'sb', 'ow', 'sw'])
-
+// {{{ unmapAllExcept
 const commonUnmapKeys = [
   '<Ctrl-f>', '<Ctrl-b>',
   '<Ctrl-d>', '<Ctrl-u>',
@@ -255,11 +256,11 @@ const commonUnmapKeys = [
 
 unmapAllExcept(
   commonUnmapKeys,
-  /mail.google.com/
+  /mail\.google\.com/
 )
 
 unmapAllExcept(
-  commonUnmapKeys.concat(['u', 'go', 'gn', 'G', 'gg']),
+  commonUnmapKeys.concat(['u', 'go', 'G', 'gg']).concat(Object.keys(qmarksUrls).map(key => `gn${key}`)),
   /outlook\.office\.com|b\.hatena\.ne\.jp|twitter\.com/
 )
 // }}}
