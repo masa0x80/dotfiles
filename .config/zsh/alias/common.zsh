@@ -90,7 +90,3 @@ sudo() {
     command sudo "$@"
   fi
 }
-
-dc() {
-  COMPOSE_PROJECT_NAME=$(current_dir) docker-compose $@
-}
