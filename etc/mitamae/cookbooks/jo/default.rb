@@ -4,7 +4,7 @@ when 'darwin'
 when 'redhat'
   execute 'download jo' do
     command <<-"EOF"
-      curl -LO https://github.com/jpmens/jo/releases/download/v#{node[:jo][:version]}/jo-#{node[:jo][:version]}.tar.gz
+      curl -LO https://github.com/jpmens/jo/releases/download/#{node[:jo][:version]}/jo-#{node[:jo][:version]}.tar.gz
       tar zxf jo-#{node[:jo][:version]}.tar.gz
     EOF
     cwd node[:src_dir]

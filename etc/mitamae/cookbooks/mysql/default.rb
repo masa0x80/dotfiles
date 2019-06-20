@@ -14,3 +14,4 @@ when 'redhat'
     package pkg
   end
 end
+include_cookbook 'mycli'

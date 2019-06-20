@@ -1,31 +1,25 @@
 node.reverse_merge!(
   git: {
-    version: '2.20.1'
-  },
-  global: {
-    version: '6.6.3'
+    version: '2.21.0'
   },
   golang: {
-    version: '1.12.4'
+    version: '1.12.5'
   },
   jo: {
-    version: '1.1'
+    version: '1.2'
   },
   mysql: {
     rpm_url: 'http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm',
     package: 'mysql57-community-release'
   },
   nodejs: {
-    version: '11.6.0'
+    version: '12.4.0'
   },
   perl: {
     version: '5.22.1'
   },
-  phantomjs: {
-    version: '2.1.1'
-  },
   python: {
-    version2: '2.7.15',
+    version2: '2.7.16',
     version3: '3.7.2'
   },
   ruby: {
@@ -36,11 +30,11 @@ node.reverse_merge!(
     package: 'remi-release'
   },
   tmux: {
-    version: '2.8'
+    version: '2.9'
   },
   vagrant: {
-    rpm_url: 'https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1_x86_64.rpm',
-    package: 'vagrant-1.9.1-1.x86_64'
+    rpm_url: 'https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.rpm',
+    package: 'vagrant-2.2.4-1.x86_64'
   },
   virtualbox: {
     yum_repository: 'http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo',

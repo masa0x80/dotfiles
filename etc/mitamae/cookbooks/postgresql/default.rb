@@ -17,3 +17,4 @@ when 'redhat'
     not_if 'type -a psql > /dev/null 2>&1'
   end
 end
+include_cookbook 'pgcli'
