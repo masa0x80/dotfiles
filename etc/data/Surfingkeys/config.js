@@ -6,9 +6,28 @@ settings.hintAlign = 'left'
 settings.focusAfterClosed = 'right'
 // }}}
 
+// {{{ MapKeys
+map('<Ctrl-f>', 'd')
+map('<Ctrl-b>', 'e')
+map('<Ctrl-u>', 'e')
+map('<Ctrl-d>', 'd')
+map('<Ctrl-e>', 'j')
+map('<Ctrl-y>', 'k')
+map('<Ctrl-n>', 'R')
+map('<Ctrl-p>', 'E')
+map('H', 'S')
+map('L', 'D')
+map('d', 'x')
+map('u', 'X')
+map('F', 'gf')
+map('P', 'sg')
+map('<Ctrl-t><Ctrl-t>', '<Ctrl-6>')
+map('<Ctrl-[>', '<Esc>')
+// }}}
+
 // {{{ UnmapKeys
 const unmapKeys = keys => keys.forEach(key => unmap(key))
-unmapKeys(['ob', 'sb', 'ow', 'sw'])
+unmapKeys(['gn', 'ob', 'sb', 'ow', 'sw'])
 const iunmapKeys = keys => keys.forEach(key => iunmap(key))
 iunmapKeys(['<Ctrl-f>', '<Ctrl-e>'])
 // }}}
@@ -135,7 +154,6 @@ const qmarksMapKey = (prefix, urls, newTab) => {
     mapkey(prefix + key, `qmark: ${urls[key]}`, openLink(urls[key], newTab))
   }
 }
-unmap('gn')
 qmarksMapKey('gn', qmarksUrls, true)
 qmarksMapKey('gN', qmarksUrls, false)
 // }}}
@@ -216,25 +234,6 @@ mapkey('=?', '#14Delete query string', () => shortenURL(/\?.*/))
 mapkey('=q', '#14Delete query string', () => shortenURL(/\?.*/))
 mapkey('=#', '#14Delete hash', () => shortenURL(/#.*/))
 mapkey('=h', '#14Delete hash', () => shortenURL(/#.*/))
-// }}}
-
-// {{{ MapKeys
-map('<Ctrl-f>', 'd')
-map('<Ctrl-b>', 'e')
-map('<Ctrl-u>', 'e')
-map('<Ctrl-d>', 'd')
-map('<Ctrl-e>', 'j')
-map('<Ctrl-y>', 'k')
-map('<Ctrl-n>', 'R')
-map('<Ctrl-p>', 'E')
-map('H', 'S')
-map('L', 'D')
-map('d', 'x')
-map('u', 'X')
-map('F', 'gf')
-map('P', 'sg')
-map('<Ctrl-t><Ctrl-t>', '<Ctrl-6>')
-map('<Ctrl-[>', '<Esc>')
 // }}}
 
 // {{{ unmapAllExcept
