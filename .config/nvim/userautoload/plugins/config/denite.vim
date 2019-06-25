@@ -14,9 +14,9 @@ endif
 call denite#custom#alias('source', 'file/rec/git', 'file/rec')
 call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
 
-call denite#custom#source('buffer', 'matchers', ['matcher/fruzzy'])
-call denite#custom#source('file/rec', 'matchers', ['matcher/fruzzy'])
-call denite#custom#source('file/rec/git', 'matchers', ['matcher/fruzzy'])
+call denite#custom#source('buffer', 'matchers', ['matcher/cpsm'])
+call denite#custom#source('file/rec', 'matchers', ['matcher/cpsm'])
+call denite#custom#source('file/rec/git', 'matchers', ['matcher/cpsm'])
 
 if executable('pt')
   call denite#custom#var('grep', 'command', ['pt', '--nogroup', '--nocolor', '--smart-case', '--hidden'])

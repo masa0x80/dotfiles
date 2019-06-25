@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-rev = '6937f1d9186a4d464b158368a3f38d9a7c5c14eb'
+rev = '2b884d5d990539fe25b44398146645dafc8ffa49'
 on_cmd   = ['Denite', 'DeniteBufferDir', 'DeniteCursorWord']
 hook_add = ''' " {{{
   nnoremap <silent> <Leader>b :<C-u>Denite buffer<CR>
