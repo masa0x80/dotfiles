@@ -143,12 +143,21 @@ abbr -a bil 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4 
 
 type -qa direnv && eval (direnv hook fish)
 
-function __rename_window --on-event fish_prompt
+function __prepare_rename_window --on-event fish_preexec
+  set -gx TMUX_WINDOW_INDEX (tmux display-message -p '#I')
+end
+function __exec_rename_window --on-event rename_window
     __check_local_git_config
     __tmux_attach_session
     if __tmux_is_running
-        tmux rename-window (current_dir | tr '-' '/')
+      tmux rename-window -t $TMUX_WINDOW_INDEX (current_dir | tr '-' '/')
     end
 end
+function __rename_window --on-event fish_prompt
+  emit rename_window
+end
+
+__prepare_rename_window
+emit rename_window
 
 # }}}
