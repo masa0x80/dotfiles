@@ -147,7 +147,7 @@ function __rename_window --on-event fish_prompt
     __check_local_git_config
     __tmux_attach_session
     if __tmux_is_running
-        tmux rename-window (current_dir project)
+        tmux rename-window (current_dir | tr '-' '/')
     end
 end
 
