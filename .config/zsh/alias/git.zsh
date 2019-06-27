@@ -44,6 +44,8 @@ alias grbi='git rebase -i'
 alias grbm='git rebase master'
 alias grbs='git rebase --skip'
 
+alias gri='git rebase -i $(git fzf)'
+
 alias gre='git review'
 
 alias grh='git reset HEAD'
