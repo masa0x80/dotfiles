@@ -1,23 +1,10 @@
 function fish_prompt
     set -l status_code $status
-    not set -q prompt_counter
-    and set -gx prompt_counter 1
+    not set -q prompt_counter && set -gx prompt_counter (math (random) % 2)
     set prompt_counter (math \($prompt_counter + 1\) \% 2)
 
     set -l prompt_prefix
     set -l prompt_suffix '匚＞'
-
-    set -l color_venv (set_color grey)
-    set -l color_directory (set_color blue)
-    set -l color_normal (set_color normal)
-
-    if test "$VIRTUAL_ENV" != ''
-        echo -n -s $color_venv (basename $VIRTUAL_ENV) $color_normal ' '
-    end
-    echo -n -s $color_directory (prompt_pwd) $color_normal ' '
-    echo -n -s (date '+%H:%M:%S')
-    echo -n -s (__fish_git_prompt)
-    echo ' '
 
     if test $prompt_counter -eq 1
         set prompt_prefix 'ミ'
@@ -25,10 +12,11 @@ function fish_prompt
         set prompt_prefix '彡'
     end
 
+    echo -n -s (__fish_git_prompt '%s ')
     if test $status_code -eq 0
-        echo -n -s $color_success $prompt_prefix : $prompt_suffix $color_normal
+        echo -n -s $prompt_prefix : $prompt_suffix
     else
-        echo -n -s $color_error $prompt_prefix X $prompt_suffix $color_normal
+        echo -n -s $prompt_prefix X $prompt_suffix
     end
 
     echo -n ' '
