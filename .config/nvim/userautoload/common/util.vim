@@ -106,7 +106,7 @@ command! Md2Confluence call s:generate_confluence_markup()
 
 augroup AutoFishIndent
   autocmd!
-  autocmd BufWritePre fish call s:exec_fish_indent()
+  autocmd BufWritePre *.fish call s:exec_fish_indent()
 augroup END
 
 function! s:exec_fish_indent()
