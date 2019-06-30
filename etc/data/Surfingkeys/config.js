@@ -29,7 +29,9 @@ map('<Ctrl-[>', '<Esc>')
 const unmapKeys = keys => keys.forEach(key => unmap(key))
 unmapKeys(['gn', 'ob', 'sb', 'ow', 'sw'])
 const iunmapKeys = keys => keys.forEach(key => iunmap(key))
-iunmapKeys(['<Ctrl-f>', '<Ctrl-e>'])
+iunmapKeys([':', '<Ctrl-f>', '<Ctrl-e>'])
+const vunmapKeys = keys => keys.forEach(key => vunmap(key))
+vunmapKeys(['q'])
 // }}}
 
 // {{{ SearchAlias & MapKeys
