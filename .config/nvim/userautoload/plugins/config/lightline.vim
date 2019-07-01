@@ -62,13 +62,7 @@ function! MyFileencoding()
 endfunction
 
 function! MyMode()
-  if &ft == 'denite'
-    let l:mode_name = substitute(denite#get_status_mode(), '[^A-Z]', '', 'g')
-    call lightline#link(tolower(l:mode_name[0]))
-    return l:mode_name
-  else
-    return winwidth(0) > 60 ? lightline#mode() : ''
-  endif
+  return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
 augroup LightlineColorscheme
