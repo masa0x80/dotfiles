@@ -253,6 +253,8 @@ const commonUnmapKeys = [
   'H', 'L',
   'f', 'F',
   'x', 'X', 'd',
+  '>>', '<<',
+  '<Alt-p>'
 ]
 
 unmapAllExcept(
