@@ -1,5 +1,5 @@
 // {{{ Settings
-Hints.style('border: solid 3px #552a48; color:#efe1eb; background: initial; background-color: #552a48;')
+Hints.style('font-size: 16px; border: solid 3px #552a48; color:#efe1eb; background: initial; background-color: #552a48;')
 settings.nextLinkRegex = /((?!first)(next|older|more|>|»|forward|→|次(のページ|へ))+)/i
 settings.prevLinkRegex = /((?!last)(prev(ious)?|newer|back|«|less|<|←|前(のページ|へ))+)/i
 settings.hintAlign = 'left'
@@ -114,8 +114,6 @@ addSearchAliasX(
 mapkey('ow', '#8Open Search with alias w', function() {
   Front.openOmnibar({ type: 'SearchEngine', extra: 'w' })
 })
-
-mapkey('<Ctrl-;>', '#8Choose a tab with omnibar', () => Front.openOmnibar({ type: 'Tabs' }))
 
 mapkey(';b', '#14Hatena Bookmark', () => {
   const { location } = window
@@ -245,7 +243,6 @@ const commonUnmapKeys = [
   '<Ctrl-y>', '<Ctrl-e>',
   '<Ctrl-n>', '<Ctrl-p>',
   '<Ctrl-t><Ctrl-t>',
-  '<Ctrl-;>',
   't',
   'oT', 'oa', 'od', 'og',
   'oh', 'oi', 'om', 'on',
