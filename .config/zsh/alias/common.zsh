@@ -31,13 +31,12 @@ else
   alias ls='ls --color=auto'
 fi
 if (( $+commands[exa] )); then
-  alias l='exa -la --git'
-  alias la='exa -la --git'
-  alias ll='exa -l --git'
-  alias ls='exa'
+  alias l='exa'
+  alias la='exa -la'
+  alias ll='exa -l'
   alias tree='exa -T'
 else
-  alias l='ls -lAh'
+  alias l='ls'
   alias la='ls -lAh'
   alias ll='ls -lh'
 fi

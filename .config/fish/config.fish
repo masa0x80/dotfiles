@@ -36,13 +36,12 @@ abbr -a rf 'rm -rf'
 abbr -a vim 'vi'
 
 if type -qa exa
-    abbr -a l 'exa -la --git'
-    abbr -a la 'exa -la --git'
-    abbr -a ll 'exa -l --git'
-    abbr -a ls 'exa'
+    alias l='exa'
+    alias la='exa -la'
+    alias ll='exa -l'
     abbr -a tree 'exa -T'
 else
-    abbr -a l 'ls -lAh'
+    abbr -a l 'ls'
     abbr -a la 'ls -lAh'
     abbr -a ll 'ls -lh'
 end
