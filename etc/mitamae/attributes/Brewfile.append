@@ -1,12 +1,8 @@
 tap 'greymd/tools'
 
-cask 'bitbar'
 cask 'boostnote'
-cask 'brave'
-cask 'dash'
 cask 'diskwave'
 cask 'docker'
-cask 'insomnia'
 cask 'vanilla'
 cask 'visual-studio-code'
 
