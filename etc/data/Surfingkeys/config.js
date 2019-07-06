@@ -1,5 +1,6 @@
 // {{{ Settings
-Hints.style('font-size: 16px; border: solid 3px #552a48; color:#efe1eb; background: initial; background-color: #552a48;')
+Hints.style('font-size: 1rem; border: none; color:#efe1eb; background: initial; background-color: #552a48;')
+Hints.style('font-size: 1rem; border: none; background: initial; background-color: #c0c0c0', 'text')
 settings.nextLinkRegex = /((?!first)(next|older|more|>|»|forward|→|次(のページ|へ))+)/i
 settings.prevLinkRegex = /((?!last)(prev(ious)?|newer|back|«|less|<|←|前(のページ|へ))+)/i
 settings.hintAlign = 'left'
