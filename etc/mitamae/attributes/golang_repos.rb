@@ -8,5 +8,6 @@ node.reverse_merge!(
     github.com/peco/peco/cmd/peco
     github.com/github/hub
     github.com/hashicorp/packer
+    github.com/mattn/files
   )
 )
