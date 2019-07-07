@@ -77,3 +77,14 @@ hook_post_update = '''
   call fruzzy#install()
   let g:fruzzy#usenative = 1
 '''
+
+[[plugins]] # {{{ fzf
+repo = 'junegunn/fzf'
+build = './install --all'
+merged = 0
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = ['fzf']
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/fzf.vim'
+# }}} fzf
