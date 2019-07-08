@@ -17,6 +17,7 @@ cask 'vivaldi'
 brew 'autoconf'
 brew 'automake'
 brew 'boost'
+brew 'chromedriver'
 brew 'coreutils'
 brew 'universal-ctags', args: ['HEAD']
 brew 'curl'
