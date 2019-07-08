@@ -39,10 +39,6 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/vim-easymotion.vim
 repo = 'tpope/vim-repeat'
 
 [[plugins]]
-repo = 'nixprime/cpsm'
-build = 'sh -c "PY3=ON ./install.sh"'
-
-[[plugins]]
 repo = 'cocopon/vaffle.vim'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/vaffle.vim'
 
@@ -70,13 +66,6 @@ repo = 'sgur/vim-editorconfig'
 
 [[plugins]]
 repo = 'w0rp/ale'
-
-[[plugins]]
-repo = 'raghur/fruzzy'
-hook_post_update = '''
-  call fruzzy#install()
-  let g:fruzzy#usenative = 1
-'''
 
 [[plugins]] # {{{ fzf
 repo = 'junegunn/fzf'
