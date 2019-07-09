@@ -9,5 +9,6 @@ node.reverse_merge!(
     github.com/github/hub
     github.com/hashicorp/packer
     github.com/mattn/files
+    github.com/jesseduffield/lazydocker
   )
 )
