@@ -22,11 +22,10 @@ when 'redhat'
 
   execute 'make && make install' do
     cwd "#{node[:src_dir]}/neovim"
-    not_if 'typo -a nvim > /dev/null 2>&1'
+    not_if 'type -a nvim > /dev/null 2>&1'
   end
 end
 
-include_cookbook 'pyenv' do
-  recipe 'python3'
+include_cookbook 'neovim' do
+  recipe 'pip_neovim'
 end
-pip3 'neovim'

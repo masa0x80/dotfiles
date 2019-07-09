@@ -22,6 +22,7 @@ export PATH=/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin
 
 # brew install openssl
 [ -d /usr/local/opt/openssl/bin ] && PATH=/usr/local/opt/openssl/bin:$PATH
+[ -d /usr/local/opt/openssl/bin ] && export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 
 # brew install sqlite
 [ -d /usr/local/opt/sqlite/bin ] && PATH=/usr/local/opt/sqlite/bin:$PATH

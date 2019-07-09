@@ -30,6 +30,7 @@ define :pip3 do
     command <<-"EOF"
       #{node[:proxy_config]}
       export PATH=#{node[:env][:path]}
+      export LIBRARY_PATH=#{node[:env][:library_path]}
       eval "$(anyenv init - bash)"
       pip3 list | grep -i #{pkg} || pip3 install #{pkg}
     EOF

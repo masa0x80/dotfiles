@@ -28,6 +28,7 @@ node[:env][:path] = %W[
 ].join(':')
 
 node[:env][:python_configure_opts] = ENV['PYTHON_CONFIGURE_OPTS']
+node[:env][:library_path] = ENV['LIBRARY_PATH']
 
 ENV['PATH'] = node[:env][:path]
 

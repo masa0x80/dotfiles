@@ -11,3 +11,14 @@ execute 'install python3' do
   EOF
   user node[:user]
 end
+
+include_cookbook 'neovim' do
+  recipe 'pip_neovim'
+  only_if 'type -a nvim > /dev/null 2>&1'
+end
+include_cookbook 'mycli' do
+  only_if 'type -a mysql > /dev/null 2>&1'
+end
+include_cookbook 'pgcli' do
+  only_if 'type -a psql > /dev/null 2>&1'
+end
