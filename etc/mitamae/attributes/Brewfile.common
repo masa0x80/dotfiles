@@ -19,7 +19,6 @@ brew 'autoconf'
 brew 'automake'
 brew 'boost'
 brew 'coreutils'
-brew 'universal-ctags', args: ['HEAD']
 brew 'curl'
 brew 'docker'
 brew 'emojify'
@@ -29,6 +28,7 @@ brew 'fzf'
 brew 'gdbm'
 brew 'gettext'
 brew 'git'
+brew 'gnu-tar'
 brew 'go'
 brew 'jq'
 brew 'less'
@@ -41,5 +41,6 @@ brew 'rsync'
 brew 'tig'
 brew 'tldr'
 brew 'tmux'
+brew 'universal-ctags', args: ['HEAD']
 
 mas 'Slack', id: 803453959
