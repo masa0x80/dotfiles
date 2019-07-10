@@ -1,5 +1,12 @@
 function fish_prompt
     set -l status_code $status
+
+    test $USER = 'root'
+    and printf (set_color red)$USER(set_color normal)' '
+
+    test $SSH_TTY
+    and printf (set_color grey)$USER'@'(prompt_hostname)(set_color normal)' '
+
     not set -q prompt_counter && set -gx prompt_counter (math (random) % 2)
     set prompt_counter (math \($prompt_counter + 1\) \% 2)
 
@@ -12,12 +19,9 @@ function fish_prompt
         set prompt_prefix '彡'
     end
 
-    echo -n -s (__fish_git_prompt '%s ')
     if test $status_code -eq 0
-        echo -n -s $prompt_prefix : $prompt_suffix
+        printf '%s:%s ' $prompt_prefix $prompt_suffix
     else
-        echo -n -s $prompt_prefix X $prompt_suffix
+        printf (set_color red)'%sX%s '(set_color normal) $prompt_prefix $prompt_suffix
     end
-
-    echo -n ' '
 end
