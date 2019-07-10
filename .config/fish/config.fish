@@ -150,7 +150,7 @@ end
 function __exec_rename_window --on-event rename_window
     __check_local_git_config
     if __tmux_is_running
-        tmux rename-window -t $TMUX_WINDOW_INDEX (current_dir | tr '-' '/')
+        tmux rename-window -t $TMUX_WINDOW_INDEX (current_dir)
     end
 end
 function __rename_window --on-event fish_prompt

@@ -1,7 +1,8 @@
 #!/bin/bash
 
+output_delimiter=${1:-/}
 project_name=$(pwd | rev | cut -d/ -f 1 | rev)
 if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true' ]; then
-  [ "$DOTFILE" != "$(git rev-parse --show-toplevel)" ] && project_name=$(git rev-parse --show-toplevel | rev | cut -d/ -f1,2 --output-delimiter - | rev)
+  [ "$DOTFILE" != "$(git rev-parse --show-toplevel)" ] && project_name=$(git rev-parse --show-toplevel | rev | cut -d/ -f1,2 --output-delimiter $output_delimiter | rev)
 fi
 echo $project_name

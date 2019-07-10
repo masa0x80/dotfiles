@@ -8,7 +8,7 @@ check_local_git_config() {
 rename_window() {
   check_local_git_config
   if is_tmux_running; then
-    tmux rename-window $(current_dir | tr '-' '/')
+    tmux rename-window $(current_dir)
   fi
 }
 autoload -Uz add-zsh-hook
