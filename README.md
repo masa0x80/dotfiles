@@ -85,13 +85,12 @@ After running `make install`, load `./etc/data/terminal/Hybrid.terminal` for **T
 
 1. Start `bash` after starting termial
 2. Read `.bash_profile` at first
-3. Read basic environment variables from `.sh_env`
+3. Read basic environment variables from `.environments`
     - Load proxy config if necessary
     - Set PATH
     - Initialize anyenv
     - Set environemnt variables for golang
 4. Kick-start `fish`
-5. Start or attach `tmux` session by `__tmux_attach_session` function
 
 ### Provisioning local machine
 
