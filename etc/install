@@ -1,34 +1,53 @@
 #!/bin/bash
 
-echo 'Downloading dotfiles...'
-url='https://github.com/masa0x80/dotfiles/archive/master.zip'
-mkdir -p /tmp/$$ && cd /tmp/$$
+install_dir="$HOME/.ghq/github.com/masa0x80/dotfiles"
+mkdir -p $install_dir
 
-if type yum > /dev/null 2>&1; then
-  sudo -E yum install -y sudo which make bzip2 unzip curl
-fi
-
-if type curl > /dev/null 2>&1; then
-  curl -Lo dotfiles.zip "$url"
-  if type unzip > /dev/null 2>&1; then
-    unzip dotfiles.zip
-    mv dotfiles-master $HOME/.dotfiles
-    cd $_
-    echo 'Initialize and install tools...'
-    if make init; then
-      if make deploy; then
-        echo 'Complete!!'
-      else
-        echo 'error: make deploy'
-      fi
+if test $(uname -s) == 'Darwin'; then
+  repo='https://github.com/masa0x80/dotfiles.git'
+  git clone $repo $install_dir
+  cd $install_dir
+  if make init; then
+    if make deploy; then
+      echo 'Complete!!'
     else
-      echo 'error: make init'
+      echo 'error: make deploy'
     fi
   else
-    echo 'error: unzip not found'
-    echo '*** Please install unzip ***'
+    echo 'error: make init'
   fi
 else
-  echo 'error: curl not found'
-  echo '*** Please install curl ***'
+  echo 'Downloading dotfiles...'
+  url='https://github.com/masa0x80/dotfiles/archive/master.zip'
+  mkdir -p /tmp/$$
+  cd $_
+
+  if type yum > /dev/null 2>&1; then
+    sudo -E yum install -y sudo which make bzip2 unzip curl
+  fi
+
+  if type curl > /dev/null 2>&1; then
+    curl -Lo dotfiles.zip "$url"
+    if type unzip > /dev/null 2>&1; then
+      unzip dotfiles.zip
+      mv dotfiles-master/* $install_dir/
+      cd $_
+      echo 'Initialize and install tools...'
+      if make init; then
+        if make deploy; then
+          echo 'Complete!!'
+        else
+          echo 'error: make deploy'
+        fi
+      else
+        echo 'error: make init'
+      fi
+    else
+      echo 'error: unzip not found'
+      echo '*** Please install unzip ***'
+    fi
+  else
+    echo 'error: curl not found'
+    echo '*** Please install curl ***'
+  fi
 fi
