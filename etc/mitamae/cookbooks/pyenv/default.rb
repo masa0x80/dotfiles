@@ -16,6 +16,7 @@ execute 'fix python2 version' do
     #{node[:proxy_config]}
     export PATH=#{node[:env][:path]}
     eval "$(anyenv init - bash)"
+    pip install --upgrade pip
     type -a pyenv > /dev/null 2>&1 && pyenv versions | grep -q #{node[:python][:version2]} || pyenv install #{node[:python][:version2]}
     type -a pyenv > /dev/null 2>&1 && pyenv versions | grep -q "* #{node[:python][:version2]}" || pyenv global #{node[:python][:version2]}
   EOF

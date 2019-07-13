@@ -1,3 +1,5 @@
+include_cookbook 'neovim'
+
 include_cookbook 'pyenv' do
   recipe 'python3'
 end
