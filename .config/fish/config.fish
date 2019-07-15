@@ -138,6 +138,9 @@ abbr -a bil 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4 
 
 # }}}
 
+### gabbr
+not set -q global_abbreviations && gabbr -r
+
 ### Hooks {{{
 
 type -qa direnv && eval (direnv hook fish)
