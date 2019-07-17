@@ -1,6 +1,7 @@
 tap 'greymd/tools'
 
 cask 'boostnote'
+cask 'dash'
 cask 'diskwave'
 cask 'docker'
 cask 'vanilla'
