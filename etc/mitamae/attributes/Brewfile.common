@@ -13,6 +13,7 @@ cask 'iterm2-nightly'
 cask 'itsycal'
 cask 'spectacle'
 cask 'vagrant'
+cask 'virtualbox'
 cask 'vivaldi'
 
 brew 'autoconf'
