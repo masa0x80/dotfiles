@@ -24,11 +24,12 @@ map('F', 'gf')
 map('P', 'sg')
 map('<Ctrl-t><Ctrl-t>', '<Ctrl-6>')
 map('<Ctrl-[>', '<Esc>')
+map('gn', 't')
 // }}}
 
 // {{{ UnmapKeys
 const unmapKeys = keys => keys.forEach(key => unmap(key))
-unmapKeys(['gn', 'ob', 'sb', 'ow', 'sw'])
+unmapKeys(['go', 'ob', 'sb', 'ow', 'sw'])
 const iunmapKeys = keys => keys.forEach(key => iunmap(key))
 iunmapKeys([':', '<Ctrl-f>', '<Ctrl-e>'])
 const vunmapKeys = keys => keys.forEach(key => vunmap(key))
@@ -155,8 +156,8 @@ const qmarksMapKey = (prefix, urls, newTab) => {
     mapkey(prefix + key, `qmark: ${urls[key]}`, openLink(urls[key], newTab))
   }
 }
-qmarksMapKey('gn', qmarksUrls, true)
-qmarksMapKey('gN', qmarksUrls, false)
+qmarksMapKey('go', qmarksUrls, true)
+qmarksMapKey('gO', qmarksUrls, false)
 // }}}
 
 // {{{ Images
@@ -244,7 +245,7 @@ const commonUnmapKeys = [
   '<Ctrl-y>', '<Ctrl-e>',
   '<Ctrl-n>', '<Ctrl-p>',
   '<Ctrl-t><Ctrl-t>',
-  't',
+  't', 'gn',
   'oT', 'oa', 'od', 'og',
   'oh', 'oi', 'om', 'on',
   'or', 'ot', 'ox', 'oy',
@@ -253,7 +254,9 @@ const commonUnmapKeys = [
   'x', 'X', 'd',
   '>>', '<<',
   '<Alt-p>'
-]
+].concat(
+  Object.keys(qmarksUrls).map(key => `gO${key}`)
+)
 
 unmapAllExcept(
   commonUnmapKeys,
@@ -261,7 +264,9 @@ unmapAllExcept(
 )
 
 unmapAllExcept(
-  commonUnmapKeys.concat(['u', 'go', 'G', 'gg']).concat(Object.keys(qmarksUrls).map(key => `gn${key}`)),
+  commonUnmapKeys.concat(['u', 'G', 'gg']).concat(
+    Object.keys(qmarksUrls).map(key => `go${key}`)
+  ),
   /outlook\.office\.com|b\.hatena\.ne\.jp|twitter\.com/
 )
 // }}}
