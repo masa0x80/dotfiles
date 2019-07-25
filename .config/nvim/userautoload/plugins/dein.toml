@@ -76,3 +76,6 @@ repo = 'junegunn/fzf.vim'
 depends = ['fzf']
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/fzf.vim'
 # }}} fzf
+
+[[plugins]]
+repo = 'simeji/winresizer'
