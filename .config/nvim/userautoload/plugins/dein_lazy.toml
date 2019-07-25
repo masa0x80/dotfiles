@@ -30,7 +30,9 @@ hook_post_source = 'source ~/.config/nvim/userautoload/plugins/config/denite.vim
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
+depends = ['context_filetype.vim']
 on_event = 'InsertEnter'
+hook_source = 'source ~/.config/nvim/userautoload/plugins/config/deoplete.vim'
 
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
@@ -39,10 +41,13 @@ on_source = ['denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
-depends = ['neosnippet-snippets']
+depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_ft = 'snippet'
 on_event = 'InsertCharPre'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/neosnippet.vim'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
