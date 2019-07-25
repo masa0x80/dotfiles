@@ -19,8 +19,6 @@ nnoremap x "_x
 nnoremap dd "_dd
 nnoremap D "_D
 
-nnoremap <C-j> zt
-
 " rubyデバッグ用
 augroup RubyDebug
   autocmd!
