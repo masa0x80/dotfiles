@@ -43,5 +43,6 @@ brew 'tig'
 brew 'tldr'
 brew 'tmux'
 brew 'universal-ctags', args: ['HEAD']
+brew 'watch'
 
 mas 'Slack', id: 803453959
