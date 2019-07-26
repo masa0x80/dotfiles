@@ -15,6 +15,6 @@ augroup END
 
 let g:LanguageClient_autoStart = 1
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <Leader>f :call LanguageClient_textDocument_formatting()<CR>
-nnoremap <Leader>h :call LanguageClient_textDocument_hover()<CR>
-nnoremap <Leader>r :call LanguageClient_textDocument_rename()<CR>
+nnoremap <Leader>lf :call LanguageClient_textDocument_formatting()<CR>
+nnoremap <Leader>lh :call LanguageClient_textDocument_hover()<CR>
+nnoremap <Leader>lr :call LanguageClient_textDocument_rename()<CR>
