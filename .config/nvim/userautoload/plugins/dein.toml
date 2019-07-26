@@ -84,3 +84,6 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/LanguageClient-neo
 
 [[plugins]]
 repo = 'simeji/winresizer'
+hook_add = '''
+  let g:winresizer_start_key = '<C-w><C-r>'
+'''
