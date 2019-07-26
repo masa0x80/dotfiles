@@ -9,7 +9,6 @@ alias rr='rails routes'
 alias t='rspec'
 alias ss='spring stop'
 
-alias b='bundle'
 alias be='bundle exec'
 alias bi='bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4'
 alias bil='bi --local'
