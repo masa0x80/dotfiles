@@ -66,10 +66,6 @@ repo = 'Shougo/vinarise.vim'
 on_cmd = 'Vinarise'
 
 [[plugins]]
-repo = 'lambdalisue/vim-gita'
-on_cmd = 'Gita'
-
-[[plugins]]
 repo = 'jelera/vim-javascript-syntax'
 on_ft = 'javascript'
 
