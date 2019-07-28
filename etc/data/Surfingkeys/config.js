@@ -29,7 +29,7 @@ map('gn', 't')
 
 // {{{ UnmapKeys
 const unmapKeys = keys => keys.forEach(key => unmap(key))
-unmapKeys(['go', 'ob', 'sb', 'ow', 'sw'])
+unmapKeys(['go', 'ob', 'sb', 'ow', 'sw', '<Meta-b>'])
 const iunmapKeys = keys => keys.forEach(key => iunmap(key))
 iunmapKeys([':', '<Ctrl-f>', '<Ctrl-e>'])
 const vunmapKeys = keys => keys.forEach(key => vunmap(key))
