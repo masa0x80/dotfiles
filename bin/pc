@@ -1,0 +1,7 @@
+#!/bin/bash
+
+pass_name=$(find $PASSWORD_STORE_DIR -name \*.gpg | grep -oP "(?<=\\$PASSWORD_STORE_DIR/).*(?=.gpg)" | fzf)
+if [ -z "$pass_name" ]; then
+  exit 1
+fi
+pass -c $pass_name
