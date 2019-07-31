@@ -137,6 +137,11 @@ abbr -a bi 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4'
 abbr -a bil 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4 --local'
 # }}}
 
+# docker {{{
+abbr -a dcu 'dc up -d'
+abbr -a dcd 'dc down'
+# }}}
+
 # }}}
 
 ### gabbr
