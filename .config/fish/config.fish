@@ -7,7 +7,9 @@ end
 # Append $DOTFILE/bin to $PATH
 # NOTE: must place before loading `$HOME/.config.local/fish/config.fish`
 not set -q DOTFILE && export DOTFILE=$HOME/.dotfiles
-test -d $DOTFILE && set -gx PATH $DOTFILE/bin $PATH
+if test -d $DOTFILE
+    contains $DOTFILE/bin $PATH || set -gx PATH $DOTFILE/bin $PATH
+end
 
 type -qa diff-highlight && export GITPAGER='diff-highlight'
 
