@@ -128,38 +128,10 @@ repo = 'LeafCage/foldCC'
 on_event = 'VimEnter'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/foldCC.vim'
 
-[[plugins]] # {{{ lightline
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 on_event = 'VimEnter'
 hook_source = 'source ~/.config/nvim/userautoload/plugins/config/lightline.vim'
-
-[[plugins]]
-repo = 'maximbaz/lightline-ale'
-on_source = ['lightline.vim']
-on_event = 'VimEnter'
-hook_source = ''' " {{{
-  let g:lightline.component_expand = {
-    \   'linter_checking': 'lightline#ale#checking',
-    \   'linter_warnings': 'lightline#ale#warnings',
-    \   'linter_errors': 'lightline#ale#errors',
-    \   'linter_ok': 'lightline#ale#ok'
-    \ }
-  let g:lightline.component_type = {
-    \   'linter_checking': 'left',
-    \   'linter_warnings': 'warning',
-    \   'linter_errors': 'error',
-    \   'linter_ok': 'left'
-    \ }
-  let g:lightline.active = {
-    \   'right': [
-    \      ['syntastic', 'lineinfo'],
-    \      ['percent'],
-    \      ['fileformat', 'fileencoding', 'filetype'],
-    \      ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']
-    \   ]
-    \ }
-" }}} '''
-# }}}
 
 [[plugins]]
 repo = 'rhysd/git-messenger.vim'
