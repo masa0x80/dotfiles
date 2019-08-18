@@ -68,11 +68,15 @@ abbr -a gbr 'git branch --remote'
 
 abbr -a gc 'git commit -v'
 abbr -a gc! 'git commit -v --amend'
-abbr -a gcb 'git checkout -b'
 abbr -a gcd 'git checkout develop'
 abbr -a gcm 'git checkout master'
 abbr -a gco 'git checkout'
 abbr -a gcp 'git cherry-pick'
+
+abbr -a gsw 'git switch'
+abbr -a gsc 'git switch -c'
+abbr -a gcb 'git switch -c'
+abbr -a gre 'git restore'
 
 abbr -a gd 'git diff'
 abbr -a gdc 'git diff --cached'
@@ -97,15 +101,14 @@ abbr -a gpush 'git push origin (git_current_branch)'
 abbr -a gpush! 'git push --force-with-lease origin (git_current_branch)'
 
 abbr -a grb 'git rebase'
+abbr -a grbm 'git rebase master'
+
 abbr -a grba 'git rebase --abort'
 abbr -a grbc 'git rebase --continue'
 abbr -a grbi 'git rebase -i'
-abbr -a grbm 'git rebase master'
 abbr -a grbs 'git rebase --skip'
 
 abbr -a gri 'git rebase -i (git fzf)'
-
-abbr -a gre 'git review'
 
 abbr -a grh 'git reset HEAD'
 abbr -a grhh 'git reset HEAD --hard'
@@ -115,7 +118,10 @@ abbr -a gru 'git reset --'
 abbr -a gsh 'git show'
 abbr -a gst 'git status -sb'
 abbr -a gts 'git tag -s'
+
+abbr -a review 'git review'
 # }}}
+
 
 # vagrant {{{
 abbr -a vdf 'vagrant destroy -f'

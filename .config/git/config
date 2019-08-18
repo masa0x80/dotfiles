@@ -14,6 +14,7 @@
 [alias]
   ci = commit -v
   co = checkout
+  sw = switch
   st = status
   di = diff
   br = branch
@@ -23,7 +24,7 @@
   dc = diff --cached
   f  = fetch
   unstage      = reset -q HEAD --
-  discard      = checkout --
+  discard      = restore --
   nevermind    = !git reset --hard HEAD && git clean -d -f
   uncommit     = reset --mixed HEAD~
   save         = commit -m

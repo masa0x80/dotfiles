@@ -10,11 +10,15 @@ alias gbr='git branch --remote'
 
 alias gc='git commit -v'
 alias gc!='git commit -v --amend'
-alias gcb='git checkout -b'
 alias gcd='git checkout develop'
 alias gcm='git checkout master'
 alias gco='git checkout'
 alias gcp='git cherry-pick'
+
+alias gsw='git switch'
+alias gsc='git switch -c'
+alias gcb='git checkout -b'
+alias gre='git restore'
 
 alias gd='git diff'
 alias gdc='git diff --cached'
@@ -39,15 +43,14 @@ alias gpush='git push origin $(git_current_branch)'
 alias gpush!='git push --force-with-lease origin $(git_current_branch)'
 
 alias grb='git rebase'
+alias grbm='git rebase master'
+
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
 alias grbi='git rebase -i'
-alias grbm='git rebase master'
 alias grbs='git rebase --skip'
 
 alias gri='git rebase -i $(git fzf)'
-
-alias gre='git review'
 
 alias grh='git reset HEAD'
 alias grhh='git reset HEAD --hard'
@@ -57,6 +60,8 @@ alias gru='git reset --'
 alias gsh='git show'
 alias gst='git status -sb'
 alias gts='git tag -s'
+
+alias review='git review'
 
 # ref: bin/git-fzf
 alias -g GH='$(git fzf)'
