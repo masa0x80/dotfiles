@@ -22,7 +22,8 @@ repo = 'tomtom/tcomment_vim'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/tcomment.vim'
 
 [[plugins]]
-repo = 'Yggdroot/indentLine'
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = 'source ~/.config/nvim/userautoload/plugins/config/vim-indent-guides.vim'
 
 [[plugins]]
 repo = 'itchyny/vim-parenmatch'
