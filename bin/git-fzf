@@ -6,10 +6,8 @@ if [ "$1" = 'show' ]; then
   shift
   git log --graph --color=always \
         --format="%C(auto)%h%d %s %C(blue)%C(bold)%cr" "$@" |
-        sed -e 's/\$/\\$/g' |
         fzf --ansi --no-sort --tiebreak=index \
-              --bind "ctrl-m:execute:
-                    sh -c \"echo {} | grep -o '[a-f0-9]\{7\}' | xargs -I _ git show --color=always _ | diff-so-fancy | less -RIXc --pattern='^(Date|added|deleted|modified): '\""
+              --bind "ctrl-m:execute: echo {} | grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'git show %'"
 else
   # fetch git commit hash
   git log --graph --color=always \
