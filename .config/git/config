@@ -2,7 +2,7 @@
   autocrlf = false
   excludesfile = ~/.config/git/ignore
   editor = vi
-  pager = $GITPAGER | less -RIXc
+  pager = diff-so-fancy | less -RIXc --pattern='^(Date|added|deleted|modified): '
   hooksPath = ~/.config/git/hooks
 [credential]
   helper = cache
@@ -54,6 +54,8 @@
   filetrail    = git log --follow -p -w
   mergetrail   = log --ancestry-path --merges
   unmerged     = diff --name-only --diff-filter=U
+[pager]
+  branch = cat
 [color]
   diff        = auto
   status      = auto

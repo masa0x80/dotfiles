@@ -18,6 +18,7 @@ end
 
 npm_list = <<-EOF
 yarn
+diff-so-fancy
 eslint
 markdown2confluence-cws
 javascript-typescript-langserver

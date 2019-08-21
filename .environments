@@ -47,7 +47,6 @@ export LANG=en_US.UTF-8
 export TERM=xterm-256color
 
 export LESS='-RIXc'
-export GITPAGER='cat'
 
 # fzf options
 export FZF_DEFAULT_OPTS='--reverse --extended --ansi --multi --cycle --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'

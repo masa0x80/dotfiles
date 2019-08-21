@@ -11,8 +11,6 @@ if test -d $DOTFILE
     contains $DOTFILE/bin $PATH || set -gx PATH $DOTFILE/bin $PATH
 end
 
-type -qa diff-highlight && export GITPAGER='diff-highlight'
-
 # Load local configurations
 __load_file $HOME/.config.local/fish/config.fish
 

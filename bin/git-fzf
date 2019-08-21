@@ -9,7 +9,7 @@ if [ "$1" = 'show' ]; then
         sed -e 's/\$/\\$/g' |
         fzf --ansi --no-sort --tiebreak=index \
               --bind "ctrl-m:execute:
-                    sh -c \"echo {} | grep -o '[a-f0-9]\{7\}' | xargs -I _ git show --color=always _ | diff-highlight | less -RIXc\""
+                    sh -c \"echo {} | grep -o '[a-f0-9]\{7\}' | xargs -I _ git show --color=always _ | diff-so-fancy | less -RIXc --pattern='^(Date|added|deleted|modified): '\""
 else
   # fetch git commit hash
   git log --graph --color=always \
