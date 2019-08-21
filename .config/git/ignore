@@ -23,3 +23,5 @@ GPATH
 
 # ctags
 tags
+
+git-worktrees/*
