@@ -117,9 +117,8 @@ abbr -a gsh 'git show'
 abbr -a gst 'git status -sb'
 abbr -a gts 'git tag -s'
 
-abbr -a review 'git review'
+abbr -a review 'git review GH'
 # }}}
-
 
 # vagrant {{{
 abbr -a vdf 'vagrant destroy -f'

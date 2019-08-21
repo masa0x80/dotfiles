@@ -61,7 +61,7 @@ alias gsh='git show'
 alias gst='git status -sb'
 alias gts='git tag -s'
 
-alias review='git review'
+alias review='git review GH'
 
 # ref: bin/git-fzf
 alias -g GH='$(git fzf)'
