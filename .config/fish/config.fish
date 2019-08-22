@@ -16,6 +16,25 @@ __load_file $HOME/.config.local/fish/config.fish
 
 ## }}
 
+### Aliases {{{
+
+if type -qa bat
+    alias cat='bat -p'
+end
+
+if type -qa exa
+    alias l='exa'
+    alias la='exa -la'
+    alias ll='exa -l'
+    abbr -a tree 'exa -T'
+else
+    alias l='ls'
+    alias la='ls -lAh'
+    alias ll='ls -lh'
+end
+
+# }}}
+
 ### Abbreviations {{{
 
 type -qa open && abbr -a o 'open'
@@ -34,17 +53,6 @@ abbr -a rd 'rmdir'
 abbr -a rf 'rm -rf'
 
 abbr -a vim 'vi'
-
-if type -qa exa
-    alias l='exa'
-    alias la='exa -la'
-    alias ll='exa -l'
-    abbr -a tree 'exa -T'
-else
-    abbr -a l 'ls'
-    abbr -a la 'ls -lAh'
-    abbr -a ll 'ls -lh'
-end
 
 # ssh {{{
 if test -e $HOME/.ssh/config

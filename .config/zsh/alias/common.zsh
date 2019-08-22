@@ -24,6 +24,10 @@ alias md=mkdir
 alias rd=rmdir
 alias rf='rm -rf'
 
+if (( $+commands[bat] )); then
+  alias cat='bat -p'
+fi
+
 # ls
 if (( $+commands[gls] )); then
   alias ls='gls --color=auto'
