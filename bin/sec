@@ -7,7 +7,7 @@ sec() {
   type -a fzf >/dev/null || exit 1
 
   list() {
-    find $PASSWORD_STORE_DIR$(git rev-parse --show-toplevel | grep -oP "(?<=$HOME).*") -name \*.gpg | grep -oP "(?<=$PASSWORD_STORE_DIR/).*(?=.gpg)"
+    fd . $PASSWORD_STORE_DIR$(git rev-parse --show-toplevel | grep -oP "(?<=$HOME).*") -e gpg -x echo '{.}' | grep -oP "(?<=$PASSWORD_STORE_DIR/).*"
   }
 
   backup() {
