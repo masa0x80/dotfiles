@@ -73,6 +73,9 @@ if [ -d $HOME/.go ]; then
   [ "$UNAME_S" = 'linux' ] && export PATH=/usr/local/go/bin:$PATH
 fi
 
+# rust
+[ -d $HOME/.cargo ] && export PATH=$HOME/.cargo/bin:$PATH
+
 # EDITOR
 if type -a nvim >/dev/null 2>&1; then
   export EDITOR=nvim

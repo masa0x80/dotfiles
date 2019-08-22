@@ -7,6 +7,7 @@ node.reverse_merge!(
       autoconf
       bind-utils
       bzip2-devel
+      clang
       cronie-anacron
       fuse-libs
       gcc-c++
