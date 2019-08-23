@@ -2,6 +2,7 @@
 /.*
 
 !/.gitignore
+!/bat
 !/git
 !/nvim
 !/peco

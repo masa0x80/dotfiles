@@ -47,6 +47,24 @@ export LANG=en_US.UTF-8
 export TERM=xterm-256color
 
 export LESS='-RIXc'
+if [ "$UNAME_S" = 'darwin' ]; then
+  # http://www.tuxarena.com/2012/04/tutorial-colored-man-pages-how-it-works/
+  export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode – red
+  export LESS_TERMCAP_md=$(printf '\e[01;33m') # enter double-bright mode – bold, yellow
+  export LESS_TERMCAP_me=$(printf '\e[0m')     # turn off all appearance modes (mb, md, so, us)
+  export LESS_TERMCAP_se=$(printf '\e[0m')     # leave standout mode
+  export LESS_TERMCAP_so=$(printf '\e[01;32m') # enter standout mode – green
+  export LESS_TERMCAP_ue=$(printf '\e[0m')     # leave underline mode
+  export LESS_TERMCAP_us=$(printf '\e[04;34m') # enter underline mode – cyan
+elif [ "$UNAME_S" = 'linux' ]; then
+  export LESS_TERMCAP_mb=$'\e[1;31m'
+  export LESS_TERMCAP_md=$'\e[1;33m'
+  export LESS_TERMCAP_me=$'\e[0m'
+  export LESS_TERMCAP_se=$'\e[0m'
+  export LESS_TERMCAP_so=$'\e[01;32m'
+  export LESS_TERMCAP_ue=$'\e[0m'
+  export LESS_TERMCAP_us=$'\e[4;34m'
+fi
 
 # fzf options
 export FZF_DEFAULT_OPTS='--reverse --extended --ansi --multi --cycle --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'
@@ -85,6 +103,10 @@ fi
 
 # PAGER
 type -a less >/dev/null 2>&1 && export PAGER=less
+type -a bat >/dev/null 2>&1 && export PAGER=bat
+
+# bat
+export BAT_CONFIG_PATH=$HOME/.config/bat/config
 
 # sshrc config
 export SSHHOME=$XDG_CONFIG_HOME/sshrc
