@@ -18,10 +18,6 @@ __load_file $HOME/.config.local/fish/config.fish
 
 ### Aliases {{{
 
-if type -qa bat
-    alias cat='bat -p'
-end
-
 if type -qa exa
     alias l='exa'
     alias la='exa -la'
@@ -43,6 +39,8 @@ type -qa mycli && abbr -a mysql 'mycli'
 
 type -qa pgcli && abbr -a psql 'pgcli'
 
+type -qa bat && abbr -a cat 'bat'
+
 abbr -a tailf 'tail -f'
 abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'
@@ -52,6 +50,7 @@ abbr -a md 'mkdir'
 abbr -a rd 'rmdir'
 abbr -a rf 'rm -rf'
 
+abbr -a e 'vi'
 abbr -a vim 'vi'
 
 # ssh {{{
