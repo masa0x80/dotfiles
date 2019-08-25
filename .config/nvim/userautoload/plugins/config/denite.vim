@@ -13,8 +13,10 @@ endif
 
 call denite#custom#var('file/rec', 'command', ['files'])
 
-if executable('pt')
-  call denite#custom#var('grep', 'command', ['pt', '--nogroup', '--nocolor', '--smart-case', '--hidden'])
-  call denite#custom#var('grep', 'default_opts', [])
+if executable('rg')
+  call denite#custom#var('grep', 'command', ['rg', '--files', '--glob', '!.git'])
+  call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
+  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
   call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'separator', ['--'])
 endif

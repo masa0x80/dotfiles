@@ -13,14 +13,14 @@ end
   bat
   exa
   fd-find
+  ripgrep
 ].each do |pkg|
   execute "cargo install #{pkg}" do
     command <<-"EOF"
       #{node[:proxy_config]}
       export PATH=#{node[:env][:path]}
-      cargo install #{pkg}
+      cargo install --force #{pkg}
     EOF
     user node[:user]
-    not_if "test -f #{node[:env][:cargo_home]}/bin/#{pkg}"
   end
 end
