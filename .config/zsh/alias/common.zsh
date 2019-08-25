@@ -56,7 +56,7 @@ alias -g .....='../../../..'
 alias -g ......='../../../../..'
 
 alias -g F='| fzf'
-alias -g G='| pt'
+alias -g G='| rg'
 alias -g H='| head'
 alias -g L='| less'
 alias -g N=' >/dev/null 2>&1'
