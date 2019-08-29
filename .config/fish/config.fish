@@ -124,6 +124,8 @@ abbr -a gsh 'git show'
 abbr -a gst 'git status -sb'
 abbr -a gts 'git tag -s'
 
+abbr -a br 'git switch -c'
+abbr -a re 'git restore GST'
 abbr -a review 'git review GH'
 # }}}
 
