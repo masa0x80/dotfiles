@@ -3,7 +3,6 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 nnoremap <silent> <Leader>f :<C-u>GFiles<CR>
-nnoremap <silent> <Leader>b :<C-u>Buffers<CR>
 
 " Rails
 nnoremap <silent> <Leader>a :<C-u>GFiles<CR>app/assets/
