@@ -44,6 +44,10 @@ repo = 'rust-lang/rust.vim'
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/rust.vim'
 
 [[plugins]]
+repo = 'ludovicchabant/vim-gutentags'
+hook_add = 'let g:gutentags_cache_dir = ".git/gutentags"'
+
+[[plugins]]
 repo = 'cocopon/iceberg.vim'
 hook_add = '''
   colorscheme iceberg

@@ -8,7 +8,7 @@ let g:lightline = {
   \   'active': {
   \     'left': [
   \       ['mode', 'paste'],
-  \       ['fugitive', 'readonly', 'filename', 'modified']
+  \       ['readonly', 'filename', 'fugitive', 'ctags', 'modified']
   \     ],
   \   },
   \   'inactive': {
@@ -27,7 +27,8 @@ let g:lightline = {
   \     'fileformat':   'MyFileformat',
   \     'fileencoding': 'MyFileencoding',
   \     'filetype':     'MyFiletype',
-  \     'mode':         'MyMode'
+  \     'mode':         'MyMode',
+  \     'ctags':        'MyCtagsStatus'
   \   }
   \ }
 
@@ -63,6 +64,11 @@ endfunction
 
 function! MyMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! MyCtagsStatus()
+  let l:status = dein#tap('vim-gutentags') == 1 ? gutentags#statusline() : ''
+  return winwidth(0) > 60 ? l:status : ''
 endfunction
 
 augroup LightlineColorscheme
