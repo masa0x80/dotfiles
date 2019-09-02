@@ -9,7 +9,7 @@ augroup FileTypeGroup
 augroup END
 
 nnoremap <expr>l foldclosed('.') != -1 ? 'zo' : 'l'
-nnoremap <silent>_ :<C-u>call <SID>smart_foldcloser()<CR>
+nnoremap <silent><leader>z :<C-u>call <SID>smart_foldcloser()<CR>
 function! s:smart_foldcloser() "{{{
   if foldlevel('.') == 0
     norm! zM

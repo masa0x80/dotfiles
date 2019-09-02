@@ -4,8 +4,8 @@ rev = '2b884d5d990539fe25b44398146645dafc8ffa49'
 on_event = 'VimEnter'
 hook_add = ''' " {{{
   nnoremap <silent> <Leader>b :<C-u>Denite buffer<CR>
+  nnoremap <silent> <Leader>e :<C-u>Denite file/rec -path=`expand('%:t') != '' ? substitute(expand('%:p:h'), '^' . getcwd() . '/', '', '') : ''`<CR>
   nnoremap <silent> <Leader>E :<C-u>Denite file/rec<CR>
-  nnoremap <silent> <Leader>F :<C-u>Denite file/rec -path=`expand('%:t') != '' ? substitute(expand('%:p:h'), '^' . getcwd() . '/', '', '') : ''`<CR>
   nnoremap <silent> <Leader>r :<C-u>Denite -resume<CR>
   nnoremap <silent> <Leader>y :<C-u>Denite neoyank<CR>
   nnoremap <silent> <Leader>* :<C-u>Denite line -input=<C-r><C-w><CR>
