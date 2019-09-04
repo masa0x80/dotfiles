@@ -5,6 +5,7 @@ tap 'homebrew/services'
 tap 'universal-ctags/universal-ctags'
 
 cask 'alfred'
+cask 'aws-vault'
 cask 'chromedriver'
 cask 'clipy'
 cask 'firefox'
