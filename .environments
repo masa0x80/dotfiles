@@ -42,9 +42,6 @@ export PATH=/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin
 # brew install grep
 [ -d /usr/local/opt/grep/libexec/gnubin ] && PATH=/usr/local/opt/grep/libexec/gnubin:$PATH
 
-#llvm
-[ -d /usr/local/opt/llvm/bin ] && PATH=/usr/local/opt/llvm/bin:$PATH
-
 # }}} PATH
 
 export LANG=en_US.UTF-8
