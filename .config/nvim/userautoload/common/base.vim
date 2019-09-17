@@ -1,8 +1,5 @@
 set expandtab
 
-set list
-set listchars=tab:>.
-
 set wildmode=list:full
 
 " 「東アジアの文字幅」でA特性を持つものは全角幅で扱う
@@ -70,7 +67,11 @@ set viminfo+=!
 
 set nowrap
 set sidescroll=5
-set listchars+=precedes:<,extends:>
+
+set list
+set listchars=tab:»\ ,precedes:<,extends:>
+
+set cursorline
 
 set synmaxcol=512
 
