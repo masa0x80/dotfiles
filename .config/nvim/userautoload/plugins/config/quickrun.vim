@@ -25,5 +25,5 @@ augroup RSpecQuickrun
   autocmd!
   autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
 augroup END
-nnoremap <silent> <Leader>S :<C-u>QuickRun ruby.rspec<CR>
-nnoremap <silent> <Leader>s :<C-u>QuickRun rspecl<CR>
+nnoremap <silent> <Leader>T :<C-u>QuickRun ruby.rspec<CR>
+nnoremap <silent> <Leader>t :<C-u>QuickRun rspecl<CR>

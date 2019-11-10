@@ -13,7 +13,6 @@ let g:EasyMotion_use_upper = 1
 let g:EasyMotion_smartcase = 1
 
 nmap mm <Plug>(easymotion-overwin-line)
-nmap MM <Plug>(easymotion-overwin-w)
-nmap s <Plug>(easymotion-overwin-f2)
+nmap mM <Plug>(easymotion-overwin-w)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
