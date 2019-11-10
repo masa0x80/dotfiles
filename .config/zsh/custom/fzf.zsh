@@ -13,7 +13,7 @@ if (( $+commands[fzf] )); then
     zle reset-prompt
   }
   zle -N complete-ssh-host
-  bindkey '^s^s' complete-ssh-host
+  bindkey '^gs' complete-ssh-host
 
   # vim open with fzf
   fzf-vim() {
