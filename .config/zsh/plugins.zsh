@@ -20,8 +20,6 @@ if [ -r $HOME/.zplug/zplug ]; then
     as:command, \
     from:gh-r, \
     rename-to:jq
-  zplug 'b4b4r07/emoji-cli', \
-    on:'stedolan/jq'
 
   if [[ $UNAME_S != 'darwin' ]]; then
     zplug 'jpmens/jo', \
