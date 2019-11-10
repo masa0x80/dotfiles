@@ -1,8 +1,3 @@
-let g:vim_json_syntax_conceal = 0
-
-" Use vim-parenmatch instead of parenmatch
-let g:loaded_matchparen = 1
-
 " Save
 nnoremap <Leader>, :<C-u>set nopaste<CR>:<C-u>update<CR>
 

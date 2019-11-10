@@ -24,6 +24,10 @@ hook_add = 'source ~/.config/nvim/userautoload/plugins/config/vim-indent-guides.
 
 [[plugins]]
 repo = 'itchyny/vim-parenmatch'
+hook_add = '''
+  " Use vim-parenmatch instead of parenmatch
+  let g:loaded_matchparen = 1
+'''
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
