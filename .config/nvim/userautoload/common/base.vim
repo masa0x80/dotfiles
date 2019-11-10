@@ -76,6 +76,7 @@ set cursorline
 set synmaxcol=512
 
 " folding
+set foldlevel=2
 set foldmethod=marker
 set commentstring=%s
 

@@ -1,4 +1,4 @@
-# Load OS settings {{
+# Load OS settings {{{
 
 for config_file in $HOME/.config/fish/conf.d/$UNAME_S/*
     source $config_file
@@ -14,7 +14,7 @@ end
 # Load local configurations
 __load_file $HOME/.config.local/fish/config.fish
 
-## }}
+## }}}
 
 ### Aliases {{{
 
