@@ -67,10 +67,6 @@ elif [ "$UNAME_S" = 'linux' ]; then
   export LESS_TERMCAP_us=$'\e[4;34m'
 fi
 
-# fzf options
-type -a fd >/dev/null 2>&1 && export FZF_DEFAULT_COMMAND='fd --type f --no-ignore --hidden --follow --exclude .git'
-export FZF_DEFAULT_OPTS='--reverse --extended --ansi --multi --cycle --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'
-
 # gtags (GNU Global)
 export GTAGSLABEL=pygments
 if [ "$UNAME_S" = 'linux' ] && [ -d /usr/local/share/gtags ]; then
@@ -112,6 +108,10 @@ export BAT_CONFIG_PATH=$HOME/.config/bat/config
 
 # sshrc config
 export SSHHOME=$XDG_CONFIG_HOME/sshrc
+
+# fzf options
+type -a fd >/dev/null 2>&1 && export FZF_DEFAULT_COMMAND='fd --type f --no-ignore --hidden --follow --exclude .git'
+export FZF_DEFAULT_OPTS='--reverse --extended --ansi --multi --cycle --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'
 
 # NOTE: dynamic library support
 #       ref https://github.com/nixprime/cpsm
