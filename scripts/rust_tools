@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+install() {
+  cargo install $1 || :
+}
+
+install bat
+install exa
+install fd-find
+install ripgrep

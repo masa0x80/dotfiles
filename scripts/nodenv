@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+test -d $NODENV_ROOT || anyenv install nodenv
+
+NODENV_DEFAULT_PACKAGES_ROOT=$NODENV_ROOT/plugins/nodenv-default-packages
+test -d $NODENV_DEFAULT_PACKAGES_ROOT || git clone https://github.com/nodenv/nodenv-default-packages $NODENV_DEFAULT_PACKAGES_ROOT
+cat <<EOF >$NODENV_ROOT/default-packages
+yarn
+diff-so-fancy
+eslint
+markdown2confluence-cws
+javascript-typescript-langserver
+EOF
+
+nodenv versions | grep -q $NODE_VERSION || nodenv install $NODE_VERSION
+nodenv global $NODE_VERSION

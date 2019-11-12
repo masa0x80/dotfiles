@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+
+test -d $PYENV_ROOT || anyenv install pyenv
+
+# Pythohn 2
+pyenv versions | grep -q $PYTHON2_VERSION || pyenv install $PYTHON2_VERSION
+pyenv versions | grep -q "* $PYTHON2_VERSION" || pyenv global $PYTHON2_VERSION
+pip install --upgrade pip
+
+# Pythohn 3
+pyenv versions | grep -q $PYTHON3_VERSION || pyenv install $PYTHON3_VERSION
+pyenv versions | grep -q "* $PYTHON3_VERSION" || pyenv global $PYTHON3_VERSION
+pip3 install --upgrade pip
+
+# Python tools
+pip_install() {
+  pip3 list | grep -q -i $1 || pip3 install $1
+}
+
+pip_install neovim
+
+pip_install awscli
+pip_install httpie
+pip_install yq
+
+pip_install mycli
+pip_install pgcli

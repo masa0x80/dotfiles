@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+test -d $RBENV_ROOT || anyenv install rbenv
+
+RBENV_DEFAULT_GEMS_ROOT=$RBENV_ROOT/plugins/rbenv-default-gems
+test -d $RBENV_DEFAULT_GEMS_ROOT || git clone https://github.com/sstephenson/rbenv-default-gems.git $RBENV_DEFAULT_GEMS_ROOT
+cat <<EOF >$RBENV_ROOT/default-gems
+rails
+foreman
+pry
+jr
+EOF
+
+rbenv versions | grep -q $RUBY_VERSION || rbenv install $RUBY_VERSION
+rbenv global $RUBY_VERSION

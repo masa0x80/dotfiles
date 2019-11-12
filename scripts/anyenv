@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+test -d $ANYENV_ROOT || git clone https://github.com/anyenv/anyenv $ANYENV_ROOT
+
+ANYENV_UPDATE_ROOT=$ANYENV_ROOT/plugins/anyenv-update
+test -d $ANYENV_UPDATE_ROOT || git clone https://github.com/znz/anyenv-update.git $ANYENV_UPDATE_ROOT
+
+eval "$($ANYENV_ROOT/bin/anyenv init - zsh)"
+
+anyenv install --force-init
+anyenv update

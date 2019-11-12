@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+xcode-select --install || :
+
+make install
+make deploy
