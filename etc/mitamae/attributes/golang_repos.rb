@@ -10,5 +10,8 @@ node.reverse_merge!(
     github.com/hashicorp/packer
     github.com/mattn/files
     github.com/jesseduffield/lazydocker
+    github.com/skanehira/tson
+    github.com/itchyny/gojq/cmd/gojq
+    github.com/itchyny/gojo/cmd/gojo
   )
 )
