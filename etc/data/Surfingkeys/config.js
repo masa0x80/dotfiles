@@ -22,7 +22,7 @@ map('d', 'x')
 map('u', 'X')
 map('F', 'gf')
 map('P', 'sg')
-map('<Ctrl-t><Ctrl-t>', '<Ctrl-6>')
+map('<Ctrl-s><Ctrl-s>', '<Ctrl-6>')
 map('<Ctrl-[>', '<Esc>')
 map('gn', 't')
 // }}}
