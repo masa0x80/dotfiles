@@ -244,7 +244,7 @@ const commonUnmapKeys = [
   '<Ctrl-d>', '<Ctrl-u>',
   '<Ctrl-y>', '<Ctrl-e>',
   '<Ctrl-n>', '<Ctrl-p>',
-  '<Ctrl-t><Ctrl-t>',
+  '<Ctrl-s><Ctrl-s>',
   't', 'gn',
   'oT', 'oa', 'od', 'og',
   'oh', 'oi', 'om', 'on',
@@ -267,6 +267,6 @@ unmapAllExcept(
   commonUnmapKeys.concat(['u', 'G', 'gg']).concat(
     Object.keys(qmarksUrls).map(key => `go${key}`)
   ),
-  /outlook\.office\.com|b\.hatena\.ne\.jp|twitter\.com/
+  /outlook\.office365\.com/
 )
 // }}}
