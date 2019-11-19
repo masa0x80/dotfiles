@@ -50,7 +50,6 @@ abbr -a md 'mkdir'
 abbr -a rd 'rmdir'
 abbr -a rf 'rm -rf'
 
-abbr -a e 'v'
 abbr -a vim 'vi'
 
 # ssh {{{
