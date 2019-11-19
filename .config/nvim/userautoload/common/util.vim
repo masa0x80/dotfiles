@@ -17,10 +17,10 @@ nnoremap D "_D
 " rubyデバッグ用
 augroup RubyDebug
   autocmd!
-  autocmd FileType ruby abbreviate bb binding.pry<Esc>
-  autocmd FileType ruby abbreviate bB byebug<Esc>
-  autocmd FileType ruby abbreviate Bb byebug<Esc>
-  autocmd FileType ruby abbreviate BB byebug<Esc>
+  autocmd FileType ruby abbreviate bb require 'pry'; binding.pry<Esc>
+  autocmd FileType ruby abbreviate bB require 'byebug'; byebug<Esc>
+  autocmd FileType ruby abbreviate Bb require 'byebug'; byebug<Esc>
+  autocmd FileType ruby abbreviate BB require 'byebug'; byebug<Esc>
 augroup END
 
 augroup SSHConfig
