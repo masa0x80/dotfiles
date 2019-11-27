@@ -1,14 +1,11 @@
 #!/usr/bin/env zsh
 
 install() {
-  go get -u $1
+  go get $1
 }
 
 install github.com/direnv/direnv
-install github.com/mackerelio/mkr
-install github.com/motemen/ghq
 
-install github.com/mithrandie/csvq
 install github.com/github/hub
 install github.com/hashicorp/packer
 install github.com/jesseduffield/lazydocker

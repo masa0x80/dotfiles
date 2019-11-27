@@ -10,7 +10,7 @@
   path = ~/.config.local/git/config
 [ghq]
   root = ~/.ghq
-  root = ~/.go/src
+  root = ~/go/src
 [alias]
   ci = commit -v
   co = checkout

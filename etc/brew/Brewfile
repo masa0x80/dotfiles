@@ -52,8 +52,14 @@ brew 'go'
 brew 'rust'
 brew 'tfenv'
 
+brew 'ghq'
+brew 'csvq'
+
 brew 'mysql'
 brew 'postgresql'
 brew 'redis'
 
 brew 'docker'
+
+tap 'mackerelio/mackerel-agent'
+brew 'mkr'
