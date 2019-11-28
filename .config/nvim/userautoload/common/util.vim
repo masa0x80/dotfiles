@@ -11,8 +11,6 @@ nnoremap <Leader>N :<C-u>setlocal relativenumber!<CR>
 
 " 無名レジスターを保護
 nnoremap x "_x
-nnoremap dd "_dd
-nnoremap D "_D
 
 " rubyデバッグ用
 augroup RubyDebug
