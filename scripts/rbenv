@@ -9,6 +9,7 @@ rails
 foreman
 pry
 jr
+mdl
 EOF
 
 rbenv versions | grep -q $RUBY_VERSION || rbenv install $RUBY_VERSION
