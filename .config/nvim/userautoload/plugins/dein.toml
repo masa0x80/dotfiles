@@ -58,8 +58,6 @@ repo = 'dense-analysis/ale'
 hook_add = '''
   let g:ale_fix_on_save = 1
   let g:ale_fixers = {
-  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \ 'markdown': ['mdl'],
   \ 'ruby': ['rubocop'],
   \ 'javascript': ['eslint'],
   \ 'typescript': ['eslint'],

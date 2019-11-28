@@ -1,10 +1,9 @@
 set hidden
 
-let g:LanguageClient_serverCommands = {}
-
 let g:LanguageClient_serverCommands = {
-  \ 'javascript': ['~/.anyenv/envs/nodenv/shims/javascript-typescript-stdio'],
-  \ 'ruby': ['~/.anyenv/envs/rbenv/shims/solargraph', 'stdio']
+  \ 'javascript': ['typescript-language-server', '--stdio'],
+  \ 'typescript': ['typescript-language-server', '--stdio'],
+  \ 'ruby': ['solargraph', 'stdio']
   \ }
 
 augroup LanguageClient_config
@@ -14,7 +13,8 @@ augroup LanguageClient_config
 augroup END
 
 let g:LanguageClient_autoStart = 1
+nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <Leader>lf :call LanguageClient_textDocument_formatting()<CR>
-nnoremap <Leader>lh :call LanguageClient_textDocument_hover()<CR>
-nnoremap <Leader>lr :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <leader>lf :call LanguageClient_textDocument_formatting()<CR>
+nnoremap <leader>lr :call LanguageClient_textDocument_rename()<CR>
