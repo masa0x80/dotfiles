@@ -52,6 +52,8 @@ abbr -a rf 'rm -rf'
 
 abbr -a vim 'vi'
 
+abbr -a g 'rg'
+
 # ssh {{{
 if test -e $HOME/.ssh/config
     abbr -a ssh_config 'eval $EDITOR ~/.ssh/config'
@@ -61,8 +63,6 @@ end
 # }}}
 
 # git {{{
-abbr -a g 'git'
-
 abbr -a ga 'git add'
 abbr -a gaa 'git add --all'
 

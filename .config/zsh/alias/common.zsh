@@ -50,6 +50,8 @@ if (( $+commands[nvim] )); then
   alias vi='nvim'
 fi
 
+alias g='rg'
+
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'

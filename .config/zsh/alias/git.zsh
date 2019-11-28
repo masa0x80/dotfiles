@@ -1,6 +1,4 @@
 # MEMO: This file is based on https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh
-alias g='git'
-
 alias ga='git add'
 alias gaa='git add --all'
 
