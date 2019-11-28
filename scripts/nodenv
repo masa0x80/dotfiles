@@ -9,7 +9,7 @@ yarn
 diff-so-fancy
 eslint
 markdown2confluence-cws
-javascript-typescript-langserver
+typescript-language-server
 EOF
 
 nodenv versions | grep -q $NODE_VERSION || nodenv install $NODE_VERSION

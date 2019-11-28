@@ -3,7 +3,7 @@ EXCLUDES := .DS_Store .git
 TARGETS  := $(wildcard .??*)
 DOTFILES := $(filter-out $(EXCLUDES), $(TARGETS))
 
-export NODE_VERSION=12.4.0
+export NODE_VERSION=13.2.0
 export PERL_VERSION=5.22.1
 export PYTHON2_VERSION=2.7.16
 export PYTHON3_VERSION=3.7.2
