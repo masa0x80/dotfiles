@@ -1,29 +1,31 @@
-" QuickRun
-nnoremap <silent> <Leader>x :!echo wating...<CR>:QuickRun<CR>
-" 初期化
-if !has("g:quickrun_config")
-  let g:quickrun_config = {}
-endif
-" QuickRun 実行時のバッファの開き方
-let g:quickrun_config._ = {
-  \   'outputter' : 'buffer',
-  \   'split' : 'rightbelow 10sp',
+let g:quickrun_config = {
   \   '_': {
-  \     'runner' : 'vimproc'
-  \   },
+  \     'outputter': 'buffer',
+  \     'outputter/buffer/append': 1,
+  \     'outputter/buffer/split': 'below 15',
+  \     'runner': 'vimproc'
+  \   }
   \ }
 
-" rspec
-let g:quickrun_config['ruby.rspec'] = {
-  \   'exec': 'bundle exec rspec',
+let g:quickrun_config['rspec'] = {
+  \   'command': 'rspec',
+  \   'exec': 'bundle exec %c %s',
+  \   'filetype': 'rspec-result'
   \ }
-let g:quickrun_config.rspecl = {
-  \   'type': 'rspec',
-  \   'exec': 'bundle exec %c %s:' . line('.'),
+let g:quickrun_config['rspec.line'] = {
+  \   'command': 'rspec',
+  \   'exec': 'bundle exec %c %s:%a',
+  \   'filetype': 'rspec-result'
   \ }
-augroup RSpecQuickrun
+
+function! s:RSpecQuickrun()
+  let b:quickrun_config = { 'type': 'rspec' }
+endfunction
+
+augroup RSpecConfig
   autocmd!
-  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+  autocmd BufWinEnter,BufNewFile *_spec.rb call <SID>RSpecQuickrun()
 augroup END
-nnoremap <silent> <Leader>T :<C-u>QuickRun ruby.rspec<CR>
-nnoremap <silent> <Leader>t :<C-u>QuickRun rspecl<CR>
+
+nnoremap <silent> <Leader>x :!echo wating...<CR>:QuickRun<CR>
+nnoremap <silent> <Leader>t :execute 'QuickRun rspec.line -args ' . line('.')<CR>

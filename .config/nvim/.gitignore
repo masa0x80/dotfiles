@@ -3,4 +3,5 @@
 !/.gitignore
 !/init.vim
 !/plugin
+!/syntax
 !/userautoload
