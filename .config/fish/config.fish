@@ -52,7 +52,7 @@ abbr -a rf 'rm -rf'
 
 abbr -a vim 'vi'
 
-abbr -a g 'rg'
+abbr -a g 'rg --hidden'
 
 # ssh {{{
 if test -e $HOME/.ssh/config
