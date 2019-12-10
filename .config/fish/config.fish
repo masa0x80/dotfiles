@@ -29,6 +29,8 @@ else
     alias ll='ls -lh'
 end
 
+alias r='__ghq_cd'
+
 # }}}
 
 ### Abbreviations {{{
@@ -134,8 +136,6 @@ abbr -a vst 'vagrant global-status'
 # }}}
 
 # ruby {{{
-abbr -a r 'rails'
-
 abbr -a c 'rails c'
 abbr -a s "rails s -p $RAILS_SERVER_PORT"
 

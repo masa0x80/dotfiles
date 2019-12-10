@@ -1,5 +1,3 @@
-alias r='rails'
-
 alias c='rails c'
 alias s="rails s -p $RAILS_SERVER_PORT"
 

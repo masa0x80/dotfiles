@@ -63,4 +63,5 @@ if (( $+commands[peco] )); then
   }
   zle -N peco-ghq-cd
   bindkey '^gc' peco-ghq-cd
+  alias r=peco-ghq-cd
 fi
