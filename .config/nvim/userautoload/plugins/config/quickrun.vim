@@ -1,7 +1,6 @@
 let g:quickrun_config = {
   \   '_': {
   \     'outputter': 'buffer',
-  \     'outputter/buffer/append': 1,
   \     'outputter/buffer/split': 'below 15',
   \     'runner': 'vimproc'
   \   }
@@ -9,7 +8,8 @@ let g:quickrun_config = {
 
 let g:quickrun_config['rspec'] = {
   \   'command': 'rspec',
-  \   'exec': 'bundle exec %c %s',
+  \   'cmdopt': '-f p',
+  \   'exec': 'bundle exec %c %o %s',
   \   'filetype': 'rspec-result'
   \ }
 let g:quickrun_config['rspec.line'] = {
