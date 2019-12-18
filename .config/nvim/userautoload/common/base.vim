@@ -19,7 +19,8 @@ set noswapfile
 set autoread
 
 " 行番号を表示
-set nonumber
+set number
+set relativenumber
 
 " デフォルトインデント設定
 set autoindent smartindent

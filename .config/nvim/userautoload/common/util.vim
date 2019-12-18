@@ -1,3 +1,23 @@
+" Jump to head or tail
+nnoremap 1 ^
+nnoremap 0 $
+
+" Close buffer
+nnoremap bd :bd<CR>
+
+" Emacs keybindings for insert mode
+imap <C-p> <Up>
+imap <C-n> <Down>
+imap <C-b> <Left>
+imap <C-f> <Right>
+imap <C-a> <Home>
+imap <C-e> <End>
+imap <C-d> <Del>
+
+" Visual mode
+vnoremap > >gv
+vnoremap < <gv
+
 " Save
 nnoremap <Leader>, :<C-u>set nopaste<CR>:<C-u>update<CR>
 
