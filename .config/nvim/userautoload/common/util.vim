@@ -2,9 +2,6 @@
 nnoremap 1 ^
 nnoremap 0 $
 
-" Close buffer
-nnoremap bd :bd<CR>
-
 " Emacs keybindings for insert mode
 imap <C-p> <Up>
 imap <C-n> <Down>
@@ -17,9 +14,6 @@ imap <C-d> <Del>
 " Visual mode
 vnoremap > >gv
 vnoremap < <gv
-
-" Save
-nnoremap <Leader>, :<C-u>set nopaste<CR>:<C-u>update<CR>
 
 " Reload vimrc
 nnoremap <Leader>R :<C-u>source $HOME/.vimrc<CR>
