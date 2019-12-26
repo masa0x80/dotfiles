@@ -74,10 +74,26 @@ depends = ['fzf']
 hook_add = 'source ~/.config/nvim/userautoload/plugins/config/fzf.vim'
 # }}} fzf
 
+[[plugins]] # {{{ LSP
+repo = 'prabirshrestha/async.vim'
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-build = 'bash install.sh'
-hook_add = 'source ~/.config/nvim/userautoload/plugins/config/LanguageClient-neovim.vim'
+repo = 'prabirshrestha/asyncomplete.vim'
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+  nnoremap <silent> gd :LspDefinition<CR>
+  nnoremap <silent> gr :LspReferences<CR>
+  nnoremap <silent> K :LspHover<CR>
+  nnoremap <silent> <leader>rn :LspRename<CR>
+'''
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+# }}}
+
+[[plugins]]
+repo = 'simeji/winresizer'
 
 [[plugins]]
 repo = 'simeji/winresizer'
