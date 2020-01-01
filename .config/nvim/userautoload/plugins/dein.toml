@@ -51,7 +51,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'sgur/vim-editorconfig'
+repo = 'editorconfig/editorconfig-vim'
 
 [[plugins]]
 repo = 'dense-analysis/ale'
