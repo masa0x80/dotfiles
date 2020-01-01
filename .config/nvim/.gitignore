@@ -2,6 +2,9 @@
 /.*
 !/.gitignore
 !/init.vim
-!/plugin
+!/config
+!/ftdetect
+!/ftplugin
 !/syntax
-!/userautoload
+!/autoload
+/autoload/plug.vim
