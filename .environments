@@ -100,10 +100,6 @@ fi
 
 # PAGER
 type -a less >/dev/null 2>&1 && export PAGER=less
-type -a bat >/dev/null 2>&1 && export PAGER=bat
-
-# bat
-export BAT_CONFIG_PATH=$HOME/.config/bat/config
 
 # sshrc config
 export SSHHOME=$XDG_CONFIG_HOME/sshrc
