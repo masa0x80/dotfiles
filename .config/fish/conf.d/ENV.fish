@@ -39,10 +39,6 @@ set __fish_git_prompt_char_upstream_behind '-'
 
 # }}}
 
-# Set fresco config
-type -qa ghq && set -U fresco_root (ghq root)
-set -U fresco_plugin_list_path $HOME/.config/fish/plugins.fish
-
 # Set config path for gabbr
 export gabbr_config=$HOME/.config/fish/gabbr.conf
 

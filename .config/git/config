@@ -9,8 +9,8 @@
 [include]
   path = ~/.config.local/git/config
 [ghq]
-  root = ~/.ghq
   root = ~/go/src
+  root = ~/.ghq
 [alias]
   ci = commit -v
   co = checkout
