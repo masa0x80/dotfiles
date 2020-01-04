@@ -9,54 +9,17 @@ Install dotfiles and useful commands.
 
 ## Installation
 
-### Only CentOS
-
-If you use CentOS, add your account as sudoers in advance.
-Do the following 3 steps to change sudoers.
-
-**Step 1:** Open the sudoers file.
-
 ```
-$ sudo visudo
+git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+make
 ```
 
-**Step 2:** Comment out the line below.
+## After Installation
 
-```
-# %wheel  ALL=(ALL)       NOPASSWD: ALL
-```
+### Git Config
 
-**Step 3:** Run the following command to add the user to the wheel group.
-
-```
-$ sudo usermod -G wheel $USER
-```
-
-### Common (macOS / CentOS)
-
-In advance, configure the proxy settings as may be necessary.
-
-#### Quick Installation
-
-The easiest way to install this dotfiles is to run the following commmand in terminal.
-
-```
-$ curl https://raw.githubusercontent.com/masa0x80/dotfiles/master/etc/install | bash
-```
-
-#### Manual Installation
-
-The different way of *Quick Installation* is to run the following commands.
-
-```
-$ git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
-$ cd ~/.dotfiles
-$ make install
-```
-
-#### After Installation
-
-After running `make install`, make your personal configuration file for git.
+After installation, make your personal configuration file for git.
 
 ```
 $ mkdir -p $HOME/.config.local/git
@@ -71,34 +34,8 @@ $ cat <<EOF > $HOME/.config.local/git/config
 EOF
 ```
 
-ref: https://github.com/masa0x80/dotfiles.local
+ref. https://github.com/masa0x80/dotfiles.local
 
-### Only macOS
+### Terminal Color
 
-After running `make install`, load `./etc/data/terminal/Hybrid.terminal` for **Terminal.app** profile.
-
-## Structure
-
-### Shell Invocation
-
-`bash` is set as Default shell, but `bash` kick-start `fish` as following steps:
-
-1. Start `bash` after starting termial
-2. Read `.bash_profile` at first
-3. Read basic environment variables from `.environments`
-    - Load proxy config if necessary
-    - Set PATH
-    - Initialize anyenv
-    - Set environemnt variables for golang
-4. Kick-start `fish`
-
-### Provisioning local machine
-
-`make install` execute the following tasks.
-
-1. `make update`
-    - Update dotfiles repository
-2. `make init`
-    - Install tools by `MItamae`
-3. `make deploy`
-    - Deploy dotfiles: create symlink to dotfiles under your home directory
+Load `./etc/data/terminal/iceberg.itermcolors` for **Terminal.app** profile.
