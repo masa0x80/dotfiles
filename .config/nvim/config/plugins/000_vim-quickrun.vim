@@ -10,6 +10,12 @@ let g:quickrun_config = {
   \   }
   \ }
 
+if has('nvim')
+  let g:quickrun_config._.runner = 'neovim_job'
+elseif exists('*ch_close_in')
+  let g:quickrun_config._.runner = 'job'
+endif
+
 let g:quickrun_config['rspec'] = {
   \   'command': 'rspec',
   \   'cmdopt': '-f p',

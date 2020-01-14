@@ -19,7 +19,6 @@ Plug 'maximbaz/lightline-ale'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'simeji/winresizer'
 Plug 'machakann/vim-sandwich'
-Plug 'thinca/vim-quickrun'
 Plug 'thinca/vim-visualstar'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
@@ -33,6 +32,11 @@ endif
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 " }}} vim-unimpaired
+
+" {{{ quickrun
+Plug 'lambdalisue/vim-quickrun-neovim-job'
+Plug 'thinca/vim-quickrun'
+" }}} quickrun
 
 " {{{ vim-expand-region
 Plug 'kana/vim-textobj-user'
