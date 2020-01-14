@@ -3,7 +3,6 @@ if globpath(&runtimepath, '') !~# 'lightline\.vim'
 endif
 
 let g:lightline = {
-  \   'colorscheme': g:colors_name,
   \   'mode_map': {
   \     'c': 'NORMAL'
   \   },
@@ -32,6 +31,10 @@ let g:lightline = {
   \     'mode':         'MyMode'
   \   }
   \ }
+
+if globpath(&runtimepath, '') !~# 'iceberg'
+  let g:lightline.colorscheme = 'iceberg'
+endif
 
 function! MyModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
