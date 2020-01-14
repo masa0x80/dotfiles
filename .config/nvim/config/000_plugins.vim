@@ -29,6 +29,11 @@ if has('nvim')
   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
+" {{{ vim-unimpaired
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+" }}} vim-unimpaired
+
 " {{{ vim-expand-region
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
