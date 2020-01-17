@@ -2,8 +2,8 @@ if globpath(&runtimepath, '') !~# 'vim-lsp'
   finish
 endif
 
-if globpath(&runtimepath, '') !~# '\/ale\/'
-  " Use ALE
+" Use ALE
+if globpath(&runtimepath, '') =~# '\/ale\/'
   let g:lsp_diagnostics_enabled = 0
 endif
 
