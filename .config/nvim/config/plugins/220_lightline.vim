@@ -32,7 +32,7 @@ let g:lightline = {
   \   }
   \ }
 
-if globpath(&runtimepath, '') !~# 'iceberg'
+if globpath(&runtimepath, '') =~# 'iceberg'
   let g:lightline.colorscheme = 'iceberg'
 endif
 
