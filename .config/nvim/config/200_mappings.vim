@@ -21,7 +21,7 @@ vnoremap < <gv
 
 " Reload vimrc
 nnoremap <Leader>R :<C-u>source $MYVIMRC<CR>
-"
+
 nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>nohlsearch<CR>:<C-u>cclose<CR>
 
 " Toggle relativenumber
