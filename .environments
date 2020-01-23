@@ -83,9 +83,10 @@ if [ -d $HOME/.anyenv ]; then
 fi
 
 # golang
-if [ -d $HOME/go ]; then
-  export GOPATH=$HOME/go
+if type -a go >/dev/null 2>&1; then
+  export GOPATH=$(go env GOPATH)
   export PATH=$GOPATH/bin:$PATH
+  export GO11MODULE=on
 fi
 
 # rust
