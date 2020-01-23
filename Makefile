@@ -7,7 +7,7 @@ export NODE_VERSION=13.2.0
 export PERL_VERSION=5.22.1
 export PYTHON2_VERSION=2.7.16
 export PYTHON3_VERSION=3.7.2
-export RUBY_VERSION=2.6.5
+export RUBY_VERSION=2.7.0
 
 export ANYENV_ROOT=$(HOME)/.anyenv
 export NODENV_ROOT=$(ANYENV_ROOT)/envs/nodenv
