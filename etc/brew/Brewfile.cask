@@ -1,3 +1,4 @@
+cask '1password'
 cask 'alfred'
 cask 'boostnote'
 cask 'aws-vault'
