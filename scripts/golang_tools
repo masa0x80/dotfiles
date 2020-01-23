@@ -4,16 +4,21 @@ install() {
   go get $1
 }
 
-install github.com/direnv/direnv
+update() {
+  go get -u -t $1
+}
 
-install github.com/github/hub
-install github.com/hashicorp/packer
-install github.com/jesseduffield/lazydocker
+cmd=${1:-install}
+$cmd github.com/direnv/direnv
 
-install github.com/skanehira/tson
-install github.com/itchyny/gojq/cmd/gojq
-install github.com/itchyny/gojo/cmd/gojo
+$cmd github.com/github/hub
+$cmd github.com/hashicorp/packer
+$cmd github.com/jesseduffield/lazydocker
 
-install github.com/mattn/files
-install github.com/monochromegane/the_platinum_searcher/cmd/pt
-install github.com/peco/peco/cmd/peco
+$cmd github.com/skanehira/tson
+$cmd github.com/itchyny/gojq/cmd/gojq
+$cmd github.com/itchyny/gojo/cmd/gojo
+
+$cmd github.com/mattn/files
+$cmd github.com/monochromegane/the_platinum_searcher/cmd/pt
+$cmd github.com/peco/peco/cmd/peco

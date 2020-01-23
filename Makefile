@@ -88,7 +88,10 @@ golang-init: brew-init
 golang: golang-init
 	@./scripts/golang_tools
 
-.PHONY: golang-init golang
+golang-update: golang-init golang
+	@./scripts/golang_tools update
+
+.PHONY: golang-init golang golang-update
 
 # }}}
 
