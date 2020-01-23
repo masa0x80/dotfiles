@@ -4,6 +4,8 @@ install() {
   cargo install $1 || :
 }
 
+install cargo-update
+
 install exa
 install fd-find
 install ripgrep

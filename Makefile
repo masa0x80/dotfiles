@@ -100,7 +100,10 @@ rust-init: brew-init
 rust: rust-init
 	@./scripts/rust_tools
 
-.PHONY: rust-init rust
+rust-update: rust-init rust
+	@cargo install-update -a
+
+.PHONY: rust-init rust rust-update
 
 # }}}
 
