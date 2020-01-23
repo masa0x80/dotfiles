@@ -19,6 +19,7 @@ function fish_prompt
         set prompt_prefix '彡'
     end
 
+    printf (set_color grey)'%s '(set_color normal) (date +%H:%M:%S)
     if test $status_code -eq 0
         printf '%s:%s ' $prompt_prefix $prompt_suffix
     else
