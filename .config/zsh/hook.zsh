@@ -5,12 +5,6 @@ check_local_git_config() {
   fi
 }
 
-rename_window() {
-  check_local_git_config
-  if is_tmux_running; then
-    tmux rename-window $(current_dir)
-  fi
-}
 autoload -Uz add-zsh-hook
 PERIOD=1
-add-zsh-hook periodic rename_window
+add-zsh-hook periodic check_local_git_config

@@ -162,22 +162,4 @@ not set -q global_abbreviations && gabbr -r
 
 type -qa direnv && eval (direnv hook fish)
 
-function __prepare_rename_window --on-event fish_preexec
-    if __tmux_is_running
-        set -gx TMUX_WINDOW_INDEX (tmux display-message -p '#I')
-    end
-end
-function __exec_rename_window --on-event rename_window
-    __check_local_git_config
-    if __tmux_is_running && type -qa current_dir
-        tmux rename-window -t $TMUX_WINDOW_INDEX (current_dir)
-    end
-end
-function __rename_window --on-event fish_prompt
-    emit rename_window
-end
-
-__prepare_rename_window
-emit rename_window
-
 # }}}
