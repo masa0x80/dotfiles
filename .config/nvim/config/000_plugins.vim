@@ -63,10 +63,17 @@ Plug 'slim-template/vim-slim',       { 'for': 'slim' }
 Plug 'cespare/vim-toml',             { 'for': 'toml' }
 Plug 'elzr/vim-json',                { 'for': 'json' }
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'aklt/plantuml-syntax',         { 'for': 'plantuml' }
 " {{{ markdown
 Plug 'godlygeek/tabular'
 Plug 'joker1007/vim-markdown-quote-syntax'
 Plug 'rcmdnk/vim-markdown', { 'for': 'markdown' }
+if has('nvim') && executable('yarn')
+  Plug 'iamcco/markdown-preview.nvim', {
+    \  'do': 'cd app & yarn install',
+    \  'for': ['markdown', 'plantuml']
+    \ }
+endif
 " }}} markdown
 call plug#end()
 " }}} 1
