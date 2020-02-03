@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+# Usage:
+#
+# $ tmux set-window-option -g pane-border-status top
+# $ tmux set-window-option -g pane-border-format '#(tmux-border-name #{pane_current_path})'
+
+echo $(cd $1; git branch-status)
