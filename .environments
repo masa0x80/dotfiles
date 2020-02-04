@@ -83,7 +83,7 @@ if [ -d $HOME/.anyenv ]; then
 fi
 
 # golang
-export GO12MODULE=on
+export GO111MODULE=on
 export GOPATH=$HOME/go
 if type -a go >/dev/null 2>&1; then
   export PATH=$GOPATH/bin:$PATH
