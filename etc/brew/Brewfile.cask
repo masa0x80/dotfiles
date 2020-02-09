@@ -1,4 +1,5 @@
 cask '1password'
+cask 'adoptopenjdk'
 cask 'alfred'
 cask 'boostnote'
 cask 'aws-vault'
