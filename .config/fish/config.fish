@@ -160,6 +160,8 @@ not set -q global_abbreviations && gabbr -r
 
 ### Hooks {{{
 
-type -qa direnv && eval (direnv hook fish)
+function __tmux_init --on-event fish_prompt
+    type -qa direnv && eval (direnv export fish)
+end
 
 # }}}
