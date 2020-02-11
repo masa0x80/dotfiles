@@ -60,7 +60,6 @@ alias gst='git status -sb'
 alias gts='git tag -s'
 
 alias br='git switch -c'
-alias re='git restore GST'
 alias review='git review GH'
 
 # ref: bin/git-fzf

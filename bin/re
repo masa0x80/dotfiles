@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+option=$(echo '--staged\n--worktree' | fzf --query "$1")
+git restore $option $(git status -s -uno | fzf --prompt="$ git restore $option \$(git status -s -uno)> " | awk '{print $2}')
