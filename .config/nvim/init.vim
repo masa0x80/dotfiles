@@ -11,7 +11,7 @@ autocmd MyAutoCmd ColorScheme * match Visual /[　 ]\+$/
 
 " Save cursor position
 autocmd MyAutoCmd BufRead *
-  \  if &filetype != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$")
+  \  if line("'\"") > 0 && line("'\"") <= line("$")
   \|   execute "normal g`\""
   \| endif
 
