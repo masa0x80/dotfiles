@@ -1,7 +1,6 @@
 [core]
   autocrlf = false
   excludesfile = ~/.config/git/ignore
-  editor = vi
   pager = diff-so-fancy | less -RIXc --pattern='^(Date|added|deleted|modified): '
   hooksPath = ~/.config/git/hooks
 [credential]
