@@ -60,6 +60,7 @@ Plug 'prabirshrestha/asyncomplete-buffer.vim'
 Plug 'dag/vim-fish',                 { 'for': 'fish' }
 Plug 'vim-ruby/vim-ruby',            { 'for': 'ruby' }
 Plug 'tpope/vim-rails',              { 'for': 'ruby' }
+Plug 'mattn/vim-goimports',          { 'for': 'go' }
 Plug 'slim-template/vim-slim',       { 'for': 'slim' }
 Plug 'cespare/vim-toml',             { 'for': 'toml' }
 Plug 'elzr/vim-json',                { 'for': 'json' }
