@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-# Usage
-#
-# $ set-window-option -g automatic-rename on
-# $ set-window-option -g automatic-rename-format '#(twn #{pane_current_path})'
-
-echo $(cd $1; current_dir)
