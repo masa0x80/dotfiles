@@ -3,9 +3,8 @@ if globpath(&runtimepath, '') !~# 'vim-fish'
 endif
 
 function! s:fish_indent()
-  let l:line = line('.')
   " NOTE: Require 'dag/vim-fish'
   normal gggqG
-  execute ':' . l:line
+  execute "normal \<C-o>"
 endfunction
 autocmd MyAutoCmd BufWritePre *.fish call <SID>fish_indent()
