@@ -8,3 +8,8 @@ let g:ale_fixers = {
   \   'javascript': ['prettier', 'eslint'],
   \   'typescript': ['prettier', 'eslint'],
   \ }
+
+function! s:ToggleALEAutoFix()
+  let g:ale_fix_on_save = !get(g:, 'ale_fix_on_save')
+endfunction
+command! -nargs=0 ToggleALEAutoFix call s:ToggleALEAutoFix()
