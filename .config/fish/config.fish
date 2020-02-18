@@ -163,30 +163,4 @@ function __direnv_init --on-event fish_prompt
     type -qa direnv && eval (direnv export fish)
 end
 
-### Git Prompt Color {{{
-
-set __fish_git_prompt_showdirtystate 'yes'
-set __fish_git_prompt_showstashstate 'yes'
-set __fish_git_prompt_showuntrackedfiles 'yes'
-set __fish_git_prompt_showupstream 'yes'
-
-set __fish_git_prompt_color_branch ''
-set __fish_git_prompt_color_upstream_ahead ''
-set __fish_git_prompt_color_upstream_behind ''
-
-set __fish_git_prompt_char_dirtystate '⨯'
-set __fish_git_prompt_char_stagedstate '→'
-set __fish_git_prompt_char_untrackedfiles 'u'
-set __fish_git_prompt_char_stashstate 's'
-set __fish_git_prompt_char_upstream_ahead '+'
-set __fish_git_prompt_char_upstream_behind '-'
-
-# }}}
-
-function __tmux_hook --on-event fish_prompt
-    if __tmux_is_running
-        tmux rename-window (echo (current_dir)(__fish_git_prompt || echo ''))
-    end
-end
-
 # }}}

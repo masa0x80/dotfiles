@@ -1,0 +1,9 @@
+#!/usr/bin/env fish
+
+# Usage:
+#
+# $ tmux set-window-option -g automatic-rename on
+# $ tmux set-window-option -g automatic-rename-format '#(twn)'
+
+cd (tmux display-message -p '#{pane_current_path}')
+echo (current_dir)(__fish_git_prompt || echo '')
