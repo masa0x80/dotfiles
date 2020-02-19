@@ -10,4 +10,5 @@ endif
 nnoremap <silent> gd :LspDefinition<CR>
 nnoremap <silent> gr :LspReferences<CR>
 nnoremap <silent> K :LspHover<CR>
-nnoremap <silent> <leader>rn :LspRename<CR>
+nnoremap <silent> <leader>lr :LspRename<CR>
+nnoremap <silent> <leader>lf :LspDocumentFormat<CR>
