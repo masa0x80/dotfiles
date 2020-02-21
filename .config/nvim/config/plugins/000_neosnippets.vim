@@ -1,4 +1,4 @@
-if globpath(&runtimepath, '') !~# 'neosnippet\.vim'
+if globpath(&runtimepath, '') !~# '\/neosnippet\.vim'
   finish
 endif
 
