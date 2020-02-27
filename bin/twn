@@ -3,7 +3,7 @@
 # Usage:
 #
 # $ tmux set-window-option -g automatic-rename on
-# $ tmux set-window-option -g automatic-rename-format '#(twn)'
+# $ tmux set-window-option -g automatic-rename-format '#(twn #{pane_current_path})'
 
-cd (tmux display-message -p '#{pane_current_path}')
+cd $argv
 echo (current_dir)(__fish_git_prompt || echo '')
