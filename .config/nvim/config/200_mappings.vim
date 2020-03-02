@@ -18,7 +18,7 @@ noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('
 " Reload vimrc
 nnoremap <Leader>R :<C-u>source $MYVIMRC<CR>
 
-nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>nohlsearch<CR>:<C-u>cclose<CR>
+nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>nohlsearch<CR>:<C-u>cclose<CR>:<C-u>lclose<CR>
 
 " Toggle relativenumber
 nnoremap <Leader>N :<C-u>setlocal relativenumber!<CR>
