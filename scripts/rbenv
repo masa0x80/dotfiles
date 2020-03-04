@@ -9,7 +9,6 @@ rails
 foreman
 pry
 jr
-solargraph
 mdl
 EOF
 
