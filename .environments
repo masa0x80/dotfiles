@@ -76,12 +76,6 @@ fi
 # Disable homebrew analytics
 [ "$UNAME_S" = 'darwin' ] && export HOMEBREW_NO_ANALYTICS=1
 
-# anyenv
-if [ -d $HOME/.anyenv ]; then
-  export PATH=$HOME/.anyenv/bin:$PATH
-  eval "$(anyenv init -)"
-fi
-
 # golang
 export GO111MODULE=on
 export GOPATH=$HOME/go
@@ -91,6 +85,12 @@ fi
 
 # rust
 [ -d $HOME/.cargo ] && export PATH=$HOME/.cargo/bin:$PATH
+
+# anyenv
+if [ -d $HOME/.anyenv ]; then
+  export PATH=$HOME/.anyenv/bin:$PATH
+  eval "$(anyenv init -)"
+fi
 
 # EDITOR
 if type -a nvim >/dev/null 2>&1; then
