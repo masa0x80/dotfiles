@@ -25,6 +25,7 @@ map('F', 'gf')
 map('P', 'sg')
 map('<Ctrl-s><Ctrl-s>', '<Ctrl-6>')
 map('<Ctrl-[>', '<Esc>')
+map('<Ctrl-c>', '<Esc>')
 map('gn', 't')
 // }}}
 
