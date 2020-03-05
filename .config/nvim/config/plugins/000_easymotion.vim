@@ -10,7 +10,7 @@ let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_space_jump_first = 1
 
 " Show target key with upper case to improve readability
-let g:EasyMotion_keys = 'HKYUOPNMQWERTZXCVBASDGJF'
+let g:EasyMotion_keys = 'AOEUIDDHTNSPYFGCRLQJKXBMWVZ'
 let g:EasyMotion_use_upper = 1
 
 let g:EasyMotion_smartcase = 1

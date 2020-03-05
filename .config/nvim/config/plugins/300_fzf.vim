@@ -15,7 +15,6 @@ endif
 
 " Rails
 nnoremap <silent> <Leader>c :<C-u>GFiles<CR>app/controllers/
-nnoremap <silent> <Leader>d :<C-u>GFiles<CR>db/migrate/
 nnoremap <silent> <Leader>h :<C-u>GFiles<CR>app/helpers/
 nnoremap <silent> <Leader>m :<C-u>GFiles<CR>app/models/
 nnoremap <silent> <Leader>s :<C-u>GFiles<CR>app/serializers/

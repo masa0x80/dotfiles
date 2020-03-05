@@ -1,7 +1,7 @@
 " Skip initialization for vim-tiny or vim-small
 if !1 | finish | endif
 
-let g:mapleader=","
+let g:mapleader="\<Space>"
 
 " Define the autocmd group to reset autocmd
 augroup MyAutoCmd | autocmd! | augroup END
