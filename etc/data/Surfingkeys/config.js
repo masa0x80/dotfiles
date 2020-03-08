@@ -17,9 +17,11 @@ map('<Ctrl-e>', 'j')
 map('<Ctrl-y>', 'k')
 map('<Ctrl-n>', 'R')
 map('<Ctrl-p>', 'E')
+map('<Ctrl-i>', 'R')
+map('<Ctrl-o>', 'E')
 map('H', 'S')
 map('L', 'D')
-map('d', 'x')
+map('D', 'x')
 map('u', 'X')
 map('F', 'gf')
 map('P', 'sg')
@@ -246,6 +248,7 @@ const commonUnmapKeys = [
   '<Ctrl-d>', '<Ctrl-u>',
   '<Ctrl-y>', '<Ctrl-e>',
   '<Ctrl-n>', '<Ctrl-p>',
+  '<Ctrl-i>', '<Ctrl-o>',
   '<Ctrl-s><Ctrl-s>',
   't', 'gn',
   'oT', 'oa', 'od', 'og',
@@ -253,7 +256,7 @@ const commonUnmapKeys = [
   'or', 'ot', 'ox', 'oy',
   'H', 'L',
   'f', 'F',
-  'x', 'X', 'd',
+  'x', 'X', 'D',
   '>>', '<<',
   '<Alt-p>'
 ].concat(
