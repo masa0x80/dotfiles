@@ -4,12 +4,12 @@ test -d $PYENV_ROOT || anyenv install pyenv
 
 # Pythohn 2
 pyenv versions | grep -q $PYTHON2_VERSION || pyenv install $PYTHON2_VERSION
-pyenv versions | grep -q "* $PYTHON2_VERSION" || pyenv global $PYTHON2_VERSION
-pip install --upgrade pip
 
 # Pythohn 3
 pyenv versions | grep -q $PYTHON3_VERSION || pyenv install $PYTHON3_VERSION
-pyenv versions | grep -q "* $PYTHON3_VERSION" || pyenv global $PYTHON3_VERSION
+pyenv versions | grep -q "* $PYTHON3_VERSION" | grep -q "* $PYTHON2_VERSION" || pyenv global $PYTHON3_VERSION $PYTHON2_VERSION
+
+pip  install --upgrade pip
 pip3 install --upgrade pip
 
 # Python tools
