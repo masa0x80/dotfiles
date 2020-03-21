@@ -1,5 +1,4 @@
 " Esc
-nnoremap <C-c> <C-c>
 nnoremap <C-c> <Esc>
 
 " Save
@@ -45,7 +44,6 @@ noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('
 nnoremap <Leader>R :<C-u>source $MYVIMRC<CR>
 
 nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>nohlsearch<CR>:<C-u>cclose<CR>:<C-u>lclose<CR>
-nnoremap <silent> <C-c><C-c> :<C-u>set nopaste<CR>:<C-u>nohlsearch<CR>:<C-u>cclose<CR>:<C-u>lclose<CR>
 
 " Toggle relativenumber
 nnoremap <Leader>N :<C-u>setlocal relativenumber!<CR>
