@@ -22,7 +22,7 @@ map('<Ctrl-o>', 'E')
 map('H', 'S')
 map('L', 'D')
 map('D', 'x')
-map('u', 'X')
+map('U', 'X')
 map('F', 'gf')
 map('P', 'sg')
 map('<Ctrl-s><Ctrl-s>', '<Ctrl-6>')
@@ -269,7 +269,7 @@ unmapAllExcept(
 )
 
 unmapAllExcept(
-  commonUnmapKeys.concat(['u', 'G', 'gg']).concat(
+  commonUnmapKeys.concat(['U', 'G', 'gg']).concat(
     Object.keys(qmarksUrls).map(key => `go${key}`)
   ),
   /outlook\.office365\.com/
