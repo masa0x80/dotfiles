@@ -31,6 +31,10 @@ nnoremap ,L <C-w>L
 nnoremap ,H <C-w>H
 nnoremap ,, <C-w><C-w>
 nnoremap ,= <C-w>=
+nnoremap ,o :<C-u>only<CR>
+
+" Tab
+nnoremap ,t :<C-u>tabedit<CR>
 
 " Quit
 nnoremap ,q :<C-u>q<CR>
