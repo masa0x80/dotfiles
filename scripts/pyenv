@@ -25,3 +25,5 @@ pip_install yq
 
 pip_install mycli
 pip_install pgcli
+
+pip_install diagrams
