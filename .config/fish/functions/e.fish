@@ -1,8 +1,8 @@
 function e
     if type -qa fzf
         fzf -1 -q "$argv" | tr '\n' ' ' | read -l result
-        and vi $result
+        and eval $EDITOR $result
     else
-        vi $argv
+        eval $EDITOR $argv
     end
 end
