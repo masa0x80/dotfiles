@@ -163,4 +163,12 @@ function __direnv_init --on-event fish_prompt
     type -qa direnv && eval (direnv export fish)
 end
 
+function __tmux_auto_rename --on-event fish_prompt
+    if __tmux_is_running
+        set -l tmux_current_window_id (tmux list-panes -aF '#{window_id}:#{pane_pid}' | grep :$fish_pid | cut -d: -f1)
+        tmux rename-window -t $tmux_current_window_id (current_dir)(fish_git_prompt || echo '')
+    end
+end
+# }}}
+
 # }}}
