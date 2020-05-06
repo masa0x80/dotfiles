@@ -1,5 +1,6 @@
 " Esc
 nnoremap <C-c> <Esc>
+inoremap <C-c> <Esc>
 
 " Save
 nnoremap s <NOP>
