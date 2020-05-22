@@ -1,7 +1,6 @@
-if [ -f $HOME/google-cloud-sdk/path.fish.inc ]
-    if type source >/dev/null
-        source $HOME/google-cloud-sdk/path.fish.inc
-    else
-        . $HOME/google-cloud-sdk/path.fish.inc
-    end
+# Skip loading config if already login
+status is-login || exit
+
+if test -f $HOME/google-cloud-sdk/path.fish.inc
+    source $HOME/google-cloud-sdk/path.fish.inc
 end

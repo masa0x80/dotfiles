@@ -1,6 +1,6 @@
 # Set fresco config
-type -qa ghq && set -U fresco_root (ghq root)
-set -U fresco_plugin_list_path $HOME/.config/fish/plugins.fish
+type -qa ghq && set -gx fresco_root (ghq root)
+set -gx fresco_plugin_list_path $HOME/.config/fish/plugins.fish
 
 if type -qa ghq
     set -l bootstrap_file $fresco_root/github.com/masa0x80/fresco/fresco.fish
