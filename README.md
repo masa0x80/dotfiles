@@ -1,7 +1,7 @@
 # Dotfiles
 
 [![MIT LICENSE](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
-[![macOS | CentOS](https://img.shields.io/badge/platform-macOS%20|%20CentOS-8c8c8c.svg?style=flat-square)](#installation)
+[![macOS](https://img.shields.io/badge/platform-macOS%20)](#installation)
 
 ## Overview
 
