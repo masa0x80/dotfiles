@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 LOG=/tmp/update-casks.log
 echo '' > $LOG
@@ -21,6 +21,6 @@ if type -a brew >/dev/null && type -a fzf >/dev/null; then
   done
 
   if [ -n "$packages" ]; then
-    brew cask cleanup | tee $LOG
+    brew cleanup | tee $LOG
   fi
 fi

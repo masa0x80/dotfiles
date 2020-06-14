@@ -1,9 +1,13 @@
-#!/bin/sh
+#!/bin/zsh
 
-type -a BluetoothConnector >/dev/null 2>&1 || exit 1
+bt() {
+  type BluetoothConnector >/dev/null || return 1
+  type fzf >/dev/null || return 1
 
-op=$(echo 'connect\ndisconnect' | fzf --query "$1")
-selected=$(BluetoothConnector | grep ' - ' | sort | fzf -d ' - ' --with-nth=2)
-mac_addr=$(echo $selected | cut -d ' ' -f1)
+  op=$(echo 'connect\ndisconnect' | fzf --query "$1")
+  selected=$(BluetoothConnector 2>&1 | grep -o '.* - .*' | sort | fzf -d ' - ' --with-nth=2)
+  mac_addr=$(echo $selected | cut -d ' ' -f1)
 
-BluetoothConnector --$op $mac_addr --notify
+  BluetoothConnector --$op $mac_addr --notify
+}
+bt

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 # ref: https://github.com/questbeat/dotfiles/blob/fish/dotfiles/bin/git-edit
 
 if [ -z "$1" ]; then

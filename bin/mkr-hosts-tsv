@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 # ref: http://motemen.hatenablog.com/entry/2015/07/mackerel-mkr-peco-zsh
 
 cache_dir=~/.cache/mkr-hosts-tsv

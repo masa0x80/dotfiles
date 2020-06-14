@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+tmux-choose-session() {
+  type fzf >/dev/null || return 1
+
+  local num
+  num=$(tmux list-sessions | fzf | cut -d':' -f 1)
+  tmux switch-client -t $num
+}
+tmux-choose-session

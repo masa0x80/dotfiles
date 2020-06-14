@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+tmux-choose-window() {
+  type f >/dev/null || return 1
+
+  local num
+  num=$(tmux list-windows | fzf | cut -d':' -f 1)
+  tmux select-window -t $num
+}
+tmux-choose-window

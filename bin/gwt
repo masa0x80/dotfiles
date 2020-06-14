@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 gwt() {
   GIT_CDUP_DIR=`git rev-parse --show-cdup`

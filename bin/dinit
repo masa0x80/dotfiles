@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 echo -n '' > .envrc
 if [ -d vendor/bin ]; then

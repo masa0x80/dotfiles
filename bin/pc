@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 pass_name=$(fd . $PASSWORD_STORE_DIR -e gpg -x echo '{.}' | grep -oP "(?<=\\$PASSWORD_STORE_DIR/).*" | fzf --query "$1")
 [ -z "$pass_name" ] && exit 1
