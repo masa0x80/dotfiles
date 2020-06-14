@@ -2,6 +2,9 @@
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
 
+" Disable EX-mode (if you switch EX-mode, push gQ)
+nnoremap Q <NOP>
+
 " Save
 nnoremap s <NOP>
 nnoremap ss :<C-u>write<CR>
