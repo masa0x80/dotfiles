@@ -56,7 +56,7 @@ clean:
 
 brew-init:
 	@xcode-select --install || :
-	@type -a brew >/dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	@type -a brew >/dev/null || /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	brew update
 	brew upgrade
 	brew tap homebrew/bundle
