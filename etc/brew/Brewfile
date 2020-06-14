@@ -63,3 +63,5 @@ brew 'docker'
 
 tap 'mackerelio/mackerel-agent'
 brew 'mkr'
+
+brew 'pinentry-mac'
