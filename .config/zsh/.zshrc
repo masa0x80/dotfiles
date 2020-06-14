@@ -15,11 +15,6 @@ for config_file ($ZDOTDIR/custom/*.zsh(N)); do
   load_file $config_file
 done
 
-# エイリアス設定の読み込み
-for config_file ($ZDOTDIR/alias/*.zsh(N)); do
-  load_file $config_file
-done
-
 # OSごとの設定の読み込み
 for config_file ($ZDOTDIR/os/$UNAME_S/rc/*.zsh(N)); do
   load_file $config_file

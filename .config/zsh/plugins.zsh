@@ -16,27 +16,6 @@ if [ -r $HOME/.zplug/zplug ]; then
   zplug 'zsh-users/zsh-autosuggestions'
   zplug 'zsh-users/zsh-completions'
 
-  zplug 'stedolan/jq', \
-    as:command, \
-    from:gh-r, \
-    rename-to:jq
-
-  if [[ $UNAME_S != 'darwin' ]]; then
-    zplug 'jpmens/jo', \
-      as:command, \
-      hook-build:'cd $HOME/.zplug/repos/jpmens/jo && autoreconf -i && ./configure --prefix=$HOME/.zplug && make check && make install'
-
-    zplug 'junegunn/fzf-bin', \
-      as:command, \
-      from:gh-r, \
-      rename-to:fzf, \
-      use:"*linux*amd64*", \
-      on:junegunn/fzf
-    zplug 'junegunn/fzf', \
-      as:command, \
-      use:bin/fzf-tmux
-  fi
-
   if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
