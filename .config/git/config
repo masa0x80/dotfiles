@@ -3,13 +3,25 @@
   excludesfile = ~/.config/git/ignore
   pager = diff-so-fancy | less -RIXc --pattern='^(Date|added|deleted|modified): '
   hooksPath = ~/.config/git/hooks
-[credential]
-  helper = osxkeychain
 [include]
   path = ~/.config.local/git/config
-[ghq]
-  root = ~/go/src
-  root = ~/.ghq
+[push]
+  default = current
+[merge]
+  ff = false
+[pull]
+  ff = only
+[rebase]
+  autosquash = true
+[credential]
+  helper = osxkeychain
+[pager]
+  branch = cat
+[color]
+  diff        = auto
+  status      = auto
+  branch      = auto
+  interactive = auto
 [alias]
   ci = commit -v
   co = checkout
@@ -53,20 +65,8 @@
   filetrail    = git log --follow -p -w
   mergetrail   = log --ancestry-path --merges
   unmerged     = diff --name-only --diff-filter=U
-[pager]
-  branch = cat
-[color]
-  diff        = auto
-  status      = auto
-  branch      = auto
-  interactive = auto
-[push]
-  default = current
-[merge]
-  ff = false
-[pull]
-  ff = only
-[rebase]
-  autosquash = true
+[ghq]
+  root = ~/go/src
+  root = ~/.ghq
 [harrow]
   disabled = true
