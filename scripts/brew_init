@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+# NOTE: CI=1
+#       Suppress "Press RETURN to continue or any other key to abort"
+type -a brew >/dev/null || CI=1 zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+brew update
+brew upgrade
+brew tap homebrew/bundle

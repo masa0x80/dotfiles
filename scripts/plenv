@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-test -d $PLENV_ROOT || anyenv install plenv
-
-plenv versions | grep -q $PERL_VERSION || plenv install $PERL_VERSION
-plenv global $PERL_VERSION

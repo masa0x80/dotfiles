@@ -9,12 +9,13 @@ pyenv versions | grep -q $PYTHON2_VERSION || pyenv install $PYTHON2_VERSION
 pyenv versions | grep -q $PYTHON3_VERSION || pyenv install $PYTHON3_VERSION
 pyenv versions | grep -q "* $PYTHON3_VERSION" | grep -q "* $PYTHON2_VERSION" || pyenv global $PYTHON3_VERSION $PYTHON2_VERSION
 
-pip  install --upgrade pip
-pip3 install --upgrade pip
+python3 -m pit install --upgrade pip
 
 # Python tools
 pip_install() {
-  pip3 list | grep -q -i $1 || pip3 install $1
+  if python3 -m pip list | grep -i $1; then
+    python3 -m pip install $1
+  fi
 }
 
 pip_install neovim
@@ -22,8 +23,5 @@ pip_install neovim
 pip_install awscli
 pip_install httpie
 pip_install yq
-
-pip_install mycli
-pip_install pgcli
 
 pip_install diagrams

@@ -22,7 +22,7 @@ PATH := $(PYENV_ROOT)/bin:$(PATH)
 PATH := $(RBENV_ROOT)/bin:$(PATH)
 export PATH
 
-all: update install deploy
+all: update deploy install
 
 help:
 	@echo "make all            #=> Updating, deploying and initializng"
@@ -33,9 +33,9 @@ help:
 	@echo "make clean          #=> Remove the dotfiles"
 
 update:
-	git pull origin master
+	git pull --no-commit origin master
 
-install: brew-bundle nodenv plenv pyenv rbenv golang rust
+install: brew-bundle nodenv pyenv rbenv golang rust
 
 deploy:
 	@echo 'Deploy dotfiles.'
@@ -55,11 +55,8 @@ clean:
 # brew {{{
 
 brew-init:
-	@xcode-select --install || :
-	@type -a brew >/dev/null || /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-	brew update
-	brew upgrade
-	brew tap homebrew/bundle
+	@xcode-select --install 2>/dev/null || :
+	@./scripts/brew_init
 
 brew: brew-init
 	brew bundle --file=etc/brew/Brewfile
@@ -118,15 +115,12 @@ anyenv-init:
 nodenv: anyenv-init
 	@./scripts/nodenv
 
-plenv: anyenv-init
-	@./scripts/plenv
-
 pyenv: anyenv-init
 	@./scripts/pyenv
 
 rbenv: anyenv-init
 	@./scripts/rbenv
 
-.PHONY: anyenv-init nodenv plenv pyenv rbenv
+.PHONY: anyenv-init nodenv pyenv rbenv
 
 # }}}

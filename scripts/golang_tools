@@ -23,4 +23,3 @@ $cmd github.com/itchyny/gojo/cmd/gojo
 
 $cmd github.com/mattn/files
 $cmd github.com/monochromegane/the_platinum_searcher/cmd/pt
-$cmd github.com/peco/peco/cmd/peco
