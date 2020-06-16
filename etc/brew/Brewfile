@@ -1,4 +1,3 @@
-tap 'caskroom/versions'
 tap 'homebrew/core'
 tap 'homebrew/services'
 
@@ -32,7 +31,6 @@ brew 'watch'
 brew 'graphviz'
 brew 'imagemagick'
 brew 'pandoc'
-brew 'sshrc'
 
 tap 'universal-ctags/universal-ctags'
 brew 'universal-ctags', args: ['HEAD']
