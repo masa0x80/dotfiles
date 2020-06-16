@@ -4,7 +4,7 @@
   pager = diff-so-fancy | less -RIXc --pattern='^(Date|added|deleted|modified): '
   hooksPath = ~/.config/git/hooks
 [credential]
-  helper = cache
+  helper = osxkeychain
 [include]
   path = ~/.config.local/git/config
 [ghq]
@@ -62,6 +62,10 @@
   interactive = auto
 [push]
   default = current
+[merge]
+  ff = false
+[pull]
+  ff = only
 [rebase]
   autosquash = true
 [harrow]
