@@ -2,10 +2,8 @@
 /.*
 
 !/.gitignore
-!/bat
 !/git
 !/nvim
-!/peco
 !/sshrc
 !/tmux
 !/zsh
