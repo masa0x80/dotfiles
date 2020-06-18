@@ -19,9 +19,5 @@ pip_install() {
 }
 
 pip_install neovim
-
 pip_install awscli
-pip_install httpie
-pip_install yq
-
 pip_install diagrams

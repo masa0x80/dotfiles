@@ -43,15 +43,22 @@ brew 'tmux'
 tap 'greymd/tools'
 brew 'tmux-xpanes'
 
-tap 'neovim/neovim'
 brew 'neovim', args: ['HEAD']
 
 brew 'go'
 brew 'rust'
 brew 'tfenv'
 
+brew 'direnv'
+brew 'hub'
 brew 'ghq'
 brew 'csvq'
+brew 'packer'
+brew 'lazydocker'
+
+tap 'itchyny/tap'
+brew 'gojq'
+brew 'gojo'
 
 brew 'mysql'
 brew 'postgresql'
@@ -63,3 +70,10 @@ tap 'mackerelio/mackerel-agent'
 brew 'mkr'
 
 brew 'pinentry-mac'
+
+brew 'httpie'
+brew 'yq'
+
+brew 'exa'
+brew 'fd'
+brew 'ripgrep'
