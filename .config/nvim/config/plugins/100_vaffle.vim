@@ -33,5 +33,5 @@ augroup MyAutoCmd VaffleConfig
   autocmd FileType vaffle call s:customize_vaffle_mappings()
 augroup END
 
-nnoremap <Leader>F :<C-u>Vaffle getcwd()<CR>
-nnoremap <Leader>- :<C-u>Vaffle<CR>
+nnoremap <Leader>F :<C-u>Vaffle<CR>
+nnoremap <Leader>- :<C-u>Vaffle %:p<CR>
