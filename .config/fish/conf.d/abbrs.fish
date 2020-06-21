@@ -117,3 +117,5 @@ abbr -a bil 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4 
 abbr -a dcu 'dc up -d'
 abbr -a dcd 'dc down'
 # }}}
+
+abbr -a memo 'scrapbook memo'
