@@ -1,3 +1,3 @@
 function vi
-    eval $EDITOR $argv
+    eval $EDITOR (string escape -n -- $argv)
 end

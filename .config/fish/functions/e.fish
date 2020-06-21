@@ -1,8 +1,8 @@
 function e
     if type -qa fzf
-        fzf -1 -q "$argv" | tr '\n' ' ' | read -l result
-        and eval $EDITOR $result
+        set selected_files (fzf -1 -q "$argv" | string escape -n)
+        and eval $EDITOR $selected_files
     else
-        eval $EDITOR $argv
+        eval $EDITOR (string escape -n -- $argv)
     end
 end
