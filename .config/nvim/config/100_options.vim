@@ -22,7 +22,7 @@ set list
 set listchars=tab:»\ ,precedes:<,extends:>
 set wildmenu
 
-set fileencodings=utf-8
+set fileencodings=utf-8,cp932,euc-jp,sjis
 set ambiwidth=double
 
 set laststatus=2
