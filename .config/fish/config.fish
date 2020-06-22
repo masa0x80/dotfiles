@@ -27,8 +27,7 @@ function __fish_prompt_hooks --on-event fish_prompt
 
     # tmux auto rename
     if __tmux_is_running
-        set -l pane_pid (ps -p $fish_pid -o ppid,pid | grep -o '[0-9]*' | head -n 1)
-        set -l tmux_current_window_id (tmux list-panes -aF '#{window_id}:#{pane_pid}' | rg :$pane_pid | cut -d: -f1)
+        set -l tmux_current_window_id (tmux list-panes -aF '#{window_id}:#{pane_pid}' | grep :$fish_pid | cut -d: -f1)
         tmux rename-window -t $tmux_current_window_id (current_dir)(fish_git_prompt || echo '')
     end
 end
