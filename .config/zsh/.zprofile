@@ -14,7 +14,8 @@ for config_file ($ZDOTDIR/os/$UNAME_S/profile/*.zsh(N)); do
 done
 
 # gcloud設定の読み込み
-load_file $HOME/google-cloud-sdk/path.zsh.inc
+load_file /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+load_file /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 
 # Load local configurations (profile)
 load_file $HOME/.config.local/zsh/profile
