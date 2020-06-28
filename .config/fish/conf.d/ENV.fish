@@ -26,9 +26,6 @@ end
 __add_fish_user_paths $HOME/.anyenv/bin
 source (anyenv init - | psub)
 
-# brew install coreutils
-__add_fish_user_paths /usr/local/opt/coreutils/libexec/gnubin
-
 # brew install curl
 __add_fish_user_paths /usr/local/opt/curl/bin
 
@@ -46,6 +43,9 @@ __add_fish_user_paths /usr/local/opt/gettext/bin
 
 # brew install gnu-getopt
 __add_fish_user_paths /usr/local/opt/gnu-getopt/bin
+
+# brew install coreutils
+__add_fish_user_paths /usr/local/opt/coreutils/libexec/gnubin
 
 # brew install gnu-sed
 __add_fish_user_paths /usr/local/opt/gnu-sed/libexec/gnubin
