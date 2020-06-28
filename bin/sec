@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 : ${PASSWORD_STORE_DIR:=$HOME/.password-store}
 
