@@ -16,6 +16,8 @@ if status is-login
     __load_file $HOME/.config.local/fish/config.fish
 end
 
+set SHELL (type -p fish)
+
 ### gabbr
 not set -q global_abbreviations && gabbr -r
 
