@@ -5,18 +5,19 @@ if status is-login
         source $config_file
     end
 
-    # Append $DOTFILE/bin to $PATH
-    # NOTE: must place before loading `$HOME/.config.local/fish/config.fish`
-    not set -q DOTFILE && export DOTFILE=$HOME/.dotfiles
-    if test -d $DOTFILE
-        __add_fish_user_paths $DOTFILE/bin
-    end
-
     # Load local configurations
     __load_file $HOME/.config.local/fish/config.fish
-end
 
-set SHELL (type -p fish)
+    # Append $DOTFILE/bin to $PATH
+    if not set -q DOTFILE
+        if type -qa ghq
+            set -gx DOTFILE (ghq root)/github.com/masa0x80/dotfiles
+        else
+            set -gx DOTFILE $HOME/.dotfiles
+        end
+    end
+    test -d $DOTFILE/bin && __add_fish_user_paths $DOTFILE/bin
+end
 
 ### gabbr
 not set -q global_abbreviations && gabbr -r

@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+PATH=$(brew --prefix grep)/libexec/gnubin:$PATH
+
 pass_name=$(fd . $PASSWORD_STORE_DIR -e gpg -x echo '{.}' | grep -oP "(?<=\\$PASSWORD_STORE_DIR/).*" | fzf --query "$1")
 [ -z "$pass_name" ] && exit 1
 pass -c $pass_name

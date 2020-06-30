@@ -2,12 +2,11 @@
 
 : ${PASSWORD_STORE_DIR:=$HOME/.password-store}
 
-sec() {
-  type -a pass >/dev/null || exit 1
-  type -a fzf >/dev/null || exit 1
+PATH=$(brew --prefix grep)/libexec/gnubin:$PATH
 
+sec() {
   list() {
-    fd . $PASSWORD_STORE_DIR$(git rev-parse --show-toplevel | grep -oP "(?<=$HOME).*") -e gpg -x echo '{.}' | grep -oP "(?<=$PASSWORD_STORE_DIR/).*"
+    fd . $PASSWORD_STORE_DIR$(git rev-parse --show-toplevel | grep -oP "(?<=$HOME).*") --type f --hidden -e gpg -x echo '{.}' | grep -oP "(?<=$PASSWORD_STORE_DIR/).*"
   }
 
   backup() {
@@ -22,24 +21,14 @@ sec() {
   }
 
   show() {
-    pass_name=${1:-$(sec list | fzf)}
+    pass_name=$(sec list | fzf +m -q "$1")
     [ "$pass_name" = '' ] && exit 1
 
     pass show $pass_name
   }
 
-  diff() {
-    target=$1
-    [ "$target" = '' ] && exit 1
-
-    pass_name=$(sec list | fzf --query "$target")
-    [ "$pass_name" = '' ] && exit 1
-
-    pass show $pass_name | diff -u $target -
-  }
-
   restore() {
-    pass_names=($(sec list | fzf --query "$1"))
+    pass_names=($(sec list | fzf -q "$1"))
     [[ -z $pass_names ]] && exit 1
 
     for pass_name in ${pass_names[@]}; do
@@ -58,7 +47,6 @@ sec() {
     echo -e '\tlist'
     echo -e '\tbackup FILE'
     echo -e '\tshow [FILE]'
-    echo -e '\tdiff [FILE]'
     echo -e '\trestore [FILE]'
     echo -e '\thelp'
   }
@@ -72,9 +60,6 @@ sec() {
       ;;
     show)
       show $2
-      ;;
-    diff)
-      diff $2
       ;;
     restore)
       restore $2
