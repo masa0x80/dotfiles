@@ -13,6 +13,7 @@ brew 'gnu-tar'
 brew 'grep'
 brew 'less'
 brew 'libgit2'
+brew 'libsodium'
 
 brew 'bluetoothconnector'
 brew 'fzf'
