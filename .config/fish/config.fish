@@ -6,7 +6,7 @@ if status is-login
     end
 
     # Load local configurations
-    __load_file $HOME/.config.local/fish/config.fish
+    __load_file $HOME/.config.local/fish/login.fish
 
     # Append $DOTFILE/bin to $PATH
     if not set -q DOTFILE
@@ -18,6 +18,9 @@ if status is-login
     end
     test -d $DOTFILE/bin && __add_fish_user_paths $DOTFILE/bin
 end
+
+# Load local configurations
+__load_file $HOME/.config.local/fish/config.fish
 
 ### gabbr
 not set -q global_abbreviations && gabbr -r
