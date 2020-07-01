@@ -8,5 +8,3 @@ else
     alias la='ls -lAh'
     alias ll='ls -lh'
 end
-
-alias r='__ghq_cd'
