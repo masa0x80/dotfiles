@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env fish
 
 # refs: http://qiita.com/uasi/items/57da2e4268d348b371fb
-git commit --fixup "$(git fzf)"
+git commit --fixup (git fzf)

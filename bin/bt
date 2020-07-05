@@ -1,13 +1,13 @@
-#!/bin/zsh
+#!/usr/bin/env fish
 
-bt() {
-  type BluetoothConnector >/dev/null || return 1
-  type fzf >/dev/null || return 1
+function bt
+    type BluetoothConnector >/dev/null || return 1
+    type fzf >/dev/null || return 1
 
-  op=$(echo 'connect\ndisconnect' | fzf --query "$1")
-  selected=$(BluetoothConnector 2>&1 | grep -o '.* - .*' | sort | fzf -d ' - ' --with-nth=2)
-  mac_addr=$(echo $selected | cut -d ' ' -f1)
+    set -l op (echo -e connect\ndisconnect | fzf --query "$argv")
+    set -l selected (BluetoothConnector 2>&1 | grep -o '.* - .*' | fzf -d ' - ' --with-nth=2)
+    set -l mac_addr (echo $selected | cut -d ' ' -f1)
 
-  BluetoothConnector --$op $mac_addr --notify
-}
-bt
+    BluetoothConnector --$op $mac_addr --notify
+end
+bt $argv

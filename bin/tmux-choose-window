@@ -1,10 +1,9 @@
-#!/bin/zsh
+#!/usr/bin/env fish
 
-tmux-choose-window() {
-  type f >/dev/null || return 1
+function tmux-choose-window
+  type fzf >/dev/null || return 1
 
-  local num
-  num=$(tmux list-windows | fzf | cut -d':' -f 1)
+  set -l num (tmux list-windows | fzf | cut -d':' -f 1)
   tmux select-window -t $num
-}
+end
 tmux-choose-window

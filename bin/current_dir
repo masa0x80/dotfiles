@@ -1,8 +1,9 @@
-#!/bin/zsh
+#!/usr/bin/env fish
 
-output_delimiter=${1:-/}
-project_name=$(pwd | rev | cut -d/ -f 1 | rev)
-if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true' ]; then
-  project_name=$(git rev-parse --show-toplevel | rev | cut -d/ -f1,2 | tr '/' $output_delimiter | rev)
-fi
+set -l output_delimiter $argv
+test "$output_delimiter" = '' && set -l output_delimiter /
+set -l project_name (string join $output_delimiter (string split -r -m2 / $PWD)[2..3])
+if test "(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true'
+    set -l project_name (string join $output_delimiter (git rev-parse --show-toplevel | string split -r -m2 /)[2..3])
+end
 echo $project_name

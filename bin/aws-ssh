@@ -1,13 +1,13 @@
-#!/bin/zsh
+#!/usr/bin/env fish
 
-aws-ssh() {
-  type aws >/dev/null || return 1
-  type fzf >/dev/null || return 1
-  type xpanes >/dev/null || return 1
+function aws-ssh
+    type aws >/dev/null || return 1
+    type fzf >/dev/null || return 1
+    type xpanes >/dev/null || return 1
 
-  hosts=$(aws ec2 describe-instances --filter Name=instance-state-name,Values=running --query 'Reservations[].Instances[].[join(`\t`, [PrivateIpAddress, join(`\t`, [Tags[].join(`:`, *)][])])]' --output text | fzf --query "$*" | cut -f 1)
-  if [ "$hosts" != '' ]; then
-    xpanes --ssh $hosts
-  fi
-}
-aws-ssh
+    set -l hosts (aws ec2 describe-instances --filter Name=instance-state-name,Values=running --query 'Reservations[].Instances[].[join(`\t`, [PrivateIpAddress, join(`\t`, [Tags[].join(`:`, *)][])])]' --output text | fzf -m -q "$argv" | cut -f 1)
+    if test "$hosts" != ''
+        xpanes --ssh $hosts
+    end
+end
+aws-ssh $argv

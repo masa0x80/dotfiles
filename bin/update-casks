@@ -1,26 +1,31 @@
-#!/bin/zsh
+#!/usr/bin/env fish
 
-LOG=/tmp/update-casks.log
-echo '' > $LOG
+function update_casks
+    set -l LOG /tmp/update-casks.log
+    echo '' >$LOG
 
-: ${caskroom_dir:=/usr/local/Caskroom}
-if type -a brew >/dev/null && type -a fzf >/dev/null; then
-  packages=$(brew cask list | fzf --query "$*")
-  if [ -n "$packages" ]; then
-    brew update | tee $LOG
-  fi
+    set -q caskroom_dir && set caskroom_dir /usr/local/Caskroom
+    type brew >/dev/null || return 1
+    type fzf >/dev/null || return 1
 
-  for pkg in $packages; do
-    app_dir=$caskroom_dir/$pkg
-    latest_version=$(brew cask info $pkg | grep "$pkg:" | cut -d ' ' -f 2)
-    if ! test -d $app_dir/$latest_version; then
-      brew cask reinstall $pkg | tee $LOG
-    else
-      echo -e "INFO: \033[0;32m$pkg\033[0;39m already updated" | tee $LOG
-    fi
-  done
+    set packages (brew cask list | fzf --query "$argv")
+    if test -n "$packages"
+        brew update | tee $LOG
+    end
 
-  if [ -n "$packages" ]; then
-    brew cleanup | tee $LOG
-  fi
-fi
+    for pkg in $packages
+        set app_dir $caskroom_dir/$pkg
+        set latest_version (brew cask info $pkg | grep "$pkg:" | cut -d ' ' -f 2)
+        if not test -d $app_dir/$latest_version
+            brew cask reinstall $pkg | tee $LOG
+        else
+            echo -e "INFO: already updated" | tee $LOG
+        end
+        done
+
+        if test -n "$packages"
+            brew cleanup | tee $LOG
+        end
+    end
+end
+update_casks $argv

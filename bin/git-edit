@@ -1,9 +1,11 @@
-#!/bin/zsh
-# ref: https://github.com/questbeat/dotfiles/blob/fish/dotfiles/bin/git-edit
+#!/usr/bin/env fish
 
-if [ -z "$1" ]; then
-  echo 'Usage: git edit [hash]'
-  exit 1
-fi
+function git_edit
+    if test -z "$argv"
+        echo 'Usage: git edit [hash]'
+        return 1
+    end
 
-GIT_SEQUENCE_EDITOR="sed -i -e '1,1s/pick/edit/'" git rebase -i "$1"~
+    env GIT_SEQUENCE_EDITOR="sed -i -e '1,1s/pick/edit/'" git rebase -i "$argv"~
+end
+git_edit $argv

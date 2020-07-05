@@ -1,72 +1,65 @@
-#!/bin/zsh
+#!/usr/bin/env fish
 
-: ${PASSWORD_STORE_DIR:=$HOME/.password-store}
+set -q PASSWORD_STORE_DIR && set -l PASSWORD_STORE_DIR $HOME/.password-store
 
-PATH=$(brew --prefix grep)/libexec/gnubin:$PATH
+function sec
+    function list
+        fd . $PASSWORD_STORE_DIR(git rev-parse --show-toplevel | grep -oP "(?<=$HOME).*") --type f --hidden -e gpg -x echo '{.}' | grep -oP "(?<=$PASSWORD_STORE_DIR/).*"
+    end
 
-sec() {
-  list() {
-    fd . $PASSWORD_STORE_DIR$(git rev-parse --show-toplevel | grep -oP "(?<=$HOME).*") --type f --hidden -e gpg -x echo '{.}' | grep -oP "(?<=$PASSWORD_STORE_DIR/).*"
-  }
+    function backup
+        set -l rel_path $argv
+        test "$rel_path" = '' && exit 1
 
-  backup() {
-    rel_path=$1
-    [ "$rel_path" = '' ] && exit 1
+        set -l abs_path (cd (dirname $rel_path) && pwd)/(basename $rel_path)
+        test "$abs_path" = '' && exit 1
 
-    abs_path=$(cd $(dirname $rel_path) && pwd)/$(basename $rel_path)
-    [ "$abs_path" = '' ] && exit 1
+        set -l target_path (echo $abs_path | grep -oP "(?<=$HOME/).*")
+        pass insert -m $target_path <$abs_path
+    end
 
-    target_path=$(echo $abs_path | grep -oP "(?<=$HOME/).*")
-    pass insert -m $target_path < $abs_path
-  }
+    function show
+        set -l pass_name (sec list | fzf +m -q "$argv")
+        test "$pass_name" = '' && exit 1
 
-  show() {
-    pass_name=$(sec list | fzf +m -q "$1")
-    [ "$pass_name" = '' ] && exit 1
+        pass show $pass_name
+    end
 
-    pass show $pass_name
-  }
+    function restore
+        set -l pass_names (sec list | fzf -q "$argv")
+        test -z "$pass_names" && exit 1
 
-  restore() {
-    pass_names=($(sec list | fzf -q "$1"))
-    [[ -z $pass_names ]] && exit 1
+        for pass_name in $pass_names
+            set -l target $HOME/$pass_name
+            if test -e $target
+                echo "Already exists: $target"
+            else
+                pass show $pass_name >$target
+            end
+        end
+    end
 
-    for pass_name in ${pass_names[@]}; do
-      target=$HOME/$pass_name
-      if [ -e $target ]; then
-        echo "Already exists: $target"
-      else
-        pass show $pass_name > $target
-      fi
-    done
-  }
+    function help
+        echo 'Usage: sec sub-command'
+        echo
+        echo -e '\tlist'
+        echo -e '\tbackup FILE'
+        echo -e '\tshow [FILE]'
+        echo -e '\trestore [FILE]'
+        echo -e '\thelp'
+    end
 
-  help() {
-    echo 'Usage: sec sub-command'
-    echo
-    echo -e '\tlist'
-    echo -e '\tbackup FILE'
-    echo -e '\tshow [FILE]'
-    echo -e '\trestore [FILE]'
-    echo -e '\thelp'
-  }
-
-  case $1 in
-    list)
-      list
-      ;;
-    backup)
-      backup $2
-      ;;
-    show)
-      show $2
-      ;;
-    restore)
-      restore $2
-      ;;
-    help | *)
-      help
-      ;;
-  esac
-}
-sec $@
+    switch $argv[1]
+        case list
+            list
+        case backup
+            backup $argv[2]
+        case show
+            show $argv[2]
+        case restore
+            restore $argv[2]
+        case help '*'
+            help
+    end
+end
+sec $argv

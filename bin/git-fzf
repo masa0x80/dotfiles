@@ -1,17 +1,16 @@
-#!/bin/zsh
+#!/usr/bin/env fish
 
-if [ "$1" = 'show' ]; then
-  # fshow - git commit browser
-  # ref: https://github.com/junegunn/fzf/wiki/Examples
-  shift
-  git log --graph --color=always \
-        --format="%C(auto)%h%d %s %C(blue)%C(bold)%cr" "$@" |
+if test "$argv" = 'show'
+    # fshow - git commit browser
+    # ref: https://github.com/junegunn/fzf/wiki/Examples
+    git log --graph --color=always \
+        --format="%C(auto)%h%d %s %C(blue)%C(bold)%cr" | \
         fzf --ansi --no-sort --tiebreak=index \
-              --bind "ctrl-m:execute: echo {} | grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'git show %'"
+        --bind "ctrl-m:execute: echo {} | grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'git show %'"
 else
-  # fetch git commit hash
-  git log --graph --color=always \
-        --format="%C(auto)%h%d %s %C(blue)%C(bold)%cr" "$@" |
-        fzf --ansi --no-sort --tiebreak=index |
+    # fetch git commit hash
+    git log --graph --color=always \
+        --format="%C(auto)%h%d %s %C(blue)%C(bold)%cr" | \
+        fzf --ansi --no-sort --tiebreak=index | \
         head -1 | grep -o '[a-f0-9]\{7\}'
-fi
+end
