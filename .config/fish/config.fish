@@ -17,13 +17,13 @@ if status is-login
         end
     end
     test -d $DOTFILE/bin && __add_fish_user_paths $DOTFILE/bin
+
+    # gabbr
+    not set -q global_abbreviations && gabbr -r
 end
 
 # Load local configurations
 __load_file $HOME/.config.local/fish/config.fish
-
-### gabbr
-not set -q global_abbreviations && gabbr -r
 
 ### Hooks {{{
 
