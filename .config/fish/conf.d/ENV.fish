@@ -23,6 +23,7 @@ if test -d $HOME/.cargo
 end
 
 # asdf
+export ASDF_CONFIG_FILE=$XDG_CONFIG_HOME/asdf/config
 source (brew --prefix asdf)/asdf.fish
 
 # brew install curl

@@ -2,6 +2,7 @@
 /.*
 
 !/.gitignore
+!/asdf
 !/git
 !/nvim
 !/sshrc

@@ -1,4 +1,3 @@
-# ref. (brew --prefix asdf)/lib/asdf.fish
 
 # Add function wrapper so we can export variables
 function asdf

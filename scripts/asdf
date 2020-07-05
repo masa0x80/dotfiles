@@ -1,4 +1,10 @@
 #!/usr/bin/env zsh
 
-asdf update
-asdf plugin update --all
+if [ -d $HOME/.asdf ]; then
+  asdf update
+  asdf plugin update --all
+fi
+
+# NOTE: Copy the asdf.fish for lazy loading
+target_file=$(brew --prefix asdf)/lib/asdf.fish
+test -r $target_file && cp $target_file $HOME/.config/fish/functions/asdf.fish
