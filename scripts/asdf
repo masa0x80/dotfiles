@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+asdf update
+asdf plugin update --all

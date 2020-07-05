@@ -3,27 +3,13 @@ EXCLUDES := .DS_Store .git
 TARGETS  := $(wildcard .??*)
 DOTFILES := $(filter-out $(EXCLUDES), $(TARGETS))
 
-export NODE_VERSION=13.2.0
-export PERL_VERSION=5.22.1
-export PYTHON2_VERSION=2.7.16
-export PYTHON3_VERSION=3.7.2
-export RUBY_VERSION=2.7.0
+export RUBY_VERSION=2.7.1
+export TERRAFORM_VERSION=0.12.28
 
-export ANYENV_ROOT=$(HOME)/.anyenv
-export NODENV_ROOT=$(ANYENV_ROOT)/envs/nodenv
-export PLENV_ROOT=$(ANYENV_ROOT)/envs/plenv
-export PYENV_ROOT=$(ANYENV_ROOT)/envs/pyenv
-export RBENV_ROOT=$(ANYENV_ROOT)/envs/rbenv
-
-PATH := $(ANYENV_ROOT)/bin:$(PATH)
-PATH := $(NODENV_ROOT)/bin:$(PATH)
-PATH := $(PLENV_ROOT)/bin:$(PATH)
-PATH := $(PYENV_ROOT)/bin:$(PATH)
-PATH := $(RBENV_ROOT)/bin:$(PATH)
-export PATH
-
+.PHONY: all
 all: update deploy install
 
+.PHONY: help
 help:
 	@echo "make all            #=> Updating, deploying and initializng"
 	@echo "make update         #=> Fetch changes"
@@ -32,95 +18,102 @@ help:
 	@echo "make list           #=> List the files"
 	@echo "make clean          #=> Remove the dotfiles"
 
+.PHONY: update
 update:
 	git pull --no-commit origin master
 
-install: brew-bundle nodenv pyenv rbenv golang rust
+.PHONY: install
+install: brew-bundle asdf node python ruby golang rust terraform
 
+.PHONY: deploy
 deploy:
 	@echo 'Deploy dotfiles.'
 	@echo ''
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
+.PHONY: list
 list:
 	@$(foreach val, $(DOTFILES), ls -dF $(val);)
 
+.PHONY: clean
 clean:
 	@echo 'Remove dot files in your home directory...'
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
 	-rm -rf $(DOTFILE)
 
-.PHONY: all help update install deploy list clean
-
 # brew {{{
 
+.PHONY: brew-init
 brew-init:
 	@xcode-select --install 2>/dev/null || :
 	@./scripts/brew_init
 
+.PHONY: brew
 brew: brew-init
 	brew bundle --file=etc/brew/Brewfile
 
+.PHONY: brew-cask
 brew-cask: brew-init
 	brew bundle --file=etc/brew/Brewfile.cask
 
+.PHONY: brew-cask-update
 brew-cask-update: brew-init
 	brew cask update
 
+.PHONY: brew-mas
 brew-mas: brew-init
 	brew install mas
 	brew bundle --file=etc/brew/Brewfile.mas
 
+.PHONY: brew-bundle
 brew-bundle: brew brew-cask
-
-.PHONY: brew-init brew brew-cask brew-cask-update brew-mas brew-bundle
 
 # }}}
 
 # golang {{{
 
-golang-init: brew-init
-	brew install go
+.PHONY: golang
+golang: brew-init
+	@./scripts/golang
 
-golang: golang-init
-	@./scripts/golang_tools
-
-golang-update: golang-init golang
-	@./scripts/golang_tools update
-
-.PHONY: golang-init golang golang-update
+.PHONY: golang-update
+golang-update: golang
+	@./scripts/golang update
 
 # }}}
 
 # rust {{{
 
-rust-init: brew-init
-	brew install rust
+.PHONY: rust
+rust: brew-init
+	@./scripts/rust
 
-rust: rust-init
-	@./scripts/rust_tools
-
-rust-update: rust-init rust
+.PHONY: rust-update
+rust-update: rust
 	@cargo install-update -a
 
-.PHONY: rust-init rust rust-update
+# }}}
+
+# {{{ asdf
+
+.PHONY: asdf
+asdf: brew-init
+	@./scripts/asdf
+
+.PHONY: ruby
+ruby: asdf
+	@./scripts/ruby
+
+.PHONY: terraform
+terraform: asdf
+	@./scripts/terraform
 
 # }}}
 
-# anyenv {{{
+.PHONY: node
+node: brew-init
+	@./scripts/node
 
-anyenv-init:
-	@./scripts/anyenv
-
-nodenv: anyenv-init
-	@./scripts/nodenv
-
-pyenv: anyenv-init
-	@./scripts/pyenv
-
-rbenv: anyenv-init
-	@./scripts/rbenv
-
-.PHONY: anyenv-init nodenv pyenv rbenv
-
-# }}}
+.PHONY: python
+python: brew-init
+	@./scripts/python

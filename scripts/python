@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+pip3 install pip --upgrade
+
+pip_install() {
+  pip3 list | grep -i $1 || pip3 install $1
+}
+
+pip_install neovim
+pip_install awscli
+pip_install diagrams

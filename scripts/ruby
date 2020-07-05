@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+. $(brew --prefix asdf)/asdf.sh
+
+asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf install ruby $RUBY_VERSION
+asdf global ruby $RUBY_VERSION

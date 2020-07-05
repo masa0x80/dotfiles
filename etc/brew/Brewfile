@@ -33,8 +33,7 @@ brew 'graphviz'
 brew 'imagemagick'
 brew 'pandoc'
 
-tap 'universal-ctags/universal-ctags'
-brew 'universal-ctags', args: ['HEAD']
+brew 'asdf'
 
 brew 'fish'
 brew 'zsh'
@@ -44,12 +43,20 @@ brew 'tmux'
 tap 'greymd/tools'
 brew 'tmux-xpanes'
 
+brew 'mysql'
+brew 'postgresql'
+brew 'redis'
+
 brew 'neovim', args: ['HEAD']
 
-brew 'go'
-brew 'rust'
-brew 'tfenv'
+brew 'python@3.8'
 
+brew 'rust'
+brew 'exa'
+brew 'fd'
+brew 'ripgrep'
+
+brew 'go'
 brew 'direnv'
 brew 'hub'
 brew 'ghq'
@@ -61,10 +68,6 @@ tap 'itchyny/tap'
 brew 'gojq'
 brew 'gojo'
 
-brew 'mysql'
-brew 'postgresql'
-brew 'redis'
-
 brew 'docker'
 
 tap 'mackerelio/mackerel-agent'
@@ -75,6 +78,7 @@ brew 'pinentry-mac'
 brew 'httpie'
 brew 'yq'
 
-brew 'exa'
-brew 'fd'
-brew 'ripgrep'
+brew 'node'
+brew 'yarn'
+brew 'diff-so-fancy'
+brew 'eslint'

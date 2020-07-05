@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+npm_install() {
+  npm -g list | grep -i $1 || npm install -g $1
+}
+
+npm_install markdown2confluence-cws
+npm_install typescript-language-server

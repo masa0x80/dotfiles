@@ -4,8 +4,9 @@ status is-login || exit
 type -qa open && abbr -a o 'open'
 
 type -qa mycli && abbr -a mysql 'mycli'
-
 type -qa pgcli && abbr -a psql 'pgcli'
+
+type -qa asdf && abbr -a aoeu 'asdf'
 
 abbr -a tailf 'tail -f'
 abbr -a diff 'diff -u'

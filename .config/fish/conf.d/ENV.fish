@@ -22,9 +22,8 @@ if test -d $HOME/.cargo
     set -p PATH $HOME/.cargo/bin
 end
 
-# anyenv
-__add_fish_user_paths $HOME/.anyenv/bin
-source (anyenv init - | psub)
+# asdf
+source (brew --prefix asdf)/asdf.fish
 
 # brew install curl
 __add_fish_user_paths /usr/local/opt/curl/bin
@@ -83,9 +82,6 @@ type -qa less && export PAGER=less
 # brew install openssl
 test -d /usr/local/opt/openssl/bin && set -gxa LIBRARY_PATH /usr/local/opt/openssl/lib/
 
-# sshrc config
-export SSHHOME=$XDG_CONFIG_HOME/sshrc
-
 # fzf options
 type -qa fd && export FZF_DEFAULT_COMMAND='fd --type f --no-ignore --hidden --follow --exclude .git'
 export FZF_DEFAULT_OPTS='--reverse --extended --ansi --multi --cycle --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'
@@ -104,8 +100,6 @@ set -gx fish_prompt_pwd_dir_length 0
 # Colors {{{
 set -gx fish_pager_color_completion grey
 export fish_color_command=cyan
-
-export ANGLER_QUERY_OPTION='--no-sort --query'
 # Colors }}}
 
 ### Prompt {{{
