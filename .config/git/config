@@ -3,6 +3,7 @@
   excludesfile = ~/.config/git/ignore
   pager = diff-so-fancy | less -RIXc --pattern='^(Date|added|deleted|modified): '
   hooksPath = ~/.config/git/hooks
+  quotepath = false
 [include]
   path = ~/.config.local/git/config
 [push]
