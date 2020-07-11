@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+. $(brew --prefix asdf)/asdf.sh
+
+VERSION=$(grep -oP '(?<=nodejs ).*' $HOME/.tool-versions)
+
+# Using a dedicated OpenPGP keyring
+# ref. https://github.com/asdf-vm/asdf-nodejs#using-a-dedicated-openpgp-keyring
+GNUPGHOME="${ASDF_DIR:-$HOME/.asdf}/keyrings/nodejs" && mkdir -p "$GNUPGHOME" && chmod 0700 "$GNUPGHOME"
+bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
+
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf install nodejs $VERSION

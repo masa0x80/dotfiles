@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin master
 
 .PHONY: install
-install: brew-bundle asdf node python ruby golang rust terraform
+install: brew-bundle asdf nodejs python ruby golang rust terraform
 
 .PHONY: deploy
 deploy:
@@ -111,6 +111,6 @@ terraform: asdf
 
 # }}}
 
-.PHONY: node
-node: brew-init
-	@./scripts/node
+.PHONY: nodejs
+nodejs: brew-init
+	@./scripts/nodejs

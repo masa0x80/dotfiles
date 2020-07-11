@@ -77,8 +77,3 @@ brew 'pinentry-mac'
 
 brew 'httpie'
 brew 'yq'
-
-brew 'node'
-brew 'yarn'
-brew 'diff-so-fancy'
-brew 'eslint'

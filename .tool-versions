@@ -1,3 +1,4 @@
 ruby 2.7.1
 terraform 0.12.28
 python 3.8.3 system
+nodejs 12.18.2
