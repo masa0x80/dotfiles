@@ -2,6 +2,13 @@
 
 . $(brew --prefix asdf)/asdf.sh
 
+
+PYTHON_VERSIONS=($(grep -oP '(?<=python ).*' .tool-versions))
+
 asdf plugin-add python https://github.com/danhper/asdf-python
-asdf install python $PYTHON3_VERSION
-asdf global python $PYTHON3_VERSION system
+
+for v in $PYTHON_VERSIONS
+do
+  asdf install python $v
+done
+

@@ -2,6 +2,7 @@
 
 . $(brew --prefix asdf)/asdf.sh
 
+VERSION=$(grep -oP '(?<=ruby ).*' .tool-versions)
+
 asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-asdf install ruby $RUBY_VERSION
-asdf global ruby $RUBY_VERSION
+asdf install ruby $VERSION

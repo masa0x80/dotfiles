@@ -3,10 +3,6 @@ EXCLUDES := .DS_Store .git
 TARGETS  := $(wildcard .??*)
 DOTFILES := $(filter-out $(EXCLUDES), $(TARGETS))
 
-export RUBY_VERSION=2.7.1
-export PYTHON3_VERSION=3.6.2
-export TERRAFORM_VERSION=0.12.28
-
 .PHONY: all
 all: update deploy install
 
