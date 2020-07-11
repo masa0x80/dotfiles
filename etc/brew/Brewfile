@@ -52,6 +52,7 @@ brew 'neovim', args: ['HEAD']
 brew 'awscli'
 
 brew 'rust'
+brew 'bat'
 brew 'exa'
 brew 'fd'
 brew 'ripgrep'

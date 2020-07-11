@@ -3,6 +3,7 @@
 
 !/.gitignore
 !/asdf
+!/bat
 !/git
 !/nvim
 !/sshrc

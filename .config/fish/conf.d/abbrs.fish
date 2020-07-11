@@ -6,6 +6,9 @@ type -qa open && abbr -a o 'open'
 type -qa mycli && abbr -a mysql 'mycli'
 type -qa pgcli && abbr -a psql 'pgcli'
 
+type -qa rg && abbr -a g 'rg --hidden'
+type -qa bat && abbr -a cat 'bat'
+
 type -qa asdf && abbr -a aoeu 'asdf'
 
 abbr -a tailf 'tail -f'
@@ -18,8 +21,6 @@ abbr -a rd 'rmdir'
 abbr -a rf 'rm -rf'
 
 abbr -a vim 'vi'
-
-abbr -a g 'rg --hidden'
 
 # ssh {{{
 if test -e $HOME/.ssh/config
