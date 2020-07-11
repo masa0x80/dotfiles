@@ -4,6 +4,7 @@ TARGETS  := $(wildcard .??*)
 DOTFILES := $(filter-out $(EXCLUDES), $(TARGETS))
 
 export RUBY_VERSION=2.7.1
+export PYTHON3_VERSION=3.6.2
 export TERRAFORM_VERSION=0.12.28
 
 .PHONY: all
@@ -104,6 +105,10 @@ asdf: brew-init
 ruby: asdf
 	@./scripts/ruby
 
+.PHONY: python
+python: asdf
+	@./scripts/python
+
 .PHONY: terraform
 terraform: asdf
 	@./scripts/terraform
@@ -113,7 +118,3 @@ terraform: asdf
 .PHONY: node
 node: brew-init
 	@./scripts/node
-
-.PHONY: python
-python: brew-init
-	@./scripts/python

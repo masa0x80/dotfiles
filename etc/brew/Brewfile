@@ -49,7 +49,7 @@ brew 'redis'
 
 brew 'neovim', args: ['HEAD']
 
-brew 'python@3.8'
+brew 'awscli'
 
 brew 'rust'
 brew 'exa'

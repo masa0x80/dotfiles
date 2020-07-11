@@ -1,11 +1,7 @@
 #!/usr/bin/env zsh
 
-pip3 install pip --upgrade
+. $(brew --prefix asdf)/asdf.sh
 
-pip_install() {
-  pip3 list | grep -i $1 || pip3 install $1
-}
-
-pip_install neovim
-pip_install awscli
-pip_install diagrams
+asdf plugin-add python https://github.com/danhper/asdf-python
+asdf install python $PYTHON3_VERSION
+asdf global python $PYTHON3_VERSION system
