@@ -53,13 +53,12 @@ brew: brew-init
 brew-cask: brew-init
 	brew bundle --file=etc/brew/Brewfile.cask
 
-.PHONY: brew-cask-update
-brew-cask-update: brew-init
-	brew cask update
+.PHONY: brew-cask-upgrade
+brew-cask-upgrade: brew-init
+	brew cask upgrade
 
 .PHONY: brew-mas
 brew-mas: brew-init
-	brew install mas
 	brew bundle --file=etc/brew/Brewfile.mas
 
 .PHONY: brew-bundle

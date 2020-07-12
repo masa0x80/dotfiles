@@ -15,6 +15,32 @@ cd ~/.dotfiles
 make
 ```
 
+Optional Steps:
+
+Install Mac App Store's apps.
+
+```sh
+make brew-mas
+```
+
+Upgrade cask apps.
+
+```sh
+make brew-cask-upgrade
+```
+
+Update golang tools.
+
+```sh
+make golang-update
+```
+
+Update rust tools.
+
+```sh
+make rust-update
+```
+
 ## After Installation
 
 ### Git Config
