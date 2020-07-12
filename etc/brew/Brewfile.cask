@@ -22,3 +22,6 @@ cask 'vanilla'
 cask 'visual-studio-code'
 cask 'vivaldi'
 cask 'zoomus'
+
+tap 'zkokaja/brewlet'
+cask 'brewlet'
