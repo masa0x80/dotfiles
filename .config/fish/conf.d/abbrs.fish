@@ -111,8 +111,8 @@ abbr -a t 'rspec'
 abbr -a ss 'spring stop'
 
 abbr -a be 'bundle exec'
-abbr -a bi 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4'
-abbr -a bil 'bundle install --path=vendor/bundle --binstubs=vendor/bin --jobs=4 --local'
+abbr -a bi "bundle config set path 'vendor/bundle'; bundle binstubs --path=vendor/bin; bundle install --jobs=4"
+abbr -a bil "bundle config set path 'vendor/bundle'; bundle binstubs --path=vendor/bin; bundle install --jobs=4 --local"
 # }}}
 
 # docker {{{
