@@ -27,6 +27,7 @@ export ASDF_CONFIG_FILE=$XDG_CONFIG_HOME/asdf/config
 export ASDF_DATA_DIR=$HOME/.asdf
 export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=.tool-versions
 source (brew --prefix asdf)/asdf.fish
+export NODEJS_CHECK_SIGNATURES=no
 
 # brew install curl
 __add_fish_user_paths /usr/local/opt/curl/bin
