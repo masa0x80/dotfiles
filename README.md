@@ -17,12 +17,6 @@ make
 
 Optional Steps:
 
-Install Mac App Store's apps.
-
-```sh
-make brew-mas
-```
-
 Upgrade cask apps.
 
 ```sh

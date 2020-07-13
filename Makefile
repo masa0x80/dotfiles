@@ -8,7 +8,7 @@ all: update deploy install
 
 .PHONY: help
 help:
-	@echo "make all            #=> Updating, deploying and initializng"
+	@echo "make all            #=> Updating, deploying and installing"
 	@echo "make update         #=> Fetch changes"
 	@echo "make install        #=> Setup environment"
 	@echo "make deploy         #=> Create symlink"
@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin master
 
 .PHONY: install
-install: brew-bundle asdf nodejs python ruby golang rust terraform
+install: brew-bundle asdf nodejs python ruby golang rust terraform brew-mas
 
 .PHONY: deploy
 deploy:
