@@ -1,0 +1,9 @@
+.toolbar-addressbar {
+  opacity: 0.3;
+}
+
+.toolbar-addressbar:focus-within,
+.toolbar-addressbar:hover,
+.toolbar-addressbar:focus {
+  opacity: 1;
+}
