@@ -101,6 +101,8 @@ abbr -a vst 'vagrant global-status'
 # }}}
 
 # ruby {{{
+abbr -a rnew 'rails new . --skip-test --skip-bundle --skip-turbolinks --skip-action-mailer --skip-action-mailbox --skip-action-text --skip-active-storage --database=mysql'
+
 abbr -a c 'rails c'
 abbr -a s 'rails s -p $RAILS_SERVER_PORT'
 
