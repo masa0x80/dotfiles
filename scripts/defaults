@@ -1,0 +1,42 @@
+#!/usr/bin/env zsh
+
+# Hide Dock automatically
+defaults write com.apple.dock autohide -bool true
+
+# Fix battery indicator
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+# Change the directory that saves screen shots
+dir=$HOME/Pictures/ScreenShots/
+mkdir -p $dir
+defaults write com.apple.screencapture location -string $dir
+defaults write com.apple.screencapture name -string ''
+
+# Show hidden files
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Show file ext
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Show directory first
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Do not make .DS_Store
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Set delay until key repeat
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+# Set key repeat speed
+defaults write NSGlobalDomain KeyRepeat -int 1
+
+# Fix tap behavior
+defaults write -g com.apple.mouse.tapBehavior -int 1
+
+# Disable spotlight
+mdutil -s / | grep enabled && sudo mdutil -i off /
+
+killall Dock
+killall Finder
+killall SystemUIServer

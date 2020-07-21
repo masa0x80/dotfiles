@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin master
 
 .PHONY: install
-install: brew-bundle asdf nodejs python ruby golang rust terraform brew-mas
+install: defaults brew-bundle asdf nodejs python ruby golang rust terraform brew-mas
 
 .PHONY: deploy
 deploy:
@@ -66,6 +66,14 @@ brew-bundle: brew brew-cask
 
 # }}}
 
+# defaults {{{
+
+.PHONY: defaults
+defaults:
+	@./scripts/defaults
+
+# }}}
+
 # golang {{{
 
 .PHONY: golang
@@ -90,7 +98,7 @@ rust-update: rust
 
 # }}}
 
-# {{{ asdf
+# asdf {{{
 
 .PHONY: asdf
 asdf: brew-init

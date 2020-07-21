@@ -1,6 +1,6 @@
 function speed_key_repeat
     # delay until key repeat
-    defaults write NSGlobalDomain InitialKeyRepeat -int 12
+    defaults write NSGlobalDomain InitialKeyRepeat -int 10
     # key repeat speed
     defaults write NSGlobalDomain KeyRepeat -int 1
     set_color -o yellow
