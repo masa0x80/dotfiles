@@ -1,3 +1,6 @@
+# Set SHELL variable
+export SHELL=(type -p fish)
+
 # Skip loading config if already login
 status is-login || exit
 
