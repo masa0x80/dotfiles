@@ -122,4 +122,4 @@ abbr -a dcu 'dc up -d'
 abbr -a dcd 'dc down'
 # }}}
 
-abbr -a memo 'scrapbook memo'
+abbr -a sb 'scrapbook'

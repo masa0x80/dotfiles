@@ -1,7 +1,3 @@
 function todo
-    not set -q SCRAPBOOK_DIR && set SCRAPBOOK_DIR $HOME/.scrapbook
-    set -l file_path (string escape -n $SCRAPBOOK_DIR/todo/(current_dir _))
-    set -l dir (dirname $file_path)
-    test -d $dir || mkdir -p $dir
-    eval $EDITOR $file_path
+    eval $EDITOR (scrapbook_dir todo)(current_dir _)
 end
