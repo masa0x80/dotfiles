@@ -1,11 +1,9 @@
-function! s:Todo()
-  execute(':e $SCRAPBOOK_DIR/todo/' . system('current_dir _'))
+function! s:OpenFile(path)
+  execute(':e ' . a:path)
 endfunction
-command! T call s:Todo()
-command! Todo call s:Todo()
 
-function! s:Memo()
-  execute(':e $SCRAPBOOK_DIR/memo/' . system('current_dir _'))
-endfunction
-command! T call s:Memo()
-command! Todo call s:Memo()
+command! T call s:OpenFile(trim(system('scrapbook_dir todo')) . system('current_dir _'))
+command! Todo call s:OpenFile(trim(system('scrapbook_dir todo')) . system('current_dir _'))
+
+command! M call s:OpenFile(trim(system('scrapbook_dir memo')) . system('current_dir _'))
+command! Memo call s:OpenFile(trim(system('scrapbook_dir memo')) . system('current_dir _'))
