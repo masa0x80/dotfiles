@@ -115,6 +115,8 @@ abbr -a ss 'spring stop'
 abbr -a be 'bundle exec'
 abbr -a bi "bundle config set path 'vendor/bundle'; bundle binstubs --path=vendor/bin; bundle install --jobs=4"
 abbr -a bil "bundle config set path 'vendor/bundle'; bundle binstubs --path=vendor/bin; bundle install --jobs=4 --local"
+
+abbr -a solargraph_init "solargraph download-core; solargraph bundle; solargraph config"
 # }}}
 
 # docker {{{
