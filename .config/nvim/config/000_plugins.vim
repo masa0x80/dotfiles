@@ -6,7 +6,16 @@ endif
 
 call plug#begin('$HOME/.local/share/nvim/plugged') " {{{ 1
 Plug 'cocopon/iceberg.vim'
-Plug 'cocopon/vaffle.vim'
+
+if has('nvim')
+  Plug 'cocopon/vaffle.vim'
+else
+  " {{{ vim-molder
+  Plug 'mattn/vim-molder'
+  Plug 'mattn/vim-molder-operations'
+  " }}} vim-molder
+endif
+
 Plug 'dense-analysis/ale'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
