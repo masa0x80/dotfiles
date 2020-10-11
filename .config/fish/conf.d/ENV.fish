@@ -1,5 +1,6 @@
 # Set SHELL variable
 export SHELL=(type -p fish)
+export TERM=xterm-256color
 
 # Skip loading config if already login
 status is-login || exit
@@ -72,7 +73,6 @@ test "$UNAME_S" = 'darwin' && export HOMEBREW_NO_ANALYTICS=1
 __load_file $HOME/.proxy
 
 export LANG=en_US.UTF-8
-export TERM=xterm-256color
 
 # EDITOR
 if type -qa nvim
