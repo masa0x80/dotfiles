@@ -76,7 +76,8 @@ export TERM=xterm-256color
 
 # EDITOR
 if type -qa nvim
-    export EDITOR=nvim
+    # export EDITOR=nvim
+    export EDITOR=vim
 else if type -qa vim
     export EDITOR=vim
 end
