@@ -19,7 +19,6 @@ endif
 Plug 'dense-analysis/ale'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'fuenor/qfixhowm'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-parenmatch'
 Plug 'junegunn/fzf'
