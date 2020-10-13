@@ -35,13 +35,21 @@ nnoremap ,L <C-w>L
 nnoremap ,H <C-w>H
 nnoremap ,, <C-w><C-w>
 nnoremap ,= <C-w>=
-nnoremap ,o :<C-u>only<CR>
+nnoremap ,o :<C-u>tabedit %:p<CR>
+nnoremap ,O :<C-u>only<CR>
 
 " Tab
-nnoremap ,t :<C-u>tabedit<CR>
+nnoremap <Leader>t :<C-u>tabedit<CR>
+nnoremap <C-t><C-n> :<C-u>tabnext<CR>
+nnoremap <C-t><C-p> :<C-u>tabprevious<CR>
+nnoremap <C-t><C-t> :<C-u>tabrewind<CR>
+nnoremap <C-t>N :<C-u>tabmove +<CR>
+nnoremap <C-t>P :<C-u>tabmove -<CR>
 
 " Quit
+nnoremap <Leader>q :<C-u>q<CR>
 nnoremap ,q :<C-u>q<CR>
+nnoremap <Leader>Q :<C-u>bd<CR>
 nnoremap ,Q :<C-u>bd<CR>
 
 " ref. http://itchyny.hatenablog.com/entry/2016/02/02/210000
