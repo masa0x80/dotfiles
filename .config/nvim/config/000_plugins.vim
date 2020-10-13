@@ -85,6 +85,8 @@ if has('nvim') && executable('yarn')
     \  'for': ['markdown', 'plantuml']
     \ }
 endif
+" Require 'github.com/MichaelMure/mdr'
+Plug 'skanehira/preview-markdown.vim'
 " }}} markdown
 call plug#end()
 " }}} 1
