@@ -1,5 +1,5 @@
-if globpath(&runtimepath, '') !~# 'iceberg'
+if globpath(&runtimepath, '') !~# 'iceberg\.vim'
   finish
 endif
 
-colorscheme iceberg
+autocmd MyAutoCmd VimEnter * colorscheme iceberg
