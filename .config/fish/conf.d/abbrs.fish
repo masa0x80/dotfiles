@@ -6,6 +6,10 @@ type -qa open && abbr -a o 'open'
 type -qa mycli && abbr -a mysql 'mycli'
 type -qa pgcli && abbr -a psql 'pgcli'
 
+abbr -a , 'l'
+abbr -a ,, 'la'
+type -qa exa && abbr -a tree 'exa -T'
+
 type -qa rg && abbr -a g 'rg --hidden'
 type -qa bat && abbr -a cat 'bat'
 
