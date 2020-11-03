@@ -79,7 +79,7 @@ Plug 'aklt/plantuml-syntax',         { 'for': 'plantuml' }
 Plug 'godlygeek/tabular'
 Plug 'joker1007/vim-markdown-quote-syntax'
 Plug 'rcmdnk/vim-markdown', { 'for': 'markdown' }
-if has('nvim') && executable('yarn')
+if executable('yarn')
   Plug 'iamcco/markdown-preview.nvim', {
     \  'do': 'cd app & yarn install',
     \  'for': ['markdown', 'plantuml']
@@ -87,6 +87,8 @@ if has('nvim') && executable('yarn')
 endif
 " Require 'github.com/MichaelMure/mdr'
 Plug 'skanehira/preview-markdown.vim'
+" Run `docker run -d -p 8888:8080 plantuml/plantuml-server:jetty`, and Execute `:PreviewUML`
+Plug 'skanehira/preview-uml.vim'
 " }}} markdown
 call plug#end()
 " }}} 1
