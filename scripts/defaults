@@ -29,7 +29,7 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Set key repeat speed
-defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain KeyRepeat -int 2
 
 # Fix tap behavior
 defaults write -g com.apple.mouse.tapBehavior -int 1
