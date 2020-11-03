@@ -32,7 +32,7 @@ function __fish_prompt_hooks --on-event fish_prompt
     type -qa direnv && eval (direnv export fish)
 
     # tmux auto rename
-    if __tmux_is_running
+    if __tmux_is_running && test -z "$VIM_TERMINAL"
         set -l tmux_current_window_id (tmux list-panes -aF '#{window_id}:#{pane_pid}' | grep :$fish_pid | cut -d: -f1)
         tmux rename-window -t $tmux_current_window_id (current_dir)(fish_git_prompt || echo '')
     end

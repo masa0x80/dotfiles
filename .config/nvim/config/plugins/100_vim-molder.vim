@@ -5,6 +5,7 @@ endif
 let g:molder_show_hidden = 1
 
 function! s:customize_molder_mappings() abort
+  nmap <buffer> <silent> <C-l> <plug>(molder-reload)
   nmap <buffer> <silent> l <plug>(molder-open)
   nmap <buffer> <silent> h <plug>(molder-up)
 endfunction
