@@ -1,5 +1,5 @@
 // {{{ Settings
-Hints.characters = 'aoeudhtnspygfcrkbmw'
+Hints.characters = 'fjdkslaghturieowpqpbnvmcxz'
 Hints.style('font-size: 1rem; border: none; color:#efe1eb; background: initial; background-color: #552a48;')
 Hints.style('font-size: 1rem; border: none; background: initial; background-color: #c0c0c0', 'text')
 settings.nextLinkRegex = /((?!first)(next|older|more|>|»|forward|→|次(のページ|へ))+)/i
