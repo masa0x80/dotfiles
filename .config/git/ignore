@@ -16,12 +16,4 @@ Thumbs.db
 /vendor/bundle
 /vendor/bin
 
-# gtags (GNU Global)
-GTAGS
-GRTAGS
-GPATH
-
-# ctags
-tags
-
 git-worktrees/*
