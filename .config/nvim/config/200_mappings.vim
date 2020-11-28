@@ -23,26 +23,29 @@ imap <C-e> <End>
 imap <C-d> <Del>
 
 " Window
+nnoremap ,, <C-w>w
+nnoremap ,< <C-w>W
 nnoremap <C-w>- <C-w>s
 nnoremap <C-w>\| <C-w>v
-nnoremap <C-w>j <C-w>j
-nnoremap <C-w>k <C-w>k
-nnoremap <C-w>l <C-w>l
-nnoremap <C-w>h <C-w>h
-nnoremap <C-w>J <C-w>J
-nnoremap <C-w>K <C-w>K
-nnoremap <C-w>L <C-w>L
-nnoremap <C-w>H <C-w>H
-nnoremap <C-w>, <C-w><C-w>
-nnoremap <C-w>= <C-w>=
+nnoremap ,- <C-w>s
+nnoremap ,\| <C-w>v
+nnoremap ,j <C-w>j
+nnoremap ,k <C-w>k
+nnoremap ,l <C-w>l
+nnoremap ,h <C-w>h
+nnoremap ,J <C-w>J
+nnoremap ,K <C-w>K
+nnoremap ,L <C-w>L
+nnoremap ,H <C-w>H
+nnoremap ,= <C-w>=
 nnoremap <C-w>O :<C-u>only<CR>
+nnoremap ,o :<C-u>only<CR>
 
 " Tab
-nnoremap <C-w>o :<C-u>tabedit %:p<CR>
+nnoremap ,t :<C-u>tabedit %:p<CR>
 nnoremap <C-t>t :<C-u>tabedit %:p<CR>
 nnoremap <C-t><C-n> :<C-u>tabnext<CR>
 nnoremap <C-t><C-p> :<C-u>tabprevious<CR>
-nnoremap <C-t><C-t> :<C-u>tabrewind<CR>
 nnoremap <C-t>N :<C-u>tabmove +<CR>
 nnoremap <C-t>P :<C-u>tabmove -<CR>
 
