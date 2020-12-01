@@ -1,0 +1,9 @@
+div#vimiumHintMarkerContainer div.internalVimiumHintMarker {
+  font-size: 18px !important;
+  background-color: gray !important;
+  box-shadow: none !important;
+}
+
+div#vimiumHintMarkerContainer div.internalVimiumHintMarker span {
+  color: white !important;
+}
