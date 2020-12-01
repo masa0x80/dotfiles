@@ -79,3 +79,5 @@ brew 'pinentry-mac'
 
 brew 'httpie'
 brew 'yq'
+
+brew 'sops'
