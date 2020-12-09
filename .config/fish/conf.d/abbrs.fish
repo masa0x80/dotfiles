@@ -128,4 +128,6 @@ abbr -a dcu 'dc up -d'
 abbr -a dcd 'dc down'
 # }}}
 
+abbr -a da 'direnv allow'
+
 abbr -a sb 'scrapbook'
