@@ -4,6 +4,8 @@ function fish_user_key_bindings
 
     bind \cs\cb scrapbook
 
+    bind \cg\cb __switch_or_insert_git_select_local_branch
+
     bind ' ' '__gabbr_expand; commandline -i " "'
     bind ';' '__gabbr_expand; commandline -i ";"'
     bind \cj '__gabbr_expand; commandline -f execute'
