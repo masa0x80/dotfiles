@@ -1,4 +1,9 @@
-# Usage: `echo 'use_iam' >> .envrc`
-use_iam() {
-  export $(aws-vault exec $IAM_PROFILE -- env | grep AWS_ | grep -v AWS_VAULT)
+# Usage: `echo 'use aws_profile <PROFILE_NAME>' >> .envrc`
+use_aws_profile() {
+  PROFILE=$1
+  if test "$PROFILE" = ''; then
+    printf "\033[31mMissing argument error: \`use aws_profile\`\n"
+    return
+  fi
+  export $(aws-vault exec $PROFILE -- env | grep AWS_ | grep -v AWS_VAULT)
 }
