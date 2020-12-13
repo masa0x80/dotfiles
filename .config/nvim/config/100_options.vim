@@ -58,10 +58,3 @@ endif
 
 " clipboard
 set clipboard=unnamed,unnamedplus
-
-" virtualedit
-" ref. https://vim-jp.org/vim-users-jp/2011/01/16/Hack-195.html
-set virtualedit=all
-if has('virtualedit') && &virtualedit =~# '\<all\>'
-    nnoremap <expr> p (col('.') >= col('$') ? '$' : '') . 'p'
-endif
