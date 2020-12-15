@@ -1,0 +1,34 @@
+{
+  "settingsVersion": "1.66",
+  "exclusionRules": [
+    {
+      "pattern": "https?://mail.google.com/*",
+      "passKeys": "jkoe/#?unpx"
+    },
+    {
+      "pattern": "https?://calendar.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://outlook.office\\d?\\d?\\d?.com/*",
+      "passKeys": "jkoe/#?unpx"
+    }
+  ],
+  "filterLinkHints": false,
+  "waitForEnterForFilteredHints": true,
+  "hideHud": false,
+  "keyMappings": "unmap K\nunmap J\n\nmap d removeTab\nmap u restoreTab\n\nmap t Vomnibar.activateInNewTab\nmap O Vomnibar.activateEditUrl\nmap T Vomnibar.activateEditUrlInNewTab\nmap <C-;> Vomnibar.activateTabSelection\n\nmap <C-b> scrollPageUp\nmap <C-f> scrollPageDown\nmap <C-u> scrollFullPageUp\nmap <C-d> scrollFullPageDown\nmap <C-p> previousTab\nmap <C-n> nextTab\nmap <C-t><C-t> visitPreviousTab\n\nmap gp togglePinTab\n\nmap <c-]> passNextKey normal count=999",
+  "linkHintCharacters": "fjdksla;vnmruewoqpghtub",
+  "linkHintNumbers": "0123456789",
+  "newTabUrl": "about:newtab",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
+  "regexFindMode": false,
+  "ignoreKeyboardLayout": false,
+  "scrollStepSize": 60,
+  "smoothScroll": true,
+  "grabBackFocus": true,
+  "searchEngines": "a: https://eow.alc.co.jp/search?q=%s ALC\ng: https://www.google.com/search?q=%s Google\nt: https://translate.google.co.jp/#auto/ja/%s Google Tralslation",
+  "searchUrl": "https://www.google.com/search?q=",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,silver),\n  color-stop(100%,black));\nborder: 1px solid black;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: white;\nfont-weight: bold;\nfont-size: 16px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
+}
