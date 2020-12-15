@@ -17,7 +17,7 @@ else
 endif
 
 Plug 'dense-analysis/ale'
-Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/vim-edgemotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-parenmatch'
