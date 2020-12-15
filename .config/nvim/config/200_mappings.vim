@@ -38,12 +38,13 @@ nnoremap ,K <C-w>K
 nnoremap ,L <C-w>L
 nnoremap ,H <C-w>H
 nnoremap ,= <C-w>=
+nnoremap <C-w>o <NOP>
 nnoremap <C-w>O :<C-u>only<CR>
 nnoremap ,o :<C-u>only<CR>
 
 " Tab
 nnoremap ,t :<C-u>tabedit %:p<CR>
-nnoremap <C-t>t :<C-u>tabedit %:p<CR>
+nnoremap <C-t><C-t> :<C-u>tabedit %:p<CR>
 nnoremap <C-t><C-n> :<C-u>tabnext<CR>
 nnoremap <C-t><C-p> :<C-u>tabprevious<CR>
 nnoremap <C-t>N :<C-u>tabmove +<CR>
