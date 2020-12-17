@@ -33,5 +33,5 @@ function! s:customize_indent_mappings() abort
 endfunction
 
 augroup MyAutoCmd IndentMapping
-  autocmd FileType * call s:customize_indent_mappings()
+  autocmd BufNewFile,BufRead * call s:customize_indent_mappings()
 augroup END
