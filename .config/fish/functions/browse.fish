@@ -8,6 +8,6 @@ function browse
             --user-data-dir=$HOME/Library/Application\ Support/Vivaldi/aws-vault/$profile \
             $url
     else
-        open -a 'Safari' $url
+        open -a 'Vivaldi' $url
     end
 end
