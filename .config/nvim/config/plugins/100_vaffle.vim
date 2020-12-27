@@ -29,8 +29,8 @@ function! s:customize_vaffle_mappings() abort
   nmap <buffer> <silent> <C-c> <Plug>(vaffle-quit)
 endfunction
 
-augroup MyAutoCmd VaffleConfig
-  autocmd FileType vaffle call s:customize_vaffle_mappings()
+augroup VaffleConfig
+  autocmd MyAutoCmd FileType vaffle call s:customize_vaffle_mappings()
 augroup END
 
 nnoremap <Leader>F :<C-u>Vaffle<CR>

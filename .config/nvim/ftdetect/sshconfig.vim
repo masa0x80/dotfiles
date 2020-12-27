@@ -1,1 +1,1 @@
-autocmd BufRead,BufNewFile $HOME/.ssh/conf.d/* set filetype=sshconfig
+autocmd MyAutoCmd BufRead,BufNewFile $HOME/.ssh/conf.d/* set filetype=sshconfig

@@ -10,8 +10,8 @@ function! s:customize_molder_mappings() abort
   nmap <buffer> <silent> h <plug>(molder-up)
 endfunction
 
-augroup MyAutoCmd MolderConfig
-  autocmd FileType molder call s:customize_molder_mappings()
+augroup MolderConfig
+  autocmd MyAutoCmd FileType molder call s:customize_molder_mappings()
 augroup END
 
 nnoremap - :<C-u>e %:p:h<CR>

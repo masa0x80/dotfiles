@@ -32,6 +32,6 @@ function! s:customize_indent_mappings() abort
   inoremap <silent> <buffer> <S-Tab> <Esc>:<C-u>call <SID>tab_indent('<')<CR>
 endfunction
 
-augroup MyAutoCmd IndentMapping
+augroup IndentMapping
   autocmd BufNewFile,BufRead * call s:customize_indent_mappings()
 augroup END

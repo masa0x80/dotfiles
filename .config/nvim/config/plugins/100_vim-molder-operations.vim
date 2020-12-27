@@ -13,6 +13,6 @@ function! s:edit_file() abort
   call feedkeys(':e ' .. molder#curdir(), 'n')
 endfunction
 
-augroup MyAutoCmd MolderOperationsConfig
-  autocmd FileType molder call s:customize_molder_operations_mappings()
+augroup MolderOperationsConfig
+  autocmd MyAutoCmd FileType molder call s:customize_molder_operations_mappings()
 augroup END

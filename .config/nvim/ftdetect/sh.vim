@@ -1,1 +1,1 @@
-autocmd BufRead,BufNewFile .envrc* set filetype=sh
+autocmd MyAutoCmd BufRead,BufNewFile .envrc* set filetype=sh
