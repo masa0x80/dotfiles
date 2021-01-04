@@ -17,7 +17,7 @@ cask 'notion'
 cask 'rectangle'
 cask 'visual-studio-code'
 cask 'vivaldi'
-cask 'zoomus'
+cask 'zoom'
 
 tap 'zkokaja/brewlet'
 cask 'brewlet'
