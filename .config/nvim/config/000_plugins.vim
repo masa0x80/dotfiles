@@ -63,6 +63,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
 " }}} asyncomplete.vim
 
 Plug 'dag/vim-fish',                 { 'for': 'fish' }
