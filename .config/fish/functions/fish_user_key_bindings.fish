@@ -1,6 +1,6 @@
 function fish_user_key_bindings
-    bind \c{ backward-word
-    bind \c} forward-word
+    bind \cg\ch backward-word
+    bind \cg\cl forward-word
 
     bind \cs\cb scrapbook
 
