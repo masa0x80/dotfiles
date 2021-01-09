@@ -1,3 +1,3 @@
 function __tmux_is_running
-    type -qa tmux && test -n "$TMUX"
+    test -n "$TMUX"
 end
