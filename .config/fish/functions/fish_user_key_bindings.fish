@@ -3,7 +3,7 @@ function fish_user_key_bindings
     bind \cg\cl forward-word
 
     bind \cs\cb scrapbook
-    bind \cg\ci snippets
+    bind \cg\t snippet
 
     bind \cg\cb __switch_or_insert_git_select_local_branch
 

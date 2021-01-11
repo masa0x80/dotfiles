@@ -7,4 +7,5 @@ masa0x80/ghq_cd_keybind.fish
 masa0x80/filtering_history_keybind.fish
 masa0x80/replace_multiple_dots.fish
 masa0x80/fish-global-abbreviation
+masa0x80/snippet.fish
 fisherman/fishtape
