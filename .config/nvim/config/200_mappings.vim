@@ -10,17 +10,19 @@ nnoremap ; <NOP>
 nnoremap ;; :<C-u>write<CR>
 
 " Jump to head or tail
-nnoremap 1 ^
-nnoremap 9 $
+nnoremap <C-a> ^
+nnoremap <C-e> $
 
 " Emacs keybindings for insert mode
 imap <C-p> <Up>
 imap <C-n> <Down>
 imap <C-b> <Left>
 imap <C-f> <Right>
-imap <C-a> <Home>
-imap <C-e> <End>
+imap <C-a> <Esc>I
+imap <C-e> <Esc>A
 imap <C-d> <Del>
+imap <C-g><C-h> <Esc>bi
+imap <C-g><C-l> <Esc>wi
 
 " Window
 nnoremap ,, <C-w>w
