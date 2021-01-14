@@ -10,8 +10,9 @@ nnoremap ; <NOP>
 nnoremap ;; :<C-u>write<CR>
 
 " Jump to head or tail
-nnoremap <C-a> ^
-nnoremap <C-e> $
+nnoremap <C-p> ^
+nnoremap <C-n> $
+nnoremap 9 $
 
 " Emacs keybindings for insert mode
 imap <C-p> <Up>
@@ -23,6 +24,9 @@ imap <C-e> <Esc>A
 imap <C-d> <Del>
 imap <C-g><C-h> <Esc>bi
 imap <C-g><C-l> <Esc>wi
+
+nnoremap <C-j> }
+nnoremap <C-k> {
 
 " Window
 nnoremap ,, <C-w>w
@@ -66,6 +70,9 @@ noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('
 nnoremap <Leader>R :<C-u>source $MYVIMRC<CR>
 
 nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>nohlsearch<CR>:<C-u>cclose<CR>:<C-u>lclose<CR>
+
+" Replace
+nnoremap <Leader>re :%s;\<<C-R><C-W>\>;g<Left><Left>;
 
 " Toggle relativenumber
 nnoremap <Leader>N :<C-u>setlocal relativenumber!<CR>
