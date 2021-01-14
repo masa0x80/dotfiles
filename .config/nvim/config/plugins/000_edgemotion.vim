@@ -2,5 +2,7 @@ if globpath(&runtimepath, '') !~# 'vim-edgemotion'
   finish
 endif
 
-map <C-g><C-j> <Plug>(edgemotion-j)
-map <C-g><C-k> <Plug>(edgemotion-k)
+nmap <C-g><C-j> <Plug>(edgemotion-j)
+vmap <C-g><C-j> <Plug>(edgemotion-j)
+nmap <C-g><C-k> <Plug>(edgemotion-k)
+vmap <C-g><C-k> <Plug>(edgemotion-k)
