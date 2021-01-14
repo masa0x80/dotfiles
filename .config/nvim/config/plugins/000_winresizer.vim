@@ -3,3 +3,4 @@ if globpath(&runtimepath, '') !~# 'winresizer'
 endif
 
 let g:winresizer_start_key = ',<C-r>'
+let g:winresizer_start_key = '<Leader><C-r>'
