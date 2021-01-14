@@ -8,20 +8,20 @@ function update_casks
     type brew >/dev/null || return 1
     type fzf >/dev/null || return 1
 
-    set packages (brew cask list | fzf --query "$argv")
+    set packages (brew list --cask | fzf --query "$argv")
     if test -n "$packages"
         brew update | tee $LOG
     end
 
     for pkg in $packages
+        echo Update $pkg
         set app_dir $caskroom_dir/$pkg
-        set latest_version (brew cask info $pkg | grep "$pkg:" | cut -d ' ' -f 2)
+        set latest_version (brew info $pkg | grep "$pkg:" | cut -d ' ' -f 2)
         if not test -d $app_dir/$latest_version
-            brew cask reinstall $pkg | tee $LOG
+            brew reinstall $pkg | tee $LOG
         else
             echo -e "INFO: already updated" | tee $LOG
         end
-        done
 
         if test -n "$packages"
             brew cleanup | tee $LOG
