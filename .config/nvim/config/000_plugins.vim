@@ -33,6 +33,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'LeafCage/foldCC'
+Plug 'AndrewRadev/splitjoin.vim'
 
 " {{{ vim-unimpaired
 Plug 'tpope/vim-repeat'
