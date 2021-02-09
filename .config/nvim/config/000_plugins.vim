@@ -17,7 +17,6 @@ else
 endif
 
 Plug 'dense-analysis/ale'
-Plug 'haya14busa/vim-edgemotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-parenmatch'
@@ -31,9 +30,11 @@ Plug 'machakann/vim-sandwich'
 Plug 'thinca/vim-visualstar'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tyru/columnskip.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'LeafCage/foldCC'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'danilamihailov/beacon.nvim'
 
 " {{{ vim-unimpaired
 Plug 'tpope/vim-repeat'
