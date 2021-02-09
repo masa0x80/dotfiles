@@ -33,20 +33,8 @@ nnoremap ,, <C-w>w
 nnoremap ,< <C-w>W
 nnoremap <C-w>- <C-w>s
 nnoremap <C-w>\| <C-w>v
-nnoremap ,- <C-w>s
-nnoremap ,\| <C-w>v
-nnoremap ,j <C-w>j
-nnoremap ,k <C-w>k
-nnoremap ,l <C-w>l
-nnoremap ,h <C-w>h
-nnoremap ,J <C-w>J
-nnoremap ,K <C-w>K
-nnoremap ,L <C-w>L
-nnoremap ,H <C-w>H
-nnoremap ,= <C-w>=
 nnoremap <C-w>o <NOP>
 nnoremap <C-w>O :<C-u>only<CR>
-nnoremap ,o :<C-u>only<CR>
 
 " Tab
 nnoremap ,t :<C-u>tabedit %:p<CR>
