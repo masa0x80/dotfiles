@@ -44,19 +44,9 @@ abbr -a gbr 'git branch --remote'
 
 abbr -a gc 'git commit -v'
 abbr -a gc! 'git commit -v --amend'
-abbr -a gcd 'git checkout develop'
-abbr -a gcm 'git checkout master'
 abbr -a gco 'git checkout'
-abbr -a gcp 'git cherry-pick'
-
-abbr -a gsw 'git switch'
-abbr -a gsc 'git switch -c'
-abbr -a gcb 'git switch -c'
-abbr -a gre 'git restore'
 
 abbr -a gd 'git diff'
-abbr -a gdc 'git diff --cached'
-abbr -a gds 'git diff --staged'
 
 abbr -a gf 'git fetch'
 
@@ -86,11 +76,6 @@ abbr -a grbs 'git rebase --skip'
 
 abbr -a gri 'git rebase -i (git fzf)'
 
-abbr -a grh 'git reset HEAD'
-abbr -a grhh 'git reset HEAD --hard'
-
-abbr -a gru 'git reset --'
-
 abbr -a gsh 'git show'
 abbr -a gst 'git status -sb'
 abbr -a gts 'git tag -s'
@@ -105,8 +90,6 @@ abbr -a vst 'vagrant global-status'
 # }}}
 
 # ruby {{{
-abbr -a rnew 'rails new . --skip-test --skip-bundle --skip-turbolinks --skip-action-mailer --skip-action-mailbox --skip-action-text --skip-active-storage --database=mysql'
-
 abbr -a c 'rails c'
 abbr -a s 'rails s -p $RAILS_SERVER_PORT'
 
