@@ -1,7 +1,7 @@
 [core]
   autocrlf = false
   excludesfile = ~/.config/git/ignore
-  pager = diff-so-fancy | less --pattern='^(Date|added|deleted|modified): '
+  pager = gitpager | less --pattern='^(Date|added|deleted|modified): '
   hooksPath = ~/.config/git/hooks
   quotepath = false
 [include]

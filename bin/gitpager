@@ -1,0 +1,9 @@
+#!/usr/bin/env fish
+
+if command -sq delta
+  delta --diff-so-fancy
+else if command -sq diff-so-fancy
+  diff-so-fancy
+else
+  less -RIXc
+end
