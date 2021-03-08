@@ -10,4 +10,5 @@ update() {
 
 cmd=${1:-install}
 $cmd golang.org/x/tools/...
+$cmd golang.org/x/tools/cmd/gopls
 $cmd github.com/MichaelMure/mdr
