@@ -53,20 +53,14 @@ Plug 'terryma/vim-expand-region'
 " }}} vim-expand-region
 
 " {{{ LSP
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'antoinemadec/coc-fzf'
 " }}} LSP
 
-" {{{ asyncomplete.vim
-Plug 'prabirshrestha/asyncomplete.vim'
+" {{{ neosnippet
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete-file.vim'
-Plug 'prabirshrestha/asyncomplete-buffer.vim'
-" }}} asyncomplete.vim
+" }}} neosnippet
 
 Plug 'dag/vim-fish',                 { 'for': 'fish' }
 Plug 'vim-ruby/vim-ruby',            { 'for': 'ruby' }

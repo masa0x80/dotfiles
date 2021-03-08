@@ -7,7 +7,7 @@ autocmd MyAutoCmd FileType fzf
   \| autocmd MyAutoCmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 nnoremap <silent> <Leader>f :<C-u>Files<CR>
-nnoremap <silent> <Leader>b :<C-u>Buffers<CR>
+nnoremap <silent> <Leader><Leader> :<C-u>Buffers<CR>
 if executable('rg')
   nnoremap <silent> <Leader>g :<C-u>RG<CR>
   nnoremap <silent> <Leader>G :<C-u>RG <C-r><C-w><CR>
