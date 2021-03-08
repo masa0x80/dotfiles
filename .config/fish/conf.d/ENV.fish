@@ -76,8 +76,7 @@ export LANG=en_US.UTF-8
 
 # EDITOR
 if type -qa nvim
-    # export EDITOR=nvim
-    export EDITOR=vim
+    export EDITOR=nvim
 else if type -qa vim
     export EDITOR=vim
 end
