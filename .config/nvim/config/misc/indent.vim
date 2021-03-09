@@ -28,8 +28,8 @@ function! s:tab_indent(op)
 endfunction
 
 function! s:customize_indent_mappings() abort
-  inoremap <silent> <buffer> <Tab> <Esc>:<C-u>call <SID>tab_indent('>')<CR>
-  inoremap <silent> <buffer> <S-Tab> <Esc>:<C-u>call <SID>tab_indent('<')<CR>
+  inoremap <silent> <buffer> <C-n> <Esc>:<C-u>call <SID>tab_indent('>')<CR>
+  inoremap <silent> <buffer> <C-p> <Esc>:<C-u>call <SID>tab_indent('<')<CR>
 endfunction
 
 augroup IndentMapping

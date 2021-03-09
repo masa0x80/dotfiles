@@ -98,7 +98,7 @@ test -d /usr/local/opt/openssl/bin && set -gxa LIBRARY_PATH /usr/local/opt/opens
 
 # fzf options
 type -qa fd && export FZF_DEFAULT_COMMAND='fd --type f --no-ignore --hidden --follow --exclude .git'
-export FZF_DEFAULT_OPTS='--reverse --extended --ansi --multi --cycle --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-z:toggle-all'
+export FZF_DEFAULT_OPTS='--reverse --extended --ansi --multi --cycle --bind=ctrl-j:accept,ctrl-b:page-up,ctrl-f:page-down,ctrl-u:deselect-all,ctrl-g:toggle-all'
 
 # NOTE: dynamic library support
 #       ref https://github.com/nixprime/cpsm

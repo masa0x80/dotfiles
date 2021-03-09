@@ -14,6 +14,7 @@ let g:coc_global_extensions = [
   \ 'coc-tailwindcss',
   \ 'coc-swagger',
   \ 'coc-neosnippet',
+  \ 'coc-fzf-preview',
   \ 'coc-sh',
   \ 'coc-fish']
 
@@ -24,6 +25,11 @@ set updatetime=300
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <C-n>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -77,3 +83,10 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
+
+
+
+" coc-fzf-preview
+" `--resume` is very important
+nnoremap <Leader>g :<C-u>CocCommand fzf-preview.ProjectGrep . --add-fzf-arg=--bind=ctrl-u:deselect-all,ctrl-g:toggle-all --resume<CR>
+nnoremap <Leader>G :<C-u>CocCommand fzf-preview.ProjectGrep . --add-fzf-arg=--bind=ctrl-u:deselect-all,ctrl-g:toggle-all --add-fzf-arg=--query="<C-r>=expand('<cword>')<CR>"<CR>
