@@ -14,10 +14,8 @@ let g:lightline.component_type = {
   \ 'linter_errors': 'error',
   \ 'linter_ok': 'left'
   \ }
-let g:lightline.active = {
-  \ 'right': [
-  \   ['syntastic', 'lineinfo'],
-  \   ['percent'],
+let g:lightline.active.right = [
+  \   ['lineinfo', 'percent'],
   \   ['fileformat', 'fileencoding', 'filetype'],
   \   ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok']
-  \ ]}
+  \ ]

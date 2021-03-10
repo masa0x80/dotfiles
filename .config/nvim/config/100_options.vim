@@ -6,8 +6,6 @@ set linebreak
 set hidden
 set splitbelow
 set cursorline
-set number
-set relativenumber
 
 set expandtab
 set autoindent smartindent
@@ -23,7 +21,7 @@ set listchars=tab:»\ ,precedes:<,extends:>
 set wildmenu
 
 set fileencodings=utf-8,cp932,euc-jp,sjis
-set ambiwidth=double
+set ambiwidth=single
 
 set laststatus=2
 set display=lastline
@@ -39,6 +37,8 @@ set matchtime=1
 
 set backspace=indent,eol,start
 set whichwrap=b,s,h,l,<,>,[,]
+
+set signcolumn=yes
 
 set path=.\ ~/\
 set viminfo+=!
@@ -58,3 +58,5 @@ endif
 
 " clipboard
 set clipboard=unnamed,unnamedplus
+
+set updatetime=250

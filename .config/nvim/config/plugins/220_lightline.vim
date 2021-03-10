@@ -3,71 +3,62 @@ if globpath(&runtimepath, '') !~# 'lightline\.vim'
 endif
 
 let g:lightline = {
-  \   'mode_map': {
-  \     'c': 'NORMAL'
-  \   },
   \   'active': {
   \     'left': [
   \       ['mode', 'paste'],
-  \       ['readonly', 'filename', 'fugitive',  'modified']
+  \       ['filename', 'readonly', 'modified']
   \     ],
   \   },
   \   'inactive': {
   \     'left': [
   \       ['relativepath']
-  \     ],
-  \     'right': [
-  \       ['syntastic', 'lineinfo'],
-  \       ['percent']
   \     ]
   \   },
   \   'component_function': {
-  \     'modified':     'MyModified',
-  \     'readonly':     'MyReadonly',
-  \     'fugitive':     'MyFugitive',
-  \     'fileformat':   'MyFileformat',
-  \     'fileencoding': 'MyFileencoding',
-  \     'filetype':     'MyFiletype',
-  \     'mode':         'MyMode'
-  \   }
+  \     'modified':     'LightlineModified',
+  \     'readonly':     'LightlineReadonly',
+  \     'filename':     'LightlineFilename',
+  \     'filetype':     'LightlineFiletype',
+  \     'fileformat':   'LightlineFileformat',
+  \     'fileencoding': 'LightlineFileEncoding',
+  \     'mode':         'LightlineMode'
+  \   },
+  \   'separator': { 'left': "\ue0b4", 'right': "\ue0b6" },
+  \   'subseparator': { 'left': "\ue0b5", 'right': "\ue0b7" }
   \ }
 
 if globpath(&runtimepath, '') =~# 'iceberg'
   let g:lightline.colorscheme = 'iceberg'
 endif
 
-function! MyModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+function! LightlineModified()
+  return &ft =~ 'help\|fern' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
-function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+function! LightlineReadonly()
+  return &ft !~? 'help\|fern' && &readonly ? 'RO' : ''
 endfunction
 
-function! MyFugitive()
-  try
-    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-      return fugitive#head()
-    endif
-  catch
-  endtry
-  return ''
+function! LightlineFilename()
+  return (&ft == 'fern' ? '' : '' != expand('%:t') ?
+      \  (winwidth(0) > 70 ? expand('%f') : expand('%:t')) : '[No Name]')
 endfunction
 
-function! MyFileformat()
+function! LightlineFileformat()
   return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
-function! MyFiletype()
+function! LightlineFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
-function! MyFileencoding()
+function! LightlineFileEncoding()
   return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
-function! MyMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
+function! LightlineMode()
+  return &ft == 'fern' ? 'Fern' :
+      \  winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
 function! s:lightline_update()
