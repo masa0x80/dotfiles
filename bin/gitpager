@@ -5,5 +5,5 @@ if command -sq delta
 else if command -sq diff-so-fancy
   diff-so-fancy
 else
-  less -RIXc
+  less -RIXc | less --pattern='^(Date|added|deleted|modified): '
 end
