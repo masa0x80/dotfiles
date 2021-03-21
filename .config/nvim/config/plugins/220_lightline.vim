@@ -23,8 +23,8 @@ let g:lightline = {
   \     'fileencoding': 'LightlineFileEncoding',
   \     'mode':         'LightlineMode'
   \   },
-  \   'separator': { 'left': "\ue0b4", 'right': "\ue0b6" },
-  \   'subseparator': { 'left': "\ue0b5", 'right': "\ue0b7" }
+  \   'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+  \   'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
   \ }
 
 if globpath(&runtimepath, '') =~# 'iceberg'
