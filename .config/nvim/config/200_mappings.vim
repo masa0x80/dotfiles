@@ -21,8 +21,8 @@ imap <C-f> <Right>
 imap <C-a> <Esc>I
 imap <C-e> <Esc>A
 imap <C-d> <Del>
-imap <C-g><C-p> <Esc>bi
-imap <C-g><C-n> <Esc>ea
+imap <C-g><C-h> <Esc>bi
+imap <C-g><C-l> <Esc>ea
 
 nnoremap <C-j> }
 nnoremap <C-k> {
