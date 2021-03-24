@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin master
 
 .PHONY: install
-install: defaults brew-bundle asdf nodejs python ruby golang rust terraform brew-mas
+install: defaults brew asdf nodejs python ruby golang rust terraform brew-mas
 
 .PHONY: deploy
 deploy:
@@ -62,7 +62,7 @@ brew-mas: brew-init
 	brew bundle --file=etc/brew/Brewfile.mas
 
 .PHONY: brew-bundle
-brew-bundle: brew brew-cask
+brew-bundle: brew
 
 # }}}
 
