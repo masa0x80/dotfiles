@@ -1,9 +1,9 @@
 #!/usr/bin/env fish
 
 if command -sq delta
-  delta --diff-so-fancy
+  delta --diff-so-fancy | less
 else if command -sq diff-so-fancy
-  diff-so-fancy
+  diff-so-fancy | less
 else
   less -RIXc | less --pattern='^(Date|added|deleted|modified): '
 end
