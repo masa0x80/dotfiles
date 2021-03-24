@@ -2,7 +2,7 @@
 
 . $(brew --prefix asdf)/asdf.sh
 
-VERSION=$(grep -oP '(?<=terraform ).*' $HOME/$ASDF_DEFAULT_TOOL_VERSIONS_FILENAME)
+VERSION=$(grep -oP '(?<=terraform ).*' $HOME/.tool-versions)
 
 asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
 asdf install terraform $VERSION

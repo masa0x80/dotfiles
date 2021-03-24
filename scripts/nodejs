@@ -2,7 +2,7 @@
 
 . $(brew --prefix asdf)/asdf.sh
 
-VERSION=$(grep -oP '(?<=nodejs ).*' $HOME/$ASDF_DEFAULT_TOOL_VERSIONS_FILENAME)
+VERSION=$(grep -oP '(?<=nodejs ).*' $HOME/.tool-versions)
 
 export NODEJS_CHECK_SIGNATURES=no
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
