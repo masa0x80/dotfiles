@@ -1,4 +1,3 @@
-cask 'adoptopenjdk'
 cask 'alfred'
 cask 'aws-vault'
 cask 'boostnote'
