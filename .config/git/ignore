@@ -19,3 +19,5 @@ Thumbs.db
 git-worktrees/*
 
 .solargraph.yml
+
+.snippets.d
