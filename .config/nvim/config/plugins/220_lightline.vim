@@ -40,7 +40,7 @@ function! LightlineReadonly()
 endfunction
 
 function! LightlineFilename()
-  return (&ft == 'fern' ? '' : '' != expand('%:t') ?
+  return (&ft == 'fern' ? split(expand('%f'), '://')[2][0:-2] : '' != expand('%:t') ?
       \  (winwidth(0) > 70 ? expand('%f') : expand('%:t')) : '[No Name]')
 endfunction
 
