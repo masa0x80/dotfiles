@@ -3,15 +3,28 @@ if globpath(&runtimepath, '') !~# 'lightline\.vim'
 endif
 
 let g:lightline = {
+  \   'mode_map': {
+  \     'n' : 'N',
+  \     'i' : 'I',
+  \     'R' : 'R',
+  \     'v' : 'V',
+  \     'V' : 'V-LINE',
+  \     "\<C-v>": 'V-BLOCK',
+  \     'c' : 'C',
+  \     's' : 'S',
+  \     'S' : 'S-LINE',
+  \     "\<C-s>": 'S-BLOCK',
+  \     't': 'T',
+  \   },
   \   'active': {
   \     'left': [
   \       ['mode', 'paste'],
-  \       ['filename', 'readonly', 'modified']
+  \       ['filename', 'readonly', 'modified'],
   \     ],
   \   },
   \   'inactive': {
   \     'left': [
-  \       ['relativepath']
+  \       ['relativepath'],
   \     ]
   \   },
   \   'component_function': {
@@ -21,10 +34,10 @@ let g:lightline = {
   \     'filetype':     'LightlineFiletype',
   \     'fileformat':   'LightlineFileformat',
   \     'fileencoding': 'LightlineFileEncoding',
-  \     'mode':         'LightlineMode'
+  \     'mode':         'LightlineMode',
   \   },
   \   'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-  \   'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+  \   'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
   \ }
 
 if globpath(&runtimepath, '') =~# 'iceberg'
@@ -40,8 +53,12 @@ function! LightlineReadonly()
 endfunction
 
 function! LightlineFilename()
-  return (&ft == 'fern' ? split(expand('%f'), '://')[2][0:-2] : '' != expand('%:t') ?
-      \  (winwidth(0) > 70 ? expand('%f') : expand('%:t')) : '[No Name]')
+  if &ft == 'fern'
+    let relative_path = split(substitute(expand('%f'), getcwd() .. '/', '', ''), '://')[2][0:-2]
+    return relative_path
+  else
+    return '' != expand('%:t') ? (winwidth(0) > 70 ? expand('%f') : expand('%:t')) : '[No Name]'
+  endif
 endfunction
 
 function! LightlineFileformat()
