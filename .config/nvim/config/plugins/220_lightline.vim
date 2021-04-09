@@ -54,10 +54,13 @@ endfunction
 
 function! LightlineFilename()
   if &ft == 'fern'
-    let relative_path = split(substitute(expand('%f'), getcwd() .. '/', '', ''), '://')[2][0:-2]
+    let relative_path = expand('#')
+    if relative_path[0:6] == 'fern://'
+      let relative_path = split(relative_path, '://')[2][0:-2]
+    endif
     return relative_path
   else
-    return '' != expand('%:t') ? (winwidth(0) > 70 ? expand('%f') : expand('%:t')) : '[No Name]'
+    return '' != expand('%:t') ? (winwidth(0) > 70 ? expand('%') : expand('%:t')) : '[No Name]'
   endif
 endfunction
 
