@@ -83,3 +83,6 @@ brew 'yq'
 
 brew 'protobuf'
 brew 'sops'
+
+tap 'arkweid/lefthook'
+brew 'lefthook'
