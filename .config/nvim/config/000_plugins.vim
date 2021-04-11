@@ -73,6 +73,7 @@ Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'aklt/plantuml-syntax',         { 'for': 'plantuml' }
 " {{{ markdown
 Plug 'godlygeek/tabular'
+Plug 'mattn/vim-maketable'
 Plug 'joker1007/vim-markdown-quote-syntax'
 Plug 'rcmdnk/vim-markdown', { 'for': 'markdown' }
 if executable('yarn')
