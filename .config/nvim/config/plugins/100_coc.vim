@@ -16,7 +16,9 @@ let g:coc_global_extensions = [
   \ 'coc-neosnippet',
   \ 'coc-fzf-preview',
   \ 'coc-sh',
-  \ 'coc-fish']
+  \ 'coc-fish',
+  \ 'coc-markmap',
+  \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -81,3 +83,8 @@ command! -nargs=0 Format :call CocAction('format')
 " `--resume` is very important
 nnoremap <Leader>g :<C-u>CocCommand fzf-preview.ProjectGrep . --add-fzf-arg=--bind=ctrl-u:deselect-all,ctrl-g:toggle-all --resume<CR>
 nnoremap <Leader>G :<C-u>CocCommand fzf-preview.ProjectGrep . --add-fzf-arg=--bind=ctrl-u:deselect-all,ctrl-g:toggle-all --add-fzf-arg=--query="<C-r>=expand('<cword>')<CR>"<CR>
+
+
+" coc-markmap
+" Create markmap from the whole file
+command! Markmap CocCommand markmap.create -w
