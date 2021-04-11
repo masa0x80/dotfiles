@@ -1,26 +1,28 @@
-#!/usr/bin/env zsh
+#!/bin/sh
 
-pre_push() {
-  local git_root=`git rev-parse --show-cdup`
+source "$(dirname $0)/_hook_init"
 
-  if test "$DISABLE_RUBOCOP" = ''; then
-    if test -e "${git_root}.rubocop.yml"; then
-      rbenv exec bundle exec rubocop `git diff --staged --name-only`
-      local rubocop_status=$?
+# $GIT_DIR/hooks 配下にhookファイルがないか、$GLOBAL_GIT_HOOKフラグが立っている場合実行する
+if test -z "$HOOK_FILE" || test $(($GLOBAL_GIT_HOOK & $PRE_PUSH)) = $PRE_PUSH; then
+  PJ_ROOT=$(git rev-parse --show-cdup)
+
+  if test -z "$DISABLE_RUBOCOP"; then
+    if test -e "$PJ_ROOT/.rubocop.yml"; then
+      bundle exec rubocop --parallel $(git diff --staged --name-only)
+      rubocop_status=$?
       if test $rubocop_status -ne 0; then
         exit $rubocop_status
       fi
     fi
   fi
 
-  if test "$DISABLE_RSPEC" = ''; then
-    if test -d "${git_root}spec/"; then
-      rbenv exec bundle exec rspec
-      local rspec_status=$?
+  if test -z "$DISABLE_RSPEC"; then
+    if test -d "$PJ_ROOT/spec/"; then
+      bundle exec rspec
+      rspec_status=$?
       if test $rspec_status -ne 0; then
         exit $rspec_status
       fi
     fi
   fi
-}
-pre_push
+fi

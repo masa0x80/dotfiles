@@ -1,0 +1,7 @@
+#!/bin/sh
+
+source "$(dirname $0)/_hook_init"
+
+# $GIT_DIR/hooks 配下にhookファイルがないか、$GLOBAL_GIT_HOOKフラグが立っている場合実行する
+# if test -z "$HOOK_FILE" || test $(($GLOBAL_GIT_HOOK & $POST_UPDATE)) = $POST_UPDATE; then
+# fi
