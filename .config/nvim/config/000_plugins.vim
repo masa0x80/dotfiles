@@ -87,6 +87,8 @@ Plug 'skanehira/preview-markdown.vim'
 " Run `docker run -d -p 8888:8080 plantuml/plantuml-server:jetty`, and Execute `:PreviewUML`
 Plug 'skanehira/preview-uml.vim'
 " }}} markdown
+
+Plug 'tyru/vim-altercmd'
 call plug#end()
 " }}} 1
 
