@@ -80,7 +80,6 @@ hook_post_update = '''
 
 [[plugins]] # {{{ fzf
 repo = 'junegunn/fzf'
-build = './install --all'
 merged = 0
 
 [[plugins]]
