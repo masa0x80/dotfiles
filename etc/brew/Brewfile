@@ -38,6 +38,8 @@ brew 'asdf'
 brew 'fish'
 brew 'zsh'
 
+brew 'navi'
+
 brew 'tmux'
 
 tap 'greymd/tools'

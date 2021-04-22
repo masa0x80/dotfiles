@@ -139,8 +139,5 @@ set -gx __fish_git_prompt_char_upstream_behind '-'
 # Set config path for gabbr
 set -gx gabbr_config $HOME/.config/fish/gabbr.conf
 
-# Set snippets cache file path
-export snippets_cache_path=$XDG_CACHE_HOME/snippets/cache
-
 # Config for my git hooks
 set -gx GLOBAL_GIT_HOOK (math 0x0880)
