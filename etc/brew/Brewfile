@@ -88,3 +88,6 @@ brew 'sops'
 
 tap 'arkweid/lefthook'
 brew 'lefthook'
+
+tap 'cantino/mcfly', 'https://github.com/cantino/mcfly'
+brew 'mcfly'
