@@ -17,7 +17,7 @@ help:
 
 .PHONY: update
 update:
-	git pull --no-commit origin master
+	git pull --no-commit origin main
 
 .PHONY: install
 install: defaults brew asdf nodejs python ruby golang rust terraform brew-mas
@@ -115,6 +115,10 @@ python: asdf
 .PHONY: terraform
 terraform: asdf
 	@./scripts/terraform
+
+.PHONY: helm
+helm: asdf
+	@./scripts/helm
 
 # }}}
 

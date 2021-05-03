@@ -71,3 +71,5 @@
   root = ~/.ghq
 [harrow]
   disabled = true
+[diff "sopsdiffer"]
+	textconv = sops -d
