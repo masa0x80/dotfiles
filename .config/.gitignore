@@ -21,3 +21,7 @@
 !/pgcli
 /pgcli/*
 !/pgcli/config
+
+!/karabiner
+/karabiner/*
+!/karabiner/karabiner.json
