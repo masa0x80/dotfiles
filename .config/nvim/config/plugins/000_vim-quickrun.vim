@@ -2,6 +2,7 @@ if globpath(&runtimepath, '') !~# 'vim-quickrun'
   finish
 endif
 
+let g:quickrun_no_default_key_mappings = 1
 let g:quickrun_config = {
   \   '_': {
   \     'outputter': 'buffer',
