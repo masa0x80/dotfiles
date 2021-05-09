@@ -94,7 +94,7 @@ export LESS_TERMCAP_ue=(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=(printf '\e[04;34m') # enter underline mode – cyan
 
 # brew install openssl
-test -d /usr/local/opt/openssl/bin && set -gxa LIBRARY_PATH /usr/local/opt/openssl/lib/
+test -d /usr/local/opt/openssl && set -gxa LIBRARY_PATH /usr/local/opt/openssl/lib/
 
 # fzf options
 type -qa fd && export FZF_DEFAULT_COMMAND='fd --type f --no-ignore --hidden --follow --exclude .git'
