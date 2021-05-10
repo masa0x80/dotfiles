@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: defaults brew asdf nodejs python ruby golang rust terraform brew-mas
+install: defaults brew asdf nodejs python ruby golang rust terraform brew-mas navi
 
 .PHONY: deploy
 deploy:
@@ -42,8 +42,8 @@ clean:
 
 .PHONY: brew-init
 brew-init:
-	@xcode-select --install 2>/dev/null || :
-	@./scripts/brew_init
+	xcode-select --install 2>/dev/null || :
+	./scripts/brew_init
 
 .PHONY: brew
 brew: brew-init
@@ -70,7 +70,7 @@ brew-bundle: brew
 
 .PHONY: defaults
 defaults:
-	@./scripts/defaults
+	./scripts/defaults
 
 # }}}
 
@@ -78,11 +78,11 @@ defaults:
 
 .PHONY: golang
 golang: brew-init
-	@./scripts/golang
+	./scripts/golang
 
 .PHONY: golang-update
 golang-update: golang
-	@./scripts/golang update
+	./scripts/golang update
 
 # }}}
 
@@ -90,11 +90,11 @@ golang-update: golang
 
 .PHONY: rust
 rust: brew-init
-	@./scripts/rust
+	./scripts/rust
 
 .PHONY: rust-update
 rust-update: rust
-	@cargo install-update -a
+	cargo install-update -a
 
 # }}}
 
@@ -102,26 +102,30 @@ rust-update: rust
 
 .PHONY: asdf
 asdf: brew-init
-	@./scripts/asdf
+	./scripts/asdf
 
 .PHONY: ruby
 ruby: asdf
-	@./scripts/ruby
+	./scripts/ruby
 
 .PHONY: python
 python: asdf
-	@./scripts/python
+	./scripts/python
 
 .PHONY: terraform
 terraform: asdf
-	@./scripts/terraform
+	./scripts/terraform
 
 .PHONY: helm
 helm: asdf
-	@./scripts/helm
+	./scripts/helm
 
 # }}}
 
 .PHONY: nodejs
 nodejs: brew-init
-	@./scripts/nodejs
+	./scripts/nodejs
+
+.PHONY: navi
+navi: brew
+	./scripts/navi
