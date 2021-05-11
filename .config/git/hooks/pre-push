@@ -8,7 +8,7 @@ if test -z "$HOOK_FILE" || test $(($GLOBAL_GIT_HOOK & $PRE_PUSH)) = $PRE_PUSH; t
 
   if test -z "$DISABLE_RUBOCOP"; then
     if test -e "$PJ_ROOT/.rubocop.yml"; then
-      bundle exec rubocop --parallel $(git diff --staged --name-only)
+      bundle exec rubocop --parallel
       rubocop_status=$?
       if test $rubocop_status -ne 0; then
         exit $rubocop_status
