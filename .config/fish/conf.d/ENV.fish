@@ -100,6 +100,8 @@ test -d /usr/local/opt/openssl && set -gxa LIBRARY_PATH /usr/local/opt/openssl/l
 type -qa fd && export FZF_DEFAULT_COMMAND='fd --type f --no-ignore --hidden --follow --exclude .git'
 export FZF_DEFAULT_OPTS='--reverse --extended --ansi --multi --cycle --bind=ctrl-j:accept,ctrl-u:page-up,ctrl-d:page-down,ctrl-g:toggle-all,ctrl-/:deselect-all'
 
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
+
 # NOTE: dynamic library support
 #       ref https://github.com/nixprime/cpsm
 export PYTHON_CONFIGURE_OPTS='--enable-framework'
