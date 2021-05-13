@@ -18,8 +18,8 @@ function! s:customize_fern_mappings() abort
 
   nmap <buffer><nowait> <C-j> <Plug>(fern-action-mark)j
   nmap <buffer><nowait> <C-k> k<Plug>(fern-action-mark)
-  nmap <buffer><nowait> <C-i> <Plug>(fern-action-mark)
-  vmap <buffer><nowait> <C-i> <Plug>(fern-action-mark)
+  nmap <buffer><nowait> x <Plug>(fern-action-mark)
+  vmap <buffer><nowait> x <Plug>(fern-action-mark)
 
   nmap <buffer><nowait> e <Plug>(fern-action-open)
   nmap <buffer><nowait> <C-m> <Plug>(fern-action-open)
