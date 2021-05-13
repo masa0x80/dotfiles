@@ -81,8 +81,8 @@ command! -nargs=0 Format :call CocAction('format')
 
 " coc-fzf-preview
 " `--resume` is very important
-nnoremap <Leader>g :<C-u>CocCommand fzf-preview.ProjectGrep . --add-fzf-arg=--bind=ctrl-u:deselect-all,ctrl-g:toggle-all --resume<CR>
-nnoremap <Leader>G :<C-u>CocCommand fzf-preview.ProjectGrep . --add-fzf-arg=--bind=ctrl-u:deselect-all,ctrl-g:toggle-all --add-fzf-arg=--query="<C-r>=expand('<cword>')<CR>"<CR>
+nnoremap <Leader>g :<C-u>CocCommand fzf-preview.ProjectGrep . --add-fzf-arg=--bind=ctrl-u:page-up,ctrl-d:page-down --resume<CR>
+nnoremap <Leader>G :<C-u>CocCommand fzf-preview.ProjectGrep . --add-fzf-arg=--bind=ctrl-u:page-up,ctrl-d:page-down --add-fzf-arg=--query="<C-r>=expand('<cword>')<CR>"<CR>
 
 
 " coc-markmap
