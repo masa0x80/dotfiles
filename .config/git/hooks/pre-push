@@ -7,7 +7,7 @@ if test -z "$HOOK_FILE" || test $(($GLOBAL_GIT_HOOK & $PRE_PUSH)) = $PRE_PUSH; t
   PJ_ROOT=$(git rev-parse --show-cdup)
 
   if test -z "$DISABLE_RUBOCOP"; then
-    if test -e "$PJ_ROOT/.rubocop.yml"; then
+    if test -e "${PJ_ROOT}.rubocop.yml"; then
       bundle exec rubocop --parallel
       rubocop_status=$?
       if test $rubocop_status -ne 0; then
@@ -17,7 +17,7 @@ if test -z "$HOOK_FILE" || test $(($GLOBAL_GIT_HOOK & $PRE_PUSH)) = $PRE_PUSH; t
   fi
 
   if test -z "$DISABLE_RSPEC"; then
-    if test -d "$PJ_ROOT/spec/"; then
+    if test -d "${PJ_ROOT}spec/"; then
       bundle exec rspec
       rspec_status=$?
       if test $rspec_status -ne 0; then
