@@ -2,6 +2,8 @@ if globpath(&runtimepath, '') !~# 'coc\.nvim'
   finish
 endif
 
+let g:coc_node_args = ['--max-old-space-size=4096']
+
 let g:coc_global_extensions = [
   \ 'coc-solargraph',
   \ 'coc-go',
@@ -14,7 +16,6 @@ let g:coc_global_extensions = [
   \ 'coc-tailwindcss',
   \ 'coc-swagger',
   \ 'coc-neosnippet',
-  \ 'coc-fzf-preview',
   \ 'coc-sh',
   \ 'coc-fish',
   \ 'coc-markmap',
@@ -76,14 +77,6 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
-
-
-
-" coc-fzf-preview
-" `--resume` is very important
-nnoremap <Leader>g :<C-u>CocCommand fzf-preview.ProjectGrep . --add-fzf-arg=--bind=ctrl-u:page-up,ctrl-d:page-down --resume<CR>
-nnoremap <Leader>G :<C-u>CocCommand fzf-preview.ProjectGrep . --add-fzf-arg=--bind=ctrl-u:page-up,ctrl-d:page-down --add-fzf-arg=--query="<C-r>=expand('<cword>')<CR>"<CR>
-
 
 " coc-markmap
 " Create markmap from the whole file
