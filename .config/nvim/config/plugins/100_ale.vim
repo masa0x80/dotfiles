@@ -3,6 +3,7 @@ if globpath(&runtimepath, '') !~# '\/ale\/'
 endif
 
 let g:ale_fix_on_save = 1
+let g:ale_hover_cursor = 0
 let g:ale_fixers = {
   \   'ruby': ['rubocop'],
   \   'javascript': ['prettier', 'eslint'],
