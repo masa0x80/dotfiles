@@ -2,6 +2,7 @@
 
 function gwt
   set -l git_cdup_dir (git rev-parse --show-cdup)
-  git worktree add (echo -s $git_cdup_dir git-worktrees/ $argv) -b $argv
+  set -l dir_name (string split -r -m1 -f2 / -- $argv)
+  git worktree add (echo -s $git_cdup_dir git-worktrees/ $dir_name) -b $argv
 end
 gwt $argv
