@@ -24,8 +24,15 @@ imap <C-d> <Del>
 imap <C-g><C-h> <Esc>bi
 imap <C-g><C-l> <Esc>ea
 
-nnoremap <C-j> }
-nnoremap <C-k> {
+nnoremap <C-g><C-j> }
+vnoremap <C-g><C-j> }
+nnoremap <C-g><C-k> {
+vnoremap <C-g><C-k> {
+
+nmap <buffer> <C-j> ]M
+nmap <buffer> <C-k> [m
+vmap <buffer> <C-j> ]M
+vmap <buffer> <C-k> [m
 
 " Window
 nnoremap ,, <C-w>w

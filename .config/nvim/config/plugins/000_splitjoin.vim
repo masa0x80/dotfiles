@@ -2,5 +2,5 @@ if globpath(&runtimepath, '') !~# 'splitjoin\.vim'
   finish
 endif
 
-nmap ss :SplitjoinSplit<CR>
-nmap sj :SplitjoinJoin<CR>
+nmap <C-g>l :SplitjoinSplit<CR>
+nmap <C-g>- :SplitjoinJoin<CR>

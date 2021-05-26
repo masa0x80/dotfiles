@@ -44,6 +44,6 @@ function! s:customize_fern_mappings() abort
 
   nmap <buffer><nowait> q :<C-u>bd<CR>
 endfunction
-autocmd MyAutoCmd FileType fern call s:customize_fern_mappings()
+autocmd MyAutoCmd FileType fern call <SID>customize_fern_mappings()
 
 nnoremap - :<C-u>Fern %:h -reveal=%:t<CR>
