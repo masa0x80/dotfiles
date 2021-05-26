@@ -33,6 +33,9 @@ brew 'graphviz'
 brew 'imagemagick'
 brew 'pandoc'
 
+tap 'universal-ctags/universal-ctags'
+brew 'universal-ctags', args: ['HEAD']
+
 brew 'asdf'
 
 brew 'fish'

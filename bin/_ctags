@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+
+function _ctags
+  nice -n 15 ctags $argv
+end
+_ctags $argv

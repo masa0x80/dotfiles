@@ -3,4 +3,5 @@ foreman
 pry
 jr
 mdl
+ripper-tags
 solargraph

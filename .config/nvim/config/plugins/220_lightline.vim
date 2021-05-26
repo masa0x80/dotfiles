@@ -19,7 +19,7 @@ let g:lightline = {
   \   'active': {
   \     'left': [
   \       ['mode', 'paste'],
-  \       ['filename', 'readonly', 'modified'],
+  \       ['filename', 'readonly', 'ctags', 'modified'],
   \     ],
   \   },
   \   'inactive': {
@@ -34,6 +34,7 @@ let g:lightline = {
   \     'filetype':     'LightlineFiletype',
   \     'fileformat':   'LightlineFileformat',
   \     'fileencoding': 'LightlineFileEncoding',
+  \     'ctags':        'LightlineCtagsStatus',
   \     'mode':         'LightlineMode',
   \   },
   \   'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
@@ -80,6 +81,12 @@ function! LightlineMode()
   return &ft == 'fern' ? 'Fern' :
       \  winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+
+function! LightlineCtagsStatus()
+  let l:status = globpath(&runtimepath, '') =~# 'gutentags' ? gutentags#statusline() : ''
+  return winwidth(0) > 60 ? l:status : ''
+endfunction
+
 
 function! s:lightline_update()
   let g:lightline.colorscheme =

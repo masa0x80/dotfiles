@@ -57,6 +57,10 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'antoinemadec/coc-fzf'
 " }}} LSP
 
+" {{{ ctags
+Plug 'ludovicchabant/vim-gutentags'
+" }}} ctags
+
 " {{{ neosnippet
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'

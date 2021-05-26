@@ -14,6 +14,9 @@ if executable('rg')
   nnoremap <silent> <Leader>G :<C-u>RG <C-r>=expand('<cword>')<CR><CR>
 endif
 
+nnoremap <silent> <Leader>t :<C-u>Tags<CR>
+nnoremap <silent> <Leader>T :<C-u>Tags <C-r>=expand('<cword>')<CR><CR>
+
 function! RipgrepFzf(query, fullscreen)
   let command_fmt_smart  = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
   let command_fmt_ignore = 'rg --column --line-number --no-heading --color=always --ignore-case -- %s || true'

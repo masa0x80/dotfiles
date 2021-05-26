@@ -37,11 +37,14 @@ nnoremap <C-w>O :<C-u>only<CR>
 
 " Tab
 nnoremap ,t :<C-u>tabedit %:p<CR>
-nnoremap <C-t><C-t> :<C-u>tabedit %:p<CR>
 nnoremap <C-t><C-n> :<C-u>tabnext<CR>
 nnoremap <C-t><C-p> :<C-u>tabprevious<CR>
 nnoremap <C-t>N :<C-u>tabmove +<CR>
 nnoremap <C-t>P :<C-u>tabmove -<CR>
+
+" Tags
+nnoremap <silent> <C-t><C-t> :<C-u>pop<CR>
+nnoremap <silent> <C-h> :<C-u>pop<CR>
 
 " Quit
 nnoremap <Leader>q :<C-u>q<CR>

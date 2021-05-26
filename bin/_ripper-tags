@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+
+function _ripper-tags
+  nice -n 15 ripper-tags $argv
+end
+_ripper-tags $argv
