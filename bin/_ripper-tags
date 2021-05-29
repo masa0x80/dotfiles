@@ -1,6 +1,18 @@
 #!/usr/bin/env fish
 
 function _ripper-tags
-  nice -n 15 ripper-tags $argv
+    set -l days 3
+
+    set -l gutentag_root (echo $XDG_CACHE_HOME/gutentags)
+    set -l tag_file_prefix (git rev-parse --show-toplevel | string sub -s 2 | string replace -a / -)
+    set -l tag_file_name (echo -s $tag_file_prefix -tags)
+
+    # git管理下でなければ抜ける
+    test -z $tag_file_prefix && return 0
+
+    # Tagファイルの作成日が $days 日以内なら抜ける
+    test (find $gutentag_root -mtime -$days -name $tag_file_name | wc -l) != 0 && return 0
+
+    nice -n 15 ripper-tags $argv
 end
 _ripper-tags $argv
