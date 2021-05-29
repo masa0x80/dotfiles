@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 function tmux-choose-session
-    type fzf >/dev/null || return 1
+    type -q fzf || return 1
 
     set -l num (tmux list-sessions | fzf | cut -d':' -f 1)
     tmux switch-client -t $num

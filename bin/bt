@@ -1,8 +1,8 @@
 #!/usr/bin/env fish
 
 function bt
-    type BluetoothConnector >/dev/null || return 1
-    type fzf >/dev/null || return 1
+    type -q BluetoothConnector || return 1
+    type -q fzf || return 1
 
     set -l op (echo -e connect\ndisconnect | fzf --query "$argv")
     set -l selected (BluetoothConnector 2>&1 | grep -o '.* - .*' | fzf -d ' - ' --with-nth=2)

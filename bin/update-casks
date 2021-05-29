@@ -5,8 +5,8 @@ function update_casks
     echo '' >$LOG
 
     set -q caskroom_dir && set caskroom_dir /usr/local/Caskroom
-    type brew >/dev/null || return 1
-    type fzf >/dev/null || return 1
+    type -q brew || return 1
+    type -q fzf || return 1
 
     set packages (brew list --cask | fzf --query "$argv")
     if test -n "$packages"

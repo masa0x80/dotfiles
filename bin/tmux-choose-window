@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 function tmux-choose-window
-  type fzf >/dev/null || return 1
+  type -q fzf || return 1
 
   set -l num (tmux list-windows | fzf | cut -d':' -f 1)
   tmux select-window -t $num
