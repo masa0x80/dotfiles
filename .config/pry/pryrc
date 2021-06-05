@@ -1,3 +1,15 @@
+# frozen_string_literal: true
+
+Pry.config.prompt = Pry::Prompt.new(
+  'custom',
+  'my custom prompt',
+  [
+    ->(_context, _nesting, _pry_instance) { "\e[37mpry>\e[0m " },
+    ->(_context, _nesting, _pry_instance) { "   \e[37m| \e[0m" }
+  ]
+)
+
+Pry.commands.alias_command 'e', 'edit -m'
 if defined?(PryByebug)
   Pry.commands.alias_command 'fin', 'finish'
   Pry.commands.alias_command 'c',   'continue'
@@ -8,11 +20,15 @@ if defined?(PryByebug)
   Pry.commands.alias_command 'f',   'frame'
   Pry.commands.alias_command 'w',   'whereami'
 end
-
-if defined?(ActiveRecord)
-  ActiveRecord::Base.logger = Logger.new(STDOUT)
+if defined?(PryRails)
+  reload = Pry::CommandSet.new do
+    command 'r', 'reload!' do
+      TOPLEVEL_BINDING.eval('reload!')
+    end
+  end
+  Pry.config.commands.import reload
 end
 
-if defined?(AwesomePrint)
-  AwesomePrint.pry!
-end
+ActiveRecord::Base.logger = Logger.new($stdout) if defined?(ActiveRecord)
+
+AwesomePrint.pry! if defined?(AwesomePrint)
