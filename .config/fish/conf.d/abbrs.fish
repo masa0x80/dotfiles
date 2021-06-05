@@ -113,4 +113,6 @@ abbr -a dcd 'dc down'
 
 abbr -a da 'direnv allow'
 
+abbr -a Get 'ghq get'
+
 abbr -a sb 'scrapbook'
