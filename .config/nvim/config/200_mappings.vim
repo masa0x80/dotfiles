@@ -24,6 +24,10 @@ imap <C-d> <Del>
 imap <C-g><C-h> <Esc>bi
 imap <C-g><C-l> <Esc>ea
 
+cmap <C-b> <Left>
+cmap <C-f> <Right>
+cmap <C-a> <Home>
+
 nnoremap <C-j> }
 vnoremap <C-j> }
 nnoremap <C-k> {
