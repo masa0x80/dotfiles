@@ -70,6 +70,7 @@ nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:<C-u>nohlsearch<CR>:<C-u>cclo
 
 " Replace
 nnoremap <Leader>re :%s;\<<C-R><C-W>\>;g<Left><Left>;
+vnoremap <Leader>re :s;;g<Left><Left><Left>;
 
 " Toggle relativenumber
 nnoremap <Leader>N :<C-u>setlocal relativenumber!<CR>
