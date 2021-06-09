@@ -3,10 +3,10 @@ function aws-login
 
     set profile $argv
     if not count $profile >/dev/null
-        aws-vault list --profiles | egrep "^aws-vault" | string sub -s 11 | fzf +m | read profile
+        aws-vault list --profiles | fzf +m | read profile
     end
     if count $profile >/dev/null
-        set url (aws-vault login aws-vault.$profile --stdout)
+        set url (aws-vault login profile --stdout)
         if set -lq _flag_incognito
             set profile (string replace -r '^=' '' -- $_flag_profile)
             browse -i -p $profile $url
