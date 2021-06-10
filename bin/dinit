@@ -1,7 +1,13 @@
 #!/usr/bin/env fish
 
-echo '' >.envrc
-test -d vendor/bin && echo 'PATH_add vendor/bin' >>.envrc
-test -d node_modules/.bin && echo 'PATH_add node_modules/.bin' >>.envrc
-test -d bin && echo 'PATH_add bin' >>.envrc
-direnv allow
+function dinit
+    test -e .envrc && return 1
+
+    echo '' >.envrc
+    test -d vendor/bin && echo 'PATH_add vendor/bin' >>.envrc
+    test -d node_modules/.bin && echo 'PATH_add node_modules/.bin' >>.envrc
+    test -d bin && echo 'PATH_add bin' >>.envrc
+    echo 'source_env_if_exists .envrc.local' >>.envrc
+    direnv allow
+end
+dinit
