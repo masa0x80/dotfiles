@@ -4,8 +4,8 @@ Pry.config.prompt = Pry::Prompt.new(
   'custom',
   'my custom prompt',
   [
-    ->(_context, _nesting, _pry_instance) { "\e[37mpry>\e[0m " },
-    ->(_context, _nesting, _pry_instance) { "   \e[37m| \e[0m" }
+    ->(_context, _nesting, _pry_instance) { "\e[33mpry>\e[0m " },
+    ->(_context, _nesting, _pry_instance) { "   \e[33m| \e[0m" }
   ]
 )
 
