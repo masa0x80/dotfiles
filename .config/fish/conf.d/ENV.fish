@@ -143,6 +143,3 @@ set -gx gabbr_config $HOME/.config/fish/gabbr.conf
 
 # Config for my git hooks
 set -gx GLOBAL_GIT_HOOK (math 0x0880)
-
-# Set number of jobs variable to "number of physical cpu cores + 1".
-set -gx MAKEFLAGS (echo -j(math (sysctl -n hw.physicalcpu_max) + 1))
