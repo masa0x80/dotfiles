@@ -6,7 +6,7 @@ function aws-login
         aws-vault list --profiles | fzf +m | read profile
     end
     if count $profile >/dev/null
-        set url (aws-vault login profile --stdout)
+        set url (aws-vault login $profile --stdout)
         if set -lq _flag_incognito
             set profile (string replace -r '^=' '' -- $_flag_profile)
             browse -i -p $profile $url
