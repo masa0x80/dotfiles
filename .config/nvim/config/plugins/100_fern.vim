@@ -4,7 +4,6 @@ endif
 
 let g:fern#disable_default_mappings = 1
 let g:fern#default_hidden = 1
-let g:fern#renderer = 'nerdfont'
 
 function! s:customize_fern_mappings() abort
   nmap <buffer><nowait> i <Plug>(fern-action-new-file)

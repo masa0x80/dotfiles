@@ -12,7 +12,6 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/fern-git-status.vim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/glyph-palette.vim'
 
 Plug 'airblade/vim-gitgutter'
@@ -34,7 +33,9 @@ Plug 'tyru/columnskip.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'LeafCage/foldCC'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'DanilaMihailov/beacon.nvim'
+if !exists('g:neovide')
+  Plug 'DanilaMihailov/beacon.nvim'
+endif
 
 " {{{ vim-unimpaired
 Plug 'tpope/vim-repeat'
