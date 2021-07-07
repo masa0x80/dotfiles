@@ -10,3 +10,4 @@ AlterCommand md2c[onfluence] Md2Confluence
 AlterCommand mm[ap] Markmap
 AlterCommand m[emo] Memo
 AlterCommand t[odo] Todo
+AlterCommand r GHQ

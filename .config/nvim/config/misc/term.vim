@@ -1,4 +1,9 @@
+if !has('nvim')
+  finish
+endif
+
 autocmd MyAutoCmd TermOpen * startinsert
+autocmd MyAutoCmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 
 " Open Terminal
 nnoremap <D-t> :<C-u>split<CR>:<C-u>wincmd j<CR>:<C-u>resize 15<CR>:<C-u>terminal<CR>

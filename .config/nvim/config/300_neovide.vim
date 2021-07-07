@@ -11,7 +11,7 @@ let g:neovide_cursor_vfx_mode = 'pixiedust'
 nmap <D-c> "+y
 vmap <D-c> "+y
 nmap <D-v> "+p
-inoremap <D-v> <c-r>+
-cnoremap <D-v> <c-r>+
+inoremap <D-v> <C-r>+
+cnoremap <D-v> <C-r>+
 " use <c-r> to insert original character without triggering things like auto-pairs
-inoremap <D-r> <c-v>
+inoremap <D-r> <C-v>

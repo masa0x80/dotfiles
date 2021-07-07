@@ -36,3 +36,8 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+command! -nargs=0 GHQ call fzf#run({
+  \ 'source': 'ghq list --full-path',
+  \ 'sink': 'cd'
+  \ })
