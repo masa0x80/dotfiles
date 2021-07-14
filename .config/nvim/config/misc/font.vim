@@ -1,6 +1,6 @@
 let s:initial_font_size = 16
 let s:font_size = s:initial_font_size
-let s:font_family = 'Ocami'
+let s:font_family = 'Iosevka\ Nerd\ Font\ Mono'
 
 function! s:ResetFontSize()
   let s:font_size = s:initial_font_size

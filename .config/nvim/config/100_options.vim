@@ -51,7 +51,7 @@ set foldmethod=marker
 set commentstring=%s
 
 " ref. https://vim-jp.org/vim-users-jp/2010/07/19/Hack-162.html
-if has('persistent_undo')
+if has('persistent-undo')
   set undodir=./.vimundo,~/.vimundo
   set undofile
 endif
