@@ -9,7 +9,7 @@ Pry.config.prompt = Pry::Prompt.new(
   ]
 )
 
-Pry.commands.alias_command 'e', 'edit -m'
+Pry.commands.alias_command 'E', 'edit -m'
 if defined?(PryByebug)
   Pry.commands.alias_command 'fin', 'finish'
   Pry.commands.alias_command 'c',   'continue'
