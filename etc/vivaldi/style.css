@@ -1,9 +1,25 @@
-.toolbar-addressbar {
+.UrlBar.toolbar.toolbar-mainbar {
   opacity: 0.3;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
-.toolbar-addressbar:focus-within,
-.toolbar-addressbar:hover,
-.toolbar-addressbar:focus {
+.UrlBar.toolbar.toolbar-droptarget.toolbar-mainbar {
+  width: 155px;
+}
+
+.UrlBar.toolbar.toolbar-mainbar:focus-within,
+.UrlBar.toolbar.toolbar-mainbar:hover,
+.UrlBar.toolbar.toolbar-mainbar:focus {
   opacity: 1;
+}
+
+.button-toolbar.newtab,
+.sync-and-trash-container {
+  display: none;
+}
+
+#webview-container ~ .StatusInfo {
+  bottom: 38px;
 }
