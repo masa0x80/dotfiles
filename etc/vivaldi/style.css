@@ -20,6 +20,10 @@
   display: none;
 }
 
+#webview-container {
+  padding-bottom: 32px;
+}
+
 #webview-container ~ .StatusInfo {
   bottom: 38px;
 }
