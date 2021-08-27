@@ -20,6 +20,7 @@
   display: none;
 }
 
+#tabs-container,
 #webview-container {
   padding-bottom: 32px;
 }
