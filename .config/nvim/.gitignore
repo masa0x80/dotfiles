@@ -7,4 +7,5 @@
 !/ftplugin
 !/syntax
 !/autoload
+!/coc-settings.json
 /autoload/plug.vim
