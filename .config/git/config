@@ -11,7 +11,7 @@
 [merge]
   ff = false
 [pull]
-  ff = only
+  rebase = true
 [rebase]
   autosquash = true
 [credential]
