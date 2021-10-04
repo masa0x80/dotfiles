@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: defaults brew asdf nodejs python ruby golang rust terraform brew-mas navi
+install: defaults brew asdf nodejs python ruby golang rust terraform brew-mas navi aquaskk
 
 .PHONY: deploy
 deploy:
@@ -129,3 +129,7 @@ nodejs: brew-init
 .PHONY: navi
 navi: brew
 	./scripts/navi
+
+.PHONTY: aquaskk
+aquaskk: brew-cask
+	./scripts/aquaskk
