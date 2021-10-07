@@ -46,7 +46,7 @@ set sidescroll=5
 set synmaxcol=512
 
 set foldcolumn=0
-set foldlevel=2
+set foldlevel=0
 set foldmethod=marker
 set commentstring=%s
 

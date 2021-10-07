@@ -44,4 +44,4 @@ endfunction
 "}}}
 
 noremap  <silent>z_ zMzvzc
-nnoremap <silent>z0 :<C-u>set foldlevel=<C-r>=foldlevel('.')<CR><CR>
+nnoremap <silent>z- :<C-u>set foldlevel=<C-r>=foldlevel('.')<CR><CR>
