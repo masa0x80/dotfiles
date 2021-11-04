@@ -23,12 +23,6 @@ Upgrade cask apps.
 make brew-cask-upgrade
 ```
 
-Update golang tools.
-
-```sh
-make golang-update
-```
-
 Update rust tools.
 
 ```sh

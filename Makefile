@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: defaults brew asdf nodejs python ruby golang rust terraform brew-mas navi aquaskk
+install: defaults brew asdf nodejs python ruby go rust terraform brew-mas navi aquaskk
 
 .PHONY: deploy
 deploy:
@@ -74,15 +74,11 @@ defaults:
 
 # }}}
 
-# golang {{{
+# go {{{
 
-.PHONY: golang
-golang: brew-init
-	./scripts/golang
-
-.PHONY: golang-update
-golang-update: golang
-	./scripts/golang update
+.PHONY: go
+go: brew-init
+	./scripts/go
 
 # }}}
 
