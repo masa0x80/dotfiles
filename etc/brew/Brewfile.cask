@@ -1,3 +1,4 @@
+cask 'adoptopenjdk'
 cask 'alfred'
 cask 'aquaskk'
 cask 'aws-vault'
