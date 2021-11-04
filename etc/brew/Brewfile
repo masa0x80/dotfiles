@@ -44,8 +44,6 @@ brew 'zsh'
 brew 'navi'
 
 brew 'tmux'
-
-tap 'greymd/tools'
 brew 'tmux-xpanes'
 
 brew 'mysql'
