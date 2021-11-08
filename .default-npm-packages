@@ -1,4 +1,5 @@
 yarn
 eslint
 markdown2confluence-cws
+prettier
 typescript-language-server
