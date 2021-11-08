@@ -33,9 +33,7 @@ Plug 'tyru/columnskip.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'LeafCage/foldCC'
 Plug 'AndrewRadev/splitjoin.vim'
-if !exists('g:neovide')
-  Plug 'DanilaMihailov/beacon.nvim'
-endif
+Plug 'DanilaMihailov/beacon.nvim'
 
 " {{{ vim-unimpaired
 Plug 'tpope/vim-repeat'
