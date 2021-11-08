@@ -9,7 +9,7 @@ Install dotfiles and useful commands.
 
 ## Installation
 
-```
+```shell
 git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 make
@@ -35,7 +35,7 @@ make rust-update
 
 After installation, make your personal configuration file for git.
 
-```
+```shell
 $ mkdir -p $HOME/.config.local/git
 $ cat <<EOF > $HOME/.config.local/git/config
 [user]
@@ -48,7 +48,7 @@ $ cat <<EOF > $HOME/.config.local/git/config
 EOF
 ```
 
-ref. https://github.com/masa0x80/dotfiles.local
+ref. <https://github.com/masa0x80/dotfiles.local>
 
 ### Terminal Color
 
