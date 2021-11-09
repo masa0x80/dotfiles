@@ -8,4 +8,3 @@ function __fish_complete_pip
 end
 complete -fa "(__fish_complete_pip)" -c pip
 # pip fish completion end
-

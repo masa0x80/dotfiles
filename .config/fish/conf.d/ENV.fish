@@ -67,7 +67,7 @@ __add_fish_user_paths /usr/local/opt/grep/libexec/gnubin
 
 export UNAME_S=(uname -s | tr '[:upper:]' '[:lower:]')
 # Disable homebrew analytics
-test "$UNAME_S" = 'darwin' && export HOMEBREW_NO_ANALYTICS=1
+test "$UNAME_S" = darwin && export HOMEBREW_NO_ANALYTICS=1
 
 # load proxy settings
 __load_file $HOME/.proxy
@@ -120,10 +120,10 @@ export fish_color_command=cyan
 
 ### Prompt {{{
 
-set -gx __fish_git_prompt_showdirtystate 'yes'
-set -gx __fish_git_prompt_showstashstate 'yes'
-set -gx __fish_git_prompt_showuntrackedfiles 'yes'
-set -gx __fish_git_prompt_showupstream 'yes'
+set -gx __fish_git_prompt_showdirtystate yes
+set -gx __fish_git_prompt_showstashstate yes
+set -gx __fish_git_prompt_showuntrackedfiles yes
+set -gx __fish_git_prompt_showupstream yes
 
 set -gx __fish_git_prompt_color_branch ''
 set -gx __fish_git_prompt_color_upstream_ahead ''
@@ -131,10 +131,10 @@ set -gx __fish_git_prompt_color_upstream_behind ''
 
 set -gx __fish_git_prompt_char_dirtystate '⨯'
 set -gx __fish_git_prompt_char_stagedstate '→'
-set -gx __fish_git_prompt_char_untrackedfiles 'u'
-set -gx __fish_git_prompt_char_stashstate 's'
+set -gx __fish_git_prompt_char_untrackedfiles u
+set -gx __fish_git_prompt_char_stashstate s
 set -gx __fish_git_prompt_char_upstream_ahead '+'
-set -gx __fish_git_prompt_char_upstream_behind '-'
+set -gx __fish_git_prompt_char_upstream_behind -
 
 # Prompt }}}
 

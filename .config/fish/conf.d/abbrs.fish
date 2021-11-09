@@ -1,30 +1,30 @@
 # Skip loading config if already login
 status is-login || exit
 
-type -qa open && abbr -a o 'open'
+type -qa open && abbr -a o open
 
-type -qa mycli && abbr -a mysql 'mycli'
-type -qa pgcli && abbr -a psql 'pgcli'
+type -qa mycli && abbr -a mysql mycli
+type -qa pgcli && abbr -a psql pgcli
 
-abbr -a , 'l'
-abbr -a ,, 'la'
+abbr -a , l
+abbr -a ,, la
 type -qa exa && abbr -a tree 'exa -T'
 
 type -qa rg && abbr -a g 'rg --hidden'
-type -qa bat && abbr -a cat 'bat'
+type -qa bat && abbr -a cat bat
 
-type -qa asdf && abbr -a aoeu 'asdf'
+type -qa asdf && abbr -a aoeu asdf
 
 abbr -a tailf 'tail -f'
 abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'
 abbr -a mkdir 'mkdir -p'
 
-abbr -a md 'mkdir'
-abbr -a rd 'rmdir'
+abbr -a md mkdir
+abbr -a rd rmdir
 abbr -a rf 'rm -rf'
 
-abbr -a vim 'vi'
+abbr -a vim vi
 
 # ssh {{{
 if test -e $HOME/.ssh/config
@@ -54,7 +54,7 @@ abbr -a gfx 'git fixup'
 
 abbr -a lg 'git fzf show'
 
-abbr -a gl 'tig'
+abbr -a gl tig
 abbr -a glg 'git log --stat --color'
 abbr -a glgp 'git log --stat --color -p'
 abbr -a glog 'git log --oneline --decorate --color --graph'
@@ -62,7 +62,7 @@ abbr -a glog 'git log --oneline --decorate --color --graph'
 abbr -a gm 'git merge --no-ff'
 
 abbr -a gp 'git push'
-abbr -a gpull 'git_pull_and_prune'
+abbr -a gpull git_pull_and_prune
 abbr -a gpush 'git push origin (git_current_branch)'
 abbr -a gpush! 'git push --force-with-lease origin (git_current_branch)'
 
@@ -96,7 +96,7 @@ abbr -a s 'rails s -p $RAILS_SERVER_PORT'
 abbr -a db 'rails db'
 abbr -a rr 'rails routes'
 
-abbr -a t 'rspec'
+abbr -a t rspec
 abbr -a ss 'spring stop'
 
 abbr -a be 'bundle exec'
@@ -117,4 +117,4 @@ abbr -a da 'direnv allow'
 
 abbr -a Get 'ghq get'
 
-abbr -a sb 'scrapbook'
+abbr -a sb scrapbook
