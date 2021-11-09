@@ -1,2 +1,2 @@
---glob
-!spec/cassettes
+--glob=!.git
+--glob=!spec/cassettes
