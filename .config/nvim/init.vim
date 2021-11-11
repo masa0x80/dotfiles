@@ -1,3 +1,6 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 " Skip initialization for vim-tiny or vim-small
 if !1 | finish | endif
 
