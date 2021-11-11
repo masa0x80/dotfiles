@@ -1,0 +1,17 @@
+require:
+  - standard
+  - rubocop-rails
+  - rubocop-rubycw
+
+inherit_gem:
+  standard: config/base.yml
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: disable
+
+Rails:
+  Enabled: true
+
+Rubycw:
+  Enabled: true
