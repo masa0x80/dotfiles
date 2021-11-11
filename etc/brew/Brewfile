@@ -68,13 +68,14 @@ brew 'hub'
 brew 'ghq'
 brew 'csvq'
 brew 'packer'
-brew 'lazydocker'
 
 tap 'itchyny/tap'
 brew 'gojq'
 brew 'gojo'
 
 brew 'docker'
+brew 'hadolint'
+brew 'lazydocker'
 
 tap 'mackerelio/mackerel-agent'
 brew 'mkr'
