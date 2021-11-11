@@ -1,7 +1,11 @@
-rails
-foreman
 pry
-jr
-ripper-tags
+rails
 solargraph
+
+rubocop-rails
+rubocop-rubycw
 standard
+
+jr
+foreman
+ripper-tags
