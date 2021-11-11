@@ -9,16 +9,18 @@ let g:coc_global_extensions = [
   \ 'coc-go',
   \ 'coc-tsserver',
   \ 'coc-markdownlint',
+  \ 'coc-html',
+  \ 'coc-css',
   \ 'coc-json',
   \ 'coc-yaml',
   \ 'coc-toml',
-  \ 'coc-css',
   \ 'coc-tailwindcss',
   \ 'coc-swagger',
   \ 'coc-neosnippet',
   \ 'coc-sh',
   \ 'coc-fish',
   \ 'coc-markmap',
+  \ 'coc-vimlsp',
   \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
