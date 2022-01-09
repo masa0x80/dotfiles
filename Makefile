@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: defaults brew asdf nodejs python ruby go rust terraform navi aquaskk
+install: defaults brew asdf direnv nodejs python ruby terraform helm sops go rust navi
 
 .PHONY: deploy
 deploy:
@@ -116,6 +116,14 @@ terraform: asdf
 helm: asdf
 	./scripts/helm
 
+.PHONY: sops
+sops: asdf
+	./scripts/sops
+
+.PHONY: direnv
+direnv: asdf
+	./scripts/direnv
+
 # }}}
 
 .PHONY: nodejs
@@ -125,7 +133,3 @@ nodejs: brew-init
 .PHONY: navi
 navi: brew
 	./scripts/navi
-
-.PHONTY: aquaskk
-aquaskk: brew-cask
-	./scripts/aquaskk
