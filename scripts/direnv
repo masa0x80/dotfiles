@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+. $(brew --prefix asdf)/asdf.sh
+
+VERSION=$(grep -oP '(?<=direnv ).*' $HOME/.tool-versions)
+
+asdf plugin-add direnv
+asdf install direnv $VERSION
