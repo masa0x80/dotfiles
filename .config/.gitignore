@@ -14,6 +14,10 @@
 !/tmux
 !/zsh
 
+!/direnv
+/direnv/*
+!/direnv/direnvrc
+
 !/fish
 /fish/fish_variables
 
