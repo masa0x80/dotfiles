@@ -4,9 +4,8 @@
 
 PYTHON_VERSIONS=($(grep -oP '(?<=python ).*' $HOME/.tool-versions))
 
-asdf plugin-add python https://github.com/danhper/asdf-python
+asdf plugin-add python
 
 for v in $PYTHON_VERSIONS; do
   asdf install python $v
 done
-

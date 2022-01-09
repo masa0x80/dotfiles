@@ -4,8 +4,8 @@
 
 VERSION=$(grep -oP '(?<=helm ).*' $HOME/.tool-versions)
 
-asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
+asdf plugin-add helm
 asdf install helm $VERSION
 
-helm plugin install https://github.com/zendesk/helm-secrets
-helm plugin install https://github.com/databus23/helm-diff
+helm plugin list | grep secrets || helm plugin install https://github.com/zendesk/helm-secrets
+helm plugin list | grep diff    || helm plugin install https://github.com/databus23/helm-diff

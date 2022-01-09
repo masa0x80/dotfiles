@@ -5,5 +5,5 @@
 VERSION=$(grep -oP '(?<=nodejs ).*' $HOME/.tool-versions)
 
 export NODEJS_CHECK_SIGNATURES=no
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin-add nodejs
 asdf install nodejs $VERSION

@@ -4,5 +4,5 @@
 
 VERSION=$(grep -oP '(?<=ruby ).*' $HOME/.tool-versions)
 
-asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf plugin-add ruby
 asdf install ruby $VERSION

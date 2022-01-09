@@ -4,5 +4,5 @@
 
 VERSION=$(grep -oP '(?<=terraform ).*' $HOME/.tool-versions)
 
-asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
+asdf plugin-add terraform
 asdf install terraform $VERSION
