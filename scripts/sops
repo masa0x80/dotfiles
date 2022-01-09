@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+. $(brew --prefix asdf)/asdf.sh
+
+VERSION=$(grep -oP '(?<=sops ).*' $HOME/.tool-versions)
+
+asdf plugin-add sops https://github.com/feniix/asdf-sops.git
+asdf install sops $VERSION
