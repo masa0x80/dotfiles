@@ -1,6 +1,5 @@
 cask 'adoptopenjdk'
 cask 'alfred'
-cask 'aquaskk'
 cask 'aws-vault'
 cask 'boostnote'
 cask 'chromedriver'

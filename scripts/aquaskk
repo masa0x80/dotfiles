@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-cp "$(dirname $0)/../etc/aquaskk/keymap.conf" ~/Library/Application\ Support/AquaSKK/
