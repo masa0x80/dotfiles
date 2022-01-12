@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: defaults brew asdf direnv nodejs python ruby terraform helm sops go rust navi
+install: defaults brew asdf nodejs python ruby terraform helm direnv sops trivy go rust navi
 
 .PHONY: deploy
 deploy:
@@ -123,6 +123,10 @@ sops: asdf
 .PHONY: direnv
 direnv: asdf
 	./scripts/direnv
+
+.PHONY: trivy
+trivy: asdf
+	./scripts/trivy
 
 # }}}
 

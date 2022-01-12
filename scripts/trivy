@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+. $(brew --prefix asdf)/asdf.sh
+
+VERSION=$(grep -oP '(?<=trivy ).*' $HOME/.tool-versions)
+
+asdf plugin-add trivy
+asdf install trivy $VERSION
