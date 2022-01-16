@@ -63,8 +63,11 @@ brew 'git-delta'
 brew 'ripgrep'
 
 brew 'go'
+
 brew 'hub'
+brew 'gh'
 brew 'ghq'
+
 brew 'csvq'
 brew 'packer'
 
