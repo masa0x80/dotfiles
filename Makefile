@@ -4,7 +4,7 @@ TARGETS  := $(wildcard .??*)
 DOTFILES := $(filter-out $(EXCLUDES), $(TARGETS))
 
 .PHONY: all
-all: update deploy install
+all: deploy install
 
 .PHONY: help
 help:
