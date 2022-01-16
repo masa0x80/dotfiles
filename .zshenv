@@ -6,6 +6,12 @@ export SHELL=$(which zsh)
 # NOTE: Do not load global rc files
 setopt no_global_rcs
 
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 # zplug
