@@ -27,6 +27,7 @@ if test -d $HOME/.cargo
 end
 
 # asdf
+eval (eval /opt/homebrew/bin/brew shellenv)
 source (brew --prefix asdf)/asdf.fish
 export NODEJS_CHECK_SIGNATURES=no
 
