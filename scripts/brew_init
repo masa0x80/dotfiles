@@ -1,8 +1,10 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 # NOTE: CI=1
 #       Suppress "Press RETURN to continue or any other key to abort"
-type -a brew >/dev/null || CI=1 zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+type brew >/dev/null || CI=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export HOMEBREW_NO_ANALYTICS=1
 brew update
 brew upgrade
 brew tap homebrew/bundle

@@ -1,8 +1,8 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 . $(brew --prefix asdf)/asdf.sh
 
-PYTHON_VERSIONS=($(grep -oP '(?<=python ).*' $HOME/.tool-versions))
+PYTHON_VERSIONS=$(grep python $HOME/.tool-versions | grep -o '[0-9\.]*')
 
 asdf plugin-add python
 

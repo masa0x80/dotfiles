@@ -1,10 +1,12 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
-cd "$(navi info cheats-path)"
-dir_name=masa0x80__cheats
+dir="$(navi info cheats-path)"
+mkdir -p "$dir"
+cd "$dir"
+dir_name="masa0x80__cheats"
 test -d "$dir_name" || git clone https://github.com/masa0x80/cheats $dir_name
 
-for d in *; do
+for d in $(ls -d */); do
   pushd $d
   if test "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true'; then
     git pull

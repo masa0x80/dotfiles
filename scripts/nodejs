@@ -1,8 +1,8 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 . $(brew --prefix asdf)/asdf.sh
 
-VERSION=$(grep -oP '(?<=nodejs ).*' $HOME/.tool-versions)
+VERSION=$(grep nodejs $HOME/.tool-versions | grep -o '[0-9\.]*')
 
 export NODEJS_CHECK_SIGNATURES=no
 asdf plugin-add nodejs

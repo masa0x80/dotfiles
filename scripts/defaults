@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 # Hide Dock automatically
 defaults write com.apple.dock autohide -bool true
