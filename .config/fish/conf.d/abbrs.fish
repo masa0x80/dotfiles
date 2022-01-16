@@ -26,6 +26,8 @@ abbr -a rf 'rm -rf'
 
 abbr -a vim vi
 
+abbr -a g 'rg --hidden'
+
 # ssh {{{
 if test -e $HOME/.ssh/config
     abbr -a ssh_config 'eval $EDITOR ~/.ssh/config'
@@ -47,6 +49,7 @@ abbr -a gc! 'git commit -v --amend'
 abbr -a gco 'git checkout'
 
 abbr -a gd 'git diff'
+abbr -a gds 'git diff --staged'
 
 abbr -a gf 'git fetch'
 
