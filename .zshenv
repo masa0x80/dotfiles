@@ -7,7 +7,9 @@ export SHELL=$(which zsh)
 setopt no_global_rcs
 
 # homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if test -e /opt/homebrew/bin/brew; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
