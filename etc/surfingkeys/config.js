@@ -398,7 +398,7 @@ mapkey('=h', '#14Delete hash', () => {
 const ri = { repeatIgnore: true }
 const Hint = (selector, action = Hints.dispatchMouseClick) => () =>
   Hints.create(selector, action)
-mapkey('gi', '#4View image in new tab', Hint('img', i => tabOpenLink(i.src)), ri)
+mapkey('gI', '#4View image in new tab', Hint('img', i => tabOpenLink(i.src)), ri)
 mapkey('ci', '#7Copy Image URL', Hint('img', i => Clipboard.write(i.src)), ri)
 // }}}
 
