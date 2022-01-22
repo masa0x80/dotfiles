@@ -37,34 +37,34 @@ export NODEJS_CHECK_SIGNATURES=no
 set -U SELECT_BRANCH_KEYBIND '\cgb'
 
 # brew install curl
-__add_fish_user_paths /usr/local/opt/curl/bin
+__add_fish_user_paths (brew --prefix curl)/bin
 
 # brew install ncurses
-__add_fish_user_paths /usr/local/opt/ncurses/bin
+__add_fish_user_paths (brew --prefix ncurses)/bin
 
 # brew install openssl
-__add_fish_user_paths /usr/local/opt/openssl/bin
+__add_fish_user_paths (brew --prefix openssl)/bin
 
 # brew install sqlite
-__add_fish_user_paths /usr/local/opt/sqlite/bin
+__add_fish_user_paths (brew --prefix sqlite)/bin
 
 # brew install gettext
-__add_fish_user_paths /usr/local/opt/gettext/bin
+__add_fish_user_paths (brew --prefix gettext)/bin
 
 # brew install gnu-getopt
-__add_fish_user_paths /usr/local/opt/gnu-getopt/bin
+__add_fish_user_paths (brew --prefix gnu-getopt)/bin
 
 # brew install coreutils
-__add_fish_user_paths /usr/local/opt/coreutils/libexec/gnubin
+__add_fish_user_paths (brew --prefix coreutils)/libexec/gnubin
 
 # brew install gnu-sed
-__add_fish_user_paths /usr/local/opt/gnu-sed/libexec/gnubin
+__add_fish_user_paths (brew --prefix gnu-sed)/libexec/gnubin
 
 # brew install gnu-tar
-__add_fish_user_paths /usr/local/opt/gnu-tar/libexec/gnubin
+__add_fish_user_paths (brew --prefix gnu-tar)/libexec/gnubin
 
 # brew install grep
-__add_fish_user_paths /usr/local/opt/grep/libexec/gnubin
+__add_fish_user_paths (brew --prefix grep)/libexec/gnubin
 
 # PATH }}}
 
