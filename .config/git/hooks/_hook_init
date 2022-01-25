@@ -24,6 +24,10 @@ fi
 # $GIT_DIR/hooks 配下にhookファイルがある場合実行する
 if test -n "$HOOK_FILE"; then
   sh $HOOK_FILE "$@"
+  hook_status=$?
+  if test $hook_status -ne 0; then
+    exit $hook_status
+  fi
 fi
 
 if test -z "$GLOBAL_GIT_HOOK"; then
