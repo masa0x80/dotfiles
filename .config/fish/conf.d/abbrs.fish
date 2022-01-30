@@ -70,7 +70,7 @@ abbr -a gpush 'git push origin (git_current_branch)'
 abbr -a gpush! 'git push --force-with-lease origin (git_current_branch)'
 
 abbr -a grb 'git rebase'
-abbr -a grbm 'git rebase master'
+abbr -a grbm "git rebase (git symbolic-ref refs/remotes/origin/HEAD | grep -oP 'refs/remotes/\K.*')"
 
 abbr -a grba 'git rebase --abort'
 abbr -a grbc 'git rebase --continue'
@@ -83,6 +83,7 @@ abbr -a gsh 'git show'
 abbr -a gst 'git status -sb'
 abbr -a gts 'git tag -s'
 
+abbr -a M "git switch (git symbolic-ref refs/remotes/origin/HEAD | grep -oP 'refs/remotes/origin/\K.*')"
 abbr -a br 'git switch -c'
 abbr -a review 'git review GH'
 # }}}
