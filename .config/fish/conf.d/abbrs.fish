@@ -103,8 +103,8 @@ abbr -a t rspec
 abbr -a ss 'spring stop'
 
 abbr -a be 'bundle exec'
-abbr -a bi "bundle config set path 'vendor/bundle'; bundle binstubs --path=vendor/bin; bundle install"
-abbr -a bil "bundle config set path 'vendor/bundle'; bundle binstubs --path=vendor/bin; bundle install --local"
+abbr -a bi "bundle config set --local path vendor/bundle; bundle config set --local path vendor/bin; bundle config set --local cache_all_platforms true; bundle install"
+abbr -a bil "bundle config set --local path vendor/bundle; bundle config set --local path vendor/bin; bundle config set --local cache_all_platforms true; bundle install --local"
 
 abbr -a solargraph_init "solargraph download-core; solargraph bundle; solargraph config"
 # }}}
