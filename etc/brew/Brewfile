@@ -27,6 +27,7 @@ brew 'tig'
 brew 'tldr'
 brew 'pass'
 brew 'rsync'
+brew 'shellcheck'
 brew 'watch'
 
 brew 'graphviz'
