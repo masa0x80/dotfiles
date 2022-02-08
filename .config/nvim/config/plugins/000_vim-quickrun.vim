@@ -30,5 +30,5 @@ function! s:RSpecQuickrun()
 endfunction
 autocmd MyAutoCmd BufWinEnter,BufNewFile *_spec.rb call <SID>RSpecQuickrun()
 
-nnoremap <silent> <Leader>x :execute 'QuickRun rspec_line -args ' . line('.')<CR>
-nnoremap <silent> <Leader>X :!echo wating...<CR>:QuickRun<CR>
+nnoremap <silent> <Leader>x :!echo wating...<CR>:QuickRun<CR>
+nnoremap <silent> <Leader>X :execute 'QuickRun rspec_line -args ' . line('.')<CR>
