@@ -35,6 +35,7 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'LeafCage/foldCC'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'DanilaMihailov/beacon.nvim'
+Plug 'RRethy/vim-illuminate'
 
 " {{{ vim-unimpaired
 Plug 'tpope/vim-repeat'
