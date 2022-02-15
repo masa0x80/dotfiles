@@ -3,6 +3,7 @@ if globpath(&runtimepath, '') !~# 'fern'
 endif
 
 let g:fern#disable_default_mappings = 1
+let g:fern#keepjumps_on_edit = 1
 let g:fern#default_hidden = 1
 let g:fern#default_exclude = '.DS_Store'
 
