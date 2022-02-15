@@ -3,8 +3,11 @@ if globpath(&runtimepath, '') !~# 'vim-quickrun'
 endif
 
 let g:quickrun_no_default_key_mappings = 1
-let g:quickrun_config = {
-  \   '_': {}
+let g:quickrun_config = get(g:, 'quickrun_config', {})
+let g:quickrun_config._ = {
+  \ 'outputter/buffer/opener': '5new',
+  \ 'outputter/buffer/into': 0,
+  \ 'outputter/buffer/close_on_empty': 1,
   \ }
 
 if has('nvim')
