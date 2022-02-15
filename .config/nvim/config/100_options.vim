@@ -6,6 +6,7 @@ set linebreak
 set hidden
 set splitbelow
 set cursorline
+set number
 
 set expandtab
 set autoindent smartindent
