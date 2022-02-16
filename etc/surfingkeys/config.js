@@ -110,6 +110,8 @@ map('<Ctrl-d>', 'd')
 map('<Ctrl-u>', 'u')
 map('<Ctrl-s><Ctrl-s>', '<Ctrl-6>')
 
+map('F', 'C')
+
 map('<Ctrl-[>', '<Esc>')
 map('<Ctrl-c>', '<Esc>')
 
@@ -413,7 +415,8 @@ const qmarksMapKey = (prefix, urls, newTab) => {
     })
   }
   for (const key in urls) {
-    mapkey(prefix + key, `qmark: ${urls[key]}`, openLink(urls[key], newTab))
+    const lhs = newTab ? `${prefix}${key}` : `${prefix}<Ctrl-${key}>`
+    mapkey(lhs, `qmark: ${urls[key]}`, openLink(urls[key], newTab))
   }
 }
 const qmarksUrls = {
@@ -422,7 +425,7 @@ const qmarksUrls = {
   m: 'https://mail.google.com'
 }
 qmarksMapKey('go', qmarksUrls, true)
-qmarksMapKey('gO', qmarksUrls, false)
+qmarksMapKey('<Ctrl-g><Ctrl-o>', qmarksUrls, false)
 // }}}
 
 // {{{ Site-specific mappings
