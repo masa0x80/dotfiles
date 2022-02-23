@@ -27,6 +27,13 @@ let g:quickrun_config.rspec_line = {
   \   'exec': 'bundle exec %c %s:%a',
   \   'filetype': 'rspec-result'
   \ }
+let g:quickrun_config.plantuml = {
+  \   'exec': 'MarkdownPreview',
+  \   'runner': 'vimscript'
+  \ }
+let g:quickrun_config.typescript = {
+  \   'command': 'node'
+  \ }
 
 function! s:RSpecQuickrun()
   let b:quickrun_config = { 'type': 'rspec' }
