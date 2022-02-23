@@ -6,3 +6,4 @@ textlint
 textlint-rule-prh
 typescript-language-server
 markdown2confluence-cws
+@nestjs/cli
