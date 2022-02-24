@@ -2,7 +2,7 @@
 
 # NOTE: CI=1
 #       Suppress "Press RETURN to continue or any other key to abort"
-if type brew >/dev/null; then
+if ! type brew >/dev/null; then
   CI=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
