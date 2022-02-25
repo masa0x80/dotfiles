@@ -5,8 +5,10 @@ function navi_init
 
     mkdir -p .cheats.d
     echo '% Local' >>.cheats.d/_.cheat
-    echo '' >>.cheats.d/_.cheat
+    echo >>.cheats.d/_.cheat
     echo '# sample' >>.cheats.d/_.cheat
-    echo 'echo sample' >>.cheats.d/_.cheat
+    echo 'echo <msg>' >>.cheats.d/_.cheat
+    echo >>.cheats.d/_.cheat
+    echo '$ msg: echo -e "yes\nno"' >>.cheats.d/_.cheat
 end
 navi_init
