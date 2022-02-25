@@ -1,5 +1,0 @@
-{
-  "suggest.autoTrigger": "trigger",
-  "suggest.triggerCharacters": ["."],
-  "suggest.preferCompleteThanJumpPlaceholder": true
-}
