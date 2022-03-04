@@ -1,0 +1,1 @@
+iabbrev clog console.log
