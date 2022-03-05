@@ -6,6 +6,7 @@ let g:fern#disable_default_mappings = 1
 let g:fern#keepjumps_on_edit = 1
 let g:fern#default_hidden = 1
 let g:fern#default_exclude = '.DS_Store'
+let g:fern#renderer = 'devicons'
 
 function! s:customize_fern_mappings() abort
   nmap <buffer><nowait> i <Plug>(fern-action-new-file)

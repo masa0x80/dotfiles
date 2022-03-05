@@ -7,12 +7,13 @@ endif
 call plug#begin('$HOME/.local/share/nvim/plugged') " {{{ 1
 Plug 'cocopon/iceberg.vim'
 
-Plug 'lambdalisue/nerdfont.vim'
+Plug 'ryanoasis/vim-devicons'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'lambdalisue/glyph-palette.vim'
+Plug 'lambdalisue/fern-renderer-devicons.vim'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'dense-analysis/ale'
