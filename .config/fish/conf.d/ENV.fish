@@ -1,7 +1,3 @@
-# Set SHELL variable
-export SHELL=(type -p fish)
-export TERM=xterm-256color
-
 # Skip loading config if already login
 status is-login || exit
 
@@ -32,6 +28,10 @@ if test -e /opt/homebrew/bin/brew
 end
 source (brew --prefix asdf)/asdf.fish
 export NODEJS_CHECK_SIGNATURES=no
+
+# Set SHELL variable
+export SHELL=(brew --prefix fish)/bin/fish
+export TERM=xterm-256color
 
 # masa0x80/git_checkout_keybind.fish
 set -U SELECT_BRANCH_KEYBIND '\cgb'
@@ -143,6 +143,3 @@ set -gx __fish_git_prompt_char_upstream_behind -
 
 # Set config path for gabbr
 set -gx gabbr_config $HOME/.config/fish/gabbr.conf
-
-# Config for my git hooks
-set -gx GLOBAL_GIT_HOOK (math 0x0880)
