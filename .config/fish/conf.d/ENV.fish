@@ -143,3 +143,5 @@ set -gx __fish_git_prompt_char_upstream_behind -
 
 # Set config path for gabbr
 set -gx gabbr_config $HOME/.config/fish/gabbr.conf
+
+set -gx GIT_HOOK_DIR "$HOME/.config/git/hooks"

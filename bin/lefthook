@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [ "$LEFTHOOK" = "0" ]; then
+  exit 0
+fi
+
+# Disable lefthook install
+if [ "$1" = 'install' ]; then
+  echo "** DISABLED **"
+  exit 0
+fi
+
+if [ -t 1 ] ; then
+  exec < /dev/tty ; # <- enables interactive shell
+fi
+
+lefthook_bin=$(brew --prefix lefthook)/bin/lefthook
+
+call_lefthook() {
+  if $lefthook_bin -h >/dev/null 2>&1
+  then
+    $lefthook_bin "$@"
+  else
+    echo "Can't find lefthook in PATH"
+  fi
+}
+
+call_lefthook "$@"
+
+hook_name=$(echo "$@" | grep run | grep -Eo "(commit-msg|prepare-commit-msg|pre-commit)")
+_call_global_git_hook "$hook_name"
