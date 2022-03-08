@@ -77,6 +77,7 @@ Plug 'cespare/vim-toml',             { 'for': 'toml' }
 Plug 'elzr/vim-json',                { 'for': 'json' }
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'aklt/plantuml-syntax',         { 'for': 'plantuml' }
+Plug 'jparise/vim-graphql',          { 'for': 'graphql' }
 " {{{ markdown
 Plug 'godlygeek/tabular'
 Plug 'mattn/vim-maketable'
