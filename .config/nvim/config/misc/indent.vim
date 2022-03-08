@@ -1,6 +1,5 @@
 function! s:tab_indent(op)
   stopinsert
-  echom virtcol('.')
   " 行末の処理をうまくするためにvirtualeditを一時的にallに変更
   let l:ve = &virtualedit
   set virtualedit=all
