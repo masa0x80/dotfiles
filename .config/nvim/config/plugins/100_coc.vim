@@ -21,6 +21,7 @@ let g:coc_global_extensions = [
   \ 'coc-fish',
   \ 'coc-markmap',
   \ 'coc-vimlsp',
+  \ 'coc-yank',
   \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.

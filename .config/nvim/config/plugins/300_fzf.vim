@@ -2,6 +2,9 @@ if globpath(&runtimepath, '') !~# 'fzf'
   finish
 endif
 
+let g:fzf_layout = { 'window': { 'width': 0.99, 'height': 0.99 } }
+let g:fzf_preview_window = ['up:40%', '?']
+
 autocmd MyAutoCmd FileType fzf
   \  set laststatus=0 noshowmode noruler
   \| autocmd MyAutoCmd BufLeave <buffer> set laststatus=2 showmode ruler

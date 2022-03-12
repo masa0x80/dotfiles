@@ -57,12 +57,6 @@ nnoremap <C-t>P :<C-u>tabmove -<CR>
 nnoremap <silent> <C-t><C-t> :<C-u>pop<CR>
 nnoremap <silent> <C-h> :<C-u>pop<CR>
 
-" Quit
-nnoremap <Leader>q :<C-u>q<CR>
-nnoremap ,q :<C-u>q<CR>
-nnoremap <Leader>Q :<C-u>bd<CR>
-nnoremap ,Q :<C-u>bd<CR>
-
 " ref. http://itchyny.hatenablog.com/entry/2016/02/02/210000
 noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
 noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
