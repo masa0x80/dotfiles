@@ -1,7 +1,6 @@
 yarn
 eslint
 prettier
-standard
 textlint
 textlint-rule-prh
 typescript-language-server
