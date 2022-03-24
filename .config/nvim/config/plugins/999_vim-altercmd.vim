@@ -11,3 +11,6 @@ AlterCommand mm[ap] Markmap
 AlterCommand m[emo] Memo
 AlterCommand t[odo] Todo
 AlterCommand r GHQ
+AlterCommand PR PR
+AlterCommand GHR GhOpenRepo
+AlterCommand GHF GhOpenFile
