@@ -27,5 +27,4 @@ call_lefthook() {
 
 call_lefthook "$@"
 
-hook_name=$(echo "$@" | grep run | grep -Eo "(commit-msg|prepare-commit-msg|pre-commit)")
-_call_global_git_hook "$hook_name"
+_call_global_git_hook $(echo "$@" | cut -d" " -f2-)

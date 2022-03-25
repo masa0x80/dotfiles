@@ -1,6 +1,6 @@
 #!/bin/bash
 
-hoo_name="$1"
+hook_name="$1"
 
 script_root="${GIT_HOOK_DIR:-$(git config --get core.hookspath)}"
 
@@ -12,7 +12,7 @@ if [ -n "$hook_name" ]; then
     script_root=$(bash -c "echo $script_root")
     hook_script="${script_root}/scripts/${hook_name}"
     if test -x "$hook_script"; then
-      sh "$hook_script" "$(echo "$@" | cut -d" " -f3-)"
+      sh "$hook_script" $(echo "$@" | cut -d" " -f2-)
       hook_status=$?
       if test $hook_status -ne 0; then
         exit $hook_status
