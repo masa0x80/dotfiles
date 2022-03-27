@@ -1,7 +1,3 @@
 #!/bin/sh
 
-lefthook run post-update "$@"
-lefthook_status=$?
-if test $lefthook_status -ne 0; then
-  exit $lefthook_status
-fi
+sh "$(dirname "$0")/scripts/_lefthook" "$(basename "$0")" "$@"

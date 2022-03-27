@@ -26,5 +26,4 @@ call_lefthook() {
 }
 
 call_lefthook "$@"
-
-_call_global_git_hook $(echo "$@" | cut -d" " -f2-)
+_call_git_hook "$@"
