@@ -19,11 +19,11 @@ lefthook_bin=$(brew --prefix lefthook)/bin/lefthook
 call_lefthook() {
   if $lefthook_bin -h >/dev/null 2>&1
   then
-    $lefthook_bin "$@"
+    $lefthook_bin $@
   else
     echo "Can't find lefthook in PATH"
   fi
 }
 
-call_lefthook "$@"
-_call_git_hook "$@"
+call_lefthook $@
+_call_git_hook $@

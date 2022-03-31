@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if type lefthook > /dev/null 2>&1; then
-  lefthook run "$@"
+  lefthook run $@
   lefthook_status=$?
   if test $lefthook_status -ne 0; then
     exit $lefthook_status
