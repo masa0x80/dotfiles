@@ -3,9 +3,3 @@
 if [ -d $HOME/.asdf ]; then
   asdf plugin update --all
 fi
-
-# NOTE: Copy the asdf.fish for lazy loading
-src_file=$(brew --prefix asdf)/lib/asdf.fish
-dest_file=$HOME/.config/fish/functions/asdf.fish
-# .config/fish/functions/asdf.fish がなければコピー
-test -r $src_file && test -r $dest_file || cp $src_file $dest_file

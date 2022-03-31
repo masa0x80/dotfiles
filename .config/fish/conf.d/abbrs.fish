@@ -13,8 +13,6 @@ type -qa exa && abbr -a tree 'exa -T'
 type -qa rg && abbr -a g 'rg --hidden'
 type -qa bat && abbr -a cat bat
 
-type -qa asdf && abbr -a aoeu asdf
-
 abbr -a tailf 'tail -f'
 abbr -a diff 'diff -u'
 abbr -a watch 'watch -n 0.5'
