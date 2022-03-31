@@ -14,6 +14,7 @@ Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/fern-renderer-devicons.vim'
+Plug 'lambdalisue/gina.vim'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'dense-analysis/ale'
@@ -37,6 +38,8 @@ Plug 'LeafCage/foldCC'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'DanilaMihailov/beacon.nvim'
 Plug 'RRethy/vim-illuminate'
+Plug 'thinca/vim-qfreplace'
+Plug 'cohama/lexima.vim'
 
 " {{{ vim-unimpaired
 Plug 'tpope/vim-repeat'
@@ -68,6 +71,7 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 " }}} neosnippet
 
+Plug 'sheerun/vim-polyglot'
 Plug 'dag/vim-fish',                 { 'for': 'fish' }
 Plug 'vim-ruby/vim-ruby',            { 'for': 'ruby' }
 Plug 'tpope/vim-rails',              { 'for': 'ruby' }

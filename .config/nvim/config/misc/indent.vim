@@ -32,5 +32,7 @@ function! s:customize_indent_mappings() abort
 endfunction
 
 augroup IndentMapping
-  autocmd BufNewFile,BufRead * call s:customize_indent_mappings()
+  if &ft != 'gina-status'
+    autocmd BufNewFile,BufRead * call s:customize_indent_mappings()
+  endif
 augroup END

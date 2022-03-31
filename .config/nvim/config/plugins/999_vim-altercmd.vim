@@ -14,3 +14,4 @@ AlterCommand r GHQ
 AlterCommand PR PR
 AlterCommand GHR GhOpenRepo
 AlterCommand GHF GhOpenFile
+AlterCommand G Gina
