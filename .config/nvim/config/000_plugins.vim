@@ -71,17 +71,14 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 " }}} neosnippet
 
+" {{{ polyglot
+" Please declare this variable before polyglot is loaded (at the top of .vimrc)
+let g:polyglot_disabled = ['markdown']
 Plug 'sheerun/vim-polyglot'
-Plug 'dag/vim-fish',                 { 'for': 'fish' }
-Plug 'vim-ruby/vim-ruby',            { 'for': 'ruby' }
-Plug 'tpope/vim-rails',              { 'for': 'ruby' }
-Plug 'mattn/vim-goimports',          { 'for': 'go' }
-Plug 'slim-template/vim-slim',       { 'for': 'slim' }
-Plug 'cespare/vim-toml',             { 'for': 'toml' }
-Plug 'elzr/vim-json',                { 'for': 'json' }
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
-Plug 'aklt/plantuml-syntax',         { 'for': 'plantuml' }
-Plug 'jparise/vim-graphql',          { 'for': 'graphql' }
+" }}} polyglot
+
+Plug 'tpope/vim-rails',         { 'for': 'ruby' }
+Plug 'mattn/vim-goimports',     { 'for': 'go' }
 " {{{ markdown
 Plug 'godlygeek/tabular'
 Plug 'mattn/vim-maketable'
