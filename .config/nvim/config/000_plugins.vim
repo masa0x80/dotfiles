@@ -79,6 +79,10 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'tpope/vim-rails',         { 'for': 'ruby' }
 Plug 'mattn/vim-goimports',     { 'for': 'go' }
+Plug 'heavenshell/vim-jsdoc', {
+    \   'for': ['javascript', 'javascript.jsx','typescript'],
+    \   'do': 'make install'
+    \  }
 " {{{ markdown
 Plug 'godlygeek/tabular'
 Plug 'mattn/vim-maketable'
