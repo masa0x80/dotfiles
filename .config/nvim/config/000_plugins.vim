@@ -83,6 +83,7 @@ Plug 'heavenshell/vim-jsdoc', {
     \   'for': ['javascript', 'javascript.jsx','typescript'],
     \   'do': 'make install'
     \  }
+Plug 'puremourning/vimspector'
 " {{{ markdown
 Plug 'godlygeek/tabular'
 Plug 'mattn/vim-maketable'

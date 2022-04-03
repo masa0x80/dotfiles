@@ -32,3 +32,7 @@
 !/karabiner
 /karabiner/*
 !/karabiner/karabiner.json
+
+!/vimspector-config
+/vimspector-config/*
+!/vimspector-config/configurations

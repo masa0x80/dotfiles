@@ -1,0 +1,41 @@
+{
+  "configurations": {
+    "run": {
+      "adapter": "vscode-node",
+      "default": true,
+      "breakpoints": {
+        "exception": {
+          "all": "N",
+          "uncaught": "N"
+        }
+      },
+      "configuration": {
+        "type": "node",
+        "name": "Launch",
+        "adapter": "vscode-node-debug2",
+        "request": "attach",
+        "host": "127.0.0.1",
+        "port": "9229",
+        "skipFiles": ["*/<node_internals>/**/*.js", "node_modules/**/*.js"]
+      }
+    },
+    "jest": {
+      "adapter": "vscode-node",
+      "breakpoints": {
+        "exception": {
+          "all": "N",
+          "uncaught": "N"
+        }
+      },
+      "configuration": {
+        "request": "launch",
+        "name": "Jest debugger",
+        "type": "node",
+        "console": "integratedTerminal",
+        "program": "${workspaceRoot}/node_modules/.bin/jest",
+        "skipFiles": ["*/<node_internals>/**/*.js", "node_modules/**/*.js"],
+        "cwd": "${workspaceRoot}"
+      }
+    }
+  }
+}
