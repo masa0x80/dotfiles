@@ -6,7 +6,7 @@ let g:fern#disable_default_mappings = 1
 let g:fern#keepjumps_on_edit = 1
 let g:fern#default_hidden = 1
 let g:fern#default_exclude = '.DS_Store'
-let g:fern#renderer = 'devicons'
+let g:fern#renderer = 'nerdfont'
 
 function! s:customize_fern_mappings() abort
   nmap <buffer><nowait> i <Plug>(fern-action-new-file)
@@ -25,6 +25,7 @@ function! s:customize_fern_mappings() abort
 
   nmap <buffer><nowait> e <Plug>(fern-action-open)
   nmap <buffer><nowait> <C-m> <Plug>(fern-action-open)
+  nmap <buffer><nowait> <CR> <Plug>(fern-action-open)
   nmap <buffer><nowait> l <Plug>(fern-action-open-or-expand)
   nmap <buffer><nowait> - <Plug>(fern-action-leave)
   nmap <buffer><nowait> h <Plug>(fern-action-leave)
