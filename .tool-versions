@@ -4,5 +4,4 @@ nodejs 16.14.0
 terraform 1.0.11
 helm 3.8.0
 sops 3.7.1
-direnv 2.30.3
 trivy 0.22.0

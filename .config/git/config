@@ -17,6 +17,8 @@
 [credential]
   helper = osxkeychain
 [pager]
+  show = "gitpager --pattern='^(commit|added|deleted|modified):? '"
+  log = "gitpager --pattern='^(commit|added|deleted|modified):? '"
   branch = cat
 [color]
   diff        = auto

@@ -1,9 +1,7 @@
-#!/usr/bin/env fish
+#!/usr/bin/env zsh
 
-if command -sq delta
-  delta --diff-so-fancy | less
-else if command -sq diff-so-fancy
-  diff-so-fancy | less
+if (( ${+commands[delta]} )); then
+  delta --diff-so-fancy | less $@
 else
-  less -RIXc | less --pattern='^(Date|added|deleted|modified): '
-end
+  less -RIXc $@
+fi

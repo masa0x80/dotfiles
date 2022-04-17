@@ -1,8 +1,0 @@
-#!/bin/bash
-
-. $(brew --prefix asdf)/asdf.sh
-
-VERSION=$(grep direnv $HOME/.tool-versions | grep -o '[0-9\.]*')
-
-asdf plugin-add direnv
-asdf install direnv $VERSION

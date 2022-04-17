@@ -39,7 +39,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'DanilaMihailov/beacon.nvim'
 Plug 'RRethy/vim-illuminate'
 Plug 'thinca/vim-qfreplace'
-Plug 'cohama/lexima.vim'
 
 " {{{ vim-unimpaired
 Plug 'tpope/vim-repeat'
