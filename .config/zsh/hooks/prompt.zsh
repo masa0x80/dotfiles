@@ -19,7 +19,7 @@ if (( ${+functions[git-info]} )); then
   autoload -Uz add-zsh-hook && add-zsh-hook precmd git-info
 fi
 
-export _PS1='%F{white}$(abbr-current-dir) ${(e)git_info[status]}%(?,,%F{red} [%?])
+export _PS1='%F{gray}$(abbr-current-dir) ${(e)git_info[status]}%(?,,%F{red} [%?])
 '
 
 _prompt() {
@@ -30,14 +30,14 @@ _prompt() {
   else
     prompt_prefix='彡'
   fi
-  PS1="${_PS1}%(?,%F{magenta}${prompt_prefix}:,%F{red}${prompt_prefix}X)${prompt_suffix}%f "
+  PS1="${_PS1}%(?,%F{gray}${prompt_prefix}:,%F{red}${prompt_prefix}X)${prompt_suffix}%f "
 }
 add-zsh-hook precmd _prompt
 
 # ^M で2行プロンプトを1行に戻す
 _accept-line() {
   local saved_prompt=$PS1
-  PS1='%F{magenta}$ %f'
+  PS1='%F{gray}$ %f'
   zle reset-prompt
   zle _abbr_widget_expand_and_accept
   PS1=$saved_prompt

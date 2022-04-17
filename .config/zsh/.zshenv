@@ -29,10 +29,6 @@ fi
 export SHELL=$(which zsh)
 export TERM=xterm-256color
 
-# asdf
-source "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
-export NODEJS_CHECK_SIGNATURES=no
-
 # golang
 export GO111MODULE=on
 export GOPATH=$HOME/go
@@ -59,6 +55,10 @@ path=(
 LDFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/lib"
 CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/include"
 PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/openssl/lib/pkgconfig"
+
+# asdf
+source "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
+export NODEJS_CHECK_SIGNATURES=no
 
 # EDITOR
 if installed nvim; then

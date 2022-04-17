@@ -10,5 +10,5 @@ zle -N insert-last-word smart-insert-last-word
 zstyle :insert-last-word match '*([[:alpha:]/\\]?|?[[:alpha:]/\\])*'
 bindkey '^]' insert-last-word
 
-bindkey "^g^h" backward-word
-bindkey "^g^l" forward-word
+bindkey "^[[Z" reverse-menu-complete
+bindkey "^O" reverse-menu-complete
