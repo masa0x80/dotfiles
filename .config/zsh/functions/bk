@@ -1,0 +1,23 @@
+bk() {
+  zparseopts -D -E -A optHash -- a -add d -del e:: -ext::
+  ext=${optHash[-e]:-$optHash[--ext]}
+
+  if [[ -n "${optHash[(i)-d]}" ]] || [[ -n "${optHash[(i)--del]}" ]] ; then
+    for v ($@); do
+      mv "$v" "${v%.*}"
+    done
+  else
+    if [ "$ext" = '' ]; then
+      ext='bk'
+    fi
+    for v ($@); do
+      new_name="${v}.${ext}"
+      if [ -e "$new_name" ]; then
+        echo "Error: $new_name exists"
+      else
+        mv "$v" "$new_name"
+      fi
+    done
+  fi
+  return 0
+}

@@ -1,0 +1,6 @@
+r() {
+  local repo=$(ghq list -p | sed -e "s|$HOME/||g" | fzf +m --query="$@")
+  if test -n "$repo"; then
+    cd "$HOME/$repo"
+  fi
+}

@@ -1,8 +1,0 @@
-#!/usr/bin/env fish
-
-function pc
-    set -l pass_name (fd . $PASSWORD_STORE_DIR -e gpg -x echo '{.}' | grep -oP "(?<=\\$PASSWORD_STORE_DIR/).*" | fzf --query "$argv")
-    test -z "$pass_name" && return 1
-    pass -c $pass_name
-end
-pc $argv

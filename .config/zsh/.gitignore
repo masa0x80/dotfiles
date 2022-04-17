@@ -1,2 +1,6 @@
-/.zhistory
-/.zcompdump
+.zhistory
+.zsh_history
+.zcompdump
+.zcompcache
+
+.zim/

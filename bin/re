@@ -1,4 +1,0 @@
-#!/usr/bin/env fish
-
-set option (echo -e --staged\n--worktree | fzf --query "$argv")
-git restore $option (git status -s -uno | fzf --prompt="\$ git restore $option (git status -s -uno)> " | awk '{print $2}')

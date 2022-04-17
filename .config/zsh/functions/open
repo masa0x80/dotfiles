@@ -1,0 +1,9 @@
+open() {
+  if installed open; then
+    if [ ! -z "$1" ]; then
+      command open "$@"
+    else
+      command open .
+    fi
+  fi
+}

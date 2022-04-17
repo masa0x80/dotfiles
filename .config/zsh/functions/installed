@@ -1,0 +1,3 @@
+installed() {
+  (( ${+commands[$1]} ))
+}

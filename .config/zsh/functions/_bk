@@ -1,0 +1,9 @@
+#compdef bk
+
+_bk() {
+  _arguments \
+    {-a,--add}'[Add an extention to the specified files]' \
+    {-d,--del}'[Delete an extention from the specified files]' \
+    {-e,--ext}'[Specify an extention adding to files (default: bk)]' \
+    '*: :_files ./'
+}
