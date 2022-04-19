@@ -13,8 +13,8 @@ function! s:customize_vimsppector_mappings() abort
   nnoremap <Leader>dT :call vimspector#ClearBreakpoints()<CR>
 
   nmap <Leader>d_ <Plug>VimspectorRestart
-  nmap <S-k> <Plug>VimspectorStepOut
-  nmap <S-l> <Plug>VimspectorStepInto
-  nmap <S-j> <Plug>VimspectorStepOver
+  nmap <Leader>k <Plug>VimspectorStepOut
+  nmap <Leader>l <Plug>VimspectorStepInto
+  nmap <Leader>j <Plug>VimspectorStepOver
 endfunction
 autocmd MyAutoCmd FileType javascript,typescript call <SID>customize_vimsppector_mappings()
