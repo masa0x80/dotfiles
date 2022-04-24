@@ -7,8 +7,6 @@ abbr md=mkdir
 abbr rd=rmdir
 abbr rf='rm -rf'
 
-abbr vim=vi
-
 # git {{{
 abbr ga='git add'
 abbr gaa='git add --all'
