@@ -16,7 +16,9 @@ Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/gina.vim'
 
-Plug 'airblade/vim-gitgutter'
+if has('nvim')
+  Plug 'airblade/vim-gitgutter'
+endif
 Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
