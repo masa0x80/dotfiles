@@ -1,3 +1,3 @@
-# Customized iTerm2 Profile
+# One Dark
 
-This profile is based on https://github.com/aseom/dotfiles/blob/master/osx/iterm2/iceberg.itermcolors
+ref. [joshdick/onedark.vim: A dark Vim/Neovim color scheme inspired by Atom's One Dark syntax theme.](https://github.com/joshdick/onedark.vim)
