@@ -1,0 +1,7 @@
+/*
+/.*
+!/.gitignore
+!/init.lua
+!/lua
+!/ftplugin
+!/coc-settings.json

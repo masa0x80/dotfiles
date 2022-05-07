@@ -1,0 +1,13 @@
+vim.api.nvim_create_user_command("T", function()
+	vim.fn.execute(":e " .. vim.fn.trim(vim.fn.system("scrapbook_dir todo")) .. vim.fn.system("current_dir _"))
+end, {})
+vim.api.nvim_create_user_command("Todo", function()
+	vim.fn.execute(":e " .. vim.fn.trim(vim.fn.system("scrapbook_dir todo")) .. vim.fn.system("current_dir _"))
+end, {})
+
+vim.api.nvim_create_user_command("M", function()
+	vim.fn.execute(":e " .. vim.fn.trim(vim.fn.system("scrapbook_dir memo")) .. vim.fn.system("current_dir _"))
+end, {})
+vim.api.nvim_create_user_command("Memo", function()
+	vim.fn.execute(":e " .. vim.fn.trim(vim.fn.system("scrapbook_dir memo")) .. vim.fn.system("current_dir _"))
+end, {})

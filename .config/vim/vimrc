@@ -22,6 +22,6 @@ autocmd MyAutoCmd BufRead *
 call map(sort(split(globpath(&runtimepath, 'config/**/*.vim'))), { ->[execute('exec "source" v:val')] })
 
 " Load a local config file
-if filereadable(findfile('$HOME/.config.local/nvim/common.vim'))
-  source $HOME/.config.local/nvim/common.vim
+if filereadable(findfile('$HOME/.config.local/vim/common.vim'))
+  source $HOME/.config.local/vim/common.vim
 endif
