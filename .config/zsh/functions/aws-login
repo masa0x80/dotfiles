@@ -1,7 +1,7 @@
 aws-login() {
   local profile=$(aws-vault list --profiles | fzf +m)
   if test -n "$profile"; then
-    local url=(aws-vault login $profile --stdout)
+    local url=$(aws-vault login $profile --stdout)
     open $url
   else
     echo 'usage: aws-login <profile>'

@@ -30,7 +30,7 @@ abbr lg='git fzf show'
 
 abbr glg='git log --stat --color'
 abbr glgp='git log --stat --color -p'
-abbr glog='git log --oneline --decorate --color --graph'
+abbr glog='git log --oneline --color --graph'
 
 abbr gm='git merge --no-ff'
 

@@ -91,12 +91,8 @@ source ${ZIM_HOME}/init.zsh
 # zsh-history-substring-search
 #
 
-zmodload -F zsh/terminfo +p:terminfo
-for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
-for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
-unset key
-bindkey '^G^P' up-line-or-history
-bindkey '^G^N' down-line-or-history
+bindkey '^G^P' history-substring-search-up
+bindkey '^G^N' history-substring-search-down
 # }}} End configuration added by Zim install
 
 #

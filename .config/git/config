@@ -30,12 +30,12 @@
   co = checkout
   sw = switch
   st = status
-  di = diff
   br = branch
+  di = diff
   df = diff
-  a  = add
   d  = diff
   dc = diff --cached
+  a  = add
   f  = fetch
   unstage      = reset -q HEAD --
   discard      = restore --

@@ -27,7 +27,7 @@ fi
 
 # NOTE: must place after adding `/usr/local/bin` to PATH
 export SHELL=$(which zsh)
-export TERM=xterm-256color
+export TERM=screen-256color
 
 # golang
 export GO111MODULE=on

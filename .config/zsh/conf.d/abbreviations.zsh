@@ -5,7 +5,6 @@ if_installed pgcli abbr -S -q psql=pgcli
 
 if installed rg; then
   abbr -S -q g='rg --hidden'
-  abbr -S -g -q g='rg'
 fi
 
 if_installed bat abbr -S -q cat=bat

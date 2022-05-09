@@ -1,0 +1,6 @@
+tmux-choose-window() {
+  installed fzf || return 1
+
+  local num=$(tmux list-windows | fzf | cut -d':' -f 1)
+  tmux select-window -t $num
+}

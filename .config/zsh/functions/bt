@@ -1,0 +1,11 @@
+bt() {
+  installed BluetoothConnector || return 1
+  installed fzf || return 1
+
+
+  local op=$(echo -e "connect\ndisconnect" | fzf +m)
+  local selected=$(BluetoothConnector 2>&1 | grep -o '.* - .*' | fzf -d ' - ' --with-nth=2)
+  local mac_addr=$(echo $selected | cut -d ' ' -f1)
+
+  BluetoothConnector --$op $mac_addr --notify
+}

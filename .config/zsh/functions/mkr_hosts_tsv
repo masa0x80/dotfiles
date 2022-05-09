@@ -1,0 +1,25 @@
+# ref: http://motemen.hatenablog.com/entry/2015/07/mackerel-mkr-peco-zsh
+mkr_hosts_tsv() {
+  local cache_dir=~/.cache/mkr-hosts-tsv
+  local cache_file=$cache_dir/cache
+  local mackerel_hosts_api_uri=''https://mackerel.io/api/v0/hosts'
+
+  if test -z "$MACKEREL_APIKEY"; then
+    cat $cache_dir/*
+    exit 0
+  fi
+
+  if test -n "$MACKEREL_APIKEY_NAME"; then
+    cache_file="${cache_file}.${MACKEREL_APIKEY_NAME}"
+  fi
+
+  mkdir -p $(dirname $cache_file)
+
+  echo 'cache file is too old, updating...' >&2
+  if test -n "$MKR_HOSTS_TSV_GIP"; then
+      curl -s -H "X-Api-Key: $MACKEREL_APIKEY" $mackerel_hosts_api_uri | jq -r -c '.hosts[] | if (.meta.cloud.metadata."public-ipv4") then [.meta.cloud.metadata."public-ipv4", .name, [.roles | keys], .roles[]] | flatten else empty end | @tsv' | tee $cache_file
+  else
+      mkr hosts -f '{{range .}}{{if (len .Interfaces)}}{{(index .Interfaces 0).IPAddress}}{{"\t"}}{{.Name}}{{"\\t"}}{{range $s,$rr := .Roles}}{{range $r := $rr}}{{$s}}:{{$r}}{{end}}{{end}}{{"\n"}}{{end}}{{end}}' | tee $cache_file
+  fi
+  chmod go-r $cache_file
+}

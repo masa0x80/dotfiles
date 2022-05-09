@@ -58,7 +58,7 @@ abbr -a lg 'git fzf show'
 abbr -a gl tig
 abbr -a glg 'git log --stat --color'
 abbr -a glgp 'git log --stat --color -p'
-abbr -a glog 'git log --oneline --decorate --color --graph'
+abbr -a glog 'git log --oneline --color --graph'
 
 abbr -a gm 'git merge --no-ff'
 
