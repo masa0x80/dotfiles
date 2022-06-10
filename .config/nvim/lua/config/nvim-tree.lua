@@ -40,8 +40,8 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 			list = {
 				-- Default Mappings
 				-- { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
-				{ key = "<C-e>", action = "edit_in_place" },
-				{ key = { "O" }, action = "edit_no_picker" },
+				-- { key = "<C-e>", action = "edit_in_place" },
+				-- { key = { "O" }, action = "edit_no_picker" },
 				{ key = { "<2-RightMouse>", "<C-]>" }, action = "cd" },
 				{ key = "<C-v>", action = "vsplit" },
 				{ key = "<C-x>", action = "split" },
@@ -81,7 +81,8 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 				{ key = ".", action = "run_file_command" },
 
 				-- Custom Mappings
-				{ key = { "<CR>", "o", "l" }, action = "edit" },
+				{ key = { "O" }, action = "edit" },
+				{ key = { "<CR>", "o", "l" }, action = "edit_no_picker" },
 				{ key = { "<BS>", "h" }, action = "close_node" },
 				{ key = "i", action = "create" },
 				{ key = "[g", action = "prev_git_item" },
@@ -135,4 +136,4 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
-keymap("n", "<Leader>e", "<Cmd>NvimTreeToggle<CR>", opts)
+keymap("n", "<Leader>e", "<Cmd>NvimTreeFindFileToggle<CR>", opts)

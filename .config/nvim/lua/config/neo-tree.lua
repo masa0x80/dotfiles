@@ -24,6 +24,7 @@ neo_tree.setup({
 	},
 	window = {
 		mappings = {
+			["-"] = "navigate_up",
 			["l"] = "open",
 			["<BS>"] = "close_node",
 			["h"] = "close_node",
@@ -32,6 +33,7 @@ neo_tree.setup({
 			["t"] = "open_tabnew",
 			["w"] = "open_with_window_picker",
 			["<C-c>"] = "close_window",
+			["<C-]>"] = "set_root",
 			["i"] = {
 				"add",
 				config = {
@@ -43,6 +45,7 @@ neo_tree.setup({
 	filesystem = {
 		filtered_items = {
 			hide_dotfiles = false,
+			hide_hidden = false,
 		},
 		hijack_netrw_behavior = "disabled",
 		follow_current_file = true,
