@@ -11,12 +11,8 @@ zmodule fzf
 # Auto-expanding abbreviations
 zmodule olets/zsh-abbr
 
-#
-# Prompt
-#
-
-# Exposes git repository status information to prompts, used by asciiship.
-zmodule git-info
+# Exposes git repository status information to prompts
+zmodule woefe/git-prompt.zsh
 
 #
 # Completion
