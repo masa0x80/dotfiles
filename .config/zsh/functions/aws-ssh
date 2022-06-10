@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 aws-ssh() {
   installed aws || return 1
   installed fzf || return 1

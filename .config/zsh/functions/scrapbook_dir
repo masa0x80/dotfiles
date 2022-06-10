@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 scrapbook_dir() {
   : "${SCRAPBOOK_DIR:=$HOME/.scrapbook}"
   local dir=''

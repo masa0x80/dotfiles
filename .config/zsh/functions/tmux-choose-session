@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 tmux-choose-session() {
   installed fzf || return 1
 

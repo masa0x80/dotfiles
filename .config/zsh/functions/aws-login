@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 aws-login() {
   local profile=$(aws-vault list --profiles | fzf +m)
   if test -n "$profile"; then

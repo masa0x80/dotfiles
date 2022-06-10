@@ -1,1 +1,3 @@
+#!/bin/zsh
+
 git rev-parse --abbrev-ref HEAD

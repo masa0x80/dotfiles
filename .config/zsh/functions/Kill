@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 Kill() {
   local pids=$(ps -e -o pid,comm | fzf --query="$@" | awk '{print $1}')
   if test "$pids" != ''; then

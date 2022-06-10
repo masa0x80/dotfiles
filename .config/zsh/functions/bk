@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 bk() {
   zparseopts -D -E -A optHash -- a -add d -del e:: -ext::
   ext=${optHash[-e]:-$optHash[--ext]}
