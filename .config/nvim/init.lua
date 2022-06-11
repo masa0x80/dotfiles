@@ -27,6 +27,8 @@ require("config.hlslens")
 require("config.treesitter")
 require("treesitter-unit")
 
+require("config.lightspeed")
+
 require("config.incline")
 require("config.modes")
 require("config.spectre")

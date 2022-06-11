@@ -91,6 +91,8 @@ packer.startup({
 		use("mvllow/modes.nvim")
 		use("b0o/incline.nvim")
 
+		-- Ops
+		use("ggandor/lightspeed.nvim")
 		use("Bakudankun/BackAndForward.vim")
 
 		-- Git
