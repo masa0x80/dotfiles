@@ -18,6 +18,8 @@ require("config.telescope")
 require("config.neo-tree")
 require("config.nvim-tree")
 
+require("config.markdown-preview")
+
 require("config.lualine")
 
 require("config.illuminate")
@@ -28,6 +30,7 @@ require("config.treesitter")
 require("treesitter-unit")
 
 require("config.lightspeed")
+require("config.BackAndForward")
 
 require("config.incline")
 require("config.modes")
@@ -44,5 +47,9 @@ require("config.todo-comments")
 
 require("config.toggleterm")
 
+require("config.vim-test")
+require("config.jaq")
+
 require("misc.markdown")
 require("misc.todo")
+require("misc.gh")

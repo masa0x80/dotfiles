@@ -1,5 +1,5 @@
 #!/bin/zsh
 
 todo() {
-  vi "$(scrapbook_dir todo)$(current_dir _)"
+  vi "$(scrapbook_path $(current_dir)/todo.md)"
 }

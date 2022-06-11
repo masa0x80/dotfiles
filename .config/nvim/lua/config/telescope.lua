@@ -7,6 +7,7 @@ local actions = require("telescope.actions")
 
 telescope.setup({
 	defaults = {
+		sorting_strategy = "ascending",
 		vimgrep_arguments = {
 			"rg",
 			"--color=never",
@@ -18,6 +19,10 @@ telescope.setup({
 			"--hidden",
 		},
 		mappings = {
+			i = {
+				["<C-c>"] = { "<Esc>", type = "command" },
+				["<C-c><C-c>"] = actions.close,
+			},
 			n = {
 				["<C-n>"] = actions.move_selection_next,
 				["<C-p>"] = actions.move_selection_previous,
@@ -25,30 +30,45 @@ telescope.setup({
 				["<C-b>"] = actions.results_scrolling_down,
 				["q"] = actions.close,
 				["<C-c><C-c>"] = actions.close,
+				["y"] = function()
+					local selection = require("telescope.actions.state").get_selected_entry()
+					local path = vim.fn.fnamemodify(selection.path, ":p:t")
+					vim.fn.setreg("+", path)
+					vim.fn.setreg('"', path)
+					print("Copied: " .. path)
+				end,
+				["Y"] = function()
+					local selection = require("telescope.actions.state").get_selected_entry()
+					local path = vim.fn.fnamemodify(selection.path, ":.")
+					vim.fn.setreg("+", path)
+					vim.fn.setreg('"', path)
+					print("Copied: " .. path)
+				end,
+				["gy"] = function()
+					local selection = require("telescope.actions.state").get_selected_entry()
+					local path = selection.path
+					vim.fn.setreg("+", path)
+					vim.fn.setreg('"', path)
+					print("Copied: " .. path)
+				end,
+				["<Space><Space>"] = function()
+					vim.cmd("silent cd \\$PWD")
+				end,
+				["<Space>s"] = function()
+					vim.cmd("silent cd \\$SCRAPBOOK_DIR")
+				end,
 			},
-		},
-	},
-	pickers = {
-		find_files = {
-			theme = "dropdown",
-		},
-		git_files = {
-			theme = "dropdown",
-		},
-		buffers = {
-			theme = "dropdown",
-		},
-		live_grep = {
-			theme = "dropdown",
-		},
-		grep_string = {
-			theme = "dropdown",
 		},
 	},
 })
 
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap("n", "<Leader><Leader>", "<Cmd>Telescope buffers<CR>", opts)
+vim.api.nvim_set_keymap(
+	"n",
+	"<Leader><Leader>",
+	"<Cmd>lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>",
+	opts
+)
 vim.api.nvim_set_keymap(
 	"n",
 	"<Leader>f",
@@ -64,3 +84,28 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap("n", "<Leader>g", "<Cmd>Telescope live_grep<CR>", opts)
 vim.api.nvim_set_keymap("n", "<Leader>G", "<Cmd>Telescope grep_string<CR>", opts)
 vim.api.nvim_set_keymap("n", "<Leader>r", "<Cmd>Telescope resume<CR>", opts)
+
+vim.api.nvim_set_keymap(
+	"n",
+	",g",
+	"<Cmd>lua require('telescope.builtin').live_grep({ cwd='$SCRAPBOOK_DIR' })<CR>",
+	opts
+)
+vim.api.nvim_set_keymap(
+	"n",
+	",G",
+	"<Cmd>lua require('telescope.builtin').grep_string({ cwd='$SCRAPBOOK_DIR' })<CR>",
+	opts
+)
+vim.api.nvim_set_keymap(
+	"n",
+	",f",
+	"<Cmd>lua require('telescope.builtin').find_files({ cwd='$SCRAPBOOK_DIR' })<CR>",
+	opts
+)
+vim.api.nvim_set_keymap(
+	"n",
+	",F",
+	"<Cmd>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true, cwd='$SCRAPBOOK_DIR' })<CR>",
+	opts
+)

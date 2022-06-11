@@ -24,15 +24,19 @@ neo_tree.setup({
 	},
 	window = {
 		mappings = {
-			["-"] = "navigate_up",
+			["U"] = "navigate_up",
 			["l"] = "open",
 			["<BS>"] = "close_node",
 			["h"] = "close_node",
 			["s"] = "open_split",
+			["-"] = "open_split",
 			["v"] = "open_vsplit",
+			["|"] = "open_vsplit",
 			["t"] = "open_tabnew",
 			["w"] = "open_with_window_picker",
 			["<C-c>"] = "close_window",
+			["f"] = "filter_as_you_type",
+			["/"] = "filter_on_submit",
 			["<C-]>"] = "set_root",
 			["i"] = {
 				"add",
@@ -40,12 +44,40 @@ neo_tree.setup({
 					show_path = "relative",
 				},
 			},
+			["y"] = function(state)
+				local node = state.tree:get_node()
+				local name = node.name
+				vim.fn.setreg("+", name)
+				vim.fn.setreg('"', name)
+				print("Copied: " .. name)
+			end,
+			["Y"] = function(state)
+				local node = state.tree:get_node()
+				local path = vim.fn.fnamemodify(node.path, ":.")
+				vim.fn.setreg("+", path)
+				vim.fn.setreg('"', path)
+				print("Copied: " .. path)
+			end,
+			["gy"] = function(state)
+				local node = state.tree:get_node()
+				local path = node.path
+				vim.fn.setreg("+", path)
+				vim.fn.setreg('"', path)
+				print("Copied: " .. path)
+			end,
+			["<Space><Space>"] = function()
+				vim.cmd("silent cd \\$PWD")
+			end,
+			["<Space>s"] = function()
+				vim.cmd("silent cd \\$SCRAPBOOK_DIR")
+			end,
 		},
 	},
 	filesystem = {
 		filtered_items = {
 			hide_dotfiles = false,
 			hide_hidden = false,
+			hide_gitignored = false,
 		},
 		hijack_netrw_behavior = "disabled",
 		follow_current_file = true,
@@ -55,4 +87,4 @@ neo_tree.setup({
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 keymap("n", "-", "<Cmd>Neotree float reveal_force_cwd<CR>", opts)
-keymap("n", "<Leader>E", "<Cmd>NeoTreeFocusToggle<CR>", opts)
+keymap("n", "<Leader>e", "<Cmd>NeoTreeFocusToggle<CR>", opts)

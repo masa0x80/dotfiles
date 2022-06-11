@@ -40,6 +40,13 @@ local options = {
 		precedes = "«",
 		nbsp = "%",
 	},
+	path = {
+		vim.fn.fnameescape(vim.fn.expand("$SCRAPBOOK_DIR")),
+		".",
+		"/usr/include",
+		"",
+	},
+	suffixesadd = { ".md" },
 }
 
 for k, v in pairs(options) do

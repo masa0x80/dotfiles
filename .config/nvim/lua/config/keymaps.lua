@@ -32,6 +32,7 @@ keymap("n", ";;", "<Cmd>write<CR>", { noremap = true })
 
 -- Quit
 keymap("n", "<Leader>q", "<Cmd>q<CR>", opts)
+keymap("n", "<Leader>Q", "<Cmd>qa<CR>", opts)
 
 -- Windows
 keymap("n", "<C-w>-", "<C-w>s", opts)

@@ -7,7 +7,7 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 	auto_reload_on_write = true,
 	disable_netrw = true,
 	hijack_cursor = true,
-	hijack_netrw = true,
+	hijack_netrw = false,
 	open_on_setup = false,
 	view = {
 		width = 30,
@@ -45,7 +45,7 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 				{ key = "gy", action = "copy_absolute_path" },
 				-- { key = "[c",                           action = "prev_git_item" },
 				-- { key = "]c",                           action = "next_git_item" },
-				{ key = "-", action = "dir_up" },
+				-- { key = "-", action = "dir_up" },
 				{ key = "s", action = "system_open" },
 				-- { key = "f", action = "live_filter" },
 				-- { key = "F", action = "clear_live_filter" },
@@ -57,6 +57,7 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 				{ key = ".", action = "run_file_command" },
 
 				-- Custom Mappings
+				{ key = "U", action = "dir_up" },
 				{ key = { "O" }, action = "edit" },
 				{ key = { "<CR>", "o", "l" }, action = "edit_no_picker" },
 				{ key = { "<BS>", "h" }, action = "close_node" },
@@ -135,4 +136,4 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
-keymap("n", "<Leader>e", "<Cmd>NvimTreeFindFileToggle<CR>", opts)
+keymap("n", "<Leader>E", "<Cmd>NvimTreeFindFileToggle<CR>", opts)

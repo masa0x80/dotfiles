@@ -1,6 +1,6 @@
 {
   "configurations": {
-    "run": {
+    "attach": {
       "adapter": "vscode-node",
       "default": true,
       "breakpoints": {
@@ -31,10 +31,19 @@
         "request": "launch",
         "name": "Jest debugger",
         "type": "node",
+        "runtimeArgs": [
+          "--inspect-brk",
+          "./node_modules/.bin/jest",
+          "--no-converge",
+          "-t",
+          "'${TestName}'",
+          "--",
+          "${file}"
+        ],
         "console": "integratedTerminal",
-        "program": "${workspaceRoot}/node_modules/.bin/jest",
         "skipFiles": ["*/<node_internals>/**/*.js", "node_modules/**/*.js"],
-        "cwd": "${workspaceRoot}"
+        "port": "9229",
+        "internalConsoleOptions": "neverOpen"
       }
     }
   }

@@ -1,11 +1,11 @@
 #!/bin/zsh
 
-scrapbook_dir() {
+scrapbook_path() {
   : "${SCRAPBOOK_DIR:=$HOME/.scrapbook}"
-  local dir=''
-  test "$1" = '' || dir="$1/"
-  local dir_path="$SCRAPBOOK_DIR/$dir"
+  local file_path="$SCRAPBOOK_DIR"
+  test "$1" = '' || file_path+="/$1"
+  local dir_path=$(dirname $file_path)
   test -d "$dir_path" || mkdir -p "$dir_path"
   # NOTE: パスにスペースが含まれる場合に備えて `:q` をつけてエスケープする
-  echo "$dir_path:q"
+  echo "$file_path:q"
 }

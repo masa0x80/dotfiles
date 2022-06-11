@@ -12,7 +12,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 		install_path,
 	})
 	print("Installing packer close and reopen Neovim...")
-	vim.cmd([[ packadd packer.nvim ]])
+	vim.cmd([[packadd packer.nvim]])
 end
 
 -- Use a protected call so we don't error out on first use
@@ -32,7 +32,7 @@ packer.init({
 
 packer.startup({
 	function(use)
-		use("wbthomason/packer.nvim") -- Plugin Manager
+		use("wbthomason/packer.nvim") -- usein Manager
 
 		use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 		use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
@@ -70,9 +70,14 @@ packer.startup({
 		use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 		use("j-hui/fidget.nvim")
 		use("dense-analysis/ale")
+		use("b0o/schemastore.nvim")
 
 		-- Debug
 		use("puremourning/vimspector")
+
+		-- Test
+		use("vim-test/vim-test")
+		use("is0n/jaq-nvim")
 
 		-- Telescope
 		use("nvim-telescope/telescope.nvim")
@@ -103,6 +108,16 @@ packer.startup({
 		use("nvim-neo-tree/neo-tree.nvim")
 		use("kyazdani42/nvim-tree.lua")
 
+		-- Markdown
+		use({
+			"iamcco/markdown-preview.nvim",
+			run = "cd app && npm install",
+			ft = { "markdown", "plantuml" },
+		})
+
+		-- PlantUML
+		use("aklt/plantuml-syntax")
+
 		use("gpanders/editorconfig.nvim") -- EditorConfig
 		use("lambdalisue/readablefold.vim") -- Folding
 		use("lukas-reineke/indent-blankline.nvim") -- Indent
@@ -112,6 +127,7 @@ packer.startup({
 		use("cohama/lexima.vim")
 		use("monaqa/dial.nvim")
 		use("windwp/nvim-spectre")
+		use("jghauser/mkdir.nvim")
 
 		use("akinsho/toggleterm.nvim")
 

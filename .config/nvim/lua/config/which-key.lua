@@ -3,4 +3,8 @@ if not status_ok then
 	return
 end
 
-which_key.setup()
+which_key.setup({
+	triggers_blacklist = {
+		n = { ";" },
+	},
+})
