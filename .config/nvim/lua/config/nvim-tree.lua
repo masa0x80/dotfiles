@@ -3,36 +3,12 @@ if not status_ok then
 	return
 end
 
-vim.g.nvim_tree_icons = {
-	default = "",
-	symlink = "",
-	git = {
-		unstaged = "",
-		staged = "",
-		unmerged = "",
-		renamed = "➜",
-		untracked = "",
-		deleted = "",
-		ignored = "◌",
-	},
-	folder = {
-		arrow_open = "",
-		arrow_closed = "",
-		default = "",
-		open = "",
-		empty = "",
-		empty_open = "",
-		symlink = "",
-		symlink_open = "",
-	},
-}
-
 nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 	auto_reload_on_write = true,
 	disable_netrw = true,
 	hijack_cursor = true,
 	hijack_netrw = true,
-	open_on_setup = true,
+	open_on_setup = false,
 	view = {
 		width = 30,
 		mappings = {
@@ -106,6 +82,29 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 		icons = {
 			webdev_colors = true,
 			git_placement = "before",
+			glyphs = {
+				default = "",
+				symlink = "",
+				git = {
+					unstaged = "",
+					staged = "",
+					unmerged = "",
+					renamed = "➜",
+					untracked = "",
+					deleted = "",
+					ignored = "◌",
+				},
+				folder = {
+					arrow_open = "",
+					arrow_closed = "",
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = "",
+					symlink_open = "",
+				},
+			},
 		},
 	},
 	hijack_directories = {
