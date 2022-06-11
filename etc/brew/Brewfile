@@ -59,10 +59,12 @@ brew 'awscli'
 
 brew 'rust'
 brew 'bat'
+brew 'dog'
 brew 'exa'
 brew 'fd'
 brew 'git-delta'
 brew 'ripgrep'
+brew 'sd'
 
 brew 'go'
 
