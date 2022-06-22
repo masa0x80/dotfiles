@@ -4,8 +4,8 @@ if not status_ok then
 end
 
 nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
-	auto_reload_on_write = true,
-	disable_netrw = true,
+	auto_reload_on_write = false,
+	disable_netrw = false,
 	hijack_cursor = true,
 	hijack_netrw = false,
 	open_on_setup = false,
@@ -57,7 +57,7 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 				{ key = ".", action = "run_file_command" },
 
 				-- Custom Mappings
-				{ key = "U", action = "dir_up" },
+				{ key = "u", action = "dir_up" },
 				{ key = { "O" }, action = "edit" },
 				{ key = { "<CR>", "o", "l" }, action = "edit_no_picker" },
 				{ key = { "<BS>", "h" }, action = "close_node" },
@@ -109,8 +109,8 @@ nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
 		},
 	},
 	hijack_directories = {
-		enable = true,
-		auto_open = true,
+		enable = false,
+		auto_open = false,
 	},
 	filters = {
 		dotfiles = false,

@@ -24,7 +24,7 @@ neo_tree.setup({
 	},
 	window = {
 		mappings = {
-			["U"] = "navigate_up",
+			["u"] = "navigate_up",
 			["l"] = "open",
 			["<BS>"] = "close_node",
 			["h"] = "close_node",
@@ -79,7 +79,7 @@ neo_tree.setup({
 			hide_hidden = false,
 			hide_gitignored = false,
 		},
-		hijack_netrw_behavior = "disabled",
+		-- hijack_netrw_behavior = "disabled",
 		follow_current_file = true,
 	},
 })

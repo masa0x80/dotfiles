@@ -26,7 +26,7 @@ local options = {
 	wrap = false, -- display lines as one long line
 	termguicolors = true,
 	sidescrolloff = 3,
-	laststatus = 3,
+	laststatus = 2,
 	completeopt = {
 		"menu",
 		"menuone",

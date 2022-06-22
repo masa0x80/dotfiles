@@ -21,7 +21,6 @@ telescope.setup({
 		mappings = {
 			i = {
 				["<C-c>"] = { "<Esc>", type = "command" },
-				["<C-c><C-c>"] = actions.close,
 			},
 			n = {
 				["<C-n>"] = actions.move_selection_next,
@@ -29,7 +28,7 @@ telescope.setup({
 				["<C-f>"] = actions.results_scrolling_up,
 				["<C-b>"] = actions.results_scrolling_down,
 				["q"] = actions.close,
-				["<C-c><C-c>"] = actions.close,
+				["<C-c>"] = actions.close,
 				["y"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = vim.fn.fnamemodify(selection.path, ":p:t")

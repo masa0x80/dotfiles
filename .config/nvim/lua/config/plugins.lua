@@ -48,9 +48,6 @@ packer.startup({
 		-- Colorscheme
 		use("joshdick/onedark.vim")
 
-		-- Statusline
-		use("nvim-lualine/lualine.nvim")
-
 		-- Cmp plugins
 		use("hrsh7th/nvim-cmp") -- The completion plugin
 		use("hrsh7th/cmp-buffer") -- buffer completions
@@ -94,7 +91,8 @@ packer.startup({
 		use("haya14busa/vim-asterisk")
 		use("norcalli/nvim-colorizer.lua")
 		use("mvllow/modes.nvim")
-		use("b0o/incline.nvim")
+		use("nvim-lualine/lualine.nvim")
+		use("kdheepak/tabline.nvim")
 
 		-- Ops
 		use("ggandor/lightspeed.nvim")
