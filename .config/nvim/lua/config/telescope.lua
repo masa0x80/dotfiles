@@ -50,12 +50,6 @@ telescope.setup({
 					vim.fn.setreg('"', path)
 					print("Copied: " .. path)
 				end,
-				["<Space><Space>"] = function()
-					vim.cmd("silent cd \\$PWD")
-				end,
-				["<Space>s"] = function()
-					vim.cmd("silent cd \\$SCRAPBOOK_DIR")
-				end,
 			},
 		},
 	},
@@ -71,17 +65,17 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
 	"n",
 	"<Leader>f",
-	"<Cmd>lua require('telescope.builtin').git_files({ hidden = true })<CR>",
+	"<Cmd>lua require('telescope.builtin').git_files({ hidden = true, cwd='$PWD' })<CR>",
 	opts
 )
 vim.api.nvim_set_keymap(
 	"n",
 	"<Leader>F",
-	"<Cmd>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true })<CR>",
+	"<Cmd>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true, cwd='$PWD' })<CR>",
 	opts
 )
-vim.api.nvim_set_keymap("n", "<Leader>g", "<Cmd>Telescope live_grep<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>G", "<Cmd>Telescope grep_string<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>g", "<Cmd>lua require('telescope.builtin').live_grep({ cwd='$PWD' })<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>G", "<Cmd>lua require('telescope.builtin').grep_string({ cwd='$PWD' })<CR>", opts)
 vim.api.nvim_set_keymap("n", "<Leader>r", "<Cmd>Telescope resume<CR>", opts)
 
 vim.api.nvim_set_keymap(

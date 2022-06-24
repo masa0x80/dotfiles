@@ -65,12 +65,6 @@ neo_tree.setup({
 				vim.fn.setreg('"', path)
 				print("Copied: " .. path)
 			end,
-			["<Space><Space>"] = function()
-				vim.cmd("silent cd \\$PWD")
-			end,
-			["<Space>s"] = function()
-				vim.cmd("silent cd \\$SCRAPBOOK_DIR")
-			end,
 		},
 	},
 	filesystem = {

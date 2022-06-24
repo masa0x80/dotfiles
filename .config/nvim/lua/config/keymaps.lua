@@ -71,6 +71,9 @@ keymap("n", "<Leader>N", "<Cmd>setlocal relativenumber!<CR>", opts)
 keymap("n", "z-", "zr", opts)
 keymap("n", "z_", "zm", opts)
 
+keymap("n", "<Leader>p", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", opts)
+keymap("n", "<Leader>s", "<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>", opts)
+
 -- # Insert
 keymap("i", "<C-p>", "<Up>", opts)
 keymap("i", "<C-n>", "<Down>", opts)

@@ -122,7 +122,6 @@ packer.startup({
 		use("machakann/vim-sandwich") -- Textobject
 		use("junegunn/vim-easy-align") -- Prettification
 		use("folke/todo-comments.nvim")
-		use("cohama/lexima.vim")
 		use("monaqa/dial.nvim")
 		use("windwp/nvim-spectre")
 		use("jghauser/mkdir.nvim")
