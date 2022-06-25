@@ -101,6 +101,8 @@ packer.startup({
 		-- Git
 		use("tpope/vim-fugitive")
 		use("lewis6991/gitsigns.nvim")
+		use("tanvirtin/vgit.nvim")
+		use("akinsho/git-conflict.nvim")
 
 		-- Filer
 		use("nvim-neo-tree/neo-tree.nvim")
