@@ -129,6 +129,7 @@ packer.startup({
 		use("monaqa/dial.nvim")
 		use("windwp/nvim-spectre")
 		use("jghauser/mkdir.nvim")
+		use("dhruvasagar/vim-table-mode")
 
 		use("akinsho/toggleterm.nvim")
 
