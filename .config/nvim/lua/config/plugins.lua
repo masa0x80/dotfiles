@@ -104,7 +104,6 @@ packer.startup({
 		use("lewis6991/gitsigns.nvim")
 		use("tanvirtin/vgit.nvim")
 		use("akinsho/git-conflict.nvim")
-		use("rhysd/committia.vim")
 
 		-- Filer
 		use("nvim-neo-tree/neo-tree.nvim")
