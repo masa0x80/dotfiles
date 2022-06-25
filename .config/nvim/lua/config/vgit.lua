@@ -1,9 +1,9 @@
-local status_ok, vgit = pcall(require, "vgit")
+local status_ok, p = pcall(require, "vgit")
 if not status_ok then
 	return
 end
 
-vgit.setup({
+p.setup({
 	keymaps = {
 		["n <C-k>"] = "hunk_up",
 		["n <C-j>"] = "hunk_down",

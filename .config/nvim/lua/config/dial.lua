@@ -1,12 +1,16 @@
 local opts = { noremap = true }
 local keymap = vim.api.nvim_set_keymap
 
-keymap("n", "<C-a>", require("dial.map").inc_normal(), opts)
-keymap("n", "<C-x>", require("dial.map").dec_normal(), opts)
-keymap("v", "<C-a>", require("dial.map").inc_visual(), opts)
-keymap("v", "<C-x>", require("dial.map").dec_visual(), opts)
-keymap("v", "g<C-a>", require("dial.map").inc_gvisual(), opts)
-keymap("v", "g<C-x>", require("dial.map").dec_gvisual(), opts)
+local status_ok, p = pcall(require, "dial.map")
+if not status_ok then
+	return
+end
+keymap("n", "<C-a>", p.inc_normal(), opts)
+keymap("n", "<C-x>", p.dec_normal(), opts)
+keymap("v", "<C-a>", p.inc_visual(), opts)
+keymap("v", "<C-x>", p.dec_visual(), opts)
+keymap("v", "g<C-a>", p.inc_gvisual(), opts)
+keymap("v", "g<C-x>", p.dec_gvisual(), opts)
 
 local augend = require("dial.augend")
 require("dial.config").augends:register_group({

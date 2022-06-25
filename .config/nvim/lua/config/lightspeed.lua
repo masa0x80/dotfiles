@@ -1,6 +1,6 @@
-local status_ok, lightspeed = pcall(require, "lightspeed")
+local status_ok, p = pcall(require, "lightspeed")
 if not status_ok then
 	return
 end
 
-lightspeed.setup({})
+p.setup({})

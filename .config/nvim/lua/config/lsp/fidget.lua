@@ -1,9 +1,9 @@
-local status_ok, fidget = pcall(require, "fidget")
+local status_ok, p = pcall(require, "fidget")
 if not status_ok then
 	return
 end
 
-fidget.setup({
+p.setup({
 	text = {
 		spinner = "dots",
 	},

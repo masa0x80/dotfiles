@@ -1,4 +1,4 @@
-local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+local status_ok, p = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
 	return
 end
@@ -25,7 +25,7 @@ local languages = {
 	"yaml",
 }
 
-treesitter.setup({
+p.setup({
 	ensure_installed = languages,
 	highlight = {
 		enable = true,

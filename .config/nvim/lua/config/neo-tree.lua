@@ -1,9 +1,9 @@
-local status_ok, neo_tree = pcall(require, "neo-tree")
+local status_ok, p = pcall(require, "neo-tree")
 if not status_ok then
 	return
 end
 
-neo_tree.setup({
+p.setup({
 	popup_border_style = "rounded",
 	default_component_configs = {
 		git_status = {

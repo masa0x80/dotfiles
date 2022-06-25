@@ -1,11 +1,11 @@
-local status_ok, telescope = pcall(require, "telescope")
+local status_ok, p = pcall(require, "telescope")
 if not status_ok then
 	return
 end
 
 local actions = require("telescope.actions")
 
-telescope.setup({
+p.setup({
 	defaults = {
 		sorting_strategy = "ascending",
 		vimgrep_arguments = {

@@ -1,9 +1,9 @@
-local status_ok, lspsaga = pcall(require, "lspsaga")
+local status_ok, p = pcall(require, "lspsaga")
 if not status_ok then
 	return
 end
 
-lspsaga.setup({
+p.setup({
 	border_style = "round",
 	rename_action_keys = {
 		quit = "<C-c>",

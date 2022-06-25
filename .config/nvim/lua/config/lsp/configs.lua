@@ -1,4 +1,4 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+local status_ok, p = pcall(require, "nvim-lsp-installer")
 if not status_ok then
 	return
 end
@@ -7,7 +7,7 @@ local lspconfig = require("lspconfig")
 
 local servers = { "eslint", "tsserver", "jsonls", "sumneko_lua", "solargraph" }
 
-lsp_installer.setup({
+p.setup({
 	ensure_installed = servers,
 	automatic_installation = true,
 })

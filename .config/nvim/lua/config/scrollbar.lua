@@ -1,4 +1,4 @@
-local status_ok, scrollbar = pcall(require, "scrollbar")
+local status_ok, p = pcall(require, "scrollbar")
 if not status_ok then
 	return
 end
@@ -80,7 +80,7 @@ autocmd({ "VimEnter", "ColorScheme" }, {
 	command = "highlight ScrollbarMiscHandle guifg=#3e4452 guibg=#abb2bf",
 })
 
-scrollbar.setup({
+p.setup({
 	set_highlights = false,
 	handlers = {
 		search = true,

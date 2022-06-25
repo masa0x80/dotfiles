@@ -1,9 +1,9 @@
-local status_ok, spectre = pcall(require, "spectre")
+local status_ok, p = pcall(require, "spectre")
 if not status_ok then
 	return
 end
 
-spectre.setup()
+p.setup()
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap

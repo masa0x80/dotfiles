@@ -1,29 +1,29 @@
-local status_ok, jaq = pcall(require, "jaq-nvim")
+local status_ok, p = pcall(require, "jaq-nvim")
 if not status_ok then
-  return
+	return
 end
 
-jaq.setup({
-  cmds = {
-    default = "toggleterm",
-    external = {
-      typescript = "node %",
-      javascript = "node %",
-      markdown = "glow %",
-      python = "python3 %",
-      rust = "rustc % && ./$fileBase && rm $fileBase",
-      cpp = "g++ % -o $fileBase && ./$fileBase",
-      go = "go run %",
-      sh = "sh %",
-      ruby = "ruby %",
-      rspec = "rspec %",
-    },
-  },
-  ui = {
-    toggleterm = {
-      position = "float",
-    },
-  },
+p.setup({
+	cmds = {
+		default = "toggleterm",
+		external = {
+			typescript = "node %",
+			javascript = "node %",
+			markdown = "glow %",
+			python = "python3 %",
+			rust = "rustc % && ./$fileBase && rm $fileBase",
+			cpp = "g++ % -o $fileBase && ./$fileBase",
+			go = "go run %",
+			sh = "sh %",
+			ruby = "ruby %",
+			rspec = "rspec %",
+		},
+	},
+	ui = {
+		toggleterm = {
+			position = "float",
+		},
+	},
 })
 
 local opts = { noremap = true, silent = true }

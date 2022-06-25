@@ -1,9 +1,9 @@
-local status_ok, tabline = pcall(require, "tabline")
+local status_ok, p = pcall(require, "tabline")
 if not status_ok then
 	return
 end
 
-tabline.setup({ enable = true })
+p.setup({ enable = true })
 
 local lualine_status_ok, lualine = pcall(require, "lualine")
 if not lualine_status_ok then
