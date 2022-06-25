@@ -103,6 +103,7 @@ packer.startup({
 		use("lewis6991/gitsigns.nvim")
 		use("tanvirtin/vgit.nvim")
 		use("akinsho/git-conflict.nvim")
+		use("rhysd/committia.vim")
 
 		-- Filer
 		use("nvim-neo-tree/neo-tree.nvim")
@@ -124,6 +125,7 @@ packer.startup({
 		use("machakann/vim-sandwich") -- Textobject
 		use("junegunn/vim-easy-align") -- Prettification
 		use("folke/todo-comments.nvim")
+		use("cohama/lexima.vim")
 		use("monaqa/dial.nvim")
 		use("windwp/nvim-spectre")
 		use("jghauser/mkdir.nvim")
