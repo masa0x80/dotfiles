@@ -68,6 +68,7 @@ packer.startup({
 		use("j-hui/fidget.nvim")
 		use("dense-analysis/ale")
 		use("b0o/schemastore.nvim")
+		use("WhoIsSethDaniel/toggle-lsp-diagnostics.nvim")
 
 		-- Debug
 		use("puremourning/vimspector")
