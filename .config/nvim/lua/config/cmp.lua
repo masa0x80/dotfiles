@@ -117,6 +117,7 @@ cmp.setup({
 		{ name = "path" },
 	}, {
 		{ name = "buffer" },
+		{ name = "spell" },
 	}),
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
@@ -143,3 +144,8 @@ cmp.setup.cmdline("/", {
 		{ name = "buffer" },
 	},
 })
+
+-- cmp-spell
+-- ref. https://github.com/f3fora/cmp-spell#setup
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
