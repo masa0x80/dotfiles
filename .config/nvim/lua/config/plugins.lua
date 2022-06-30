@@ -108,7 +108,6 @@ packer.startup({
 
 		-- Filer
 		use("nvim-neo-tree/neo-tree.nvim")
-		use("kyazdani42/nvim-tree.lua")
 
 		-- Markdown
 		use({

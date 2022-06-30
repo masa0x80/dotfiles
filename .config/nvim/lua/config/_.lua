@@ -10,8 +10,11 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 	group = "_",
 	pattern = "*",
 	command = [[
-    if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$")
-      execute 'normal! g`"'
-    endif
+	try
+		if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$")
+		  execute 'normal! g`"'
+		endif
+	catch
+	endtry
   ]],
 })

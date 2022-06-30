@@ -32,7 +32,7 @@ require("config.telescope")
 
 -- Treesitter
 require("config.treesitter")
-require("treesitter-unit")
+require("config.treesitter-unit")
 
 -- UI
 require("config.illuminate")
@@ -54,7 +54,6 @@ require("config.vgit")
 
 -- Filer
 require("config.neo-tree")
-require("config.nvim-tree")
 
 -- Markdown
 require("config.markdown-preview")

@@ -41,12 +41,12 @@ local options = {
 		nbsp = "%",
 	},
 	path = {
-		vim.fn.fnameescape(vim.fn.expand("$SCRAPBOOK_DIR")),
 		".",
 		"/usr/include",
-		"",
+		"./lua",
+		vim.fn.fnameescape(vim.fn.expand("$SCRAPBOOK_DIR")),
 	},
-	suffixesadd = { ".md" },
+	suffixesadd = { ".md", ".lua" },
 }
 
 for k, v in pairs(options) do
@@ -61,3 +61,5 @@ vim.opt.iskeyword:append("-")
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 3
+
+vim.cmd([[set includeexpr=substitute(v:fname,'\\.','/','g')]])

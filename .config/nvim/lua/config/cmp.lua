@@ -57,11 +57,7 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		["<C-e>"] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-		}),
+		["<C-e>"] = cmp.mapping.confirm({ select = false }, { "c" }),
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -148,4 +144,4 @@ cmp.setup.cmdline("/", {
 -- cmp-spell
 -- ref. https://github.com/f3fora/cmp-spell#setup
 vim.opt.spell = true
-vim.opt.spelllang = { "en_us" }
+vim.opt.spelllang = { "en_us", "cjk" }
