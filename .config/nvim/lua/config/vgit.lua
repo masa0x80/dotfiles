@@ -5,8 +5,8 @@ end
 
 p.setup({
 	keymaps = {
-		["n <C-k>"] = "hunk_up",
-		["n <C-j>"] = "hunk_down",
+		["n <Leader>k"] = "hunk_up",
+		["n <Leader>j"] = "hunk_down",
 		["n <leader>gh"] = "buffer_history_preview",
 		["n <leader>gs"] = "buffer_hunk_stage",
 		["n <leader>gr"] = "buffer_hunk_reset",
