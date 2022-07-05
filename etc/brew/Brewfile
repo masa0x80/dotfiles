@@ -39,6 +39,7 @@ brew 'universal-ctags', args: ['HEAD']
 
 brew 'asdf'
 brew 'direnv'
+brew 'sops'
 
 brew 'fish'
 brew 'zsh'
@@ -79,7 +80,6 @@ tap 'itchyny/tap'
 brew 'gojq'
 brew 'gojo'
 
-brew 'docker'
 brew 'hadolint'
 brew 'lazydocker'
 
