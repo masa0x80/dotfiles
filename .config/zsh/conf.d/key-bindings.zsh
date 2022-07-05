@@ -3,6 +3,9 @@ if installed mcfly; then
   eval "$(mcfly init zsh)"
 fi
 
+# olets/zsh-abbr
+bindkey '^J' _abbr_widget_expand_and_accept
+
 # Key bindings
 autoload -Uz smart-insert-last-word
 zle -N insert-last-word smart-insert-last-word
