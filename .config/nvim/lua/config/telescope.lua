@@ -59,7 +59,7 @@ local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap(
 	"n",
 	"<Leader><Leader>",
-	"<Cmd>lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>",
+	"<Cmd>lua require('telescope.builtin').buffers({ sort_mru = true, ignore_current_buffer = true })<CR>",
 	opts
 )
 vim.api.nvim_set_keymap(
