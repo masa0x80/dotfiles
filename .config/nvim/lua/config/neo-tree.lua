@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 p.setup({
+	use_default_mappings = false,
 	popup_border_style = "rounded",
 	default_component_configs = {
 		git_status = {
@@ -26,24 +27,35 @@ p.setup({
 		mappings = {
 			["u"] = "navigate_up",
 			["l"] = "open",
+			["<CR>"] = "open",
 			["<BS>"] = "close_node",
 			["h"] = "close_node",
+			["H"] = "toggle_hidden",
 			["s"] = "open_split",
 			["-"] = "open_split",
 			["v"] = "open_vsplit",
 			["|"] = "open_vsplit",
 			["t"] = "open_tabnew",
-			["w"] = "open_with_window_picker",
-			["<C-c>"] = "close_window",
-			["f"] = "filter_as_you_type",
-			["/"] = "filter_on_submit",
+			["f"] = "filter_on_submit",
 			["<C-]>"] = "set_root",
+			["<C-c><C-c>"] = "clear_filter",
 			["i"] = {
 				"add",
 				config = {
 					show_path = "relative",
 				},
 			},
+			["o"] = "add_directory",
+			["d"] = "delete",
+			["r"] = "rename",
+			["c"] = "copy",
+			["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+			["q"] = "close_window",
+			["R"] = "refresh",
+			["?"] = "show_help",
+			["[g"] = "prev_git_modified",
+			["]g"] = "next_git_modified",
+			["C"] = "close_all_nodes",
 			["y"] = function(state)
 				local node = state.tree:get_node()
 				local name = node.name
@@ -73,8 +85,12 @@ p.setup({
 			hide_hidden = false,
 			hide_gitignored = false,
 		},
-		-- hijack_netrw_behavior = "disabled",
+		hijack_netrw_behavior = "open_current",
 		follow_current_file = true,
+		never_show = {
+			".DS_Store",
+			"thumbs.db",
+		},
 	},
 })
 
