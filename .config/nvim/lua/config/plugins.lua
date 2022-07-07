@@ -94,7 +94,6 @@ packer.startup({
 		use("norcalli/nvim-colorizer.lua")
 		use("mvllow/modes.nvim")
 		use("nvim-lualine/lualine.nvim")
-		use("kdheepak/tabline.nvim")
 
 		-- Ops
 		use("ggandor/lightspeed.nvim")
