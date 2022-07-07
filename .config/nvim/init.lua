@@ -41,6 +41,7 @@ require("config.hlslens")
 require("config.colorizer")
 require("config.modes")
 require("config.lualine")
+require("config.incline")
 
 -- Ops
 require("config.lightspeed")
