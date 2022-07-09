@@ -37,19 +37,41 @@ packer.startup({
 		use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 		use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 		use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-		use("numToStr/Comment.nvim") -- Comment out
 		use("tpope/vim-repeat")
 		use("tpope/vim-unimpaired")
 		use("kyazdani42/nvim-web-devicons")
 		use("MunifTanjim/nui.nvim")
-		use("folke/which-key.nvim")
-		use("lewis6991/impatient.nvim")
+
+		-- Comment out
+		use({
+			"numToStr/Comment.nvim",
+			config = function()
+				require("config.comment")
+			end,
+		})
+		use({
+			"folke/which-key.nvim",
+			config = function()
+				require("config.which-key")
+			end,
+		})
+		use({
+			"lewis6991/impatient.nvim",
+			config = function()
+				require("config.impatient")
+			end,
+		})
 
 		-- Colorscheme
 		use("joshdick/onedark.vim")
 
 		-- Cmp plugins
-		use("hrsh7th/nvim-cmp") -- The completion plugin
+		use({
+			"hrsh7th/nvim-cmp",
+			config = function()
+				require("config.cmp")
+			end,
+		}) -- The completion plugin
 		use("hrsh7th/cmp-buffer") -- buffer completions
 		use("hrsh7th/cmp-path") -- path completions
 		use("hrsh7th/cmp-cmdline") -- cmdline completions
@@ -64,57 +86,185 @@ packer.startup({
 		-- LSP
 		use("neovim/nvim-lspconfig") -- enable LSP
 		use("williamboman/nvim-lsp-installer") -- simple to use language server installer
-		use("tami5/lspsaga.nvim")
+		use({
+			"tami5/lspsaga.nvim",
+			config = function()
+				require("config.lsp.lspsaga")
+			end,
+		})
 		use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-		use("j-hui/fidget.nvim")
-		use("dense-analysis/ale")
+		use({
+			"j-hui/fidget.nvim",
+			config = function()
+				require("config.lsp.fidget")
+			end,
+		}) -- The completion plugin
+		use({
+			"dense-analysis/ale",
+			config = function()
+				require("config.lsp.ale")
+			end,
+		})
 		use("b0o/schemastore.nvim")
 		use("WhoIsSethDaniel/toggle-lsp-diagnostics.nvim")
 
 		-- Debug
-		use("puremourning/vimspector")
+		use({
+			"puremourning/vimspector",
+			config = function()
+				require("config.vimspector")
+			end,
+		})
 
 		-- Test
-		use("vim-test/vim-test")
-		use("is0n/jaq-nvim")
+		use({
+			"vim-test/vim-test",
+			config = function()
+				require("config.vim-test")
+			end,
+		})
+		use({
+			"is0n/jaq-nvim",
+			config = function()
+				require("config.jaq")
+			end,
+		})
 
 		-- Telescope
-		use("nvim-telescope/telescope.nvim")
+		use({
+			"nvim-telescope/telescope.nvim",
+			requires = { "nvim-lua/plenary.nvim" },
+			config = function()
+				require("config.telescope")
+			end,
+		})
 
 		-- Treesitter
-		use("nvim-treesitter/nvim-treesitter")
-		use("David-Kunz/treesitter-unit")
+		use({
+			"nvim-treesitter/nvim-treesitter",
+			config = function()
+				require("config.treesitter")
+			end,
+		})
+		use({
+			"David-Kunz/treesitter-unit",
+			config = function()
+				require("config.treesitter-unit")
+			end,
+		})
 		use("haringsrob/nvim_context_vt")
 
 		-- UI
-		use("RRethy/vim-illuminate")
-		use("petertriho/nvim-scrollbar")
-		use("kevinhwang91/nvim-hlslens")
+		use({
+			"RRethy/vim-illuminate",
+			config = function()
+				require("config.illuminate")
+			end,
+		})
+		use({
+			"petertriho/nvim-scrollbar",
+			config = function()
+				require("config.scrollbar")
+			end,
+		})
+		use({
+			"kevinhwang91/nvim-hlslens",
+			config = function()
+				require("config.hlslens")
+			end,
+		})
 		use("haya14busa/vim-asterisk")
-		use("norcalli/nvim-colorizer.lua")
-		use("mvllow/modes.nvim")
-		use("nvim-lualine/lualine.nvim")
-		use("kdheepak/tabline.nvim")
-		use("b0o/incline.nvim")
+		use({
+			"norcalli/nvim-colorizer.lua",
+			config = function()
+				require("config.colorizer")
+			end,
+		})
+		use({
+			"mvllow/modes.nvim",
+			config = function()
+				require("config.modes")
+			end,
+		})
+		use({
+			"nvim-lualine/lualine.nvim",
+			config = function()
+				require("config.lualine")
+			end,
+		})
+		use({
+			"kdheepak/tabline.nvim",
+			requires = {
+				"nvim-lualine/lualine.nvim",
+				"kyazdani42/nvim-web-devicons",
+			},
+			config = function()
+				require("config.tabline")
+			end,
+		})
+		use({
+			"b0o/incline.nvim",
+			config = function()
+				require("config.incline")
+			end,
+		})
 
 		-- Ops
-		use("ggandor/lightspeed.nvim")
-		use("Bakudankun/BackAndForward.vim")
+		use({
+			"ggandor/lightspeed.nvim",
+			config = function()
+				require("config.lightspeed")
+			end,
+		})
+		use({
+			"Bakudankun/BackAndForward.vim",
+			config = function()
+				require("config.BackAndForward")
+			end,
+		})
 
 		-- Git
 		use("tpope/vim-fugitive")
-		use("lewis6991/gitsigns.nvim")
-		use("tanvirtin/vgit.nvim")
-		use("akinsho/git-conflict.nvim")
+		use({
+			"lewis6991/gitsigns.nvim",
+			config = function()
+				require("config.gitsigns")
+			end,
+		})
+		use({
+			"tanvirtin/vgit.nvim",
+			config = function()
+				require("config.vgit")
+			end,
+		})
+		use({
+			"akinsho/git-conflict.nvim",
+			config = function()
+				require("config.git-conflict")
+			end,
+		})
 
 		-- Filer
-		use("nvim-neo-tree/neo-tree.nvim")
+		use({
+			"nvim-neo-tree/neo-tree.nvim",
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"kyazdani42/nvim-web-devicons",
+				"MunifTanjim/nui.nvim",
+			},
+			config = function()
+				require("config.neo-tree")
+			end,
+		})
 
 		-- Markdown
 		use({
 			"iamcco/markdown-preview.nvim",
 			run = "cd app && npm install",
 			ft = { "markdown", "plantuml" },
+			config = function()
+				require("config.markdown-preview")
+			end,
 		})
 
 		-- PlantUML
@@ -124,15 +274,56 @@ packer.startup({
 		use("lambdalisue/readablefold.vim") -- Folding
 		use("lukas-reineke/indent-blankline.nvim") -- Indent
 		use("machakann/vim-sandwich") -- Textobject
-		use("junegunn/vim-easy-align") -- Prettification
-		use("folke/todo-comments.nvim")
+		-- Prettification
+		use({
+			"junegunn/vim-easy-align",
+			config = function()
+				require("config.easy-align")
+			end,
+		})
+		use({
+			"folke/todo-comments.nvim",
+			config = function()
+				require("config.todo-comments")
+			end,
+		})
 		use("cohama/lexima.vim")
-		use("monaqa/dial.nvim")
-		use("windwp/nvim-spectre")
+		use({
+			"monaqa/dial.nvim",
+			config = function()
+				require("config.dial")
+			end,
+		})
+		use({
+			"windwp/nvim-spectre",
+			config = function()
+				require("config.spectre")
+			end,
+		})
 		use("jghauser/mkdir.nvim")
 		use("dhruvasagar/vim-table-mode")
+		use({
+			"danymat/neogen",
+			config = function()
+				require("config.neogen")
+			end,
+		})
+		use({
+			"folke/trouble.nvim",
+			requires = {
+				"kyazdani42/nvim-web-devicons",
+			},
+			config = function()
+				require("config.trouble")
+			end,
+		})
 
-		use("akinsho/toggleterm.nvim")
+		use({
+			"akinsho/toggleterm.nvim",
+			config = function()
+				require("config.toggleterm")
+			end,
+		})
 
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins

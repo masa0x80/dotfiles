@@ -43,7 +43,7 @@ local options = {
 	path = {
 		".",
 		"/usr/include",
-		"./lua",
+		vim.fn.fnameescape(vim.fn.expand("$DOTFILE/.config/nvim/lua")),
 		vim.fn.fnameescape(vim.fn.expand("$SCRAPBOOK_DIR")),
 	},
 	suffixesadd = { ".md", ".lua" },

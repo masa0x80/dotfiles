@@ -3,7 +3,12 @@ if not status_ok then
 	return
 end
 
-p.setup({ enable = true })
+p.setup({
+	enable = true,
+	options = {
+		show_filename_only = true,
+	},
+})
 
 local lualine_status_ok, lualine = pcall(require, "lualine")
 if not lualine_status_ok then
@@ -20,3 +25,7 @@ lualine.setup({
 		lualine_z = {},
 	},
 })
+
+vim.cmd([[
+  set sessionoptions+=tabpages,globals " store tabpages and globals in session
+]])
