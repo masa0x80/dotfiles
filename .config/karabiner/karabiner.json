@@ -462,7 +462,7 @@
             ]
           },
           {
-            "description": "Slack: Ctrl+[ / Ctrl+] ▶ Alt+Shift+Up / Alt+Shift+Down",
+            "description": "Slack: Ctrl+[ / Ctrl+] ▶ Cmd+Up / Cmd+Down",
             "manipulators": [
               {
                 "conditions": [
@@ -479,8 +479,8 @@
                 },
                 "to": [
                   {
-                    "key_code": "up_arrow",
-                    "modifiers": ["option", "shift"]
+                    "key_code": "right_arrow",
+                    "modifiers": ["command"]
                   }
                 ],
                 "type": "basic"
@@ -500,8 +500,8 @@
                 },
                 "to": [
                   {
-                    "key_code": "down_arrow",
-                    "modifiers": ["option", "shift"]
+                    "key_code": "left_arrow",
+                    "modifiers": ["command"]
                   }
                 ],
                 "type": "basic"
