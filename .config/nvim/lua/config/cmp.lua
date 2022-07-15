@@ -90,6 +90,13 @@ cmp.setup({
 			"i",
 			"s",
 		}),
+		["<C-x><C-x>"] = cmp.mapping.complete({
+			config = {
+				sources = {
+					{ name = "spell" },
+				},
+			},
+		}, { "i", "c" }),
 	}),
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
@@ -113,7 +120,6 @@ cmp.setup({
 		{ name = "path" },
 	}, {
 		{ name = "buffer" },
-		{ name = "spell" },
 	}),
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
