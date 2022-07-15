@@ -5,7 +5,6 @@ end
 
 p.setup({
 	cmds = {
-		default = "toggleterm",
 		external = {
 			typescript = "node %",
 			javascript = "node %",
@@ -19,13 +18,18 @@ p.setup({
 			rspec = "rspec %",
 		},
 	},
+	behavior = {
+		default = "terminal",
+	},
 	ui = {
-		toggleterm = {
-			position = "float",
+		terminal = {
+			position = "bot",
+			size = 10,
+			line_no = false,
 		},
 	},
 })
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
-keymap("n", "<Leader>x", "<Cmd>Jaq<CR>", opts)
+keymap("n", "<Leader>x", "<Cmd>Jaq<CR><C-w>k", opts)
