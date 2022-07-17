@@ -2,14 +2,14 @@
 
 if [ -z "$2" ]; then
   mv "$1" "$1".tmp
-  ISSUE_NUMBER=$(git rev-parse --abbrev-ref @ | grep -Eo "([A-Z0-9_]+-[0-9]+|[0-9]*)")
+  ISSUE_NUMBER=$(git rev-parse --abbrev-ref @ | grep -Eo "([A-Z0-9_]+-[0-9]+|[0-9]*) | head -n1")
   if test -n "$ISSUE_NUMBER"; then
     echo '' > "$1"
     echo '' >> "$1"
     if echo "$ISSUE_NUMBER" | grep -q '-'; then
       echo "$ISSUE_NUMBER" >> "$1"
     else
-      echo "#$ISSUE_NUMBER" >> "$1"
+      echo "ref. #$ISSUE_NUMBER" >> "$1"
     fi
   fi
   cat "$1.tmp" >> "$1"
