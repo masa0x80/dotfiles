@@ -41,7 +41,6 @@ brew 'asdf'
 brew 'direnv'
 brew 'sops'
 
-brew 'fish'
 brew 'zsh'
 
 brew 'navi'
@@ -74,7 +73,6 @@ brew 'gh'
 brew 'ghq'
 
 brew 'csvq'
-brew 'packer'
 
 tap 'itchyny/tap'
 brew 'gojq'
@@ -82,9 +80,6 @@ brew 'gojo'
 
 brew 'hadolint'
 brew 'lazydocker'
-
-tap 'mackerelio/mackerel-agent'
-brew 'mkr'
 
 brew 'pinentry-mac'
 
