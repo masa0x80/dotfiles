@@ -232,12 +232,6 @@ packer.startup({
 			end,
 		})
 		use({
-			"tanvirtin/vgit.nvim",
-			config = function()
-				require("config.vgit")
-			end,
-		})
-		use({
 			"akinsho/git-conflict.nvim",
 			config = function()
 				require("config.git-conflict")
