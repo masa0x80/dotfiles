@@ -87,10 +87,7 @@ p.setup({
 		},
 		hijack_netrw_behavior = "open_current",
 		follow_current_file = true,
-		never_show = {
-			".DS_Store",
-			"thumbs.db",
-		},
+		use_libuv_file_watcher = true,
 	},
 })
 
