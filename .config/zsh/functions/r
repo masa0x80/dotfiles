@@ -1,8 +1,8 @@
 #!/bin/zsh
 
 r() {
-  local repo=$(ghq list -p | sed -e "s|$HOME/||g" | fzf +m --query="$@")
+  local repo=$(ghq list | fzf +m --query="$@")
   if test -n "$repo"; then
-    cd "$HOME/$repo"
+    cd "$(ghq root)/$repo"
   fi
 }
