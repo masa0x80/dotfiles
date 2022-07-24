@@ -35,8 +35,10 @@ keymap("n", "<Leader>q", "<Cmd>q<CR>", opts)
 keymap("n", "<Leader>Q", "<Cmd>qa<CR>", opts)
 
 -- Windows
-keymap("n", "<C-w>-", "<C-w>s", opts)
-keymap("n", "<C-w>|", "<C-w>v", opts)
+keymap("n", ",s", "<Cmd>split<CR>", opts)
+keymap("n", "<C-w>-", "<Cmd>split<CR>", opts)
+keymap("n", ",v", "<Cmd>vsplit<CR>", opts)
+keymap("n", "<C-w>|", "<Cmd>vsplit<CR>", opts)
 keymap("n", "<C-w>o", "<NOP>", opts)
 keymap("n", "<C-w>O", "<Cmd>only<CR>", opts)
 
@@ -107,16 +109,13 @@ keymap("c", "<C-f>", "<Right>", {})
 keymap("c", "<C-a>", "<Home>", {})
 
 -- Esc
-keymap("n", "<C-c>", "<Esc>", opts)
-keymap("i", "<C-c>", "<Esc>", opts)
+vim.keymap.set({ "n", "i" }, "<C-c>", "<Esc>", opts)
 keymap("n", "<Esc><Esc>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
 keymap("n", "<C-c><C-c>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
 
 -- Jump
-keymap("n", "<C-g><C-j>", "]M", opts)
-keymap("v", "<C-g><C-j>", "]M", opts)
-keymap("n", "<C-g><C-k>", "[m", opts)
-keymap("v", "<C-g><C-k>", "[m", opts)
+vim.keymap.set({ "n", "v" }, "<C-g><C-j>", "]M", opts)
+vim.keymap.set({ "n", "v" }, "<C-g><C-k>", "[m", opts)
 
 -- Delete a character without yanking
 keymap("n", "x", '"_x', opts)
