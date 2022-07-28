@@ -17,9 +17,6 @@ fi
 lefthook_bin=$(brew --prefix lefthook)/bin/lefthook
 
 call_lefthook() {
-  local pj_root=$(git rev-parse --show-toplevel)
-  [ ! -e "${pj_root}/lefthook.yml" ] && [ ! -e "${pj_root}/lefthook-local.yml" ] && return 0
-
   if $lefthook_bin -h >/dev/null 2>&1
   then
     $lefthook_bin $@

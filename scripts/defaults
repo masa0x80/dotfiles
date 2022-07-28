@@ -35,7 +35,7 @@ defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write -g com.apple.mouse.tapBehavior -int 1
 
 # Disable spotlight
-mdutil -s / | grep enabled && sudo mdutil -a -i off /
+# mdutil -s / | grep enabled && sudo mdutil -a -i off /
 
 killall Dock
 killall Finder

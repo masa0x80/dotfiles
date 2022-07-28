@@ -4,12 +4,12 @@ if [ "$argv" = 'show' ]; then
     # fshow - git commit browser
     # ref: https://github.com/junegunn/fzf/wiki/Examples
     git log --graph --color=always \
-        --format="%C(auto)%h%d %s %C(blue)%C(bold)%cr" | \
+        --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
         fzf --ansi --no-sort --tiebreak=index +m \
-        --bind "ctrl-m:execute: echo {} | grep -o '[a-f0-9]\{7\}' | xargs -I % sh -c 'git show %'"
+        --bind "ctrl-m:execute: echo {} | grep -o '[a-f0-9]\{7\}' | head -n1 | xargs -I % sh -c 'printf % | pbcopy; git show %'"
 else
     # fetch git commit hash
     git log --graph --color=always \
-        --format="%C(auto)%h%d %s %C(blue)%C(bold)%cr" | \
-        fzf --ansi --no-sort --tiebreak=index +m | grep -o '[a-f0-9]\{7\}'
+        --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
+        fzf --ansi --no-sort --tiebreak=index +m | grep -o '[a-f0-9]\{7\}' | head -n1 | xargs -I % sh -c 'printf % | pbcopy; echo %'
 fi
