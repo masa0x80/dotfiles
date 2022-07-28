@@ -436,7 +436,7 @@ const qmarksMapKey = (prefix, urls, newTab) => {
     });
   };
   for (const key in urls) {
-    const lhs = newTab ? `${prefix}${key}` : `${prefix}<Ctrl-${key}>`;
+    const lhs = `${prefix}${key}`;
     mapkey(lhs, `qmark: ${urls[key]}`, openLink(urls[key], newTab));
   }
 };
@@ -446,7 +446,7 @@ const qmarksUrls = {
   m: "https://mail.google.com",
 };
 qmarksMapKey("go", qmarksUrls, true);
-qmarksMapKey("<Ctrl-g><Ctrl-o>", qmarksUrls, false);
+qmarksMapKey(";go", qmarksUrls, false);
 // }}}
 
 // {{{ Site-specific mappings
