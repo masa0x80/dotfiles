@@ -95,3 +95,6 @@ tap 'cantino/mcfly', 'https://github.com/cantino/mcfly'
 brew 'mcfly'
 
 brew 'stylua'
+
+tap 'charmbracelet/tap'
+brew 'gum'
