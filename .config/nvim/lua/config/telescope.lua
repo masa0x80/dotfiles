@@ -21,6 +21,7 @@ p.setup({
 		mappings = {
 			i = {
 				["<C-c>"] = { "<Esc>", type = "command" },
+				["<C-c><C-c>"] = actions.close,
 			},
 			n = {
 				["<C-n>"] = actions.move_selection_next,
