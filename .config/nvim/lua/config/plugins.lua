@@ -68,23 +68,32 @@ packer.startup({
 		-- Cmp plugins
 		use({
 			"hrsh7th/nvim-cmp",
+			event = "VimEnter",
+			requires = {
+				-- nvim-cmp
+				{ "hrsh7th/cmp-buffer", after = "nvim-cmp" }, -- buffer completions
+				{ "hrsh7th/cmp-path", after = "nvim-cmp" }, -- path completions
+				{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" }, -- cmdline completions
+				{ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
+				{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" }, -- snippet completions
+				{ "f3fora/cmp-spell", after = "nvim-cmp" },
+				-- snippets
+				{ "L3MON4D3/LuaSnip", after = "cmp_luasnip" }, --snippet engine
+				{ "rafamadriz/friendly-snippets", after = "cmp_luasnip" }, -- a bunch of snippets to use
+			},
 			config = function()
 				require("config.cmp")
 			end,
 		}) -- The completion plugin
-		use("hrsh7th/cmp-buffer") -- buffer completions
-		use("hrsh7th/cmp-path") -- path completions
-		use("hrsh7th/cmp-cmdline") -- cmdline completions
-		use("saadparwaiz1/cmp_luasnip") -- snippet completions
-		use("hrsh7th/cmp-nvim-lsp")
-		use("f3fora/cmp-spell")
-
-		-- Snippets
-		use("L3MON4D3/LuaSnip") --snippet engine
-		use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 		-- LSP
-		use("neovim/nvim-lspconfig") -- enable LSP
+		use({
+			"neovim/nvim-lspconfig", -- enable LSP
+			event = "VimEnter",
+			config = function()
+				require("config.lsp")
+			end,
+		})
 		use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 		use({
 			"tami5/lspsaga.nvim",
@@ -101,6 +110,7 @@ packer.startup({
 		}) -- The completion plugin
 		use({
 			"dense-analysis/ale",
+			ft = { "ruby", "json" },
 			config = function()
 				require("config.lsp.ale")
 			end,

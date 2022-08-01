@@ -7,9 +7,6 @@ require("config.colorscheme")
 -- Plugins
 require("config.plugins")
 
--- lsp
-require("config.lsp")
-
 -- Misc
 require("misc.markdown")
 require("misc.todo")
