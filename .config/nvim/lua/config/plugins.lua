@@ -45,12 +45,14 @@ packer.startup({
 		-- Comment out
 		use({
 			"numToStr/Comment.nvim",
+			event = "BufEnter",
 			config = function()
 				require("config.comment")
 			end,
 		})
 		use({
 			"folke/which-key.nvim",
+			event = "BufEnter",
 			config = function()
 				require("config.which-key")
 			end,
@@ -68,7 +70,6 @@ packer.startup({
 		-- Cmp plugins
 		use({
 			"hrsh7th/nvim-cmp",
-			event = "VimEnter",
 			requires = {
 				-- nvim-cmp
 				{ "hrsh7th/cmp-buffer", after = "nvim-cmp" }, -- buffer completions
@@ -81,6 +82,7 @@ packer.startup({
 				{ "L3MON4D3/LuaSnip", after = "cmp_luasnip" }, --snippet engine
 				{ "rafamadriz/friendly-snippets", after = "cmp_luasnip" }, -- a bunch of snippets to use
 			},
+			event = "BufEnter",
 			config = function()
 				require("config.cmp")
 			end,
@@ -89,21 +91,29 @@ packer.startup({
 		-- LSP
 		use({
 			"neovim/nvim-lspconfig", -- enable LSP
-			event = "VimEnter",
+			event = "BufEnter",
 			config = function()
 				require("config.lsp")
 			end,
 		})
-		use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+		use({
+			"williamboman/nvim-lsp-installer", -- simple to use language server installer
+			event = "BufEnter",
+		})
 		use({
 			"tami5/lspsaga.nvim",
+			event = "BufEnter",
 			config = function()
 				require("config.lsp.lspsaga")
 			end,
 		})
-		use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+		use({
+			"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+			event = "BufEnter",
+		})
 		use({
 			"j-hui/fidget.nvim",
+			event = "BufEnter",
 			config = function()
 				require("config.lsp.fidget")
 			end,
@@ -115,12 +125,19 @@ packer.startup({
 				require("config.lsp.ale")
 			end,
 		})
-		use("b0o/schemastore.nvim")
-		use("WhoIsSethDaniel/toggle-lsp-diagnostics.nvim")
+		use({
+			"b0o/schemastore.nvim",
+			event = "BufEnter",
+		})
+		use({
+			"WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
+			event = "BufEnter",
+		})
 
 		-- Debug
 		use({
 			"puremourning/vimspector",
+			event = "BufEnter",
 			config = function()
 				require("config.vimspector")
 			end,
@@ -129,12 +146,14 @@ packer.startup({
 		-- Test
 		use({
 			"vim-test/vim-test",
+			event = "BufEnter",
 			config = function()
 				require("config.vim-test")
 			end,
 		})
 		use({
 			"is0n/jaq-nvim",
+			event = "BufEnter",
 			config = function()
 				require("config.jaq")
 			end,
@@ -144,6 +163,7 @@ packer.startup({
 		use({
 			"nvim-telescope/telescope.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
+			event = "BufEnter",
 			config = function()
 				require("config.telescope")
 			end,
@@ -152,58 +172,73 @@ packer.startup({
 		-- Treesitter
 		use({
 			"nvim-treesitter/nvim-treesitter",
+			event = "BufEnter",
 			config = function()
 				require("config.treesitter")
 			end,
 		})
 		use({
 			"David-Kunz/treesitter-unit",
+			event = "BufEnter",
 			config = function()
 				require("config.treesitter-unit")
 			end,
 		})
-		use("haringsrob/nvim_context_vt")
+		use({
+			"haringsrob/nvim_context_vt",
+			event = "BufEnter",
+		})
 
 		-- UI
 		use({
 			"RRethy/vim-illuminate",
+			event = "BufEnter",
 			config = function()
 				require("config.illuminate")
 			end,
 		})
 		use({
 			"petertriho/nvim-scrollbar",
+			event = "BufEnter",
 			config = function()
 				require("config.scrollbar")
 			end,
 		})
 		use({
 			"kevinhwang91/nvim-hlslens",
+			event = "BufEnter",
 			config = function()
 				require("config.hlslens")
 			end,
 		})
-		use("haya14busa/vim-asterisk")
+		use({
+			"haya14busa/vim-asterisk",
+			event = "BufEnter",
+		})
 		use({
 			"norcalli/nvim-colorizer.lua",
+			event = "BufEnter",
 			config = function()
 				require("config.colorizer")
 			end,
 		})
 		use({
 			"mvllow/modes.nvim",
+			event = "BufEnter",
 			config = function()
 				require("config.modes")
 			end,
 		})
 		use({
 			"nvim-lualine/lualine.nvim",
+			event = "BufEnter",
 			config = function()
 				require("config.lualine")
 			end,
 		})
 		use({
 			"kdheepak/tabline.nvim",
+			event = "BufLeave",
 			requires = {
 				"nvim-lualine/lualine.nvim",
 				"kyazdani42/nvim-web-devicons",
@@ -214,6 +249,7 @@ packer.startup({
 		})
 		use({
 			"b0o/incline.nvim",
+			event = "BufLeave",
 			config = function()
 				require("config.incline")
 			end,
@@ -222,21 +258,27 @@ packer.startup({
 		-- Ops
 		use({
 			"ggandor/lightspeed.nvim",
+			event = "BufEnter",
 			config = function()
 				require("config.lightspeed")
 			end,
 		})
 		use({
 			"Bakudankun/BackAndForward.vim",
+			event = "BufLeave",
 			config = function()
 				require("config.BackAndForward")
 			end,
 		})
 
 		-- Git
-		use("tpope/vim-fugitive")
+		use({
+			"tpope/vim-fugitive",
+			event = "BufEnter",
+		})
 		use({
 			"lewis6991/gitsigns.nvim",
+			event = "BufEnter",
 			config = function()
 				require("config.gitsigns")
 			end,
@@ -256,6 +298,7 @@ packer.startup({
 				"kyazdani42/nvim-web-devicons",
 				"MunifTanjim/nui.nvim",
 			},
+			event = "BufEnter",
 			config = function()
 				require("config.neo-tree")
 			end,
@@ -276,38 +319,55 @@ packer.startup({
 
 		use("gpanders/editorconfig.nvim") -- EditorConfig
 		use("lambdalisue/readablefold.vim") -- Folding
-		use("lukas-reineke/indent-blankline.nvim") -- Indent
-		use("machakann/vim-sandwich") -- Textobject
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			event = "BufEnter",
+		}) -- Indent
+		use({
+			"machakann/vim-sandwich", -- Textobject
+			event = "BufEnter",
+		}) -- Indent
 		-- Prettification
 		use({
 			"junegunn/vim-easy-align",
+			event = "BufEnter",
 			config = function()
 				require("config.easy-align")
 			end,
 		})
 		use({
 			"folke/todo-comments.nvim",
+			event = "BufEnter",
 			config = function()
 				require("config.todo-comments")
 			end,
 		})
-		use("cohama/lexima.vim")
+		use({
+			"cohama/lexima.vim",
+			event = "InsertEnter",
+		}) -- Indent
 		use({
 			"monaqa/dial.nvim",
+			event = "BufEnter",
 			config = function()
 				require("config.dial")
 			end,
 		})
 		use({
 			"windwp/nvim-spectre",
+			event = "BufEnter",
 			config = function()
 				require("config.spectre")
 			end,
 		})
 		use("jghauser/mkdir.nvim")
-		use("dhruvasagar/vim-table-mode")
+		use({
+			"dhruvasagar/vim-table-mode",
+			ft = { "markdown" },
+		})
 		use({
 			"danymat/neogen",
+			event = "BufEnter",
 			config = function()
 				require("config.neogen")
 			end,
@@ -317,6 +377,7 @@ packer.startup({
 			requires = {
 				"kyazdani42/nvim-web-devicons",
 			},
+			event = "BufEnter",
 			config = function()
 				require("config.trouble")
 			end,
@@ -324,6 +385,7 @@ packer.startup({
 
 		use({
 			"akinsho/toggleterm.nvim",
+			event = "BufEnter",
 			config = function()
 				require("config.toggleterm")
 			end,
