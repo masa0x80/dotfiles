@@ -118,6 +118,8 @@ map("<Ctrl-s><Ctrl-s>", "<Ctrl-6>");
 
 map("F", "C");
 
+map("<Ctrl-;>", "t");
+
 map("<Ctrl-[>", "<Esc>");
 map("<Ctrl-c>", "<Esc>");
 
