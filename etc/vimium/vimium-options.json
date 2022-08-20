@@ -1,24 +1,24 @@
 {
-  "settingsVersion": "1.66",
+  "settingsVersion": "1.67",
   "exclusionRules": [
     {
       "pattern": "https?://mail.google.com/*",
-      "passKeys": "jkoe/#?unpx"
+      "passKeys": "ukjopn/?d.vlxsyem!#rafzcg"
     },
     {
       "pattern": "https?://calendar.google.com/*",
-      "passKeys": ""
+      "passKeys": "njpkt1d2w3m4x5a6ycez/?"
     },
     {
-      "pattern": "https?://outlook.office\\d?\\d?\\d?.com/*",
-      "passKeys": "jkoe/#?unpx"
+      "pattern": "https?://outlook.office\\d{3}?.com/*",
+      "passKeys": "ukjopn/?d.vlxsyem!#rafzcgUG"
     }
   ],
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "unmap K\nunmap J\n\nmap d removeTab\nmap u restoreTab\n\nmap t Vomnibar.activateInNewTab\nmap O Vomnibar.activateEditUrl\nmap T Vomnibar.activateEditUrlInNewTab\nmap <C-;> Vomnibar.activateTabSelection\n\nmap <C-b> scrollPageUp\nmap <C-f> scrollPageDown\nmap <C-u> scrollFullPageUp\nmap <C-d> scrollFullPageDown\nmap <C-p> previousTab\nmap <C-n> nextTab\nmap <C-t><C-t> visitPreviousTab\nmap <C-s><C-s> visitPreviousTab\n\nmap gp togglePinTab\n\nmap <c-]> passNextKey normal count=999",
-  "linkHintCharacters": "fjdksla;vnmruewoqpghtb",
+  "keyMappings": "unmap K\nunmap J\n\nmap d removeTab\nmap u restoreTab\n\nmap R reload hard\n\nmap t Vomnibar.activateInNewTab\nmap O Vomnibar.activateEditUrl\nmap T Vomnibar.activateEditUrlInNewTab\nmap <C-;> Vomnibar.activateTabSelection\n\nmap <C-b> scrollPageUp\nmap <C-f> scrollPageDown\nmap <C-u> scrollFullPageUp\nmap <C-d> scrollFullPageDown\nmap <C-p> previousTab\nmap <C-n> nextTab\nmap <C-o> previousTab\nmap <C-i> nextTab\nmap <C-t><C-t> visitPreviousTab\nmap <C-s><C-s> visitPreviousTab\n\nmap gp togglePinTab\n\nmap <C-v> passNextKey\nmap \\ passNextKey count=999999",
+  "linkHintCharacters": "fydig;suaoenwmr",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
   "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
@@ -28,7 +28,7 @@
   "scrollStepSize": 60,
   "smoothScroll": true,
   "grabBackFocus": true,
-  "searchEngines": "a: https://eow.alc.co.jp/search?q=%s ALC\ng: https://www.google.com/search?q=%s Google\nt: https://translate.google.co.jp/#auto/ja/%s Google Tralslation",
+  "searchEngines": "a: https://eow.alc.co.jp/search?q=%s ALC\ng: https://www.google.com/search?q=%s Google\ny: https://www.youtube.com/results?search_query=%s Youtube\nt: https://translate.google.co.jp/#auto/ja/%s Google Tralslation\nre: https://search.yahoo.co.jp/realtime/search?p=%s  Y! リアルタイム検索\nwi: https://ja.wikipedia.org/w/index.php?search=%s Wikipedia\nmdn: https://developer.mozilla.org/ja/search?q=%s MDN\nnpm: https://www.npmjs.com/search?q=%s NPM\nam: https://www.amazon.co.jp/s?k=%s Amazon",
   "searchUrl": "https://www.google.com/search?q=",
-  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,silver),\n  color-stop(100%,black));\nborder: 1px solid black;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: white;\nfont-weight: bold;\nfont-size: 16px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n  border: 1px solid silver !important;\n  background: #333 !important;\n  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.3) !important;\n  padding: 6px !important;\n}\n\ndiv > .vimiumHintMarker span {\n  color: white !important;\n  font-weight: bold !important;\n  font-size: 16px !important;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n  color: gray !important;\n}"
 }
