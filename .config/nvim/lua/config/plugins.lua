@@ -231,14 +231,12 @@ packer.startup({
 		})
 		use({
 			"nvim-lualine/lualine.nvim",
-			event = "BufEnter",
 			config = function()
 				require("config.lualine")
 			end,
 		})
 		use({
 			"kdheepak/tabline.nvim",
-			event = "BufLeave",
 			requires = {
 				"nvim-lualine/lualine.nvim",
 				"kyazdani42/nvim-web-devicons",
