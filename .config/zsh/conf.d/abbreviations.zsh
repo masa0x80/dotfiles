@@ -7,7 +7,7 @@ if installed rg; then
   abbr -S -q g='rg --hidden'
 fi
 
-if_installed bat abbr -S -q cat=bat
+if_installed bat abbr -S -qq --force cat=bat
 
 # ssh {{{
 if test -e "$HOME/.ssh/config"; then

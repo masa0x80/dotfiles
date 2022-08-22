@@ -55,7 +55,7 @@ abbr gts='git tag -s'
 
 abbr M="git switch $(git symbolic-ref refs/remotes/origin/HEAD | grep -oP 'refs/remotes/origin/\K.*')"
 abbr br='git switch -c'
-abbr review='git review GH'
+abbr review='git review $(git fzf)'
 # }}}
 
 # vagrant {{{
