@@ -256,7 +256,7 @@
             ]
           },
           {
-            "description": "^Iterm2: テキスト削除: <C-w> / <C-k>",
+            "description": "^Iterm2: テキスト削除: <C-w>",
             "manipulators": [
               {
                 "conditions": [
@@ -278,85 +278,11 @@
                   }
                 ],
                 "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^com\\.microsoft\\.Powerpoint",
-                      "^com\\.microsoft\\.Outlook"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "k",
-                  "modifiers": {
-                    "mandatory": ["control"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "end",
-                    "modifiers": ["shift"]
-                  },
-                  {
-                    "key_code": "delete_or_backspace"
-                  }
-                ],
-                "type": "basic"
               }
             ]
           },
           {
-            "description": "Vivaldi: Ctrl+[ / Ctrl+] ▶ Ctrl+Tab / Ctrl+Shift+Tab",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi"],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "open_bracket",
-                  "modifiers": {
-                    "mandatory": ["control"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "tab",
-                    "modifiers": ["control", "shift"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi"],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "close_bracket",
-                  "modifiers": {
-                    "mandatory": ["control"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "tab",
-                    "modifiers": ["control"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Message/Vivaldi: Ctrl+i / Ctrl+o ▶ Tab / Shift+Tab",
+            "description": "Message/Vivaldi: Ctrl+i / Ctrl+o ▶ Ctrl+Tab / Ctrl+Shift+Tab",
             "manipulators": [
               {
                 "conditions": [
