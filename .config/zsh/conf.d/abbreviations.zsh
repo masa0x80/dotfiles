@@ -8,6 +8,7 @@ if installed rg; then
 fi
 
 if_installed bat abbr -S -qq --force cat=bat
+if_installed dog abbr -S -qq --force dig=dog
 
 # ssh {{{
 if test -e "$HOME/.ssh/config"; then
