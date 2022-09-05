@@ -98,3 +98,6 @@ brew 'stylua'
 
 tap 'charmbracelet/tap'
 brew 'gum'
+
+# for coc-tsserver
+brew 'watchman'
