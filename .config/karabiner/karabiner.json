@@ -69,7 +69,8 @@
                   {
                     "bundle_identifiers": [
                       "^com\\.vivaldi\\.Vivaldi",
-                      "^com\\.microsoft\\.Outlook"
+                      "^com\\.microsoft\\.Outlook",
+                      "^com\\.tinyspeck\\.slackmacgap"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -92,7 +93,8 @@
                   {
                     "bundle_identifiers": [
                       "^com\\.vivaldi\\.Vivaldi",
-                      "^com\\.microsoft\\.Outlook"
+                      "^com\\.microsoft\\.Outlook",
+                      "^com\\.tinyspeck\\.slackmacgap"
                     ],
                     "type": "frontmost_application_if"
                   }
