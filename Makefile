@@ -1,5 +1,5 @@
 DOTFILE  := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-EXCLUDES := .DS_Store .git
+EXCLUDES := .DS_Store .git .luarc.json
 TARGETS  := $(wildcard .??*)
 DOTFILES := $(filter-out $(EXCLUDES), $(TARGETS))
 
