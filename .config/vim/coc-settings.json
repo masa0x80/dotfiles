@@ -1,4 +1,6 @@
 {
   "diagnostic.displayByAle": true,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "Lua.runtime.version": "LuaJIT",
+  "Lua.workspace.checkThirdParty": false
 }

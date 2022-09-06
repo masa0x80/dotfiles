@@ -3,4 +3,6 @@ if not status_ok then
 	return
 end
 
-p.setup()
+p.setup({
+	sections = { lualine_x = { "g:coc_status", "encoding", "fileformat", "filetype" } },
+})

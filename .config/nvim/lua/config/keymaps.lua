@@ -77,12 +77,9 @@ keymap("n", "<Leader>p", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", opts)
 keymap("n", "<Leader>s", "<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>", opts)
 
 -- # Insert
-keymap("i", "<C-p>", "<Up>", opts)
-keymap("i", "<C-n>", "<Down>", opts)
 keymap("i", "<C-b>", "<Left>", opts)
 keymap("i", "<C-f>", "<Right>", opts)
 keymap("i", "<C-a>", "<Esc>I", opts)
-keymap("i", "<C-e>", "<Esc>A", opts)
 keymap("i", "<C-d>", "<Del>", opts)
 keymap("i", "<C-g><C-h>", "<Esc>bi", opts)
 keymap("i", "<C-g><C-l>", "<Esc>ea", opts)
