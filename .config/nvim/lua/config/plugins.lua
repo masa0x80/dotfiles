@@ -36,7 +36,6 @@ packer.startup({
 
 		use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 		use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-		use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 		use("tpope/vim-repeat")
 		use("tpope/vim-unimpaired")
 		use("kyazdani42/nvim-web-devicons")
@@ -114,11 +113,11 @@ packer.startup({
 		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
-			event = "BufEnter",
 			requires = {
+				"nvim-lua/plenary.nvim",
 				"fannheyward/telescope-coc.nvim",
 			},
+			event = "BufEnter",
 			config = function()
 				require("config.telescope")
 			end,
@@ -142,6 +141,9 @@ packer.startup({
 		use({
 			"haringsrob/nvim_context_vt",
 			event = "BufEnter",
+			config = function()
+				require("config.context_vt")
+			end,
 		})
 
 		-- UI
@@ -272,6 +274,12 @@ packer.startup({
 
 		use("gpanders/editorconfig.nvim") -- EditorConfig
 		use("lambdalisue/readablefold.vim") -- Folding
+		use({
+			"windwp/nvim-autopairs",
+			config = function()
+				require("config.autopairs")
+			end,
+		})
 		use({
 			"lukas-reineke/indent-blankline.nvim",
 			event = "BufEnter",
