@@ -58,8 +58,8 @@ vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 
 -- Folding
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.foldlevel = 3
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 3
 
-vim.cmd([[set includeexpr=substitute(v:fname,'\\.','/','g')]])
+vim.opt.includeexpr = 'substitute(v:fname, "\\.", "/", "g")'

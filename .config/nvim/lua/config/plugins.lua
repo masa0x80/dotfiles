@@ -36,7 +36,6 @@ packer.startup({
 
 		use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 		use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-		use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 		use("tpope/vim-repeat")
 		use("tpope/vim-unimpaired")
 		use("kyazdani42/nvim-web-devicons")
@@ -67,71 +66,23 @@ packer.startup({
 		-- Colorscheme
 		use("joshdick/onedark.vim")
 
-		-- Cmp plugins
-		use({
-			"hrsh7th/nvim-cmp",
-			requires = {
-				-- nvim-cmp
-				{ "hrsh7th/cmp-buffer", after = "nvim-cmp" }, -- buffer completions
-				{ "hrsh7th/cmp-path", after = "nvim-cmp" }, -- path completions
-				{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" }, -- cmdline completions
-				{ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
-				{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" }, -- snippet completions
-				{ "f3fora/cmp-spell", after = "nvim-cmp" },
-				-- snippets
-				{ "L3MON4D3/LuaSnip", after = "cmp_luasnip" }, --snippet engine
-				{ "rafamadriz/friendly-snippets", after = "cmp_luasnip" }, -- a bunch of snippets to use
-			},
-			event = "BufEnter",
-			config = function()
-				require("config.cmp")
-			end,
-		}) -- The completion plugin
-
 		-- LSP
 		use({
-			"neovim/nvim-lspconfig", -- enable LSP
-			event = "BufEnter",
+			"neoclide/coc.nvim",
+			branch = "master",
+			run = "yarn install --frozen-lockfile",
+			requires = {
+				"honza/vim-snippets",
+			},
 			config = function()
-				require("config.lsp")
+				require("config.coc")
 			end,
 		})
-		use({
-			"williamboman/nvim-lsp-installer", -- simple to use language server installer
-			event = "BufEnter",
-		})
-		use({
-			"tami5/lspsaga.nvim",
-			event = "BufEnter",
-			config = function()
-				require("config.lsp.lspsaga")
-			end,
-		})
-		use({
-			"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-			event = "BufEnter",
-		})
-		use({
-			"j-hui/fidget.nvim",
-			event = "BufEnter",
-			config = function()
-				require("config.lsp.fidget")
-			end,
-		}) -- The completion plugin
 		use({
 			"dense-analysis/ale",
-			ft = { "ruby", "json" },
 			config = function()
-				require("config.lsp.ale")
+				require("config.ale")
 			end,
-		})
-		use({
-			"b0o/schemastore.nvim",
-			event = "BufEnter",
-		})
-		use({
-			"WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
-			event = "BufEnter",
 		})
 
 		-- Debug
@@ -162,7 +113,10 @@ packer.startup({
 		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"fannheyward/telescope-coc.nvim",
+			},
 			event = "BufEnter",
 			config = function()
 				require("config.telescope")
@@ -187,6 +141,9 @@ packer.startup({
 		use({
 			"haringsrob/nvim_context_vt",
 			event = "BufEnter",
+			config = function()
+				require("config.context_vt")
+			end,
 		})
 
 		-- UI
@@ -318,6 +275,12 @@ packer.startup({
 		use("gpanders/editorconfig.nvim") -- EditorConfig
 		use("lambdalisue/readablefold.vim") -- Folding
 		use({
+			"windwp/nvim-autopairs",
+			config = function()
+				require("config.autopairs")
+			end,
+		})
+		use({
 			"lukas-reineke/indent-blankline.nvim",
 			event = "BufEnter",
 		}) -- Indent
@@ -340,10 +303,6 @@ packer.startup({
 				require("config.todo-comments")
 			end,
 		})
-		use({
-			"cohama/lexima.vim",
-			event = "InsertEnter",
-		}) -- Indent
 		use({
 			"monaqa/dial.nvim",
 			event = "BufEnter",
@@ -388,6 +347,8 @@ packer.startup({
 				require("config.toggleterm")
 			end,
 		})
+
+		use("slim-template/vim-slim")
 
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins

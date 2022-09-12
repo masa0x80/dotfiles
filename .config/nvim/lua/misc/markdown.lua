@@ -1,4 +1,4 @@
-if vim.fn.executable("markdown2confluence") then
+if vim.fn.executable("markdown2confluence") == 1 then
 	vim.api.nvim_create_user_command("Md2Confluence", function()
 		local out = "/tmp/" .. vim.fn.strftime("%FT%T") .. ".confluence"
 		vim.fn.execute("%y")

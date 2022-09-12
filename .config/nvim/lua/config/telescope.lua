@@ -54,7 +54,13 @@ p.setup({
 			},
 		},
 	},
+	extensions = {
+		coc = {
+			prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
+		},
+	},
 })
+p.load_extension("coc")
 
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap(
@@ -103,3 +109,10 @@ vim.api.nvim_set_keymap(
 	"<Cmd>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true, cwd='$SCRAPBOOK_DIR' })<CR>",
 	opts
 )
+
+-- telescope-coc config
+vim.api.nvim_set_keymap("n", "gd", "<Cmd>Telescope coc definitions<CR>", opts)
+vim.api.nvim_set_keymap("n", "gD", "<Cmd>Telescope coc declarations<CR>", opts)
+vim.api.nvim_set_keymap("n", "<Leader>d", "<Cmd>Telescope coc type_definitions<CR>", opts)
+vim.api.nvim_set_keymap("n", "gi", "<Cmd>Telescope coc implementations<CR>", opts)
+vim.api.nvim_set_keymap("n", "gr", "<Cmd>Telescope coc references<CR>", opts)

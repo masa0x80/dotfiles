@@ -26,6 +26,5 @@ lualine.setup({
 	},
 })
 
-vim.cmd([[
-  set sessionoptions+=tabpages,globals " store tabpages and globals in session
-]])
+-- store tabpages and globals in session
+vim.opt.sessionoptions:append("tabpages,globals")

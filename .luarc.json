@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "Lua.diagnostics.workspaceDelay": -1,
+  "Lua.format.defaultConfig": {
+    "indent_style": "tab",
+    "indent_size": "4"
+  },
+  "color": {
+    "mode": "SemanticEnhanced"
+  },
+  "diagnostics": {
+    "disable": ["close-non-object"],
+    "globals": ["vim"],
+    "ignoredFiles": "Opened",
+    "libraryFiles": "Opened",
+    "neededFileStatus": {
+      "await-in-sync": "Any",
+      "discard-returns": "Any",
+      "not-yieldable": "Any",
+      "undefined-field": "Any"
+    }
+  },
+  "hint": {
+    "enable": true
+  },
+  "workspace": {
+    "maxPreload": 3600,
+    "preloadFileSize": 3000
+  }
+}
