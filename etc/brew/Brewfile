@@ -65,6 +65,8 @@ brew 'fd'
 brew 'git-delta'
 brew 'ripgrep'
 brew 'sd'
+brew 'silicon'
+brew 'grex'
 
 brew 'go'
 
