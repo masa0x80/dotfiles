@@ -12,6 +12,10 @@
     {
       "pattern": "https?://outlook.office\\d{3}?.com/*",
       "passKeys": "ukjopn/?d.vlxsyem!#rafzcgUG"
+    },
+    {
+      "pattern": "https?://www.youtube.com/*",
+      "passKeys": "jklNP.,<>123456780cftim"
     }
   ],
   "filterLinkHints": false,
