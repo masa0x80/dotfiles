@@ -1,9 +1,8 @@
 abbr tailf='tail -f'
 abbr diff='diff -u'
 abbr watch='watch -n 0.5'
-abbr mkdir='mkdir -p'
 
-abbr md=mkdir
+abbr md='mkdir -p'
 abbr rd=rmdir
 abbr rf='rm -rf'
 

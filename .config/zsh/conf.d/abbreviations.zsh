@@ -9,6 +9,13 @@ fi
 
 if_installed bat abbr -S -qq --force cat=bat
 if_installed dog abbr -S -qq --force dig=dog
+if_installed sd abbr -S -qq --force sed=sd
+if_installed fd abbr -S -qq --force find=fd
+
+if installed silicon; then
+  abbr -S -q Si='silicon --from-clipboard --to-clipboard -l ts'
+  abbr -S -q Sih='silicon --from-clipboard --to-clipboard -l ts --highlight-lines "1;2-3"'
+fi
 
 # ssh {{{
 if test -e "$HOME/.ssh/config"; then
