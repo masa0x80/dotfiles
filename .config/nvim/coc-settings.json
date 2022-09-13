@@ -3,6 +3,7 @@
   "diagnostic.warningSign": "",
   "diagnostic.hintSign": "",
   "diagnostic.infoSign": "",
+  "suggest.noselect": true,
   "suggest.floatConfig": {
     "border": true,
     "rounded": true,
