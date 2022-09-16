@@ -390,7 +390,7 @@
             ]
           },
           {
-            "description": "Slack: Ctrl+[ / Ctrl+] ▶ Cmd+Up / Cmd+Down",
+            "description": "Slack: Ctrl+[ / Ctrl+] ▶ Cmd+[ / Cmd+]",
             "manipulators": [
               {
                 "conditions": [
@@ -407,7 +407,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "right_arrow",
+                    "key_code": "open_bracket",
                     "modifiers": ["command"]
                   }
                 ],
@@ -428,7 +428,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "left_arrow",
+                    "key_code": "close_bracket",
                     "modifiers": ["command"]
                   }
                 ],
