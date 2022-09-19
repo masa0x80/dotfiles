@@ -89,6 +89,9 @@ keymap("i", "<C-g><C-n>", "<Esc>v>gi<Right><Right>", opts)
 keymap("i", "<C-g><C-p>", "<Left><Left><Esc>v<gi", opts)
 
 -- # Visual
+-- Save
+keymap("v", ";;", "<Esc><Cmd>write<CR>", { noremap = true })
+
 -- Paste
 keymap("v", "p", '"_dP', opts)
 
