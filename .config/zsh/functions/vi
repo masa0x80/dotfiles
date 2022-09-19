@@ -1,5 +1,5 @@
 #!/bin/zsh
 
 vi() {
-  eval $EDITOR "$@"
+  eval $EDITOR "${@:q}"
 }
