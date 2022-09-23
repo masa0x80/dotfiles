@@ -21,7 +21,7 @@ abbr gco='git checkout'
 abbr gd='git diff'
 abbr gds='git diff --staged'
 
-abbr gf='git fetch'
+abbr gf='git fetch -p'
 
 abbr gfx='git fixup'
 
