@@ -62,4 +62,4 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 3
 
-vim.opt.includeexpr = 'substitute(v:fname, "\\.", "/", "g")'
+vim.opt.includeexpr = "substitute(v:fname, '\\.', '/', 'g')"
