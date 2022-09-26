@@ -10,6 +10,15 @@ p.setup({
 	},
 })
 
+-- NOTE: tabline読み込み後に発火させる
+vim.api.nvim_create_autocmd({ "ModeChanged" }, {
+	group = "_",
+	once = true,
+	callback = function()
+		p.toggle_show_all_buffers()
+	end,
+})
+
 local lualine_status_ok, lualine = pcall(require, "lualine")
 if not lualine_status_ok then
 	return
