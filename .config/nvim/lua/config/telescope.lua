@@ -63,47 +63,28 @@ p.setup({
 p.load_extension("coc")
 
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap(
+local keymap = vim.api.nvim_set_keymap
+keymap(
 	"n",
 	"<Leader><Leader>",
 	"<Cmd>lua require('telescope.builtin').buffers({ sort_mru = true, ignore_current_buffer = true })<CR>",
 	opts
 )
-vim.api.nvim_set_keymap(
-	"n",
-	"<Leader>f",
-	"<Cmd>lua require('telescope.builtin').git_files({ hidden = true, cwd='$PWD' })<CR>",
-	opts
-)
-vim.api.nvim_set_keymap(
+keymap("n", "<Leader>f", "<Cmd>lua require('telescope.builtin').git_files({ hidden = true, cwd='$PWD' })<CR>", opts)
+keymap(
 	"n",
 	"<Leader>F",
 	"<Cmd>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true, cwd='$PWD' })<CR>",
 	opts
 )
-vim.api.nvim_set_keymap("n", "<Leader>g", "<Cmd>lua require('telescope.builtin').live_grep({ cwd='$PWD' })<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>G", "<Cmd>lua require('telescope.builtin').grep_string({ cwd='$PWD' })<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>r", "<Cmd>Telescope resume<CR>", opts)
+keymap("n", "<Leader>g", "<Cmd>lua require('telescope.builtin').live_grep({ cwd='$PWD' })<CR>", opts)
+keymap("n", "<Leader>G", "<Cmd>lua require('telescope.builtin').grep_string({ cwd='$PWD' })<CR>", opts)
+keymap("n", "<Leader>r", "<Cmd>Telescope resume<CR>", opts)
 
-vim.api.nvim_set_keymap(
-	"n",
-	",g",
-	"<Cmd>lua require('telescope.builtin').live_grep({ cwd='$SCRAPBOOK_DIR' })<CR>",
-	opts
-)
-vim.api.nvim_set_keymap(
-	"n",
-	",G",
-	"<Cmd>lua require('telescope.builtin').grep_string({ cwd='$SCRAPBOOK_DIR' })<CR>",
-	opts
-)
-vim.api.nvim_set_keymap(
-	"n",
-	",f",
-	"<Cmd>lua require('telescope.builtin').find_files({ cwd='$SCRAPBOOK_DIR' })<CR>",
-	opts
-)
-vim.api.nvim_set_keymap(
+keymap("n", ",g", "<Cmd>lua require('telescope.builtin').live_grep({ cwd='$SCRAPBOOK_DIR' })<CR>", opts)
+keymap("n", ",G", "<Cmd>lua require('telescope.builtin').grep_string({ cwd='$SCRAPBOOK_DIR' })<CR>", opts)
+keymap("n", ",f", "<Cmd>lua require('telescope.builtin').find_files({ cwd='$SCRAPBOOK_DIR' })<CR>", opts)
+keymap(
 	"n",
 	",F",
 	"<Cmd>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true, cwd='$SCRAPBOOK_DIR' })<CR>",
@@ -111,8 +92,12 @@ vim.api.nvim_set_keymap(
 )
 
 -- telescope-coc config
-vim.api.nvim_set_keymap("n", "gd", "<Cmd>Telescope coc definitions<CR>", opts)
-vim.api.nvim_set_keymap("n", "gD", "<Cmd>Telescope coc declarations<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>d", "<Cmd>Telescope coc type_definitions<CR>", opts)
-vim.api.nvim_set_keymap("n", "gi", "<Cmd>Telescope coc implementations<CR>", opts)
-vim.api.nvim_set_keymap("n", "gr", "<Cmd>Telescope coc references<CR>", opts)
+keymap("n", "gd", "<Cmd>Telescope coc definitions<CR>", opts)
+keymap("n", "gD", "<Cmd>Telescope coc declarations<CR>", opts)
+keymap("n", "<Leader>d", "<Cmd>Telescope coc type_definitions<CR>", opts)
+keymap("n", "gi", "<Cmd>Telescope coc implementations<CR>", opts)
+keymap("n", "gr", "<Cmd>Telescope coc references<CR>", opts)
+
+-- Commands
+keymap("n", "<Leader>;", "<Cmd>Telescope commands<CR>", opts)
+keymap("n", "<Leader>:", "<Cmd>Telescope command_history<CR>", opts)
