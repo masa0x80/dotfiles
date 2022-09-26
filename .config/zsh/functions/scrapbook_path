@@ -6,6 +6,5 @@ scrapbook_path() {
   test "$1" = '' || file_path+="/$1"
   local dir_path=$(dirname $file_path)
   test -d "$dir_path" || mkdir -p "$dir_path"
-  # NOTE: パスにスペースが含まれる場合に備えて `:q` をつけてエスケープする
-  echo "$file_path:q"
+  echo "$file_path"
 }
