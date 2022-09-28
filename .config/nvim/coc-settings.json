@@ -53,6 +53,5 @@
   ],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "eslint.autoFixOnSave": true,
   "Lua.telemetry.enable": false
 }

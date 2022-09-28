@@ -101,3 +101,10 @@ nnoremap <silent> <Leader>y :<C-u>CocList -A --normal yank<CR>
 " Create markmap from the whole file
 command! Markmap CocCommand markmap.create -w
 ]])
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	group = "_",
+	pattern = "*",
+	-- Setup formatexpr
+	command = "setlocal formatexpr=CocAction('formatSelected')",
+})
