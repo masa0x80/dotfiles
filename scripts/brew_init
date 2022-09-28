@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# NOTE: CI=1
+# NOTE: NONINTERACTIVE=1
 #       Suppress "Press RETURN to continue or any other key to abort"
 if ! type brew >/dev/null; then
-  CI=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  HOMEBREW_PREFIX='/opt/homebrew' NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 export HOMEBREW_NO_ANALYTICS=1
