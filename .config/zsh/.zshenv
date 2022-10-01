@@ -1,7 +1,5 @@
 # Configurations for zsh {{{
 
-typeset -U path PATH
-
 # NOTE: Do not load global rc files
 setopt no_global_rcs
 
@@ -18,12 +16,14 @@ fpath=($ZDOTDIR/functions(N-/) $fpath)
 autoload -U compinit && compinit
 for config_file ($ZDOTDIR/functions/*(N)) autoload $(basename "$config_file")
 
+typeset -U path PATH
+path=(
+  /opt/homebrew/bin(N-/)
+  /usr/local/bin(N-/)
+  $path
+)
 # homebrew
-if test -e /opt/homebrew/bin/brew; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-elif test -e /usr/local/bin/brew; then
-  eval "$(/usr/local/bin/brew shellenv)"
-fi
+eval "$(brew shellenv)"
 
 # NOTE: must place after adding `/usr/local/bin` to PATH
 export SHELL=$(which zsh)
