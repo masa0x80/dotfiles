@@ -2,7 +2,8 @@
   "global": {
     "check_for_updates_on_startup": true,
     "show_in_menu_bar": true,
-    "show_profile_name_in_menu_bar": false
+    "show_profile_name_in_menu_bar": false,
+    "unsafe_ui": false
   },
   "profiles": [
     {
@@ -22,8 +23,8 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^com\\.microsoft\\.Powerpoint",
-                      "^com\\.microsoft\\.Outlook"
+                      "^com\\.microsoft\\.Powerpoint$",
+                      "^com\\.microsoft\\.Outlook$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -45,8 +46,8 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^com\\.microsoft\\.Powerpoint",
-                      "^com\\.microsoft\\.Outlook"
+                      "^com\\.microsoft\\.Powerpoint$",
+                      "^com\\.microsoft\\.Outlook$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -68,9 +69,9 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^com\\.vivaldi\\.Vivaldi",
-                      "^com\\.microsoft\\.Outlook",
-                      "^com\\.tinyspeck\\.slackmacgap"
+                      "^com\\.vivaldi\\.Vivaldi$",
+                      "^com\\.microsoft\\.Outlook$",
+                      "^com\\.tinyspeck\\.slackmacgap$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -92,9 +93,9 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^com\\.vivaldi\\.Vivaldi",
-                      "^com\\.microsoft\\.Outlook",
-                      "^com\\.tinyspeck\\.slackmacgap"
+                      "^com\\.vivaldi\\.Vivaldi$",
+                      "^com\\.microsoft\\.Outlook$",
+                      "^com\\.tinyspeck\\.slackmacgap$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -108,6 +109,106 @@
                 "to": [
                   {
                     "key_code": "up_arrow"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "カーソル移動: <Cmd-C-h> / <Cmd-C-l> ▶ <A-Left> / <A-Right>",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["^com\\.googlecode\\.iterm2$"],
+                    "type": "frontmost_application_unless"
+                  }
+                ],
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": ["command", "control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow",
+                    "modifiers": ["option"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["^com\\.googlecode\\.iterm2$"],
+                    "type": "frontmost_application_unless"
+                  }
+                ],
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "mandatory": ["command", "control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow",
+                    "modifiers": ["option"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "iTerm2: カーソル移動: <Cmd-C-h> / <Cmd-C-l> ▶ <M-b> / <M-f>",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["^com\\.googlecode\\.iterm2$"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": ["command", "control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "open_bracket",
+                    "modifiers": ["control"]
+                  },
+                  {
+                    "key_code": "b"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["^com\\.googlecode\\.iterm2$"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "mandatory": ["command", "control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "open_bracket",
+                    "modifiers": ["control"]
+                  },
+                  {
+                    "key_code": "f"
                   }
                 ],
                 "type": "basic"
@@ -164,7 +265,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com\\.googlecode\\.iterm2"],
+                    "bundle_identifiers": ["^com\\.googlecode\\.iterm2$"],
                     "type": "frontmost_application_unless"
                   },
                   {
@@ -215,7 +316,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com\\.microsoft\\.Outlook"],
+                    "bundle_identifiers": ["^com\\.microsoft\\.Outlook$"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -236,8 +337,8 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^com\\.microsoft\\.Powerpoint",
-                      "^com\\.microsoft\\.Outlook"
+                      "^com\\.microsoft\\.Powerpoint$",
+                      "^com\\.microsoft\\.Outlook$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -263,7 +364,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com\\.googlecode\\.iterm2"],
+                    "bundle_identifiers": ["^com\\.googlecode\\.iterm2$"],
                     "type": "frontmost_application_unless"
                   }
                 ],
@@ -290,8 +391,8 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^com\\.apple\\.MobileSMS",
-                      "^com\\.vivaldi\\.Vivaldi"
+                      "^com\\.apple\\.MobileSMS$",
+                      "^com\\.vivaldi\\.Vivaldi$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -314,8 +415,8 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^com\\.apple\\.MobileSMS",
-                      "^com\\.vivaldi\\.Vivaldi"
+                      "^com\\.apple\\.MobileSMS$",
+                      "^com\\.vivaldi\\.Vivaldi$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -343,8 +444,8 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^com\\.tinyspeck\\.slackmacgap",
-                      "^jp\\.naver\\.line\\.mac"
+                      "^com\\.tinyspeck\\.slackmacgap$",
+                      "^jp\\.naver\\.line\\.mac$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -367,8 +468,8 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^com\\.tinyspeck\\.slackmacgap",
-                      "^jp\\.naver\\.line\\.mac"
+                      "^com\\.tinyspeck\\.slackmacgap$",
+                      "^jp\\.naver\\.line\\.mac$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -395,7 +496,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com\\.tinyspeck\\.slackmacgap"],
+                    "bundle_identifiers": ["^com\\.tinyspeck\\.slackmacgap$"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -416,7 +517,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com\\.tinyspeck\\.slackmacgap"],
+                    "bundle_identifiers": ["^com\\.tinyspeck\\.slackmacgap$"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -442,7 +543,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com\\.microsoft\\.Outlook"],
+                    "bundle_identifiers": ["^com\\.microsoft\\.Outlook$"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -463,7 +564,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com\\.microsoft\\.Outlook"],
+                    "bundle_identifiers": ["^com\\.microsoft\\.Outlook$"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -489,7 +590,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi"],
+                    "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi$"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -557,7 +658,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^us\\.zoom\\.xos"],
+                    "bundle_identifiers": ["^us\\.zoom\\.xos$"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -811,3 +912,4 @@
     }
   ]
 }
+
