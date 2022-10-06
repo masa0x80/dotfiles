@@ -263,7 +263,6 @@ packer.startup({
 		use({
 			"iamcco/markdown-preview.nvim",
 			run = "cd app && npm install",
-			ft = { "markdown", "plantuml" },
 			config = function()
 				require("config.markdown-preview")
 			end,
