@@ -1,12 +1,12 @@
-#!/usr/bin/env fish
+#!/usr/bin/env zsh
 
-function git_edit
-    if test -z "$argv"
+git_edit() {
+    if test -z "$1"; then
         echo 'Usage: git edit [hash]'
         return 1
-    end
+    fi
 
-    GIT_SEQUENCE_EDITOR="sed -i -e '1,1s/pick/edit/'" git rebase -i "$argv"~
-end
-git_edit (git fzf)
+    GIT_SEQUENCE_EDITOR="sed -i -e '1,1s/pick/edit/'" git rebase -i "$1"~
+}
+git_edit $(git fzf)
 git reset --soft HEAD^

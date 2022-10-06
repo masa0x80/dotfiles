@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/env zsh
 
-set -l num (git log --pretty=format:"%H %h" | grep -n $argv | cut -d : -f 1)
+num=$(git log --pretty=format:"%H %h" | grep -n $1 | cut -d : -f 1)
 git log --stat --reverse -p -$num
