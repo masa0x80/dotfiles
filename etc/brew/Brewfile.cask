@@ -1,4 +1,3 @@
-cask 'adoptopenjdk'
 cask 'aws-vault'
 cask 'chromedriver'
 cask 'diskwave'
