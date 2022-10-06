@@ -2,6 +2,7 @@
 
 # NOTE: Do not load global rc files
 setopt no_global_rcs
+setopt magic_equal_subst
 
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME=$HOME/.config
