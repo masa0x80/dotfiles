@@ -94,7 +94,7 @@ abbr -g F='| fzf'
 abbr -g G='| rg'
 abbr -g H='| head'
 abbr -g T='| tail'
-abbr -g L='| less'
+abbr -g L='| bat'
 
 abbr -g N='>/dev/null 2>&1'
 abbr -g N1='>/dev/null'
