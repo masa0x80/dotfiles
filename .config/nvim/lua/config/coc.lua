@@ -1,7 +1,6 @@
 vim.g.coc_node_args = { "--max-old-space-size=4096" }
 vim.g.coc_global_extensions = {
 	"coc-lists",
-	"coc-yank",
 	"coc-snippets",
 	"coc-solargraph",
 	"coc-go",
