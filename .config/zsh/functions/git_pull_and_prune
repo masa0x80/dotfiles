@@ -1,4 +1,4 @@
 #!/bin/zsh
 
-git pull origin $(git_current_branch)
+git pull
 git fetch --prune --tags --all && git branch --merged | grep -E -v '^\*|\s(main|develop|master)$' | xargs git branch -d

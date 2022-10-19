@@ -4,6 +4,8 @@
   pager = gitpager
   hooksPath = ~/.config/git/hooks
   quotepath = false
+[init]
+	defaultBranch = main
 [include]
   path = ~/.config.local/git/config
 [push]

@@ -35,8 +35,8 @@ abbr gm='git merge --no-ff'
 
 abbr gp='git push'
 abbr gpull=git_pull_and_prune
-abbr gpush='git push origin $(git_current_branch)'
-abbr gpush!='git push --force-with-lease origin $(git_current_branch)'
+abbr gpush='git push'
+abbr gpush!='git push --force-with-lease'
 
 abbr grb='git rebase'
 abbr grbm="git rebase $(git symbolic-ref refs/remotes/origin/HEAD | grep -oP 'refs/remotes/\K.*')"
