@@ -46,6 +46,9 @@
     "disabledApps" : {
 
     },
+    "enhancedUI" : {
+      "int" : 1
+    },
     "footprintAlpha" : {
       "float" : 0.30000001192092896
     },
@@ -188,18 +191,18 @@
   "shortcuts" : {
     "almostMaximize" : {
       "keyCode" : 46,
-      "modifierFlags" : 1310720
+      "modifierFlags" : 786432
     },
     "bottomHalf" : {
       "keyCode" : 125,
-      "modifierFlags" : 1441792
+      "modifierFlags" : 1310720
     },
-    "bottomLeftSixth" : {
+    "bottomLeft" : {
       "keyCode" : 45,
       "modifierFlags" : 786432
     },
-    "bottomRightSixth" : {
-      "keyCode" : 43,
+    "bottomRight" : {
+      "keyCode" : 47,
       "modifierFlags" : 786432
     },
     "center" : {
@@ -207,8 +210,8 @@
       "modifierFlags" : 1310720
     },
     "centerHalf" : {
-      "keyCode" : 8,
-      "modifierFlags" : 786432
+      "keyCode" : 46,
+      "modifierFlags" : 1310720
     },
     "firstFourth" : {
       "keyCode" : 123,
@@ -221,10 +224,6 @@
     "larger" : {
       "keyCode" : 24,
       "modifierFlags" : 1310720
-    },
-    "lastFourth" : {
-      "keyCode" : 124,
-      "modifierFlags" : 917504
     },
     "lastThreeFourths" : {
       "keyCode" : 124,
@@ -280,16 +279,16 @@
     },
     "topHalf" : {
       "keyCode" : 126,
-      "modifierFlags" : 1441792
+      "modifierFlags" : 1310720
     },
-    "topLeftSixth" : {
+    "topLeft" : {
       "keyCode" : 32,
       "modifierFlags" : 786432
     },
-    "topRightSixth" : {
+    "topRight" : {
       "keyCode" : 31,
       "modifierFlags" : 786432
     }
   },
-  "version" : "65"
+  "version" : "66"
 }
