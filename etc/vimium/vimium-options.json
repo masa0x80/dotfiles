@@ -1,5 +1,5 @@
 {
-  "settingsVersion": "1.67",
+  "settingsVersion": "1.67.2",
   "exclusionRules": [
     {
       "pattern": "https?://mail.google.com/*",
@@ -21,12 +21,12 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "unmap K\nunmap J\n\nmap d removeTab\nmap u restoreTab\n\nmap R reload hard\n\nmap t Vomnibar.activateInNewTab\nmap O Vomnibar.activateEditUrl\nmap T Vomnibar.activateEditUrlInNewTab\nmap <C-;> Vomnibar.activateTabSelection\n\nmap <C-b> scrollPageUp\nmap <C-f> scrollPageDown\nmap <C-u> scrollFullPageUp\nmap <C-d> scrollFullPageDown\nmap <C-p> previousTab\nmap <C-n> nextTab\nmap <C-o> previousTab\nmap <C-i> nextTab\nmap <C-t><C-t> visitPreviousTab\nmap <C-s><C-s> visitPreviousTab\n\nmap gp togglePinTab\n\nmap <C-v> passNextKey\nmap \\ passNextKey count=999999",
+  "keyMappings": "unmap K\nunmap J\nunmap <C-M-h>\n\nmap d removeTab\nmap u restoreTab\n\nmap R reload hard\n\nmap t Vomnibar.activateInNewTab\nmap O Vomnibar.activateEditUrl\nmap T Vomnibar.activateEditUrlInNewTab\nmap <C-;> Vomnibar.activateTabSelection\n\nmap <C-b> scrollPageUp\nmap <C-f> scrollPageDown\nmap <C-u> scrollFullPageUp\nmap <C-d> scrollFullPageDown\nmap <C-p> previousTab\nmap <C-n> nextTab\nmap <C-o> previousTab\nmap <C-i> nextTab\nmap <C-t><C-t> visitPreviousTab\nmap <C-s><C-s> visitPreviousTab\n\nmap gp togglePinTab\n\nmap <C-v> passNextKey\nmap \\ passNextKey count=999999",
   "linkHintCharacters": "fydig;suaoenwmr",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
-  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
-  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>,次",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<,前",
   "regexFindMode": false,
   "ignoreKeyboardLayout": false,
   "scrollStepSize": 60,
