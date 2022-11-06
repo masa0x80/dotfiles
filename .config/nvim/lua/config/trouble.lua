@@ -5,4 +5,4 @@ end
 
 p.setup()
 
-vim.api.nvim_set_keymap("n", "<Leader>vv", "<Cmd>Trouble<CR>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>V", "<Cmd>Trouble<CR>", { silent = true, noremap = true })

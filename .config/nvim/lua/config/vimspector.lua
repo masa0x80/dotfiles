@@ -4,7 +4,7 @@ local function vimspector_mappings()
 	local opts = { noremap = true, silent = true }
 	local keymap = vim.api.nvim_set_keymap
 
-	keymap("n", "<Leader>db", "<Cmd>call vimspector#Launch()<CR>", opts)
+	keymap("n", "<Leader>ds", "<Cmd>call vimspector#Launch()<CR>", opts)
 	keymap("n", "<Leader>de", "<Cmd>call vimspector#Reset()<CR>", opts)
 	keymap("n", "<Leader>c", "<Cmd>call vimspector#Continue()<CR>", opts)
 
