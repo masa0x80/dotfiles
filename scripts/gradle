@@ -1,0 +1,8 @@
+#!/bin/bash
+
+. $(brew --prefix asdf)/asdf.sh
+
+VERSION=$(grep gradle $HOME/.tool-versions | grep -o '[0-9\.]*')
+
+asdf plugin-add gradle
+asdf install gradle $VERSION

@@ -4,6 +4,7 @@ vim.g.coc_global_extensions = {
 	"coc-snippets",
 	"coc-solargraph",
 	"coc-go",
+	"coc-java",
 	"coc-tsserver",
 	"coc-eslint",
 	"coc-prettier",

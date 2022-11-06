@@ -49,6 +49,7 @@
     "javascript",
     "typescript",
     "markdown",
+    "java",
     "lua"
   ],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,

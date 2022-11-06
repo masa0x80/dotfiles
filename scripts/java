@@ -2,7 +2,7 @@
 
 . $(brew --prefix asdf)/asdf.sh
 
-VERSION=$(grep java $HOME/.tool-versions | grep -o '[0-9\.]*')
+VERSION=$(grep java $HOME/.tool-versions | sed 's/java \(\.*\)/\1/')
 
 asdf plugin-add java
 asdf install java $VERSION

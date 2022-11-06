@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: defaults brew asdf nodejs python ruby java terraform helm go rust navi
+install: defaults brew asdf nodejs python ruby java gradle terraform helm go rust navi
 
 .PHONY: deploy
 deploy:
@@ -111,6 +111,10 @@ python: asdf
 .PHONY: java
 java: asdf
 	./scripts/java
+
+.PHONY: gradle
+gradle: asdf
+	./scripts/gradle
 
 .PHONY: terraform
 terraform: asdf
