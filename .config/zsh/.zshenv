@@ -58,8 +58,8 @@ CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/include"
 PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/openssl/lib/pkgconfig"
 
 # asdf
-source "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
 export NODEJS_CHECK_SIGNATURES=no
+load_file "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
 load_file $HOME/.asdf/plugins/java/set-java-home.zsh
 
 # EDITOR
