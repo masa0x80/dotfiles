@@ -52,6 +52,11 @@ abbr gsh='git show'
 abbr gst='git status -sb'
 abbr gts='git tag -s'
 
+abbr gwt='git worktree'
+abbr gwta='git worktree add'
+abbr gwtr='git worktree remove'
+abbr gwtp='git worktree prune'
+
 abbr M="git switch $(git symbolic-ref refs/remotes/origin/HEAD | grep -oP 'refs/remotes/origin/\K.*')"
 abbr br='git switch -c'
 abbr review='git review $(git fzf)'
