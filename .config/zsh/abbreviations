@@ -21,7 +21,7 @@ abbr gco='git checkout'
 abbr gd='git diff'
 abbr gds='git diff --staged'
 
-abbr gf='git fetch -p'
+abbr gf='git fetch'
 
 abbr gfx='git fixup'
 
@@ -34,7 +34,7 @@ abbr glog='git log --oneline --color --graph'
 abbr gm='git merge --no-ff'
 
 abbr gp='git push'
-abbr gpull=git_pull_and_prune
+abbr gpull='git pull && git delete-merged-branches'
 abbr gpush='git push'
 abbr gpush!='git push --force-with-lease'
 

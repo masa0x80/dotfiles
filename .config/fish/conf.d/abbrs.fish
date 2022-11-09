@@ -63,7 +63,7 @@ abbr -a glog 'git log --oneline --color --graph'
 abbr -a gm 'git merge --no-ff'
 
 abbr -a gp 'git push'
-abbr -a gpull git_pull_and_prune
+abbr -a gpull 'git pull && git delete-merged-branches'
 abbr -a gpush 'git push origin (git_current_branch)'
 abbr -a gpush! 'git push --force-with-lease origin (git_current_branch)'
 

@@ -12,6 +12,8 @@
   default = current
 [merge]
   ff = false
+[fetch]
+  prune = true
 [pull]
   rebase = true
 [rebase]
