@@ -8,7 +8,7 @@ dc() {
     test "$services" = '' && return
   fi
 
-  local cmd="COMPOSE_PROJECT_NAME=$project_name docker compose"
+  local cmd="COMPOSE_PROJECT_NAME='$project_name' docker compose"
   for f in $(command ls | rg '(docker-)?compose.ya?ml'); do
     cmd+=" -f $f"
   done
