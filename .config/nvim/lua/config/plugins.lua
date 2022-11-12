@@ -244,6 +244,13 @@ packer.startup({
 				require("config.git-conflict")
 			end,
 		})
+		use({
+			"rhysd/git-messenger.vim",
+			event = "BufEnter",
+			config = function()
+				require("config.git-messenger")
+			end,
+		})
 
 		-- Filer
 		use({
