@@ -299,13 +299,6 @@ packer.startup({
 			end,
 		})
 		use({
-			"folke/todo-comments.nvim",
-			event = "BufEnter",
-			config = function()
-				require("config.todo-comments")
-			end,
-		})
-		use({
 			"monaqa/dial.nvim",
 			event = "BufEnter",
 			config = function()
@@ -334,9 +327,16 @@ packer.startup({
 		use({
 			"folke/trouble.nvim",
 			requires = {
-				"kyazdani42/nvim-web-devicons",
+				{
+					"kyazdani42/nvim-web-devicons",
+				},
+				{
+					"folke/todo-comments.nvim",
+					config = function()
+						require("config.todo-comments")
+					end,
+				},
 			},
-			event = "BufEnter",
 			config = function()
 				require("config.trouble")
 			end,

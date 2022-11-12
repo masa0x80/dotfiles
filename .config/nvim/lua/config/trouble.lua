@@ -3,6 +3,9 @@ if not status_ok then
 	return
 end
 
-p.setup()
+p.setup({
+	-- require folke/todo-comments.nvim
+	mode = "todo",
+})
 
-vim.api.nvim_set_keymap("n", "<Leader>V", "<Cmd>Trouble<CR>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>v", "<Cmd>Trouble<CR>", { silent = true, noremap = true })
