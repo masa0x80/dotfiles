@@ -108,3 +108,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	-- Setup formatexpr
 	command = "setlocal formatexpr=CocAction('formatSelected')",
 })
+
+-- For go
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	pattern = "*.go",
+	command = "CocCommand editor.action.organizeImport",
+})

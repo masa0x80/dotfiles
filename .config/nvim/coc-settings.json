@@ -50,7 +50,8 @@
     "typescript",
     "markdown",
     "java",
-    "lua"
+    "lua",
+    "go"
   ],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",
