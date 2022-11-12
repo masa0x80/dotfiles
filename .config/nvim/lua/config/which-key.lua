@@ -135,7 +135,7 @@ p.register({
 
 -- neogen
 p.register({
-	["A"] = "Generate the annotations",
+	["a"] = "Generate the annotations",
 }, {
 	mode = "n",
 	prefix = "<Leader>",
