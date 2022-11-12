@@ -15,12 +15,10 @@ vim.g.ale_textlint_options = "-c ~/.config/textlint/textlintrc.yml"
 vim.g.ale_linters_explicit = 1
 
 vim.g.ale_linters = {
-	lua = { "stylua" },
 	ruby = { "rubocop" },
 }
 
 vim.g.ale_fixers = {
-	lua = { "stylua" },
 	ruby = { "rubocop" },
 }
 
