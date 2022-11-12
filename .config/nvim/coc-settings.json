@@ -12,7 +12,6 @@
     "maxWidth": 120
   },
   "suggest.completionItemKindLabels": {
-    "default": "",
     "text": "",
     "method": "",
     "function": "",
@@ -37,7 +36,8 @@
     "struct": "פּ",
     "event": "",
     "operator": "",
-    "typeParameter": ""
+    "typeParameter": "",
+    "default": ""
   },
   "diagnostic.displayByAle": false,
   "coc.preferences.formatOnSaveFiletypes": [

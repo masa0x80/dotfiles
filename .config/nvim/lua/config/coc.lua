@@ -24,13 +24,6 @@ vim.g.coc_global_extensions = {
 	"coc-vimlsp",
 }
 
-local autocmd = vim.api.nvim_create_autocmd
-autocmd({ "VimEnter", "ColorScheme" }, {
-	group = "_",
-	pattern = "*",
-	command = "highlight CocMenuSel gui=underline guibg=#282c34",
-})
-
 vim.cmd([[
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
@@ -103,7 +96,14 @@ nnoremap <silent> <Leader>y :<C-u>CocList -A --normal yank<CR>
 command! Markmap CocCommand markmap.create -w
 ]])
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
+local autocmd = vim.api.nvim_create_autocmd
+autocmd({ "VimEnter", "ColorScheme" }, {
+	group = "_",
+	pattern = "*",
+	command = "highlight CocMenuSel gui=underline guibg=#282c34",
+})
+
+autocmd({ "FileType" }, {
 	group = "_",
 	pattern = "*",
 	-- Setup formatexpr
@@ -111,7 +111,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- For go
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+autocmd({ "BufWritePre" }, {
 	pattern = "*.go",
 	command = "CocCommand editor.action.organizeImport",
 })
