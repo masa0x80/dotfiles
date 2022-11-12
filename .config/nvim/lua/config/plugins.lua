@@ -282,6 +282,9 @@ packer.startup({
 		use({
 			"lukas-reineke/indent-blankline.nvim",
 			event = "BufEnter",
+			config = function()
+				require("config.indent-blankline")
+			end,
 		}) -- Indent
 		use({
 			"machakann/vim-sandwich", -- Textobject
