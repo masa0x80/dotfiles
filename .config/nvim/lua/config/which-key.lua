@@ -9,10 +9,12 @@ p.setup({
 	},
 })
 
--- BackAndForward
 p.register({
+	-- BackAndForward
 	["<C-o>"] = "BackAndForward Back",
 	["<C-i>"] = "BackAndForward Forward",
+	-- git-messenger
+	["<C-l>"] = "Show git log",
 }, {
 	mode = "n",
 	prefix = "<C-g>",
@@ -106,19 +108,15 @@ p.register({
 	r = {
 		["e"] = "Replace",
 	},
-}, {
-	mode = "n",
-	prefix = "<Leader>",
-})
-
--- telescope
-p.register({
+	-- telescope
 	["<Leader>"] = "telescope buffers",
 	["f"] = "telescope git_files",
 	["F"] = "telescope find_all_files",
 	["g"] = "telescope live_grep",
 	["G"] = "telescope grep_string",
 	["r"] = "telescope resume",
+	-- neogen
+	["a"] = "Generate the annotations",
 }, {
 	mode = "n",
 	prefix = "<Leader>",
@@ -131,12 +129,4 @@ p.register({
 }, {
 	mode = "n",
 	prefix = ",",
-})
-
--- neogen
-p.register({
-	["a"] = "Generate the annotations",
-}, {
-	mode = "n",
-	prefix = "<Leader>",
 })
