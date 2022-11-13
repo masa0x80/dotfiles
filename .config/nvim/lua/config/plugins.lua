@@ -212,10 +212,10 @@ packer.startup({
 
 		-- Ops
 		use({
-			"ggandor/lightspeed.nvim",
+			"phaazon/hop.nvim",
 			event = "BufEnter",
 			config = function()
-				require("config.lightspeed")
+				require("config.hop")
 			end,
 		})
 		use({
@@ -286,17 +286,20 @@ packer.startup({
 				require("config.autopairs")
 			end,
 		})
+
+		-- Indent
 		use({
 			"lukas-reineke/indent-blankline.nvim",
 			event = "BufEnter",
 			config = function()
 				require("config.indent-blankline")
 			end,
-		}) -- Indent
+		})
+		-- Textobject
 		use({
-			"machakann/vim-sandwich", -- Textobject
-			event = "BufEnter",
-		}) -- Indent
+			"machakann/vim-sandwich",
+			jjevent = "BufEnter",
+		})
 		-- Prettification
 		use({
 			"junegunn/vim-easy-align",
