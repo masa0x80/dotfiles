@@ -13,8 +13,8 @@ if_installed sd abbr -S -qq --force sed=sd
 if_installed fd abbr -S -qq --force find=fd
 
 if installed silicon; then
-  abbr -S -q Si='silicon --from-clipboard --to-clipboard -l ts'
-  abbr -S -q Sih='silicon --from-clipboard --to-clipboard -l ts --highlight-lines "1;2-3"'
+  abbr -S -q Si='silicon --to-clipboard --from-clipboard -l ts'
+  abbr -S -q SI='silicon --to-clipboard --from-clipboard -l ts --highlight-lines "1;2-3"'
 fi
 
 # ssh {{{
