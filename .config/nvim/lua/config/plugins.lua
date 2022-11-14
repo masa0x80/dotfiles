@@ -64,7 +64,12 @@ packer.startup({
 		})
 
 		-- Colorscheme
-		use("joshdick/onedark.vim")
+		use({
+			"folke/tokyonight.nvim",
+			config = function()
+				require("config.colorscheme")
+			end,
+		})
 
 		-- LSP
 		use({
