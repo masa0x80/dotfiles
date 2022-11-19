@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+source ~/.config/zsh/.zshrc
+
+zimfw upgrade
+zimfw update
