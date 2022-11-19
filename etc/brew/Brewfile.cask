@@ -15,3 +15,5 @@ cask 'visual-studio-code'
 
 cask 'google-chrome'
 cask 'vivaldi'
+
+# vim: ft=sh

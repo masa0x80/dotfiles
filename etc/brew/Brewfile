@@ -105,3 +105,5 @@ brew 'gum'
 
 # for coc-tsserver
 brew 'watchman'
+
+# vim: ft=sh
