@@ -64,7 +64,7 @@ keymap("n", "]L", "<Cmd>llast<CR>", opts)
 keymap("n", "<Leader>R", "<Cmd>source $MYVIMRC<CR> <Cmd>echom 'Reload ' .. $MYVIMRC<CR>", { noremap = true })
 
 -- Replace
-keymap("n", "<Leader>re", ":<C-u>%s;<C-r><C-w>;g<Left><Left>;", opts)
+keymap("n", ",re", ":<C-u>%s;<C-r><C-w>;g<Left><Left>;", opts)
 
 -- Toggle relativenumber
 keymap("n", "<Leader>N", "<Cmd>setlocal relativenumber!<CR>", opts)
@@ -73,8 +73,8 @@ keymap("n", "<Leader>N", "<Cmd>setlocal relativenumber!<CR>", opts)
 keymap("n", "z-", "zr", opts)
 keymap("n", "z_", "zm", opts)
 
-keymap("n", "<Leader>p", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", opts)
-keymap("n", "<Leader>s", "<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>", opts)
+keymap("n", ",p", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", opts)
+keymap("n", ",s", "<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>", opts)
 
 -- # Insert
 keymap("i", "<C-b>", "<Left>", opts)
