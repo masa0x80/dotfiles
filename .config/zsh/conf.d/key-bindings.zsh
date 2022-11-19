@@ -4,7 +4,7 @@ if installed mcfly; then
 fi
 
 # olets/zsh-abbr
-bindkey '^J' _abbr_widget_expand_and_accept
+bindkey '^J' abbr-expand-and-accept
 
 # Key bindings
 autoload -Uz smart-insert-last-word
