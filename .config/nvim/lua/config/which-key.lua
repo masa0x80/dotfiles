@@ -77,6 +77,9 @@ p.register({
 	["R"] = "Gitsigns reset_buffer",
 	["S"] = "Gitsigns stage_buffer",
 	["u"] = "Gitsigns undo_stage_hunk",
+	-- ToggleTerm
+	["f"] = "<v:count1>ToggleTerm direction=float",
+	["j"] = "<v:count1>ToggleTerm direction=horizontal",
 	t = {
 		["d"] = "Gitsigns toggle_deleted",
 		["b"] = "Gitsigns toggle_current_line_blame",
@@ -102,12 +105,7 @@ p.register({
 	["<C-g>"] = "Toggle incline",
 	["x"] = "Jaq (run the command)",
 	["R"] = "Reload .vimrc",
-	["p"] = "cd $PWD",
-	["s"] = "cd $SCRAPBOOK_DIR",
 	["N"] = "Toggle relativenumber",
-	r = {
-		["e"] = "Replace",
-	},
 	-- telescope
 	["<Leader>"] = "telescope buffers",
 	["f"] = "telescope git_files",
@@ -122,6 +120,12 @@ p.register({
 	prefix = "<Leader>",
 })
 p.register({
+	["p"] = "cd $PWD",
+	["s"] = "cd $SCRAPBOOK_DIR",
+	r = {
+		["e"] = "Replace current word",
+	},
+	-- telescope
 	["g"] = "telescope live_grep (cwd: $SCRAPBOOK_DIR)",
 	["G"] = "telescope grep_string (cwd: $SCRAPBOOK_DIR)",
 	["f"] = "telescope file_files (cwd: $SCRAPBOOK_DIR)",
