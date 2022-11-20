@@ -83,6 +83,9 @@ fi
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
 
+# Load bash function `complete` by running the following autoload
+autoload -Uz +X bashcompinit && bashcompinit
+
 # ------------------------------
 # Post-init module configuration
 # ------------------------------
