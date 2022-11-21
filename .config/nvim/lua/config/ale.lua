@@ -20,6 +20,7 @@ vim.g.ale_linters = {
 
 vim.g.ale_fixers = {
 	ruby = { "rubocop" },
+	sh = { "shfmt" },
 }
 
 if vim.fn.executable(vim.fn.getcwd() .. "/vendor/bin/rubocop") == 1 then
