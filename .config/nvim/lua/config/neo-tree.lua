@@ -84,6 +84,9 @@ p.setup({
 			hide_dotfiles = false,
 			hide_hidden = false,
 			hide_gitignored = false,
+			hide_by_pattern = {
+				".watchman-cookie-*",
+			},
 		},
 		hijack_netrw_behavior = "open_current",
 		follow_current_file = true,
