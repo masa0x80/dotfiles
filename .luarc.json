@@ -6,7 +6,6 @@
   },
   "diagnostics": {
     "disable": ["close-non-object"],
-    "globals": ["vim"],
     "ignoredFiles": "Opened",
     "libraryFiles": "Opened",
     "neededFileStatus": {
