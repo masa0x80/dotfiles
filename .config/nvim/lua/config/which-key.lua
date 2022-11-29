@@ -106,13 +106,6 @@ p.register({
 	["x"] = "Jaq (run the command)",
 	["R"] = "Reload .vimrc",
 	["N"] = "Toggle relativenumber",
-	-- telescope
-	["<Leader>"] = "telescope buffers",
-	["f"] = "telescope git_files",
-	["F"] = "telescope find_all_files",
-	["g"] = "telescope live_grep",
-	["G"] = "telescope grep_string",
-	["r"] = "telescope resume",
 	-- neogen
 	["a"] = "Generate the annotations",
 }, {
@@ -126,10 +119,7 @@ p.register({
 		["e"] = "Replace current word",
 	},
 	-- telescope
-	["g"] = "telescope live_grep (cwd: $SCRAPBOOK_DIR)",
-	["G"] = "telescope grep_string (cwd: $SCRAPBOOK_DIR)",
-	["f"] = "telescope file_files (cwd: $SCRAPBOOK_DIR)",
-	["F"] = "telescope file_all_files (cwd: $SCRAPBOOK_DIR)",
+	["F"] = "telescope file_all_files cwd=$SCRAPBOOK_DIR",
 }, {
 	mode = "n",
 	prefix = ",",

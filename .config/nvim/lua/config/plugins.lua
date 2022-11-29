@@ -340,20 +340,9 @@ packer.startup({
 			end,
 		})
 		use({
-			"folke/trouble.nvim",
-			requires = {
-				{
-					"kyazdani42/nvim-web-devicons",
-				},
-				{
-					"folke/todo-comments.nvim",
-					config = function()
-						require("config.todo-comments")
-					end,
-				},
-			},
+			"folke/todo-comments.nvim",
 			config = function()
-				require("config.trouble")
+				require("config.todo-comments")
 			end,
 		})
 

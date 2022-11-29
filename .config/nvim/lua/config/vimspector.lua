@@ -12,9 +12,9 @@ local function vimspector_mappings()
 	keymap("n", "<Leader>B", "<Cmd>call vimspector#ClearBreakpoints()<CR>", opts)
 
 	keymap("n", "<Leader>dr", "<Plug>VimspectorRestart", {})
-	keymap("n", "<Leader>k", "<Plug>VimspectorStepOut", {})
-	keymap("n", "<Leader>l", "<Plug>VimspectorStepInto", {})
-	keymap("n", "<Leader>j", "<Plug>VimspectorOvert", {})
+	keymap("n", ",k", "<Plug>VimspectorStepOut", {})
+	keymap("n", ",l", "<Plug>VimspectorStepInto", {})
+	keymap("n", ",j", "<Plug>VimspectorOvert", {})
 
 	keymap("n", "<Leader>dj", "<Cmd>TestNearest -strategy=jest<CR>", {})
 end

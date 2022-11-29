@@ -64,32 +64,16 @@ p.load_extension("coc")
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
-keymap(
-	"n",
-	"<Leader><Leader>",
-	"<Cmd>lua require('telescope.builtin').buffers({ sort_mru = true, ignore_current_buffer = true })<CR>",
-	opts
-)
-keymap("n", "<Leader>f", "<Cmd>lua require('telescope.builtin').git_files({ hidden = true, cwd='$PWD' })<CR>", opts)
-keymap(
-	"n",
-	"<Leader>F",
-	"<Cmd>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true, cwd='$PWD' })<CR>",
-	opts
-)
-keymap("n", "<Leader>g", "<Cmd>lua require('telescope.builtin').live_grep({ cwd='$PWD' })<CR>", opts)
-keymap("n", "<Leader>G", "<Cmd>lua require('telescope.builtin').grep_string({ cwd='$PWD' })<CR>", opts)
-keymap("n", "<Leader>r", "<Cmd>Telescope resume<CR>", opts)
+keymap("n", "<Leader><Leader>", "<Cmd>Telescope buffers sort_mru=true ignore_current_buffer=true<CR>", opts)
+keymap("n", "<Leader>f", "<Cmd>Telescope git_files hidden=true cwd=$PWD<CR>", opts)
+keymap("n", "<Leader>F", "<Cmd>Telescope find_files hidden=true no_ignore=true cwd=$PWD<CR>", opts)
+keymap("n", "<Leader>g", "<Cmd>Telescope live_grep cwd=$PWD<CR>", opts)
+keymap("n", "<Leader>G", "<Cmd>Telescope grep_string cwd=$PWD<CR>", opts)
 
-keymap("n", ",g", "<Cmd>lua require('telescope.builtin').live_grep({ cwd='$SCRAPBOOK_DIR' })<CR>", opts)
-keymap("n", ",G", "<Cmd>lua require('telescope.builtin').grep_string({ cwd='$SCRAPBOOK_DIR' })<CR>", opts)
-keymap("n", ",f", "<Cmd>lua require('telescope.builtin').find_files({ cwd='$SCRAPBOOK_DIR' })<CR>", opts)
-keymap(
-	"n",
-	",F",
-	"<Cmd>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true, cwd='$SCRAPBOOK_DIR' })<CR>",
-	opts
-)
+keymap("n", ",f", "<Cmd>Telescope find_files cwd=$SCRAPBOOK_DIR<CR>", opts)
+keymap("n", ",F", "<Cmd>Telescope find_files hidden=true no_ignore=true cwd=$SCRAPBOOK_DIR<CR>", opts)
+keymap("n", ",g", "<Cmd>Telescope live_grep cwd=$SCRAPBOOK_DIR<CR>", opts)
+keymap("n", ",G", "<Cmd>Telescope grep_string cwd=$SCRAPBOOK_DIR<CR>", opts)
 
 -- telescope-coc config
 keymap("n", "gd", "<Cmd>Telescope coc definitions<CR>", opts)
@@ -97,6 +81,7 @@ keymap("n", "gD", "<Cmd>Telescope coc declarations<CR>", opts)
 keymap("n", "<Leader>d", "<Cmd>Telescope coc type_definitions<CR>", opts)
 keymap("n", "gi", "<Cmd>Telescope coc implementations<CR>", opts)
 keymap("n", "gr", "<Cmd>Telescope coc references<CR>", opts)
+keymap("n", "<Leader>v", "<Cmd>Telescope coc diagnostics<CR>", opts)
 
 -- Commands
 keymap("n", "<Leader>;", "<Cmd>Telescope commands<CR>", opts)
