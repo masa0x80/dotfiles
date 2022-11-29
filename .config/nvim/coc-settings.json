@@ -1,4 +1,8 @@
 {
+  "floatFactory.floatConfig": {
+    "border": true,
+    "rounded": true
+  },
   "diagnostic.errorSign": "",
   "diagnostic.warningSign": "",
   "diagnostic.hintSign": "",
