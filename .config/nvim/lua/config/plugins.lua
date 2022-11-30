@@ -121,6 +121,10 @@ packer.startup({
 			requires = {
 				"nvim-lua/plenary.nvim",
 				"fannheyward/telescope-coc.nvim",
+				{
+					"nvim-telescope/telescope-frecency.nvim",
+					requires = { "kkharji/sqlite.lua" },
+				},
 			},
 			event = "BufEnter",
 			config = function()

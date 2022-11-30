@@ -61,6 +61,7 @@ p.setup({
 	},
 })
 p.load_extension("coc")
+p.load_extension("frecency")
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
@@ -82,6 +83,9 @@ keymap("n", "<Leader>d", "<Cmd>Telescope coc type_definitions<CR>", opts)
 keymap("n", "gi", "<Cmd>Telescope coc implementations<CR>", opts)
 keymap("n", "gr", "<Cmd>Telescope coc references<CR>", opts)
 keymap("n", "<Leader>v", "<Cmd>Telescope coc diagnostics<CR>", opts)
+
+-- telescope-frecency
+keymap("n", ",,,", "<Cmd>Telescope frecency workspace=CWD<CR>", opts)
 
 -- Commands
 keymap("n", "<Leader>;", "<Cmd>Telescope commands<CR>", opts)
