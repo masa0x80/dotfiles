@@ -112,7 +112,3 @@ autocmd({ "BufWritePre" }, {
 	pattern = "*.go",
 	command = "CocCommand editor.action.organizeImport",
 })
-autocmd({ "BufWritePre" }, {
-	pattern = "*.ts",
-	command = "CocCommand tsserver.organizeImports",
-})
