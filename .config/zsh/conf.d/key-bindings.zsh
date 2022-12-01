@@ -16,5 +16,8 @@ bindkey '^]' insert-last-word
 bindkey "^[[Z" reverse-menu-complete
 bindkey "^O" reverse-menu-complete
 
+bindkey "^[u" undo
+bindkey "^[r" redo
+
 bindkey "^g^h" backward-word
 bindkey "^g^l" forward-word
