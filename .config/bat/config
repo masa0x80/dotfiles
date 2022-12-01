@@ -1,4 +1,4 @@
-# Set the theme to "TwoDark"
+# Set the theme
 --theme=Enki-Tokyo-Night
 
 # Show line numbers, Git modifications and file header (but no grid)
@@ -6,3 +6,5 @@
 
 # Use italic text on the terminal (not supported on all terminals)
 --italic-text=always
+
+--pager='less -RFIX'

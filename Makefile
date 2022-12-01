@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: defaults brew asdf nodejs python ruby java gradle terraform helm go rust navi silicon zimfw
+install: defaults brew asdf nodejs python ruby java gradle terraform helm go rust navi bat silicon zimfw
 
 .PHONY: deploy
 deploy:
@@ -129,6 +129,10 @@ nodejs: brew-init
 	./scripts/nodejs
 
 # }}}
+
+.PHONY: bat
+bat: brew
+	cd ~/.config/bat; bat cache --build
 
 .PHONY: silicon
 silicon: brew

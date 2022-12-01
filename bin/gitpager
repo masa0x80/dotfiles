@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 
+LESS='-RIXc'
 if (( ${+commands[delta]} )); then
   delta --diff-so-fancy | less $@
 else
-  less -RIXc $@
+  less $@
 fi

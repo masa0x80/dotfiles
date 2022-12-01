@@ -85,7 +85,7 @@ alias grep='grep --color=auto'
 if_installed bat export PAGER=bat
 
 # less
-export LESS='-RIXc'
+export LESS='-RFIX'
 # colored less (0: Black, 1: Red, 2: Green, 3: Yellow, 4: Blue, 5: Magenta, 6: Cyan, 7: White)
 export LESS_TERMCAP_mb=$(tput bold)                             # begin blinking
 export LESS_TERMCAP_md=$(tput bold; tput setaf 2)               # begin bold
