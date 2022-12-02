@@ -5,7 +5,7 @@ if executable('gh')
   command! GhOpenRepo call s:GhOpenRepo()
 
   function! s:GhOpenFile()
-    let s:branch = trim(system('fish -c "git_current_brandh"'))
+    let s:branch = trim(system('fish -c "git current-brandh"'))
     execute '!gh browse ' . expand('%') . ' --branch ' . s:branch
   endfunction
   command! GhOpenFile call s:GhOpenFile()
