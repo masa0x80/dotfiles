@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-git branch --merged | grep -E -v '^\*|\s(main|develop|master)$' | xargs git branch -d

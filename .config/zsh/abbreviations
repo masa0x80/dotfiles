@@ -39,7 +39,7 @@ abbr gpush='git push'
 abbr gpush!='git push --force-with-lease'
 
 abbr grb='git rebase'
-abbr grbm="git rebase $(git symbolic-ref refs/remotes/origin/HEAD | grep -oP 'refs/remotes/\K.*')"
+abbr grbm="git rebase $(git default-branch)"
 
 abbr grba='git rebase --abort'
 abbr grbc='git rebase --continue'
@@ -57,9 +57,9 @@ abbr gwta='git worktree add'
 abbr gwtr='git worktree remove'
 abbr gwtp='git worktree prune'
 
-abbr M="git switch $(git symbolic-ref refs/remotes/origin/HEAD | grep -oP 'refs/remotes/origin/\K.*')"
+abbr M="git switch $(git default-branch)"
 abbr br='git switch -c'
-abbr review='git review $(git fzf)'
+abbr review='git review'
 # }}}
 
 # vagrant {{{

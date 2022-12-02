@@ -3,7 +3,7 @@ vim.api.nvim_create_user_command("GhOpenRepo", function()
 end, {})
 
 vim.api.nvim_create_user_command("GhOpenFile", function()
-	local branch = vim.fn.trim(vim.fn.system("git_current_branch"))
+	local branch = vim.fn.trim(vim.fn.system("git current-branch"))
 	vim.fn.system("gh browse " .. vim.fn.expand("%") .. " --branch " .. branch)
 end, {})
 
