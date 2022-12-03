@@ -46,20 +46,20 @@ packer.startup({
 			"numToStr/Comment.nvim",
 			event = "BufEnter",
 			config = function()
-				require("config.comment")
+				require("config.plugins.comment")
 			end,
 		})
 		use({
 			"folke/which-key.nvim",
 			event = "BufEnter",
 			config = function()
-				require("config.which-key")
+				require("config.plugins.which-key")
 			end,
 		})
 		use({
 			"lewis6991/impatient.nvim",
 			config = function()
-				require("config.impatient")
+				require("config.plugins.impatient")
 			end,
 		})
 
@@ -67,7 +67,7 @@ packer.startup({
 		use({
 			"folke/tokyonight.nvim",
 			config = function()
-				require("config.colorscheme")
+				require("config.plugins.colorscheme")
 			end,
 		})
 
@@ -80,13 +80,13 @@ packer.startup({
 				"honza/vim-snippets",
 			},
 			config = function()
-				require("config.coc")
+				require("config.plugins.coc")
 			end,
 		})
 		use({
 			"dense-analysis/ale",
 			config = function()
-				require("config.ale")
+				require("config.plugins.ale")
 			end,
 		})
 
@@ -95,7 +95,7 @@ packer.startup({
 			"puremourning/vimspector",
 			event = "BufEnter",
 			config = function()
-				require("config.vimspector")
+				require("config.plugins.vimspector")
 			end,
 		})
 
@@ -104,14 +104,14 @@ packer.startup({
 			"vim-test/vim-test",
 			event = "BufEnter",
 			config = function()
-				require("config.vim-test")
+				require("config.plugins.vim-test")
 			end,
 		})
 		use({
 			"is0n/jaq-nvim",
 			event = "BufEnter",
 			config = function()
-				require("config.jaq")
+				require("config.plugins.jaq")
 			end,
 		})
 
@@ -128,7 +128,7 @@ packer.startup({
 			},
 			event = "BufEnter",
 			config = function()
-				require("config.telescope")
+				require("config.plugins.telescope")
 			end,
 		})
 
@@ -137,21 +137,21 @@ packer.startup({
 			"nvim-treesitter/nvim-treesitter",
 			event = "BufEnter",
 			config = function()
-				require("config.treesitter")
+				require("config.plugins.treesitter")
 			end,
 		})
 		use({
 			"David-Kunz/treesitter-unit",
 			event = "BufEnter",
 			config = function()
-				require("config.treesitter-unit")
+				require("config.plugins.treesitter-unit")
 			end,
 		})
 		use({
 			"haringsrob/nvim_context_vt",
 			event = "BufEnter",
 			config = function()
-				require("config.context_vt")
+				require("config.plugins.context_vt")
 			end,
 		})
 
@@ -160,21 +160,21 @@ packer.startup({
 			"RRethy/vim-illuminate",
 			event = "BufEnter",
 			config = function()
-				require("config.illuminate")
+				require("config.plugins.illuminate")
 			end,
 		})
 		use({
 			"petertriho/nvim-scrollbar",
 			event = "BufEnter",
 			config = function()
-				require("config.scrollbar")
+				require("config.plugins.scrollbar")
 			end,
 		})
 		use({
 			"kevinhwang91/nvim-hlslens",
 			event = "BufEnter",
 			config = function()
-				require("config.hlslens")
+				require("config.plugins.hlslens")
 			end,
 		})
 		use({
@@ -185,20 +185,20 @@ packer.startup({
 			"norcalli/nvim-colorizer.lua",
 			event = "BufEnter",
 			config = function()
-				require("config.colorizer")
+				require("config.plugins.colorizer")
 			end,
 		})
 		use({
 			"mvllow/modes.nvim",
 			event = "BufEnter",
 			config = function()
-				require("config.modes")
+				require("config.plugins.modes")
 			end,
 		})
 		use({
 			"nvim-lualine/lualine.nvim",
 			config = function()
-				require("config.lualine")
+				require("config.plugins.lualine")
 			end,
 		})
 		use({
@@ -208,14 +208,14 @@ packer.startup({
 				"kyazdani42/nvim-web-devicons",
 			},
 			config = function()
-				require("config.tabline")
+				require("config.plugins.tabline")
 			end,
 		})
 		use({
 			"b0o/incline.nvim",
 			event = "BufLeave",
 			config = function()
-				require("config.incline")
+				require("config.plugins.incline")
 			end,
 		})
 
@@ -224,14 +224,14 @@ packer.startup({
 			"phaazon/hop.nvim",
 			event = "BufEnter",
 			config = function()
-				require("config.hop")
+				require("config.plugins.hop")
 			end,
 		})
 		use({
 			"Bakudankun/BackAndForward.vim",
 			event = "BufLeave",
 			config = function()
-				require("config.BackAndForward")
+				require("config.plugins.BackAndForward")
 			end,
 		})
 
@@ -244,20 +244,20 @@ packer.startup({
 			"lewis6991/gitsigns.nvim",
 			event = "BufEnter",
 			config = function()
-				require("config.gitsigns")
+				require("config.plugins.gitsigns")
 			end,
 		})
 		use({
 			"akinsho/git-conflict.nvim",
 			config = function()
-				require("config.git-conflict")
+				require("config.plugins.git-conflict")
 			end,
 		})
 		use({
 			"rhysd/git-messenger.vim",
 			event = "BufEnter",
 			config = function()
-				require("config.git-messenger")
+				require("config.plugins.git-messenger")
 			end,
 		})
 
@@ -271,7 +271,7 @@ packer.startup({
 			},
 			event = "BufEnter",
 			config = function()
-				require("config.neo-tree")
+				require("config.plugins.neo-tree")
 			end,
 		})
 
@@ -280,7 +280,7 @@ packer.startup({
 			"iamcco/markdown-preview.nvim",
 			run = "cd app && npm install",
 			config = function()
-				require("config.markdown-preview")
+				require("config.plugins.markdown-preview")
 			end,
 		})
 
@@ -292,7 +292,7 @@ packer.startup({
 		use({
 			"windwp/nvim-autopairs",
 			config = function()
-				require("config.autopairs")
+				require("config.plugins.autopairs")
 			end,
 		})
 
@@ -301,7 +301,7 @@ packer.startup({
 			"lukas-reineke/indent-blankline.nvim",
 			event = "BufEnter",
 			config = function()
-				require("config.indent-blankline")
+				require("config.plugins.indent-blankline")
 			end,
 		})
 		-- Textobject
@@ -314,21 +314,21 @@ packer.startup({
 			"junegunn/vim-easy-align",
 			event = "BufEnter",
 			config = function()
-				require("config.easy-align")
+				require("config.plugins..easy-align")
 			end,
 		})
 		use({
 			"monaqa/dial.nvim",
 			event = "BufEnter",
 			config = function()
-				require("config.dial")
+				require("config.plugins.dial")
 			end,
 		})
 		use({
 			"windwp/nvim-spectre",
 			event = "BufEnter",
 			config = function()
-				require("config.spectre")
+				require("config.plugins.spectre")
 			end,
 		})
 		use("jghauser/mkdir.nvim")
@@ -340,13 +340,13 @@ packer.startup({
 			"danymat/neogen",
 			event = "BufEnter",
 			config = function()
-				require("config.neogen")
+				require("config.plugins.neogen")
 			end,
 		})
 		use({
 			"folke/todo-comments.nvim",
 			config = function()
-				require("config.todo-comments")
+				require("config.plugins.todo-comments")
 			end,
 		})
 
@@ -354,7 +354,7 @@ packer.startup({
 			"akinsho/toggleterm.nvim",
 			event = "BufEnter",
 			config = function()
-				require("config.toggleterm")
+				require("config.plugins.toggleterm")
 			end,
 		})
 
