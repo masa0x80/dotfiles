@@ -4,7 +4,7 @@ require("config.options")
 require("config.keymaps")
 
 -- Plugins
-require("config.plugins")
+require("config.packer")
 
 -- Misc
 require("misc.markdown")
