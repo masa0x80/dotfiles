@@ -107,4 +107,7 @@ brew 'gum'
 # for coc-tsserver
 brew 'watchman'
 
+# for telekasten
+brew 'viu'
+
 # vim: ft=sh
