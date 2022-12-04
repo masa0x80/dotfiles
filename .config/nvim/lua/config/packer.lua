@@ -378,6 +378,6 @@ packer.startup({
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	group = "_",
-	pattern = "plugins.lua",
+	pattern = "packer.lua",
 	command = "source <afile> | PackerCompile",
 })
