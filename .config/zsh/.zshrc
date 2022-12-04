@@ -111,5 +111,8 @@ for config_file ($ZDOTDIR/conf.d/*.zsh(N)) source $config_file
 # Append $DOTFILE/bin to $PATH
 path=($DOTFILE/bin(N-/) $path)
 
-# Load local configurations (profile)
+# Load local configurations
 load_file $HOME/.config.local/zsh/zshrc
+
+# Load local config
+load_file $HOME/.zshrc.local

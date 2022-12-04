@@ -113,7 +113,7 @@ fi
 load_file $HOME/.config.local/zsh/zshenv
 
 # Load proxy config
-load_file $HOME/.proxy
+load_file $HOME/.zshenv.local
 
 # NOTE: Create zsh compiled files
 () {
