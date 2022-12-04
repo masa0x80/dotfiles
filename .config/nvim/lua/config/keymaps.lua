@@ -27,7 +27,6 @@ keymap("n", "<A-l>", "<Cmd>vertical resize +2<CR>", opts)
 keymap("n", "Q", "<Nop>", opts)
 
 -- Save
-keymap("n", ";", "<Nop>", opts)
 keymap("n", ";;", "<Cmd>write<CR>", { noremap = true })
 
 -- Quit
@@ -73,6 +72,10 @@ keymap("n", "<Leader>N", "<Cmd>setlocal relativenumber!<CR>", opts)
 keymap("n", "z-", "zr", opts)
 keymap("n", "z_", "zm", opts)
 
+-- Indent
+keymap("n", "<C-g><C-p>", "<<", opts)
+keymap("n", "<C-g><C-n>", ">>", opts)
+
 keymap("n", ",p", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", opts)
 keymap("n", ",s", "<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>", opts)
 
@@ -84,6 +87,9 @@ keymap("i", "<C-d>", "<Del>", opts)
 keymap("i", "<C-g><C-h>", "<Esc>bi", opts)
 keymap("i", "<C-g><C-l>", "<Esc>ea", opts)
 
+-- list
+keymap("i", "<C-g><C-i>", "<Esc>I- <Esc>A", opts)
+
 -- Indent
 keymap("i", "<C-g><C-n>", "<Esc>v>gi<Right><Right>", opts)
 keymap("i", "<C-g><C-p>", "<Left><Left><Esc>v<gi", opts)
@@ -94,6 +100,9 @@ keymap("v", ";;", "<Esc><Cmd>write<CR>", { noremap = true })
 
 -- Paste
 keymap("v", "p", '"_dP', opts)
+
+-- List
+keymap("v", "<C-g><C-i>", "<Esc><Cmd>:'<,'>s/^/- /g<CR>:nohlsearch<CR>", opts)
 
 -- Stay in indent mode
 keymap("v", "<C-g><C-p>", "<gv", opts)
