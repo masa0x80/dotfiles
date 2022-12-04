@@ -3,11 +3,7 @@ if not status_ok then
 	return
 end
 
-p.setup({
-	triggers_blacklist = {
-		n = { ";" },
-	},
-})
+p.setup()
 
 p.register({
 	-- BackAndForward

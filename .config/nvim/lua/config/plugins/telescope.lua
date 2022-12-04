@@ -71,11 +71,6 @@ keymap("n", "<Leader>F", "<Cmd>Telescope find_files hidden=true no_ignore=true c
 keymap("n", "<Leader>g", "<Cmd>Telescope live_grep cwd=$PWD<CR>", opts)
 keymap("n", "<Leader>G", "<Cmd>Telescope grep_string cwd=$PWD<CR>", opts)
 
-keymap("n", ",f", "<Cmd>Telescope find_files cwd=$SCRAPBOOK_DIR<CR>", opts)
-keymap("n", ",F", "<Cmd>Telescope find_files hidden=true no_ignore=true cwd=$SCRAPBOOK_DIR<CR>", opts)
-keymap("n", ",g", "<Cmd>Telescope live_grep cwd=$SCRAPBOOK_DIR<CR>", opts)
-keymap("n", ",G", "<Cmd>Telescope grep_string cwd=$SCRAPBOOK_DIR<CR>", opts)
-
 -- telescope-coc config
 keymap("n", "gd", "<Cmd>Telescope coc definitions<CR>", opts)
 keymap("n", "gD", "<Cmd>Telescope coc declarations<CR>", opts)
