@@ -125,6 +125,13 @@ packer.startup({
 					"nvim-telescope/telescope-frecency.nvim",
 					requires = { "kkharji/sqlite.lua" },
 				},
+				{
+					"renerocksai/telekasten.nvim",
+					requires = { "renerocksai/calendar-vim" },
+					config = function()
+						require("config.plugins.telekasten")
+					end,
+				},
 			},
 			event = "BufEnter",
 			config = function()
