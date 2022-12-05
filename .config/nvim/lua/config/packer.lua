@@ -90,6 +90,21 @@ packer.startup({
 			end,
 		})
 
+		-- Completions
+		use({
+			"hrsh7th/nvim-cmp",
+			requires = {
+				{ "hrsh7th/cmp-buffer", opt = true },
+				{ "hrsh7th/cmp-path", opt = true },
+				{ "hrsh7th/cmp-cmdline", opt = true },
+			},
+			event = "BufEnter",
+			wants = { "cmp-buffer", "cmp-path", "cmp-cmdline" },
+			config = function()
+				require("config.plugins.cmp")
+			end,
+		})
+
 		-- Debug
 		use({
 			"puremourning/vimspector",

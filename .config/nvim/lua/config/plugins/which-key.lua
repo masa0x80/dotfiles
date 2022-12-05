@@ -42,7 +42,6 @@ p.register({
 	["<C-o>"] = "omni completion",
 	["<C-s>"] = "Spelling suggestions",
 	["<C-z>"] = "stop completion",
-	["<C-x>"] = "cmp spell",
 }, {
 	mode = "i",
 	prefix = "<C-x>",
