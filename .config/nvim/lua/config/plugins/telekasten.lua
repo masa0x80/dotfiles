@@ -47,9 +47,10 @@ local keymap = vim.api.nvim_set_keymap
 keymap("n", ";z", "<Cmd>Telekasten panel<CR>", opts)
 
 keymap("n", ";i", "<Cmd>Telekasten insert_link<CR>", opts)
-keymap("n", ";l", "<Cmd>Telekasten follow_link<CR>", opts)
-keymap("n", ";h", "<Cmd>Telekasten show_backlinks<CR>", opts)
+keymap("n", "g]", "<Cmd>Telekasten follow_link<CR>", opts)
+keymap("n", "g[", "<Cmd>Telekasten show_backlinks<CR>", opts)
 
+keymap("n", ";n", "<Cmd>Telekasten new_note<CR>", opts)
 keymap("n", ";r", "<Cmd>Telekasten find_friends<CR>", opts)
 keymap("n", ";t", "<Cmd>Telekasten show_tags<CR>", opts)
 
