@@ -36,30 +36,31 @@ packer.startup({
 
 		use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 		use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+		use("gpanders/editorconfig.nvim") -- EditorConfig
 		use("tpope/vim-repeat")
-		use("tpope/vim-unimpaired")
+		use({ "tpope/vim-unimpaired", event = { "FocusLost", "CursorHold" } })
 		use("kyazdani42/nvim-web-devicons")
 		use("MunifTanjim/nui.nvim")
+		use({
+			"lewis6991/impatient.nvim",
+			config = function()
+				require("config.plugins.impatient")
+			end,
+		})
 
 		-- Comment out
 		use({
 			"numToStr/Comment.nvim",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.comment")
 			end,
 		})
 		use({
 			"folke/which-key.nvim",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.which-key")
-			end,
-		})
-		use({
-			"lewis6991/impatient.nvim",
-			config = function()
-				require("config.plugins.impatient")
 			end,
 		})
 
@@ -76,15 +77,18 @@ packer.startup({
 			"neoclide/coc.nvim",
 			branch = "master",
 			run = "yarn install --frozen-lockfile",
+			event = { "FocusLost", "CursorHold" },
 			requires = {
-				"honza/vim-snippets",
+				{ "honza/vim-snippets", opt = true },
 			},
+			wants = { "vim-snippets" },
 			config = function()
 				require("config.plugins.coc")
 			end,
 		})
 		use({
 			"dense-analysis/ale",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.ale")
 			end,
@@ -93,12 +97,12 @@ packer.startup({
 		-- Completions
 		use({
 			"hrsh7th/nvim-cmp",
+			module = { "cmp" },
 			requires = {
-				{ "hrsh7th/cmp-buffer", opt = true },
-				{ "hrsh7th/cmp-path", opt = true },
-				{ "hrsh7th/cmp-cmdline", opt = true },
+				{ "hrsh7th/cmp-buffer", event = { "FocusLost", "CursorHold" } },
+				{ "hrsh7th/cmp-path", event = { "FocusLost", "CursorHold" } },
+				{ "hrsh7th/cmp-cmdline", event = { "FocusLost", "CursorHold" } },
 			},
-			event = "BufEnter",
 			wants = { "cmp-buffer", "cmp-path", "cmp-cmdline" },
 			config = function()
 				require("config.plugins.cmp")
@@ -108,7 +112,7 @@ packer.startup({
 		-- Debug
 		use({
 			"puremourning/vimspector",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.vimspector")
 			end,
@@ -117,14 +121,14 @@ packer.startup({
 		-- Test
 		use({
 			"vim-test/vim-test",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.vim-test")
 			end,
 		})
 		use({
 			"is0n/jaq-nvim",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.jaq")
 			end,
@@ -140,17 +144,20 @@ packer.startup({
 					"nvim-telescope/telescope-frecency.nvim",
 					requires = { "kkharji/sqlite.lua" },
 				},
-				{
-					"renerocksai/telekasten.nvim",
-					requires = { "renerocksai/calendar-vim" },
-					config = function()
-						require("config.plugins.telekasten")
-					end,
-				},
 			},
 			event = "BufEnter",
 			config = function()
 				require("config.plugins.telescope")
+			end,
+		})
+
+		use({
+			"renerocksai/telekasten.nvim",
+			event = "BufEnter",
+			requires = { "renerocksai/calendar-vim" },
+			wants = { "calendar-vim" },
+			config = function()
+				require("config.plugins.telekasten")
 			end,
 		})
 
@@ -164,14 +171,14 @@ packer.startup({
 		})
 		use({
 			"David-Kunz/treesitter-unit",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.treesitter-unit")
 			end,
 		})
 		use({
 			"haringsrob/nvim_context_vt",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.context_vt")
 			end,
@@ -180,14 +187,23 @@ packer.startup({
 		-- UI
 		use({
 			"RRethy/vim-illuminate",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.illuminate")
 			end,
 		})
 		use({
 			"petertriho/nvim-scrollbar",
-			event = "BufEnter",
+			event = {
+				"BufWinEnter",
+				"CmdwinLeave",
+				"TabEnter",
+				"TermEnter",
+				"TextChanged",
+				"VimResized",
+				"WinEnter",
+				"WinScrolled",
+			},
 			config = function()
 				require("config.plugins.scrollbar")
 			end,
@@ -201,41 +217,47 @@ packer.startup({
 		})
 		use({
 			"haya14busa/vim-asterisk",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 		})
 		use({
 			"norcalli/nvim-colorizer.lua",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.colorizer")
 			end,
 		})
 		use({
 			"mvllow/modes.nvim",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.modes")
 			end,
 		})
 		use({
 			"nvim-lualine/lualine.nvim",
+			event = { "BufEnter" },
+			requires = {
+				{ "kyazdani42/nvim-web-devicons" },
+			},
+			wants = { "nvim-web-devicons" },
 			config = function()
 				require("config.plugins.lualine")
 			end,
 		})
 		use({
 			"kdheepak/tabline.nvim",
+			event = { "BufEnter" },
 			requires = {
-				"nvim-lualine/lualine.nvim",
-				"kyazdani42/nvim-web-devicons",
+				{ "kyazdani42/nvim-web-devicons" },
 			},
+			wants = { "nvim-web-devicons" },
 			config = function()
 				require("config.plugins.tabline")
 			end,
 		})
 		use({
 			"b0o/incline.nvim",
-			event = "BufLeave",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.incline")
 			end,
@@ -251,7 +273,7 @@ packer.startup({
 		})
 		use({
 			"Bakudankun/BackAndForward.vim",
-			event = "BufLeave",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.BackAndForward")
 			end,
@@ -260,24 +282,25 @@ packer.startup({
 		-- Git
 		use({
 			"tpope/vim-fugitive",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 		})
 		use({
 			"lewis6991/gitsigns.nvim",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.gitsigns")
 			end,
 		})
 		use({
 			"akinsho/git-conflict.nvim",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.git-conflict")
 			end,
 		})
 		use({
 			"rhysd/git-messenger.vim",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.git-messenger")
 			end,
@@ -301,18 +324,26 @@ packer.startup({
 		use({
 			"iamcco/markdown-preview.nvim",
 			run = "cd app && npm install",
+			ft = { "markdown", "plantuml" },
 			config = function()
 				require("config.plugins.markdown-preview")
 			end,
 		})
 
 		-- PlantUML
-		use("aklt/plantuml-syntax")
+		use({
+			"aklt/plantuml-syntax",
+			event = { "BufEnter" },
+		})
 
-		use("gpanders/editorconfig.nvim") -- EditorConfig
-		use("lambdalisue/readablefold.vim") -- Folding
+		-- slim
+		use({ "slim-template/vim-slim", event = { "BufEnter" } })
+
+		-- Folding
+		use({ "lambdalisue/readablefold.vim", event = "BufEnter" })
 		use({
 			"windwp/nvim-autopairs",
+			event = { "InsertEnter" },
 			config = function()
 				require("config.plugins.autopairs")
 			end,
@@ -321,7 +352,7 @@ packer.startup({
 		-- Indent
 		use({
 			"lukas-reineke/indent-blankline.nvim",
-			event = "BufEnter",
+			event = { "BufEnter" },
 			config = function()
 				require("config.plugins.indent-blankline")
 			end,
@@ -329,44 +360,48 @@ packer.startup({
 		-- Textobject
 		use({
 			"machakann/vim-sandwich",
-			jjevent = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 		})
 		-- Prettification
 		use({
 			"junegunn/vim-easy-align",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins..easy-align")
 			end,
 		})
 		use({
 			"monaqa/dial.nvim",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.dial")
 			end,
 		})
 		use({
 			"windwp/nvim-spectre",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.spectre")
 			end,
 		})
-		use("jghauser/mkdir.nvim")
+		use({
+			"jghauser/mkdir.nvim",
+			event = { "FocusLost", "CursorHold" },
+		})
 		use({
 			"dhruvasagar/vim-table-mode",
 			ft = { "markdown" },
 		})
 		use({
 			"danymat/neogen",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.neogen")
 			end,
 		})
 		use({
 			"folke/todo-comments.nvim",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.todo-comments")
 			end,
@@ -374,13 +409,11 @@ packer.startup({
 
 		use({
 			"akinsho/toggleterm.nvim",
-			event = "BufEnter",
+			event = { "FocusLost", "CursorHold" },
 			config = function()
 				require("config.plugins.toggleterm")
 			end,
 		})
-
-		use("slim-template/vim-slim")
 
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins
