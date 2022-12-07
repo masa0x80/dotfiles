@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+startuptime-nvim() {
+  local file=$1
+  local time_file
+  time_file=$(mktemp --suffix "_nvim_startuptime.txt")
+  echo "output: $time_file\n"
+  nvim --startuptime $time_file +q
+  tail -n 1 $time_file | cut -d " " -f1 | tr -d "\n" && echo " [ms]\n"
+  cat $time_file
+}

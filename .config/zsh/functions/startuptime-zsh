@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+startuptime-zsh() {
+  local time_myrc
+  time_myrc=$((TIMEFMT="%mE"; time zsh -i -c exit) &> /dev/stdout)
+  local time_default
+  time_default=$((TIMEFMT="%mE"; time zsh -df -i -c "autoload -Uz compinit && compinit -C; exit") &> /dev/stdout)
+  echo "my zshrc: ${time_myrc}\ndefault:  ${time_default}\n"
+
+  local result
+  result=$(scale=3 echo "${time_myrc%ms} / ${time_default%ms}" | bc)
+  echo "${result}x slower."
+}
