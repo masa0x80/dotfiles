@@ -45,6 +45,8 @@ brew 'direnv'
 brew 'sops'
 
 brew 'zsh'
+tap 'olets/tap/'
+brew 'zsh-abbr'
 
 brew 'navi'
 
