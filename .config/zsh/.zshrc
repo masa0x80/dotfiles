@@ -110,17 +110,18 @@ bindkey '^G^N' history-substring-search-down
 # Custom Configurations
 #
 
-# Load hooks configurations
-for config_file ($ZDOTDIR/hooks/*.zsh(N)) source $config_file
-
-# Load files under conf.d
-for config_file ($ZDOTDIR/conf.d/*.zsh(N)) source $config_file
-
-# Append $DOTFILE/bin to $PATH
-path=($DOTFILE/bin(N-/) $path)
+for config_file (
+  # hooks configurations
+  $ZDOTDIR/hooks/*.zsh(N)
+  # files under conf.d
+  $ZDOTDIR/conf.d/*.zsh(N)
+) load_file $config_file
 
 # Load local configurations
 load_file $HOME/.config.local/zsh/zshrc
 
 # Load local config
 load_file $HOME/.zshrc.local
+
+# Append $DOTFILE/bin to $PATH
+path=($DOTFILE/bin(N-/) $path)

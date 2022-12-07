@@ -121,6 +121,6 @@ load_file $HOME/.zshenv.local
   for src in $@; do
     [ ! -f ${src}.zwc -o $src -nt ${src}.zwc ] && zcompile $src
   done
-} $HOME/.zshenv $ZDOTDIR/{.zshrc,.zimrc} `find $ZDOTDIR/{functions,conf.d,hooks} -type f -name '*.zsh'`
+} $ZDOTDIR/.zshenv $ZDOTDIR/{.zshrc,.zimrc}
 
 # }}}

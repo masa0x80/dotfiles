@@ -8,11 +8,9 @@
 zmodule environment
 # Configures fzf to use fd or ripgrep
 zmodule fzf
-# Auto-expanding abbreviations
-zmodule olets/zsh-abbr
 
 # Exposes git repository status information to prompts
-zmodule woefe/git-prompt.zsh
+zmodule woefe/git-prompt.zsh --source git-prompt.zsh --source examples/pure.zsh
 
 #
 # Completion
