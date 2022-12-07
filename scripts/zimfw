@@ -4,3 +4,5 @@ source ~/.config/zsh/.zshrc
 
 zimfw upgrade
 zimfw update
+zimfw clean
+zimfw compile
