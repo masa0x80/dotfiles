@@ -1,3 +1,11 @@
+# プロファイル用設定
+#
+# (.zshrcの一番始めに記載すること)
+#
+if [ "$ZSHRC_PROFILE" != "" ]; then
+  zmodload zsh/zprof && zprof > /dev/null
+fi
+
 # Start configuration added by Zim install {{{
 #
 # User configuration sourced by interactive shells
