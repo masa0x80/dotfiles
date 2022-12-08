@@ -1,5 +1,8 @@
 #!/bin/zsh
 
 load_file() {
-  [ -r $1 ] && . $1
+  if [ -r $1 ]; then
+    [ ! -f ${1}.zwc -o $1 -nt ${1}.zwc ] && zcompile $1
+    . $1
+  fi
 }

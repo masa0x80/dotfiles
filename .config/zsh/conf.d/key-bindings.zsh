@@ -1,10 +1,4 @@
-# Initializes mcfly
-if installed mcfly; then
-  eval "$(mcfly init zsh)"
-fi
-
-# olets/zsh-abbr
-bindkey '^J' abbr-expand-and-accept
+# ref. ../lazy/zsh-abbr.zsh
 
 # Key bindings
 autoload -Uz smart-insert-last-word
