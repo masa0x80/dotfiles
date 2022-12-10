@@ -37,7 +37,7 @@ keymap("n", "<Leader>Q", "<Cmd>qa<CR>", opts)
 keymap("n", ",s", "<Cmd>split<CR>", opts)
 keymap("n", "<C-w>-", "<Cmd>split<CR>", opts)
 keymap("n", ",v", "<Cmd>vsplit<CR>", opts)
-keymap("n", "<C-w>|", "<Cmd>vsplit<CR>", opts)
+keymap("n", "<C-w>\\", "<Cmd>vsplit<CR>", opts)
 keymap("n", "<C-w>o", "<NOP>", opts)
 keymap("n", "<C-w>O", "<Cmd>only<CR>", opts)
 

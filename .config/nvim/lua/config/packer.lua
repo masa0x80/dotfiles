@@ -77,7 +77,7 @@ packer.startup({
 			"neoclide/coc.nvim",
 			branch = "master",
 			run = "yarn install --frozen-lockfile",
-			event = { "FocusLost", "CursorHold" },
+			event = { "BufEnter" },
 			requires = {
 				{ "honza/vim-snippets", opt = true },
 			},
@@ -237,7 +237,7 @@ packer.startup({
 			"nvim-lualine/lualine.nvim",
 			event = { "BufEnter" },
 			requires = {
-				{ "kyazdani42/nvim-web-devicons" },
+				{ "kyazdani42/nvim-web-devicons", opt = true },
 			},
 			wants = { "nvim-web-devicons" },
 			config = function()
@@ -248,7 +248,7 @@ packer.startup({
 			"kdheepak/tabline.nvim",
 			event = { "BufEnter" },
 			requires = {
-				{ "kyazdani42/nvim-web-devicons" },
+				{ "kyazdani42/nvim-web-devicons", opt = true },
 			},
 			wants = { "nvim-web-devicons" },
 			config = function()
