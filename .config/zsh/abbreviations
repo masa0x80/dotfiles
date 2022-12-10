@@ -1,3 +1,4 @@
+# vim: ft=zsh
 abbr tailf='tail -f'
 abbr diff='diff -u'
 abbr watch='watch -n 0.5'

@@ -29,8 +29,8 @@ fi
 
 # ssh {{{
 if test -e "$HOME/.ssh/config"; then
-  abbr -S -q ssh_config='eval $EDITOR ~/.ssh/config'
-  abbr -S -q sconfig='eval $EDITOR ~/.ssh/config'
-  abbr -S -q sconf='eval $EDITOR ~/.ssh/config'
+  abbr -S -q ssh_config='vi ~/.ssh/config'
+  abbr -S -q sconfig='vi ~/.ssh/config'
+  abbr -S -q sconf='vi ~/.ssh/config'
 fi
 # }}}
