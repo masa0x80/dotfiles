@@ -32,21 +32,23 @@ packer.init({
 
 packer.startup({
 	function(use)
-		use("wbthomason/packer.nvim") -- usein Manager
+		-- usein Manager
+		use("wbthomason/packer.nvim")
 
-		use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
-		use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-		use("gpanders/editorconfig.nvim") -- EditorConfig
-		use("tpope/vim-repeat")
-		use({ "tpope/vim-unimpaired", event = { "FocusLost", "CursorHold" } })
-		use("kyazdani42/nvim-web-devicons")
-		use("MunifTanjim/nui.nvim")
 		use({
 			"lewis6991/impatient.nvim",
 			config = function()
-				require("config.plugins.impatient")
+				require("impatient")
 			end,
 		})
+
+		use({ "nvim-lua/plenary.nvim", event = "BufEnter" }) -- Useful lua functions used ny lots of plugins
+		use({ "nvim-lua/popup.nvim", event = "BufEnter" }) -- An implementation of the Popup API from vim in Neovim
+		use({ "MunifTanjim/nui.nvim", event = "BufEnter" })
+		use({ "kyazdani42/nvim-web-devicons", event = "BufEnter" })
+		use({ "tpope/vim-repeat", event = { "FocusLost", "CursorHold" } })
+		use({ "tpope/vim-unimpaired", event = { "FocusLost", "CursorHold" } })
+		use({ "gpanders/editorconfig.nvim", event = { "BufEnter" } }) -- EditorConfig
 
 		-- Comment out
 		use({
@@ -137,11 +139,10 @@ packer.startup({
 		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
+			event = { "BufEnter" },
 			requires = {
-				"nvim-lua/plenary.nvim",
-				"fannheyward/telescope-coc.nvim",
+				{ "fannheyward/telescope-coc.nvim" },
 			},
-			event = "BufEnter",
 			config = function()
 				require("config.plugins.telescope")
 			end,
@@ -150,7 +151,7 @@ packer.startup({
 		use({
 			"renerocksai/telekasten.nvim",
 			event = "BufEnter",
-			requires = { "renerocksai/calendar-vim" },
+			requires = { "renerocksai/calendar-vim", opt = true },
 			wants = { "calendar-vim" },
 			config = function()
 				require("config.plugins.telekasten")
@@ -206,7 +207,7 @@ packer.startup({
 		})
 		use({
 			"kevinhwang91/nvim-hlslens",
-			event = "BufEnter",
+			event = "CursorMoved",
 			config = function()
 				require("config.plugins.hlslens")
 			end,
@@ -232,10 +233,10 @@ packer.startup({
 		use({
 			"kdheepak/tabline.nvim",
 			event = { "BufEnter" },
+			requires = { "nvim-lualine/lualine.nvim", "kyazdani42/nvim-web-devicons" },
 			config = function()
 				require("config.plugins.tabline")
 			end,
-			requires = { "nvim-lualine/lualine.nvim", "kyazdani42/nvim-web-devicons" },
 		})
 		use({
 			"b0o/incline.nvim",
@@ -291,12 +292,12 @@ packer.startup({
 		-- Filer
 		use({
 			"nvim-neo-tree/neo-tree.nvim",
+			event = "BufEnter",
 			requires = {
 				"nvim-lua/plenary.nvim",
 				"kyazdani42/nvim-web-devicons",
 				"MunifTanjim/nui.nvim",
 			},
-			event = "BufEnter",
 			config = function()
 				require("config.plugins.neo-tree")
 			end,
