@@ -2,7 +2,6 @@
 # zsh-history-substring-search
 #
 
-bindkey "^P" history-substring-search-up
-bindkey "^N" history-substring-search-down
-bindkey "^G^P" history-search-backward
-bindkey "^G^N" history-search-forward
+# NOTE: ^N や ^P にアサインすると補完の選択に使えなくなる
+bindkey "^G^P" history-substring-search-up
+bindkey "^G^N" history-substring-search-down
