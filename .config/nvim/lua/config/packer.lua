@@ -140,10 +140,6 @@ packer.startup({
 			requires = {
 				"nvim-lua/plenary.nvim",
 				"fannheyward/telescope-coc.nvim",
-				{
-					"nvim-telescope/telescope-frecency.nvim",
-					requires = { "kkharji/sqlite.lua" },
-				},
 			},
 			event = "BufEnter",
 			config = function()
@@ -234,26 +230,12 @@ packer.startup({
 			end,
 		})
 		use({
-			"nvim-lualine/lualine.nvim",
-			event = { "BufEnter" },
-			requires = {
-				{ "kyazdani42/nvim-web-devicons", opt = true },
-			},
-			wants = { "nvim-web-devicons" },
-			config = function()
-				require("config.plugins.lualine")
-			end,
-		})
-		use({
 			"kdheepak/tabline.nvim",
 			event = { "BufEnter" },
-			requires = {
-				{ "kyazdani42/nvim-web-devicons", opt = true },
-			},
-			wants = { "nvim-web-devicons" },
 			config = function()
 				require("config.plugins.tabline")
 			end,
+			requires = { "nvim-lualine/lualine.nvim", "kyazdani42/nvim-web-devicons" },
 		})
 		use({
 			"b0o/incline.nvim",

@@ -59,6 +59,9 @@ vim.opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 
+-- store tabpages and globals in session
+vim.opt.sessionoptions:append("tabpages,globals")
+
 -- Folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
