@@ -49,7 +49,7 @@ export LESS_TERMCAP_us=$(tput smul; tput setaf 4)               # begin underlin
 
 # asdf
 export NODEJS_CHECK_SIGNATURES=no
-load_file "$HOMEBREW_PREFIX/opt/asdf/asdf.sh"
+load_file "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
 load_file $HOME/.asdf/plugins/java/set-java-home.zsh
 
 # EDITOR
