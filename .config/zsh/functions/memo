@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-memo() {
-  vi "$(scrapbook_path $(current_dir)/$(date +%Y-%m-%d).md)"
-}

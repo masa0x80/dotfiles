@@ -1,7 +1,8 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
-aws-login() {
+() {
   local profile=$(aws-vault list --profiles | fzf +m)
+
   if test -n "$profile"; then
     local url=$(aws-vault login $profile --stdout)
     open $url

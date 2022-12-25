@@ -1,9 +1,8 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
-bt() {
-  installed BluetoothConnector || return 1
-  installed fzf || return 1
-
+() {
+  (( $+commands[BluetoothConnector] )) || return 1
+  (( $+commands[fzf] )) || return 1
 
   local op=$(echo -e "connect\ndisconnect" | fzf +m)
   local selected=$(BluetoothConnector 2>&1 | grep -o '.* - .*' | fzf -d ' - ' --with-nth=2)

@@ -106,11 +106,14 @@ setopt NO_HUP
 #
 
 [[ ${TERM} != dumb ]] && () {
+  # Autoload functions
+  fpath=($ZDOTDIR/functions(N-/) $fpath)
+  for config_file ($ZDOTDIR/functions/*(N)) autoload $(basename "$config_file")
+
   # Load and initialize the completion system
   local zdumpfile glob_case_sensitivity completion_case_sensitivity
-  # zstyle -s ':zim:completion' dumpfile 'zdumpfile' #|| zdumpfile=${ZDOTDIR:-${HOME}}/.zcompdump
-  zdumpfile=${ZDOTDIR:-${HOME}}/.zcompdump
   glob_case_sensitivity=insensitive
+  zstyle -s ':zim:completion' dumpfile 'zdumpfile' || zdumpfile=${ZDOTDIR:-${HOME}}/.zcompdump
   completion_case_sensitivity=insensitive
   autoload -Uz compinit && compinit -C -d ${zdumpfile}
   autoload -Uz +X bashcompinit && bashcompinit

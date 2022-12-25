@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if [ "$argv" = 'show' ]; then
+if [ "$1" = 'show' ]; then
     # fshow - git commit browser
     # ref: https://github.com/junegunn/fzf/wiki/Examples
     git log --graph --color=always \

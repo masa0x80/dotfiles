@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
-re() {
+() {
   local option="$(echo -e "--staged\n--worktree" | fzf +m --query="$@")"
   git status -s -uno | fzf --prompt="\$ git restore $option (git status -s -uno)> " | cut -c4- | xargs -I% git restore $option %
-}
+} "$@"

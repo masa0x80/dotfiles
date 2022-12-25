@@ -2,6 +2,7 @@
 
 r() {
   local repo=$(ghq list | fzf +m --query="$@")
+
   if test -n "$repo"; then
     cd "$(ghq root)/$repo"
   fi

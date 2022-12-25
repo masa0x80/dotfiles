@@ -1,7 +1,7 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
-tmux-choose-session() {
-  installed fzf || return 1
+() {
+  (( $+commands[fzf] )) || return 1
 
   local num=$(tmux list-sessions | fzf | cut -d':' -f 1)
   tmux switch-client -t $num

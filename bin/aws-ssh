@@ -1,12 +1,12 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
-aws-ssh() {
-  installed aws || return 1
-  installed fzf || return 1
-  installed xpanes || return 1
+() {
+  (( $+commands[aws] )) || return 1
+  (( $+commands[fzf] )) || return 1
+  (( $+commands[xpanes] )) || return 1
 
   local hosts=$(aws ec2 describe-instances --filter Name=instance-state-name,Values=running --query 'Reservations[].Instances[].[join(`\t`, [PrivateIpAddress, join(`\t`, [Tags[].join(`:`, *)][])])]' --output text | fzf -m -q "$@" | cut -f 1)
   if [ "$hosts" != '' ]; then
     xpanes --ssh $hosts
   fi
-}
+} "$@"

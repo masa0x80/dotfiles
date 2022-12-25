@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
-dc() {
+() {
   local project_name=$(current_dir -)
   local services=''
   if test "$1" = up; then
@@ -17,4 +17,4 @@ dc() {
   done
   echo "RUN: $cmd $@ $services"
   eval "$cmd $@ $services"
-}
+} "$@"

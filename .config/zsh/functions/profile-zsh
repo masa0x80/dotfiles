@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-profile-zsh() {
-  ZSHRC_PROFILE=1 zsh -i -c zprof
-}

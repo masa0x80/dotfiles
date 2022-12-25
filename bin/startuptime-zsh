@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
-startuptime-zsh() {
+() {
   local time_myrc
   time_myrc=$((TIMEFMT="%mE"; time zsh -i -c exit) &> /dev/stdout)
   local time_default
