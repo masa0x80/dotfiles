@@ -1,5 +1,4 @@
 vim.api.nvim_create_user_command("Todo", function()
-	vim.fn.execute("cd " .. vim.fn.expand("$PWD"))
 	vim.fn.execute(":e " .. vim.fn.trim(vim.fn.system("scrapbook_path $(current_dir)/todo.md")))
 end, {})
 vim.api.nvim_create_user_command("T", function()
@@ -7,7 +6,6 @@ vim.api.nvim_create_user_command("T", function()
 end, {})
 
 vim.api.nvim_create_user_command("Memo", function()
-	vim.fn.execute("cd " .. vim.fn.expand("$PWD"))
 	vim.fn.execute(":e " .. vim.fn.trim(vim.fn.system("scrapbook_path $(current_dir)/$(date +%Y-%m-%d).md")))
 end, {})
 vim.api.nvim_create_user_command("M", function()

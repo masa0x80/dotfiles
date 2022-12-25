@@ -32,7 +32,7 @@ packer.init({
 
 packer.startup({
 	function(use)
-		-- usein Manager
+		-- Plugin manager
 		use("wbthomason/packer.nvim")
 
 		use({
