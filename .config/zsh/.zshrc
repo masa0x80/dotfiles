@@ -226,10 +226,6 @@ fi
 
 if (( ${+FZF_DEFAULT_COMMAND} )) export FZF_CTRL_T_COMMAND=${FZF_DEFAULT_COMMAND}
 
-# --------------------
-# Module configuration
-# --------------------
-
 #
 # zsh-autosuggestions
 #

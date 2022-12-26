@@ -18,22 +18,21 @@ autoload -Uz _zinit
 #
 
 # Exposes git repository status information to prompts
+zinit ice lucid wait atload'!_zsh_git_prompt_precmd_hook'
 zinit light woefe/git-prompt.zsh
 
 #
 # Completion
 #
 
-# fast-syntax-highlighting のついでに時間がかかる設定 ($ZDOTDIR/lazy/heavy.zsh) 遅延読み込みする
-zinit lucid wait for zdharma-continuum/fast-syntax-highlighting \
- atload'source $ZDOTDIR/lazy/heavy.zsh' \
- blockf \
-    zsh-users/zsh-completions
+zinit ice lucid wait
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 zinit ice lucid wait
 zinit light zdharma/history-search-multi-word
 
 # Fish-like autosuggestions for Zsh.
+zinit ice lucid wait atload'!_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
 # Fish-like history search (up arrow) for Zsh.
@@ -42,9 +41,12 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice lucid wait atload'source $ZDOTDIR/lazy/zsh-history-substring-search.zsh'
 zinit light zsh-users/zsh-history-substring-search
 
-# Auto-expanding abbreviations
-# zinit ice lucid wait atload"!source $ZDOTDIR/lazy/abbreviations.zsh; bindkey '^J' abbr-expand-and-accept"
-zinit ice lucid wait atload"source $ZDOTDIR/lazy/zsh-abbr.zsh"
-zinit light olets/zsh-abbr
-
-zinit light masa0x80/zsh-better-npm-completion
+# 時間がかかる設定 ($ZDOTDIR/lazy/heavy.zsh) 遅延読み込みする
+zinit for \
+    atload"zicompinit; zicdreplay; source $ZDOTDIR/lazy/heavy.zsh; source $ZDOTDIR/lazy/zsh-abbr.zsh" \
+    blockf \
+    lucid \
+    wait \
+  olets/zsh-abbr \
+  zsh-users/zsh-completions \
+  masa0x80/zsh-better-npm-completion
