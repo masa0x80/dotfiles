@@ -67,7 +67,7 @@ keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })
 keyset("n", "<leader>ca", "<Plug>(coc-codeaction)", { silent = true })
 keyset("n", "<leader>cl", "<Plug>(coc-codelens-action)", { silent = true })
 
-local opts = { silent = true, nowait = true }
+opts = { silent = true, nowait = true }
 keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
 keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
 

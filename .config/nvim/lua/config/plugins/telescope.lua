@@ -70,6 +70,7 @@ keymap("n", "<Leader>F", "<Cmd>Telescope find_files hidden=true no_ignore=true c
 keymap("n", "<Leader>g", "<Cmd>Telescope live_grep cwd=$PWD<CR>", opts)
 keymap("n", "<Leader>G", "<Cmd>Telescope grep_string cwd=$PWD<CR>", opts)
 keymap("n", "<Leader>o", "<Cmd>Telescope oldfiles<CR>", opts)
+keymap("n", "<Leader>r", "<Cmd>Telescope resume<CR>", opts)
 
 -- telescope-coc config
 keymap("n", "gd", "<Cmd>Telescope coc definitions<CR>", opts)
