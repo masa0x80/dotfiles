@@ -27,6 +27,10 @@ path=(
   $path
 )
 
+# Autoload functions
+fpath=($ZDOTDIR/functions(N-/) $fpath)
+for config_file ($ZDOTDIR/functions/*(N)) autoload $(basename "$config_file")
+
 # brew caveats
 LDFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/lib"
 CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/include"
@@ -70,6 +74,7 @@ if installed ghq; then
 fi
 
 for file (
+  $ZDOTDIR/lazy/config.zsh(N)
   # Load files under conf.d
   $ZDOTDIR/conf.d/*.zsh(N)
   # Load hooks configurations

@@ -1,5 +1,3 @@
-bindkey '^J' abbr-expand-and-accept
-
 if_installed mycli abbr -S -q mysql=mycli
 if_installed pgcli abbr -S -q psql=pgcli
 

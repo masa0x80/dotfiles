@@ -9,44 +9,33 @@ if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
       print -P "%F{160} The clone has failed.%f%b"
 fi
 
+
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-
-#
-# Modules
-#
-
-# Exposes git repository status information to prompts
-zinit ice lucid wait atload'!_zsh_git_prompt_precmd_hook'
-zinit light woefe/git-prompt.zsh
-
-#
-# Completion
-#
-
-zinit ice lucid wait
-zinit light zdharma-continuum/fast-syntax-highlighting
-
-zinit ice lucid wait
-zinit light zdharma/history-search-multi-word
 
 # Fish-like autosuggestions for Zsh.
 zinit ice lucid wait atload'!_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
-# Fish-like history search (up arrow) for Zsh.
 # zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
-# zinit ice lucid wait atload'source $ZDOTDIR/lazy/zshrc.zsh.zsh; source $ZDOTDIR/lazy/zsh-history-substring-search.zsh'
-zinit ice lucid wait atload'source $ZDOTDIR/lazy/zsh-history-substring-search.zsh'
-zinit light zsh-users/zsh-history-substring-search
-
-# 時間がかかる設定 ($ZDOTDIR/lazy/heavy.zsh) 遅延読み込みする
 zinit for \
-    atload"zicompinit; zicdreplay; source $ZDOTDIR/lazy/heavy.zsh; source $ZDOTDIR/lazy/zsh-abbr.zsh" \
+    lucid \
+    wait \
+  zsh-users/zsh-syntax-highlighting \
+  zsh-users/zsh-history-substring-search
+
+zinit for \
+    atload'source $ZDOTDIR/lazy/completions.zsh; zicompinit; zicdreplay' \
     blockf \
     lucid \
     wait \
-  olets/zsh-abbr \
   zsh-users/zsh-completions \
   masa0x80/zsh-better-npm-completion
+
+zinit ice lucid wait atload'!_zsh_git_prompt_precmd_hook'
+zinit light woefe/git-prompt.zsh
+
+# 時間がかかる設定 ($ZDOTDIR/lazy/init.zsh) 遅延読み込みする
+zinit ice lucid wait atload'source $ZDOTDIR/lazy/init.zsh'
+zinit light olets/zsh-abbr
