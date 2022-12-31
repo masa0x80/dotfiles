@@ -19,7 +19,7 @@ p.setup({
 		},
 	},
 	behavior = {
-		default = "terminal",
+		default = "quickfix",
 	},
 	ui = {
 		terminal = {
