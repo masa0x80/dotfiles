@@ -1,110 +1,109 @@
-tap 'homebrew/core'
-tap 'homebrew/services'
+# vim: ft=ruby
+tap "homebrew/core"
+tap "homebrew/services"
 
-brew 'autoconf'
-brew 'automake'
-brew 'boost'
-brew 'coreutils'
-brew 'curl'
-brew 'gdbm'
-brew 'gettext'
-brew 'gnu-sed'
-brew 'gnu-tar'
-brew 'grep'
-brew 'less'
-brew 'llvm'
-brew 'libgit2'
-brew 'libsodium'
-brew 'openssl'
+brew "autoconf"
+brew "automake"
+brew "boost"
+brew "coreutils"
+brew "curl"
+brew "gdbm"
+brew "gettext"
+brew "gnu-sed"
+brew "gnu-tar"
+brew "grep"
+brew "less"
+brew "llvm"
+brew "libgit2"
+brew "libsodium"
+brew "openssl"
 
-brew 'bluetoothconnector'
-brew 'fzf'
-brew 'gibo'
-brew 'git'
-brew 'jo'
-brew 'jq'
-brew 'lsof'
-brew 'mas'
-brew 'tig'
-brew 'tldr'
-brew 'pass'
-brew 'rsync'
-brew 'shellcheck'
-brew 'shfmt'
-brew 'watch'
+brew "bluetoothconnector"
+brew "fzf"
+brew "gibo"
+brew "git"
+brew "jo"
+brew "jq"
+brew "lsof"
+brew "mas"
+brew "tig"
+brew "tldr"
+brew "pass"
+brew "rsync"
+brew "shellcheck"
+brew "shfmt"
+brew "watch"
 
-brew 'graphviz'
-brew 'imagemagick'
-brew 'pandoc'
+brew "graphviz"
+brew "imagemagick"
+brew "pandoc"
 
-tap 'universal-ctags/universal-ctags'
-brew 'universal-ctags', args: ['HEAD']
+tap "universal-ctags/universal-ctags"
+brew "universal-ctags", args: ["HEAD"]
 
-brew 'asdf'
-brew 'direnv'
-brew 'sops'
+brew "asdf"
+brew "direnv"
+brew "sops"
 
-brew 'zsh'
+brew "zsh"
 
-brew 'navi'
+brew "navi"
 
-brew 'tmux'
-brew 'tmux-xpanes'
+brew "tmux"
+brew "tmux-xpanes"
 
-brew 'mysql'
-brew 'postgresql'
-brew 'redis'
+brew "mysql"
+brew "postgresql"
+brew "redis"
 
-brew 'vim'
-brew 'neovim', args: ['HEAD']
+brew "vim"
+brew "neovim", args: ["HEAD"]
 
-brew 'awscli'
+brew "awscli"
 
-brew 'rust'
-brew 'bat'
-brew 'dog'
-brew 'exa'
-brew 'fd'
-brew 'git-delta'
-brew 'ripgrep'
-brew 'sd'
-brew 'silicon'
-brew 'grex'
+brew "rust"
+brew "bat"
+brew "dog"
+brew "exa"
+brew "fd"
+brew "git-delta"
+brew "ripgrep"
+brew "sd"
+brew "silicon"
+brew "grex"
 
-brew 'go'
+brew "go"
 
-brew 'hub'
-brew 'gh'
-brew 'ghq'
+brew "hub"
+brew "gh"
+brew "ghq"
 
-brew 'csvq'
+brew "csvq"
 
-tap 'itchyny/tap'
-brew 'gojq'
-brew 'gojo'
+tap "itchyny/tap"
+brew "gojq"
+brew "gojo"
 
-brew 'hadolint'
-brew 'lazydocker'
+brew "hadolint"
+brew "lazydocker"
 
-brew 'pinentry-mac'
+brew "pinentry-mac"
 
-brew 'httpie'
-brew 'yq'
+brew "httpie"
+brew "yq"
 
-brew 'protobuf'
+brew "protobuf"
 
-tap 'arkweid/lefthook'
-brew 'lefthook'
+tap "arkweid/lefthook"
+brew "lefthook"
 
-brew 'stylua'
+brew "stylua"
 
-tap 'charmbracelet/tap'
-brew 'gum'
+tap "charmbracelet/tap"
+brew "gum"
 
 # for coc-tsserver
-brew 'watchman'
+brew "watchman"
 
 # for telekasten
-brew 'viu'
-
-# vim: ft=sh
+brew "viu"
