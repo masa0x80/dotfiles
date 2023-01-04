@@ -68,7 +68,7 @@ packer.startup({
 
 		-- Colorscheme
 		use({
-			"folke/tokyonight.nvim",
+			"joshdick/onedark.vim",
 			config = function()
 				require("config.plugins.colorscheme")
 			end,
