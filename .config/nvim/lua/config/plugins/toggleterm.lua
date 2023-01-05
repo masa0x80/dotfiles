@@ -1,10 +1,5 @@
-local status_ok, p = pcall(require, "toggleterm")
-if not status_ok then
-	return
-end
-
-p.setup({
-	open_mapping = [[<c-\>]],
+require("toggleterm").setup({
+	open_mapping = [[<C-\>]],
 	direction = "float",
 	float_opts = {
 		border = "curved",
@@ -15,7 +10,7 @@ p.setup({
 local keymap = vim.keymap.set
 function _G.set_terminal_keymaps()
 	local opts = { buffer = 0 }
-	keymap("t", "<esc>", [[<C-\><C-n>]], opts)
+	keymap("t", "<Esc>", [[<C-\><C-n>]], opts)
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
@@ -25,10 +20,9 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 	command = "lua set_terminal_keymaps()",
 })
 
-local opts = { noremap = true, silent = true }
 keymap("n", ",,f", function()
 	vim.cmd(vim.v.count1 .. "ToggleTerm direction=float")
-end, opts)
+end, { noremap = true, silent = true, desc = "<v:count1>ToggleTerm direction=float" })
 keymap("n", ",,j", function()
 	vim.cmd(vim.v.count1 .. "ToggleTerm direction=horizontal")
-end, opts)
+end, { noremap = true, silent = true, desc = "<v:count1>ToggleTerm direction=horizontal" })

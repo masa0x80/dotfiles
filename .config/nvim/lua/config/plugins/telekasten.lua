@@ -1,10 +1,5 @@
-local status_ok, p = pcall(require, "telekasten")
-if not status_ok then
-	return
-end
-
 local home = vim.fn.expand("$SCRAPBOOK_DIR")
-p.setup({
+require("telekasten").setup({
 	home = home,
 
 	auto_set_filetype = false,

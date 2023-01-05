@@ -1,9 +1,4 @@
-local status_ok, p = pcall(require, "jaq-nvim")
-if not status_ok then
-	return
-end
-
-p.setup({
+require("jaq-nvim").setup({
 	cmds = {
 		external = {
 			typescript = "node %",
@@ -30,6 +25,4 @@ p.setup({
 	},
 })
 
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
-keymap("n", "<Leader>x", "<Cmd>Jaq<CR><C-w>k", opts)
+vim.keymap.set("n", ",x", "<Cmd>Jaq<CR><C-w>k", { noremap = true, silent = true, desc = "QuickRun" })

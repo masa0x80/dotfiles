@@ -1,5 +1,3 @@
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
-
-keymap("n", "<C-g><C-o>", "<Cmd>Back<CR>", opts)
-keymap("n", "<C-g><C-i>", "<Cmd>Forward<CR>", opts)
+local keymap = vim.keymap.set
+keymap("n", "<C-g><C-o>", "<Cmd>Back<CR>", { noremap = true, silent = true, desc = "BackAndForward: Back" })
+keymap("n", "<C-g><C-i>", "<Cmd>Forward<CR>", { noremap = true, silent = true, desc = "BackAndForward: Forward" })

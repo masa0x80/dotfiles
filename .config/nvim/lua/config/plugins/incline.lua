@@ -1,11 +1,8 @@
-local status_ok, p = pcall(require, "incline")
-if not status_ok then
-	return
-end
+require("incline").setup()
 
-p.setup()
-
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
-
-keymap("n", "<Leader><C-g>", "<Cmd>lua require'incline'.toggle()<CR>", opts)
+vim.keymap.set(
+	"n",
+	"<Leader><C-g>",
+	require("incline").toggle,
+	{ noremap = true, silent = true, desc = "Toggle incline" }
+)

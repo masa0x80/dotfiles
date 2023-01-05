@@ -1,13 +1,12 @@
-local opts = {}
-local keymap = vim.api.nvim_set_keymap
-keymap("n", "<C-g><C-l>", "<Plug>(git-messenger)<CR>", opts)
+local keymap = vim.keymap.set
+keymap("n", "<C-g><C-l>", "<Plug>(git-messenger)<CR>", { desc = "Show Git Log" })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	group = "_",
 	pattern = "gitmessengerpopup",
 	callback = function()
-		keymap("n", "<C-o>", "o", {})
-		keymap("n", "<C-i>", "O", {})
+		keymap("n", "<C-o>", "o", { desc = "GitMesenger: Back to older commit at the line" })
+		keymap("n", "<C-i>", "O", { desc = "GitMesenger: Forward to newer commit at the line" })
 	end,
 })
 

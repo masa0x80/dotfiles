@@ -3,6 +3,7 @@ eslint
 prettier
 textlint
 textlint-rule-prh
+textlint-rule-preset-ja-spacing
 typescript-language-server
 markdown2confluence-cws
 @nestjs/cli

@@ -1,375 +1,246 @@
-local fn = vim.fn
-
--- Automatically install packer
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
-	print("Installing packer close and reopen Neovim...")
-	vim.cmd([[packadd packer.nvim]])
+local ensure_packer = function()
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
 end
 
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-	return
+local function conf(name)
+	return string.format('require("config.plugins.%s")', name)
 end
 
--- Have packer use a popup window
-packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
-})
+local packer_bootstrap = ensure_packer()
 
+local packer = require("packer")
 packer.startup({
 	function(use)
 		-- Plugin manager
 		use("wbthomason/packer.nvim")
 
-		use({
-			"lewis6991/impatient.nvim",
-			config = function()
-				require("impatient")
-			end,
-		})
-
-		use({ "nvim-lua/plenary.nvim", event = "BufEnter" }) -- Useful lua functions used ny lots of plugins
-		use({ "nvim-lua/popup.nvim", event = "BufEnter" }) -- An implementation of the Popup API from vim in Neovim
-		use({ "MunifTanjim/nui.nvim", event = "BufEnter" })
-		use({ "kyazdani42/nvim-web-devicons", event = "BufEnter" })
-		use({ "tpope/vim-repeat", event = { "FocusLost", "CursorHold" } })
-		use({ "tpope/vim-unimpaired", event = { "FocusLost", "CursorHold" } })
-		use({ "gpanders/editorconfig.nvim", event = { "BufEnter" } }) -- EditorConfig
-
-		-- Comment out
-		use({
-			"numToStr/Comment.nvim",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.comment")
-			end,
-		})
-		use({
-			"folke/which-key.nvim",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.which-key")
-			end,
-		})
+		use({ "nvim-lua/plenary.nvim", opt = true }) -- Useful lua functions used ny lots of plugins
+		use({ "MunifTanjim/nui.nvim", opt = true })
+		use({ "kyazdani42/nvim-web-devicons", opt = true })
+		use({ "tpope/vim-repeat", event = "UIEnter" })
+		use({ "tpope/vim-unimpaired", event = "UIEnter" })
+		use({ "gpanders/editorconfig.nvim", event = "UIEnter" }) -- EditorConfig
 
 		-- Colorscheme
 		use({
 			"joshdick/onedark.vim",
-			config = function()
-				require("config.plugins.colorscheme")
-			end,
-		})
-
-		-- LSP
-		use({
-			"neoclide/coc.nvim",
-			branch = "master",
-			run = "yarn install --frozen-lockfile",
-			event = { "BufEnter" },
-			requires = {
-				{ "honza/vim-snippets", opt = true },
-			},
-			wants = { "vim-snippets" },
-			config = function()
-				require("config.plugins.coc")
-			end,
-		})
-		use({
-			"dense-analysis/ale",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.ale")
-			end,
+			config = conf("colorscheme"),
 		})
 
 		-- Completions
 		use({
 			"hrsh7th/nvim-cmp",
-			module = { "cmp" },
 			requires = {
-				{ "hrsh7th/cmp-buffer", event = { "FocusLost", "CursorHold" } },
-				{ "hrsh7th/cmp-path", event = { "FocusLost", "CursorHold" } },
-				{ "hrsh7th/cmp-cmdline", event = { "FocusLost", "CursorHold" } },
+				{ "hrsh7th/cmp-nvim-lsp" },
+				{ "L3MON4D3/LuaSnip" },
+				{ "saadparwaiz1/cmp_luasnip" },
+				{ "rafamadriz/friendly-snippets" }, -- a bunch of snippets to usew
+				{ "hrsh7th/cmp-buffer" },
+				{ "hrsh7th/cmp-path" },
+				{ "hrsh7th/cmp-cmdline" },
+				{ "f3fora/cmp-spell" },
 			},
-			wants = { "cmp-buffer", "cmp-path", "cmp-cmdline" },
-			config = function()
-				require("config.plugins.cmp")
-			end,
+			config = conf("cmp"),
+		})
+
+		use({ -- LSP Configuration & Plugins
+			"neovim/nvim-lspconfig",
+			event = "UIEnter",
+			requires = {
+				-- Automatically install LSPs to stdpath for neovim
+				{ "williamboman/mason.nvim", opt = true },
+				{ "williamboman/mason-lspconfig.nvim", opt = true },
+
+				{ "b0o/schemastore.nvim", opt = true },
+
+				-- Additional lua configuration, makes nvim stuff amazing
+				{ "folke/neodev.nvim", opt = true },
+
+				{ "tami5/lspsaga.nvim", opt = true },
+			},
+			wants = {
+				"mason.nvim",
+				"mason-lspconfig.nvim",
+				"schemastore.nvim",
+				"neodev.nvim",
+				"lspsaga.nvim",
+			},
+			config = conf("lsp"),
+		})
+		use({
+			"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+			requires = {
+				{ "lukas-reineke/lsp-format.nvim", opt = true },
+			},
+			wants = { "lsp-format.nvim" },
+			event = "UIEnter",
+			config = conf("null-ls"),
 		})
 
 		-- Debug
 		use({
-			"puremourning/vimspector",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.vimspector")
-			end,
+			"mfussenegger/nvim-dap",
+			event = "UIEnter",
+			requires = {
+				{ "williamboman/mason.nvim", opt = true },
+				{ "rcarriga/nvim-dap-ui", opt = true },
+				{ "theHamsta/nvim-dap-virtual-text", opt = true },
+				{
+					"mxsdev/nvim-dap-vscode-js",
+					opt = true,
+					requires = {
+						{
+							"microsoft/vscode-js-debug",
+							-- NOTE: Fix version ref. https://github.com/mxsdev/nvim-dap-vscode-js/issues/23
+							tag = "v1.74.1",
+							lock = true,
+							opt = true,
+							run = "npm install --legacy-peer-deps && npm run compile",
+						},
+					},
+					wants = { "vscode-js-debug" },
+				},
+			},
+			wants = {
+				"mason.nvim",
+				"nvim-dap-ui",
+				"nvim-dap-virtual-text",
+				"nvim-dap-vscode-js",
+			},
+			config = conf("dap"),
 		})
 
 		-- Test
 		use({
 			"vim-test/vim-test",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.vim-test")
-			end,
+			event = "UIEnter",
+			config = conf("vim-test"),
 		})
 		use({
 			"is0n/jaq-nvim",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.jaq")
-			end,
+			event = "UIEnter",
+			config = conf("jaq"),
 		})
 
 		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
-			event = { "BufEnter" },
-			requires = {
-				{ "fannheyward/telescope-coc.nvim" },
-			},
-			config = function()
-				require("config.plugins.telescope")
-			end,
+			event = "UIEnter",
+			requires = { "nvim-lua/plenary.nvim", opt = true },
+			wants = { "plenary.nvim" },
+			config = conf("telescope"),
 		})
-
 		use({
 			"renerocksai/telekasten.nvim",
-			event = "BufEnter",
-			requires = { "renerocksai/calendar-vim", opt = true },
-			wants = { "calendar-vim" },
-			config = function()
-				require("config.plugins.telekasten")
-			end,
+			event = "UIEnter",
+			requires = {
+				{ "nvim-telescope/telescope.nvim", opt = true },
+				{ "renerocksai/calendar-vim", opt = true },
+			},
+			wants = { "telescope.nvim", "calendar-vim" },
+			config = conf("telekasten"),
 		})
 
 		-- Treesitter
 		use({
-			"nvim-treesitter/nvim-treesitter",
-			event = "BufEnter",
-			config = function()
-				require("config.plugins.treesitter")
-			end,
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			event = "UIEnter",
+			requires = {
+				{
+					"nvim-treesitter/nvim-treesitter",
+					opt = true,
+					run = ":TSUpdate",
+					config = conf("treesitter"),
+				},
+			},
+			wants = "nvim-treesitter",
 		})
 		use({
 			"David-Kunz/treesitter-unit",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.treesitter-unit")
-			end,
-		})
-		use({
-			"haringsrob/nvim_context_vt",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.context_vt")
-			end,
+			event = "UIEnter",
+			config = conf("treesitter-unit"),
 		})
 
 		-- UI
 		use({
-			"RRethy/vim-illuminate",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.illuminate")
-			end,
+			"folke/which-key.nvim",
+			event = "UIEnter",
+			config = conf("which-key"),
 		})
 		use({
 			"petertriho/nvim-scrollbar",
-			event = {
-				"BufWinEnter",
-				"CmdwinLeave",
-				"TabEnter",
-				"TermEnter",
-				"TextChanged",
-				"VimResized",
-				"WinEnter",
-				"WinScrolled",
+			event = "UIEnter",
+			requires = {
+				{ "rapan931/lasterisk.nvim", opt = true },
+				{ "kevinhwang91/nvim-hlslens", opt = true },
 			},
-			config = function()
-				require("config.plugins.scrollbar")
-			end,
+			wants = { "lasterisk.nvim", "nvim-hlslens" },
+			config = conf("nvim-scrollbar"),
 		})
 		use({
-			"kevinhwang91/nvim-hlslens",
-			event = "CursorMoved",
-			config = function()
-				require("config.plugins.hlslens")
-			end,
+			"haringsrob/nvim_context_vt",
+			event = "UIEnter",
+			wants = { "nvim-treesitter" },
+			config = conf("context_vt"),
 		})
 		use({
-			"haya14busa/vim-asterisk",
-			event = { "FocusLost", "CursorHold" },
+			"RRethy/vim-illuminate",
+			event = "UIEnter",
 		})
 		use({
 			"norcalli/nvim-colorizer.lua",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.colorizer")
-			end,
+			event = "UIEnter",
+			config = 'require("colorizer").setup()',
 		})
 		use({
-			"mvllow/modes.nvim",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.modes")
-			end,
-		})
-		use({
-			"kdheepak/tabline.nvim",
-			event = { "BufEnter" },
-			requires = { "nvim-lualine/lualine.nvim", "kyazdani42/nvim-web-devicons" },
-			config = function()
-				require("config.plugins.tabline")
-			end,
+			"nvim-lualine/lualine.nvim",
+			event = "UIEnter",
+			requires = {
+				{ "kyazdani42/nvim-web-devicons", opt = true },
+				{ "nvim-lua/lsp-status.nvim", opt = true },
+			},
+			wants = { "nvim-web-devicons", "lsp-status.nvim" },
+			config = conf("lualine"),
 		})
 		use({
 			"b0o/incline.nvim",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.incline")
-			end,
+			event = "UIEnter",
+			config = conf("incline"),
+		})
+		use({
+			"folke/noice.nvim",
+			event = "UIEnter",
+			requires = {
+				{ "MunifTanjim/nui.nvim", opt = true },
+				{ "rcarriga/nvim-notify", opt = true },
+			},
+			wants = { "nui.nvim", "nvim-notify" },
+			config = conf("noice"),
 		})
 
 		-- Ops
 		use({
-			"phaazon/hop.nvim",
-			event = "BufEnter",
-			config = function()
-				require("config.plugins.hop")
-			end,
-		})
-		use({
 			"Bakudankun/BackAndForward.vim",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.BackAndForward")
-			end,
-		})
-
-		-- Git
-		use({
-			"tpope/vim-fugitive",
-			event = { "FocusLost", "CursorHold" },
-		})
-		use({
-			"lewis6991/gitsigns.nvim",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.gitsigns")
-			end,
-		})
-		use({
-			"akinsho/git-conflict.nvim",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.git-conflict")
-			end,
-		})
-		use({
-			"rhysd/git-messenger.vim",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.git-messenger")
-			end,
-		})
-
-		-- Filer
-		use({
-			"nvim-neo-tree/neo-tree.nvim",
-			event = "BufEnter",
-			requires = {
-				"nvim-lua/plenary.nvim",
-				"kyazdani42/nvim-web-devicons",
-				"MunifTanjim/nui.nvim",
-			},
-			config = function()
-				require("config.plugins.neo-tree")
-			end,
-		})
-
-		-- Markdown
-		use({
-			"iamcco/markdown-preview.nvim",
-			run = "cd app && npm install",
-			ft = { "markdown", "plantuml" },
-			config = function()
-				require("config.plugins.markdown-preview")
-			end,
-		})
-
-		-- PlantUML
-		use({
-			"aklt/plantuml-syntax",
-			event = { "BufEnter" },
-		})
-
-		-- slim
-		use({ "slim-template/vim-slim", event = { "BufEnter" } })
-
-		-- Folding
-		use({ "lambdalisue/readablefold.vim", event = "BufEnter" })
-		use({
-			"windwp/nvim-autopairs",
-			event = { "InsertEnter" },
-			config = function()
-				require("config.plugins.autopairs")
-			end,
-		})
-
-		-- Indent
-		use({
-			"lukas-reineke/indent-blankline.nvim",
-			event = { "BufEnter" },
-			config = function()
-				require("config.plugins.indent-blankline")
-			end,
-		})
-		-- Textobject
-		use({
-			"machakann/vim-sandwich",
-			event = { "FocusLost", "CursorHold" },
-		})
-		-- Prettification
-		use({
-			"junegunn/vim-easy-align",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins..easy-align")
-			end,
-		})
-		use({
-			"monaqa/dial.nvim",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.dial")
-			end,
+			event = "UIEnter",
+			config = conf("BackAndForward"),
 		})
 		use({
 			"windwp/nvim-spectre",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.spectre")
-			end,
+			event = "UIEnter",
+			requires = { "nvim-lua/plenary.nvim", opt = true },
+			wants = { "plenary.nvim" },
+			config = conf("spectre"),
 		})
 		use({
 			"jghauser/mkdir.nvim",
-			event = { "FocusLost", "CursorHold" },
+			event = "UIEnter",
 		})
 		use({
 			"dhruvasagar/vim-table-mode",
@@ -377,34 +248,147 @@ packer.startup({
 		})
 		use({
 			"danymat/neogen",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.neogen")
-			end,
+			event = "UIEnter",
+			wants = { "nvim-treesitter" },
+			config = conf("neogen"),
 		})
 		use({
 			"folke/todo-comments.nvim",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.todo-comments")
-			end,
+			event = "UIEnter",
+			wants = { "plenary.nvim" },
+			config = conf("todo-comments"),
+		})
+		use({
+			"folke/trouble.nvim",
+			event = "UIEnter",
+			requires = { "kyazdani42/nvim-web-devicons" },
+			wants = { "nvim-web-devicons" },
+			config = conf("trouble"),
+		})
+
+		-- Git
+		use({
+			"tpope/vim-fugitive",
+			event = "UIEnter",
+		})
+		use({
+			"lewis6991/gitsigns.nvim",
+			event = "UIEnter",
+			config = conf("gitsigns"),
+		})
+		use({
+			"akinsho/git-conflict.nvim",
+			event = "UIEnter",
+			config = conf("git-conflict"),
+		})
+		use({
+			"rhysd/git-messenger.vim",
+			event = "UIEnter",
+			config = conf("git-messenger"),
+		})
+
+		-- Filer
+		use({
+			"nvim-neo-tree/neo-tree.nvim",
+			event = "UIEnter",
+			requires = {
+				{ "nvim-lua/plenary.nvim", opt = true },
+				{ "MunifTanjim/nui.nvim", opt = true },
+				{ "kyazdani42/nvim-web-devicons", opt = true },
+			},
+			wants = { "plenary.nvim", "nui.nvim", "nvim-web-devicons" },
+			config = conf("neo-tree"),
+		})
+
+		-- Markdown
+		use({
+			"iamcco/markdown-preview.nvim",
+			run = "cd app && npm install",
+			ft = { "markdown", "plantuml" },
+			config = conf("markdown-preview"),
+		})
+
+		-- PlantUML
+		use({
+			"aklt/plantuml-syntax",
+			event = "UIEnter",
+		})
+
+		-- slim
+		use({ "slim-template/vim-slim", event = "UIEnter" })
+
+		-- Folding
+		use({ "lambdalisue/readablefold.vim", event = "UIEnter" })
+		use({
+			"windwp/nvim-autopairs",
+			event = { "InsertEnter" },
+			config = 'require("nvim-autopairs").setup()',
+		})
+
+		-- Indent
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			event = "UIEnter",
+			config = conf("indent-blankline"),
+		})
+		-- Textobject
+		use({
+			"machakann/vim-sandwich",
+			event = "UIEnter",
+		})
+		-- Prettification
+		use({
+			"junegunn/vim-easy-align",
+			event = "UIEnter",
+			config = conf("easy-align"),
+		})
+		use({
+			"monaqa/dial.nvim",
+			event = "UIEnter",
+			config = conf("dial"),
+		})
+
+		-- Comment out
+		use({
+			"numToStr/Comment.nvim",
+			event = "UIEnter",
+			config = conf("comment"),
 		})
 
 		use({
 			"akinsho/toggleterm.nvim",
-			event = { "FocusLost", "CursorHold" },
-			config = function()
-				require("config.plugins.toggleterm")
-			end,
+			event = "UIEnter",
+			config = conf("toggleterm"),
 		})
 
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins
-		if PACKER_BOOTSTRAP then
+		if packer_bootstrap then
 			packer.sync()
 		end
 	end,
+	config = {
+		-- Have packer use a popup window
+		display = {
+			open_fn = function()
+				return require("packer.util").float({ border = "rounded" })
+			end,
+		},
+	},
 })
+
+-- When we are bootstrapping a configuration, it doesn't
+-- make sense to execute the rest of the init.lua.
+--
+-- You'll need to restart nvim, and then it will work.
+if packer_bootstrap then
+	print("==================================")
+	print("    Plugins are being installed")
+	print("    Wait until Packer completes,")
+	print("       then restart nvim")
+	print("==================================")
+	return
+end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
@@ -412,3 +396,5 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	pattern = "packer.lua",
 	command = "source <afile> | PackerCompile",
 })
+
+vim.keymap.set("n", "<Leader>ps", "<Cmd>PackerSync<CR>", { noremap = true, silent = true, desc = "PackerSync" })

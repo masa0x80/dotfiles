@@ -1,9 +1,4 @@
-local status_ok, p = pcall(require, "neo-tree")
-if not status_ok then
-	return
-end
-
-p.setup({
+require("neo-tree").setup({
 	use_default_mappings = false,
 	popup_border_style = "rounded",
 	default_component_configs = {
@@ -91,7 +86,6 @@ p.setup({
 	},
 })
 
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
-keymap("n", "-", "<Cmd>Neotree float reveal_force_cwd<CR>", opts)
-keymap("n", "<Leader>e", "<Cmd>NeoTreeFocusToggle<CR>", opts)
+local keymap = vim.keymap.set
+keymap("n", "-", "<Cmd>Neotree float reveal_force_cwd<CR>", { noremap = true, silent = true, desc = "NeoTree float" })
+keymap("n", "<Leader>e", "<Cmd>NeoTreeFocusToggle<CR>", { noremap = true, silent = true, desc = "NeoTreeFocusToggle" })

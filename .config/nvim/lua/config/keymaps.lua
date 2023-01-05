@@ -1,5 +1,5 @@
 local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 -- <Space> as leader key
 vim.g.mapleader = " "
@@ -23,11 +23,12 @@ keymap("n", "<A-j>", "<Cmd>resize +2<CR>", opts)
 keymap("n", "<A-h>", "<Cmd>vertical resize -2<CR>", opts)
 keymap("n", "<A-l>", "<Cmd>vertical resize +2<CR>", opts)
 
+-- Remap for dealing with word wrap
+keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
 -- Disable EX-mode (if you enter EX-mode, push gQ)
 keymap("n", "Q", "<Nop>", opts)
-
--- Save
-keymap("n", ";;", "<Cmd>write<CR>", { noremap = true })
 
 -- Quit
 keymap("n", "<Leader>q", "<Cmd>bd<CR>", opts)
@@ -60,10 +61,20 @@ keymap("n", "[L", "<Cmd>lfirst<CR>", opts)
 keymap("n", "]L", "<Cmd>llast<CR>", opts)
 
 -- Replace
-keymap("n", "<Leader>R", ":<C-u>%s;<C-r><C-w>;g<Left><Left>;", opts)
+keymap(
+	"n",
+	",re",
+	":<C-u>%s;<C-r><C-w>;g<Left><Left>;",
+	{ noremap = true, silent = true, desc = "[re]place Current Word" }
+)
 
 -- Toggle relativenumber
-keymap("n", "<Leader>N", "<Cmd>setlocal relativenumber!<CR>", opts)
+keymap(
+	"n",
+	"<Leader>N",
+	"<Cmd>setlocal relativenumber!<CR>",
+	{ noremap = true, silent = true, desc = "Toggle Relative[N]umber" }
+)
 
 -- Folding
 keymap("n", "z-", "zr", opts)
@@ -73,27 +84,34 @@ keymap("n", "z_", "zm", opts)
 keymap("n", "<C-g><C-p>", "<<", opts)
 keymap("n", "<C-g><C-n>", ">>", opts)
 
-keymap("n", ";p", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", opts)
-keymap("n", ";s", "<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>", opts)
+keymap("n", ";p", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { noremap = true, silent = true, desc = "cd $PWD" })
+keymap(
+	"n",
+	";s",
+	"<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>",
+	{ noremap = true, silent = true, desc = "cd $SCRAPBOOK_DIR" }
+)
+
+-- Delete a character without yanking
+keymap("n", "x", '"_x', opts)
 
 -- # Insert
 keymap("i", "<C-b>", "<Left>", opts)
 keymap("i", "<C-f>", "<Right>", opts)
 keymap("i", "<C-a>", "<Esc>I", opts)
+keymap("i", "<C-e>", "<Esc>A", opts)
 keymap("i", "<C-d>", "<Del>", opts)
-keymap("i", "<C-g><C-h>", "<Esc>bi", opts)
-keymap("i", "<C-g><C-l>", "<Esc>ea", opts)
+keymap("i", "<C-g><C-h>", "<Esc>bi", { noremap = true, silent = true, desc = "backward-word" })
+keymap("i", "<C-g><C-l>", "<Esc>ea", { noremap = true, silent = true, desc = "forward-word" })
 
--- list
-keymap("i", "<C-g><C-i>", "<Esc>I- <Esc>A", opts)
+-- Insert dash
+keymap("i", "<C-g><C-i>", "<Esc>I- <Esc>A", { noremap = true, silent = true, desc = "Insert dash (Markdown)" })
 
 -- Indent
-keymap("i", "<C-g><C-n>", "<Esc>v>gi<Right><Right>", opts)
-keymap("i", "<C-g><C-p>", "<Left><Left><Esc>v<gi", opts)
+keymap("i", "<C-g><C-n>", "<Esc>v>gi<Right><Right>", { noremap = true, silent = true, desc = "Indent >>" })
+keymap("i", "<C-g><C-p>", "<Left><Left><Esc>v<gi", { noremap = true, silent = true, desc = "Indent <<" })
 
 -- # Visual
--- Save
-keymap("v", ";;", "<Esc><Cmd>write<CR>", { noremap = true })
 
 -- Paste
 keymap("v", "p", '"_dP', opts)
@@ -113,15 +131,12 @@ keymap("v", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("c", "<C-b>", "<Left>", {})
 keymap("c", "<C-f>", "<Right>", {})
 keymap("c", "<C-a>", "<Home>", {})
+keymap("c", "<C-e>", "<End>", {})
 
 -- Esc
-vim.keymap.set({ "n", "i" }, "<C-c>", "<Esc>", opts)
+keymap({ "n", "i" }, "<C-c>", "<Esc>", opts)
 keymap("n", "<Esc><Esc>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
 keymap("n", "<C-c><C-c>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
 
--- Jump
-vim.keymap.set({ "n", "v" }, "<C-g><C-j>", "]M", opts)
-vim.keymap.set({ "n", "v" }, "<C-g><C-k>", "[m", opts)
-
--- Delete a character without yanking
-keymap("n", "x", '"_x', opts)
+-- Save
+keymap({ "n", "v" }, ";;", "<Cmd>write<CR>", { noremap = true })

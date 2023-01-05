@@ -1,11 +1,6 @@
-local status_ok, p = pcall(require, "telescope")
-if not status_ok then
-	return
-end
-
 local actions = require("telescope.actions")
 
-p.setup({
+require("telescope").setup({
 	defaults = {
 		sorting_strategy = "ascending",
 		vimgrep_arguments = {
@@ -60,26 +55,33 @@ p.setup({
 		},
 	},
 })
-p.load_extension("coc")
 
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
-keymap("n", "<Leader><Leader>", "<Cmd>Telescope buffers sort_mru=true ignore_current_buffer=true<CR>", opts)
-keymap("n", "<Leader>f", "<Cmd>Telescope git_files hidden=true cwd=$PWD<CR>", opts)
-keymap("n", "<Leader>F", "<Cmd>Telescope find_files hidden=true no_ignore=true cwd=$PWD<CR>", opts)
-keymap("n", "<Leader>g", "<Cmd>Telescope live_grep cwd=$PWD<CR>", opts)
-keymap("n", "<Leader>G", "<Cmd>Telescope grep_string cwd=$PWD<CR>", opts)
-keymap("n", "<Leader>o", "<Cmd>Telescope oldfiles<CR>", opts)
-keymap("n", "<Leader>r", "<Cmd>Telescope resume<CR>", opts)
+local tb = require("telescope.builtin")
+local keymap = vim.keymap.set
+keymap("n", "<Leader><Space>", function()
+	tb.buffers({ sort_mru = true, ignore_current_buffer = true })
+end, { desc = "[ ] Find existing buffers" })
+keymap("n", "<Leader>/", function()
+	-- You can pass additional configuration to telescope to change theme, layout, etc.
+	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		winblend = 10,
+		previewer = false,
+	}))
+end, { desc = "[/] Fuzzily search in current buffer]" })
 
--- telescope-coc config
-keymap("n", "gd", "<Cmd>Telescope coc definitions<CR>", opts)
-keymap("n", "gD", "<Cmd>Telescope coc declarations<CR>", opts)
-keymap("n", "<Leader>d", "<Cmd>Telescope coc type_definitions<CR>", opts)
-keymap("n", "gi", "<Cmd>Telescope coc implementations<CR>", opts)
-keymap("n", "gr", "<Cmd>Telescope coc references<CR>", opts)
-keymap("n", "<Leader>v", "<Cmd>Telescope coc diagnostics<CR>", opts)
+keymap("n", "<Leader>f", function()
+	tb.git_files({ hidden = true })
+end, { desc = "Search [F]iles" })
+keymap("n", "<Leader>F", function()
+	tb.find_files({ hidden = true, no_ignore = true })
+end, { desc = "Search [F]iles" })
+keymap("n", "<Leader>sh", tb.help_tags, { desc = "[S]earch [H]elp" })
+keymap("n", "<Leader>g", tb.live_grep, { desc = "Search by [G]rep" })
+keymap("n", "<Leader>G", tb.grep_string, { desc = "[G] Search current Word" })
+keymap("n", "<Leader>sd", tb.diagnostics, { desc = "[S]earch [D]iagnostics" })
+keymap("n", "<Leader>o", tb.oldfiles, { desc = "[o] Find recently opened files" })
+keymap("n", "<Leader>k", tb.keymaps, { desc = "Search [K]eymaps" })
 
 -- Commands
-keymap("n", "<Leader>;", "<Cmd>Telescope commands<CR>", opts)
-keymap("n", "<Leader>:", "<Cmd>Telescope command_history<CR>", opts)
+keymap("n", "<Leader>;", tb.commands, { desc = "[;] Search Commands" })
+keymap("n", "<Leader>:", tb.command_history, { desc = "[:] Search Command History" })

@@ -1,13 +1,15 @@
-local status_ok, p = pcall(require, "spectre")
-if not status_ok then
-	return
-end
+require("spectre").setup({
+	default = {
+		find = {
+			options = { "hidden" },
+		},
+	},
+})
 
-p.setup()
-
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
-keymap("n", "<Leader>S", '<Cmd>lua require("spectre").open()<CR>', opts)
-keymap("n", "<Leader>sw", '<Cmd>lua require("spectre").open_visual({select_word=true})<CR>', opts)
-keymap("v", "<Leader>s", '<Cmd>lua require("spectre").open_visual()<CR>', opts)
-keymap("n", "<Leader>sr", '<Cmd>lua require("spectre").open_file_search()<CR>', opts)
+local keymap = vim.keymap.set
+keymap({ "n", "v" }, "<Leader>R", function()
+	require("spectre").open_visual({ select_word = true, path = vim.fn.expand("%") })
+end, { noremap = true, silent = true, desc = "[R]eplace current word" })
+keymap("n", "<Leader>rw", function()
+	require("spectre").open({ select_word = true, path = "**/*" })
+end, { noremap = true, silent = true, desc = "[r]eplace current [w]ord" })

@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-  "format.enable": false,
+  "Lua.diagnostics.disable": ["close-non-object", "missing-return"],
   "color": {
     "mode": "SemanticEnhanced"
   },
@@ -15,6 +15,7 @@
       "undefined-field": "Any"
     }
   },
+  "format.enable": false,
   "hint": {
     "enable": true
   },

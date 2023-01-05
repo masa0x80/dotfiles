@@ -1,0 +1,5 @@
+require("misc.markdown")
+require("misc.todo")
+require("misc.gh")
+require("misc.neovide")
+require("misc.silicon")
