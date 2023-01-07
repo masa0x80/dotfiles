@@ -1,8 +1,0 @@
-plugins:
-  "@textlint/text":
-    extensions:
-      - ""
-rules:
-  prh:
-    rulePaths:
-      - prh.yml
