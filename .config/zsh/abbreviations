@@ -75,7 +75,6 @@ abbr s='rails s -p $RAILS_SERVER_PORT'
 abbr db='rails db'
 abbr rr='rails routes'
 
-abbr t=rspec
 abbr ss='spring stop'
 
 abbr be='bundle exec'
