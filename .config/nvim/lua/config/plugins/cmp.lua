@@ -44,8 +44,22 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-		["<C-n>"] = cmp.mapping.select_next_item(),
-		["<C-p>"] = cmp.mapping.select_prev_item(),
+		["<C-n>"] = function(_)
+			if cmp.visible() then
+				cmp.select_next_item()
+			else
+				local l, c = unpack(vim.api.nvim_win_get_cursor(0))
+				vim.api.nvim_win_set_cursor(0, { l + 1, c })
+			end
+		end,
+		["<C-p>"] = function(_)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			else
+				local l, c = unpack(vim.api.nvim_win_get_cursor(0))
+				vim.api.nvim_win_set_cursor(0, { l - 1, c })
+			end
+		end,
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-x><C-c>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
