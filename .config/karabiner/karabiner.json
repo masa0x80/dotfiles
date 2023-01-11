@@ -680,6 +680,41 @@
             ]
           },
           {
+            "description": "<C-S-o> / <C-S-i> ▶ <S-LeftArrow> / <S-RightArrow>",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "o",
+                  "modifiers": {
+                    "mandatory": ["control", "shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow",
+                    "modifiers": ["shift"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "i",
+                  "modifiers": {
+                    "mandatory": ["control", "shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow",
+                    "modifiers": ["shift"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "NuPhy Air60 Custom",
             "manipulators": [
               {
