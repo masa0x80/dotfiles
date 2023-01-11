@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+() {
+    local pass_name=$(fd . $PASSWORD_STORE_DIR -e gpg -x echo '{.}' | grep -oP "(?<=\\$PASSWORD_STORE_DIR/).*" | fzf +m --query "$*")
+    test -z "$pass_name" && return 1
+    pass -c $pass_name
+} "$@"
