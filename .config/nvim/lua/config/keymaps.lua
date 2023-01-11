@@ -117,7 +117,7 @@ keymap("i", "<C-g><C-p>", "<Left><Left><Esc>v<gi", { noremap = true, silent = tr
 keymap("v", "p", '"_dP', opts)
 
 -- List
-keymap("v", "<C-g><C-i>", "<Esc><Cmd>:'<,'>s/^/- /g<CR>:nohlsearch<CR>", opts)
+keymap("v", "<C-g><C-i>", "<Esc><Cmd>:'<,'>s/^\\(\\s*\\)\\(\\S\\)/\\1- \\2/g<CR>:nohlsearch<CR>", opts)
 
 -- Stay in indent mode
 keymap("v", "<C-g><C-p>", "<gv", opts)
