@@ -57,6 +57,9 @@ setopt NO_HUP
 # Initialize modules.
 source $ZDOTDIR/zinitrc
 
+# direnv
+(( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
+
 # Prompt
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_no_bold[white]%}"
 _PS1=$'
