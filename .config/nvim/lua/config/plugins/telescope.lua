@@ -85,3 +85,8 @@ keymap("n", "<Leader>k", tb.keymaps, { desc = "Search [K]eymaps" })
 -- Commands
 keymap("n", "<Leader>;", tb.commands, { desc = "[;] Search Commands" })
 keymap("n", "<Leader>:", tb.command_history, { desc = "[:] Search Command History" })
+
+require("telescope").load_extension("ghq")
+keymap("n", ";e", function()
+	require("telescope._extensions.ghq_builtin").list()
+end, { desc = "Telescope ghq list" })

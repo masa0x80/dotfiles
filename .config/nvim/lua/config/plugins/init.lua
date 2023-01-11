@@ -120,7 +120,10 @@ require("lazy").setup({
 		"nvim-telescope/telescope.nvim",
 		event = "UIEnter",
 		config = conf("telescope"),
-		dependencies = { "nvim-lua/plenary.nvim", opt = true },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-ghq.nvim",
+		},
 	},
 	{
 		"renerocksai/telekasten.nvim",

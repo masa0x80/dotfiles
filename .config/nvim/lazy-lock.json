@@ -56,6 +56,7 @@
   "readablefold.vim": { "branch": "master", "commit": "72cfecc1cd4057245e931184d3653908dea7ef99" },
   "schemastore.nvim": { "branch": "main", "commit": "c55c35929dd4e670af7ab6e2e197a4687baa2076" },
   "telekasten.nvim": { "branch": "main", "commit": "7a6e89131e06c124cdf1d51d7169a19bd507e858" },
+  "telescope-ghq.nvim": { "branch": "master", "commit": "dc1022f91100ca06c9c7bd645f08e2bf985ad283" },
   "telescope.nvim": { "branch": "master", "commit": "e8c01bab917537ba4f54193c29b77bf4a04584d3" },
   "todo-comments.nvim": { "branch": "main", "commit": "077c59586d9d0726b0696dc5680eb863f4e04bc5" },
   "toggleterm.nvim": { "branch": "main", "commit": "b02a1674bd0010d7982b056fd3df4f717ff8a57a" },
