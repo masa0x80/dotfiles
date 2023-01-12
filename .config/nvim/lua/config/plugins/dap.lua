@@ -39,8 +39,8 @@ require("dapui").setup({
 	layouts = {
 		{
 			elements = {
-				{ id = "scopes", size = 0.40 },
 				{ id = "watches", size = 0.20 },
+				{ id = "scopes", size = 0.40 },
 				{ id = "stacks", size = 0.20 },
 				{ id = "breakpoints", size = 0.20 },
 			},
@@ -56,6 +56,7 @@ end, { noremap = true, desc = "DAP: UI Open" })
 require("nvim-dap-virtual-text").setup({})
 
 require("dap-vscode-js").setup({
+	debugger_path = vim.fn.expand("$XDG_DATA_HOME/nvim/lazy/vscode-js-debug"),
 	adapters = { "pwa-node" }, -- which adapters to register in nvim-dap
 })
 
