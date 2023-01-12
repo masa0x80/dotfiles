@@ -31,7 +31,7 @@ require("lazy").setup({
 	-- Colorscheme
 	{
 		"joshdick/onedark.vim",
-		event = { "VimEnter" },
+		event = "VimEnter",
 		config = conf("colorscheme"),
 	},
 
@@ -55,7 +55,7 @@ require("lazy").setup({
 	-- LSP
 	{
 		"neovim/nvim-lspconfig",
-		event = { "UIEnter" },
+		event = "UIEnter",
 		config = conf("lsp"),
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
@@ -186,9 +186,10 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "UIEnter",
+		event = { "CursorHold", "CursorMoved", "ModeChanged" },
 		config = conf("lualine"),
 		dependencies = {
+			{ "kdheepak/tabline.nvim" },
 			{ "kyazdani42/nvim-web-devicons" },
 			{ "nvim-lua/lsp-status.nvim" },
 		},
@@ -226,7 +227,7 @@ require("lazy").setup({
 	},
 	{
 		"windwp/nvim-autopairs",
-		event = { "InsertEnter" },
+		event = "InsertEnter",
 		config = function()
 			require("nvim-autopairs").setup()
 		end,

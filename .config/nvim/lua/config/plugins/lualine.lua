@@ -1,3 +1,6 @@
+local tabline = require("tabline")
+tabline.setup()
+
 require("lsp-status").config({
 	status_symbol = "",
 	diagnostics = false,
@@ -15,10 +18,16 @@ local filename = {
 }
 require("lualine").setup({
 	sections = {
-		lualine_c = filename,
+		lualine_c = {},
 		lualine_y = { "require('lsp-status').status()" },
 	},
 	inactive_sections = {
 		lualine_c = filename,
+	},
+	tabline = {
+		lualine_a = {
+			'vim.fn.expand("%")',
+		},
+		lualine_x = { tabline.tabline_tabs },
 	},
 })
