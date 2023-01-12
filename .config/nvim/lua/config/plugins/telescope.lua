@@ -81,6 +81,7 @@ keymap("n", "<Leader>G", tb.grep_string, { desc = "[G] Search current Word" })
 keymap("n", "<Leader>sd", tb.diagnostics, { desc = "[S]earch [D]iagnostics" })
 keymap("n", "<Leader>o", tb.oldfiles, { desc = "[o] Find recently opened files" })
 keymap("n", "<Leader>k", tb.keymaps, { desc = "Search [K]eymaps" })
+keymap("n", "<Leader>tt", tb.resume, { desc = "Telescope Resume" })
 
 -- Commands
 keymap("n", "<Leader>;", tb.commands, { desc = "[;] Search Commands" })
