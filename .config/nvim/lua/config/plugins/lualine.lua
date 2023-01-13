@@ -25,9 +25,7 @@ require("lualine").setup({
 		lualine_c = filename,
 	},
 	tabline = {
-		lualine_a = {
-			'vim.fn.expand("%")',
-		},
+		lualine_a = { 'vim.fn.expand("%")' },
 		lualine_x = { tabline.tabline_tabs },
 	},
 })

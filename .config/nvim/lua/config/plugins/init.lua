@@ -67,7 +67,7 @@ require("lazy").setup({
 			-- Additional lua configuration, makes nvim stuff amazing
 			{ "folke/neodev.nvim" },
 
-			{ "tami5/lspsaga.nvim" },
+			{ "glepnir/lspsaga.nvim" },
 		},
 	},
 	{

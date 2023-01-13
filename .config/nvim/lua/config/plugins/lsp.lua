@@ -70,12 +70,18 @@ local servers = {
 }
 
 local saga = require("lspsaga")
-saga.init_lsp_saga({
-	border_style = "single",
-	finder_action_keys = {
+saga.setup({
+	ui = {
+		theme = "round",
+		border = "rounded",
+	},
+	symbol_in_winbar = {
+		show_file = false,
+	},
+	finder = {
 		quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
 	},
-	code_action_keys = {
+	code = {
 		quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
 	},
 })
@@ -85,17 +91,11 @@ local keymap = vim.keymap.set
 keymap("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
 keymap("n", "gh", "<Cmd>Lspsaga lsp_finder<CR>", opts)
 keymap("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>", opts)
-keymap("i", "<C-k>", "<Cmd>Lspsaga signature_help<CR>", opts)
 
 keymap("n", "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", opts)
-keymap("v", "<Leader>ca", "<Cmd>Lspsaga range_code_action<CR>", opts)
 
 keymap("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 keymap("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-keymap("n", "<C-f>", "<Cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", {})
-keymap("n", "<C-b>", "<Cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", {})
-keymap("n", "<C-d>", "<Cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", {})
-keymap("n", "<C-u>", "<Cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", {})
 
 -- Setup neovim lua configuration
 require("neodev").setup()
