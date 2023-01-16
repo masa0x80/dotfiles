@@ -611,7 +611,7 @@
             ]
           },
           {
-            "description": "左のCmdを英数に、右のCmdをかなに",
+            "description": "左のCmdを英数に、右のCmdをかなに / <Cmd-C-;> で英数に、<Cmd-C-j> でかなに",
             "manipulators": [
               {
                 "from": {
@@ -650,6 +650,34 @@
                   }
                 ],
                 "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "semicolon",
+                  "modifiers": {
+                    "mandatory": ["command", "control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "japanese_eisuu"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "mandatory": ["command", "control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "japanese_kana"
+                  }
+                ],
+                "type": "basic"
               }
             ]
           },
@@ -680,13 +708,13 @@
             ]
           },
           {
-            "description": "<C-S-o> / <C-S-i> ▶ <S-LeftArrow> / <S-RightArrow>",
+            "description": "<Cmd-C-o> / <Cmd-C-i> ▶ <S-LeftArrow> / <S-RightArrow>",
             "manipulators": [
               {
                 "from": {
                   "key_code": "o",
                   "modifiers": {
-                    "mandatory": ["control", "shift"]
+                    "mandatory": ["command", "control"]
                   }
                 },
                 "to": [
@@ -701,7 +729,7 @@
                 "from": {
                   "key_code": "i",
                   "modifiers": {
-                    "mandatory": ["control", "shift"]
+                    "mandatory": ["command", "control"]
                   }
                 },
                 "to": [
