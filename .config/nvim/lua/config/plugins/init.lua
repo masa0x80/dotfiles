@@ -68,6 +68,8 @@ require("lazy").setup({
 			{ "folke/neodev.nvim" },
 
 			{ "glepnir/lspsaga.nvim" },
+
+			{ "nvim-lua/lsp-status.nvim" },
 		},
 	},
 	{

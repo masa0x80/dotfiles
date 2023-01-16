@@ -1,6 +1,27 @@
+local signs = {
+	Error = " ",
+	Warn = " ",
+	Info = "",
+	Hint = " ",
+}
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+vim.diagnostic.config({
+	signs = true,
+	update_in_insert = false,
+	underline = true,
+	severity_sort = true,
+	virtual_text = {
+		source = true,
+	},
+})
+
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
 	-- NOTE: Remember that lua is a real programming language, and as such it is possible
 	-- to define small helper and utility functions so you don't have to repeat yourself
 	-- many times.
@@ -81,8 +102,10 @@ saga.setup({
 	finder = {
 		quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
 	},
-	code = {
-		quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
+	code_action = {
+		keys = {
+			quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
+		},
 	},
 })
 
