@@ -6,9 +6,20 @@ require("lsp-format").setup()
 null_ls.setup({
 	sources = {
 		diagnostics.shellcheck,
+		diagnostics.hadolint.with({
+			args = { "--no-fail", "--format=json", "-", "--ignore", "DL3008" },
+		}),
 		diagnostics.eslint.with({
 			prefer_local = "node_modules/.bin",
-			filetypes = { "graphql" },
+			filetypes = {
+				"filetypes",
+				"javascript",
+				"javascriptreact",
+				"typescriptreact",
+				"vue",
+				"typescript",
+				"graphql",
+			},
 		}),
 		diagnostics.rubocop.with({
 			prefer_local = "vendor/bin",
@@ -31,6 +42,7 @@ null_ls.setup({
 		}),
 		formatting.prettier.with({
 			prefer_local = "node_modules/.bin",
+			disabled_filetypes = { "markdown" },
 		}),
 	},
 	on_attach = function(client, _)
