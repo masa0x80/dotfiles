@@ -1,11 +1,8 @@
 pry
 rails
-solargraph
 
+standard
 rubocop-rails
 rubocop-rubycw
-standard
 
 jr
-foreman
-ripper-tags
