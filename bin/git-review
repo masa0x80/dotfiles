@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 () {
-  local issue_id=$(git issue-id)
+  local issue_id=${1:-$(git issue-id)}
   if test -n "$issue_id"; then
     git log --graph --color=always --grep $issue_id \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
@@ -17,4 +17,4 @@
         fzf --ansi --no-sort --tiebreak=index +m \
         --bind "ctrl-m:execute: echo {} | grep -o '[a-f0-9]\{7\}' | head -n1 | xargs -I % sh -c 'printf % | pbcopy; git show %'"
   fi
-}
+} "$1"
