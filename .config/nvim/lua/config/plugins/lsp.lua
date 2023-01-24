@@ -107,6 +107,10 @@ saga.setup({
 			quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
 		},
 	},
+	preview = {
+		lines_above = 9999,
+		lines_below = 9999,
+	},
 })
 
 local opts = { noremap = true, silent = true }
