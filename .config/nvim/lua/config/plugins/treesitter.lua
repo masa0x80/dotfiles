@@ -21,6 +21,7 @@ local languages = {
 	"typescript",
 	"yaml",
 	"vim",
+	"markdown",
 }
 
 require("nvim-treesitter.configs").setup({
