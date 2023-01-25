@@ -107,14 +107,12 @@ require("lazy").setup({
 
 	-- Test
 	{
-		"vim-test/vim-test",
-		event = "UIEnter",
-		config = conf("vim-test"),
-	},
-	{
-		"is0n/jaq-nvim",
-		event = "UIEnter",
-		config = conf("jaq"),
+		"thinca/vim-quickrun",
+		event = "VimEnter",
+		config = conf("vim-quickrun"),
+		dependencies = {
+			"lambdalisue/vim-quickrun-neovim-job",
+		},
 	},
 
 	-- Telescope
@@ -307,8 +305,8 @@ require("lazy").setup({
 	},
 
 	-- Syntax
-	{ "aklt/plantuml-syntax", event = "UIEnter" },
-	{ "slim-template/vim-slim", event = "UIEnter" },
+	{ "aklt/plantuml-syntax" },
+	{ "slim-template/vim-slim" },
 
 	-- Folding
 	{ "lambdalisue/readablefold.vim", event = "UIEnter" },
