@@ -1,7 +1,7 @@
 _tt() {
   if [ -e package.json ]; then
     BUFFER="npm run test"
-  elif (( ${commands[rspec]} )); then
+  elif (( ${+commands[rspec]} )); then
     BUFFER="rspec"
   else
     return 0
