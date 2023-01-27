@@ -108,8 +108,11 @@ saga.setup({
 		},
 	},
 	preview = {
-		lines_above = 9999,
 		lines_below = 9999,
+	},
+	scroll_preview = {
+		scroll_down = "<C-d>",
+		scroll_up = "<C-u>",
 	},
 })
 
