@@ -80,17 +80,12 @@ for _, language in ipairs({ "typescript", "javascript" }) do
 			type = "pwa-node",
 			request = "launch",
 			name = "Debug Jest Tests",
-			-- trace = true, -- include debugger info
-			runtimeExecutable = "node",
-			runtimeArgs = {
-				"./node_modules/jest/bin/jest.js",
-				-- "${fileBasename}",
-				"--runInBand",
+			args = {
+				"node_modules/.bin/jest",
+				"${fileBasename}", -- TODO: `--testNamePattern` を指定したい
 			},
 			rootPath = "${workspaceFolder}",
 			cwd = "${workspaceFolder}",
-			console = "integratedTerminal",
-			internalConsoleOptions = "neverOpen",
 		},
 	}
 end
