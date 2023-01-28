@@ -107,12 +107,9 @@ require("lazy").setup({
 
 	-- Test
 	{
-		"thinca/vim-quickrun",
-		event = "VimEnter",
-		config = conf("vim-quickrun"),
-		dependencies = {
-			"lambdalisue/vim-quickrun-neovim-job",
-		},
+		"is0n/jaq-nvim",
+		event = "UIEnter",
+		config = conf("jaq"),
 	},
 
 	-- Telescope
