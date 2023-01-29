@@ -18,8 +18,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 --     A: Go to Preferences > Profiles tab. Select your profile on the left, and then open the Keyboard tab.
 --        At the bottom is a set of buttons that lets you select the behavior of the Option key.
 --        For most users, Esc+ will be the best choice.
-keymap("n", "<A-k>", "<Cmd>resize -2<CR>", opts)
-keymap("n", "<A-j>", "<Cmd>resize +2<CR>", opts)
+keymap("n", "<A-k>", "<Cmd>resize +2<CR>", opts)
+keymap("n", "<A-j>", "<Cmd>resize -2<CR>", opts)
 keymap("n", "<A-h>", "<Cmd>vertical resize -2<CR>", opts)
 keymap("n", "<A-l>", "<Cmd>vertical resize +2<CR>", opts)
 
