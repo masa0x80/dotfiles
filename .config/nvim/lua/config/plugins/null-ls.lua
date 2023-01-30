@@ -12,12 +12,6 @@ null_ls.setup({
 		diagnostics.eslint.with({
 			prefer_local = "node_modules/.bin",
 			filetypes = {
-				"filetypes",
-				"javascript",
-				"javascriptreact",
-				"typescriptreact",
-				"vue",
-				"typescript",
 				"graphql",
 			},
 		}),
