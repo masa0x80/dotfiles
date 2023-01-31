@@ -3,8 +3,13 @@ require("noice").setup({
 		view = "mini",
 		view_error = "mini",
 		view_warn = "mini",
-		view_search = false
+		view_search = false,
 	},
 })
 
 vim.keymap.set("n", ",m", "<Cmd>Noice<CR>", { noremap = true, silent = true, desc = "Show Messages" })
+
+local color = require("config.plugins.color.custom")
+local set_hl = vim.api.nvim_set_hl
+-- Fix NoiceLspProgressTitle
+set_hl(0, "NonText", { fg = color.CommentGrey })

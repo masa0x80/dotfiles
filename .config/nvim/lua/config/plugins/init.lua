@@ -32,7 +32,7 @@ require("lazy").setup({
 	{
 		"joshdick/onedark.vim",
 		event = "VimEnter",
-		config = conf("colorscheme"),
+		config = conf("color"),
 	},
 
 	-- Completion

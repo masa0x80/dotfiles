@@ -64,3 +64,6 @@ require("gitsigns").setup({
 		map({ "o", "x" }, "ih", ":<C-u>Gitsigns select_hunk<CR>", { desc = "Gitsigns: select_hunk" })
 	end,
 })
+
+local set_hl = vim.api.nvim_set_hl
+set_hl(0, "GitSignsCurrentLineBlame", { fg = "#6d8086" })

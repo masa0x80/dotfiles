@@ -5,8 +5,18 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	group = "_",
 	pattern = "gitmessengerpopup",
 	callback = function()
-		keymap("n", "<C-o>", "o", { desc = "GitMesenger: Back to older commit at the line" })
-		keymap("n", "<C-i>", "O", { desc = "GitMesenger: Forward to newer commit at the line" })
+		keymap(
+			"n",
+			"<C-o>",
+			"o",
+			{ remap = true, buffer = true, desc = "GitMesenger: Back to older commit at the line" }
+		)
+		keymap(
+			"n",
+			"<C-i>",
+			"O",
+			{ remap = true, buffer = true, desc = "GitMesenger: Forward to newer commit at the line" }
+		)
 	end,
 })
 
