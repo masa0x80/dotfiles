@@ -34,10 +34,6 @@ brew "shellcheck"
 brew "shfmt"
 brew "watch"
 
-brew "graphviz"
-brew "imagemagick"
-brew "pandoc"
-
 tap "universal-ctags/universal-ctags"
 brew "universal-ctags", args: ["HEAD"]
 
