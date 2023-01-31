@@ -9,12 +9,6 @@ null_ls.setup({
 		diagnostics.hadolint.with({
 			args = { "--no-fail", "--format=json", "-", "--ignore", "DL3008" },
 		}),
-		diagnostics.eslint.with({
-			prefer_local = "node_modules/.bin",
-			filetypes = {
-				"graphql",
-			},
-		}),
 		diagnostics.rubocop.with({
 			prefer_local = "vendor/bin",
 		}),
