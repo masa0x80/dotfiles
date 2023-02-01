@@ -153,3 +153,9 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	group = "_",
+	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+	command = "EslintFixAll",
+})
