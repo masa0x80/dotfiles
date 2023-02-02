@@ -82,6 +82,7 @@ brew "gojo"
 
 brew "hadolint"
 brew "lazydocker"
+brew "dive"
 
 brew "pinentry-mac"
 
