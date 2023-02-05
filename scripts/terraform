@@ -2,7 +2,7 @@
 
 . $(brew --prefix asdf)/libexec/asdf.sh
 
-VERSION=$(grep terraform $HOME/.tool-versions | grep -o '[0-9\.]*')
+VERSION=$(grep terraform "$HOME/.tool-versions" | grep -o '[0-9\.]*')
 
 asdf plugin-add terraform
-asdf install terraform $VERSION
+asdf install terraform "$VERSION"

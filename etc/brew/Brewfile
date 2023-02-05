@@ -34,9 +34,6 @@ brew "shellcheck"
 brew "shfmt"
 brew "watch"
 
-tap "universal-ctags/universal-ctags"
-brew "universal-ctags", args: ["HEAD"]
-
 brew "asdf"
 brew "direnv"
 brew "sops"

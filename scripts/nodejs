@@ -2,8 +2,8 @@
 
 . $(brew --prefix asdf)/libexec/asdf.sh
 
-VERSION=$(grep nodejs $HOME/.tool-versions | grep -o '[0-9\.]*')
+VERSION=$(grep nodejs "$HOME/.tool-versions" | grep -o '[0-9\.]*')
 
 export NODEJS_CHECK_SIGNATURES=no
 asdf plugin-add nodejs
-asdf install nodejs $VERSION
+asdf install nodejs "$VERSION"

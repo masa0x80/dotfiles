@@ -8,8 +8,8 @@ defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 # Change the directory that saves screen shots
 dir=$HOME/Pictures/ScreenShots/
-mkdir -p $dir
-defaults write com.apple.screencapture location -string $dir
+mkdir -p "$dir"
+defaults write com.apple.screencapture location -string "$dir"
 defaults write com.apple.screencapture name -string ''
 
 # Show hidden files

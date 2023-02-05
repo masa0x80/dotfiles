@@ -2,10 +2,10 @@
 
 . $(brew --prefix asdf)/libexec/asdf.sh
 
-VERSION=$(grep helm $HOME/.tool-versions | grep -o '[0-9\.]*')
+VERSION=$(grep helm "$HOME/.tool-versions" | grep -o '[0-9\.]*')
 
 asdf plugin-add helm
-asdf install helm $VERSION
+asdf install helm "$VERSION"
 
 helm plugin list | grep secrets || helm plugin install https://github.com/zendesk/helm-secrets
 helm plugin list | grep diff || helm plugin install https://github.com/databus23/helm-diff
