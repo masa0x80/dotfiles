@@ -93,8 +93,5 @@ brew "lefthook"
 
 brew "stylua"
 
-tap "charmbracelet/tap"
-brew "gum"
-
 # for telekasten
 brew "viu"
