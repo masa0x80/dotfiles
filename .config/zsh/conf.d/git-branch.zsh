@@ -24,6 +24,9 @@ bindkey "^g^b" git-switch-local-branch
 
 git-switch-remote-branch() {
   git-branch '-r' "$@"
+  if [ "$?" = 1 ]; then
+    git switch "$(echo $@ | sed -e 's|origin/||')"
+  fi
 }
 zle -N git-switch-remote-branch
 bindkey "^g^g^b" git-switch-remote-branch
