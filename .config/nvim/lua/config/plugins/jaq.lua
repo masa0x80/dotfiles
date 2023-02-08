@@ -30,12 +30,12 @@ local jaq = function()
 				.. vim.fn.line(".")
 				.. " "
 				.. vim.fn.expand("%")
-				.. ' | tac | rg -o "(it|test|describe)\\(.(.*).," --replace "\\$2" | head -n1 | sed -e "s/[^a-zA-Z0-9]/./g" | tr -d "\n"'
+				.. ' | tac | rg -o "(it|test|describe)\\(.(.*).," --replace "\\$2" | head -n1 | sed -e "s/\\\'\\"\\`/./g" | tr -d "\n"'
 		)
 		require("jaq-nvim").setup({
 			cmds = {
 				internal = {
-					typescript = 'TermExec cmd="node_modules/.bin/jest % --testNamePattern=' .. test_name .. '"',
+					typescript = 'TermExec cmd="npm run test % --testNamePattern=' .. test_name .. '"',
 				},
 			},
 		})
