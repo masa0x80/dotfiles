@@ -3,6 +3,12 @@
 # Hide Dock automatically
 defaults write com.apple.dock autohide -bool true
 
+# Dock dely
+defaults write com.apple.dock autohide-delay -float 0
+
+# Dock animation
+defaults write com.apple.dock autohide-time-modifier -float 0.7
+
 # Fix battery indicator
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
