@@ -49,9 +49,6 @@ brew "mysql"
 brew "postgresql"
 brew "redis"
 
-brew "vim"
-brew "neovim", args: ["HEAD"]
-
 brew "awscli"
 
 brew "rust"

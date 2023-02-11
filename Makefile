@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: defaults brew asdf nodejs python ruby java gradle terraform helm go rust navi bat silicon
+install: defaults brew asdf nodejs python ruby java gradle terraform helm go rust neovim navi bat silicon
 
 .PHONY: deploy
 deploy:
@@ -127,6 +127,10 @@ helm: asdf
 .PHONY: nodejs
 nodejs: brew-init
 	./scripts/nodejs
+
+.PHONY: neovim
+neovim: brew-init
+	./scripts/neovim
 
 # }}}
 
