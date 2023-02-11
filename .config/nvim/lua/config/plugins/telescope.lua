@@ -2,6 +2,7 @@ local actions = require("telescope.actions")
 
 require("telescope").setup({
 	defaults = {
+		path_display = { "smart" },
 		sorting_strategy = "ascending",
 		vimgrep_arguments = {
 			"rg",
