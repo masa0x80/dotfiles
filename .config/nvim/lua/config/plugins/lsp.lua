@@ -108,6 +108,7 @@ saga.setup({
 		},
 	},
 	preview = {
+		lines_avobe = 9999,
 		lines_below = 9999,
 	},
 	scroll_preview = {
