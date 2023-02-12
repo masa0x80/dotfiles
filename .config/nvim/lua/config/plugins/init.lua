@@ -284,7 +284,6 @@ require("lazy").setup({
 	-- Filer
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		event = "UIEnter",
 		config = conf("neo-tree"),
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
