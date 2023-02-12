@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-
-: "${SCRAPBOOK_DIR:=$HOME/.scrapbook}"
-local file_path="$SCRAPBOOK_DIR"
-test "$1" = '' || file_path+="/$1"
-local dir_path=$(dirname $file_path)
-test -d "$dir_path" || mkdir -p "$dir_path"
-echo "$file_path"

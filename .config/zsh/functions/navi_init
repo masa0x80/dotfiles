@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+navi_init() {
+  test -d .cheats.d && return 1
+
+  mkdir -p .cheats.d
+  echo '% Local' >.cheats.d/_.cheat
+  echo >>.cheats.d/_.cheat
+  echo '# sample' >>.cheats.d/_.cheat
+  echo 'echo <msg>' >>.cheats.d/_.cheat
+  echo >>.cheats.d/_.cheat
+  echo '$ msg: echo -e "yes\\nno"' >>.cheats.d/_.cheat
+
+  echo >>.cheats.d/_.cheat
+  echo '# Create branch' >>.cheats.d/_.cheat
+  echo 'git switch -c feature/XXX-<num>_<summary>' >>.cheats.d/_.cheat
+
+  echo 'CREATE .cheats.d/_.cheat'
+}

@@ -1,8 +1,8 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 
-() {
-  (( $+commands[BluetoothConnector] )) || return 1
-  (( $+commands[fzf] )) || return 1
+bt() {
+  installed BluetoothConnector || return 1
+  installed fzf || return 1
 
   local op=$(echo -e "connect\ndisconnect" | fzf +m)
   test -z "$op" && return 0

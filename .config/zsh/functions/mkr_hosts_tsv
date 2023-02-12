@@ -1,7 +1,6 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 
-# ref: http://motemen.hatenablog.com/entry/2015/07/mackerel-mkr-peco-zsh
-() {
+mkr_hosts_tsv() {
   local cache_dir=~/.cache/mkr-hosts-tsv
   local cache_file=$cache_dir/cache
   local mackerel_hosts_api_uri=''https://mackerel.io/api/v0/hosts'

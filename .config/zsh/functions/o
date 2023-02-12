@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+o() {
+  if installed open; then
+    if [ -n "$1" ]; then
+      command open "$@"
+    else
+      command open .
+    fi
+  fi
+}

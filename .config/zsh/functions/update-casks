@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+todo() {
+  eval "$EDITOR '$(scrapbook_path $(current_dir)/todo.md)'"
+}

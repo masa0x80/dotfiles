@@ -1,5 +1,5 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 
-() {
+memo() {
   eval "$EDITOR '$(scrapbook_path $(current_dir)/$(date +%Y-%m-%d).md)'"
 }
