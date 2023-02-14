@@ -1,8 +1,14 @@
 require("neogen").setup({})
 
-vim.keymap.set(
-	"n",
-	"<Leader>a",
-	require("neogen").generate,
-	{ noremap = true, silent = true, desc = "Generate an annotation" }
-)
+vim.keymap.set("n", "<Leader>dF", function()
+	require("neogen").generate({ type = "file" })
+end, { noremap = true, silent = true, desc = "neogen: file" })
+vim.keymap.set("n", "<Leader>df", function()
+	require("neogen").generate({ type = "func" })
+end, { noremap = true, silent = true, desc = "neogen: func" })
+vim.keymap.set("n", "<Leader>dc", function()
+	require("neogen").generate({ type = "class" })
+end, { noremap = true, silent = true, desc = "neogen: class" })
+vim.keymap.set("n", "<Leader>dt", function()
+	require("neogen").generate({ type = "type" })
+end, { noremap = true, silent = true, desc = "neogen: type" })
