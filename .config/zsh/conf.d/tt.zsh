@@ -8,6 +8,7 @@ _tt() {
   fi
   BUFFER=$(echo -n $opt | fzf -1 +m)
   test -n "$BUFFER" || return 0
+  BUFFER+=" "
   CURSOR=$#BUFFER
 }
 zle -N _tt
