@@ -81,7 +81,12 @@ keymap("n", "<Leader>/", function()
 end, { desc = "[/] Fuzzily search in current buffer]" })
 
 keymap("n", "<Leader>f", function()
-	tb.git_files({ hidden = true })
+	vim.fn.system("git rev-parse --is-inside-work-tree")
+	if vim.v.shell_error == 0 then
+		tb.git_files({ hidden = true })
+	else
+		tb.find_files({ hidden = true, no_ignore = true })
+	end
 end, { desc = "Search [F]iles" })
 keymap("n", "<Leader>F", function()
 	tb.find_files({ hidden = true, no_ignore = true })
