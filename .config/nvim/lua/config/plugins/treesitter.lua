@@ -22,6 +22,7 @@ local languages = {
 	"yaml",
 	"vim",
 	"markdown",
+	"markdown_inline",
 }
 
 require("nvim-treesitter.configs").setup({
