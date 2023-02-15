@@ -2,7 +2,7 @@
   "rules": {
     "preset-ja-spacing": {
       "ja-space-between-half-and-full-width": {
-        "space": "always"
+        "space": "never"
       },
       "ja-space-around-code": {
         "before": true,
