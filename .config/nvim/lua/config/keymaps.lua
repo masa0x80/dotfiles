@@ -140,3 +140,15 @@ keymap("n", "<C-c><C-c>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>
 
 -- Save
 keymap({ "n", "v" }, ";;", "<Cmd>write<CR>", { noremap = true })
+
+-- folding
+keymap("n", "z-", function()
+	if vim.o.foldlevel > 0 then
+		vim.o.foldlevel = vim.o.foldlevel - 1
+	end
+	print("foldlevel: " .. vim.o.foldlevel)
+end, { noremap = true, desc = "Decrement foldlevel" })
+keymap("n", "z+", function()
+	vim.o.foldlevel = vim.o.foldlevel + 1
+	print("foldlevel: " .. vim.o.foldlevel)
+end, { noremap = true, desc = "Increment foldlevel" })
