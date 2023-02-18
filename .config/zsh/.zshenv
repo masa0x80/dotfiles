@@ -61,6 +61,8 @@ export RAILS_SERVER_PORT=3000
 
 export GIT_HOOK_DIR="$HOME/.config/git/hooks"
 
+export HOMEBREW_NO_ANALYTICS=1
+
 for file (
   # Load .config.local
   $HOME/.config.local/zsh/zshenv(N)
