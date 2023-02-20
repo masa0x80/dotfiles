@@ -143,12 +143,23 @@ keymap({ "n", "v" }, ";;", "<Cmd>write<CR>", { noremap = true })
 
 -- folding
 keymap("n", "z-", function()
-	if vim.o.foldlevel > 0 then
-		vim.o.foldlevel = vim.o.foldlevel - 1
+	local num = vim.v.count
+	if num == 0 then
+		num = 1
 	end
-	print("foldlevel: " .. vim.o.foldlevel)
-end, { noremap = true, desc = "Decrement foldlevel" })
+	num = vim.o.foldlevel - num
+	if num < 0 then
+		num = 0
+	end
+	vim.o.foldlevel = num
+	require("notify")("foldlevel: " .. vim.o.foldlevel)
+end, { noremap = true, desc = "Subtract foldlevel" })
 keymap("n", "z+", function()
-	vim.o.foldlevel = vim.o.foldlevel + 1
+	local num = vim.v.count
+	if num == 0 then
+		num = 1
+	end
+	vim.o.foldlevel = vim.o.foldlevel + num
 	print("foldlevel: " .. vim.o.foldlevel)
-end, { noremap = true, desc = "Increment foldlevel" })
+	require("notify")("foldlevel: " .. vim.o.foldlevel)
+end, { noremap = true, desc = "Add foldlevel" })
