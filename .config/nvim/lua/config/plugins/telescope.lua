@@ -21,7 +21,7 @@ require("telescope").setup({
 				["<C-g><C-g>"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = vim.fn.fnamemodify(selection.path, ":p:t")
-					print(path)
+					vim.notify(path, vim.log.levels.INFO, { title = "File Path" })
 				end,
 			},
 			n = {
@@ -34,28 +34,28 @@ require("telescope").setup({
 				["<C-g><C-g>"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = vim.fn.fnamemodify(selection.path, ":p:t")
-					print(path)
+					vim.notify(path, vim.log.levels.INFO, { title = "File Path" })
 				end,
-				["y"] = function()
+				["yy"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = vim.fn.fnamemodify(selection.path, ":p:t")
 					vim.fn.setreg("+", path)
 					vim.fn.setreg('"', path)
-					print("Copied: " .. path)
+					vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 				end,
 				["Y"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = vim.fn.fnamemodify(selection.path, ":.")
 					vim.fn.setreg("+", path)
 					vim.fn.setreg('"', path)
-					print("Copied: " .. path)
+					vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 				end,
 				["<C-y>"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = selection.path
 					vim.fn.setreg("+", path)
 					vim.fn.setreg('"', path)
-					print("Copied: " .. path)
+					vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 				end,
 			},
 		},

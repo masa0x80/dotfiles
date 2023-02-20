@@ -152,7 +152,7 @@ keymap("n", "z-", function()
 		num = 0
 	end
 	vim.o.foldlevel = num
-	require("notify")("foldlevel: " .. vim.o.foldlevel)
+	vim.notify("foldlevel: " .. vim.o.foldlevel)
 end, { noremap = true, desc = "Subtract foldlevel" })
 keymap("n", "z+", function()
 	local num = vim.v.count
@@ -160,6 +160,5 @@ keymap("n", "z+", function()
 		num = 1
 	end
 	vim.o.foldlevel = vim.o.foldlevel + num
-	print("foldlevel: " .. vim.o.foldlevel)
-	require("notify")("foldlevel: " .. vim.o.foldlevel)
+	vim.notify("foldlevel: " .. vim.o.foldlevel)
 end, { noremap = true, desc = "Add foldlevel" })

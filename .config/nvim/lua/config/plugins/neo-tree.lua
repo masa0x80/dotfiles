@@ -51,26 +51,26 @@ require("neo-tree").setup({
 			["[g"] = "prev_git_modified",
 			["]g"] = "next_git_modified",
 			["C"] = "close_all_nodes",
-			["y"] = function(state)
+			["yy"] = function(state)
 				local node = state.tree:get_node()
 				local name = node.name
 				vim.fn.setreg("+", name)
 				vim.fn.setreg('"', name)
-				print("Copied: " .. name)
+				vim.notify(name, vim.log.levels.INFO, { title = "Copied" })
 			end,
 			["Y"] = function(state)
 				local node = state.tree:get_node()
 				local path = vim.fn.fnamemodify(node.path, ":.")
 				vim.fn.setreg("+", path)
 				vim.fn.setreg('"', path)
-				print("Copied: " .. path)
+				vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 			end,
 			["<C-y>"] = function(state)
 				local node = state.tree:get_node()
 				local path = node.path
 				vim.fn.setreg("+", path)
 				vim.fn.setreg('"', path)
-				print("Copied: " .. path)
+				vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 			end,
 		},
 	},
