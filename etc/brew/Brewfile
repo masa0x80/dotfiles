@@ -36,7 +36,6 @@ brew "watch"
 
 brew "asdf"
 brew "direnv"
-brew "sops"
 
 brew "zsh"
 
