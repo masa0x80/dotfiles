@@ -6,3 +6,4 @@ gradle 7.5.1
 terraform 1.0.11
 helm 3.8.0
 neovim nightly
+sops 3.7.3
