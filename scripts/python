@@ -1,12 +1,9 @@
 #!/bin/bash
 
-. $(brew --prefix asdf)/libexec/asdf.sh
+. "$(brew --prefix asdf)/libexec/asdf.sh"
 
-PYTHON_VERSIONS=$(grep python "$HOME/.tool-versions" | grep -o '[0-9\.]*')
+VERSION=$(sed -n 's|python \(.*\)|\1|p' "$HOME/.tool-versions")
 
 asdf plugin-add python
-
-for v in $PYTHON_VERSIONS; do
-  asdf install python "$v"
-done
+asdf install python "$VERSION"
 pip install --upgrade pip

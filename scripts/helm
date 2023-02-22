@@ -1,8 +1,8 @@
 #!/bin/bash
 
-. $(brew --prefix asdf)/libexec/asdf.sh
+. "$(brew --prefix asdf)/libexec/asdf.sh"
 
-VERSION=$(grep helm "$HOME/.tool-versions" | grep -o '[0-9\.]*')
+VERSION=$(sed -n 's|helm \(.*\)|\1|p' "$HOME/.tool-versions")
 
 asdf plugin-add helm
 asdf install helm "$VERSION"

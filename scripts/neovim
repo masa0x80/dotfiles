@@ -1,8 +1,8 @@
 #!/bin/bash
 
-. $(brew --prefix asdf)/libexec/asdf.sh
+. "$(brew --prefix asdf)/libexec/asdf.sh"
 
-VERSION=$(grep neovim "$HOME/.tool-versions" | grep -o '[0-9\.]*')
+VERSION=$(sed -n 's|neovim \(.*\)|\1|p' "$HOME/.tool-versions")
 
 asdf plugin-add neovim
 asdf install neovim "$VERSION"
