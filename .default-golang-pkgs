@@ -1,0 +1,5 @@
+golang.org/x/tools/...@latest
+github.com/MichaelMure/mdr@latest
+github.com/mattn/goreman@latest
+github.com/rakyll/statik@latest
+honnef.co/go/tools/cmd/staticcheck@latest

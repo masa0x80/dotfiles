@@ -74,14 +74,6 @@ defaults:
 
 # }}}
 
-# go {{{
-
-.PHONY: go
-go: brew-init
-	./scripts/go
-
-# }}}
-
 # asdf {{{
 
 .PHONY: asdf
@@ -99,6 +91,10 @@ python: asdf
 .PHONY: java
 java: asdf
 	./scripts/java
+
+.PHONY: go
+go: brew-init
+	./scripts/go
 
 .PHONY: gradle
 gradle: asdf

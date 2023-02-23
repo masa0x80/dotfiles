@@ -62,8 +62,6 @@ brew "sd"
 brew "silicon"
 brew "grex"
 
-brew "go"
-
 brew "hub"
 brew "gh"
 brew "ghq"
