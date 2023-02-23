@@ -52,7 +52,6 @@ brew "neovim", args: ["HEAD"]
 
 brew "awscli"
 
-brew "rust"
 brew "bat"
 brew "dog"
 brew "exa"

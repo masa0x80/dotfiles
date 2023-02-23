@@ -1,7 +1,8 @@
 #!/bin/bash
 
-install() {
-  cargo install "$1" || :
-}
+. "$(brew --prefix asdf)/libexec/asdf.sh"
 
-install cargo-update
+VERSION=$(sed -n 's|rust \(.*\)|\1|p' "$HOME/.tool-versions")
+
+asdf plugin-add rust
+asdf install rust "$VERSION"

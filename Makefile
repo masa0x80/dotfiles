@@ -82,18 +82,6 @@ go: brew-init
 
 # }}}
 
-# rust {{{
-
-.PHONY: rust
-rust: brew-init
-	./scripts/rust
-
-.PHONY: rust-update
-rust-update: rust
-	cargo install-update -a
-
-# }}}
-
 # asdf {{{
 
 .PHONY: asdf
@@ -135,6 +123,18 @@ sops: brew-init
 .PHONY: neovim
 neovim: brew-init
 	./scripts/neovim
+
+# rust {{{
+
+.PHONY: rust
+rust: brew-init
+	./scripts/rust
+
+.PHONY: rust-update
+rust-update: rust
+	cargo install-update -a
+
+# }}}
 
 # }}}
 

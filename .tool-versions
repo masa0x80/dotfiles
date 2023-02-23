@@ -1,4 +1,5 @@
 ruby 3.2.1
+rust 1.67.1
 python 3.11.0
 nodejs 18.14.0
 java corretto-19.0.0.36.1

@@ -22,8 +22,6 @@ path=(
   $HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin(N-/)
   # golang
   $GOPATH/bin(N-/)
-  # rust
-  $HOME/.cargo/bin(N-/)
   $path
 )
 
@@ -51,6 +49,11 @@ export LESS_TERMCAP_us=$(tput smul; tput setaf 4)               # begin underlin
 export NODEJS_CHECK_SIGNATURES=no
 load_file "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
 load_file $HOME/.asdf/plugins/java/set-java-home.zsh
+path=(
+  # rust
+  $HOME/.asdf/shims/bin(N-/)
+  $path
+)
 
 # EDITOR
 if installed nvim; then
