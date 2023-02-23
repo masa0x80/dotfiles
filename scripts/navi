@@ -6,10 +6,10 @@ cd "$dir" || exit 1
 dir_name="masa0x80__cheats"
 test -d "$dir_name" || git clone https://github.com/masa0x80/cheats $dir_name
 
-for d in *(N-/); do
+while read -r d; do
   pushd "$d" || exit 1
   if test "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true'; then
     git pull
   fi
   popd || exit 1
-done
+done < <(fd --type d -d 1)
