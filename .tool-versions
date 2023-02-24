@@ -1,9 +1,9 @@
 ruby 3.2.1
-rust 1.67.1
 python 3.11.0
 nodejs 18.14.0
-java corretto-19.0.0.36.1
+rust 1.67.1
 golang 1.20.1
+java corretto-19.0.0.36.1
 gradle 7.5.1
 terraform 1.0.11
 helm 3.8.0
