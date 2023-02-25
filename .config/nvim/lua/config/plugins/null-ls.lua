@@ -16,15 +16,7 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.shfmt,
 		formatting.fish_indent,
-		formatting.textlint.with({
-			filetypes = { "text", "markdown" },
-			args = {
-				"-c",
-				vim.fn.expand("$XDG_CONFIG_HOME" .. "/textlint/textlintrc.json"),
-				"--fix",
-				"$FILENAME",
-			},
-		}),
+		formatting.textlint,
 		formatting.rubocop.with({
 			prefer_local = "vendor/bin",
 		}),
