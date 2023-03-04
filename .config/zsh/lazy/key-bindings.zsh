@@ -8,8 +8,8 @@ bindkey '^]' insert-last-word
 bindkey '^[[Z' reverse-menu-complete
 bindkey '^O' reverse-menu-complete
 
-bindkey '^[U' undo
-bindkey '^[R' redo
+bindkey '^G^U' undo
+bindkey '^G^R' redo
 
 bindkey '^G^H' backward-word
 bindkey '^G^L' forward-word
