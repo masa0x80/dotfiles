@@ -1,0 +1,8 @@
+#!/bin/bash
+
+. "$(brew --prefix asdf)/libexec/asdf.sh"
+
+VERSION=$(sed -n 's|aws-vault \(.*\)|\1|p' "$HOME/.tool-versions")
+
+asdf plugin-add aws-vault
+asdf install aws-vault "$VERSION"

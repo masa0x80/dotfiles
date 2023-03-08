@@ -1,6 +1,5 @@
 # vim: ft=ruby
 cask "altair-graphql-client"
-cask "aws-vault"
 cask "chromedriver"
 cask "diskwave"
 cask "docker"
