@@ -6,9 +6,6 @@ if installed rg; then
 fi
 
 if_installed bat abbr -S -qq --force cat=bat
-if_installed dog abbr -S -qq --force dig=dog
-if_installed sd abbr -S -qq --force sed=sd
-if_installed fd abbr -S -qq --force find=fd
 
 if installed exa; then
   alias ls='exa --group-directories-first --icons'
