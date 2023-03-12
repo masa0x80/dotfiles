@@ -21,6 +21,7 @@ require("lazy").setup({
 	"folke/lazy.nvim",
 	"nvim-lua/plenary.nvim",
 	"MunifTanjim/nui.nvim",
+	"rcarriga/nvim-notify", -- .config/nvim/ftplugin/plantuml.lua で利用
 
 	{ "tpope/vim-repeat", event = "VimEnter" },
 	{ "tpope/vim-unimpaired", event = "UIEnter" },
