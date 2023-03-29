@@ -116,6 +116,10 @@ nodejs: brew-init
 sops: brew-init
 	./scripts/sops
 
+.PHONY: awscli
+awscli: brew-init
+	./scripts/awscli
+
 .PHONY: aws-vault
 aws-vault: brew-init
 	./scripts/aws-vault

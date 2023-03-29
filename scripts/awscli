@@ -1,0 +1,8 @@
+#!/bin/bash
+
+. "$(brew --prefix asdf)/libexec/asdf.sh"
+
+VERSION=$(sed -n 's|awscli \(.*\)|\1|p' "$HOME/.tool-versions")
+
+asdf plugin-add awscli
+asdf install awscli "$VERSION"

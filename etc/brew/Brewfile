@@ -50,8 +50,6 @@ brew "redis"
 
 brew "neovim", args: ["HEAD"]
 
-brew "awscli"
-
 brew "bat"
 brew "dog"
 brew "exa"
