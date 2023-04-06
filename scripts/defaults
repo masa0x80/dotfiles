@@ -16,7 +16,8 @@ defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 dir=$HOME/Pictures/ScreenShots/
 mkdir -p "$dir"
 defaults write com.apple.screencapture location -string "$dir"
-defaults write com.apple.screencapture name -string ''
+defaults write com.apple.screencapture name -string '-'
+defaults write com.apple.screencapture show-thumbnail -bool false
 
 # Show hidden files
 defaults write com.apple.finder AppleShowAllFiles -bool true
