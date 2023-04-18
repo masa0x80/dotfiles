@@ -9,6 +9,7 @@ require("jaq-nvim").setup({
 			cpp = "TermExec cmd='g++ % -o $fileBase && $fileBase'",
 			go = "TermExec cmd='go run %'",
 			sh = "TermExec cmd='sh %'",
+			markdown = "MarkdownPreview",
 			plantuml = "PlantUmlPreview",
 		},
 	},
