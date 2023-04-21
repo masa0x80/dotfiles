@@ -2,16 +2,15 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title B! entry page
+# @raycast.title Gyotaku [megalodon]
 # @raycast.mode silent
 #
 # Optional parameters:
-# @raycast.packageName Hatena Bookmark
-# @raycast.icon images/bookmark-logo.png
+# @raycast.packageName 魚拓
+# @raycast.icon 📜
 #
-# @raycast.description Jump to B! entry page about current page.
 # @raycast.author KIMURA Masayuki
 # @raycast.authorURL https://github.com/masa0x80
 
 url=$(osascript -e 'tell application "Vivaldi" to get URL of active tab of front window')
-open "https://b.hatena.ne.jp/entry/s/${url//*:\/\//}"
+open "https://megalodon.jp/?url=$url"

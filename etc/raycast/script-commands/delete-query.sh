@@ -13,5 +13,7 @@
 # @raycast.author KIMURA Masayuki
 # @raycast.authorURL https://github.com/masa0x80
 
-url=$(osascript -e 'tell application "Vivaldi" to return URL of active tab of front window')
-open "${url//\?*/}"
+browser="Vivaldi"
+url=$(osascript -e "tell application \"$browser\" to get URL of active tab of front window")
+osascript -e "tell application \"$browser\" to set URL of active tab of front window to \"${url//\?*/}\""
+osascript -e "tell application \"$browser\" to activate"
