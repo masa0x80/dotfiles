@@ -287,6 +287,7 @@ require("lazy").setup({
 		"nvim-neo-tree/neo-tree.nvim",
 		config = conf("neo-tree"),
 		dependencies = {
+			{ "joshdick/onedark.vim" },
 			{ "nvim-lua/plenary.nvim" },
 			{ "MunifTanjim/nui.nvim" },
 			{ "kyazdani42/nvim-web-devicons" },
