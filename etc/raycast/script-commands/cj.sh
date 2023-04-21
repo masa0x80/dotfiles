@@ -7,7 +7,7 @@
 #
 # Optional parameters:
 # @raycast.packageName Vivaldi
-# @raycast.icon 🔗
+# @raycast.icon 📋
 #
 # @raycast.description This script copies URL of currently opened page in Vivaldi into clipboard.
 # @raycast.author KIMURA Masayuki

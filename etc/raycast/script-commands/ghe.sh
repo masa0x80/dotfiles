@@ -9,7 +9,7 @@
 # @raycast.packageName GHE
 # @raycast.icon 🚀
 #
-# @raycast.description Open GitHub Org/Repository page
+# @raycast.description Open GHE Org/Repository page
 # @raycast.author KIMURA Masayuki
 # @raycast.authorURL https://github.com/masa0x80
 #
