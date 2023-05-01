@@ -139,6 +139,9 @@ require("lazy").setup({
 		event = "UIEnter",
 		dependencies = {
 			{
+				"windwp/nvim-ts-autotag",
+			},
+			{
 				"nvim-treesitter/nvim-treesitter",
 				build = ":TSUpdate",
 				config = conf("treesitter"),
