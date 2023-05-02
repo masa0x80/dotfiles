@@ -45,7 +45,7 @@ local jaq = function()
 			cmds = {
 				internal = {
 					ruby = "TermExec cmd='ruby %'",
-					typescript = "TermExec cmd='node %'",
+					typescript = "TermExec cmd='ts-node %'",
 				},
 			},
 		})
