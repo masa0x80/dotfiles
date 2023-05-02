@@ -2,5 +2,6 @@ yarn
 prettier
 textlint
 textlint-rule-preset-ja-spacing
+ts-node
 markdown2confluence-cws
 @nestjs/cli
