@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: defaults brew asdf nodejs python ruby java gradle terraform helm go rust sops aws-vault neovim navi bat silicon
+install: defaults brew-init brew asdf nodejs python ruby java gradle terraform helm go rust sops aws-vault neovim navi bat silicon
 
 .PHONY: deploy
 deploy:
@@ -46,19 +46,19 @@ brew-init:
 	./scripts/brew_init
 
 .PHONY: brew
-brew: brew-init
+brew:
 	brew bundle --file=etc/brew/Brewfile
 
 .PHONY: brew-cask
-brew-cask: brew-init
+brew-cask:
 	brew bundle --file=etc/brew/Brewfile.cask
 
 .PHONY: brew-cask-upgrade
-brew-cask-upgrade: brew-init
+brew-cask-upgrade:
 	brew cask upgrade
 
 .PHONY: brew-mas
-brew-mas: brew-init
+brew-mas:
 	brew bundle --file=etc/brew/Brewfile.mas
 
 .PHONY: brew-bundle
@@ -77,7 +77,7 @@ defaults:
 # asdf {{{
 
 .PHONY: asdf
-asdf: brew-init
+asdf:
 	./scripts/asdf
 
 .PHONY: ruby
@@ -93,7 +93,7 @@ java: asdf
 	./scripts/java
 
 .PHONY: go
-go: brew-init
+go: asdf
 	./scripts/go
 
 .PHONY: gradle
@@ -109,29 +109,29 @@ helm: asdf
 	./scripts/helm
 
 .PHONY: nodejs
-nodejs: brew-init
+nodejs: asdf
 	./scripts/nodejs
 
 .PHONY: sops
-sops: brew-init
+sops: asdf
 	./scripts/sops
 
 .PHONY: awscli
-awscli: brew-init
+awscli: asdf
 	./scripts/awscli
 
 .PHONY: aws-vault
-aws-vault: brew-init
+aws-vault: asdf
 	./scripts/aws-vault
 
 .PHONY: neovim
-neovim: brew-init
+neovim: asdf
 	./scripts/neovim
 
 # rust {{{
 
 .PHONY: rust
-rust: brew-init
+rust: asdf
 	./scripts/rust
 
 .PHONY: rust-update
