@@ -34,6 +34,10 @@ brew "shellcheck"
 brew "shfmt"
 brew "watch"
 
+# NOTE diagrams requires installing graphviz
+# ref. https://diagrams.mingrammer.com/docs/getting-started/installation
+brew "graphviz"
+
 brew "asdf"
 brew "direnv"
 
