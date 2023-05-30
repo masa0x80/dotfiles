@@ -18,3 +18,7 @@ cask "visual-studio-code"
 
 cask "google-chrome"
 cask "vivaldi"
+
+tap "homebrew/cask-fonts"
+cask "font-biz-udpgothic"
+cask "font-udev-gothic-nf"
