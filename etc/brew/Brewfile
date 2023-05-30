@@ -89,6 +89,7 @@ tap "arkweid/lefthook"
 brew "lefthook"
 
 brew "stylua"
+brew "markdownlint-cli"
 
 # for telekasten
 brew "viu"
