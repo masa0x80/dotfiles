@@ -17,6 +17,7 @@ null_ls.setup({
 		formatting.shfmt,
 		formatting.fish_indent,
 		formatting.textlint,
+		formatting.markdownlint,
 		formatting.rubocop.with({
 			prefer_local = "vendor/bin",
 		}),
