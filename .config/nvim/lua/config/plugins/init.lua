@@ -270,6 +270,12 @@ require("lazy").setup({
 		event = "UIEnter",
 	},
 	{
+		"ruifm/gitlinker.nvim",
+		event = "UIEnter",
+		config = conf("gitlinker"),
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	{
 		"lewis6991/gitsigns.nvim",
 		event = "UIEnter",
 		config = conf("gitsigns"),
