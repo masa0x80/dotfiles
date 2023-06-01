@@ -13,6 +13,7 @@ null_ls.setup({
 			prefer_local = "vendor/bin",
 		}),
 
+		formatting.black,
 		formatting.stylua,
 		formatting.shfmt,
 		formatting.fish_indent,
