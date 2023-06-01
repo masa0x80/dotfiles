@@ -13,7 +13,12 @@ vim.opt.rtp:prepend(lazypath)
 
 local function conf(name)
 	return function()
-		require(string.format("config.plugins.%s", name))
+		local path = string.format(vim.fn.expand("$HOME") .. "/.config.local/nvim/lua/config/plugins/%s.lua", name)
+		if vim.fn.filereadable(path) == 1 then
+			vim.fn.execute("luafile " .. path)
+		else
+			require(string.format("config.plugins.%s", name))
+		end
 	end
 end
 
