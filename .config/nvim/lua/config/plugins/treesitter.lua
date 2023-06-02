@@ -8,7 +8,6 @@ local languages = {
 	"javascript",
 	"jsdoc",
 	"json",
-	"help",
 	"html",
 	"lua",
 	"make",
@@ -21,6 +20,7 @@ local languages = {
 	"typescript",
 	"yaml",
 	"vim",
+	"vimdoc",
 	"markdown",
 	"markdown_inline",
 }
