@@ -2,7 +2,7 @@ local tabline = require("tabline")
 tabline.setup()
 
 require("lsp-status").config({
-	status_symbol = "",
+	status_symbol = "",
 	diagnostics = false,
 })
 local filename = {
