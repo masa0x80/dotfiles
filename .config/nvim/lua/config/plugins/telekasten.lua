@@ -25,7 +25,7 @@ require("telekasten").setup({
 	image_subdir = "img",
 	extension = ".md",
 
-	uuid_type = "%Y%m%d%H%M",
+	uuid_type = "%Y%m%d%H%M%S",
 	uuid_sep = "-",
 
 	tag_notation = "#tag",
