@@ -1,30 +1,3 @@
-# homebrew
-eval "$(brew shellenv)"
-
-# NOTE: must place after adding `/usr/local/bin` to PATH
-export SHELL=$(which zsh)
-export TERM=screen-256color
-
-# golang
-export GO111MODULE=on
-export GOPATH=$HOME/go
-
-path=(
-  # brew caveats
-  $HOMEBREW_PREFIX/opt/curl/bin(N-/)
-  $HOMEBREW_PREFIX/opt/openssl/bin(N-/)
-  $HOMEBREW_PREFIX/opt/sqlite/bin(N-/)
-  $HOMEBREW_PREFIX/opt/gettext/bin(N-/)
-  $HOMEBREW_PREFIX/opt/gnu-getopt/bin(N-/)
-  $HOMEBREW_PREFIX/opt/grep/libexec/gnubin(N-/)
-  $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin(N-/)
-  $HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin(N-/)
-  $HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin(N-/)
-  # golang
-  $GOPATH/bin(N-/)
-  $path
-)
-
 # Autoload functions
 fpath=($ZDOTDIR/functions(N-/) $fpath)
 for config_file ($ZDOTDIR/functions/*(N)) autoload $(basename "$config_file")
@@ -45,13 +18,6 @@ export LESS_TERMCAP_so=$(tput bold; tput setaf 0; tput setab 7) # begin standout
 export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)                  # end underline
 export LESS_TERMCAP_us=$(tput smul; tput setaf 4)               # begin underline
 
-# asdf
-export ASDF_GOLANG_MOD_VERSION_ENABLED=true
-export NODEJS_CHECK_SIGNATURES=no
-load_file "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
-load_file $HOME/.asdf/plugins/java/set-java-home.zsh
-path=($HOME/.asdf/shims/bin(N-/) $path)
-
 # EDITOR
 if installed nvim; then
   export EDITOR=nvim
@@ -64,6 +30,10 @@ fi
 # Pager
 if_installed bat export PAGER=bat
 
+# NOTE: must place after adding `/usr/local/bin` to PATH
+export SHELL=$(which zsh)
+export TERM=screen-256color
+
 # NOTE: must place before loading `$HOME/.config.local/zsh/zshrc
 if installed ghq; then
   if [[ ! -d $(ghq root)/github.com/masa0x80/dotfiles ]]; then
@@ -73,8 +43,10 @@ if installed ghq; then
   fi
 fi
 
+# # NOTE: must place before loading `$HOME/.config.local/zsh/zshrc`
+path=($DOTFILE/bin(N-/) $path)
+
 for file (
-  $ZDOTDIR/lazy/config.zsh(N)
   # Load files under conf.d
   $ZDOTDIR/conf.d/*.zsh(N)
   # Load hooks configurations
@@ -84,9 +56,6 @@ for file (
   # Load local config
   $HOME/.zshrc.local(N)
 ) load_file $file
-
-# Append $DOTFILE/bin to $PATH
-path=($DOTFILE/bin(N-/) $path)
 
 # NOTE: Create zsh compiled files
 () {

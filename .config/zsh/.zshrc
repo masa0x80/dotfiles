@@ -4,6 +4,13 @@ if [ "$ZSHRC_PROFILE" != "" ]; then
   zmodload zsh/zprof && zprof > /dev/null
 fi
 
+load_file() {
+  if [ -r $1 ]; then
+    [ ! -f ${1}.zwc -o $1 -nt ${1}.zwc ] && zcompile $1
+    . $1
+  fi
+}
+
 # Perform cd to a directory if the typed command is invalid, but is a directory.
 setopt AUTO_CD
 
@@ -54,11 +61,41 @@ setopt NO_CHECK_JOBS
 # Prevent SIGHUP to jobs on shell exit.
 setopt NO_HUP
 
-# Initialize modules.
-source $ZDOTDIR/zinitrc
+# homebrew
+eval "$(brew shellenv)"
+
+path=(
+  # brew caveats
+  $HOMEBREW_PREFIX/opt/curl/bin(N-/)
+  $HOMEBREW_PREFIX/opt/openssl/bin(N-/)
+  $HOMEBREW_PREFIX/opt/sqlite/bin(N-/)
+  $HOMEBREW_PREFIX/opt/gettext/bin(N-/)
+  $HOMEBREW_PREFIX/opt/gnu-getopt/bin(N-/)
+  $HOMEBREW_PREFIX/opt/grep/libexec/gnubin(N-/)
+  $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin(N-/)
+  $HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin(N-/)
+  $HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin(N-/)
+  # golang
+  $GOPATH/bin(N-/)
+  $path
+)
+
+# golang
+export GO111MODULE=on
+export GOPATH=$HOME/go
+
+# asdf
+export ASDF_GOLANG_MOD_VERSION_ENABLED=true
+export NODEJS_CHECK_SIGNATURES=no
+load_file "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
+load_file $HOME/.asdf/plugins/java/set-java-home.zsh
+path=($HOME/.asdf/shims/bin(N-/) $path)
 
 # direnv
 (( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
+
+# Initialize modules.
+source $ZDOTDIR/zinitrc
 
 # Prompt
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_no_bold[white]%}"
