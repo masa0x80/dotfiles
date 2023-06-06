@@ -4,5 +4,5 @@
 
 VERSION=$(sed -n 's|java \(.*\)|\1|p' "$HOME/.tool-versions")
 
-asdf plugin-add java
+asdf plugin add java
 asdf install java "$VERSION"

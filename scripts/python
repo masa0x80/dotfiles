@@ -4,6 +4,6 @@
 
 VERSION=$(sed -n 's|python \(.*\)|\1|p' "$HOME/.tool-versions")
 
-asdf plugin-add python
+asdf plugin add python
 asdf install python "$VERSION"
 pip install --upgrade pip

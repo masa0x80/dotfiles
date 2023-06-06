@@ -5,5 +5,5 @@
 VERSION=$(sed -n 's|nodejs \(.*\)|\1|p' "$HOME/.tool-versions")
 
 export NODEJS_CHECK_SIGNATURES=no
-asdf plugin-add nodejs
+asdf plugin add nodejs
 asdf install nodejs "$VERSION"

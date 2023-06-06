@@ -4,7 +4,7 @@
 
 VERSION=$(sed -n 's|helm \(.*\)|\1|p' "$HOME/.tool-versions")
 
-asdf plugin-add helm
+asdf plugin add helm
 asdf install helm "$VERSION"
 
 helm plugin list | grep secrets || helm plugin install https://github.com/zendesk/helm-secrets

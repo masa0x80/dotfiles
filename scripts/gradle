@@ -4,5 +4,5 @@
 
 VERSION=$(sed -n 's|gradle \(.*\)|\1|p' "$HOME/.tool-versions")
 
-asdf plugin-add gradle
+asdf plugin add gradle
 asdf install gradle "$VERSION"

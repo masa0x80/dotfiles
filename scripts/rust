@@ -4,5 +4,5 @@
 
 VERSION=$(sed -n 's|rust \(.*\)|\1|p' "$HOME/.tool-versions")
 
-asdf plugin-add rust
+asdf plugin add rust
 asdf install rust "$VERSION"

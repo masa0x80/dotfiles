@@ -4,5 +4,5 @@
 
 VERSION=$(sed -n 's|sops \(.*\)|\1|p' "$HOME/.tool-versions")
 
-asdf plugin-add sops
+asdf plugin add sops
 asdf install sops "$VERSION"
