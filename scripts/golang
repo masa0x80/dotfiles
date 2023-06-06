@@ -4,5 +4,6 @@
 
 VERSION=$(sed -n 's|golang \(.*\)|\1|p' "$HOME/.tool-versions")
 
+export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 asdf plugin add golang
 asdf install golang "$VERSION"
