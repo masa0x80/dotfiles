@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: defaults brew-init brew asdf nodejs python ruby java gradle terraform helm go rust sops aws-vault neovim navi bat silicon
+install: defaults brew-init brew asdf nodejs python ruby java gradle terraform terraform_docs helm go rust sops aws-vault neovim navi bat silicon
 
 .PHONY: deploy
 deploy:
@@ -103,6 +103,10 @@ gradle: asdf
 .PHONY: terraform
 terraform: asdf
 	./scripts/terraform
+
+.PHONY: terraform_docs
+terraform_docs: asdf
+	./scripts/terraform_docs
 
 .PHONY: helm
 helm: asdf
