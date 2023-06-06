@@ -46,6 +46,7 @@ export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)                  # end underline
 export LESS_TERMCAP_us=$(tput smul; tput setaf 4)               # begin underline
 
 # asdf
+export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 export NODEJS_CHECK_SIGNATURES=no
 load_file "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
 load_file $HOME/.asdf/plugins/java/set-java-home.zsh
