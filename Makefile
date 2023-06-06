@@ -116,10 +116,6 @@ nodejs: asdf
 sops: asdf
 	./scripts/sops
 
-.PHONY: awscli
-awscli: asdf
-	./scripts/awscli
-
 .PHONY: aws-vault
 aws-vault: asdf
 	./scripts/aws-vault

@@ -9,5 +9,4 @@ terraform 1.4.6
 helm 3.12.0
 neovim 0.9.1
 sops 3.7.3
-awscli 2.11.20
 aws-vault 7.2.0
