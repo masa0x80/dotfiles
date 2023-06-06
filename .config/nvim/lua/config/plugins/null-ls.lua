@@ -12,11 +12,13 @@ null_ls.setup({
 		diagnostics.rubocop.with({
 			prefer_local = "vendor/bin",
 		}),
+		diagnostics.terraform_validate,
 
 		formatting.black,
 		formatting.stylua,
 		formatting.shfmt,
 		formatting.fish_indent,
+		formatting.terraform_fmt,
 		formatting.textlint,
 		formatting.markdownlint,
 		formatting.rubocop.with({
