@@ -40,11 +40,33 @@ setopt SHARE_HISTORY
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
 
-
 typeset -U path PATH
 path=(
   /opt/homebrew/bin(N-/)
   /usr/local/bin(N-/)
+  $path
+)
+
+# golang
+export GO111MODULE=on
+export GOPATH=$HOME/go
+
+# homebrew
+eval "$(brew shellenv)"
+
+path=(
+  # brew caveats
+  $HOMEBREW_PREFIX/opt/curl/bin(N-/)
+  $HOMEBREW_PREFIX/opt/openssl/bin(N-/)
+  $HOMEBREW_PREFIX/opt/sqlite/bin(N-/)
+  $HOMEBREW_PREFIX/opt/gettext/bin(N-/)
+  $HOMEBREW_PREFIX/opt/gnu-getopt/bin(N-/)
+  $HOMEBREW_PREFIX/opt/grep/libexec/gnubin(N-/)
+  $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin(N-/)
+  $HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin(N-/)
+  $HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin(N-/)
+  # golang
+  $GOPATH/bin(N-/)
   $path
 )
 

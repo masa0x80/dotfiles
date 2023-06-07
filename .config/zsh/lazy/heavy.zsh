@@ -43,9 +43,6 @@ if installed ghq; then
   fi
 fi
 
-# # NOTE: must place before loading `$HOME/.config.local/zsh/zshrc`
-path=($DOTFILE/bin(N-/) $path)
-
 for file (
   # Load files under conf.d
   $ZDOTDIR/conf.d/*.zsh(N)
@@ -55,7 +52,17 @@ for file (
   $HOME/.config.local/zsh/zshrc(N)
   # Load local config
   $HOME/.zshrc.local(N)
-) load_file $file
+) source $file
+
+# NOTE: must place before loading `$HOME/.config.local/zsh/zshrc`
+path=(
+  $DOTFILE_LOCAL/bin(N-/)
+  $DOTFILE/bin(N-/)
+  $path
+)
+
+# direnv
+(( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
 
 # NOTE: Create zsh compiled files
 () {
@@ -63,4 +70,4 @@ for file (
   for src in $@; do
     [ ! -f ${src}.zwc -o $src -nt ${src}.zwc ] && zcompile $src
   done
-} $HOME/.zshenv $ZDOTDIR/.zshrc $ZDOTDIR/lazy/*.zsh(N) $HOME/.local/share/zinit/zinit.git/*.zsh(N)
+} $HOME/.zshenv(N) $ZDOTDIR/.zshrc(N) $ZDOTDIR/zinitrc(N)  $ZDOTDIR/conf.d/*.zsh(N) $ZDOTDIR/hooks/*.zsh(N) $ZDOTDIR/lazy/*.zsh(N) $HOME/.local/share/zinit/zinit.git/*.zsh(N)
