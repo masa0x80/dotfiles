@@ -1,12 +1,3 @@
-# Autoload functions
-fpath=($ZDOTDIR/functions(N-/) $fpath)
-for config_file ($ZDOTDIR/functions/*(N)) autoload $(basename "$config_file")
-
-# brew caveats
-LDFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/lib"
-CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/include"
-PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/openssl/lib/pkgconfig"
-
 # less
 export LESS='-RFIX'
 # colored less (0: Black, 1: Red, 2: Green, 3: Yellow, 4: Blue, 5: Magenta, 6: Cyan, 7: White)

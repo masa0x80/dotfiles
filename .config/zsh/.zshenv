@@ -70,6 +70,11 @@ path=(
   $path
 )
 
+# brew caveats
+LDFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/lib"
+CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/include"
+PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/openssl/lib/pkgconfig"
+
 # RIPGREP
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/ripgreprc
 
