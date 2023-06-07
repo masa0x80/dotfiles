@@ -1,0 +1,81 @@
+#!/bin/zsh
+
+sec() {
+  : ${PASSWORD_STORE_DIR:=$HOME/.password-store}
+
+  list() {
+    local target_dir
+    if test "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true'; then
+      target_dir=$PASSWORD_STORE_DIR$(git rev-parse --show-toplevel | grep -oP "(?<=$HOME).*")
+    else
+      target_dir=$PASSWORD_STORE_DIR$(pwd | grep -oP "(?<=$HOME).*")
+    fi
+    if test -d $target_dir; then
+      fd . $target_dir --type f --hidden -e gpg -x echo '{.}' | grep -oP "(?<=$PASSWORD_STORE_DIR/).*"
+    else
+      echo "No files found"
+    fi
+  }
+
+  backup() {
+    test "$1" = '' && return 1
+
+    for rel_path in "$@"; do
+      local abs_path=$(cd $(dirname $rel_path) && pwd)/$(basename $rel_path)
+      test "$abs_path" = '' && return 1
+
+      local target_path=$(echo $abs_path | grep -oP "(?<=$HOME/).*")
+      pass insert -m $target_path <$abs_path
+    done
+  }
+
+  show() {
+    local pass_name=$(sec list | fzf +m --query="$@")
+    test "$pass_name" = '' && return 1
+
+    pass show $pass_name
+  }
+
+  restore() {
+    for pass_name in $(sec list | fzf --query="$@"); do
+      local target=$HOME/$pass_name
+      if test -e $target; then
+        echo "Already exists: $target"
+      else
+        pass show $pass_name >$target
+      fi
+    done
+  }
+
+  help() {
+    echo 'Usage: sec COMMAND'
+    echo
+    echo -e "Commands:"
+    echo -e "  list:"
+    echo -e "  backup FILE"
+    echo -e "  show [FILE]"
+    echo -e "  restore [FILE]"
+    echo -e "  help"
+  }
+
+  case "$1" in
+    "list" )
+      list
+    ;;
+    "backup" )
+      shift
+      backup "$@"
+    ;;
+    "show" )
+      shift
+      show "$*"
+    ;;
+    "restore" )
+      shift
+      restore "$@"
+    ;;
+    * )
+      help
+    ;;
+  esac
+}
