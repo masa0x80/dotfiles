@@ -12,9 +12,23 @@
 # @raycast.description This script copies URL of currently opened page in Vivaldi into clipboard.
 # @raycast.author KIMURA Masayuki
 # @raycast.authorURL https://github.com/masa0x80
+# @raycast.argument1 { "type": "text", "placeholder": "[c] Chrome [v] Vivaldi", "optional": true }
 
-browser="Vivaldi"
+case "$1" in
+"c")
+  browser="Google Chrome"
+  ;;
+"v")
+  browser="Vivaldi"
+  ;;
+*)
+  browser="Microsoft Edge"
+  ;;
+esac
+
 url=$(osascript -e "tell application \"$browser\" to get URL of active tab of front window")
-title=$(osascript -e "tell application \"$browser\" to get title of active tab of front window" | sed -n 's/ [-|·] [^-|·]*$//p')
-echo "[$title|$url]" | pbcopy
+title=$(osascript -e "tell application \"$browser\" to get title of active tab of front window")
+trimmedTitle=$(echo "$title" | sed -n 's/ [-|·] [^-|·]*$//p')
+test "$trimmedTitle" = '' && trimmedTitle="$title"
+echo "[$trimmedTitle|$url]" | pbcopy
 echo "Copy Current Page URL (JIRA)"
