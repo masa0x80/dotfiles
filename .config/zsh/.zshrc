@@ -66,7 +66,7 @@ for file (
 source $ZDOTDIR/zinitrc
 
 # Prompt
-ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_no_bold[white]%}"
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_no_bold[green]%}"
 _PS1=$'
 %F{blue}%~%f $(gitprompt)%f
 '
