@@ -6,7 +6,7 @@
 # @raycast.mode silent
 #
 # Optional parameters:
-# @raycast.packageName Vivaldi
+# @raycast.packageName Brower
 # @raycast.icon ✂️
 #
 # @raycast.description Delete query string

@@ -11,6 +11,19 @@
 #
 # @raycast.author KIMURA Masayuki
 # @raycast.authorURL https://github.com/masa0x80
+# @raycast.argument1 { "type": "text", "placeholder": "[c] Chrome [v] Vivaldi", "optional": true }
 
-url=$(osascript -e 'tell application "Vivaldi" to get URL of active tab of front window')
+case "$1" in
+"c")
+  browser="Google Chrome"
+  ;;
+"v")
+  browser="Vivaldi"
+  ;;
+*)
+  browser="Microsoft Edge"
+  ;;
+esac
+
+url=$(osascript -e "tell application \"$browser\" to get URL of active tab of front window")
 open "https://megalodon.jp/?url=$url"

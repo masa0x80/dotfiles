@@ -9,7 +9,7 @@
 # @raycast.packageName Clipboard
 # @raycast.icon 📋
 #
-# @raycast.description This script copies URL of currently opened page in Vivaldi into clipboard.
+# @raycast.description This script copies URL of currently opened page clipboard.
 # @raycast.author KIMURA Masayuki
 # @raycast.authorURL https://github.com/masa0x80
 # @raycast.argument1 { "type": "text", "placeholder": "[c] Chrome [v] Vivaldi", "optional": true }
