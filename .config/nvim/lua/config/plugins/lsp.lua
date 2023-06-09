@@ -50,6 +50,13 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
 		vim.lsp.buf.format()
 	end, { desc = "Format current buffer with LSP" })
+
+	if client.name == "eslint" then
+		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+			buffer = bufnr,
+			command = "EslintFixAll",
+		})
+	end
 end
 
 -- Enable the following language servers
@@ -153,10 +160,4 @@ mason_lspconfig.setup_handlers({
 			settings = servers[server_name],
 		})
 	end,
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	group = "_",
-	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
-	command = "EslintFixAll",
 })
