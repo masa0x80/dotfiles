@@ -59,3 +59,7 @@ keymap("n", ";c", "<Cmd>Telekasten show_calendar<CR>", opts)
 
 keymap("n", ";f", "<Cmd>Telekasten find_notes<CR>", opts)
 keymap("n", ";g", "<Cmd>Telekasten search_notes<CR>", opts)
+
+vim.api.nvim_create_user_command("DeleteTodoMark", function()
+	vim.fn.execute("%s/\\[[x ]\\] //g")
+end, {})
