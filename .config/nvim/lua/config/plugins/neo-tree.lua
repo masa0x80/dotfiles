@@ -17,6 +17,10 @@ require("neo-tree").setup({
 				conflict = "",
 			},
 		},
+		icon = {
+			folder_empty = "",
+			folder_empty_open = "",
+		},
 	},
 	window = {
 		mappings = {
