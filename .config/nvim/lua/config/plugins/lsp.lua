@@ -95,6 +95,7 @@ local servers = {
 		},
 	},
 	jdtls = {},
+	tailwindcss = {},
 }
 
 local saga = require("lspsaga")
