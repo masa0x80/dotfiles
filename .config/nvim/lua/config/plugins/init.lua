@@ -217,6 +217,11 @@ require("lazy").setup({
 
 	-- Ops
 	{
+		"phaazon/hop.nvim",
+		event = "UIEnter",
+		config = conf("hop"),
+	},
+	{
 		"Bakudankun/BackAndForward.vim",
 		event = "UIEnter",
 		config = conf("BackAndForward"),
