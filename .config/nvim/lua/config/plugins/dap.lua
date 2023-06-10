@@ -10,70 +10,80 @@ vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DapBreakpo
 vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DapLogPoint" })
 vim.fn.sign_define("DapStopped", { text = "▷", texthl = "DapStopped" })
 
+local dap, dapui = require("dap"), require("dapui")
+
+dapui.setup({})
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+	dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+	dapui.close()
+end
+
 local keymap = vim.keymap.set
 keymap("n", ",b", function()
-	require("dap").toggle_breakpoint()
+	dap.toggle_breakpoint()
 end, { noremap = true, desc = "DAP: Toggle Breakpoint" })
 keymap("n", ",dr", function()
-	require("dap").repl.open()
+	dap.repl.open()
 end, { noremap = true, desc = "DAP: Toggle REPL Open" })
 keymap("n", ",dl", function()
-	require("dap").run_last()
+	dap.run_last()
 end, { noremap = true, desc = "DAP: Toggle Run Last" })
 
 keymap("n", ",c", function()
-	require("dap").continue()
+	dap.continue()
 end, { noremap = true, desc = "DAP: Continue" })
-keymap("n", ",j", function()
-	require("dap").step_over()
+keymap("n", ",a", function()
+	dap.step_over()
 end, { noremap = true, desc = "DAP: Step Over" })
-keymap("n", ",l", function()
-	require("dap").step_into()
+keymap("n", ",s", function()
+	dap.step_into()
 end, { noremap = true, desc = "DAP: Step Into" })
-keymap("n", ",k", function()
-	require("dap").step_out()
+keymap("n", ",d", function()
+	dap.step_out()
 end, { noremap = true, desc = "DAP: Step Out" })
 
-require("dapui").setup({
-	icons = { expanded = "", collapsed = "" },
-	layouts = {
-		{
-			elements = {
-				{ id = "watches", size = 0.20 },
-				{ id = "scopes", size = 0.40 },
-				{ id = "stacks", size = 0.20 },
-				{ id = "breakpoints", size = 0.20 },
-			},
-			size = 64,
-			position = "right",
-		},
-	},
-})
 keymap("n", ",du", function()
-	require("dapui").toggle({})
+	dapui.toggle({})
 end, { noremap = true, desc = "DAP: UI Open" })
 
 require("nvim-dap-virtual-text").setup({})
 
 require("dap-vscode-js").setup({
 	debugger_path = vim.fn.expand("$XDG_DATA_HOME/nvim/lazy/vscode-js-debug"),
-	adapters = { "pwa-node" }, -- which adapters to register in nvim-dap
+	adapters = { "pwa-node" },
 })
 
-for _, language in ipairs({ "typescript", "javascript" }) do
-	require("dap").configurations[language] = {
+for _, language in ipairs({ "javascript", "typescript", "javascriptreact", "typescriptreact" }) do
+	dap.configurations[language] = {
 		{
 			type = "pwa-node",
 			request = "launch",
-			name = "Launch file",
-			program = "${file}",
+			name = "Launch",
 			cwd = "${workspaceFolder}",
+			runtimeExecutable = "ts-node",
+			args = { "${file}" },
+			skipFiles = { "<node_internals>/**", "node_modules/**" },
+			resolveSourceMapLocations = {
+				"${workspaceFolder}/**",
+				"!**/node_modules/**",
+			},
+			console = "integratedTerminal",
 		},
 		{
 			type = "pwa-node",
 			request = "attach",
-			name = "Attach",
+			name = "Attach (pick)",
 			processId = require("dap.utils").pick_process,
+			skipFiles = { "<node_internals>/**", "node_modules/**" },
+			resolveSourceMapLocations = {
+				"${workspaceFolder}/**",
+				"!**/node_modules/**",
+			},
 			cwd = "${workspaceFolder}",
 		},
 		{
