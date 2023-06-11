@@ -1,4 +1,8 @@
-require("incline").setup()
+require("incline").setup({
+	window = {
+		margin = { horizontal = 0, vertical = 0 },
+	},
+})
 
 vim.keymap.set(
 	"n",
