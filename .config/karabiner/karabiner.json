@@ -611,6 +611,31 @@
             ]
           },
           {
+            "description": "<Cmd-t> ▶ t",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["^com\\.microsoft\\.edgemac$"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": ["left_command"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "t"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "左のCmdを英数に、右のCmdをかなに / <Cmd-C-;> で英数に、<Cmd-C-j> でかなに",
             "manipulators": [
               {
