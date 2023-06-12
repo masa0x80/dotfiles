@@ -1,5 +1,5 @@
 # vim: ft=ruby
 mas "Hand Mirror", id: 1502839586
 mas "Hidden Bar", id: 1452453066
-mas "MeetingBar", id: 1532419400
+mas 'ScreenPointer', id: 1368204906
 mas "Slack", id: 803453959
