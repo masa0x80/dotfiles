@@ -1,12 +1,8 @@
-git-branch() {
-  local option=${1:-'-l'}
-  shift
-  local branch=$(git branch --format='%(refname:short)' --sort=-committerdate $option | fzf +m +s --query="$@")
+git-switch-local-branch() {
+  local branch=$(git branch --format='%(refname:short)' --sort=-committerdate -l | fzf +m +s)
   if test -n "$branch"; then
     if test "$BUFFER" = ''; then
-      BUFFER="git switch"
-      test "$option" = '-r' && BUFFER+=" -t"
-      BUFFER+=" $branch"
+      BUFFER="git switch $branch"
       zle end-of-line
       zle accept-line
     else
@@ -16,17 +12,21 @@ git-branch() {
     fi
   fi
 }
-git-switch-local-branch() {
-  git-branch "$@"
-}
 zle -N git-switch-local-branch
 bindkey "^g^b" git-switch-local-branch
 
 git-switch-remote-branch() {
   git fetch
-  git-branch '-r' "$@"
-  if [ "$?" = 1 ]; then
-    git switch "$(echo $@ | sed -e 's|origin/||')"
+  local branch=$(git branch --format='%(refname:short)' --sort=-committerdate -r | grep -Ev '^origin$' | fzf +m +s --query="$BUFFER" | sed -e 's|origin/||')
+  if test -n "$branch"; then
+    git branch --format='%(refname:short)' --sort=-committerdate -l | grep -E -q "^${branch}$"
+    if [ "$?" = 1 ]; then
+      BUFFER="git switch -t origin/$branch"
+    else
+      BUFFER="git switch $branch"
+    fi
+    zle end-of-line
+    zle accept-line
   fi
 }
 zle -N git-switch-remote-branch
