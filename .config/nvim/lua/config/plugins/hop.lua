@@ -15,5 +15,6 @@ vim.keymap.set("", "T", function()
 	hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
 end, { remap = true })
 
+local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
-keymap("n", "<CR>", ":HopWord<CR>", {})
+keymap("n", "<Leader><CR>", ":HopWord<CR>", opts)

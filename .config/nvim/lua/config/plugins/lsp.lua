@@ -108,7 +108,10 @@ saga.setup({
 		show_file = false,
 	},
 	finder = {
-		quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
+		keys = {
+			expand_or_jump = { "o", "<CR" },
+			quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
+		},
 	},
 	code_action = {
 		keys = {

@@ -76,10 +76,6 @@ keymap(
 	{ noremap = true, silent = true, desc = "Toggle Relative[N]umber" }
 )
 
--- Folding
-keymap("n", "z-", "zr", opts)
-keymap("n", "z_", "zm", opts)
-
 -- Indent
 keymap("n", "<C-g><C-p>", "<<", opts)
 keymap("n", "<C-g><C-n>", ">>", opts)
@@ -108,8 +104,26 @@ keymap("i", "<C-g><C-l>", "<Esc>ea", { noremap = true, silent = true, desc = "fo
 keymap("i", "<C-g><C-i>", "<Esc>I- <Esc>A", { noremap = true, silent = true, desc = "Insert dash (Markdown)" })
 
 -- Indent
-keymap("i", "<C-g><C-n>", "<Esc>v>gi<Right><Right>", { noremap = true, silent = true, desc = "Indent >>" })
-keymap("i", "<C-g><C-p>", "<Left><Left><Esc>v<gi", { noremap = true, silent = true, desc = "Indent <<" })
+local function indent(sign)
+	local l, c = unpack(vim.api.nvim_win_get_cursor(0))
+	local n = vim.o.shiftwidth
+	sign = sign == nil and true or sign
+	if sign then
+		vim.fn.execute("normal >>")
+	else
+		vim.fn.execute("normal <<")
+		n = -1 * n
+	end
+	vim.fn.execute("normal i")
+	local col = c + n < 0 and 0 or c + n
+	vim.api.nvim_win_set_cursor(0, { l, col })
+end
+keymap("i", "<C-g><C-n>", function()
+	indent()
+end, { noremap = true, silent = true, desc = "Indent >>" })
+keymap("i", "<C-g><C-p>", function()
+	indent(false)
+end, { noremap = true, silent = true, desc = "Indent <<" })
 
 -- # Visual
 
@@ -120,6 +134,8 @@ keymap("v", "p", '"_dP', opts)
 keymap("v", "<C-g><C-i>", "<Esc><Cmd>:'<,'>s/^\\(\\s*\\)\\(\\S\\)/\\1- \\2/g<CR>:nohlsearch<CR>", opts)
 
 -- Stay in indent mode
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
 keymap("v", "<C-g><C-p>", "<gv", opts)
 keymap("v", "<C-g><C-n>", ">gv", opts)
 
@@ -142,23 +158,23 @@ keymap("n", "<C-c><C-c>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>
 keymap({ "n", "v" }, ";;", "<Cmd>write<CR>", { noremap = true })
 
 -- folding
+local function foldlevel(num)
+	local n = vim.o.foldlevel + num
+	if n < 0 then
+		n = 0
+	end
+	vim.o.foldlevel = n
+	vim.notify("foldlevel: " .. n)
+end
 keymap("n", "z-", function()
-	local num = vim.v.count
-	if num == 0 then
-		num = 1
-	end
-	num = vim.o.foldlevel - num
-	if num < 0 then
-		num = 0
-	end
-	vim.o.foldlevel = num
-	vim.notify("foldlevel: " .. vim.o.foldlevel)
+	foldlevel(-1)
 end, { noremap = true, desc = "Subtract foldlevel" })
 keymap("n", "z+", function()
-	local num = vim.v.count
-	if num == 0 then
-		num = 1
-	end
-	vim.o.foldlevel = vim.o.foldlevel + num
-	vim.notify("foldlevel: " .. vim.o.foldlevel)
+	foldlevel(1)
 end, { noremap = true, desc = "Add foldlevel" })
+keymap("n", "z=", function()
+	foldlevel(1)
+end, { noremap = true, desc = "Add foldlevel" })
+keymap("n", "z_", "zX", opts)
+keymap("n", "_", "zc", opts)
+keymap("n", "+", "zO", opts)
