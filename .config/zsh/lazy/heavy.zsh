@@ -1,3 +1,7 @@
+# Autoload functions
+fpath=($ZDOTDIR/functions(N-/) $fpath)
+for config_file ($ZDOTDIR/functions/*(N)) autoload $(basename "$config_file")
+
 # less
 export LESS='-RFIX'
 # colored less (0: Black, 1: Red, 2: Green, 3: Yellow, 4: Blue, 5: Magenta, 6: Cyan, 7: White)
@@ -37,8 +41,6 @@ fi
 for file (
   # Load files under conf.d
   $ZDOTDIR/conf.d/*.zsh(N)
-  # Load hooks configurations
-  $ZDOTDIR/hooks/*.zsh(N)
   # Load local configurations
   $HOME/.config.local/zsh/zshrc(N)
   # Load local config
@@ -61,4 +63,4 @@ path=(
   for src in $@; do
     [ ! -f ${src}.zwc -o $src -nt ${src}.zwc ] && zcompile $src
   done
-} $HOME/.zshenv(N) $ZDOTDIR/.zshrc(N) $ZDOTDIR/zinitrc(N)  $ZDOTDIR/conf.d/*.zsh(N) $ZDOTDIR/hooks/*.zsh(N) $ZDOTDIR/lazy/*.zsh(N) $HOME/.local/share/zinit/zinit.git/*.zsh(N)
+} $HOME/.zshenv(N) $ZDOTDIR/.zshrc(N) $ZDOTDIR/zinitrc(N) $ZDOTDIR/conf.d/*.zsh(N) $ZDOTDIR/hooks/*.zsh(N) $ZDOTDIR/lazy/*.zsh(N) $HOME/.local/share/zinit/zinit.git/*.zsh(N)

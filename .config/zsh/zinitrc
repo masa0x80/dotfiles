@@ -15,15 +15,11 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Fish-like autosuggestions for Zsh.
-zinit ice lucid wait atload'!_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
 # zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
-zinit for \
-    lucid \
-    wait \
-  zsh-users/zsh-syntax-highlighting \
-  zsh-users/zsh-history-substring-search
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-history-substring-search
 
 zinit for \
     atload'source $ZDOTDIR/lazy/completions.zsh; zicompinit; zicdreplay' \
