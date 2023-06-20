@@ -15,17 +15,20 @@
 #
 # @raycast.argument1 { "type": "text", "placeholder": "Source (auto)", "optional": true }
 # @raycast.argument2 { "type": "text", "placeholder": "Target (ja)", "optional": true }
-# @raycast.argument3 { "type": "text", "placeholder": "[c] Chrome [v] Vivaldi", "optional": true }
 
-case "$3" in
-"c")
-  browser="Google Chrome"
-  ;;
-"v")
+identifier="$(defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure | awk -F'"' '/http;/{print window[(NR)-1]}{window[NR]=$2}')"
+case "$identifier" in
+"com.vivaldi.vivaldi")
   browser="Vivaldi"
   ;;
-*)
+"com.microsoft.edgemac")
   browser="Microsoft Edge"
+  ;;
+"com.google.chrome")
+  browser="Google Chrome"
+  ;;
+*)
+  browser="Safari"
   ;;
 esac
 
