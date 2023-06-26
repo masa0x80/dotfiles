@@ -150,6 +150,9 @@ require("lazy").setup({
 				"nvim-treesitter/nvim-treesitter",
 				build = ":TSUpdate",
 				config = conf("treesitter"),
+				dependencies = {
+					"JoosepAlviste/nvim-ts-context-commentstring",
+				},
 			},
 		},
 	},
