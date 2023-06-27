@@ -55,7 +55,7 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.opt.shortmess:append("c")
+vim.opt.shortmess:append("I")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 
@@ -68,3 +68,6 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 4
 
 vim.opt.includeexpr = "substitute(v:fname, '\\.', '/', 'g')"
+
+-- disable netrw
+vim.g.loaded_netrwPlugin = true

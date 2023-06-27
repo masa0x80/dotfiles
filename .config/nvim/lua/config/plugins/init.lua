@@ -28,85 +28,85 @@ require("lazy").setup({
 	"MunifTanjim/nui.nvim",
 	"rcarriga/nvim-notify", -- .config/nvim/ftplugin/plantuml.lua で利用
 
-	{ "tpope/vim-repeat", event = "VimEnter" },
-	{ "tpope/vim-unimpaired", event = "UIEnter" },
-	{ "gpanders/editorconfig.nvim", event = "UIEnter" }, -- EditorConfig
+	{ "tpope/vim-repeat", event = "VeryLazy" },
+	{ "tpope/vim-unimpaired", event = "VeryLazy" },
+	{ "gpanders/editorconfig.nvim", event = "VeryLazy" }, -- EditorConfig
 
-	{ "kyazdani42/nvim-web-devicons", event = "UIEnter" },
+	{ "kyazdani42/nvim-web-devicons", event = "VeryLazy" },
 
 	-- Colorscheme
 	{
 		"joshdick/onedark.vim",
-		event = "VimEnter",
+		lazy = true,
 		config = conf("color"),
 	},
 
 	-- Completion
 	{
 		"hrsh7th/nvim-cmp",
-		event = "UIEnter",
+		event = { "InsertEnter", "CmdlineEnter" },
 		config = conf("cmp"),
 		dependencies = {
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "L3MON4D3/LuaSnip" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "rafamadriz/friendly-snippets" }, -- a bunch of snippets to usew
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "hrsh7th/cmp-cmdline" },
-			{ "f3fora/cmp-spell" },
+			{ "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
+			{ "L3MON4D3/LuaSnip", event = "InsertEnter" },
+			{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
+			{ "rafamadriz/friendly-snippets", event = "InsertEnter" }, -- a bunch of snippets to usew
+			{ "hrsh7th/cmp-buffer", event = "InsertEnter" },
+			{ "hrsh7th/cmp-path", event = "InsertEnter" },
+			{ "hrsh7th/cmp-cmdline", event = "ModeChanged" },
+			{ "f3fora/cmp-spell", event = "InsertEnter" },
 		},
 	},
 
 	-- LSP
 	{
 		"neovim/nvim-lspconfig",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("lsp"),
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
+			{ "williamboman/mason.nvim", event = "LspAttach" },
+			{ "williamboman/mason-lspconfig.nvim", event = "LspAttach" },
 
-			{ "b0o/schemastore.nvim" },
+			{ "b0o/schemastore.nvim", event = "LspAttach" },
 
 			-- Additional lua configuration, makes nvim stuff amazing
-			{ "folke/neodev.nvim" },
+			{ "folke/neodev.nvim", event = "LspAttach" },
 
-			{ "glepnir/lspsaga.nvim" },
+			{ "glepnir/lspsaga.nvim", event = "LspAttach" },
 
-			{ "nvim-lua/lsp-status.nvim" },
+			{ "nvim-lua/lsp-status.nvim", event = "LspAttach" },
 		},
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-		event = "UIEnter",
+		event = "LspAttach",
 		config = conf("null-ls"),
 		dependencies = {
-			{ "lukas-reineke/lsp-format.nvim" },
+			{ "lukas-reineke/lsp-format.nvim", event = "LspAttach" },
 		},
 	},
 
 	-- Debug
 	{
 		"mfussenegger/nvim-dap",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("dap"),
 		dependencies = {
 			{ "williamboman/mason.nvim" },
 			{ "rcarriga/nvim-dap-ui" },
 			{ "theHamsta/nvim-dap-virtual-text" },
-		},
-	},
-	{
-		"mxsdev/nvim-dap-vscode-js",
-		dependencies = {
 			{
-				"microsoft/vscode-js-debug",
-				-- NOTE: Fix version ref. https://github.com/mxsdev/nvim-dap-vscode-js/issues/23
-				version = "v1.74.1",
-				pin = true,
-				build = "npm install --legacy-peer-deps && npm run compile",
+				"mxsdev/nvim-dap-vscode-js",
+				dependencies = {
+					{
+						"microsoft/vscode-js-debug",
+						-- NOTE: Fix version ref. https://github.com/mxsdev/nvim-dap-vscode-js/issues/23
+						version = "v1.74.1",
+						pin = true,
+						build = "npm install --legacy-peer-deps && npm run compile",
+					},
+				},
 			},
 		},
 	},
@@ -114,81 +114,84 @@ require("lazy").setup({
 	-- Test
 	{
 		"is0n/jaq-nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("jaq"),
 	},
 
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("telescope"),
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope-ghq.nvim",
-		},
-	},
-	{
-		"renerocksai/telekasten.nvim",
-		event = "UIEnter",
-		config = conf("telekasten"),
-		dependencies = {
-			{ "nvim-telescope/telescope.nvim" },
-			{ "renerocksai/calendar-vim" },
+			{
+				"nvim-telescope/telescope-ghq.nvim",
+				event = "VeryLazy",
+			},
+			{
+				"renerocksai/telekasten.nvim",
+				event = "VeryLazy",
+				config = conf("telekasten"),
+				dependencies = {
+					{ "renerocksai/calendar-vim" },
+				},
+			},
 		},
 	},
 
 	-- Treesitter
 	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		event = "UIEnter",
+		"nvim-treesitter/nvim-treesitter",
+		event = "VeryLazy",
+		build = ":TSUpdate",
+		config = conf("treesitter"),
 		dependencies = {
+			{ "JoosepAlviste/nvim-ts-context-commentstring", event = "VeryLazy" },
 			{
-				"windwp/nvim-ts-autotag",
-			},
-			{
-				"nvim-treesitter/nvim-treesitter",
-				build = ":TSUpdate",
-				config = conf("treesitter"),
+				"nvim-treesitter/nvim-treesitter-textobjects",
+				event = "VeryLazy",
 				dependencies = {
-					"JoosepAlviste/nvim-ts-context-commentstring",
+					{
+						"windwp/nvim-ts-autotag",
+					},
 				},
 			},
+			{
+				"David-Kunz/treesitter-unit",
+				event = "VeryLazy",
+				config = conf("treesitter-unit"),
+			},
 		},
-	},
-	{
-		"David-Kunz/treesitter-unit",
-		event = "UIEnter",
-		config = conf("treesitter-unit"),
 	},
 
 	-- UI
 	{
 		"folke/which-key.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("which-key"),
 	},
 	{
 		"petertriho/nvim-scrollbar",
-		event = "UIEnter",
+		event = { "BufNewFile", "BufRead" },
 		config = conf("nvim-scrollbar"),
 		dependencies = {
-			{ "rapan931/lasterisk.nvim" },
-			{ "kevinhwang91/nvim-hlslens" },
+			{ "rapan931/lasterisk.nvim", event = { "BufNewFile", "BufRead" } },
+			{ "kevinhwang91/nvim-hlslens", event = { "BufNewFile", "BufRead" } },
 		},
 	},
 	{
 		"haringsrob/nvim_context_vt",
-		event = "UIEnter",
+		event = { "BufNewFile", "BufRead" },
 		config = conf("context_vt"),
 	},
 	{
 		"RRethy/vim-illuminate",
-		event = "UIEnter",
+		event = { "BufNewFile", "BufRead" },
 	},
 	{
 		"norcalli/nvim-colorizer.lua",
-		event = "UIEnter",
+		event = { "BufNewFile", "BufRead" },
 		config = function()
 			require("colorizer").setup()
 		end,
@@ -198,46 +201,49 @@ require("lazy").setup({
 		event = { "CursorHold", "CursorMoved", "ModeChanged" },
 		config = conf("lualine"),
 		dependencies = {
-			{ "kdheepak/tabline.nvim" },
-			{ "kyazdani42/nvim-web-devicons" },
-			{ "nvim-lua/lsp-status.nvim" },
+			{ "kyazdani42/nvim-web-devicons", lazy = true },
+			{
+				"kdheepak/tabline.nvim",
+				event = { "CursorHold", "CursorMoved", "ModeChanged" },
+			},
+			{ "nvim-lua/lsp-status.nvim", event = "LspAttach" },
 		},
 	},
 	{
 		"b0o/incline.nvim",
-		event = "UIEnter",
+		event = { "CursorHold", "CursorMoved", "ModeChanged" },
 		config = conf("incline"),
 	},
 	{
 		"folke/noice.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("noice"),
 		dependencies = {
-			{ "MunifTanjim/nui.nvim" },
-			{ "rcarriga/nvim-notify" },
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
 		},
 	},
 
 	-- Ops
 	{
 		"phaazon/hop.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("hop"),
 	},
 	{
 		"Bakudankun/BackAndForward.vim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("BackAndForward"),
 	},
 	{
 		"windwp/nvim-spectre",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("spectre"),
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
 		"jghauser/mkdir.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -248,7 +254,7 @@ require("lazy").setup({
 	},
 	{
 		"monaqa/dial.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("dial"),
 	},
 	{
@@ -257,62 +263,66 @@ require("lazy").setup({
 	},
 	{
 		"danymat/neogen",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("neogen"),
 	},
 	{
 		"junegunn/vim-easy-align",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("easy-align"),
 	},
 	{
 		"folke/todo-comments.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("todo-comments"),
 	},
 	{
 		"folke/trouble.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("trouble"),
-		dependencies = { "kyazdani42/nvim-web-devicons" },
+		dependencies = {
+			{ "kyazdani42/nvim-web-devicons", lazy = true },
+		},
 	},
 
 	-- Git
 	{
 		"tpope/vim-fugitive",
-		event = "UIEnter",
+		event = "VeryLazy",
 	},
 	{
 		"ruifm/gitlinker.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("gitlinker"),
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "UIEnter",
+		event = { "BufNewFile", "BufRead" },
 		config = conf("gitsigns"),
 	},
 	{
 		"akinsho/git-conflict.nvim",
-		event = "UIEnter",
+		event = { "BufNewFile", "BufRead" },
 		config = conf("git-conflict"),
 	},
 	{
 		"rhysd/git-messenger.vim",
-		event = "UIEnter",
+		event = { "BufNewFile", "BufRead" },
 		config = conf("git-messenger"),
 	},
 
 	-- Filer
 	{
 		"nvim-neo-tree/neo-tree.nvim",
+		-- `VeryLazy` だとちらつくので `UIEnter` にする
+		event = "UIEnter",
 		config = conf("neo-tree"),
 		dependencies = {
-			{ "joshdick/onedark.vim" },
-			{ "nvim-lua/plenary.nvim" },
-			{ "MunifTanjim/nui.nvim" },
-			{ "kyazdani42/nvim-web-devicons" },
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			{ "kyazdani42/nvim-web-devicons", lazy = true },
+			{ "joshdick/onedark.vim", lazy = true },
 		},
 	},
 
@@ -329,32 +339,34 @@ require("lazy").setup({
 	{ "slim-template/vim-slim" },
 
 	-- Folding
-	{ "lambdalisue/readablefold.vim", event = "UIEnter" },
-
+	{
+		"lambdalisue/readablefold.vim",
+		event = { "BufNewFile", "BufRead" },
+	},
 	-- Indent
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "UIEnter",
+		event = { "BufNewFile", "BufRead" },
 		config = conf("indent-blankline"),
 	},
 
 	-- Textobject
 	{
 		"machakann/vim-sandwich",
-		event = "UIEnter",
+		event = { "CursorHold", "CursorMoved", "ModeChanged" },
 	},
 
 	-- Comment
 	{
 		"numToStr/Comment.nvim",
-		event = "UIEnter",
+		event = { "CursorHold", "CursorMoved", "ModeChanged" },
 		config = conf("comment"),
 	},
 
 	-- Terminal
 	{
 		"akinsho/toggleterm.nvim",
-		event = "UIEnter",
+		event = { "CursorHold", "CursorMoved", "ModeChanged" },
 		config = conf("toggleterm"),
 	},
 }, {
