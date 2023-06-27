@@ -1,5 +1,6 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
+# .config/nvim/lua/misc/todo.lua で使用するために `bin` 配下に置く
 current_dir() {
   local delimiter="${1:-/}"
   if test "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true'; then
@@ -9,3 +10,4 @@ current_dir() {
     echo "$PWD:h:t$delimiter$PWD:t"
   fi
 }
+current_dir "$1"
