@@ -109,7 +109,7 @@ saga.setup({
 	},
 	finder = {
 		keys = {
-			expand_or_jump = { "o", "<CR" },
+			expand_or_jump = { "o", "<CR>" },
 			quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
 		},
 	},
