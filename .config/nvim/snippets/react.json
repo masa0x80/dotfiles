@@ -1,0 +1,6 @@
+{
+  "return JSX": {
+    "prefix": "return",
+    "body": ["return (", "  <$1>", "  </$1>", ")"]
+  }
+}

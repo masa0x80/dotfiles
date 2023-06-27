@@ -1,3 +1,4 @@
+vim.opt.runtimepath:append("~/.config/nvim/snippets")
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()

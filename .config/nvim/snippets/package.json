@@ -1,0 +1,16 @@
+{
+  "categories": [
+    "Snippets"
+  ],
+  "name": "snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "typescriptreact"
+        ],
+        "path": "react.json"
+      }
+    ]
+  }
+}
