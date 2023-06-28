@@ -76,6 +76,7 @@ require("lazy").setup({
 			{ "glepnir/lspsaga.nvim", event = "LspAttach" },
 
 			{ "nvim-lua/lsp-status.nvim", event = "LspAttach" },
+			{ "SmiteshP/nvim-navic", event = "LspAttach" },
 		},
 	},
 	{

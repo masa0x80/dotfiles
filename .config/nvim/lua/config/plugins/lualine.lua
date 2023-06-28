@@ -28,4 +28,11 @@ require("lualine").setup({
 		lualine_a = { 'vim.fn.substitute(vim.fn.expand("%"), vim.fn.expand("$PWD") .. "/", "", "")' },
 		lualine_x = { tabline.tabline_tabs },
 	},
+	winbar = {
+		lualine_c = {
+			"navic",
+			color_correction = nil,
+			navic_opts = nil,
+		},
+	},
 })
