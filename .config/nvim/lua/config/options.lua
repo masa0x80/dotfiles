@@ -70,4 +70,7 @@ vim.opt.foldlevel = 4
 vim.opt.includeexpr = "substitute(v:fname, '\\.', '/', 'g')"
 
 -- disable netrw
+vim.g.loaded_netrw = true
 vim.g.loaded_netrwPlugin = true
+vim.g.loaded_netrwSettings = true
+vim.g.loaded_netrwFileHandlers = true

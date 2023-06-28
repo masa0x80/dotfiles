@@ -284,6 +284,11 @@ require("lazy").setup({
 			{ "kyazdani42/nvim-web-devicons", lazy = true },
 		},
 	},
+	{
+		"tyru/open-browser.vim",
+		event = "VeryLazy",
+		config = conf("open-browser"),
+	},
 
 	-- Git
 	{
