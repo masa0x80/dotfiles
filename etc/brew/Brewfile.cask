@@ -10,6 +10,7 @@ cask "iterm2"
 cask "itsycal"
 cask "karabiner-elements"
 cask "keycastr"
+cask 'licecap'
 cask "neovide"
 cask "raycast"
 cask "rectangle"
