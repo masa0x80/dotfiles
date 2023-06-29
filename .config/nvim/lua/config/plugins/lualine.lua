@@ -18,7 +18,11 @@ local filename = {
 }
 require("lualine").setup({
 	sections = {
-		lualine_c = {},
+		lualine_c = {
+			"navic",
+			color_correction = nil,
+			navic_opts = nil,
+		},
 		lualine_y = { "require('lsp-status').status()" },
 	},
 	inactive_sections = {
@@ -27,12 +31,5 @@ require("lualine").setup({
 	tabline = {
 		lualine_a = { 'vim.fn.substitute(vim.fn.expand("%"), vim.fn.expand("$PWD") .. "/", "", "")' },
 		lualine_x = { tabline.tabline_tabs },
-	},
-	winbar = {
-		lualine_c = {
-			"navic",
-			color_correction = nil,
-			navic_opts = nil,
-		},
 	},
 })
