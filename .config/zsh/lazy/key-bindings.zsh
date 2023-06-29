@@ -20,7 +20,5 @@ bindkey '^G^L' forward-word
 # NOTE: ^N や ^P にアサインすると補完の選択に使えなくなる
 bindkey '^G^P' history-substring-search-up
 bindkey '^G^N' history-substring-search-down
-bindkey '^[' history-substring-search-up
-bindkey '^]' history-substring-search-down
 
 bindkey '^J' abbr-expand-and-accept
