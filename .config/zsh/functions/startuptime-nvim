@@ -1,11 +1,16 @@
-#!/bin/zsh
-
-startuptime-nvim() {
+# ref. https://zenn.dev/yutakatay/articles/zsh-neovim-speedcheck
+function startuptime-nvim() {
   local file=$1
-  local time_file
-  time_file=$(mktemp --suffix "_nvim_startuptime.txt")
-  echo "output: $time_file\n"
-  nvim --startuptime $time_file +q
-  tail -n 1 $time_file | cut -d " " -f1 | tr -d "\n" && echo " [ms]\n"
-  cat $time_file
+  local total_msec=0
+  local msec
+  local i
+  for i in $(seq 1 10); do
+    msec=$({(TIMEFMT='%mE'; time nvim --headless -c q $file ) 2>&3;} 3>/dev/stdout >/dev/null)
+    msec=$(echo $msec | tr -d "ms")
+    echo "${(l:2:)i}: ${msec} [ms]"
+    total_msec=$(( $total_msec + $msec ))
+  done
+  local average_msec
+  average_msec=$(( ${total_msec} / 10 ))
+  echo "\naverage: ${average_msec} [ms]"
 }

@@ -1,13 +1,15 @@
-#!/bin/zsh
-
-startuptime-zsh() {
-  local time_myrc
-  time_myrc=$((TIMEFMT="%mE"; time zsh -i -c exit) &> /dev/stdout)
-  local time_default
-  time_default=$((TIMEFMT="%mE"; time zsh -df -i -c "autoload -Uz compinit && compinit -C; exit") &> /dev/stdout)
-  echo "my zshrc: ${time_myrc}\ndefault:  ${time_default}\n"
-
-  local result
-  result=$(scale=3 echo "${time_myrc%ms} / ${time_default%ms}" | bc)
-  echo "${result}x slower."
+# ref. https://zenn.dev/yutakatay/articles/zsh-neovim-speedcheck
+function startuptime-zsh() {
+  local total_msec=0
+  local msec
+  local i
+  for i in $(seq 1 10); do
+    msec=$((TIMEFMT='%mE'; time zsh -i -c exit) 2>/dev/stdout >/dev/null)
+    msec=$(echo $msec | tr -d "ms")
+    echo "${(l:2:)i}: ${msec} [ms]"
+    total_msec=$(( $total_msec + $msec ))
+  done
+  local average_msec
+  average_msec=$(( ${total_msec} / 10 ))
+  echo "\naverage: ${average_msec} [ms]"
 }
