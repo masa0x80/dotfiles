@@ -10,6 +10,7 @@ require("jaq-nvim").setup({
 			go = "TermExec cmd='go run %'",
 			sh = "TermExec cmd='sh %'",
 			markdown = "MarkdownPreview",
+			mermaid = "MarkdownPreview",
 			plantuml = "PlantUmlPreview",
 		},
 	},
