@@ -12,7 +12,43 @@ vim.fn.sign_define("DapStopped", { text = "▷", texthl = "DapStopped" })
 
 local dap, dapui = require("dap"), require("dapui")
 
-dapui.setup({})
+dapui.setup({
+	layouts = {
+		{
+			elements = {
+				{
+					id = "scopes",
+					size = 0.25,
+				},
+				{
+					id = "breakpoints",
+					size = 0.25,
+				},
+				{
+					id = "stacks",
+					size = 0.25,
+				},
+				{
+					id = "watches",
+					size = 0.25,
+				},
+			},
+			position = "left",
+			size = 48,
+		},
+		{
+			elements = {
+				{
+					id = "repl",
+					size = 1,
+				},
+			},
+			position = "bottom",
+			size = 8,
+		},
+	},
+})
+
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
@@ -78,7 +114,9 @@ for _, language in ipairs({ "javascript", "typescript", "javascriptreact", "type
 			type = "pwa-node",
 			request = "attach",
 			name = "Attach (pick)",
-			processId = require("dap.utils").pick_process,
+			processId = function()
+				require("dap.utils").pick_process({ filter = "node" })
+			end,
 			skipFiles = { "<node_internals>/**", "node_modules/**" },
 			resolveSourceMapLocations = {
 				"${workspaceFolder}/**",
