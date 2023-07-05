@@ -224,6 +224,16 @@ require("lazy").setup({
 			"rcarriga/nvim-notify",
 		},
 	},
+	{
+		"gen740/SmoothCursor.nvim",
+		event = "VeryLazy",
+		config = conf("SmoothCursor"),
+	},
+	{
+		"rainbowhxch/beacon.nvim",
+		event = "VeryLazy",
+		config = conf("beacon"),
+	},
 
 	-- Ops
 	{
