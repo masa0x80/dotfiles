@@ -62,7 +62,7 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-x><C-c>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		["<C-e>"] = cmp.mapping.confirm({ select = false }, { "c" }),
+		["<C-e>"] = cmp.mapping(cmp.mapping.confirm({ select = false }), { "c" }),
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -95,13 +95,16 @@ cmp.setup({
 			"i",
 			"s",
 		}),
-		["<C-x><C-x>"] = cmp.mapping.complete({
-			config = {
-				sources = {
-					{ name = "spell" },
+		["<C-x><C-x>"] = cmp.mapping(
+			cmp.mapping.complete({
+				config = {
+					sources = {
+						{ name = "spell" },
+					},
 				},
-			},
-		}, { "i", "c" }),
+			}),
+			{ "i", "c" }
+		),
 	}),
 	formatting = {
 		fields = { "abbr", "kind", "menu" },
