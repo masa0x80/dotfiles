@@ -1,5 +1,5 @@
-if_installed mycli abbr -S -q mysql=mycli
-if_installed pgcli abbr -S -q psql=pgcli
+if_installed mycli abbr -S -qq --force mysql=mycli
+if_installed pgcli abbr -S -qq --force psql=pgcli
 
 if installed rg; then
   abbr -S -q g='rg --hidden'
@@ -12,7 +12,7 @@ if installed exa; then
   abbr -S -q l='ls -a'
   abbr -S -q ll='ls -l --git'
   abbr -S -q la='ls -la --git'
-  abbr -S -q tree='exa -T --icons'
+  abbr -S -qq --force tree='exa -T --icons'
 fi
 
 if installed silicon; then
