@@ -539,6 +539,53 @@
             ]
           },
           {
+            "description": "Slack: Cmd+Shift+[ / Cmd+Shift+] ▶ Cmd+Shift+D / Cmd+.",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["^com\\.tinyspeck\\.slackmacgap$"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "open_bracket",
+                  "modifiers": {
+                    "mandatory": ["command", "shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "d",
+                    "modifiers": ["command", "shift"]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["^com\\.tinyspeck\\.slackmacgap$"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "close_bracket",
+                  "modifiers": {
+                    "mandatory": ["command", "shift"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "period",
+                    "modifiers": ["command"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Outlook: Ctrl+i / Ctrl+o ▶ Ctrl+] / Ctrl+[",
             "manipulators": [
               {
@@ -768,6 +815,33 @@
             ]
           },
           {
+            "description": "PowerPoint: Ctrl+H ▶ BS",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.microsoft\\.Powerpoint$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": ["control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "delete_or_backspace"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "NuPhy Air60 Custom",
             "manipulators": [
               {
@@ -795,33 +869,6 @@
                   }
                 ],
                 "type": "basic"
-              },
-              {
-                "description": "PowerPoint: Ctrl+H ▶ BS",
-                "manipulators": [
-                  {
-                    "conditions": [
-                      {
-                        "bundle_identifiers": [
-                          "^com\\.microsoft\\.Powerpoint$"
-                        ],
-                        "type": "frontmost_application_if"
-                      }
-                    ],
-                    "from": {
-                      "key_code": "h",
-                      "modifiers": {
-                        "mandatory": ["control"]
-                      }
-                    },
-                    "to": [
-                      {
-                        "key_code": "delete_or_backspace"
-                      }
-                    ],
-                    "type": "basic"
-                  }
-                ]
               }
             ]
           }
