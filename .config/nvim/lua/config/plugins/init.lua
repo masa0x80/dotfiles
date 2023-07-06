@@ -229,11 +229,6 @@ require("lazy").setup({
 		event = "VeryLazy",
 		config = conf("SmoothCursor"),
 	},
-	{
-		"rainbowhxch/beacon.nvim",
-		event = "VeryLazy",
-		config = conf("beacon"),
-	},
 
 	-- Ops
 	{
