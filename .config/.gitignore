@@ -36,6 +36,7 @@
 !/karabiner
 /karabiner/*
 !/karabiner/karabiner.json
+!/karabiner/.editorconfig
 
 !/vimspector-config
 /vimspector-config/*
