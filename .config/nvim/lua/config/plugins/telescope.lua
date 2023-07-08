@@ -4,6 +4,7 @@ require("telescope").setup({
 	defaults = {
 		path_display = { "smart" },
 		sorting_strategy = "ascending",
+		file_ignore_patterns = { "COMMIT_EDITMSG" },
 		vimgrep_arguments = {
 			"rg",
 			"--color=never",
