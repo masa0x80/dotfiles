@@ -2,7 +2,6 @@ vim.cmd([[
     filetype plugin indent on
     syntax on
 ]])
-vim.cmd.colorscheme("habamax")
 
 vim.api.nvim_create_augroup("_", { clear = true })
 

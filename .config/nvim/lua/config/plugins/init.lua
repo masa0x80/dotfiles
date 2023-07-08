@@ -28,18 +28,14 @@ require("lazy").setup({
 	"MunifTanjim/nui.nvim",
 	"rcarriga/nvim-notify", -- .config/nvim/ftplugin/plantuml.lua で利用
 
-	{ "tpope/vim-repeat", event = "VeryLazy" },
-	{ "tpope/vim-unimpaired", event = "VeryLazy" },
-	{ "gpanders/editorconfig.nvim", event = "VeryLazy" }, -- EditorConfig
+	{ "tpope/vim-repeat", event = "UIEnter" },
+	{ "tpope/vim-unimpaired", event = "UIEnter" },
+	{ "gpanders/editorconfig.nvim", event = "UIEnter" }, -- EditorConfig
 
-	{ "kyazdani42/nvim-web-devicons", event = "VeryLazy" },
+	{ "kyazdani42/nvim-web-devicons", event = "UIEnter" },
 
 	-- Colorscheme
-	{
-		"joshdick/onedark.vim",
-		lazy = true,
-		config = conf("color"),
-	},
+	"joshdick/onedark.vim",
 
 	-- Completion
 	{
@@ -61,7 +57,7 @@ require("lazy").setup({
 	-- LSP
 	{
 		"neovim/nvim-lspconfig",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("lsp"),
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
@@ -91,7 +87,7 @@ require("lazy").setup({
 	-- Debug
 	{
 		"mfussenegger/nvim-dap",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("dap"),
 		dependencies = {
 			{ "williamboman/mason.nvim" },
@@ -115,24 +111,24 @@ require("lazy").setup({
 	-- Test
 	{
 		"is0n/jaq-nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("jaq"),
 	},
 
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("telescope"),
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			{
 				"nvim-telescope/telescope-ghq.nvim",
-				event = "VeryLazy",
+				event = "UIEnter",
 			},
 			{
 				"renerocksai/telekasten.nvim",
-				event = "VeryLazy",
+				event = "UIEnter",
 				config = conf("telekasten"),
 				dependencies = {
 					{ "renerocksai/calendar-vim" },
@@ -144,14 +140,14 @@ require("lazy").setup({
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = "VeryLazy",
+		event = "UIEnter",
 		build = ":TSUpdate",
 		config = conf("treesitter"),
 		dependencies = {
-			{ "JoosepAlviste/nvim-ts-context-commentstring", event = "VeryLazy" },
+			{ "JoosepAlviste/nvim-ts-context-commentstring", event = "UIEnter" },
 			{
 				"nvim-treesitter/nvim-treesitter-textobjects",
-				event = "VeryLazy",
+				event = "UIEnter",
 				dependencies = {
 					{
 						"windwp/nvim-ts-autotag",
@@ -160,7 +156,7 @@ require("lazy").setup({
 			},
 			{
 				"David-Kunz/treesitter-unit",
-				event = "VeryLazy",
+				event = "UIEnter",
 				config = conf("treesitter-unit"),
 			},
 		},
@@ -169,7 +165,7 @@ require("lazy").setup({
 	-- UI
 	{
 		"folke/which-key.nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("which-key"),
 	},
 	{
@@ -217,7 +213,7 @@ require("lazy").setup({
 	},
 	{
 		"folke/noice.nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("noice"),
 		dependencies = {
 			"MunifTanjim/nui.nvim",
@@ -226,30 +222,30 @@ require("lazy").setup({
 	},
 	{
 		"gen740/SmoothCursor.nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("SmoothCursor"),
 	},
 
 	-- Ops
 	{
 		"phaazon/hop.nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("hop"),
 	},
 	{
 		"Bakudankun/BackAndForward.vim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("BackAndForward"),
 	},
 	{
 		"windwp/nvim-spectre",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("spectre"),
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
 		"jghauser/mkdir.nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -260,7 +256,7 @@ require("lazy").setup({
 	},
 	{
 		"monaqa/dial.nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("dial"),
 	},
 	{
@@ -269,22 +265,22 @@ require("lazy").setup({
 	},
 	{
 		"danymat/neogen",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("neogen"),
 	},
 	{
 		"junegunn/vim-easy-align",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("easy-align"),
 	},
 	{
 		"folke/todo-comments.nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("todo-comments"),
 	},
 	{
 		"folke/trouble.nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("trouble"),
 		dependencies = {
 			{ "kyazdani42/nvim-web-devicons", lazy = true },
@@ -292,18 +288,18 @@ require("lazy").setup({
 	},
 	{
 		"tyru/open-browser.vim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("open-browser"),
 	},
 
 	-- Git
 	{
 		"tpope/vim-fugitive",
-		event = "VeryLazy",
+		event = "UIEnter",
 	},
 	{
 		"ruifm/gitlinker.nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		config = conf("gitlinker"),
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
@@ -381,7 +377,12 @@ require("lazy").setup({
 		config = conf("toggleterm"),
 	},
 }, {
-	default = {
+	defaults = {
 		lazy = true,
 	},
+	install = {
+		colorscheme = { "habamax" },
+	},
 })
+
+vim.cmd.colorscheme("onedark")
