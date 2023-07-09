@@ -3,6 +3,7 @@
 !/.gitignore
 !/init.lua
 !/lua
+!/after
 !/ftplugin
 !/lazy-lock.json
 !/snippets
