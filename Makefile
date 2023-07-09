@@ -53,10 +53,6 @@ brew:
 brew-cask:
 	brew bundle --file=etc/brew/Brewfile.cask
 
-.PHONY: brew-cask-upgrade
-brew-cask-upgrade:
-	brew cask upgrade
-
 .PHONY: brew-mas
 brew-mas:
 	brew bundle --file=etc/brew/Brewfile.mas

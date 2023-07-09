@@ -9,19 +9,13 @@ Install dotfiles and useful commands.
 
 ## Installation
 
-```shell
+```sh
 git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 make
 ```
 
 Optional Steps:
-
-Upgrade cask apps.
-
-```sh
-make brew-cask-upgrade
-```
 
 Update rust tools.
 
@@ -35,7 +29,7 @@ make rust-update
 
 After installation, make your personal configuration file for git.
 
-```shell
+```sh
 $ mkdir -p $HOME/.config.local/git
 $ cat <<EOF > $HOME/.config.local/git/config
 [user]
@@ -52,4 +46,4 @@ ref. <https://github.com/masa0x80/dotfiles.local>
 
 ### Terminal Color
 
-Load `./etc/data/terminal/iceberg.itermcolors` for **Terminal.app** profile.
+Load `./etc/itermcolors/OneDark.itermcolors` for **Terminal.app** profile.
