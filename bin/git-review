@@ -6,7 +6,10 @@
     git log --graph --color=always --grep $issue_id \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
         fzf --tac --ansi --no-sort --tiebreak=index +m \
-        --bind "ctrl-m:execute: echo {} | grep -o '[a-f0-9]\{7\}' | head -n1 | xargs -I % sh -c 'printf % | pbcopy; git show %'"
+        --bind "ctrl-y:execute-silent: (printf {} | grep -o '[a-f0-9]\{7\}' | head -1 | tr -d '\n' | pbcopy)" \
+        --bind "ctrl-m:execute: (grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'git show --color=always %') << 'FZF-EOF'
+            {}
+FZF-EOF"
   else
     commit_hash=$(git log --color=always --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | fzf --ansi --no-sort --tiebreak=index +m | grep -o '[a-f0-9]\{7\}')
     test -z "$commit_hash" && return
@@ -15,6 +18,9 @@
     git log --color=always --reverse -$num \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
         fzf --ansi --no-sort --tiebreak=index +m \
-        --bind "ctrl-m:execute: echo {} | grep -o '[a-f0-9]\{7\}' | head -n1 | xargs -I % sh -c 'printf % | pbcopy; git show %'"
+        --bind "ctrl-y:execute-silent: (printf {} | grep -o '[a-f0-9]\{7\}' | head -1 | tr -d '\n' | pbcopy)" \
+        --bind "ctrl-m:execute: (grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'git show --color=always %') << 'FZF-EOF'
+            {}
+FZF-EOF"
   fi
 } "$1"

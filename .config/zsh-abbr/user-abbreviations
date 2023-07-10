@@ -96,6 +96,7 @@ abbr A='aws-vault exec $AWS_PROFILE --'
 
 abbr Get='ghq get'
 
+abbr -g C='| pbcopy'
 abbr -g F='| fzf'
 abbr -g G='| rg'
 abbr -g H='| head'
