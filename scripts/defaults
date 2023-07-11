@@ -48,6 +48,9 @@ defaults write -g com.apple.mouse.tapBehavior -int 1
 defaults write com.microsoft.edgemac NSUserKeyEquivalents -dict-add "新しいタブ" -string "^t"
 defaults write com.microsoft.edgemac NSUserKeyEquivalents -dict-add "開発者ツール..." -string "@\$i"
 
+# VSCode
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
 killall Dock
 killall Finder
 killall SystemUIServer
