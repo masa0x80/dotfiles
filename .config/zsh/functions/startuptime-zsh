@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # ref. https://zenn.dev/yutakatay/articles/zsh-neovim-speedcheck
 function startuptime-zsh() {
   local total_msec=0
