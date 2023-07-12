@@ -19,18 +19,15 @@ null_ls.setup({
 		formatting.shfmt,
 		formatting.fish_indent,
 		formatting.terraform_fmt,
+		formatting.textlint,
+		formatting.markdownlint,
 		formatting.rubocop.with({
 			prefer_local = "vendor/bin",
 		}),
 		formatting.prettier.with({
 			prefer_local = "node_modules/.bin",
+			disabled_filetypes = { "markdown" },
 		}),
-
-		-- prettierの後にtextlintを実行したいので最後に配置する
-		-- FIXME: prettierをかけると、textlintで
-		-- { "ja-space-between-half-and-full-width": { "space": "never" } }
-		-- と設定していても、Markdownの見出しの全角半角間にスペースが入ってしまう。
-		formatting.textlint,
 	},
 	on_attach = function(client, _)
 		require("lsp-format").on_attach(client)
