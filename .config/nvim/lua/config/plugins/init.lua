@@ -343,8 +343,8 @@ require("lazy").setup({
 	},
 
 	-- Syntax
-	{ "aklt/plantuml-syntax" },
-	{ "slim-template/vim-slim" },
+	{ "aklt/plantuml-syntax", ft = "plantuml" },
+	{ "slim-template/vim-slim", ft = "slim" },
 
 	-- Folding
 	{
