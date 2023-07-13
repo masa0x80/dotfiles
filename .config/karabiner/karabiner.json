@@ -24,6 +24,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^com\\.microsoft\\.Excel$",
                                             "^com\\.microsoft\\.Powerpoint$",
                                             "^com\\.microsoft\\.Outlook$"
                                         ],
@@ -49,6 +50,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^com\\.microsoft\\.Excel$",
                                             "^com\\.microsoft\\.Powerpoint$",
                                             "^com\\.microsoft\\.Outlook$"
                                         ],
@@ -742,6 +744,35 @@
                                         "modifiers": [
                                             "control"
                                         ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "<C-h> ▶ <BS>",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.Excel$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace"
                                     }
                                 ],
                                 "type": "basic"
