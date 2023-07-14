@@ -15,6 +15,6 @@ require("scrollbar").setup({
 })
 
 local set_hl = vim.api.nvim_set_hl
-local color = require("config.plugins.color.custom")
+local color = require("config.color")
 set_hl(0, "ScrollbarSearch", { fg = color.CommentGrey })
 set_hl(0, "ScrollbarSearchHandle", { fg = color.CommentGrey, bg = "#2c323c" })

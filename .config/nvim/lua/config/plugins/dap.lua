@@ -1,4 +1,4 @@
-local color = require("config.plugins.color.custom")
+local color = require("config.color")
 local set_hl = vim.api.nvim_set_hl
 set_hl(0, "DapBreakpoint", { fg = color.Red })
 set_hl(0, "DapLogPoint", { fg = color.Blue })

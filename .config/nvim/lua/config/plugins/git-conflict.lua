@@ -5,7 +5,7 @@ require("git-conflict").setup({
 	},
 })
 
-local color = require("config.plugins.color.custom")
+local color = require("config.color")
 local set_hl = vim.api.nvim_set_hl
 set_hl(0, "GitConflictCurrentLabel", { fg = color.Black, bg = color.Green })
 set_hl(0, "GitConflictIncomingLabel", { fg = color.Black, bg = color.Blue })

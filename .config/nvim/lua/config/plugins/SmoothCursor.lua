@@ -12,7 +12,7 @@ require("smoothcursor").setup({
 	speed = 32,
 })
 
-local color = require("config.plugins.color.custom")
+local color = require("config.color")
 local set_hl = vim.api.nvim_set_hl
 set_hl(0, "SmoothCursor", { fg = color.White })
 
