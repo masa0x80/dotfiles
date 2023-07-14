@@ -136,37 +136,39 @@ local servers = {
 local saga = require("lspsaga")
 saga.setup({
 	ui = {
-		theme = "round",
 		border = "rounded",
-	},
-	symbol_in_winbar = {
-		enable = false,
-	},
-	finder = {
-		keys = {
-			expand_or_jump = { "o", "<CR>" },
-			quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
-		},
 	},
 	code_action = {
 		keys = {
 			quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
 		},
 	},
+	scroll_preview = {
+		scroll_down = "<C-d>",
+		scroll_up = "<C-u>",
+	},
+	finder = {
+		default = "def+ref+imp",
+		keys = {
+			shuttle = { "[w", "<C-l>", "<C-h>" },
+			toggle_or_open = { "o", "<CR>" },
+			quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
+			close = { "<C-c>k", "c" },
+		},
+	},
 	preview = {
 		lines_avobe = 9999,
 		lines_below = 9999,
 	},
-	scroll_preview = {
-		scroll_down = "<C-d>",
-		scroll_up = "<C-u>",
+	symbol_in_winbar = {
+		enable = false,
 	},
 })
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 keymap("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
-keymap("n", "gh", "<Cmd>Lspsaga lsp_finder<CR>", opts)
+keymap("n", "gh", "<Cmd>Lspsaga finder<CR>", opts)
 keymap("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>", opts)
 
 keymap("n", "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", opts)
