@@ -13,6 +13,20 @@ null_ls.setup({
 			prefer_local = "vendor/bin",
 		}),
 		diagnostics.terraform_validate,
+		diagnostics.cspell.with({
+			diagnostics_postprocess = function(diagnostic)
+				-- Change severity (Default: ERROR)
+				diagnostic.severity = vim.diagnostic.severity["HINT"]
+			end,
+			condition = function()
+				return vim.fn.executable("cspell") > 0
+			end,
+			config = {
+				find_json = function()
+					return vim.fn.expand("~/.config/cspell.json")
+				end,
+			},
+		}),
 
 		formatting.black,
 		formatting.stylua,

@@ -1,5 +1,6 @@
 yarn
 prettier
+cspell
 textlint
 textlint-rule-preset-ja-spacing
 ts-node

@@ -1,0 +1,24 @@
+{
+  "allowCompoundWords": true,
+  "dictionaries": ["my", "lua", "local", "vim"],
+  "dictionaryDefinitions": [
+    {
+      "name": "my",
+      "path": "~/.config/cspell/dict.txt",
+      "description": "my dictionary"
+    },
+    {
+      "name": "local",
+      "path": "~/.config.local/cspell/dict.txt",
+      "description": "local dictionary"
+    }
+  ],
+  "languageSettings": [
+    {
+      "languageId": "lua",
+      "locale": "*",
+      "ignoreRegExpList": ["/require.*/"],
+      "dictionaries": ["lua"]
+    }
+  ]
+}
