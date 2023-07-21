@@ -1,9 +1,3 @@
-# プロファイル用設定
-# (.zshrcの一番始めに記載すること)
-if [ "$ZSHRC_PROFILE" != "" ]; then
-  zmodload zsh/zprof && zprof > /dev/null
-fi
-
 # Perform cd to a directory if the typed command is invalid, but is a directory.
 setopt AUTO_CD
 

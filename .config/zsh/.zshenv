@@ -1,3 +1,9 @@
+# プロファイル用設定
+# (.zshenvの一番始めに記載すること)
+if [ "$ZSHRC_PROFILE" != "" ]; then
+  zmodload zsh/zprof && zprof > /dev/null
+fi
+
 # NOTE: Do not load global rc files
 setopt no_global_rcs
 setopt magic_equal_subst
