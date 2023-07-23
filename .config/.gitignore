@@ -16,7 +16,7 @@
 !/textlint
 !/tmux
 !/zsh
-!/zsh-abbr
+!/zabrze
 
 !/direnv
 /direnv/*

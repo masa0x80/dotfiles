@@ -22,11 +22,8 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-history-substring-search
 
 # 時間がかかる設定 ($ZDOTDIR/lazy/init.zsh) 遅延読み込みする
-zinit ice lucid wait atload'source $ZDOTDIR/lazy/init.zsh'
-zinit light olets/zsh-abbr
-
 zinit for \
-    atload'source $ZDOTDIR/lazy/completions.zsh; zicompinit; zicdreplay' \
+    atload'source $ZDOTDIR/lazy/init.zsh; zicompinit; zicdreplay' \
     blockf \
     lucid \
     wait \

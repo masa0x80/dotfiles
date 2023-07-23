@@ -21,4 +21,5 @@ bindkey '^G^L' forward-word
 bindkey '^G^P' history-substring-search-up
 bindkey '^G^N' history-substring-search-down
 
-bindkey '^J' abbr-expand-and-accept
+# zabrze (brewで入れる想定)
+eval "$(zabrze init --bind-keys)"

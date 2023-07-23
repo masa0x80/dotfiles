@@ -95,3 +95,6 @@ brew "markdownlint-cli"
 
 # for telekasten
 brew "viu"
+
+tap "ryooooooga/tap"
+brew "zabrze"
