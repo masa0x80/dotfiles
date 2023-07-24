@@ -1,6 +1,5 @@
 require("misc.markdown")
-require("misc.foldlevel")
+require("misc.folding")
 require("misc.todo")
 require("misc.gh")
-require("misc.neovide")
 require("misc.silicon")

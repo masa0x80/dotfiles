@@ -21,7 +21,6 @@ local languages = {
 	"yaml",
 	"vim",
 	"vimdoc",
-	"markdown",
 	"markdown_inline",
 }
 
