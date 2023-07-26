@@ -3,16 +3,19 @@
 if [ "$1" = 'show' ]; then
     # fshow - git commit browser
     # ref: https://github.com/junegunn/fzf/wiki/Examples
-    git log --graph --color=always \
+    git log --graph \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
         fzf --ansi --no-sort --tiebreak=index +m \
-        --bind "ctrl-y:execute-silent: (printf {} | grep -o '[a-f0-9]\{7\}' | head -1 | tr -d '\n' | pbcopy)" \
+        --preview 'git show {2}' \
+        --bind "alt-y:execute-silent: (printf {} | grep -o '[a-f0-9]\{7\}' | head -1 | tr -d '\n' | pbcopy)" \
         --bind "ctrl-m:execute: (grep -o '[a-f0-9]\{7\}' | head -1 | xargs -I % sh -c 'git show --color=always %') << 'FZF-EOF'
             {}
 FZF-EOF"
 else
     # fetch git commit hash
-    git log --graph --color=always \
+    git log --graph \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
-        fzf --ansi --no-sort --tiebreak=index +m | grep -o '[a-f0-9]\{7\}' | head -1 | tr -d '\n' | pbcopy; echo "$(pbpaste)"
+        fzf --ansi --no-sort --tiebreak=index +m \
+        --preview 'git show {2}' \
+        | grep -o '[a-f0-9]\{7\}' | head -1 | tr -d '\n' | pbcopy; echo "$(pbpaste)"
 fi
