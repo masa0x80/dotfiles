@@ -56,6 +56,9 @@ for file (
   $HOME/.asdf/plugins/java/set-java-home.zsh(N)
 ) source $file
 
+# Lazy loadするとwindow作成直後に読み込まれない
+(( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
+
 # Initialize modules.
 source $ZDOTDIR/zinitrc
 

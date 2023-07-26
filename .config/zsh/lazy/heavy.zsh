@@ -59,9 +59,6 @@ path=(
   $path
 )
 
-# direnv
-(( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
-
 # NOTE: Create zsh compiled files
 () {
   local src
