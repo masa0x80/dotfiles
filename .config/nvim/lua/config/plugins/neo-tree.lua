@@ -69,7 +69,7 @@ require("neo-tree").setup({
 				vim.fn.setreg('"', path)
 				vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 			end,
-			["<C-y>"] = function(state)
+			["<A-y>"] = function(state)
 				local node = state.tree:get_node()
 				local path = node.path
 				vim.fn.setreg("+", path)

@@ -17,6 +17,8 @@ require("telescope").setup({
 		},
 		mappings = {
 			i = {
+				["<C-u>"] = actions.preview_scrolling_up,
+				["<C-d>"] = actions.preview_scrolling_down,
 				["<C-c>"] = { "<Esc>", type = "command" },
 				["<C-c><C-c>"] = actions.close,
 				["<C-g><C-g>"] = function()
@@ -30,6 +32,8 @@ require("telescope").setup({
 				["<C-p>"] = actions.move_selection_previous,
 				["<C-f>"] = actions.results_scrolling_up,
 				["<C-b>"] = actions.results_scrolling_down,
+				["<C-y>"] = actions.preview_scrolling_up,
+				["<C-e>"] = actions.preview_scrolling_down,
 				["q"] = actions.close,
 				["<C-c>"] = actions.close,
 				["<C-g><C-g>"] = function()
@@ -51,7 +55,7 @@ require("telescope").setup({
 					vim.fn.setreg('"', path)
 					vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 				end,
-				["<C-y>"] = function()
+				["<A-y>"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = selection.path
 					vim.fn.setreg("+", path)
