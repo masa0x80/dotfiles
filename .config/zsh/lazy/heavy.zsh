@@ -24,7 +24,7 @@ fi
 
 # ls
 if installed exa; then
-  alias ls='exa --group-directories-first --icons'
+  alias ls='exa --group-directories-first --icons --color=always'
 fi
 
 # Pager
