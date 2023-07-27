@@ -10,6 +10,8 @@
   path = ~/.config.local/git/config
 [push]
   default = current
+[commit]
+  verbose = true
 [merge]
   ff = false
 [fetch]

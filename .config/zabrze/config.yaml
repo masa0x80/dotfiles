@@ -36,12 +36,12 @@ abbrevs:
     abbr: gbu
     snippet: "git branch -u origin/$(git branch --show-current) $(git branch --show-current)"
     evaluate: true
-  - name: "git commit -v"
+  - name: "git commit"
     abbr: gc
-    snippet: "git commit -v"
-  - name: "git commit -v --amend"
+    snippet: "git commit"
+  - name: "git commit --amend"
     abbr: gc!
-    snippet: "git commit -v --amend"
+    snippet: "git commit --amend"
   - name: "git checkout"
     abbr: gco
     snippet: "git checkout"
