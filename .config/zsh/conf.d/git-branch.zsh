@@ -1,5 +1,5 @@
 git-switch-local-branch() {
-  local branch=$(git branch --format='%(refname:short)' --sort=-committerdate -l | fzf +m +s)
+  local branch=$(git branch --format='%(refname:short)' --sort=-committerdate -l | fzf +m +s --preview 'git log --graph --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN"')
   if test -n "$branch"; then
     if test "$BUFFER" = ''; then
       BUFFER="git switch $branch"
