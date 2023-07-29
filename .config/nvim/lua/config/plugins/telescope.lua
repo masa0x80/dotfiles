@@ -55,7 +55,7 @@ require("telescope").setup({
 					vim.fn.setreg('"', path)
 					vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 				end,
-				["<A-y>"] = function()
+				["<C-y>"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = selection.path
 					vim.fn.setreg("+", path)

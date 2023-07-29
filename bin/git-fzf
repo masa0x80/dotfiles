@@ -7,15 +7,15 @@ if [ "$1" = 'show' ]; then
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
         fzf --no-sort --tiebreak=index +m \
         --preview 'git show {2}' \
-        --bind "alt-y:execute-silent: (printf {2} | pbcopy)" \
+        --bind "ctrl-y:execute-silent: (printf {2} | pbcopy)" \
         --bind "ctrl-m:execute: (xargs -I % sh -c 'git show --color=always %') << 'FZF-EOF'
             {2}
 FZF-EOF"
 else
-    # fetch git commit hash
     git log --graph \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
         fzf --no-sort --tiebreak=index +m \
         --preview 'git show {2}' \
-        | grep -o '[a-f0-9]\{7\}' | head -1 | tr -d '\n' | pbcopy; echo "$(pbpaste)"
+        --bind "ctrl-y:execute-silent: (printf {2} | pbcopy)" \
+        | grep -o '[a-f0-9]\{7\}'
 fi
