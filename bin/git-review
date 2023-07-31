@@ -6,16 +6,16 @@
     git log --graph --grep $issue_id \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
         fzf --tac --no-sort --tiebreak=index +m \
-        --preview 'git show {2}' \
-        --bind "ctrl-y:execute-silent: (printf {2} | pbcopy)" \
-        --bind "ctrl-m:execute: (xargs -I % sh -c 'git show --color=always %') << 'FZF-EOF'
-            {2}
+        --preview 'echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c "git show %"' \
+        --bind "ctrl-y:execute-silent: (echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | tr -d '\n' | pbcopy)" \
+        --bind "ctrl-m:execute: (rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c 'git show --color=always %') << 'FZF-EOF'
+            {}
 FZF-EOF"
   else
-    commit_hash=$(git log --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | fzf --no-sort --tiebreak=index +m --preview 'git show {1}' --bind "ctrl-y:execute-silent: (printf {1} | pbcopy)" | grep -o '[a-f0-9]\{7\}')
+    commit_hash=$(git log --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | fzf --no-sort --tiebreak=index +m --preview 'git show {1}' --bind "ctrl-y:execute-silent: (printf {1} | pbcopy)" | rg -o \[a-f0-9\]\{7\})
     test -z "$commit_hash" && return
 
-    num=$(git log --pretty="%h" | grep -n "$commit_hash" | cut -d : -f 1)
+    num=$(git log --pretty="%h" | rg -n "$commit_hash" | cut -d : -f 1)
     git log --reverse -$num \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
         fzf --no-sort --tiebreak=index +m \

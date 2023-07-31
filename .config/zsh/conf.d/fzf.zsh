@@ -18,17 +18,13 @@ fi
 export FZF_TMUX_OPTS="-p 80% --border none"
 alias fzf="fzf-tmux ${FZF_TMUX_OPTS-}"
 
-__fzfcmd() {
-  echo "fzf-tmux ${FZF_TMUX_OPTS-} -- "
-}
-
 if (( ${+commands[fd]} && ${+commands[bat]} )); then
   # CTRL-T - Paste the selected file path(s) into the command line
   __fsel() {
     local cmd="${FZF_CTRL_T_COMMAND}"
     setopt localoptions pipefail no_aliases 2> /dev/null
     local item
-    eval "$cmd" | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS-} ${FZF_CTRL_T_OPTS-}" $(__fzfcmd) -m | while read item; do
+    eval "$cmd" | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS-} ${FZF_CTRL_T_OPTS-}" fzf -m | while read item; do
       echo -n "${(q)item} "
     done
     local ret=$?
@@ -47,7 +43,11 @@ if (( ${+commands[fd]} && ${+commands[bat]} )); then
   fzf-cd-widget() {
     local cmd="${FZF_ALT_C_COMMAND}"
     setopt localoptions pipefail no_aliases 2> /dev/null
-    local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS-} ${FZF_ALT_C_OPTS-}" $(__fzfcmd) +m)"
+    local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS-} ${FZF_ALT_C_OPTS-}" fzf +m)"
+    if [[ "$dir" = '' ]]; then
+      zle reset-prompt
+      return 0
+    fi
     LBUFFER="${LBUFFER}${(q)dir}"
     local ret=$?
     zle reset-prompt
@@ -69,7 +69,7 @@ if (( ${+commands[fzf]} )); then
   # history with fzf
   # ref: http://blog.kenjiskywalker.org/blog/2014/06/12/peco
   # ref: http://qiita.com/uchiko/items/f6b1528d7362c9310da0
-  function history-fzf() {
+  history-fzf() {
     BUFFER=$(\history -n 1 | \
       fzf +m --tac --query "$LBUFFER")
     CURSOR=$#BUFFER
