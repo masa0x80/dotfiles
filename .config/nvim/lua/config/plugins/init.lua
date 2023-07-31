@@ -221,11 +221,6 @@ require("lazy").setup({
 			"rcarriga/nvim-notify",
 		},
 	},
-	{
-		"gen740/SmoothCursor.nvim",
-		event = "UIEnter",
-		config = conf("SmoothCursor"),
-	},
 
 	-- Ops
 	{
