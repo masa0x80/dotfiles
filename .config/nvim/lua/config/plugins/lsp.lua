@@ -143,9 +143,8 @@ saga.setup({
 			quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
 		},
 	},
-	scroll_preview = {
-		scroll_down = "<C-d>",
-		scroll_up = "<C-u>",
+	lightbulb = {
+		sign = false,
 	},
 	finder = {
 		default = "def+ref+imp",
