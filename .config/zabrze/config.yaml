@@ -118,15 +118,6 @@ abbrevs:
   - name: "git worktree"
     abbr: gwt
     snippet: "git worktree"
-  - name: "git worktree add"
-    abbr: gwta
-    snippet: "git worktree add"
-  - name: "git worktree remove"
-    abbr: gwtr
-    snippet: "git worktree remove"
-  - name: "git worktree prune"
-    abbr: gwtp
-    snippet: "git worktree prune"
   - name: "git switch $(git default-branch)"
     abbr: M
     snippet: "git switch $(git default-branch)"
