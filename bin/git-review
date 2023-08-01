@@ -8,9 +8,7 @@
         fzf --tac --no-sort --tiebreak=index +m \
         --preview 'echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c "git show %"' \
         --bind "ctrl-y:execute-silent: (echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | tr -d '\n' | pbcopy)" \
-        --bind "ctrl-m:execute: (rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c 'git show --color=always %') << 'FZF-EOF'
-            {}
-FZF-EOF"
+        --bind "ctrl-m:execute: (echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c 'git show %')"
   else
     commit_hash=$(git log --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | fzf --no-sort --tiebreak=index +m --preview 'git show {1}' --bind "ctrl-y:execute-silent: (printf {1} | pbcopy)" | rg -o \[a-f0-9\]\{7\})
     test -z "$commit_hash" && return
@@ -21,8 +19,6 @@ FZF-EOF"
         fzf --no-sort --tiebreak=index +m \
         --preview 'git show {1}' \
         --bind "ctrl-y:execute-silent: (printf {1} | pbcopy)" \
-        --bind "ctrl-m:execute: (xargs -I % sh -c 'git show --color=always %') << 'FZF-EOF'
-            {1}
-FZF-EOF"
+        --bind "ctrl-m:execute: (echo {1} | xargs -I % sh -c 'git show %')"
   fi
 } "$1"

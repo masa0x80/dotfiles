@@ -8,9 +8,7 @@ if [ "$1" = 'show' ]; then
         fzf --no-sort --tiebreak=index +m \
         --preview 'echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c "git show %"' \
         --bind "ctrl-y:execute-silent: (echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | tr -d '\n' | pbcopy)" \
-        --bind "ctrl-m:execute: (rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c 'git show --color=always %') << 'FZF-EOF'
-            {}
-FZF-EOF"
+        --bind "ctrl-m:execute: (echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c 'git show %')"
 else
     git log --graph \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
