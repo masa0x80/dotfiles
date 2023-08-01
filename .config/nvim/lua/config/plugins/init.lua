@@ -69,7 +69,7 @@ require("lazy").setup({
 			-- Additional lua configuration, makes nvim stuff amazing
 			{ "folke/neodev.nvim", event = "LspAttach" },
 
-			{ "glepnir/lspsaga.nvim", event = "LspAttach" },
+			{ "nvimdev/lspsaga.nvim", event = "LspAttach" },
 
 			{ "nvim-lua/lsp-status.nvim", event = "LspAttach" },
 			{ "SmiteshP/nvim-navic", event = "LspAttach" },
@@ -371,6 +371,12 @@ require("lazy").setup({
 		"akinsho/toggleterm.nvim",
 		event = { "CursorHold", "CursorMoved", "ModeChanged" },
 		config = conf("toggleterm"),
+	},
+
+	{
+		"klen/nvim-config-local",
+		event = "UIEnter",
+		config = conf("nvim-config-local"),
 	},
 
 	{
