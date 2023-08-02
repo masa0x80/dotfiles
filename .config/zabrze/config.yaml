@@ -17,6 +17,7 @@ abbrevs:
   - name: "rm -rf"
     abbr: rf
     snippet: "rm -rf"
+
   - name: "git add"
     abbr: ga
     snippet: "git add"
@@ -126,14 +127,19 @@ abbrevs:
     abbr: br
     snippet: "git switch -c"
   - name: "git review"
+    abbr: rev
+    snippet: "git review"
+  - name: "git review"
     abbr: review
     snippet: "git review"
+
   - name: "vagrant destroy -f"
     abbr: vdf
     snippet: "vagrant destroy -f"
   - name: "vagrant global-status"
     abbr: vst
     snippet: "vagrant global-status"
+
   - name: "rails c"
     abbr: c
     snippet: "rails c"
@@ -152,6 +158,7 @@ abbrevs:
     snippet: "spring stop"
   - name: "bundle exec"
     abbr: be
+
     snippet: "bundle exec"
   - name: "bundle config set --local path vendor/bundle; bundle config set --local bin vendor/bin; bundle config set --local cache_all_platforms true; bundle install"
     abbr: bi
@@ -159,25 +166,31 @@ abbrevs:
   - name: "bundle config set --local path vendor/bundle; bundle config set --local bin vendor/bin; bundle config set --local cache_all_platforms true; bundle install --local"
     abbr: bil
     snippet: "bundle config set --local path vendor/bundle; bundle config set --local bin vendor/bin; bundle config set --local cache_all_platforms true; bundle install --local"
+
   - name: "solargraph download-core; solargraph bundle; solargraph config"
     abbr: solargraph_init
     snippet: "solargraph download-core; solargraph bundle; solargraph config"
+
   - name: "dc up -d"
     abbr: dcu
     snippet: "dc up -d"
   - name: "dc down"
     abbr: dcd
     snippet: "dc down"
+
   - name: "direnv allow"
     abbr: da
     snippet: "direnv allow"
+
   - name: "aws-vault exec $AWS_PROFILE --"
     abbr: A
     snippet: "aws-vault exec $AWS_PROFILE --"
     evaluate: true
+
   - name: "ghq get"
     abbr: Get
     snippet: "ghq get"
+
   - name: "| pbcopy"
     abbr: C
     snippet: "| pbcopy"
@@ -216,6 +229,7 @@ abbrevs:
     abbr: N2
     snippet: "2>/dev/null"
     global: true
+
   - name: '$(git status -s -uno | fzf --query="$@" | awk "{print \$2}")'
     abbr: GST
     snippet: '$(git status -s -uno | fzf --query="$@" | awk "{print \$2}")'
@@ -224,10 +238,7 @@ abbrevs:
     abbr: GH
     snippet: "$(git fzf)"
     global: true
-  - name: "g"
-    abbr: g
-    snippet: "rg --hidden"
-    if: (( ${+commands[rg]} ))
+
   - name: "mycli"
     abbr: mysql
     snippet: "mycli"
@@ -236,10 +247,15 @@ abbrevs:
     abbr: psql
     snippet: "pgcli"
     if: (( ${+commands[mgcli]} ))
+  - name: "g"
+    abbr: g
+    snippet: "rg --hidden"
+    if: (( ${+commands[rg]} ))
   - name: "bat"
     abbr: cat
     snippet: "bat"
     if: (( ${+commands[bat]} ))
+
   - name: "ls -a"
     abbr: l
     snippet: "ls -a"
@@ -256,6 +272,7 @@ abbrevs:
     abbr: tree
     snippet: "exa -T --icons"
     if: (( ${+commands[exa]} ))
+
   - name: "silicon --to-clipboard --from-clipboard -l ts"
     abbr: Si
     snippet: "silicon --to-clipboard --from-clipboard -l ts"
@@ -264,6 +281,7 @@ abbrevs:
     abbr: SI
     snippet: 'silicon --to-clipboard --from-clipboard -l ts --highlight-lines "1;2-3"'
     if: (( ${+commands[silicon]} ))
+
   - name: "vi ~/.ssh/config"
     abbr: ssh_config
     snippet: "vi ~/.ssh/config"
