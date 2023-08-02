@@ -3,17 +3,17 @@
 if [ "$1" = 'show' ]; then
     # fshow - git commit browser
     # ref: https://github.com/junegunn/fzf/wiki/Examples
-    git log --graph \
+    git log --color=always --graph \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
         fzf --no-sort --tiebreak=index +m \
-        --preview 'echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c "git show %"' \
+        --preview 'echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c "git show --color=always %"' \
         --bind "ctrl-y:execute-silent: (echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | tr -d '\n' | pbcopy)" \
-        --bind "ctrl-m:execute: (echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c 'git show %')"
+        --bind "ctrl-m:execute: (echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c 'git show --color=always %')"
 else
-    git log --graph \
+    git log --color=always --graph \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
         fzf --no-sort --tiebreak=index +m \
-        --preview 'echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c "git show %"' \
+        --preview 'echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c "git show --color=always %"' \
         --bind "ctrl-y:execute-silent: (echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | tr -d '\n' | pbcopy)" \
         | rg -o \[a-f0-9\]\{7\}
 fi

@@ -1,5 +1,5 @@
 git-add() {
-  local files=($(git status -s | fzf -m --query="$@" --preview '[[ {1} = "??" ]] && bat --color=always {-1} || [[ {} =~ "^ M" ]] && git diff {-1} || [[ {} =~ "^D " || {} =~ "^.D" ]] && : || git diff --staged {-1}' | cut -c4- | sed -e 's|^|:/|' | tr "\n" ' '))
+  local files=($(GIT_PAGER_IN_USE=true git status -s | fzf -m --query="$@" --preview '[[ {1} = "??" ]] && bat --color=always {-1} || [[ {} =~ "^ M" ]] && git diff --color=always {-1} || [[ {} =~ "^D " || {} =~ "^.D" ]] && : || git diff --staged --color=always {-1}' | cut -c4- | sed -e 's|^|:/|' | tr "\n" ' '))
 
   if test -n "$files"; then
 

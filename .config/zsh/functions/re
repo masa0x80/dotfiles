@@ -2,5 +2,5 @@
 
 re() {
   local option="$(echo -e "--staged\n--worktree" | fzf +m --query="$@")"
-  git status -s -uno | fzf --preview '[[ {} =~ "^ M" ]] && git diff {-1} || git diff --staged {-1}' --prompt="\$ git restore $option (git status -s -uno)> " | cut -c4- | xargs -I% git restore $option %
+  GIT_PAGER_IN_USE=true git status -s -uno | fzf --preview '[[ {} =~ "^ M" ]] && git diff --color=always {-1} || git diff --staged --color=always {-1}' --prompt="\$ git restore $option (git status -s -uno)> " | cut -c4- | xargs -I% git restore $option %
 }
