@@ -127,6 +127,9 @@ abbrevs:
     abbr: br
     snippet: "git switch -c"
   - name: "git review"
+    abbr: r
+    snippet: "git review"
+  - name: "git review"
     abbr: rev
     snippet: "git review"
   - name: "git review"
