@@ -12,4 +12,4 @@ _tt() {
   CURSOR=$#BUFFER
 }
 zle -N _tt
-bindkey '^t^t' _tt
+bindkey ';t' _tt
