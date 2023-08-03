@@ -26,3 +26,7 @@ end, { noremap = true, silent = true, desc = "<v:count1>ToggleTerm direction=flo
 keymap("n", ",,j", function()
 	vim.cmd(vim.v.count1 .. "ToggleTerm direction=horizontal")
 end, { noremap = true, silent = true, desc = "<v:count1>ToggleTerm direction=horizontal" })
+
+vim.api.nvim_create_user_command("LG", function()
+	require("toggleterm").exec_command('cmd="git fzf show" direction="float"')
+end, {})
