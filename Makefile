@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: defaults brew-init brew asdf nodejs python ruby java gradle terraform terraform_docs helm golang rust sops aws-vault neovim navi bat silicon
+install: defaults brew-init brew asdf nodejs python ruby java gradle terraform terraform_docs helm golang rust sops aws-vault neovim navi bat silicon zinit
 
 .PHONY: deploy
 deploy:
@@ -149,3 +149,7 @@ silicon: brew
 .PHONY: navi
 navi: brew
 	./scripts/navi
+
+.PHONY: zinit
+zinit:
+	./scripts/zinit
