@@ -85,7 +85,9 @@ require("neo-tree").setup({
 			hide_gitignored = true,
 		},
 		hijack_netrw_behavior = "open_current",
-		follow_current_file = true,
+		follow_current_file = {
+			enabled = true,
+		},
 		use_libuv_file_watcher = true,
 	},
 })
