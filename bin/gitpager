@@ -2,7 +2,7 @@
 
 LESS='-RIXc'
 if (( ${+commands[delta]} )); then
-  delta --diff-so-fancy | less $@
+  delta --diff-so-fancy --keep-plus-minus-markers | less $@
 else
   less $@
 fi
