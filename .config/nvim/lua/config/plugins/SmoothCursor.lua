@@ -6,6 +6,8 @@ require("smoothcursor").setup({
 		body = {
 			{ cursor = "󰇙", texthl = "SmoothCursor" },
 			{ cursor = "󱗼", texthl = "SmoothCursor" },
+			{ cursor = "󱗼", texthl = "SmoothCursor" },
+			{ cursor = "󱗼", texthl = "SmoothCursor" },
 			{ cursor = "󰇙", texthl = "SmoothCursor" },
 		},
 	},
