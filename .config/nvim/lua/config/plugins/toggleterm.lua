@@ -30,3 +30,7 @@ end, { noremap = true, silent = true, desc = "<v:count1>ToggleTerm direction=hor
 vim.api.nvim_create_user_command("LG", function()
 	require("toggleterm").exec_command('cmd="git fzf show" direction="float"')
 end, {})
+
+vim.api.nvim_create_user_command("REV", function()
+	require("toggleterm").exec_command('cmd="git review" direction="float"')
+end, {})
