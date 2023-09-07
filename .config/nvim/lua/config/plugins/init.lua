@@ -72,7 +72,6 @@ require("lazy").setup({
 			{ "nvimdev/lspsaga.nvim", event = "LspAttach" },
 
 			{ "nvim-lua/lsp-status.nvim", event = "LspAttach" },
-			{ "SmiteshP/nvim-navic", event = "LspAttach" },
 		},
 	},
 	{
@@ -200,17 +199,8 @@ require("lazy").setup({
 		config = conf("lualine"),
 		dependencies = {
 			{ "kyazdani42/nvim-web-devicons", lazy = true },
-			{
-				"kdheepak/tabline.nvim",
-				event = { "CursorHold", "CursorMoved", "ModeChanged" },
-			},
 			{ "nvim-lua/lsp-status.nvim", event = "LspAttach" },
 		},
-	},
-	{
-		"b0o/incline.nvim",
-		event = { "CursorHold", "CursorMoved", "ModeChanged" },
-		config = conf("incline"),
 	},
 	{
 		"folke/noice.nvim",
@@ -346,11 +336,6 @@ require("lazy").setup({
 	{ "aklt/plantuml-syntax", ft = "plantuml" },
 	{ "slim-template/vim-slim", ft = "slim" },
 
-	-- Folding
-	{
-		"lambdalisue/readablefold.vim",
-		event = { "BufNewFile", "BufRead" },
-	},
 	-- Indent
 	{
 		"lukas-reineke/indent-blankline.nvim",
