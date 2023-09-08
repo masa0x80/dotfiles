@@ -19,6 +19,41 @@ vim.diagnostic.config({
 	},
 })
 
+local navic = require("nvim-navic")
+navic.setup({
+	icons = {
+		File = " ",
+		Module = " ",
+		Namespace = " ",
+		Package = " ",
+		Class = " ",
+		Method = " ",
+		Property = " ",
+		Field = " ",
+		Constructor = " ",
+		Enum = " ",
+		Interface = " ",
+		Function = " ",
+		Variable = " ",
+		Constant = " ",
+		String = " ",
+		Number = " ",
+		Boolean = " ",
+		Array = " ",
+		Object = " ",
+		Key = " ",
+		Null = " ",
+		EnumMember = " ",
+		Struct = " ",
+		Event = " ",
+		Operator = " ",
+		TypeParameter = " ",
+	},
+	lsp = {
+		auto_attach = true,
+	},
+})
+
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(client, bufnr)
@@ -123,6 +158,9 @@ saga.setup({
 	preview = {
 		lines_avobe = 9999,
 		lines_below = 9999,
+	},
+	symbol_in_winbar = {
+		enable = false,
 	},
 })
 
