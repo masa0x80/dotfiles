@@ -84,5 +84,5 @@ local set_hl = vim.api.nvim_set_hl
 for kind, c in pairs(icon_colors) do
 	set_hl(0, "NavicIcons" .. kind, { fg = c })
 end
-set_hl(0, "NavicText", { fg = color.White })
+set_hl(0, "NavicText", { fg = color.Grey })
 set_hl(0, "NavicSeparator", { fg = color.CommentGrey })

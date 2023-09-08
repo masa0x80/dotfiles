@@ -9,4 +9,4 @@ local color = require("config.color")
 local set_hl = vim.api.nvim_set_hl
 set_hl(0, "GitConflictCurrentLabel", { fg = color.Black, bg = color.Green })
 set_hl(0, "GitConflictIncomingLabel", { fg = color.Black, bg = color.Blue })
-set_hl(0, "GitConflictAncestorLabel", { fg = color.Black, bg = color.White })
+set_hl(0, "GitConflictAncestorLabel", { fg = color.Black, bg = color.Grey })
