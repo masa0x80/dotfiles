@@ -4,7 +4,7 @@ vim.keymap.set("n", "*", function()
 end)
 
 vim.keymap.set({ "n", "x" }, "g*", function()
-	require("lasterisk").search({ is_whole = false })
+	require("lasterisk").search({ is_whole = false, silent = true })
 	require("hlslens").start()
 end)
 
