@@ -43,6 +43,7 @@ require("lazy").setup({
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = conf("cmp"),
 		dependencies = {
+			{ "onsails/lspkind.nvim", event = "InsertEnter" },
 			{ "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
 			{ "L3MON4D3/LuaSnip", event = "InsertEnter" },
 			{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
