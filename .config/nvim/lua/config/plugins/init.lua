@@ -188,7 +188,7 @@ require("lazy").setup({
 	},
 	{
 		"norcalli/nvim-colorizer.lua",
-		event = { "BufNewFile", "BufRead" },
+		event = { "CursorHold", "CursorMoved", "ModeChanged" },
 		config = function()
 			require("colorizer").setup()
 		end,
