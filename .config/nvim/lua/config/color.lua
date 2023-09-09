@@ -1,28 +1,21 @@
--- OneDark
---   black        #282c34
---   red          #e06c75
---   green        #98c379
---   yellow       #e5c07b
---   blue         #61afef
---   purple       #c678dd
---   cyan         #56b6c2
---   grey         #abb2bf
---   orange       #d19a66
---   visual_grey  #3e4452
---   comment_grey #5c6370
+-- ref. https://github.com/joshdick/onedark.vim/blob/main/autoload/onedark.vim
 
 local M = {}
 
 M.Black = "#282c34"
+M.White = "#abb2bf"
 M.Red = "#e06c75"
+M.DarkRed = "#be5046"
 M.Green = "#98c379"
 M.Yellow = "#e5c07b"
+M.DarkYellow = "#d19a66"
 M.Blue = "#61afef"
-M.Purple = "#c678dd"
+M.Magenta = "#c678dd"
 M.Cyan = "#56b6c2"
-M.Grey = "#abb2bf"
-M.Orange = "#d19a66"
-M.VisualGrey = "#3e4452"
 M.CommentGrey = "#5c6370"
+M.GutterGrey = "#4b5263"
+M.CursorGrey = "#2c323c"
+M.VisualGrey = "#3e4452"
+M.SpecialGrey = "#3b4048"
 
 return M
