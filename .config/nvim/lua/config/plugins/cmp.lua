@@ -6,14 +6,35 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
+local icon = require("config.icon")
 local lspkind = require("lspkind")
 lspkind.init({
 	symbol_map = {
-		Class = "",
-		Constructor = "",
-		Interface = "",
-		Text = " ",
-		TypeParameter = "",
+		Text = icon.Text,
+		Method = icon.Method,
+		Function = icon.Function,
+		Constructor = icon.Constructor,
+		Field = icon.Field,
+		Variable = icon.Variable,
+		Class = icon.Class,
+		Interface = icon.Interface,
+		Module = icon.Module,
+		Property = icon.Property,
+		Unit = icon.Unit,
+		Value = icon.Value,
+		Enum = icon.Enum,
+		Keyword = icon.Keyword,
+		Snippet = icon.Snippet,
+		Color = icon.Color,
+		File = icon.Field,
+		Reference = icon.Reference,
+		Folder = icon.Folder,
+		EnumMember = icon.EnumMember,
+		Constant = icon.Constant,
+		Struct = icon.Struct,
+		Event = icon.Event,
+		Operator = icon.Operator,
+		TypeParameter = icon.TypeParameter,
 	},
 })
 local cmp = require("cmp")
