@@ -1,5 +1,7 @@
 local hop = require("hop")
-hop.setup()
+hop.setup({
+	uppercase_labels = true,
+})
 
 local directions = require("hop.hint").HintDirection
 vim.keymap.set("", "f", function()
