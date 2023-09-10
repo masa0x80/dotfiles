@@ -17,4 +17,4 @@ end, { remap = true })
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
-keymap("n", "<Leader><CR>", ":HopWord<CR>", opts)
+keymap("n", "<Leader><Space>", ":HopWord<CR>", opts)

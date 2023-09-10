@@ -85,4 +85,4 @@ for kind, c in pairs(icon_colors) do
 	set_hl(0, "NavicIcons" .. kind, { fg = c })
 end
 set_hl(0, "NavicText", { fg = color.White })
-set_hl(0, "NavicSeparator", { fg = color.SpecialGrey })
+set_hl(0, "NavicSeparator", { fg = color.Cyan })
