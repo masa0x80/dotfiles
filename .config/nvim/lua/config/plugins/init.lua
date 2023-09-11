@@ -284,6 +284,11 @@ require("lazy").setup({
 		event = "UIEnter",
 		config = conf("open-browser"),
 	},
+	{
+		"kana/vim-smartword",
+		event = "UIEnter",
+		config = conf("vim-smartword"),
+	},
 
 	-- Git
 	{
