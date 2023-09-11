@@ -221,6 +221,15 @@ require("lazy").setup({
 
 	-- Ops
 	{
+		"lambdalisue/kensaku-search.vim",
+		event = "CmdlineEnter",
+		config = conf("kensaku-search"),
+		dependencies = {
+			"lambdalisue/kensaku.vim",
+			"vim-denops/denops.vim",
+		},
+	},
+	{
 		"smoka7/hop.nvim",
 		event = "UIEnter",
 		config = conf("hop"),
