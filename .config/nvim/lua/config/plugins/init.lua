@@ -221,7 +221,7 @@ require("lazy").setup({
 
 	-- Ops
 	{
-		"phaazon/hop.nvim",
+		"smoka7/hop.nvim",
 		event = "UIEnter",
 		config = conf("hop"),
 	},
