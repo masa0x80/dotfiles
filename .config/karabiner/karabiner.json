@@ -510,14 +510,15 @@
                         ]
                     },
                     {
-                        "description": "Slack/LINE: Ctrl+i / Ctrl+o ▶ Alt+Down / Alt+Up",
+                        "description": "Slack/LINE/Discord: Ctrl+i / Ctrl+o ▶ Alt+Down / Alt+Up",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.tinyspeck\\.slackmacgap$",
-                                            "^jp\\.naver\\.line\\.mac$"
+                                            "^jp\\.naver\\.line\\.mac$",
+                                            "^com\\.hnc\\.Discord$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -545,7 +546,8 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.tinyspeck\\.slackmacgap$",
-                                            "^jp\\.naver\\.line\\.mac$"
+                                            "^jp\\.naver\\.line\\.mac$",
+                                            "^com\\.hnc\\.Discord$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
