@@ -20,7 +20,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: defaults brew-init brew asdf nodejs python ruby java gradle terraform terraform_docs helm golang rust sops aws-vault neovim navi bat silicon zinit
+install: defaults brew-init brew asdf nodejs deno python ruby java gradle terraform terraform_docs helm golang rust sops aws-vault neovim navi bat silicon zinit
 
 .PHONY: deploy
 deploy:
@@ -111,6 +111,10 @@ helm: asdf
 .PHONY: nodejs
 nodejs: asdf
 	./scripts/nodejs
+
+.PHONY: deno
+deno: asdf
+	./scripts/deno
 
 .PHONY: sops
 sops: asdf
