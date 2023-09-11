@@ -51,7 +51,7 @@ brew "mysql"
 brew "postgresql"
 brew "redis"
 
-brew "neovim", args: ["HEAD"]
+brew "neovim"
 
 brew "awscli"
 
