@@ -412,6 +412,13 @@ require("lazy").setup({
 		event = { "CursorHold", "CursorMoved", "ModeChanged" },
 		config = conf("toggleterm"),
 	},
+	{
+		"lambdalisue/guise.vim",
+		lazy = false,
+		dependencies = {
+			"vim-denops/denops.vim",
+		},
+	},
 
 	{
 		"klen/nvim-config-local",
