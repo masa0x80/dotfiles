@@ -325,6 +325,11 @@ require("lazy").setup({
 		event = { "BufNewFile", "BufRead" },
 		config = conf("git-messenger"),
 	},
+	{
+		"simeji/winresizer",
+		event = { "UIEnter" },
+		init = conf("winresizer"),
+	},
 
 	-- Filer
 	{
