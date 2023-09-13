@@ -279,10 +279,10 @@ require("lazy").setup({
 		event = "UIEnter",
 	},
 	{
-		"windwp/nvim-autopairs",
+		"hrsh7th/nvim-insx",
 		event = "InsertEnter",
 		config = function()
-			require("nvim-autopairs").setup()
+			require("insx.preset.standard").setup()
 		end,
 	},
 	{
