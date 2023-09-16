@@ -251,7 +251,7 @@ require("lazy").setup({
 	-- Ops
 	{
 		"lambdalisue/kensaku-search.vim",
-		event = "CmdlineEnter",
+		event = "UIEnter",
 		config = conf("kensaku-search"),
 		dependencies = {
 			"lambdalisue/kensaku.vim",
