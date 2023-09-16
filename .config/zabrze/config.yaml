@@ -262,19 +262,19 @@ abbrevs:
   - name: "ls -a"
     abbr: l
     snippet: "ls -a"
-    if: (( ${+commands[exa]} ))
+    if: (( ${+commands[eza]} ))
   - name: "ls -l --git"
     abbr: ll
     snippet: "ls -l --git"
-    if: (( ${+commands[exa]} ))
+    if: (( ${+commands[eza]} ))
   - name: "ls -la --git"
     abbr: la
     snippet: "ls -la --git"
-    if: (( ${+commands[exa]} ))
-  - name: "exa -T --icons"
+    if: (( ${+commands[eza]} ))
+  - name: "eza -T --icons"
     abbr: tree
-    snippet: "exa -T --icons"
-    if: (( ${+commands[exa]} ))
+    snippet: "eza -T --icons"
+    if: (( ${+commands[eza]} ))
 
   - name: "silicon --to-clipboard --from-clipboard -l ts"
     abbr: Si

@@ -57,7 +57,7 @@ brew "awscli"
 
 brew "bat"
 brew "dog"
-brew "exa"
+brew "eza"
 brew "fd"
 brew "git-delta"
 brew "ripgrep"

@@ -23,8 +23,8 @@ elif installed vim; then
 fi
 
 # ls
-if installed exa; then
-  alias ls='exa --group-directories-first --icons'
+if installed eza; then
+  alias ls='eza --group-directories-first --icons'
 fi
 
 # Pager
