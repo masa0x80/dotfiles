@@ -281,9 +281,7 @@ require("lazy").setup({
 	{
 		"hrsh7th/nvim-insx",
 		event = "InsertEnter",
-		config = function()
-			require("insx.preset.standard").setup()
-		end,
+		config = conf("insx"),
 	},
 	{
 		"monaqa/dial.nvim",
