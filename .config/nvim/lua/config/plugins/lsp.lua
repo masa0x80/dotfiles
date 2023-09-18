@@ -87,7 +87,7 @@ local on_attach = function(client, bufnr)
 		vim.lsp.buf.format()
 	end, { desc = "Format current buffer with LSP" })
 
-	if client.name == "rubocop" then
+	if client.name == "rubocop" or client.name == "terraformls" then
 		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 			buffer = bufnr,
 			command = "Format",
@@ -107,6 +107,7 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
+	bashls = {},
 	eslint = {},
 	jdtls = {},
 	jsonls = {

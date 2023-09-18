@@ -74,15 +74,6 @@ require("lazy").setup({
 		},
 	},
 	{
-		"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-		-- UIEnterにしないとファイルを直接開いたときに動かない
-		event = "UIEnter",
-		config = conf("null-ls"),
-		dependencies = {
-			{ "lukas-reineke/lsp-format.nvim", event = "LspAttach" },
-		},
-	},
-	{
 		"nvimdev/guard.nvim",
 		lazy = false,
 		config = conf("guard"),

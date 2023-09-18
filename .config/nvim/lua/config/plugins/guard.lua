@@ -1,5 +1,4 @@
 local ft = require("guard.filetype")
-local lint = require("guard.lint")
 
 ft("dockerfile"):lint("hadolint")
 
@@ -16,14 +15,9 @@ ft("markdown"):fmt({
 
 ft("python"):fmt("black")
 
-ft("sh,zsh"):fmt({
+ft("sh"):fmt({
 	cmd = "shfmt",
 	args = { "-filename" },
-	fname = true,
-}):lint("shellcheck")
-
-ft("terraform,tf,terraform-vars"):fmt({
-	cmd = "terraform-fmt-wrap",
 	fname = true,
 })
 

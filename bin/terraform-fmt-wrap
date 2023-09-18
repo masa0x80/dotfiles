@@ -1,4 +1,0 @@
-#!/bin/bash
-
-terraform fmt "$1" >/dev/null
-cat "$1"
