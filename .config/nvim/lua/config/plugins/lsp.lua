@@ -109,6 +109,7 @@ local servers = {
 			},
 		},
 	},
+	terraformls = {},
 	solargraph = {
 		settings = {
 			solargraph = {
