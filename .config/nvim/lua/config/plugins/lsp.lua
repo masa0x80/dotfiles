@@ -102,21 +102,7 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
 	eslint = {},
-	tsserver = {
-		init_options = {
-			preferences = {
-				importModuleSpecifierPreference = "non-relative",
-			},
-		},
-	},
-	terraformls = {},
-	solargraph = {
-		settings = {
-			solargraph = {
-				diagnostics = false,
-			},
-		},
-	},
+	jdtls = {},
 	jsonls = {
 		settings = {
 			json = {
@@ -131,8 +117,22 @@ local servers = {
 			telemetry = { enable = false },
 		},
 	},
-	jdtls = {},
+	solargraph = {
+		settings = {
+			solargraph = {
+				diagnostics = false,
+			},
+		},
+	},
 	tailwindcss = {},
+	terraformls = {},
+	tsserver = {
+		init_options = {
+			preferences = {
+				importModuleSpecifierPreference = "non-relative",
+			},
+		},
+	},
 }
 
 local saga = require("lspsaga")
