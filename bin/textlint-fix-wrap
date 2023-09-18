@@ -1,0 +1,4 @@
+#!/bin/bash
+
+textlint --fix "$1" >/dev/null
+cat "$1"

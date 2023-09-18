@@ -84,6 +84,14 @@ require("lazy").setup({
 			{ "lukas-reineke/lsp-format.nvim", event = "LspAttach" },
 		},
 	},
+	{
+		"nvimdev/guard.nvim",
+		lazy = false,
+		config = conf("guard"),
+		dependencies = {
+			"nvimdev/guard-collection",
+		},
+	},
 
 	-- Debug
 	{

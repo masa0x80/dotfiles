@@ -5,28 +5,13 @@ local diagnostics = null_ls.builtins.diagnostics
 require("lsp-format").setup()
 null_ls.setup({
 	sources = {
-		diagnostics.shellcheck,
-		diagnostics.hadolint.with({
-			args = { "--no-fail", "--format=json", "-", "--ignore", "DL3008" },
-		}),
 		diagnostics.rubocop.with({
 			prefer_local = "vendor/bin",
 		}),
 		diagnostics.terraform_validate,
 
-		formatting.black,
-		formatting.stylua,
-		formatting.shfmt,
-		formatting.fish_indent,
-		formatting.terraform_fmt,
-		formatting.textlint,
-		formatting.markdownlint,
 		formatting.rubocop.with({
 			prefer_local = "vendor/bin",
-		}),
-		formatting.prettier.with({
-			prefer_local = "node_modules/.bin",
-			disabled_filetypes = { "markdown" },
 		}),
 	},
 	on_attach = function(client, _)
