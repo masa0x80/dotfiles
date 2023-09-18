@@ -87,6 +87,12 @@ local on_attach = function(client, bufnr)
 		vim.lsp.buf.format()
 	end, { desc = "Format current buffer with LSP" })
 
+	if client.name == "rubocop" then
+		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+			buffer = bufnr,
+			command = "Format",
+		})
+	end
 	if client.name == "eslint" then
 		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 			buffer = bufnr,
@@ -117,6 +123,7 @@ local servers = {
 			telemetry = { enable = false },
 		},
 	},
+	rubocop = {},
 	solargraph = {
 		settings = {
 			solargraph = {

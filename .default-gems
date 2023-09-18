@@ -2,7 +2,6 @@ pry
 rails
 
 standard
-rubocop-rails
-rubocop-rubycw
+rubocop-performance
 
 jr

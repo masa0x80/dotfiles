@@ -58,7 +58,7 @@ require("lazy").setup({
 	-- LSP
 	{
 		"neovim/nvim-lspconfig",
-		event = "UIEnter",
+		lazy = false,
 		config = conf("lsp"),
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
