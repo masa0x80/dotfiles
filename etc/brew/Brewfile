@@ -29,7 +29,6 @@ brew "mas"
 brew "tldr"
 brew "pass"
 brew "rsync"
-brew "shellcheck"
 brew "shfmt"
 brew "watch"
 
@@ -70,10 +69,6 @@ brew "gh"
 brew "ghq"
 
 brew "csvq"
-
-tap "itchyny/tap"
-brew "gojq"
-brew "gojo"
 
 brew "hadolint"
 brew "lazydocker"
