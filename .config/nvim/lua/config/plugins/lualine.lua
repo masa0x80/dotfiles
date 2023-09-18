@@ -10,15 +10,19 @@ local filename = {
 	},
 }
 
-require("lsp-status").config({
-	status_symbol = "",
-	diagnostics = false,
-})
+local lsp_names = function()
+	local clients = {}
+	for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+		table.insert(clients, client.name)
+	end
+	return #clients == 0 and "" or "󱘖  " .. table.concat(clients, ", ")
+end
+
 require("lualine").setup({
 	sections = {
 		lualine_c = filename,
 		lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_y = { "require('lsp-status').status()" },
+		lualine_y = { lsp_names },
 		lualine_z = { "location", "progress" },
 	},
 	tabline = {

@@ -71,8 +71,6 @@ require("lazy").setup({
 			{ "folke/neodev.nvim", event = "LspAttach" },
 
 			{ "nvimdev/lspsaga.nvim", event = "LspAttach" },
-
-			{ "nvim-lua/lsp-status.nvim", event = "LspAttach" },
 		},
 	},
 	{
