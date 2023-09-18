@@ -20,10 +20,10 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 	command = "lua set_terminal_keymaps()",
 })
 
-keymap("n", ",,f", function()
+keymap("n", ";F", function()
 	vim.cmd(vim.v.count1 .. "ToggleTerm direction=float")
 end, { noremap = true, silent = true, desc = "<v:count1>ToggleTerm direction=float" })
-keymap("n", ",,j", function()
+keymap("n", ";J", function()
 	vim.cmd(vim.v.count1 .. "ToggleTerm direction=horizontal")
 end, { noremap = true, silent = true, desc = "<v:count1>ToggleTerm direction=horizontal" })
 

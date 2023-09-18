@@ -60,7 +60,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 local keymap = vim.keymap.set
-keymap("n", ",b", function()
+keymap("n", ",B", function()
 	dap.toggle_breakpoint()
 end, { noremap = true, desc = "DAP: Toggle Breakpoint" })
 keymap("n", ",dr", function()
