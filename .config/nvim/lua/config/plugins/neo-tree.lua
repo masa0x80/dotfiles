@@ -37,7 +37,7 @@ require("neo-tree").setup({
 			["t"] = "open_tabnew",
 			["f"] = "filter_on_submit",
 			["<C-]>"] = "set_root",
-			["<C-c><C-c>"] = "clear_filter",
+			["<Esc>"] = "clear_filter",
 			["i"] = {
 				"add",
 				config = {
@@ -76,6 +76,9 @@ require("neo-tree").setup({
 				vim.fn.setreg('"', path)
 				vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 			end,
+			["P"] = { "toggle_preview", config = { use_float = true } },
+			["L"] = "focus_preview",
+			["<C-c><C-c>"] = "cancel",
 		},
 	},
 	filesystem = {
