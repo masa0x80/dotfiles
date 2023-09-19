@@ -84,8 +84,8 @@ brew "lefthook"
 
 brew "markdownlint-cli"
 
-# for telekasten
-brew "viu"
+# for telescope / telekasten
+brew "catimg"
 
 tap "ryooooooga/tap"
 brew "zabrze"

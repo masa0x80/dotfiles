@@ -1,6 +1,7 @@
 local actions = require("telescope.actions")
 
-require("telescope").setup({
+local telescope = require("telescope")
+telescope.setup({
 	defaults = {
 		path_display = { "smart" },
 		sorting_strategy = "ascending",
@@ -14,6 +15,37 @@ require("telescope").setup({
 			"--column",
 			"--smart-case",
 			"--hidden",
+		},
+		preview = {
+			mime_hook = function(filepath, bufnr, opts)
+				local extension = function(filepath)
+					local split_path = vim.split(filepath:lower(), ".", { plain = true })
+					return split_path[#split_path]
+				end
+				local is_image = function(filepath)
+					local ext = extension(filepath)
+					local extensions = { "png", "jpg", "jpeg", "gif" }
+					return vim.tbl_contains(extensions, ext)
+				end
+				if is_image(filepath) then
+					local term = vim.api.nvim_open_term(bufnr, {})
+					local function send_output(_, data, _)
+						for _, d in ipairs(data) do
+							vim.api.nvim_chan_send(term, d .. "\r\n")
+						end
+					end
+					vim.fn.jobstart({
+						"catimg",
+						filepath, -- Terminal image viewer command
+					}, { on_stdout = send_output, stdout_buffered = true, pty = true })
+				else
+					require("telescope.previewers.utils").set_preview_message(
+						bufnr,
+						opts.winid,
+						"Binary cannot be previewed"
+					)
+				end
+			end,
 		},
 		mappings = {
 			i = {
@@ -65,11 +97,6 @@ require("telescope").setup({
 			},
 		},
 	},
-	extensions = {
-		coc = {
-			prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
-		},
-	},
 })
 
 local tb = require("telescope.builtin")
@@ -108,7 +135,7 @@ keymap("n", "<Leader>tt", tb.resume, { desc = "Telescope Resume" })
 keymap("n", "<Leader>;", tb.commands, { desc = "[;] Search Commands" })
 keymap("n", "<Leader>:", tb.command_history, { desc = "[:] Search Command History" })
 
-require("telescope").load_extension("ghq")
+telescope.load_extension("ghq")
 keymap("n", ";e", function()
 	require("telescope._extensions.ghq_builtin").list()
 end, { desc = "Telescope ghq list" })
