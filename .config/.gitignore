@@ -22,9 +22,6 @@
 /direnv/*
 !/direnv/direnvrc
 
-!/fish
-/fish/fish_variables
-
 !/hub
 /hub/*
 !/hub/config.tmpl
@@ -37,3 +34,5 @@
 /karabiner/*
 !/karabiner/karabiner.json
 !/karabiner/.editorconfig
+
+!/hadolint.yaml
