@@ -1,4 +1,5 @@
 local actions = require("telescope.actions")
+local fb_actions = require("telescope._extensions.file_browser.actions")
 
 local telescope = require("telescope")
 telescope.setup({
@@ -97,6 +98,28 @@ telescope.setup({
 			},
 		},
 	},
+	extensions = {
+		file_browser = {
+			hide_parent_dir = true,
+			grouped = true,
+			auto_depth = true,
+			hijack_netrw = true,
+			mappings = {
+				["i"] = {
+					["<C-u>"] = fb_actions.goto_parent_dir,
+					["<C-z>"] = fb_actions.toggle_all,
+				},
+				["n"] = {
+					["u"] = fb_actions.goto_parent_dir,
+					["<C-u>"] = fb_actions.goto_parent_dir,
+					["h"] = fb_actions.goto_parent_dir,
+					["<C-h>"] = fb_actions.goto_parent_dir,
+					["H"] = fb_actions.toggle_hidden,
+					["l"] = { "<CR>" },
+				},
+			},
+		},
+	},
 })
 
 local tb = require("telescope.builtin")
@@ -106,7 +129,7 @@ keymap("n", "<Leader><CR>", function()
 end, { desc = "[<CR>] Find existing buffers" })
 keymap("n", "<Leader>/", function()
 	-- You can pass additional configuration to telescope to change theme, layout, etc.
-	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+	tb.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 		winblend = 10,
 		previewer = false,
 	}))
@@ -136,6 +159,14 @@ keymap("n", "<Leader>;", tb.commands, { desc = "[;] Search Commands" })
 keymap("n", "<Leader>:", tb.command_history, { desc = "[:] Search Command History" })
 
 telescope.load_extension("ghq")
+telescope.load_extension("file_browser")
 keymap("n", ";e", function()
 	require("telescope._extensions.ghq_builtin").list()
 end, { desc = "Telescope ghq list" })
+
+keymap("n", "-", function()
+	telescope.extensions.file_browser.file_browser({
+		path = "%:p:h",
+		select_buffer = true,
+	})
+end, { noremap = true, silent = true, desc = "NeoTree float" })

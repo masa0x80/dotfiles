@@ -132,6 +132,10 @@ require("lazy").setup({
 					{ "renerocksai/calendar-vim" },
 				},
 			},
+			{
+				"nvim-telescope/telescope-file-browser.nvim",
+				event = "UIEnter",
+			},
 		},
 	},
 
