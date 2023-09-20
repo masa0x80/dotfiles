@@ -106,16 +106,21 @@ telescope.setup({
 			hijack_netrw = true,
 			mappings = {
 				["i"] = {
+					["<C-l>"] = actions.select_default,
+					["<C-h>"] = { "<BS>", type = "command" },
+					["<A-h>"] = fb_actions.toggle_hidden,
 					["<C-u>"] = fb_actions.goto_parent_dir,
 					["<C-z>"] = fb_actions.toggle_all,
 				},
 				["n"] = {
+					["l"] = actions.select_default,
+					["<C-l>"] = actions.select_default,
 					["u"] = fb_actions.goto_parent_dir,
 					["<C-u>"] = fb_actions.goto_parent_dir,
 					["h"] = fb_actions.goto_parent_dir,
 					["<C-h>"] = fb_actions.goto_parent_dir,
+					["<A-h>"] = fb_actions.goto_parent_dir,
 					["H"] = fb_actions.toggle_hidden,
-					["l"] = { "<CR>" },
 				},
 			},
 		},
@@ -157,6 +162,8 @@ keymap("n", "<Leader>tt", tb.resume, { desc = "Telescope Resume" })
 -- Commands
 keymap("n", "<Leader>;", tb.commands, { desc = "[;] Search Commands" })
 keymap("n", "<Leader>:", tb.command_history, { desc = "[:] Search Command History" })
+
+keymap("n", "<Leader>st", tb.git_status, { desc = "Telescope git_[st]atus" })
 
 telescope.load_extension("ghq")
 telescope.load_extension("file_browser")
