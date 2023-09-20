@@ -213,7 +213,7 @@ mason_lspconfig.setup_handlers({
 })
 
 local registry = require("mason-registry")
-for _, name in ipairs({ "black", "hadolint", "shellcheck", "shfmt", "stylua" }) do
+for _, name in ipairs({ "black", "hadolint", "shellcheck", "shfmt", "stylua", "tflint" }) do
 	local package = registry.get_package(name)
 	if not package:is_installed() then
 		package:install()
