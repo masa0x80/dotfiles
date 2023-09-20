@@ -132,6 +132,7 @@ local servers = {
 			},
 		},
 	},
+	stylelint_lsp = {},
 	tailwindcss = {},
 	terraformls = {},
 	tsserver = {
