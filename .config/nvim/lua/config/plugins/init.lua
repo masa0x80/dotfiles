@@ -58,7 +58,7 @@ require("lazy").setup({
 	-- LSP
 	{
 		"neovim/nvim-lspconfig",
-		lazy = false,
+		event = { "UIEnter", "BufReadPre" },
 		config = conf("lsp"),
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
@@ -75,7 +75,7 @@ require("lazy").setup({
 	},
 	{
 		"nvimdev/guard.nvim",
-		lazy = false,
+		event = "BufReadPre",
 		config = conf("guard"),
 		dependencies = {
 			"nvimdev/guard-collection",
@@ -229,7 +229,7 @@ require("lazy").setup({
 		event = { "CursorHold", "CursorMoved", "ModeChanged" },
 		config = conf("lualine"),
 		dependencies = {
-			{ "kyazdani42/nvim-web-devicons", lazy = true },
+			{ "kyazdani42/nvim-web-devicons", event = "UIEnter" },
 			{ "SmiteshP/nvim-navic", event = "LspAttach" },
 		},
 	},
@@ -312,7 +312,7 @@ require("lazy").setup({
 		event = "UIEnter",
 		config = conf("trouble"),
 		dependencies = {
-			{ "kyazdani42/nvim-web-devicons", lazy = true },
+			{ "kyazdani42/nvim-web-devicons", event = "UIEnter" },
 		},
 	},
 	{
@@ -367,8 +367,8 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
-			{ "kyazdani42/nvim-web-devicons", lazy = true },
-			{ "joshdick/onedark.vim", lazy = true },
+			{ "kyazdani42/nvim-web-devicons", event = "UIEnter" },
+			{ "joshdick/onedark.vim", event = "UIEnter" },
 		},
 	},
 
@@ -412,7 +412,7 @@ require("lazy").setup({
 	},
 	{
 		"lambdalisue/guise.vim",
-		lazy = false,
+		event = "VimEnter",
 		dependencies = {
 			"vim-denops/denops.vim",
 		},
