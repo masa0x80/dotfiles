@@ -133,7 +133,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.googlecode\\.iterm2$"
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.github\\.wez\\.wezterm$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -161,7 +162,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.googlecode\\.iterm2$"
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.github\\.wez\\.wezterm$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -188,13 +190,14 @@
                         ]
                     },
                     {
-                        "description": "iTerm2: カーソル移動: <Cmd-C-h> / <Cmd-C-l> ▶ <M-b> / <M-f>",
+                        "description": "Terminal: カーソル移動: <Cmd-C-h> / <Cmd-C-l> ▶ <M-b> / <M-f>",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.googlecode\\.iterm2$"
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.github\\.wez\\.wezterm$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -225,7 +228,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.googlecode\\.iterm2$"
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.github\\.wez\\.wezterm$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -313,7 +317,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.googlecode\\.iterm2$"
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.github\\.wez\\.wezterm$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     },
@@ -416,13 +421,14 @@
                         ]
                     },
                     {
-                        "description": "^Iterm2: テキスト削除: <C-w>",
+                        "description": "^Terminal: テキスト削除: <C-w>",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.googlecode\\.iterm2$"
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.github\\.wez\\.wezterm$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }

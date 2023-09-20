@@ -16,6 +16,7 @@ cask "neovide"
 cask "raycast"
 cask "rectangle"
 cask "session-manager-plugin"
+cask "wezterm"
 cask "visual-studio-code"
 
 cask "google-chrome"
