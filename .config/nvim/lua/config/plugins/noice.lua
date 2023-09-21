@@ -11,4 +11,4 @@ vim.keymap.set("n", ",m", "<Cmd>Noice<CR>", { noremap = true, silent = true, des
 local color = require("config.color")
 local set_hl = vim.api.nvim_set_hl
 -- Fix NoiceLspProgressTitle
-set_hl(0, "NonText", { fg = color.CommentGrey })
+set_hl(0, "NonText", { fg = color.COMMENT_GREY })
