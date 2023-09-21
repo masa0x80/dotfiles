@@ -32,7 +32,6 @@ if_installed bat export PAGER=bat
 
 # NOTE: must place after adding `/usr/local/bin` to PATH
 export SHELL=$(which zsh)
-export TERM=screen-256color
 
 # NOTE: must place before loading `$HOME/.config.local/zsh/zshrc
 if installed ghq; then
