@@ -19,7 +19,7 @@ local lsp_names = function()
 	for _, client in ipairs(filetype ~= nil and filetype.formatter or {}) do
 		table.insert(clients, client.cmd)
 	end
-	return #clients == 0 and "" or "󱘖  " .. table.concat(clients, ", ")
+	return #clients == 0 and "" or "  " .. table.concat(clients, ", ")
 end
 
 require("lualine").setup({
