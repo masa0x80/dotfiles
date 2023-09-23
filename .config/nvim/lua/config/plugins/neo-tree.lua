@@ -96,9 +96,10 @@ require("neo-tree").setup({
 })
 
 local keymap = vim.keymap.set
+keymap("n", "-", "<Cmd>Neotree float reveal_force_cwd<CR>", { noremap = true, silent = true, desc = "NeoTree float" })
 keymap(
 	"n",
-	"<Leader>e",
+	"<Leader>E",
 	"<Cmd>Neotree toggle left reveal_force_cwd<CR>",
 	{ noremap = true, silent = true, desc = "NeoTreeFocusToggle" }
 )

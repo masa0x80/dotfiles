@@ -171,9 +171,9 @@ keymap("n", ";e", function()
 	require("telescope._extensions.ghq_builtin").list()
 end, { desc = "Telescope ghq list" })
 
-keymap("n", "-", function()
+keymap("n", "<Leader>e", function()
 	telescope.extensions.file_browser.file_browser({
 		path = "%:p:h",
 		select_buffer = true,
 	})
-end, { noremap = true, silent = true, desc = "NeoTree float" })
+end, { noremap = true, silent = true, desc = "telescope-file-browser" })
