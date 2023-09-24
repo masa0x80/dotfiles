@@ -184,8 +184,6 @@ keymap("n", "<Leader>tt", tb.resume, { desc = "Telescope Resume" })
 keymap("n", "<Leader>;", tb.commands, { desc = "[;] Search Commands" })
 keymap("n", "<Leader>:", tb.command_history, { desc = "[:] Search Command History" })
 
-keymap("n", "<Leader>st", tb.git_status, { desc = "Telescope git_[st]atus" })
-
 telescope.load_extension("ghq")
 telescope.load_extension("file_browser")
 keymap("n", ";e", function()
