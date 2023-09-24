@@ -65,57 +65,62 @@ wezterm.on("format-tab-title", function(tab, _, _, _, hover)
 	}
 end)
 
+local old_m, date, time, text, bat = "", "", "", "", ""
 wezterm.on("update-right-status", function(window)
-	local date = table.concat({ nerdfonts.cod_calendar, wezterm.strftime("%Y-%m-%d %a") }, " ")
-	local h = tonumber(wezterm.strftime("%H")) % 12
-	local clock_icon = ""
-	if h == 1 then
-		clock_icon = nerdfonts.md_clock_time_one_outline
-	elseif h == 2 then
-		clock_icon = nerdfonts.md_clock_time_two_outline
-	elseif h == 3 then
-		clock_icon = nerdfonts.md_clock_time_three_outline
-	elseif h == 4 then
-		clock_icon = nerdfonts.md_clock_time_four_outline
-	elseif h == 5 then
-		clock_icon = nerdfonts.md_clock_time_five_outline
-	elseif h == 6 then
-		clock_icon = nerdfonts.md_clock_time_six_outline
-	elseif h == 7 then
-		clock_icon = nerdfonts.md_clock_time_seven_outline
-	elseif h == 8 then
-		clock_icon = nerdfonts.md_clock_time_eight_outline
-	elseif h == 9 then
-		clock_icon = nerdfonts.md_clock_time_nine_outline
-	elseif h == 10 then
-		clock_icon = nerdfonts.md_clock_time_ten_outline
-	elseif h == 11 then
-		clock_icon = nerdfonts.md_clock_time_eleven_outline
-	else
-		clock_icon = nerdfonts.md_clock_time_twelve_outline
-	end
-	local time = table.concat({ clock_icon, wezterm.strftime("%H:%M:%S") }, " ")
+	local update_flag = old_m == "" or old_m ~= wezterm.strftime("%M")
+	if update_flag then
+		old_m = wezterm.strftime("%M")
+		date = nerdfonts.cod_calendar .. " " .. wezterm.strftime("%Y-%m-%d %a") .. " "
 
-	local bat = ""
-	for _, b in ipairs(wezterm.battery_info()) do
-		local icon = ""
-		bat = b.state_of_charge * 100
-		if bat > 80 then
-			icon = nerdfonts.fa_battery_full
-		elseif bat > 75 then
-			icon = nerdfonts.fa_battery_three_quarters
-		elseif bat > 50 then
-			icon = nerdfonts.fa_battery_half
-		elseif bat > 25 then
-			icon = nerdfonts.fa_battery_quarter
+		local clock_icon = ""
+		local h = tonumber(wezterm.strftime("%H")) % 12
+		if h == 1 then
+			clock_icon = nerdfonts.md_clock_time_one_outline
+		elseif h == 2 then
+			clock_icon = nerdfonts.md_clock_time_two_outline
+		elseif h == 3 then
+			clock_icon = nerdfonts.md_clock_time_three_outline
+		elseif h == 4 then
+			clock_icon = nerdfonts.md_clock_time_four_outline
+		elseif h == 5 then
+			clock_icon = nerdfonts.md_clock_time_five_outline
+		elseif h == 6 then
+			clock_icon = nerdfonts.md_clock_time_six_outline
+		elseif h == 7 then
+			clock_icon = nerdfonts.md_clock_time_seven_outline
+		elseif h == 8 then
+			clock_icon = nerdfonts.md_clock_time_eight_outline
+		elseif h == 9 then
+			clock_icon = nerdfonts.md_clock_time_nine_outline
+		elseif h == 10 then
+			clock_icon = nerdfonts.md_clock_time_ten_outline
+		elseif h == 11 then
+			clock_icon = nerdfonts.md_clock_time_eleven_outline
 		else
-			icon = nerdfonts.fa_battery_empty
+			clock_icon = nerdfonts.md_clock_time_twelve_outline
 		end
-		bat = string.format(icon .. "  %.0f%%", bat)
+		time = clock_icon .. " " .. wezterm.strftime("%H:%M:")
+
+		for _, b in ipairs(wezterm.battery_info()) do
+			local icon = ""
+			bat = b.state_of_charge * 100
+			if bat > 80 then
+				icon = nerdfonts.fa_battery_full
+			elseif bat > 75 then
+				icon = nerdfonts.fa_battery_three_quarters
+			elseif bat > 50 then
+				icon = nerdfonts.fa_battery_half
+			elseif bat > 25 then
+				icon = nerdfonts.fa_battery_quarter
+			else
+				icon = nerdfonts.fa_battery_empty
+			end
+			bat = string.format(" " .. icon .. "  %.0f%% ", bat)
+		end
 	end
 
 	window:set_right_status(wezterm.format({
-		{ Text = date .. "  " .. time .. "  " .. bat .. " " },
+		{ Text = date .. time .. wezterm.strftime("%S") .. bat },
 	}))
 end)
 

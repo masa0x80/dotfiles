@@ -20,7 +20,10 @@ config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 64
 config.scrollback_lines = 10000
 config.macos_forward_to_ime_modifier_mask = "SHIFT|CTRL"
+config.switch_to_last_active_tab_when_closing_tab = true
 config.disable_default_key_bindings = true
+config.status_update_interval = 250
+
 config.window_padding = {
 	left = 10,
 	right = 5,
