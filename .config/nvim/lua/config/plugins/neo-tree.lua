@@ -1,3 +1,5 @@
+local utils = require("config.utils")
+
 require("neo-tree").setup({
 	use_default_mappings = false,
 	popup_border_style = "rounded",
@@ -22,66 +24,78 @@ require("neo-tree").setup({
 			folder_empty_open = "",
 		},
 	},
-	window = {
-		mappings = {
-			["u"] = "navigate_up",
-			["l"] = "open",
-			["<CR>"] = "open",
-			["<BS>"] = "close_node",
-			["h"] = "close_node",
-			["H"] = "toggle_hidden",
-			["s"] = "open_split",
-			["-"] = "open_split",
-			["v"] = "open_vsplit",
-			["|"] = "open_vsplit",
-			["t"] = "open_tabnew",
-			["f"] = "filter_on_submit",
-			["<C-]>"] = "set_root",
-			["<Esc>"] = "clear_filter",
-			["i"] = {
-				"add",
-				config = {
-					show_path = "relative",
+	filesystem = {
+		window = {
+			mappings = {
+				["u"] = "navigate_up",
+				["l"] = "open",
+				["<CR>"] = "open",
+				["<BS>"] = "close_node",
+				["h"] = "close_node",
+				["H"] = "toggle_hidden",
+				["s"] = "open_split",
+				["-"] = "open_split",
+				["v"] = "open_vsplit",
+				["|"] = "open_vsplit",
+				["t"] = "open_tabnew",
+				["f"] = "filter_on_submit",
+				["<C-]>"] = "set_root",
+				["<Esc>"] = "clear_filter",
+				["i"] = {
+					"add",
+					config = {
+						show_path = "relative",
+					},
 				},
+				["o"] = "add_directory",
+				["d"] = "delete",
+				["r"] = "rename",
+				["c"] = "copy",
+				["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+				["q"] = "close_window",
+				["R"] = "refresh",
+				["?"] = "show_help",
+				["[g"] = "prev_git_modified",
+				["]g"] = "next_git_modified",
+				["C"] = "close_all_nodes",
+				["yy"] = "copy_filename",
+				["Y"] = "copy_relative_filename",
+				["<C-y>"] = "copy_absolute_filename",
+				["<A-p>"] = { "toggle_preview", config = { use_float = true } },
+				["<C-w><C-w>"] = "focus_preview",
+				["<C-c><C-c>"] = "cancel",
+				["<C-;>"] = "preview",
 			},
-			["o"] = "add_directory",
-			["d"] = "delete",
-			["r"] = "rename",
-			["c"] = "copy",
-			["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
-			["q"] = "close_window",
-			["R"] = "refresh",
-			["?"] = "show_help",
-			["[g"] = "prev_git_modified",
-			["]g"] = "next_git_modified",
-			["C"] = "close_all_nodes",
-			["yy"] = function(state)
+		},
+		commands = {
+			copy_filename = function(state)
 				local node = state.tree:get_node()
 				local name = node.name
 				vim.fn.setreg("+", name)
 				vim.fn.setreg('"', name)
 				vim.notify(name, vim.log.levels.INFO, { title = "Copied" })
 			end,
-			["Y"] = function(state)
+			copy_relative_filename = function(state)
 				local node = state.tree:get_node()
 				local path = vim.fn.fnamemodify(node.path, ":.")
 				vim.fn.setreg("+", path)
 				vim.fn.setreg('"', path)
 				vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 			end,
-			["<C-y>"] = function(state)
+			copy_absolute_filename = function(state)
 				local node = state.tree:get_node()
 				local path = node.path
 				vim.fn.setreg("+", path)
 				vim.fn.setreg('"', path)
 				vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 			end,
-			["P"] = { "toggle_preview", config = { use_float = true } },
-			["L"] = "focus_preview",
-			["<C-c><C-c>"] = "cancel",
+			preview = function(state)
+				local node = state.tree:get_node()
+				if node.type == "file" then
+					utils.preview(node.path)
+				end
+			end,
 		},
-	},
-	filesystem = {
 		filtered_items = {
 			hide_dotfiles = false,
 			hide_hidden = false,

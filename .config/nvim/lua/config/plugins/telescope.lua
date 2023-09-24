@@ -1,5 +1,6 @@
 local actions = require("telescope.actions")
 local fb_actions = require("telescope._extensions.file_browser.actions")
+local utils = require("config.utils")
 
 local telescope = require("telescope")
 telescope.setup({
@@ -59,6 +60,11 @@ telescope.setup({
 					local path = vim.fn.fnamemodify(selection.path, ":p:t")
 					vim.notify(path, vim.log.levels.INFO, { title = "File Path" })
 				end,
+				["<C-;>"] = function()
+					local selection = require("telescope.actions.state").get_selected_entry()
+					local path = selection.path
+					utils.preview(path)
+				end,
 			},
 			n = {
 				["<C-n>"] = actions.move_selection_next,
@@ -95,6 +101,11 @@ telescope.setup({
 					vim.fn.setreg('"', path)
 					vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 				end,
+				["<C-;>"] = function()
+					local selection = require("telescope.actions.state").get_selected_entry()
+					local path = selection.path
+					utils.preview(path)
+				end,
 			},
 		},
 	},
@@ -111,6 +122,11 @@ telescope.setup({
 					["<A-h>"] = fb_actions.toggle_hidden,
 					["<C-u>"] = fb_actions.goto_parent_dir,
 					["<C-z>"] = fb_actions.toggle_all,
+					["<C-;>"] = function()
+						local selection = require("telescope.actions.state").get_selected_entry()
+						local path = selection.path
+						utils.preview(path)
+					end,
 				},
 				["n"] = {
 					["l"] = actions.select_default,
@@ -121,6 +137,11 @@ telescope.setup({
 					["<C-h>"] = fb_actions.goto_parent_dir,
 					["<A-h>"] = fb_actions.goto_parent_dir,
 					["H"] = fb_actions.toggle_hidden,
+					["<C-;>"] = function()
+						local selection = require("telescope.actions.state").get_selected_entry()
+						local path = selection.path
+						utils.preview(path)
+					end,
 				},
 			},
 		},
