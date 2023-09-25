@@ -57,9 +57,7 @@ M.keys = {
 	{
 		key = "!",
 		mods = "LEADER",
-		action = wezterm.action_callback(function(_, pane)
-			pane:move_to_new_tab()
-		end),
+		action = act.EmitEvent("move-tab-next-to-current-tab"),
 	},
 	{
 		key = "r",
@@ -296,6 +294,7 @@ M.key_tables = {
 		{ key = "c", mods = "CTRL", action = act.CopyMode("Close") },
 		{ key = "d", mods = "CTRL", action = act.CopyMode({ MoveByPage = 0.5 }) },
 		{ key = "e", action = act.CopyMode("MoveForwardWordEnd") },
+		{ key = "e", mods = "CTRL", action = act.CopyMode("MoveDown") },
 		{ key = "f", action = act.CopyMode({ JumpForward = { prev_char = false } }) },
 		{ key = "f", mods = "ALT", action = act.CopyMode("MoveForwardWord") },
 		{ key = "f", mods = "CTRL", action = act.CopyMode("PageDown") },
@@ -312,6 +311,7 @@ M.key_tables = {
 		{ key = "u", mods = "CTRL", action = act.CopyMode({ MoveByPage = -0.5 }) },
 		{ key = "v", action = act.CopyMode({ SetSelectionMode = "Cell" }) },
 		{ key = "v", mods = "CTRL", action = act.CopyMode({ SetSelectionMode = "Block" }) },
+		{ key = "y", mods = "CTRL", action = act.CopyMode("MoveUp") },
 		{ key = "w", action = act.CopyMode("MoveForwardWord") },
 		{
 			key = "y",

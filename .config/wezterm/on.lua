@@ -65,12 +65,12 @@ wezterm.on("format-tab-title", function(tab, _, _, _, hover)
 	}
 end)
 
-local old_m, date, time, text, bat = "", "", "", "", ""
+local old_m, date, time, bat = "", "", "", ""
 wezterm.on("update-right-status", function(window)
 	local update_flag = old_m == "" or old_m ~= wezterm.strftime("%M")
 	if update_flag then
 		old_m = wezterm.strftime("%M")
-		date = nerdfonts.cod_calendar .. " " .. wezterm.strftime("%Y-%m-%d %a") .. " "
+		date = nerdfonts.cod_calendar .. " " .. wezterm.strftime("%Y-%m-%d %a") .. "  "
 
 		local clock_icon = ""
 		local h = tonumber(wezterm.strftime("%H")) % 12
@@ -115,7 +115,7 @@ wezterm.on("update-right-status", function(window)
 			else
 				icon = nerdfonts.fa_battery_empty
 			end
-			bat = string.format(" " .. icon .. "  %.0f%% ", bat)
+			bat = string.format("  " .. icon .. "  %.0f%% ", bat)
 		end
 	end
 
@@ -162,5 +162,18 @@ wezterm.on("spawn-tab-next-to-current-tab", function(window, pane)
 		end
 	end
 	window:perform_action(wezterm.action.SpawnTab("CurrentPaneDomain"), pane)
+	window:perform_action(wezterm.action.MoveTab(index + 1), pane)
+end)
+
+wezterm.on("move-tab-next-to-current-tab", function(window, pane)
+	local tab = window:active_tab()
+	local index = 0
+	for _, t in ipairs(tab:window():tabs_with_info()) do
+		if t.is_active then
+			index = t.index
+		end
+	end
+	pane:move_to_new_tab()
+	window:perform_action(wezterm.action.ActivateTab(-1), pane)
 	window:perform_action(wezterm.action.MoveTab(index + 1), pane)
 end)
