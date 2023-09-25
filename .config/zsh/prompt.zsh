@@ -1,4 +1,11 @@
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_no_bold[green]%}"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
+ZSH_THEME_GIT_PROMPT_STASHED="%{$fg[blue]%} "
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}"
+ZSH_THEME_GIT_PROMPT_TAGS_PREFIX=" "
 _PS1=$'
 %F{blue}%~%f $(gitprompt)%f
 '
