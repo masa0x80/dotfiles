@@ -2,7 +2,7 @@ local utils = require("config.utils")
 
 require("neo-tree").setup({
 	use_default_mappings = false,
-	popup_border_style = "rounded",
+	popup_border_style = "solid",
 	default_component_configs = {
 		git_status = {
 			symbols = {
@@ -53,8 +53,37 @@ require("neo-tree").setup({
 			["<A-p>"] = { "toggle_preview", config = { use_float = true } },
 			["<C-w><C-w>"] = "focus_preview",
 			["<C-c><C-c>"] = "cancel",
-			["<C-;>"] = "preview",
+			["<C-;>"] = "custom_preview",
 		},
+	},
+	commands = {
+		copy_filename = function(state)
+			local node = state.tree:get_node()
+			local name = node.name
+			vim.fn.setreg("+", name)
+			vim.fn.setreg('"', name)
+			vim.notify(name, vim.log.levels.INFO, { title = "Copied" })
+		end,
+		copy_relative_filename = function(state)
+			local node = state.tree:get_node()
+			local path = vim.fn.fnamemodify(node.path, ":.")
+			vim.fn.setreg("+", path)
+			vim.fn.setreg('"', path)
+			vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
+		end,
+		copy_absolute_filename = function(state)
+			local node = state.tree:get_node()
+			local path = node.path
+			vim.fn.setreg("+", path)
+			vim.fn.setreg('"', path)
+			vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
+		end,
+		custom_preview = function(state)
+			local node = state.tree:get_node()
+			if node.type == "file" then
+				utils.preview(node.path)
+			end
+		end,
 	},
 	filesystem = {
 		window = {
@@ -70,35 +99,6 @@ require("neo-tree").setup({
 				["Y"] = "copy_relative_filename",
 				["<C-y>"] = "copy_absolute_filename",
 			},
-		},
-		commands = {
-			copy_filename = function(state)
-				local node = state.tree:get_node()
-				local name = node.name
-				vim.fn.setreg("+", name)
-				vim.fn.setreg('"', name)
-				vim.notify(name, vim.log.levels.INFO, { title = "Copied" })
-			end,
-			copy_relative_filename = function(state)
-				local node = state.tree:get_node()
-				local path = vim.fn.fnamemodify(node.path, ":.")
-				vim.fn.setreg("+", path)
-				vim.fn.setreg('"', path)
-				vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
-			end,
-			copy_absolute_filename = function(state)
-				local node = state.tree:get_node()
-				local path = node.path
-				vim.fn.setreg("+", path)
-				vim.fn.setreg('"', path)
-				vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
-			end,
-			preview = function(state)
-				local node = state.tree:get_node()
-				if node.type == "file" then
-					utils.preview(node.path)
-				end
-			end,
 		},
 		filtered_items = {
 			hide_dotfiles = false,
