@@ -1,4 +1,5 @@
 require("config._")
 require("config.options")
+require("config.setcellwidths")
 require("config.keymaps")
 require("config.plugins")
