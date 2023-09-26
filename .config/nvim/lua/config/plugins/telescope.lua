@@ -18,49 +18,18 @@ telescope.setup({
 			"--smart-case",
 			"--hidden",
 		},
-		preview = {
-			mime_hook = function(filepath, bufnr, opts)
-				local extension = function(filepath)
-					local split_path = vim.split(filepath:lower(), ".", { plain = true })
-					return split_path[#split_path]
-				end
-				local is_image = function(filepath)
-					local ext = extension(filepath)
-					local extensions = { "png", "jpg", "jpeg", "gif" }
-					return vim.tbl_contains(extensions, ext)
-				end
-				if is_image(filepath) then
-					local term = vim.api.nvim_open_term(bufnr, {})
-					local function send_output(_, data, _)
-						for _, d in ipairs(data) do
-							vim.api.nvim_chan_send(term, d .. "\r\n")
-						end
-					end
-					vim.fn.jobstart({
-						"catimg",
-						filepath, -- Terminal image viewer command
-					}, { on_stdout = send_output, stdout_buffered = true, pty = true })
-				else
-					require("telescope.previewers.utils").set_preview_message(
-						bufnr,
-						opts.winid,
-						"Binary cannot be previewed"
-					)
-				end
-			end,
-		},
 		mappings = {
 			i = {
 				["<C-k>"] = actions.preview_scrolling_up,
 				["<C-j>"] = actions.preview_scrolling_down,
 				["<C-c>"] = { "<Esc>", type = "command" },
 				["<C-c><C-c>"] = actions.close,
-				["<C-g><C-g>"] = function()
+				["<A-l>"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = vim.fn.fnamemodify(selection.path, ":p:t")
 					vim.notify(path, vim.log.levels.INFO, { title = "File Path" })
 				end,
-				["<C-;>"] = function()
+				["<C-g>"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = selection.path
 					utils.preview(path)
@@ -75,7 +44,7 @@ telescope.setup({
 				["<C-j>"] = actions.preview_scrolling_down,
 				["q"] = actions.close,
 				["<C-c>"] = actions.close,
-				["<C-g><C-g>"] = function()
+				["<A-l>"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = vim.fn.fnamemodify(selection.path, ":p:t")
 					vim.notify(path, vim.log.levels.INFO, { title = "File Path" })
@@ -101,7 +70,7 @@ telescope.setup({
 					vim.fn.setreg('"', path)
 					vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 				end,
-				["<C-;>"] = function()
+				["<C-g>"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = selection.path
 					utils.preview(path)
@@ -122,7 +91,7 @@ telescope.setup({
 					["<A-h>"] = fb_actions.toggle_hidden,
 					["<C-u>"] = fb_actions.goto_parent_dir,
 					["<C-z>"] = fb_actions.toggle_all,
-					["<C-;>"] = function()
+					["<C-g>"] = function()
 						local selection = require("telescope.actions.state").get_selected_entry()
 						local path = selection.path
 						utils.preview(path)
@@ -137,7 +106,7 @@ telescope.setup({
 					["<C-h>"] = fb_actions.goto_parent_dir,
 					["<A-h>"] = fb_actions.goto_parent_dir,
 					["H"] = fb_actions.toggle_hidden,
-					["<C-;>"] = function()
+					["<C-g>"] = function()
 						local selection = require("telescope.actions.state").get_selected_entry()
 						local path = selection.path
 						utils.preview(path)

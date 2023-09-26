@@ -4,13 +4,19 @@ M.preview = function(path)
 	local ext = path:match("^.+%.(.+)$")
 	local List = require("plenary.collections.py_list")
 	if List({ "bmp", "jpg", "jpeg", "png", "gif", "ico" }):contains(string.lower(ext)) then
-		vim.fn.execute(
-			string.format(
-				'!wezterm cli spawn --new-window -- zsh -c \'wezterm imgcat "%s"; echo "%s";  read\'',
-				path,
-				path
+		if os.getenv("TMUX") == nil then
+			vim.fn.execute(
+				string.format(
+					'!wezterm cli spawn --new-window -- zsh -c \'wezterm imgcat "%s"; echo "%s";  read\'',
+					path,
+					path
+				)
 			)
-		)
+		else
+			vim.fn.execute(
+				string.format('!tmux popup \'bat --style="numbers,changes,header,grid" "%s"; read\'', path, path)
+			)
+		end
 	elseif
 		List({
 			"svg",
@@ -43,13 +49,19 @@ M.preview = function(path)
 	then
 		vim.fn.execute(string.format("!open '%s'", path))
 	else
-		vim.fn.execute(
-			string.format(
-				'!wezterm cli spawn --new-window -- zsh -c \'bat --style="numbers,changes,header,grid" "%s"; read\'',
-				path,
-				path
+		if os.getenv("TMUX") == nil then
+			vim.fn.execute(
+				string.format(
+					'!wezterm cli spawn --new-window -- zsh -c \'bat --style="numbers,changes,header,grid" "%s"; read\'',
+					path,
+					path
+				)
 			)
-		)
+		else
+			vim.fn.execute(
+				string.format('!tmux popup \'bat --style="numbers,changes,header,grid" "%s"; read\'', path, path)
+			)
+		end
 	end
 end
 
