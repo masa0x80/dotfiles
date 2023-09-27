@@ -1,5 +1,3 @@
 #!/bin/bash
 
-textlint --fix "$1" >/dev/null
-markdownlint --fix "$1"
-cat "$1"
+textlint --fix "$1" >/dev/null && markdownlint --fix "$1" && cat "$1"

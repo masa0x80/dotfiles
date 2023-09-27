@@ -1,4 +1,3 @@
 #!/bin/bash
 
-textlint --fix "$1" >/dev/null
-cat "$1"
+textlint --fix "$1" >/dev/null && cat "$1"
