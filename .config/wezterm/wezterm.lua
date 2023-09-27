@@ -22,8 +22,8 @@ config.scrollback_lines = 10000
 config.macos_forward_to_ime_modifier_mask = "SHIFT|CTRL"
 config.switch_to_last_active_tab_when_closing_tab = true
 config.disable_default_key_bindings = true
+config.front_end = "WebGpu"
 config.status_update_interval = 250
-
 config.window_padding = {
 	left = 10,
 	right = 5,
