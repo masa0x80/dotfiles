@@ -119,9 +119,9 @@ telescope.setup({
 
 local tb = require("telescope.builtin")
 local keymap = vim.keymap.set
-keymap("n", "<Leader><CR>", function()
+keymap("n", "<Leader>b", function()
 	tb.buffers({ sort_mru = true, ignore_current_buffer = true })
-end, { desc = "[<CR>] Find existing buffers" })
+end, { desc = "Find existing [B]uffers" })
 keymap("n", "<Leader>/", function()
 	-- You can pass additional configuration to telescope to change theme, layout, etc.
 	tb.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
