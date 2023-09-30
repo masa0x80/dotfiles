@@ -8,10 +8,21 @@ ft("javascript,javascriptreact,typescript,typescriptreact,vue,css,scss,less,html
 
 ft("lua,luau"):fmt("stylua")
 
-ft("markdown"):fmt({
-	cmd = "markdownlint-fix-wrap",
-	fname = true,
-})
+ft("markdown")
+	:fmt({
+		cmd = "textlint",
+		args = { "--fix", "--quiet" },
+		fname = true,
+	})
+	:append({
+		cmd = "markdownlint",
+		args = { "--fix", "--quiet" },
+		fname = true,
+	})
+	:append({
+		cmd = "cat",
+		fname = true,
+	})
 
 ft("python"):fmt("black")
 
@@ -22,7 +33,11 @@ ft("sh"):fmt({
 })
 
 ft("txt"):fmt({
-	cmd = "textlint-fix-wrap",
+	cmd = "textlint",
+	args = { "--fix", "--quiet" },
+	fname = true,
+}):append({
+	cmd = "cat",
 	fname = true,
 })
 
