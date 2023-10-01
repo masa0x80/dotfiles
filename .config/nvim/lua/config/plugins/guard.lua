@@ -2,6 +2,15 @@ local ft = require("guard.filetype")
 
 ft("dockerfile"):lint("hadolint")
 
+ft("go"):fmt({
+	cmd = "goimports",
+	args = { "-w" },
+	fname = true,
+}):append({
+	cmd = "cat",
+	fname = true,
+})
+
 ft("javascript,javascriptreact,typescript,typescriptreact,vue,css,scss,less,html,json,jsonc,yaml,graphql,handlebars"):fmt(
 	"prettier"
 )
