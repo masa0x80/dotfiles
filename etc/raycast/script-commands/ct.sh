@@ -29,6 +29,7 @@ case "$identifier" in
   ;;
 esac
 
+export LANG="ja_JP.UTF-8"
 url=$(osascript -e "tell application \"$browser\" to get URL of active tab of front window")
 title=$(osascript -e "tell application \"$browser\" to get title of active tab of front window")
 trimmedTitle=$(echo "$title" | sed -n 's/ [-|·] [^-|·]*$//p')
