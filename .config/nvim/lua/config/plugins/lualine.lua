@@ -17,7 +17,10 @@ local lsp_names = function()
 	end
 	local filetype = require("guard.filetype")[vim.api.nvim_eval("&filetype")]
 	for _, client in ipairs(filetype ~= nil and filetype.formatter or {}) do
-		table.insert(clients, client.cmd)
+		local cmd = client.cmd
+		if cmd ~= "cat" then
+			table.insert(clients, cmd)
+		end
 	end
 	return #clients == 0 and "" or "  " .. table.concat(clients, ", ")
 end
