@@ -166,6 +166,21 @@ M.keys = {
 	},
 
 	{
+		key = "b",
+		mods = "LEADER",
+		action = act.SpawnCommandInNewTab({
+			args = { os.getenv("HOME") .. "/.bin/select-wezterm-tab" },
+		}),
+	},
+	{
+		key = "b",
+		mods = "LEADER|CTRL",
+		action = act.SpawnCommandInNewTab({
+			args = { os.getenv("HOME") .. "/.bin/select-wezterm-tab" },
+		}),
+	},
+
+	{
 		key = "v",
 		mods = "SUPER",
 		action = act.PasteFrom("Clipboard"),
