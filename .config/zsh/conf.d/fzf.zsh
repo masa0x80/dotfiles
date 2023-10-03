@@ -15,8 +15,10 @@ if (( ${+commands[bat]} )); then
   export FZF_CTRL_T_OPTS="--preview 'command bat --color=always --line-range :500 {}'"
 fi
 
-export FZF_TMUX_OPTS="-p 80% --border none"
-alias fzf="fzf-tmux ${FZF_TMUX_OPTS-}"
+if [ -n "$TMUX" ]; then
+  export FZF_TMUX_OPTS="-p 80% --border none"
+  alias fzf="fzf-tmux ${FZF_TMUX_OPTS-}"
+fi
 
 if (( ${+commands[fd]} && ${+commands[bat]} )); then
   # CTRL-T - Paste the selected file path(s) into the command line
