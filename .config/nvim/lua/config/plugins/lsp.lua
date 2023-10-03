@@ -109,6 +109,7 @@ end
 local servers = {
 	bashls = {},
 	eslint = {},
+	gopls = {},
 	jdtls = {},
 	jsonls = {
 		settings = {
