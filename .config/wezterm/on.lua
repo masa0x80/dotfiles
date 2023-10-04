@@ -144,9 +144,9 @@ wezterm.on("trigger-nvim-with-scrollback", function(window, pane)
 	f:flush()
 	f:close()
 	window:perform_action(
-		wezterm.action({ SpawnCommandInNewTab = {
+		wezterm.action.SpawnCommandInNewTab({
 			args = { "nvim", name },
-		} }),
+		}),
 		pane
 	)
 	wezterm.sleep_ms(1000)
@@ -176,4 +176,20 @@ wezterm.on("move-tab-next-to-current-tab", function(window, pane)
 	pane:move_to_new_tab()
 	window:perform_action(wezterm.action.ActivateTab(-1), pane)
 	window:perform_action(wezterm.action.MoveTab(index + 1), pane)
+end)
+
+wezterm.on("select-tab", function(window, pane)
+	local tab = window:active_tab()
+	local index = 0
+	for _, t in ipairs(tab:window():tabs_with_info()) do
+		if t.is_active then
+			index = t.index
+		end
+	end
+	window:perform_action(
+		wezterm.action.SpawnCommandInNewTab({
+			args = { os.getenv("HOME") .. "/.bin/select-wezterm-tab", tostring(index) },
+		}),
+		pane
+	)
 end)
