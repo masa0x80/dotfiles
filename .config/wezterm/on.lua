@@ -188,7 +188,7 @@ wezterm.on("select-tab", function(window, pane)
 	end
 	window:perform_action(
 		wezterm.action.SpawnCommandInNewTab({
-			args = { os.getenv("HOME") .. "/.bin/select-wezterm-tab", tostring(index) },
+			args = { os.getenv("HOME") .. "/.bin/_select-wezterm-tab", tostring(index) },
 		}),
 		pane
 	)
