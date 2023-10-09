@@ -15,11 +15,17 @@ local lsp_names = function()
 	for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
 		table.insert(clients, client.name)
 	end
-	local filetype = require("guard.filetype")[vim.api.nvim_eval("&filetype")]
-	for _, client in ipairs(filetype ~= nil and filetype.formatter or {}) do
-		local cmd = client.cmd
-		if cmd ~= "cat" then
-			table.insert(clients, cmd)
+	local ft = vim.api.nvim_eval("&filetype")
+	local filetype = require("guard.filetype")[ft]
+	for _, client in ipairs(filetype ~= nil and filetype.linter or {}) do
+		table.insert(clients, client.cmd)
+	end
+	filetype = require("conform").formatters_by_ft[ft]
+	for _, formatter in ipairs(filetype or {}) do
+		if type(formatter) == "table" then
+			table.insert(clients, "{" .. table.concat(formatter, ",") .. "}")
+		else
+			table.insert(clients, formatter)
 		end
 	end
 	return #clients == 0 and "" or "  " .. table.concat(clients, ", ")

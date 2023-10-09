@@ -81,6 +81,11 @@ require("lazy").setup({
 			"nvimdev/guard-collection",
 		},
 	},
+	{
+		"stevearc/conform.nvim",
+		event = "BufReadPre",
+		config = conf("conform"),
+	},
 
 	-- Debug
 	{
