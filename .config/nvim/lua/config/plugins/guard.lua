@@ -24,6 +24,10 @@ ft("markdown")
 		fname = true,
 	})
 	:append({
+		cmd = "cat",
+		fname = true,
+	})
+	:append({
 		cmd = "markdownlint",
 		args = { "--fix", "--quiet" },
 		fname = true,
