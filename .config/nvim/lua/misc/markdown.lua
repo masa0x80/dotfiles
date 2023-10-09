@@ -9,5 +9,4 @@ if vim.fn.executable("markdown2confluence") == 1 then
 		vim.fn.execute((vim.fn.line(".") + 1) .. ",$d")
 		vim.fn.execute("%y")
 	end, {})
-	-- command! Md2Confluence call <SID>generate_confluence_markup()
 end
