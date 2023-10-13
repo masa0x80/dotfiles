@@ -60,7 +60,31 @@ M.keys = {
 		action = act.EmitEvent("move-tab-next-to-current-tab"),
 	},
 	{
-		key = "r",
+		key = "J",
+		mods = "LEADER",
+		action = act.ActivateKeyTable({
+			name = "resize_pane",
+			one_shot = false,
+		}),
+	},
+	{
+		key = "K",
+		mods = "LEADER",
+		action = act.ActivateKeyTable({
+			name = "resize_pane",
+			one_shot = false,
+		}),
+	},
+	{
+		key = "H",
+		mods = "LEADER",
+		action = act.ActivateKeyTable({
+			name = "resize_pane",
+			one_shot = false,
+		}),
+	},
+	{
+		key = "L",
 		mods = "LEADER",
 		action = act.ActivateKeyTable({
 			name = "resize_pane",
@@ -333,15 +357,19 @@ M.key_tables = {
 	resize_pane = {
 		{ key = "LeftArrow", action = act.AdjustPaneSize({ "Left", 1 }) },
 		{ key = "h", action = act.AdjustPaneSize({ "Left", 1 }) },
+		{ key = "H", action = act.AdjustPaneSize({ "Left", 1 }) },
 
 		{ key = "RightArrow", action = act.AdjustPaneSize({ "Right", 1 }) },
 		{ key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
+		{ key = "L", action = act.AdjustPaneSize({ "Right", 1 }) },
 
 		{ key = "UpArrow", action = act.AdjustPaneSize({ "Up", 1 }) },
 		{ key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
+		{ key = "K", action = act.AdjustPaneSize({ "Up", 1 }) },
 
 		{ key = "DownArrow", action = act.AdjustPaneSize({ "Down", 1 }) },
 		{ key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
+		{ key = "J", action = act.AdjustPaneSize({ "Down", 1 }) },
 
 		{ key = "Escape", action = "PopKeyTable" },
 		{ key = "Enter", action = "PopKeyTable" },
