@@ -48,8 +48,6 @@ local options = {
 		vim.fn.fnameescape(vim.fn.expand("$SCRAPBOOK_DIR")),
 	},
 	suffixesadd = { ".md", ".lua" },
-	spell = true,
-	spelllang = { "en_us", "cjk" },
 }
 
 for k, v in pairs(options) do

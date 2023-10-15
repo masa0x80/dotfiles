@@ -16,11 +16,11 @@ local lsp_names = function()
 		table.insert(clients, client.name)
 	end
 	local ft = vim.api.nvim_eval("&filetype")
-	local filetype = require("guard.filetype")[ft]
-	for _, client in ipairs(filetype ~= nil and filetype.linter or {}) do
-		table.insert(clients, client.cmd)
+	local linters = require("lint").linters_by_ft[ft]
+	for _, linter in ipairs(linters ~= nil and linters or {}) do
+		table.insert(clients, linter)
 	end
-	filetype = require("conform").formatters_by_ft[ft]
+	local filetype = require("conform").formatters_by_ft[ft]
 	for _, formatter in ipairs(filetype or {}) do
 		if type(formatter) == "table" then
 			table.insert(clients, "{" .. table.concat(formatter, ",") .. "}")

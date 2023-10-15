@@ -47,7 +47,7 @@ require("lazy").setup({
 			{ "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
 			{ "L3MON4D3/LuaSnip", event = "InsertEnter" },
 			{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
-			{ "rafamadriz/friendly-snippets", event = "InsertEnter" }, -- a bunch of snippets to usew
+			{ "rafamadriz/friendly-snippets", event = "InsertEnter" },
 			{ "hrsh7th/cmp-buffer", event = "InsertEnter" },
 			{ "hrsh7th/cmp-path", event = "InsertEnter" },
 			{ "hrsh7th/cmp-cmdline", event = "ModeChanged" },
@@ -74,12 +74,9 @@ require("lazy").setup({
 		},
 	},
 	{
-		"nvimdev/guard.nvim",
+		"mfussenegger/nvim-lint",
 		event = "BufReadPre",
-		config = conf("guard"),
-		dependencies = {
-			"nvimdev/guard-collection",
-		},
+		config = conf("nvim-lint"),
 	},
 	{
 		"stevearc/conform.nvim",
