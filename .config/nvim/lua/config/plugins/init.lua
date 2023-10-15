@@ -74,6 +74,12 @@ require("lazy").setup({
 		},
 	},
 	{
+		"j-hui/fidget.nvim",
+		event = "LspAttach",
+		tag = "legacy",
+		opts = {},
+	},
+	{
 		"mfussenegger/nvim-lint",
 		event = "BufReadPre",
 		config = conf("nvim-lint"),
@@ -233,15 +239,6 @@ require("lazy").setup({
 		dependencies = {
 			{ "kyazdani42/nvim-web-devicons", event = "UIEnter" },
 			{ "SmiteshP/nvim-navic", event = "LspAttach" },
-		},
-	},
-	{
-		"folke/noice.nvim",
-		event = "UIEnter",
-		config = conf("noice"),
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
 		},
 	},
 	{
