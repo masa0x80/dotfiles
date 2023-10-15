@@ -2,7 +2,7 @@
 
 . "$(brew --prefix asdf)/libexec/asdf.sh"
 
-VERSION=$(sed -n 's|ruby \(.*\)|\1|p' "$HOME/.tool-versions")
+VERSION=$(sed -n 's|^\s*ruby \(.*\)|\1|p' "$HOME/.tool-versions")
 
 asdf plugin add ruby
 asdf install ruby "$VERSION"

@@ -2,7 +2,7 @@
 
 . "$(brew --prefix asdf)/libexec/asdf.sh"
 
-VERSION=$(sed -n 's|golang \(.*\)|\1|p' "$HOME/.tool-versions")
+VERSION=$(sed -n 's|^\s*golang \(.*\)|\1|p' "$HOME/.tool-versions")
 
 export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 asdf plugin add golang

@@ -2,7 +2,7 @@
 
 . "$(brew --prefix asdf)/libexec/asdf.sh"
 
-VERSION=$(sed -n 's|deno \(.*\)|\1|p' "$HOME/.tool-versions")
+VERSION=$(sed -n 's|^\s*deno \(.*\)|\1|p' "$HOME/.tool-versions")
 
 asdf plugin-add deno
 asdf install deno "$VERSION"

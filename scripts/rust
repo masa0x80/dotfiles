@@ -2,7 +2,7 @@
 
 . "$(brew --prefix asdf)/libexec/asdf.sh"
 
-VERSION=$(sed -n 's|rust \(.*\)|\1|p' "$HOME/.tool-versions")
+VERSION=$(sed -n 's|^\s*rust \(.*\)|\1|p' "$HOME/.tool-versions")
 
 asdf plugin add rust
 asdf install rust "$VERSION"

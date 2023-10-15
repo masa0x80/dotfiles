@@ -2,7 +2,7 @@
 
 . "$(brew --prefix asdf)/libexec/asdf.sh"
 
-VERSION=$(sed -n 's|gradle \(.*\)|\1|p' "$HOME/.tool-versions")
+VERSION=$(sed -n 's|^\s*gradle \(.*\)|\1|p' "$HOME/.tool-versions")
 
 asdf plugin add gradle
 asdf install gradle "$VERSION"
