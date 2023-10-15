@@ -382,7 +382,8 @@ require("lazy").setup({
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufNewFile", "BufRead" },
-		config = conf("indent-blankline"),
+		main = "ibl",
+		opts = {},
 	},
 
 	-- Textobject
