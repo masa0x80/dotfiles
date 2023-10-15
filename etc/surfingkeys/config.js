@@ -33,7 +33,7 @@ Hints.style(
   color: #fff; \
   background: #333; \
   box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.3); \
-"
+",
 );
 Hints.style(
   " \
@@ -45,7 +45,7 @@ Hints.style(
   background: #ff4081; \
   box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.3); \
   ",
-  "text"
+  "text",
 );
 
 settings.scrollStepSize = 140;
@@ -131,7 +131,7 @@ iunmap(":"); // disable emoji
 // disable vim binding in insert mode
 iunmapKeys(
   ["<Ctrl-a>", "<Ctrl-e>", "<Ctrl-f>", "<Ctrl-b>", "<Ctrl-k>", "<Ctrl-y>"],
-  null
+  null,
 );
 // disable proxy
 unmapKeys(["cp", ";pa", ";pb", ";pc", ";pd", ";ps", ";ap"], null);
@@ -160,8 +160,8 @@ addSearchAlias(
     JSON.parse(response.text).topics.map((v) =>
       createSuggestionItem(v.topic, {
         url: `https://twitter.com/search?q=${encodeURIComponent(v.topic)}`,
-      })
-    )
+      }),
+    ),
 );
 
 addSearchAlias(
@@ -180,21 +180,21 @@ addSearchAlias(
           };
         })
       : [];
-  }
+  },
 );
 
 // Yahoo!リアルタイム検索
 addSearchAlias(
   "re",
   "Yahoo!リアルタイム検索",
-  "http://realtime.search.yahoo.co.jp/search?ei=UTF-8&p="
+  "http://realtime.search.yahoo.co.jp/search?ei=UTF-8&p=",
 );
 
 // Wikipedia jp
 addSearchAlias(
   "wi",
   "Wikipedia",
-  "https://ja.wikipedia.org/w/index.php?search="
+  "https://ja.wikipedia.org/w/index.php?search=",
 );
 
 // MDN
@@ -215,10 +215,10 @@ addSearchAlias(
         <div>${s.summary}</div>
       </div>
     `,
-        { url: `https://developer.mozilla.org/${s.locale}/docs/${s.slug}` }
-      )
+        { url: `https://developer.mozilla.org/${s.locale}/docs/${s.slug}` },
+      ),
     );
-  }
+  },
 );
 
 // npm
@@ -244,7 +244,7 @@ addSearchAlias(
       if (s.flags) {
         Object.keys(s.flags).forEach((f) => {
           flags += `[<span style='color:#ff4d00'>⚑</span> ${escapeForAlias(
-            f
+            f,
           )}] `;
         });
       }
@@ -260,9 +260,9 @@ addSearchAlias(
         <div>${desc}</div>
       </div>
     `,
-        { url: s.package.links.npm }
+        { url: s.package.links.npm },
       );
-    })
+    }),
 );
 
 // Amazon
@@ -272,7 +272,7 @@ addSearchAlias(
   "https://www.amazon.co.jp/s?k=",
   "s",
   "https://completion.amazon.co.jp/search/complete?method=completion&search-alias=aps&mkt=6&q=",
-  (response) => JSON.parse(response.text)[1]
+  (response) => JSON.parse(response.text)[1],
 );
 
 // Kindle
@@ -282,7 +282,7 @@ addSearchAlias(
   "https://www.amazon.co.jp/s?i=digital-text&k=",
   "s",
   "https://completion.amazon.co.jp/search/complete?method=completion&search-alias=aps&mkt=6&q=",
-  (response) => JSON.parse(response.text)[1]
+  (response) => JSON.parse(response.text)[1],
 );
 
 // alc
@@ -367,12 +367,14 @@ mapkey(";t", "#14google translate", () => {
   if (selection === "") {
     // 文字列選択してない場合はページ自体を翻訳にかける
     tabOpenLink(
-      `https://translate.google.com/translate?js=n&sl=auto&tl=ja&u=${window.location.href}`
+      `https://translate.google.com/translate?js=n&sl=auto&tl=ja&u=${window.location.href}`,
     );
   } else {
     // 選択している場合はそれを翻訳する
     tabOpenLink(
-      `https://translate.google.com/?sl=auto&tl=ja&text=${encodeURI(selection)}`
+      `https://translate.google.com/?sl=auto&tl=ja&text=${encodeURI(
+        selection,
+      )}`,
     );
   }
 });
@@ -382,13 +384,13 @@ mapkey(";b", "#14hatena bookmark", () => {
   const url = location.href;
   if (url.startsWith("http:")) {
     tabOpenBackground(
-      `http://b.hatena.ne.jp/entry/${url.replace("http://", "")}`
+      `http://b.hatena.ne.jp/entry/${url.replace("http://", "")}`,
     );
     return;
   }
   if (url.startsWith("https:")) {
     tabOpenBackground(
-      `http://b.hatena.ne.jp/entry/s/${url.replace("https://", "")}`
+      `http://b.hatena.ne.jp/entry/s/${url.replace("https://", "")}`,
     );
     return;
   }
@@ -417,13 +419,13 @@ mapkey(
   "gI",
   "#4View image in new tab",
   Hint("img", (i) => tabOpenLink(i.src)),
-  ri
+  ri,
 );
 mapkey(
   "ci",
   "#7Copy Image URL",
   Hint("img", (i) => Clipboard.write(i.src)),
-  ri
+  ri,
 );
 // }}}
 
@@ -481,7 +483,7 @@ mapkey(
       document.querySelectorAll("[name='ASIN'], [name='ASIN.0']")[0].value
     }`;
   },
-  { domain: /www\.amazon\.co\.jp/ }
+  { domain: /www\.amazon\.co\.jp/ },
 );
 
 // B!
@@ -493,7 +495,7 @@ const moveDate = (diff) => () => {
   const date = new Date(
     parseInt(yyyy, 10),
     parseInt(mm, 10) - 1,
-    parseInt(dd, 10) + diff
+    parseInt(dd, 10) + diff,
   );
   url.searchParams.set("date", formatDate(date, "YYYYMMDD"));
   location.href = url.href;
@@ -510,13 +512,13 @@ mapkey(
   "F",
   "Toggle fullscreen",
   clickElm(".ytp-fullscreen-button.ytp-button"),
-  { domain: youtubeDomain }
+  { domain: youtubeDomain },
 );
 mapkey(
   "gH",
   "GoTo Home",
   () => (location.href = "https://www.youtube.com/feed/subscriptions?flow=2"),
-  { domain: youtubeDomain }
+  { domain: youtubeDomain },
 );
 mapkey("]", "Skip ad", clickElm(".ytp-ad-text.ytp-ad-skip-button-text"), {
   domain: youtubeDomain,
@@ -565,7 +567,7 @@ const gmailUnmapKeys = [
 unmapKeys(gmailUnmapKeys, /mail\.google\.com/i);
 unmapKeys(
   gmailUnmapKeys.concat(["U", "G", "gg"]),
-  /outlook\.office(?:365|)\.com/i
+  /outlook\.office(?:365|)\.com/i,
 );
 unmapKeys(
   [
@@ -592,6 +594,6 @@ unmapKeys(
     "/",
     "?",
   ],
-  /calendar\.google\.com/i
+  /calendar\.google\.com/i,
 );
 // }}}

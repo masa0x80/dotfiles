@@ -6,7 +6,7 @@
 # @raycast.mode silent
 #
 # Optional parameters:
-# @raycast.packageName Brower
+# @raycast.packageName Browser
 # @raycast.icon ✂️
 #
 # @raycast.description Delete query string

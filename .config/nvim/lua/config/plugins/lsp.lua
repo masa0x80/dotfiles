@@ -168,7 +168,7 @@ saga.setup({
 		},
 	},
 	preview = {
-		lines_avobe = 9999,
+		lines_above = 9999,
 		lines_below = 9999,
 	},
 	symbol_in_winbar = {

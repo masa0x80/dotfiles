@@ -3,7 +3,7 @@
 # Hide Dock automatically
 defaults write com.apple.dock autohide -bool true
 
-# Dock dely
+# Dock delay
 defaults write com.apple.dock autohide-delay -float 0
 
 # Dock animation
