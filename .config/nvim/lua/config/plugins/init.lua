@@ -246,6 +246,14 @@ require("lazy").setup({
 		event = "UIEnter",
 		config = conf("SmoothCursor"),
 	},
+	{
+		"anuvyklack/fold-preview.nvim",
+		event = "UIEnter",
+		config = conf("fold-preview"),
+		dependencies = {
+			{ "anuvyklack/pretty-fold.nvim", event = "UIEnter", opts = {} },
+		},
+	},
 
 	-- Ops
 	{

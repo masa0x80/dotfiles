@@ -1,5 +1,6 @@
 akinsho
 aklt
+anuvyklack
 arkweid
 awscli
 bashls
@@ -17,8 +18,8 @@ devtoys
 dhruvasagar
 direnvrc
 divx
-dosini
 dont
+dosini
 dstein64
 enduml
 envrc
