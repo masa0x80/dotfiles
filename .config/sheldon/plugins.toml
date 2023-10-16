@@ -1,0 +1,58 @@
+shell = "zsh"
+
+[templates]
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+
+[plugins.zsh-defer]
+github = 'romkatv/zsh-defer'
+apply = ['source']
+
+[plugins.colors]
+inline = 'autoload -Uz add-zsh-hook'
+
+[plugins.git-prompt.hooks]
+post = "PS1=''"
+
+[plugins.git-prompt]
+github = "woefe/git-prompt.zsh"
+
+[plugins.zsh-autosuggestions]
+github = 'zsh-users/zsh-autosuggestions'
+apply = ['defer']
+
+[plugins.zsh-syntax-highlighting]
+github = 'zsh-users/zsh-syntax-highlighting'
+apply = ['defer']
+
+[plugins.zsh-history-substring-search]
+github = "zsh-users/zsh-history-substring-search"
+apply = ['defer']
+
+[plugins.zsh-better-npm-completion]
+github = 'lukechilds/zsh-better-npm-completion'
+apply = ['defer']
+
+[plugins.zsh-completions]
+github = 'zsh-users/zsh-completions'
+apply = ['defer']
+
+[plugins.dotfiles-zsh-conf]
+local = '~/.config/zsh/conf.d'
+use = ['*.zsh']
+apply = ['defer']
+
+[plugins.dotfiles-zsh-lazy]
+local = '~/.config/zsh/lazy'
+use = ['*.zsh']
+apply = ['defer']
+
+[plugins.dotfiles-zsh-hooks]
+local = '~/.config/zsh/hooks'
+use = ['*.zsh']
+apply = ['defer']
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
+
+[plugins.direnv]
+inline = '(( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"'
