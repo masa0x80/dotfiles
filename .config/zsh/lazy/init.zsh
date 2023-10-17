@@ -1,5 +1,4 @@
-for file (
-  $ZDOTDIR/lazy/heavy.zsh(N)
-  $ZDOTDIR/lazy/completions.zsh(N)
-  $ZDOTDIR/lazy/key-bindings.zsh(N)
-) source $file
+# 自分以外を読み込む
+for f (
+  $ZDOTDIR/lazy/*.zsh(N)
+) test "$f" = "$0" || source $f

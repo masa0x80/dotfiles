@@ -1,3 +1,5 @@
+autoload -Uz add-zsh-hook
+
 # Perform cd to a directory if the typed command is invalid, but is a directory.
 setopt AUTO_CD
 
@@ -34,7 +36,7 @@ setopt CORRECT
 SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
 # Remove path separator from WORDCHARS.
-WORDCHARS=${WORDCHARS//[\/]}
+WORDCHARS=${WORDCHARS//[\/=]}
 
 # List jobs in verbose format by default.
 setopt LONG_LIST_JOBS
@@ -48,18 +50,10 @@ setopt NO_CHECK_JOBS
 # Prevent SIGHUP to jobs on shell exit.
 setopt NO_HUP
 
-# asdf
-export ASDF_GOLANG_MOD_VERSION_ENABLED=true
-export NODEJS_CHECK_SIGNATURES=no
-for file (
-  $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh(N)
-  $HOME/.asdf/plugins/java/set-java-home.zsh(N)
-) source $file
-
 # Lazy loadするとwindow作成直後に読み込まれない
 (( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
 
+source $ZDOTDIR/prompt.zsh
+
 # Initialize modules.
 source $ZDOTDIR/zinitrc
-
-source $ZDOTDIR/prompt.zsh

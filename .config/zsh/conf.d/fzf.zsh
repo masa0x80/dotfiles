@@ -67,17 +67,4 @@ if (( ${+commands[fzf]} )); then
     zle -N fzf-t-widget
     bindkey '^T' fzf-t-widget
   fi
-
-  # history with fzf
-  # ref: http://blog.kenjiskywalker.org/blog/2014/06/12/peco
-  # ref: http://qiita.com/uchiko/items/f6b1528d7362c9310da0
-  history-fzf() {
-    BUFFER=$(\history -n 1 | \
-      fzf +m --no-sort --tac --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    [ -z "$BUFFER" ] && return 0
-    zle clear-screen
-  }
-  zle -N history-fzf
-  bindkey '^R' history-fzf
 fi
