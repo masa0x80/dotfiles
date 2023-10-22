@@ -24,18 +24,22 @@ end
 
 require("lazy").setup({
 	"folke/lazy.nvim",
-	"nvim-lua/plenary.nvim",
-	"MunifTanjim/nui.nvim",
-	"rcarriga/nvim-notify", -- .config/nvim/ftplugin/plantuml.lua で利用
-
-	{ "tpope/vim-repeat", event = "UIEnter" },
-	{ "tpope/vim-unimpaired", event = "UIEnter" },
-	{ "gpanders/editorconfig.nvim", event = "UIEnter" }, -- EditorConfig
-
-	{ "kyazdani42/nvim-web-devicons", event = "UIEnter" },
-
-	-- Colorscheme
 	"joshdick/onedark.vim",
+
+	{ "tpope/vim-repeat", event = "VeryLazy" },
+	{ "tpope/vim-unimpaired", event = "VeryLazy" },
+	{ "kyazdani42/nvim-web-devicons", event = "VeryLazy" },
+
+	-- EditorConfig
+	{ "gpanders/editorconfig.nvim", event = "VeryLazy" },
+
+	{
+		"rcarriga/nvim-notify",
+		event = "VeryLazy",
+		init = function()
+			vim.notify = require("notify")
+		end,
+	}, -- .config/nvim/ftplugin/plantuml.lua で利用
 
 	-- Completion
 	{
@@ -43,34 +47,34 @@ require("lazy").setup({
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = conf("cmp"),
 		dependencies = {
-			{ "onsails/lspkind.nvim", event = "InsertEnter" },
-			{ "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
-			{ "L3MON4D3/LuaSnip", event = "InsertEnter" },
-			{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
-			{ "rafamadriz/friendly-snippets", event = "InsertEnter" },
-			{ "hrsh7th/cmp-buffer", event = "InsertEnter" },
-			{ "hrsh7th/cmp-path", event = "InsertEnter" },
-			{ "hrsh7th/cmp-cmdline", event = "ModeChanged" },
-			{ "f3fora/cmp-spell", event = "InsertEnter" },
+			"onsails/lspkind.nvim",
+			"hrsh7th/cmp-nvim-lsp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"rafamadriz/friendly-snippets",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"f3fora/cmp-spell",
 		},
 	},
 
 	-- LSP
 	{
 		"neovim/nvim-lspconfig",
-		event = { "UIEnter", "BufReadPre" },
+		event = { "VeryLazy", "BufReadPre" },
 		config = conf("lsp"),
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
-			{ "williamboman/mason.nvim", event = "LspAttach" },
-			{ "williamboman/mason-lspconfig.nvim", event = "LspAttach" },
-
-			{ "b0o/schemastore.nvim", event = "LspAttach" },
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 
 			-- Additional lua configuration, makes nvim stuff amazing
-			{ "folke/neodev.nvim", event = "LspAttach" },
+			"folke/neodev.nvim",
 
-			{ "nvimdev/lspsaga.nvim", event = "LspAttach" },
+			"nvimdev/lspsaga.nvim",
+
+			"b0o/schemastore.nvim",
 		},
 	},
 	{
@@ -93,12 +97,12 @@ require("lazy").setup({
 	-- Debug
 	{
 		"mfussenegger/nvim-dap",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("dap"),
 		dependencies = {
-			{ "williamboman/mason.nvim" },
-			{ "rcarriga/nvim-dap-ui" },
-			{ "theHamsta/nvim-dap-virtual-text" },
+			"williamboman/mason.nvim",
+			"rcarriga/nvim-dap-ui",
+			"theHamsta/nvim-dap-virtual-text",
 			{
 				"mxsdev/nvim-dap-vscode-js",
 				dependencies = {
@@ -117,47 +121,39 @@ require("lazy").setup({
 	-- Test
 	{
 		"is0n/jaq-nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("jaq"),
 	},
 
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("telescope"),
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			{
-				"nvim-telescope/telescope-ghq.nvim",
-				event = "UIEnter",
-			},
+			"nvim-telescope/telescope-ghq.nvim",
 			{
 				"renerocksai/telekasten.nvim",
-				event = "UIEnter",
 				config = conf("telekasten"),
 				dependencies = {
 					{ "renerocksai/calendar-vim" },
 				},
 			},
-			{
-				"nvim-telescope/telescope-file-browser.nvim",
-				event = "UIEnter",
-			},
+			"nvim-telescope/telescope-file-browser.nvim",
 		},
 	},
 
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = "UIEnter",
+		event = "VeryLazy",
 		build = ":TSUpdate",
 		config = conf("treesitter"),
 		dependencies = {
-			{ "JoosepAlviste/nvim-ts-context-commentstring", event = "UIEnter" },
+			"JoosepAlviste/nvim-ts-context-commentstring",
 			{
 				"nvim-treesitter/nvim-treesitter-textobjects",
-				event = "UIEnter",
 				dependencies = {
 					{
 						"windwp/nvim-ts-autotag",
@@ -166,7 +162,6 @@ require("lazy").setup({
 			},
 			{
 				"David-Kunz/treesitter-unit",
-				event = "UIEnter",
 				config = conf("treesitter-unit"),
 			},
 		},
@@ -204,7 +199,7 @@ require("lazy").setup({
 	-- UI
 	{
 		"folke/which-key.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("which-key"),
 	},
 	{
@@ -212,8 +207,8 @@ require("lazy").setup({
 		event = { "BufNewFile", "BufRead" },
 		config = conf("nvim-scrollbar"),
 		dependencies = {
-			{ "rapan931/lasterisk.nvim", event = { "BufNewFile", "BufRead" } },
-			{ "kevinhwang91/nvim-hlslens", event = { "BufNewFile", "BufRead" } },
+			"rapan931/lasterisk.nvim",
+			"kevinhwang91/nvim-hlslens",
 		},
 	},
 	{
@@ -237,28 +232,28 @@ require("lazy").setup({
 		event = { "CursorHold", "CursorMoved", "ModeChanged" },
 		config = conf("lualine"),
 		dependencies = {
-			{ "kyazdani42/nvim-web-devicons", event = "UIEnter" },
-			{ "SmiteshP/nvim-navic", event = "LspAttach" },
+			"kyazdani42/nvim-web-devicons",
+			"SmiteshP/nvim-navic",
 		},
 	},
 	{
 		"gen740/SmoothCursor.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("SmoothCursor"),
 	},
 	{
 		"anuvyklack/fold-preview.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("fold-preview"),
 		dependencies = {
-			{ "anuvyklack/pretty-fold.nvim", event = "UIEnter", opts = {} },
+			"anuvyklack/pretty-fold.nvim",
 		},
 	},
 
 	-- Ops
 	{
 		"lambdalisue/kensaku-search.vim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("kensaku-search"),
 		dependencies = {
 			"lambdalisue/kensaku.vim",
@@ -267,23 +262,23 @@ require("lazy").setup({
 	},
 	{
 		"smoka7/hop.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("hop"),
 	},
 	{
 		"Bakudankun/BackAndForward.vim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("BackAndForward"),
 	},
 	{
 		"windwp/nvim-spectre",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("spectre"),
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
 		"jghauser/mkdir.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 	},
 	{
 		"hrsh7th/nvim-insx",
@@ -292,7 +287,7 @@ require("lazy").setup({
 	},
 	{
 		"monaqa/dial.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("dial"),
 	},
 	{
@@ -301,41 +296,41 @@ require("lazy").setup({
 	},
 	{
 		"danymat/neogen",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("neogen"),
 	},
 	{
 		"junegunn/vim-easy-align",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("easy-align"),
 	},
 	{
 		"folke/todo-comments.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("todo-comments"),
 	},
 	{
 		"folke/trouble.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("trouble"),
 		dependencies = {
-			{ "kyazdani42/nvim-web-devicons", event = "UIEnter" },
+			"kyazdani42/nvim-web-devicons",
 		},
 	},
 	{
 		"tyru/open-browser.vim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("open-browser"),
 	},
 
 	-- Git
 	{
 		"tpope/vim-fugitive",
-		event = "UIEnter",
+		event = "VeryLazy",
 	},
 	{
 		"ruifm/gitlinker.nvim",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("gitlinker"),
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
@@ -356,21 +351,20 @@ require("lazy").setup({
 	},
 	{
 		"simeji/winresizer",
-		event = { "UIEnter" },
+		event = { "VeryLazy" },
 		init = conf("winresizer"),
 	},
 
 	-- Filer
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		-- `VeryLazy` だとちらつくので `UIEnter` にする
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("neo-tree"),
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
-			{ "kyazdani42/nvim-web-devicons", event = "UIEnter" },
-			{ "joshdick/onedark.vim", event = "UIEnter" },
+			"kyazdani42/nvim-web-devicons",
+			"joshdick/onedark.vim",
 		},
 	},
 
@@ -423,7 +417,7 @@ require("lazy").setup({
 
 	{
 		"klen/nvim-config-local",
-		event = "UIEnter",
+		event = "VeryLazy",
 		config = conf("nvim-config-local"),
 	},
 
