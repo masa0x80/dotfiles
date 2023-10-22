@@ -57,9 +57,6 @@ brew-cask:
 brew-mas:
 	brew bundle --file=etc/brew/Brewfile.mas
 
-.PHONY: brew-bundle
-brew-bundle: brew
-
 # }}}
 
 # defaults {{{
