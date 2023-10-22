@@ -65,4 +65,15 @@ M.preview = function(path)
 	end
 end
 
+M.load = function(name)
+	return function()
+		local path = string.format(vim.fn.expand("$HOME") .. "/.config.local/nvim/lua/plugins/%s.lua", name)
+		if vim.fn.filereadable(path) == 1 then
+			vim.fn.execute("luafile " .. path)
+		else
+			require(string.format("plugins.%s", name))
+		end
+	end
+end
+
 return M
