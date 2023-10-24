@@ -89,24 +89,21 @@ abbrevs:
     abbr: grb
     snippet: "git rebase"
   - name: "git rebase $(git default-branch)"
-    abbr: grbm
+    abbr: grm
     snippet: "git rebase $(git default-branch)"
     evaluate: true
   - name: "git rebase --abort"
-    abbr: grba
+    abbr: gra
     snippet: "git rebase --abort"
   - name: "git rebase --continue"
-    abbr: grbc
+    abbr: grc
     snippet: "git rebase --continue"
-  - name: "git rebase -i"
-    abbr: grbi
-    snippet: "git rebase -i"
-  - name: "git rebase --skip"
-    abbr: grbs
-    snippet: "git rebase --skip"
   - name: "git rebase -i $(git fzf)"
     abbr: gri
     snippet: "git rebase -i $(git fzf)"
+  - name: "git rebase --skip"
+    abbr: grs
+    snippet: "git rebase --skip"
   - name: "git show"
     abbr: gsh
     snippet: "git show"
@@ -233,9 +230,9 @@ abbrevs:
     snippet: "2>/dev/null"
     global: true
 
-  - name: '$(git status -s -uno | fzf --query="$@" | awk "{print \$2}")'
+  - name: '$(git status -s | fzf --query="$@" | awk "{print \$2}")'
     abbr: GST
-    snippet: '$(git status -s -uno | fzf --query="$@" | awk "{print \$2}")'
+    snippet: '$(git status -s | fzf --query="$@" | awk "{print \$2}")'
     global: true
   - name: "$(git fzf)"
     abbr: GH
@@ -249,7 +246,7 @@ abbrevs:
   - name: "pgcli"
     abbr: psql
     snippet: "pgcli"
-    if: (( ${+commands[mgcli]} ))
+    if: (( ${+commands[pgcli]} ))
   - name: "g"
     abbr: g
     snippet: "rg --hidden"
