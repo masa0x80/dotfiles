@@ -86,7 +86,6 @@ return {
 				},
 			},
 			config = require("config.utils").load("conf/toggleterm"),
-			init = require("config.utils").load("init/toggleterm"),
 		},
 	},
 }
