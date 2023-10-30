@@ -49,6 +49,7 @@ hlslens
 honnef
 hrsh7th
 httpie
+hygen
 iamcco
 imgcat
 insx
@@ -142,6 +143,7 @@ tldr
 tmpl
 tpope
 tyru
+udemy
 uml
 vimium
 virt_text
