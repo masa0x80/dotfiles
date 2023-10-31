@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-
-() {
-  (( $+commands[fzf] )) || return 1
-
-  local num=$(tmux list-sessions | fzf | cut -d':' -f 1)
-  tmux switch-client -t $num
-}
