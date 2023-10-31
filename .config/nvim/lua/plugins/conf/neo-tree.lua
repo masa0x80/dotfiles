@@ -105,7 +105,7 @@ require("neo-tree").setup({
 			hide_hidden = false,
 			hide_gitignored = true,
 		},
-		hijack_netrw_behavior = "open_current",
+		hijack_netrw_behavior = "disabled",
 		follow_current_file = {
 			enabled = true,
 		},

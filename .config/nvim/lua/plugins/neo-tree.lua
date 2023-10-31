@@ -1,5 +1,6 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
+	cmd = { "Neotree" },
 	keys = {
 		{
 			"-",
@@ -24,6 +25,7 @@ return {
 		},
 	},
 	config = require("config.utils").load("conf/neo-tree"),
+	init = require("config.utils").load("init/neo-tree"),
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
