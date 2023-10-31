@@ -1,6 +1,6 @@
 {
   "allowCompoundWords": true,
-  "dictionaries": ["dotfiles", "dotfiles_local", "user", "vim"],
+  "dictionaries": ["dotfiles", "dotfiles_local", "user", "vim", "ruby", "lua"],
   "dictionaryDefinitions": [
     {
       "name": "dotfiles",
@@ -18,17 +18,32 @@
       "description": "User local dictionary"
     },
     {
+      "name": "lua",
+      "path": "~/.local/share/cspell/lua.txt",
+      "description": "Lua dictionary"
+    },
+    {
+      "name": "ruby",
+      "path": "~/.local/share/cspell/ruby.txt",
+      "description": "Ruby and RoR dictionary"
+    },
+    {
       "name": "vim",
-      "path": "~/.local/share/cspell/vim.txt.gz",
-      "description": "Vim Script Language dictionary"
+      "path": "~/.local/share/cspell/vim.txt",
+      "description": "Vim Script dictionary"
     }
   ],
   "languageSettings": [
     {
+      "languageId": "*",
+      "locale": "*",
+      "ignoreRegExpList": ["/(?:tap|brew|cask) .*/", "/.*\\/.*/"]
+    },
+    {
       "languageId": "lua",
       "locale": "*",
-      "ignoreRegExpList": ["/require.*/"],
-      "dictionaries": ["lua"]
+      "ignoreRegExpList": ["/require.*/", "/<Cmd>.*/", "/<Plug>\\(.*\\)/"],
+      "dictionaries": ["lua", "vim"]
     },
     {
       "languageId": "vim",
