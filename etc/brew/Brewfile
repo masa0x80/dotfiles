@@ -42,9 +42,6 @@ brew "zsh"
 
 brew "navi"
 
-brew "tmux"
-brew "tmux-xpanes"
-
 brew "mysql"
 brew "postgresql"
 brew "redis"
