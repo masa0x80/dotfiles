@@ -4,6 +4,4 @@ vim.cmd([[
   iabbrev BB require 'byebug'; byebug<Esc>
   iabbrev Bb binding.irb<Esc>
   iabbrev reqb require 'bundler'<CR>Bundler.require<CR><Esc>
-
-  setlocal foldmethod=indent
 ]])
