@@ -4,4 +4,4 @@ CURRENT_DIR=$(
   cd "$(dirname "$0")" || exit
   pwd
 )
-source "$CURRENT_DIR/_asdf_install" ruby
+source "$CURRENT_DIR/_asdf_install" groovy

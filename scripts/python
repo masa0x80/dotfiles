@@ -1,9 +1,9 @@
 #!/bin/bash
 
-. "$(brew --prefix asdf)/libexec/asdf.sh"
+CURRENT_DIR=$(
+  cd "$(dirname "$0")" || exit
+  pwd
+)
+source "$CURRENT_DIR/_asdf_install" python
 
-VERSION=$(sed -n 's|^\s*python \(.*\)|\1|p' "$HOME/.tool-versions")
-
-asdf plugin add python
-asdf install python "$VERSION"
 pip install --upgrade pip

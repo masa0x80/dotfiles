@@ -1,8 +1,7 @@
 #!/bin/bash
 
-. "$(brew --prefix asdf)/libexec/asdf.sh"
-
-VERSION=$(sed -n 's|^\s*sops \(.*\)|\1|p' "$HOME/.tool-versions")
-
-asdf plugin add sops
-asdf install sops "$VERSION"
+CURRENT_DIR=$(
+  cd "$(dirname "$0")" || exit
+  pwd
+)
+source "$CURRENT_DIR/_asdf_install" sops

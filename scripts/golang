@@ -1,9 +1,9 @@
 #!/bin/bash
 
-. "$(brew --prefix asdf)/libexec/asdf.sh"
-
-VERSION=$(sed -n 's|^\s*golang \(.*\)|\1|p' "$HOME/.tool-versions")
-
 export ASDF_GOLANG_MOD_VERSION_ENABLED=true
-asdf plugin add golang
-asdf install golang "$VERSION"
+
+CURRENT_DIR=$(
+  cd "$(dirname "$0")" || exit
+  pwd
+)
+source "$CURRENT_DIR/_asdf_install" golang

@@ -1,11 +1,10 @@
 #!/bin/bash
 
-. "$(brew --prefix asdf)/libexec/asdf.sh"
-
-VERSION=$(sed -n 's|^\s*helm \(.*\)|\1|p' "$HOME/.tool-versions")
-
-asdf plugin add helm
-asdf install helm "$VERSION"
+CURRENT_DIR=$(
+  cd "$(dirname "$0")" || exit
+  pwd
+)
+source "$CURRENT_DIR/_asdf_install" helm
 
 helm plugin list | grep secrets || helm plugin install https://github.com/zendesk/helm-secrets
 helm plugin list | grep diff || helm plugin install https://github.com/databus23/helm-diff

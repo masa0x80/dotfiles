@@ -1,8 +1,7 @@
 #!/bin/bash
 
-. "$(brew --prefix asdf)/libexec/asdf.sh"
-
-VERSION=$(sed -n 's|^\s*terraform_docs \(.*\)|\1|p' "$HOME/.tool-versions")
-
-asdf plugin add terraform_docs https://github.com/looztra/asdf-terraform-docs
-asdf install terraform_docs "$VERSION"
+CURRENT_DIR=$(
+  cd "$(dirname "$0")" || exit
+  pwd
+)
+source "$CURRENT_DIR/_asdf_install" terraform_docs https://github.com/looztra/asdf-terraform-docs

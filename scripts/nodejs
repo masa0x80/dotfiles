@@ -1,9 +1,9 @@
 #!/bin/bash
 
-. "$(brew --prefix asdf)/libexec/asdf.sh"
-
-VERSION=$(sed -n 's|^\s*nodejs \(.*\)|\1|p' "$HOME/.tool-versions")
-
 export NODEJS_CHECK_SIGNATURES=no
-asdf plugin add nodejs
-asdf install nodejs "$VERSION"
+
+CURRENT_DIR=$(
+  cd "$(dirname "$0")" || exit
+  pwd
+)
+source "$CURRENT_DIR/_asdf_install" nodejs
