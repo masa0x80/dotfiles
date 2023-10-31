@@ -38,18 +38,18 @@ wezterm.on("format-tab-title", function(tab, _, _, _, hover)
 	table.insert(title, current_dir)
 	table.insert(title, "")
 
-	local background = color.VISUAL_GREY
-	local foreground = color.WHITE
+	local background = color.bg3
+	local foreground = color.fg
 
 	if tab.is_active then
-		background = color.GREEN
-		foreground = color.BLACK
+		background = color.green
+		foreground = color.black
 	elseif hover then
-		background = color.WHITE
-		foreground = color.BLACK
+		background = color.fg
+		foreground = color.black
 	end
 
-	local edge_background = color.NONE
+	local edge_background = "NONE"
 	local edge_foreground = background
 
 	return {
@@ -145,8 +145,8 @@ end)
 wezterm.on("toggle-opacity", function(window)
 	local overrides = window:get_config_overrides() or {}
 	if not overrides.window_background_opacity then
-		overrides.window_background_opacity = 0.6
-		overrides.text_background_opacity = 0.6
+		overrides.window_background_opacity = 0.7
+		overrides.text_background_opacity = 0.7
 	else
 		overrides.window_background_opacity = nil
 		overrides.text_background_opacity = nil
