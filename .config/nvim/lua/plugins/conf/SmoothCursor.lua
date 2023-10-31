@@ -14,9 +14,9 @@ require("smoothcursor").setup({
 	speed = 32,
 })
 
-local color = require("config.color")
+local c = require("config.color")
 local set_hl = vim.api.nvim_set_hl
-set_hl(0, "SmoothCursor", { fg = color.WHITE })
+set_hl(0, "SmoothCursor", { fg = c.fg })
 
 local autocmd = vim.api.nvim_create_autocmd
 autocmd({ "CursorHold", "CursorMoved", "ModeChanged" }, {

@@ -1,8 +1,8 @@
-local color = require("config.color")
+local c = require("config.color")
 local set_hl = vim.api.nvim_set_hl
-set_hl(0, "DapBreakpoint", { fg = color.RED })
-set_hl(0, "DapLogPoint", { fg = color.BLUE })
-set_hl(0, "DapStopped", { fg = color.GREEN })
+set_hl(0, "DapBreakpoint", { fg = c.red })
+set_hl(0, "DapLogPoint", { fg = c.blue })
+set_hl(0, "DapStopped", { fg = c.green })
 
 vim.fn.sign_define("DapBreakpoint", { text = "•", texthl = "DapBreakpoint" })
 vim.fn.sign_define("DapBreakpointCondition", { text = "ﳁ", texthl = "DapBreakpoint" })

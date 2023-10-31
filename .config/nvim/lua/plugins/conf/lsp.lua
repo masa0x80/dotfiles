@@ -72,15 +72,15 @@ local on_attach = function(client, bufnr)
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-	nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-	nmap("<Leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
-	nmap("<Leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-	nmap("<Leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+	nmap("gd", vim.lsp.buf.definition, "[GD] Goto Definition")
+	nmap("gr", require("telescope.builtin").lsp_references, "[GR] Goto References")
+	nmap("gI", vim.lsp.buf.implementation, "[GI] Goto Implementation")
+	nmap("<Leader>D", vim.lsp.buf.type_definition, "[D] Type Definition")
+	nmap("<Leader>ds", require("telescope.builtin").lsp_document_symbols, "[DS] Document Symbols")
+	nmap("<Leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[WS] Workspace Symbols")
 
 	-- Lesser used LSP functionality
-	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+	nmap("gD", vim.lsp.buf.declaration, "[GD] Goto Declaration")
 
 	-- Create a command `:Format` local to the LSP buffer
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)

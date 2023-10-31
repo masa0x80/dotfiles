@@ -9,7 +9,9 @@ local cspell_files = {
 	config = cspell_config_dir .. "/cspell.json",
 	dotfiles = cspell_config_dir .. "/dotfiles.txt",
 	dotfiles_local = dotfiles_local_dir .. "/local.txt",
-	vim = cspell_data_dir .. "/vim.txt.gz",
+	lua = cspell_data_dir .. "/lua.txt",
+	ruby = cspell_data_dir .. "/ruby.txt",
+	vim = cspell_data_dir .. "/vim.txt",
 	user = cspell_data_dir .. "/user.txt",
 }
 
@@ -19,10 +21,24 @@ if vim.fn.filereadable(cspell_files.dotfiles) ~= 1 then
 	io.popen("touch " .. cspell_files.dotfiles)
 end
 
--- vim辞書がなければダウンロード
-if vim.fn.filereadable(cspell_files.vim) ~= 1 then
-	local vim_dictionary_url = "https://github.com/iamcco/coc-spell-checker/raw/master/dicts/vim/vim.txt.gz"
-	io.popen("curl -fsSLo " .. cspell_files.vim .. " --create-dirs " .. vim_dictionary_url)
+-- 辞書がなければダウンロード
+for _, v in ipairs({
+	{
+		file_path = cspell_files.vim,
+		url = "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/vim/dict/vim.txt",
+	},
+	{
+		file_path = cspell_files.ruby,
+		url = "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/ruby/dict/ruby.txt",
+	},
+	{
+		file_path = cspell_files.lua,
+		url = "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/lua/dict/lua.txt",
+	},
+}) do
+	if vim.fn.filereadable(v.file_path) ~= 1 then
+		io.popen("curl -fsSLo " .. v.file_path .. " --create-dirs " .. v.url)
+	end
 end
 
 -- ユーザー辞書がなければ作成

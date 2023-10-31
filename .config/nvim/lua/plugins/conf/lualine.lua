@@ -68,38 +68,38 @@ require("lualine").setup({
 	},
 })
 
-local color = require("config.color")
+local c = require("config.color")
 local icon_colors = {
-	File = color.BLUE,
-	Module = color.DARK_YELLOW,
-	Namespace = color.RED,
-	Package = color.YELLOW,
-	Class = color.YELLOW,
-	Method = color.BLUE,
-	Property = color.CYAN,
-	Field = color.MAGENTA,
-	Constructor = color.BLUE,
-	Enum = color.MAGENTA,
-	Interface = color.GREEN,
-	Function = color.BLUE,
-	Variable = color.MAGENTA,
-	Constant = color.DARK_YELLOW,
-	String = color.GREEN,
-	Number = color.DARK_YELLOW,
-	Boolean = color.DARK_YELLOW,
-	Array = color.YELLOW,
-	Object = color.RED,
-	Key = color.CYAN,
-	Null = color.WHITE,
-	EnumMember = color.YELLOW,
-	Struct = color.MAGENTA,
-	Event = color.YELLOW,
-	Operator = color.RED,
-	TypeParameter = color.RED,
+	File = c.blue,
+	Module = c.dark_yellow,
+	Namespace = c.red,
+	Package = c.yellow,
+	Class = c.yellow,
+	Method = c.blue,
+	Property = c.cyan,
+	Field = c.purple,
+	Constructor = c.blue,
+	Enum = c.purple,
+	Interface = c.green,
+	Function = c.blue,
+	Variable = c.purple,
+	Constant = c.dark_yellow,
+	String = c.green,
+	Number = c.dark_yellow,
+	Boolean = c.dark_yellow,
+	Array = c.yellow,
+	Object = c.red,
+	Key = c.cyan,
+	Null = c.fg,
+	EnumMember = c.yellow,
+	Struct = c.purple,
+	Event = c.yellow,
+	Operator = c.red,
+	TypeParameter = c.red,
 }
 local set_hl = vim.api.nvim_set_hl
-for kind, c in pairs(icon_colors) do
-	set_hl(0, "NavicIcons" .. kind, { fg = c })
+for kind, color in pairs(icon_colors) do
+	set_hl(0, "NavicIcons" .. kind, { fg = color })
 end
-set_hl(0, "NavicText", { fg = color.WHITE })
-set_hl(0, "NavicSeparator", { fg = color.CYAN })
+set_hl(0, "NavicText", { fg = c.fg })
+set_hl(0, "NavicSeparator", { fg = c.cyan })
