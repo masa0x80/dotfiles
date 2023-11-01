@@ -127,9 +127,6 @@ abbrevs:
     abbr: R
     snippet: "git review"
   - name: "git review"
-    abbr: rev
-    snippet: "git review"
-  - name: "git review"
     abbr: review
     snippet: "git review"
 
