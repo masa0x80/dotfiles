@@ -76,4 +76,4 @@ path=(
   for src in $@; do
     [ ! -f ${src}.zwc -o $src -nt ${src}.zwc ] && zcompile $src
   done
-} $HOME/.zshenv(N) $ZDOTDIR/.zshrc(N) $ZDOTDIR/zinitrc(N) $ZDOTDIR/prompt.zsh(N) $ZDOTDIR/conf.d/*.zsh(N) $ZDOTDIR/hooks/*.zsh(N) $ZDOTDIR/lazy/*.zsh(N) $HOME/.local/share/zinit/zinit.git/*.zsh(N)
+} $HOME/.zshenv(N) $ZDOTDIR/.zshrc(N) $ZDOTDIR/zinitrc(N) $ZDOTDIR/conf.d/*.zsh(N) $ZDOTDIR/hooks/*.zsh(N) $ZDOTDIR/lazy/*.zsh(N) $HOME/.local/share/zinit/zinit.git/*.zsh(N)

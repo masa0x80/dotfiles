@@ -53,7 +53,5 @@ setopt NO_HUP
 # Lazy loadするとwindow作成直後に読み込まれない
 (( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
 
-source $ZDOTDIR/prompt.zsh
-
 # Initialize modules.
 source $ZDOTDIR/zinitrc

@@ -8,6 +8,9 @@ fi
 setopt no_global_rcs
 setopt magic_equal_subst
 
+PS1="%F{blue}%~%\n
+%F{magenta}彡:匚＞%f "
+
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
