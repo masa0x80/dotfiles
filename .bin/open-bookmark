@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+BROWSER="$1"
+
+test "$BROWSER" != "Microsoft Edge" && echo "ERROR"; sleep 1 && exit
+
+BOOKMARKS_PATH=~/Library/Application\ Support/Microsoft\ Edge/Default/Bookmarks
+BOOKMARK="$(jq -rc ".roots.bookmark_bar.children[] | if .type == \"url\" then [.name, .url] else empty end | join(\" \")" "$BOOKMARKS_PATH" | fzf +m)"
+test "$BOOKMARK" != "" && open "${BOOKMARK##* }"
