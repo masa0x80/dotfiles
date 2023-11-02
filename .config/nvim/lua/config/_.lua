@@ -16,3 +16,12 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 		end
 	end,
 })
+
+-- Insertモードを抜けたときにIMEオフ
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+	group = "_",
+	pattern = "*",
+	callback = function()
+		vim.fn.execute("!im-select com.apple.keylayout.ABC", "silent")
+	end,
+})

@@ -86,3 +86,6 @@ brew "catimg"
 
 tap "ryooooooga/tap"
 brew "zabrze"
+
+tap "daipeihust/tap"
+brew "im-select"
