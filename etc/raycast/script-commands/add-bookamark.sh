@@ -28,12 +28,11 @@ case "$identifier" in
   ;;
 esac
 
-: "${TARGET_BROWSER:=Safari}"
+export LANG="ja_JP.UTF-8"
 url=$(osascript -e "tell application \"$browser\" to get URL of active tab of front window")
-osascript -e "activate application \"$TARGET_BROWSER\""
-osascript -e "delay 0.1"
-osascript -e "tell application \"$TARGET_BROWSER\" to open location \"$url\""
-osascript -e "delay 1"
-osascript -e "activate application \"$TARGET_BROWSER\""
-# Chromiumでは Cmd + d でブックマークできる
-osascript -e "tell application \"System Events\" to keystroke \"d\" using command down"
+title=$(osascript -e "tell application \"$browser\" to get title of active tab of front window")
+trimmedTitle=$(echo "$title" | sed -n 's/ [-|·] [^-|·]*$//p')
+url=$(osascript -e "tell application \"$browser\" to get URL of active tab of front window")
+echo "[$trimmedTitle]($url)" >> $SCRAPBOOK_DIR/bookmarks.md
+
+echo "Added bookmark"

@@ -12,4 +12,4 @@
 # @raycast.author KIMURA Masayuki
 # @raycast.authorURL https://github.com/masa0x80
 
-wezterm cli spawn -- zsh -c "~/.bin/open-bookmark" > /dev/null
+wezterm cli spawn --new-window -- zsh -c "~/.bin/open-bookmark" > /dev/null
