@@ -12,5 +12,4 @@
 # @raycast.author KIMURA Masayuki
 # @raycast.authorURL https://github.com/masa0x80
 
-: "${TARGET_BROWSER:=Safari}"
-wezterm cli spawn --new-window -- zsh -c "~/.bin/open-bookmark $TARGET_BROWSER" > /dev/null
+wezterm cli spawn -- zsh -c "~/.bin/open-bookmark" > /dev/null
