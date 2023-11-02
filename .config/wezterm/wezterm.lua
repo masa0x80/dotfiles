@@ -30,6 +30,10 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
+config.inactive_pane_hsb = {
+	saturation = 0.9,
+	brightness = 0.8,
+}
 config.set_environment_variables = {
 	PATH = os.getenv("HOME") .. "/.asdf/shims:" .. os.getenv("PATH"),
 }
