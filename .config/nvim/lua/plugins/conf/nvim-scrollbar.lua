@@ -19,7 +19,7 @@ require("scrollbar").setup({
 		Error = { color = c.red },
 		Warn = { color = c.yellow },
 		Info = { color = c.cyan },
-		Hint = { color = c.blue },
+		Hint = { color = c.purple },
 		Misc = { color = c.purple },
 	},
 	handlers = {
