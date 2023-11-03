@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Required parameters:
 # @raycast.schemaVersion 1
@@ -13,21 +13,11 @@
 # @raycast.author KIMURA Masayuki
 # @raycast.authorURL https://github.com/masa0x80
 
-identifier="$(defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure | awk -F'"' '/http;/{print window[(NR)-1]}{window[NR]=$2}')"
-case "$identifier" in
-"com.vivaldi.vivaldi")
-  browser="Vivaldi"
-  ;;
-"com.microsoft.edgemac")
-  browser="Microsoft Edge"
-  ;;
-"com.google.chrome")
-  browser="Google Chrome"
-  ;;
-*)
-  browser="Safari"
-  ;;
-esac
+CURRENT_DIR=$(
+  cd "$(dirname "$0")" || exit
+  pwd
+)
+source "$CURRENT_DIR/utils/_fetch_url_and_page_title"
 
 url=$(osascript -e "tell application \"$browser\" to get URL of active tab of front window")
 osascript -e "tell application \"$browser\" to set URL of active tab of front window to \"${url//\?*/}\""
