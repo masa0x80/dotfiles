@@ -18,5 +18,9 @@ CURRENT_DIR=$(
 )
 source "$CURRENT_DIR/utils/_fetch_url_and_page_title"
 
-echo "[$trimmedTitle]($url)" >> $SCRAPBOOK_DIR/bookmarks.md
+FILE="$SCRAPBOOK_DIR/bookmarks.md"
+mkdir -p "$(dirname $FILE)"
+test -e "$FILE" || touch "$FILE"
+
+echo "[$trimmedTitle]($url)" >> "$FILE"
 echo "Added bookmark"
