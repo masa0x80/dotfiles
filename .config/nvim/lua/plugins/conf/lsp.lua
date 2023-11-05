@@ -214,10 +214,23 @@ mason_lspconfig.setup_handlers({
 	end,
 })
 
+-- https://github.com/williamboman/mason.nvim/issues/1309#issuecomment-1555018732
+local packages = {
+	"black",
+	"cspell",
+	"goimports",
+	"hadolint",
+	"shellcheck",
+	"shfmt",
+	"stylua",
+	"tflint",
+}
 local registry = require("mason-registry")
-for _, name in ipairs({ "black", "cspell", "goimports", "hadolint", "shellcheck", "shfmt", "stylua", "tflint" }) do
-	local package = registry.get_package(name)
-	if not package:is_installed() then
-		package:install()
+registry.refresh(function()
+	for _, pkg_name in ipairs(packages) do
+		local pkg = registry.get_package(pkg_name)
+		if not pkg:is_installed() then
+			pkg:install()
+		end
 	end
-end
+end)
