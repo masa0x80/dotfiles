@@ -20,6 +20,10 @@ telescope.setup({
 		},
 		mappings = {
 			i = {
+				["<C-f>"] = { "<Right>", type = "command" },
+				["<C-b>"] = { "<Left>", type = "command" },
+				["<C-u>"] = actions.results_scrolling_up,
+				["<C-d>"] = actions.results_scrolling_down,
 				["<C-k>"] = actions.preview_scrolling_up,
 				["<C-j>"] = actions.preview_scrolling_down,
 				["<C-c>"] = { "<Esc>", type = "command" },
@@ -38,8 +42,10 @@ telescope.setup({
 			n = {
 				["<C-n>"] = actions.move_selection_next,
 				["<C-p>"] = actions.move_selection_previous,
-				["<C-f>"] = actions.results_scrolling_up,
-				["<C-b>"] = actions.results_scrolling_down,
+				["<C-u>"] = actions.results_scrolling_up,
+				["<C-d>"] = actions.results_scrolling_down,
+				["<C-b>"] = actions.results_scrolling_up,
+				["<C-f>"] = actions.results_scrolling_down,
 				["<C-k>"] = actions.preview_scrolling_up,
 				["<C-j>"] = actions.preview_scrolling_down,
 				["q"] = actions.close,
