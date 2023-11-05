@@ -1,0 +1,54 @@
+{
+  "add": {
+    "prefix": "m-add",
+    "body": ["⭐ "]
+  },
+  "fix": {
+    "prefix": "m-fix",
+    "body": ["✏️ "]
+  },
+  "bug": {
+    "prefix": "m-bug",
+    "body": ["🐛 "]
+  },
+  "security": {
+    "prefix": "m-security",
+    "body": ["👮 "]
+  },
+  "config": {
+    "prefix": "m-config",
+    "body": ["🔧 "]
+  },
+  "test": {
+    "prefix": "m-test",
+    "body": ["✅ "]
+  },
+  "refactor": {
+    "prefix": "m-refactor",
+    "body": ["✨ "]
+  },
+  "doc": {
+    "prefix": "m-doc",
+    "body": ["📚 "]
+  },
+  "perf": {
+    "prefix": "m-perf",
+    "body": ["🚀 "]
+  },
+  "del": {
+    "prefix": "m-del",
+    "body": ["🗑️ "]
+  },
+  "version": {
+    "prefix": "m-version",
+    "body": ["🔖 "]
+  },
+  "wip": {
+    "prefix": "m-wip",
+    "body": ["🚧 "]
+  },
+  "init": {
+    "prefix": "m-init",
+    "body": ["🌱 "]
+  }
+}
