@@ -77,6 +77,8 @@ keymap(
 -- Indent
 keymap("n", "<C-g><C-p>", "<<", opts)
 keymap("n", "<C-g><C-n>", ">>", opts)
+keymap("n", "<C-t><C-p>", "<<", opts)
+keymap("n", "<C-t><C-n>", ">>", opts)
 
 keymap("n", ";p", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { noremap = true, silent = true, desc = "cd $PWD" })
 keymap(
@@ -122,7 +124,13 @@ end
 keymap("i", "<C-g><C-n>", function()
 	indent()
 end, { noremap = true, silent = true, desc = "Indent >>" })
+keymap("i", "<C-t><C-n>", function()
+	indent()
+end, { noremap = true, silent = true, desc = "Indent >>" })
 keymap("i", "<C-g><C-p>", function()
+	indent(false)
+end, { noremap = true, silent = true, desc = "Indent <<" })
+keymap("i", "<C-t><C-p>", function()
 	indent(false)
 end, { noremap = true, silent = true, desc = "Indent <<" })
 
@@ -139,6 +147,8 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 keymap("v", "<C-g><C-p>", "<gv", opts)
 keymap("v", "<C-g><C-n>", ">gv", opts)
+keymap("v", "<C-t><C-p>", "<gv", opts)
+keymap("v", "<C-t><C-n>", ">gv", opts)
 
 -- Move text up and down
 keymap("v", "J", ":move '>+1<CR>gv-gv", opts)
