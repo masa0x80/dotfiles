@@ -34,11 +34,14 @@ keymap("n", "Q", "<Nop>", opts)
 keymap("n", "<Leader>q", "<Cmd>bd<CR>", opts)
 keymap("n", "<Leader>Q", "<Cmd>qa<CR>", opts)
 
+-- Raycst対応としてKarabinerで <C-w> を <A-BS> しているのを戻す
+keymap("i", "<A-BS>", "<C-w>", { noremap = true, silent = true, desc = "<A-BS> => <C-w>" })
+
 -- Windows
-keymap("n", "<C-w>-", "<Cmd>split<CR>", opts)
-keymap("n", "<C-w>\\", "<Cmd>vsplit<CR>", opts)
-keymap("n", "<C-w>o", "<NOP>", opts)
-keymap("n", "<C-w>O", "<Cmd>only<CR>", opts)
+keymap("n", "<A-BS>-", "<Cmd>split<CR>", opts)
+keymap("n", "<A-BS>\\", "<Cmd>vsplit<CR>", opts)
+keymap("n", "<A-BS>o", "<NOP>", opts)
+keymap("n", "<A-BS>O", "<Cmd>only<CR>", opts)
 
 -- Tabs
 keymap("n", ",t", "<Cmd>tabedit %:p<CR>", opts)
