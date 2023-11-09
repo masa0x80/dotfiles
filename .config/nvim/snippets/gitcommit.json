@@ -1,54 +1,102 @@
 {
-  "add": {
-    "prefix": "m-add",
-    "body": ["⭐ "]
-  },
-  "fix": {
-    "prefix": "m-fix",
-    "body": ["✏️ "]
+  "feat": {
+    "prefix": "cm-feat",
+    "body": ["🎸 feat: "]
   },
   "bug": {
-    "prefix": "m-bug",
-    "body": ["🐛 "]
+    "prefix": "cm-bug",
+    "body": ["🐛 bug: "]
   },
-  "security": {
-    "prefix": "m-security",
-    "body": ["👮 "]
+  "fix": {
+    "prefix": "cm-fix",
+    "body": ["✏️ fix: "]
   },
-  "config": {
-    "prefix": "m-config",
-    "body": ["🔧 "]
+  "docs": {
+    "prefix": "cm-doc",
+    "body": ["📚 docs: "]
   },
-  "test": {
-    "prefix": "m-test",
-    "body": ["✅ "]
+  "style": {
+    "prefix": "cm-style",
+    "body": ["💄 style: "]
   },
   "refactor": {
-    "prefix": "m-refactor",
-    "body": ["✨ "]
-  },
-  "doc": {
-    "prefix": "m-doc",
-    "body": ["📚 "]
+    "prefix": "cm-refactor",
+    "body": ["💡 refactor: "]
   },
   "perf": {
-    "prefix": "m-perf",
-    "body": ["🚀 "]
+    "prefix": "cm-perf",
+    "body": ["⚡ perf: "]
   },
-  "del": {
-    "prefix": "m-del",
-    "body": ["🗑️ "]
+  "test": {
+    "prefix": "cm-test",
+    "body": ["✅ test: "]
+  },
+  "chore": {
+    "prefix": "cm-chore",
+    "body": ["🤖 chore: "]
+  },
+  "remove-files": {
+    "prefix": "cm-remove",
+    "body": ["🔥 remove: "]
+  },
+  "ci": {
+    "prefix": "cm-ci",
+    "body": ["🎡 ci: "]
+  },
+  "merge": {
+    "prefix": "cm-merge",
+    "body": ["💚 merge: "]
+  },
+  "config": {
+    "prefix": "cm-config",
+    "body": ["🔧 config: "]
+  },
+  "tweak": {
+    "prefix": "cm-tweak",
+    "body": ["🩹 Tweaks"]
+  },
+  "security": {
+    "prefix": "cm-security",
+    "body": ["👮 security: "]
   },
   "version": {
-    "prefix": "m-version",
-    "body": ["🔖 "]
+    "prefix": "cm-version",
+    "body": ["🔖 version: "]
   },
   "wip": {
-    "prefix": "m-wip",
-    "body": ["🚧 "]
+    "prefix": "cm-wip",
+    "body": ["🚧 WIP"]
+  },
+  "breaking": {
+    "prefix": "cm-break",
+    "body": ["💥 BREAKING CHANGE: "]
+  },
+  "hotfix": {
+    "prefix": "cm-hotfix",
+    "body": ["🚑️ Hotfix"]
+  },
+  "pin": {
+    "prefix": "cm-pin",
+    "body": ["📌 Fix version"]
+  },
+  "add-dependencies": {
+    "prefix": "cm-add",
+    "body": ["➕ Add dependencies"]
+  },
+  "remove-dependencies": {
+    "prefix": "cm-add",
+    "body": ["➖ Add dependencies"]
+  },
+  "upgrade": {
+    "prefix": "cm-up",
+    "body": ["⬆️Upgrade dependencies"]
+  },
+  "downgrade": {
+    "prefix": "cm-down",
+    "body": ["⬇️Downgrade dependencies"]
   },
   "init": {
-    "prefix": "m-init",
-    "body": ["🌱 "]
+    "prefix": "cm-init",
+    "body": ["🌱 Initial commit"]
   }
 }
