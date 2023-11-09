@@ -47,6 +47,9 @@ defaults write -g com.apple.mouse.tapBehavior -int 1
 # VSCode
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 
+# Keyboard Shortcuts
+defaults write com.microsoft.Outlook NSUserKeyEquivalents -dict-add "Clear Formatting" -string "@l"
+
 killall Dock
 killall Finder
 killall SystemUIServer
