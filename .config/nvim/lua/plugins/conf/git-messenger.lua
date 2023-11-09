@@ -17,5 +17,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 			"O",
 			{ remap = true, buffer = true, desc = "GitMessenger: Forward to newer commit at the line" }
 		)
+		keymap("n", "<C-k>", "<Up>", { remap = true, buffer = true, desc = "GitMessenger: Scroll Up" })
+		keymap("n", "<C-j>", "<Down>", { remap = true, buffer = true, desc = "GitMessenger: Scroll Down" })
 	end,
 })
