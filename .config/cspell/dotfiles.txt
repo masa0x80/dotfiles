@@ -17,11 +17,13 @@ divx
 dont
 dosini
 dups
+easc
 enduml
 envrc
 epub
 fpath
 fuga
+gantt
 gdbm
 gibo
 goimports
@@ -67,6 +69,7 @@ nopaste
 noproxy
 norikae
 nvim
+oidc
 osascript
 osxkeychain
 pbcopy
@@ -83,6 +86,7 @@ pushd
 ripgreprc
 rubocop
 shfmt
+splatoon
 sprompt
 startuml
 stringio
