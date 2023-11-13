@@ -502,9 +502,18 @@
                         ]
                     },
                     {
-                        "description": "テキスト削除: <C-w>",
+                        "description": "^Terminal: テキスト削除: <C-w>",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.github\\.wez\\.wezterm$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "w",
                                     "modifiers": {
