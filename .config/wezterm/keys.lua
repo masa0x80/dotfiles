@@ -139,8 +139,8 @@ M.keys = {
 		action = act.ActivatePaneDirection("Prev"),
 	},
 	{
-		key = "R",
-		mods = "LEADER",
+		key = "r",
+		mods = "LEADER|CTRL",
 		action = act.RotatePanes("Clockwise"),
 	},
 	{
