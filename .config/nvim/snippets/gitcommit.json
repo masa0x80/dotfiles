@@ -84,8 +84,8 @@
     "body": ["➕ Add dependencies"]
   },
   "remove-dependencies": {
-    "prefix": "cm-add",
-    "body": ["➖ Add dependencies"]
+    "prefix": "cm-remove",
+    "body": ["➖ Remove dependencies"]
   },
   "upgrade": {
     "prefix": "cm-up",
