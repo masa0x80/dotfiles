@@ -1,5 +1,6 @@
 # vim: ft=ruby
 cask "altair-graphql-client"
+cask "alt-tab"
 cask "chromedriver"
 cask "devtoys"
 cask "diskwave"
