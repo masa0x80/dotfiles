@@ -87,6 +87,7 @@ return {
 				{ ";c", "<Cmd>Telekasten show_calendar<CR>", noremap = true, silent = true },
 				{ ";f", "<Cmd>Telekasten find_notes<CR>", noremap = true, silent = true },
 				{ ";g", "<Cmd>Telekasten search_notes<CR>", noremap = true, silent = true },
+				{ ";v", "<Cmd>Telekasten switch_vault<CR>", noremap = true, silent = true },
 			},
 			config = require("config.utils").load("conf/telekasten"),
 			init = require("config.utils").load("init/telekasten"),
