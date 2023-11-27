@@ -24,8 +24,7 @@ local languages = {
 	"markdown",
 	"markdown_inline",
 }
-
-require("nvim-treesitter.configs").setup({
+local opts = {
 	ensure_installed = languages,
 	highlight = {
 		enable = true,
@@ -90,4 +89,5 @@ require("nvim-treesitter.configs").setup({
 	autotag = {
 		enable = true,
 	},
-})
+}
+require("nvim-treesitter.configs").setup(opts)
