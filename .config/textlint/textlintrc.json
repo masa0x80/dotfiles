@@ -2,7 +2,8 @@
   "rules": {
     "preset-ja-spacing": {
       "ja-space-between-half-and-full-width": {
-        "space": "never"
+        "space": "never",
+        "lintStyledNode": true
       },
       "ja-space-around-code": {
         "before": true,
@@ -10,6 +11,13 @@
       },
       "ja-space-after-exclamation": false,
       "ja-space-after-question": false
+    },
+    "no-zero-width-spaces": true,
+    "@textlint-rule/no-invalid-control-character": true
+  },
+  "filters": {
+    "allowlist": {
+      "allow": ["[-] ", "[~] ", "[>] "]
     }
   }
 }
