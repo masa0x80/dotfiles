@@ -30,6 +30,12 @@ return {
 				args = { "--fix", "$FILENAME" },
 				stdin = false,
 			},
+			markdownlint = {
+				command = "markdownlint",
+				args = { "--config", "~/.config/markdownlint/config.json", "--fix", "$FILENAME" },
+				exit_codes = { 0, 1 },
+				stdin = false,
+			},
 		},
 		format_on_save = {
 			timeout_ms = 3000,

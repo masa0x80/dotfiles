@@ -6,6 +6,7 @@
 !/bat
 !/cspell
 !/git
+!/markdownlint
 !/markdown-preview
 !/nvim
 !/pry
