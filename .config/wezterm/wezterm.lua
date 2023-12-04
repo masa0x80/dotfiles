@@ -10,7 +10,7 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.font = wezterm.font("UDEV Gothic NF")
+config.font = wezterm.font("UDEV Gothic NFLG")
 config.color_scheme = "OneDark (base16)"
 config.window_decorations = "RESIZE"
 config.font_size = 16.0
