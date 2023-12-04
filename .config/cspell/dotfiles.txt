@@ -26,6 +26,7 @@ fuga
 gantt
 gdbm
 gibo
+gltd
 goimports
 gopath
 gopls
@@ -93,6 +94,7 @@ stringio
 strs
 struct
 stylua
+tada
 terraformls
 textconv
 texthl
