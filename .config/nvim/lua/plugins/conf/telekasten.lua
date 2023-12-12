@@ -22,6 +22,7 @@ require("telekasten").setup({
 	},
 
 	image_link_style = "markdown",
+	image_subdir = "assets",
 	extension = ".md",
 
 	uuid_type = "%Y%m%d%H%M%S",

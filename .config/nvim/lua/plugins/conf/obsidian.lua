@@ -9,16 +9,20 @@ local opts = {
 		nvim_cmp = true,
 		min_chars = 1,
 		new_notes_location = "current_dir",
-		prepend_note_id = true,
-		prepend_note_path = false,
-		use_path_only = false,
+		use_path_only = true,
 	},
+	note_id_func = function(title)
+		return title
+	end,
 	disable_frontmatter = true,
 	templates = {
 		subdir = "templates",
 		date_format = "%Y-%m-%d",
 		time_format = "%H:%M",
 	},
+	follow_url_func = function(url)
+		vim.fn.jobstart({ "open", url })
+	end,
 	ui = {
 		checkboxes = {
 			[" "] = { char = "", hl_group = "ObsidianTodo" },
