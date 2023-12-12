@@ -108,6 +108,8 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
 	bashls = {},
+	clangd = {},
+	dockerls = {},
 	eslint = {},
 	gopls = {},
 	jdtls = {},
@@ -119,6 +121,7 @@ local servers = {
 			},
 		},
 	},
+	kotlin_language_server = {},
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
