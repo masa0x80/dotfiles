@@ -89,11 +89,11 @@
   },
   "upgrade": {
     "prefix": "cm-up",
-    "body": ["⬆️Upgrade dependencies"]
+    "body": ["⬆️ Upgrade dependencies"]
   },
   "downgrade": {
     "prefix": "cm-down",
-    "body": ["⬇️Downgrade dependencies"]
+    "body": ["⬇️ Downgrade dependencies"]
   },
   "init": {
     "prefix": "cm-init",
