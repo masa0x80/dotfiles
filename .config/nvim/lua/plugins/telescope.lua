@@ -34,8 +34,8 @@ return {
 		{ "<Leader>sd", "<Cmd>lua require('telescope.builtin').diagnostics()<CR>", desc = "[S]earch [D]iagnostics" },
 		{
 			"<Leader>o",
-			"<Cmd>Telescope frecency<CR>",
-			desc = "[o] Find 'frequency' and 'recency' files",
+			"<Cmd>lua require('telescope.builtin').oldfiles()<CR>",
+			desc = "[o] Find recently opened files",
 		},
 		{ "<Leader>?", "<Cmd>lua require('telescope.builtin').keymaps()<CR>", desc = "[?] Search Keymaps" },
 		{ "<Leader>tt", "<Cmd>lua require('telescope.builtin').resume()<CR>", desc = "Telescope Resume" },
@@ -64,7 +64,6 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-ghq.nvim",
-		"nvim-telescope/telescope-frecency.nvim",
 		{
 			"renerocksai/telekasten.nvim",
 			keys = {
