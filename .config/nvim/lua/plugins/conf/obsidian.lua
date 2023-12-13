@@ -1,3 +1,4 @@
+local c = require("config.color")
 local opts = {
 	dir = vim.fn.expand("$SCRAPBOOK_DIR"),
 	daily_notes = {
@@ -30,6 +31,16 @@ local opts = {
 			["x"] = { char = "󰄵", hl_group = "ObsidianDone" },
 			[">"] = { char = "", hl_group = "ObsidianRightArrow" },
 			["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+		},
+		hl_groups = {
+			ObsidianTodo = { bold = true, fg = c.orange },
+			ObsidianDone = { bold = true, fg = c.cyan },
+			ObsidianRightArrow = { bold = true, fg = c.orange },
+			ObsidianTilde = { bold = true, fg = c.red },
+			ObsidianRefText = { underline = true, fg = c.purple },
+			ObsidianExtLinkIcon = { fg = c.purple },
+			ObsidianTag = { underline = true, fg = c.cyan, bg = c.bg0 },
+			ObsidianHighlightText = { bg = c.dark_yellow },
 		},
 	},
 }
