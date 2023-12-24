@@ -86,6 +86,12 @@ return {
 				{ ";d", "<Cmd>Telekasten goto_today<CR>", noremap = true, silent = true },
 				{ ";w", "<Cmd>Telekasten goto_thisweek<CR>", noremap = true, silent = true },
 				{ ";c", "<Cmd>Telekasten show_calendar<CR>", noremap = true, silent = true },
+				{
+					";f",
+					"<Cmd>Telekasten find_notes<CR>",
+					noremap = true,
+					silent = true,
+				},
 				{ ";g", "<Cmd>Telekasten search_notes<CR>", noremap = true, silent = true },
 				{ ";v", "<Cmd>Telekasten switch_vault<CR>", noremap = true, silent = true },
 			},
