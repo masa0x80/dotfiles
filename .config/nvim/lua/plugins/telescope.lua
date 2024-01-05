@@ -88,7 +88,7 @@ return {
 				{ ";c", "<Cmd>Telekasten show_calendar<CR>", noremap = true, silent = true },
 				{
 					";f",
-					"<Cmd>Telekasten find_notes<CR>",
+					"<Cmd>lua require('telescope.builtin').find_files({ cwd = require('telekasten').Cfg.home })<CR>",
 					noremap = true,
 					silent = true,
 				},
