@@ -64,6 +64,8 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-ghq.nvim",
+		"nvim-telescope/telescope-file-browser.nvim",
+		"nvim-telescope/telescope-dap.nvim",
 		{
 			"renerocksai/telekasten.nvim",
 			keys = {
@@ -101,6 +103,5 @@ return {
 				{ "renerocksai/calendar-vim" },
 			},
 		},
-		"nvim-telescope/telescope-file-browser.nvim",
 	},
 }

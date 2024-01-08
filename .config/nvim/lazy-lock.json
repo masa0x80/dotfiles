@@ -72,6 +72,7 @@
   "pretty-fold.nvim": { "branch": "master", "commit": "a7d8b424abe0eedf50116c460fbe6dfd5783b1d5" },
   "schemastore.nvim": { "branch": "main", "commit": "958d16c554a4a7dba8332707cded68f791b75d89" },
   "telekasten.nvim": { "branch": "main", "commit": "8c2b3889eb31009ae510a43384d1957b37654176" },
+  "telescope-dap.nvim": { "branch": "master", "commit": "4e2d5efb92062f0b865fe59b200b5ed7793833bf" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "4bd5657b14b58e069287f5ac591a647bb860b2ed" },
   "telescope-ghq.nvim": { "branch": "master", "commit": "2bd2e2d10f1a06fce9cce1e33ffe464c84ceb63b" },
   "telescope.nvim": { "branch": "master", "commit": "87e92ea31b2b61d45ad044cf7b2d9b66dad2a618" },
@@ -88,7 +89,7 @@
   "vim-slim": { "branch": "master", "commit": "f0758ea1c585d53b9c239177a8b891d8bbbb6fbb" },
   "vim-table-mode": { "branch": "master", "commit": "4ff8de2ac93431ee6d85a9e04177012752e6abdc" },
   "vim-unimpaired": { "branch": "master", "commit": "6d44a6dc2ec34607c41ec78acf81657248580bf1" },
-  "vscode-js-debug": { "branch": "main", "commit": "f4f5802ca4773af80e202f0a2514c9a82f262c82" },
+  "vscode-js-debug": { "branch": "main", "commit": "f58b6ff9b7665be07e5151e382d6029b71c24a65" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
   "winresizer": { "branch": "master", "commit": "9bd559a03ccec98a458e60c705547119eb5350f3" }
 }
