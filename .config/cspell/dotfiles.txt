@@ -40,6 +40,7 @@ honnef
 horiz
 httpie
 hygen
+ideco
 imgcat
 iterm2
 itsycal
@@ -51,6 +52,7 @@ karabiner
 keycastr
 kimura
 klass
+lamy
 ldflags
 libuv
 linehl
@@ -66,6 +68,7 @@ mycli
 navi
 neodev
 nestjs
+nisa
 nopaste
 noproxy
 norikae
