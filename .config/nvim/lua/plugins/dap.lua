@@ -114,6 +114,10 @@ return {
 				"mxsdev/nvim-dap-vscode-js",
 				config = require("config.utils").load("conf/dap-vscode-js"),
 			},
+			{
+				"Joakker/lua-json5",
+				build = "./install.sh",
+			},
 		},
 	},
 }
