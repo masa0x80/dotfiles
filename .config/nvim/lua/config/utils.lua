@@ -76,4 +76,12 @@ M.load = function(name)
 	end
 end
 
+M.js_based_languages = {
+	"typescript",
+	"javascript",
+	"typescriptreact",
+	"javascriptreact",
+	"vue",
+}
+
 return M

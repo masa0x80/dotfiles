@@ -1,15 +1,3 @@
-local c = require("config.color")
-local set_hl = vim.api.nvim_set_hl
-set_hl(0, "DapBreakpoint", { fg = c.red })
-set_hl(0, "DapLogPoint", { fg = c.blue })
-set_hl(0, "DapStopped", { fg = c.green })
-
-vim.fn.sign_define("DapBreakpoint", { text = "•", texthl = "DapBreakpoint" })
-vim.fn.sign_define("DapBreakpointCondition", { text = "ﳁ", texthl = "DapBreakpoint" })
-vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DapBreakpoint" })
-vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DapLogPoint" })
-vim.fn.sign_define("DapStopped", { text = "▷", texthl = "DapStopped" })
-
 local dap, dapui = require("dap"), require("dapui")
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -22,41 +10,56 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
 
-require("dap-vscode-js").setup({
-	debugger_path = vim.fn.expand("$XDG_DATA_HOME/nvim/lazy/vscode-js-debug"),
-	adapters = { "pwa-node" },
-})
+local dap_icons = {
+	DapStopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
+	DapBreakpoint = " ",
+	DapBreakpointCondition = " ",
+	DapBreakpointRejected = { " ", "DiagnosticError" },
+	DapLogPoint = ".>",
+}
 
-for _, language in ipairs({ "javascript", "typescript", "javascriptreact", "typescriptreact" }) do
+for name, sign in pairs(dap_icons) do
+	sign = type(sign) == "table" and sign or { sign }
+	vim.fn.sign_define(
+		name,
+		{ text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
+	)
+end
+local set_hl = vim.api.nvim_set_hl
+set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
+
+for _, language in ipairs(require("config.utils").js_based_languages) do
 	dap.configurations[language] = {
+		-- Debug single nodejs
 		{
 			type = "pwa-node",
 			request = "launch",
-			name = "Launch",
+			name = "Launch file (single nodejs)",
+			program = "${file}",
 			cwd = "${workspaceFolder}",
-			runtimeExecutable = "ts-node",
-			args = { "${file}" },
-			skipFiles = { "<node_internals>/**", "node_modules/**" },
-			resolveSourceMapLocations = {
-				"${workspaceFolder}/**",
-				"!**/node_modules/**",
-			},
-			console = "integratedTerminal",
+			sourceMaps = true,
+		},
+
+		-- Debug nodejs server processes (make sure to add --inspect when you run the process)
+		{
+			type = "pwa-node",
+			request = "attach",
+			name = "Attach (auto pick)",
+			processId = function()
+				require("dap.utils").pick_process({ filter = "node" })
+			end,
+			cwd = "${workspaceFolder}",
 		},
 		{
 			type = "pwa-node",
 			request = "attach",
-			name = "Attach (pick)",
-			processId = function()
-				require("dap.utils").pick_process({ filter = "node" })
-			end,
-			skipFiles = { "<node_internals>/**", "node_modules/**" },
-			resolveSourceMapLocations = {
-				"${workspaceFolder}/**",
-				"!**/node_modules/**",
-			},
+			name = "Attach (manual pick)",
+			processId = require("dap.utils").pick_process,
 			cwd = "${workspaceFolder}",
+			sourceMaps = true,
 		},
+
+		-- Debug Jest
 		{
 			type = "pwa-node",
 			request = "launch",
@@ -67,6 +70,39 @@ for _, language in ipairs({ "javascript", "typescript", "javascriptreact", "type
 			},
 			rootPath = "${workspaceFolder}",
 			cwd = "${workspaceFolder}",
+		},
+
+		-- Debug Web applications (client side)
+		{
+			type = "pwa-chrome",
+			request = "launch",
+			name = "Launch & Debug Chrome",
+			url = function()
+				local co = coroutine.running()
+				return coroutine.create(function()
+					vim.ui.input({
+						prompt = "Enter URL: ",
+						default = "http://localhost:3000",
+					}, function(url)
+						if url == nil or url == "" then
+							return
+						else
+							coroutine.resume(co, url)
+						end
+					end)
+				end)
+			end,
+			webRoot = "${workspaceFolder}",
+			protocol = "inspector",
+			sourceMaps = true,
+			userDataDir = false,
+		},
+
+		-- Divider for the launch.json derived configs
+		{
+			name = "----- ↓ launch.json configs ↓ -----",
+			type = "",
+			request = "launch",
 		},
 	}
 end
