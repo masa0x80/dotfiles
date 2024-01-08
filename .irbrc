@@ -35,6 +35,7 @@ end
 
 # IRB.conf[:USE_MULTILINE] = false
 IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:COMPLETOR] = :type
 # IRB.conf[:INSPECT_MODE] = :inspect
 if defined?(IRB::Color) # just for consistency
   clear = "\e[0m"
@@ -289,4 +290,10 @@ if defined?(IRB::Color) # used by IRB::ExtendCommand::Ls
       )
     end
   end)
+
+  Reline::Face.config(:completion_dialog) do |face|
+    face.define :default, foreground: '#222222', background: :cyan
+    face.define :enhanced, foreground: '#ffffff', background: :magenta, style: :bold
+    face.define :scrollbar, foreground: '#444444', background: '#0088aa'
+  end
 end
