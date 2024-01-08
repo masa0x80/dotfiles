@@ -6,7 +6,7 @@ return {
 		{ ",gc", "<Cmd>Neogit commit<CR>" },
 		{ ",GG", "<Cmd>DiffviewOpen<CR>" },
 		{ ",GC", "<Cmd>DiffviewOpen<CR>" },
-		{ ",cc", "<Cmd>DiffviewClose<CR>" },
+		{ ",CC", "<Cmd>DiffviewClose<CR>" },
 	},
 	config = require("config.utils").load("conf/neogit"),
 	dependencies = {
