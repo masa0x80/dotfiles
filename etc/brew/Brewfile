@@ -1,5 +1,4 @@
 # vim: ft=ruby
-tap "homebrew/core"
 tap "homebrew/services"
 
 brew "autoconf"
