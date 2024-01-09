@@ -45,7 +45,9 @@ local languages = {
 	"xml",
 	"yaml",
 }
-local opts = {
+
+---@diagnostic disable-next-line: missing-fields
+require("nvim-treesitter.configs").setup({
 	ensure_installed = languages,
 	highlight = {
 		enable = true,
@@ -110,5 +112,4 @@ local opts = {
 	autotag = {
 		enable = true,
 	},
-}
-require("nvim-treesitter.configs").setup(opts)
+})

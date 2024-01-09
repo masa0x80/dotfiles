@@ -1,5 +1,7 @@
+---@diagnostic disable-next-line: missing-fields
 require("smoothcursor").setup({
 	type = "default",
+	---@diagnostic disable-next-line: missing-fields
 	fancy = {
 		enable = true,
 		head = { cursor = "", texthl = "SmoothCursor", linehl = nil },

@@ -1,11 +1,13 @@
 local c = require("config.color")
-local opts = {
+---@diagnostic disable-next-line: missing-fields
+require("obsidian").setup({
 	dir = vim.fn.expand("$SCRAPBOOK_DIR"),
 	daily_notes = {
 		folder = "daily",
 		date_format = "%Y-%m-%d",
 		template = "daily.md",
 	},
+	---@diagnostic disable-next-line: missing-fields
 	completion = {
 		nvim_cmp = true,
 		min_chars = 1,
@@ -24,6 +26,7 @@ local opts = {
 	follow_url_func = function(url)
 		vim.fn.jobstart({ "open", url })
 	end,
+	---@diagnostic disable-next-line: missing-fields
 	ui = {
 		checkboxes = {
 			[" "] = { char = "", hl_group = "ObsidianTodo" },
@@ -43,5 +46,4 @@ local opts = {
 			ObsidianHighlightText = { bg = c.dark_yellow },
 		},
 	},
-}
-require("obsidian").setup(opts)
+})

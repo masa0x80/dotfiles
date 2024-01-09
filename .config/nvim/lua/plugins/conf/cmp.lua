@@ -115,6 +115,7 @@ cmp.setup({
 			side_padding = 0,
 		},
 	},
+	---@diagnostic disable-next-line: missing-fields
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
@@ -128,7 +129,6 @@ cmp.setup({
 			return kind
 		end,
 	},
-	-- sources = {
 	sources = cmp.config.sources({
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
