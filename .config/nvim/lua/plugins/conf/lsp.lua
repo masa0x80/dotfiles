@@ -128,6 +128,7 @@ local servers = {
 			telemetry = { enable = false },
 		},
 	},
+	marksman = {},
 	rubocop = {},
 	solargraph = {
 		settings = {
@@ -152,6 +153,7 @@ local saga = require("lspsaga")
 saga.setup({
 	ui = {
 		border = "rounded",
+		code_action = "",
 	},
 	code_action = {
 		keys = {
@@ -159,7 +161,7 @@ saga.setup({
 		},
 	},
 	lightbulb = {
-		sign = false,
+		virtual_text = false,
 	},
 	finder = {
 		default = "def+ref+imp",
@@ -177,6 +179,12 @@ saga.setup({
 	symbol_in_winbar = {
 		enable = false,
 	},
+})
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	group = "_",
+	callback = function()
+		require("lspsaga").config.lightbulb.sign = vim.o.ft ~= "markdown"
+	end,
 })
 
 local opts = { noremap = true, silent = true }
