@@ -1248,6 +1248,14 @@
                         "description": "<C-[> ▶ <Esc>（Raycast対応）",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.vivaldi\\.Vivaldi$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "open_bracket",
                                     "modifiers": {
