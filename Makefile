@@ -25,7 +25,6 @@ install: \
 	brew-init \
 	brew \
 	mise \
-	helm \
 	python \
 	navi \
 	bat \
@@ -83,11 +82,6 @@ defaults:
 mise:
 	mise plugin upgrade
 	mise install -y
-
-.PHONY: helm
-helm: mise
-	helm plugin list | grep secrets || helm plugin install https://github.com/zendesk/helm-secrets
-	helm plugin list | grep diff || helm plugin install https://github.com/databus23/helm-diff
 
 .PHONY: python
 python: mise

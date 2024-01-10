@@ -3,7 +3,6 @@ deno 1.39.2
 golang 1.21.5
 gradle 8.5
 groovy 4.0.17
-helm 3.13.0
 java corretto-21.0.1.12.1
 neovim 0.9.5
 nodejs 21.5.0
