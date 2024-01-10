@@ -36,10 +36,6 @@ config.inactive_pane_hsb = {
 	saturation = 0.9,
 	brightness = 0.8,
 }
-config.set_environment_variables = {
-	PATH = os.getenv("HOME") .. "/.asdf/shims:" .. os.getenv("PATH"),
-}
--- config.debug_key_events = true
 
 utils.merge_tables(config, keys)
 utils.merge_tables(config, mouse_bindings)

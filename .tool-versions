@@ -12,4 +12,4 @@ ruby 3.3.0
 rust 1.75.0
 sops 3.8.1
 terraform 1.6.6
-terraform_docs 0.17.0
+terraform-docs 0.17.0

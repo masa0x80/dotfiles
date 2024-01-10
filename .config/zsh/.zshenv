@@ -64,7 +64,6 @@ export GOPATH=$HOME/go
 eval "$(brew shellenv)"
 
 path=(
-  # brew caveats
   $HOMEBREW_PREFIX/opt/curl/bin(N-/)
   $HOMEBREW_PREFIX/opt/openssl/bin(N-/)
   $HOMEBREW_PREFIX/opt/sqlite/bin(N-/)
@@ -78,11 +77,6 @@ path=(
   $GOPATH/bin(N-/)
   $path
 )
-
-# brew caveats
-LDFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/lib"
-CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/include"
-PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/openssl/lib/pkgconfig"
 
 # RIPGREP
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/ripgreprc

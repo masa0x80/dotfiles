@@ -1,9 +1,0 @@
-#!/bin/bash
-
-export NODEJS_CHECK_SIGNATURES=no
-
-CURRENT_DIR=$(
-  cd "$(dirname "$0")" || exit
-  pwd
-)
-source "$CURRENT_DIR/_asdf_install" nodejs

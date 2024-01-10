@@ -34,7 +34,7 @@ brew "watch"
 # ref. https://diagrams.mingrammer.com/docs/getting-started/installation
 brew "graphviz"
 
-brew "asdf"
+brew "mise"
 brew "direnv"
 
 brew "zsh"

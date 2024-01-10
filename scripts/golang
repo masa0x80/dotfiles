@@ -1,9 +1,0 @@
-#!/bin/bash
-
-export ASDF_GOLANG_MOD_VERSION_ENABLED=true
-
-CURRENT_DIR=$(
-  cd "$(dirname "$0")" || exit
-  pwd
-)
-source "$CURRENT_DIR/_asdf_install" golang

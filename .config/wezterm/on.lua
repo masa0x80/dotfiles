@@ -154,23 +154,6 @@ wezterm.on("toggle-opacity", function(window)
 	window:set_config_overrides(overrides)
 end)
 
-wezterm.on("trigger-nvim-with-scrollback", function(window, pane)
-	local scrollback = pane:get_lines_as_text()
-	local name = os.tmpname()
-	local f = io.open(name, "w+")
-	f:write(scrollback)
-	f:flush()
-	f:close()
-	window:perform_action(
-		wezterm.action.SpawnCommandInNewTab({
-			args = { "nvim", name },
-		}),
-		pane
-	)
-	wezterm.sleep_ms(1000)
-	os.remove(name)
-end)
-
 wezterm.on("spawn-tab-next-to-current-tab", function(window, pane)
 	local tab = window:active_tab()
 	local index = 0

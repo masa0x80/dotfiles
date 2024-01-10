@@ -250,12 +250,6 @@ M.keys = {
 		mods = "SUPER",
 		action = act.EmitEvent("toggle-opacity"),
 	},
-
-	{
-		key = "e",
-		mods = "ALT",
-		action = act.EmitEvent("trigger-nvim-with-scrollback"),
-	},
 }
 
 for i = 0, 7 do

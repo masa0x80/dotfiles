@@ -1,5 +1,0 @@
-#!/bin/bash
-
-if [ -d "$HOME/.asdf" ]; then
-  asdf plugin update --all
-fi

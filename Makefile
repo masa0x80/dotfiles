@@ -24,22 +24,9 @@ install: \
 	defaults \
 	brew-init \
 	brew \
-	asdf \
-	nodejs \
-	deno \
-	python \
-	ruby \
-	java \
-	gradle \
-	groovy \
-	terraform \
-	terraform_docs \
+	mise \
 	helm \
-	golang \
-	rust \
-	sops \
-	aws-vault \
-	neovim \
+	python \
 	navi \
 	bat \
 	silicon \
@@ -90,76 +77,26 @@ defaults:
 
 # }}}
 
-# asdf {{{
+# mise {{{
 
-.PHONY: asdf
-asdf:
-	./scripts/asdf
-
-.PHONY: ruby
-ruby: asdf
-	./scripts/ruby
-
-.PHONY: python
-python: asdf
-	./scripts/python
-
-.PHONY: java
-java: asdf
-	./scripts/java
-
-.PHONY: golang
-golang: asdf
-	./scripts/golang
-
-.PHONY: gradle
-gradle: asdf
-	./scripts/gradle
-
-.PHONY: groovy
-groovy: asdf
-	./scripts/groovy
-
-.PHONY: terraform
-terraform: asdf
-	./scripts/terraform
-
-.PHONY: terraform_docs
-terraform_docs: asdf
-	./scripts/terraform_docs
+.PHONY: mise
+mise:
+	mise plugin upgrade
+	mise install -y
 
 .PHONY: helm
-helm: asdf
-	./scripts/helm
+helm: mise
+	helm plugin list | grep secrets || helm plugin install https://github.com/zendesk/helm-secrets
+	helm plugin list | grep diff || helm plugin install https://github.com/databus23/helm-diff
 
-.PHONY: nodejs
-nodejs: asdf
-	./scripts/nodejs
-
-.PHONY: deno
-deno: asdf
-	./scripts/deno
-
-.PHONY: sops
-sops: asdf
-	./scripts/sops
-
-.PHONY: aws-vault
-aws-vault: asdf
-	./scripts/aws-vault
-
-.PHONY: neovim
-neovim: asdf
-	./scripts/neovim
+.PHONY: python
+python: mise
+	pip install --upgrade pip
 
 # rust {{{
 
-.PHONY: rust
-rust: asdf
-	./scripts/rust
-
 .PHONY: rust-update
-rust-update: rust
+rust-update: mise
 	cargo install-update -a
 
 # }}}

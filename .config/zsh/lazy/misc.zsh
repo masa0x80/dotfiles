@@ -45,15 +45,10 @@ if installed ghq; then
   fi
 fi
 
-# asdf
-export ASDF_GOLANG_MOD_VERSION_ENABLED=true
-export NODEJS_CHECK_SIGNATURES=no
+# misc
+eval "$(mise activate zsh)"
 
 for file (
-  # Load asdf config
-  $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh(N)
-  $HOME/.asdf/plugins/java/set-java-home.zsh(N)
-
   # Load files under hoooks and conf.d
   $ZDOTDIR/hooks/*.zsh(N)
   $ZDOTDIR/conf.d/*.zsh(N)
