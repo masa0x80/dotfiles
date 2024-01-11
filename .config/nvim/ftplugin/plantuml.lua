@@ -1,4 +1,4 @@
-local path = vim.fn.expand("$DOTFILE/etc/plantuml/docker-compose.yml")
+local path = vim.fn.expand("$DOTFILE/etc/plantuml/compose.yaml")
 vim.api.nvim_create_user_command("StartPlantUmlServer", function()
 	local msg = vim.fn.system("docker compose -f " .. path .. " up -d")
 	if vim.v.shell_error ~= 0 then
