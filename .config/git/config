@@ -26,6 +26,7 @@
   show = "gitpager --pattern='^(commit|added|deleted|modified):? '"
   log = "gitpager --pattern='^(commit|added|deleted|modified):? '"
   branch = cat
+  difftool = true
 [color]
   diff = auto
   status = auto
@@ -43,5 +44,11 @@
   root = ~/.ghq
 [harrow]
   disabled = true
+[diff]
+	tool = difftastic
 [diff "sopsdiffer"]
 	textconv = sops -d
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
