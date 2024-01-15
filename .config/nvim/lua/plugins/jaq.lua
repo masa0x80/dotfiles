@@ -6,7 +6,7 @@ return {
 				lua = "luafile %",
 				vim = "source %",
 				javascript = "TermExec cmd='node %'",
-				python = "TermExec cmd='python3 %'",
+				python = "TermExec cmd='python %'",
 				rust = "TermExec cmd='rustc % && $fileBase && rm $fileBase'",
 				cpp = "TermExec cmd='g++ % -o $fileBase && $fileBase'",
 				go = "TermExec cmd='go run %'",
