@@ -1,10 +1,16 @@
 require("insx.preset.standard").setup()
 
+local insx = require("insx")
 for _, close in ipairs({ '"', "'", "`" }) do
-	require("insx").add(
+	insx.add(
 		"<C-]>",
-		require("insx.recipe.fast_wrap")({
-			close = close,
-		})
+		insx.with(
+			require("insx.recipe.fast_wrap")({
+				close = close,
+			}),
+			{
+				insx.with.undopoint(false),
+			}
+		)
 	)
 end
