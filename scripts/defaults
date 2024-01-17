@@ -34,7 +34,7 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Key Repeat
 # Set delay until key repeat (15 * n [ms])
-defaults write NSGlobalDomain InitialKeyRepeat -int 13
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
 # Set key repeat speed (15 * n [ms])
 defaults write NSGlobalDomain KeyRepeat -int 1
 
