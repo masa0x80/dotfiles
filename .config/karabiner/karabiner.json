@@ -1020,7 +1020,7 @@
                         ]
                     },
                     {
-                        "description": "左のCmdを英数に、右のCmdをかなに / <Cmd-C-;> で英数に、<Cmd-C-j> でかなに",
+                        "description": "IME",
                         "manipulators": [
                             {
                                 "from": {
@@ -1090,24 +1090,6 @@
                                     "key_code": "semicolon",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command",
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "japanese_eisuu"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command",
                                             "control"
                                         ]
                                     }
