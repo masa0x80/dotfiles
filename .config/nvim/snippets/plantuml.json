@@ -1,0 +1,39 @@
+{
+  "milestone-red": {
+    "prefix": "ms-red",
+    "body": [
+      "[$1] happens $2 and is colored in #ae2012",
+      "$2 is colored in #e6bcb7"
+    ]
+  },
+  "milestone-orange": {
+    "prefix": "ms-orange",
+    "body": [
+      "[$1] happens $2 and is colored in #ee9b00",
+      "$2 is colored in #e9d8a6"
+    ]
+  },
+  "milestone-blue": {
+    "prefix": "ms-blue",
+    "body": [
+      "[$1] happens $2 and is colored in #0a4d96",
+      "$2 is colored in #b5c9df"
+    ]
+  },
+  "milestone-black": {
+    "prefix": "ms-black",
+    "body": ["[$1] happens $2", "$2 is colored in silver"]
+  },
+  "task-simple": {
+    "prefix": "task",
+    "body": ["[$1] starts $2 and ends $3"]
+  },
+  "task-with-link": {
+    "prefix": "task-with-link",
+    "body": ["[$1] starts $2 and ends $3 and links to [[$4]]"]
+  },
+  "link": {
+    "prefix": "link",
+    "body": ["and links to [[$4]]"]
+  }
+}

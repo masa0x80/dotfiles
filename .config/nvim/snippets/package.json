@@ -17,6 +17,12 @@
           "NeogitCommitMessage"
         ],
         "path": "gitcommit.json"
+      },
+      {
+        "language": [
+          "plantuml"
+        ],
+        "path": "plantuml.json"
       }
     ]
   }
