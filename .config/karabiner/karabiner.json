@@ -1087,7 +1087,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "semicolon",
+                                    "key_code": "quote",
                                     "modifiers": {
                                         "mandatory": [
                                             "control"
