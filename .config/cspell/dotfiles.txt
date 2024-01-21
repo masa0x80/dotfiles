@@ -18,6 +18,7 @@ dont
 dosini
 dups
 easc
+endgantt
 enduml
 envrc
 epub
@@ -65,6 +66,7 @@ masayuki
 mdutil
 megalodon
 mycli
+nand
 navi
 neodev
 nestjs
@@ -92,6 +94,7 @@ rubocop
 shfmt
 splatoon
 sprompt
+startgantt
 startuml
 stringio
 strs
