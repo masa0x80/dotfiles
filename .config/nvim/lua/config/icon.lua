@@ -36,4 +36,6 @@ M.Object = ""
 M.Key = ""
 M.Null = "󰟢"
 
+M.Copilot = ""
+
 return M

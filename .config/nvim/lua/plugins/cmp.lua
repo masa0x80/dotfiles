@@ -13,5 +13,6 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"f3fora/cmp-spell",
+		"zbirenbaum/copilot-cmp",
 	},
 }

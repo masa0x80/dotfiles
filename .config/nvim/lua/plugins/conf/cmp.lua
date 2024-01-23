@@ -1,9 +1,12 @@
 vim.opt.runtimepath:append("~/.config/nvim/snippets")
 require("luasnip/loaders/from_vscode").lazy_load()
 
-local check_backspace = function()
-	local col = vim.fn.col(".") - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+local function has_copilot()
+	if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+		return false
+	end
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 end
 
 local icon = require("config.icon")
@@ -35,8 +38,11 @@ lspkind.init({
 		Event = icon.Event,
 		Operator = icon.Operator,
 		TypeParameter = icon.TypeParameter,
+
+		Copilot = icon.Copilot,
 	},
 })
+require("copilot_cmp").setup()
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 cmp.setup({
@@ -72,13 +78,11 @@ cmp.setup({
 		["<C-j>"] = cmp.mapping.confirm({ select = true }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.select_next_item()
+				cmp.select_next_item(has_copilot() and { behavior = cmp.SelectBehavior.Select } or {})
 			elseif luasnip.expandable() then
 				luasnip.expand()
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
-			elseif check_backspace() then
-				fallback()
 			else
 				fallback()
 			end
@@ -130,8 +134,9 @@ cmp.setup({
 		end,
 	},
 	sources = cmp.config.sources({
-		{ name = "luasnip" },
+		{ name = "copilot" },
 		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
 		{ name = "path" },
 	}, {
 		{
@@ -209,3 +214,4 @@ set_hl(0, "CmpItemKindEnumMember", { link = "CmpItemKindMethod" })
 set_hl(0, "CmpItemKindInterface", { fg = c.black, bg = c.cyan })
 set_hl(0, "CmpItemKindColor", { link = "CmpItemKindInterface" })
 set_hl(0, "CmpItemKindTypeParameter", { link = "CmpItemKindInterface" })
+set_hl(0, "CmpItemKindCopilot", { link = "CmpItemKindInterface" })
