@@ -100,6 +100,9 @@ keymap("n", "x", '"_x', opts)
 -- Insert dash
 keymap("n", "<C-g><C-i>", "I- <Esc>A<Esc>", { noremap = true, silent = true, desc = "Insert dash (Markdown)" })
 
+-- messages
+keymap("n", ",M", "<Cmd>messages<CR>", opts)
+
 -- # Insert
 keymap("i", "<C-b>", "<Left>", opts)
 keymap("i", "<C-f>", "<Right>", opts)
