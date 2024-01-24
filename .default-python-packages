@@ -1,2 +1,8 @@
 diagrams
 neovim
+
+# https://github.com/jellydn/CopilotChat.nvim requires the follow packages
+python-dotenv
+requests
+pynvim
+prompt-toolkit

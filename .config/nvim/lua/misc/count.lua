@@ -18,4 +18,4 @@ end, {
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
-keymap("v", "<Leader>c", ":SelectedCountChars<CR>", opts)
+keymap("v", "<Leader>C", ":SelectedCountChars<CR>", opts)

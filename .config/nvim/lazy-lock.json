@@ -1,6 +1,7 @@
 {
   "BackAndForward.vim": { "branch": "master", "commit": "05d8c94404b4464f6e69c1e29a27100fc3e6bee8" },
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
+  "CopilotChat.nvim": { "branch": "main", "commit": "6a34829fde1970c0b99a7bdf2dc6b35ad0d4dc91" },
   "LuaSnip": { "branch": "master", "commit": "2dbef19461198630b3d7c39f414d09fb07d1fdd2" },
   "SmoothCursor.nvim": { "branch": "main", "commit": "897a3854718cde0b88ab936db40c53c009d85cc6" },
   "calendar-vim": { "branch": "master", "commit": "a7e73e02c92566bf427b2a1d6a61a8f23542cc21" },
