@@ -199,3 +199,6 @@ keymap("n", "z'", "zX", opts)
 keymap("n", "_", "zc", opts)
 keymap("n", "+", "zO", opts)
 keymap("n", "z;", "za", opts)
+
+-- Jira
+keymap("n", ";j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)
