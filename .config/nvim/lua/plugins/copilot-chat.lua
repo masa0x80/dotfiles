@@ -18,7 +18,7 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{
-			"<leader>ccc",
+			"<Leader>ccc",
 			function()
 				vim.ui.input({
 					prompt = "CopilotChat: ",
@@ -33,9 +33,9 @@ return {
 			end,
 			desc = "CopilotChat",
 		},
-		{ "<leader>cce", "<Cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-		{ "<leader>cct", "<Cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
-		{ "<leader>ccr", "<Cmd>CopilotChatReview<cr>", desc = "CopilotChat - Review code" },
-		{ "<leader>ccR", "<Cmd>CopilotChatRefactor<cr>", desc = "CopilotChat - Refactor code" },
+		{ "<leader>cce", "<Cmd>CopilotChatExplain<CR>", desc = "CopilotChat - Explain code" },
+		{ "<leader>cct", "<Cmd>CopilotChatTests<CR>", desc = "CopilotChat - Generate tests" },
+		{ "<leader>ccr", "<Cmd>CopilotChatReview<CR>", desc = "CopilotChat - Review code" },
+		{ "<leader>ccR", "<Cmd>CopilotChatRefactor<CR>", desc = "CopilotChat - Refactor code" },
 	},
 }
