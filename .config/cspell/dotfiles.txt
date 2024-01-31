@@ -1,3 +1,4 @@
+alexa
 atinit
 atload
 autocrlf
@@ -92,6 +93,7 @@ pushd
 ripgreprc
 rubocop
 shfmt
+siri
 splatoon
 sprompt
 startgantt
