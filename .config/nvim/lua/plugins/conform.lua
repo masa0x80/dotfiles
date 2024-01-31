@@ -42,5 +42,5 @@ return {
 			lsp_fallback = true,
 		},
 	},
-	event = "BufReadPre",
+	event = "VeryLazy",
 }
