@@ -10,10 +10,13 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.font = wezterm.font("UDEV Gothic NFLG")
+config.font = wezterm.font_with_fallback({
+	"0xProto Nerd Font Mono",
+	"UDEV Gothic NFLG",
+})
 config.color_scheme = "OneDark (base16)"
 config.window_decorations = "RESIZE"
-config.font_size = 16.0
+config.font_size = 14.0
 config.adjust_window_size_when_changing_font_size = false
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
