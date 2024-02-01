@@ -1,9 +1,7 @@
 repl_type_completor
 
-pry
-rails
-
 standard
 rubocop-performance
 
-jr
+pry
+rails

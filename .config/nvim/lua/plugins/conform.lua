@@ -2,6 +2,7 @@ return {
 	"stevearc/conform.nvim",
 	opts = {
 		formatters_by_ft = {
+			ruby = { "rubocop" },
 			go = { "goimports" },
 			lua = { "stylua" },
 			luau = { "stylua" },

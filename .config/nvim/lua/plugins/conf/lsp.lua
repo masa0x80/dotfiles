@@ -129,7 +129,6 @@ local servers = {
 		},
 	},
 	marksman = {},
-	rubocop = {},
 	solargraph = {
 		settings = {
 			solargraph = {
