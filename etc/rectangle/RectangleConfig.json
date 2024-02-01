@@ -275,19 +275,19 @@
       "modifierFlags" : 1310720
     },
     "moveDown" : {
-      "keyCode" : 125,
+      "keyCode" : 38,
       "modifierFlags" : 1441792
     },
     "moveLeft" : {
-      "keyCode" : 123,
+      "keyCode" : 4,
       "modifierFlags" : 1441792
     },
     "moveRight" : {
-      "keyCode" : 124,
+      "keyCode" : 37,
       "modifierFlags" : 1441792
     },
     "moveUp" : {
-      "keyCode" : 126,
+      "keyCode" : 40,
       "modifierFlags" : 1441792
     },
     "nextDisplay" : {
