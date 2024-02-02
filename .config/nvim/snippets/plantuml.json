@@ -96,5 +96,9 @@
   "link": {
     "prefix": "link",
     "body": ["and links to [[$4]]"]
+  },
+  "displays-on-same-row": {
+    "prefix": "displays-on-same-row",
+    "body": ["[$1] displays on same row as [$2]"]
   }
 }
