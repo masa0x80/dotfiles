@@ -28,14 +28,14 @@ local lsp_names = function()
 			table.insert(clients, formatter)
 		end
 	end
-	return #clients == 0 and "" or "  " .. table.concat(clients, ", ")
+	return #clients == 0 and "" or " " .. table.concat(clients, ", ")
 end
 
 require("lualine").setup({
 	sections = {
 		lualine_c = filename,
-		lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_y = { lsp_names },
+		lualine_x = { lsp_names },
+		lualine_y = { "encoding", "fileformat", "filetype" },
 		lualine_z = { "location", "progress" },
 	},
 	tabline = {
