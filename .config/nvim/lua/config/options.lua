@@ -34,11 +34,13 @@ local options = {
 	},
 	list = true,
 	listchars = {
-		tab = "» ",
+		tab = "┈┈",
 		trail = "-",
+		multispace = "￮",
 		extends = "»",
 		precedes = "«",
-		nbsp = "%",
+		lead = " ",
+		nbsp = "‿",
 	},
 	path = {
 		".",
