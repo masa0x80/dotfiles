@@ -110,6 +110,7 @@ tflint
 tldr
 tmpl
 udemy
+venv
 vimium
 virt_text
 wantedly
