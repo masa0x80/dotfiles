@@ -1,6 +1,5 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
-	main = "ibl",
-	opts = {},
+	config = require("config.utils").load("conf/indent-blankline"),
 	event = { "BufNewFile", "BufRead" },
 }
