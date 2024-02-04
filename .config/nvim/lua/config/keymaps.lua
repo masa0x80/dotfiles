@@ -202,3 +202,13 @@ keymap("n", "z;", "za", opts)
 
 -- Jira
 keymap("n", "<Leader>J", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)
+
+-- Preview
+local utils = require("config.utils")
+vim.keymap.set("n", ";M", function()
+	vim.cmd("normal yy")
+	local line = vim.fn.getreg('"')
+	local path = string.gsub(line, ".*%((.*)%).*", "%1")
+	path = string.gsub(path, "%%20", " ")
+	utils.preview(vim.fn.expand("%:p:h") .. "/" .. path)
+end, { noremap = true, silent = true, desc = "Preview multimedia file" })
