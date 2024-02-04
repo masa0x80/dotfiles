@@ -108,7 +108,6 @@ return {
 			{
 				"microsoft/vscode-js-debug",
 				build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && mv dist out",
-				version = "1.*",
 			},
 			{
 				"mxsdev/nvim-dap-vscode-js",
