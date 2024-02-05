@@ -143,6 +143,9 @@ keymap("i", "<C-t><C-p>", function()
 	indent(false)
 end, { noremap = true, silent = true, desc = "Indent <<" })
 
+-- Insert ellipsis
+keymap("i", "<A-;>", "…", opts)
+
 -- # Visual
 
 -- Paste
