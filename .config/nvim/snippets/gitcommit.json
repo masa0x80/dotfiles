@@ -11,6 +11,10 @@
     "prefix": "cm-fix",
     "body": ["✏️ fix: "]
   },
+  "shell": {
+    "prefix": "cm-shell",
+    "body": ["🐚 $ "]
+  },
   "docs": {
     "prefix": "cm-doc",
     "body": ["📚 docs: "]
