@@ -6,12 +6,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- # Normal
-
-keymap("n", "<C-i>", function()
-	vim.cmd("startinsert")
-	vim.fn.execute("!kana", "silent")
-end, opts)
-
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
