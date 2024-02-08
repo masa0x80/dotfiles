@@ -34,5 +34,8 @@ require("telekasten").setup({
 	dailies_create_nonexisting = true,
 	weeklies_create_nonexisting = true,
 
+	sort = "filename",
+	new_note_location = "prefer_home",
+
 	rename_update_links = true,
 })

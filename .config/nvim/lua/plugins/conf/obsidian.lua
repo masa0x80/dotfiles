@@ -11,7 +11,7 @@ require("obsidian").setup({
 	completion = {
 		nvim_cmp = true,
 		min_chars = 1,
-		new_notes_location = "current_dir",
+		new_notes_location = "notes_subdir",
 		use_path_only = true,
 	},
 	note_id_func = function(title)
