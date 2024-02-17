@@ -1,7 +1,7 @@
 git-add() {
   local files=(
     $(git -c color.status=always status -s | fzf -m --query="$@" \
-      --preview '[[ {1} = "??" ]] && bat --color=always {-1} || [[ {1} = "MM" ]] && git diff --color=always {-1} || [[ {} =~ "^ M" ]] && git diff --color=always {-1} || [[ {} =~ "^D " || {} =~ "^.D" ]] && : || git diff --staged --color=always {-1}' | cut -c4- | sed -e 's|^|:|' | tr "\n" ' ')
+      --preview 'F=$(echo {2..} | sed "s|\"\(.*\)\"|\1|"); [[ {1} = "??" ]] && bat --color=always "$F" || [[ {1} = "MM" ]] && git diff --color=always "$F" || [[ {} =~ "^ M" ]] && git diff --color=always "$F" || [[ {} =~ "^D " || {} =~ "^.D" ]] && : || git diff --staged --color=always "$F"' | cut -c4- | sed -e 's|^|:|' | tr "\n" ' ')
   )
 
   if test -n "$files"; then

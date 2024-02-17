@@ -2,5 +2,5 @@
 
 re() {
   local option="$(echo -e "--staged\n--worktree" | fzf +m --query="$@")"
-  git -c color.status=always status -s -uno | fzf --preview '[[ {} =~ "^ M" ]] && git diff --color=always {-1} || git diff --staged --color=always {-1}' --prompt="\$ git restore $option (git status -s -uno)> " | cut -c4- | xargs -I% git restore $option %
+  git -c color.status=always status -s -uno | fzf --preview 'F=$(echo {2..} | sed "s|\"\(.*\)\"|\1|"); [[ {} =~ "^ M" ]] && git diff --color=always "$F" || git diff --staged --color=always "$F"' --prompt="\$ git restore $option (git status -s -uno)> " | cut -c4- | xargs -I% git restore $option %
 }
