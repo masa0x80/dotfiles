@@ -39,6 +39,10 @@
     "prefix": "cm-chore",
     "body": ["🤖 chore: "]
   },
+  "move-rename-files": {
+    "prefix": "cm-move-rename",
+    "body": ["🚚 Move: "]
+  },
   "remove-files": {
     "prefix": "cm-remove",
     "body": ["🔥 remove: "]
