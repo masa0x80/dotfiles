@@ -97,7 +97,7 @@ require("neo-tree").setup({
 				["]g"] = "next_git_modified",
 				["yy"] = "copy_filename",
 				["Y"] = "copy_relative_filename",
-				["<C-y>"] = "copy_absolute_filename",
+				["<C-S-y>"] = "copy_absolute_filename",
 			},
 		},
 		filtered_items = {
