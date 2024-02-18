@@ -9,5 +9,5 @@ return {
 	init = function()
 		vim.cmd.colorscheme("onedark")
 	end,
-	config = require("config.utils").load("conf/color"),
+	config = require("config.utils").load("conf/colorscheme"),
 }
