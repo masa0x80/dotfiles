@@ -7,16 +7,21 @@ require("obsidian").setup({
 		date_format = "%Y-%m-%d",
 		template = "daily.md",
 	},
-	---@diagnostic disable-next-line: missing-fields
 	completion = {
 		nvim_cmp = true,
 		min_chars = 1,
-		new_notes_location = "notes_subdir",
-		use_path_only = true,
 	},
+	new_notes_location = "notes_subdir",
 	note_id_func = function(title)
 		return title
 	end,
+	wiki_link_func = function(opts)
+		return string.format("[[%s]]", opts.path:gsub("%.md$", ""))
+	end,
+	markdown_link_func = function(opts)
+		return string.format("[%s](%s)", opts.label, opts.path)
+	end,
+	preferred_link_style = "wiki",
 	disable_frontmatter = true,
 	templates = {
 		subdir = "templates",
