@@ -36,10 +36,8 @@ local options = {
 	listchars = {
 		tab = "┈┈",
 		trail = "-",
-		multispace = "￮",
 		extends = "»",
 		precedes = "«",
-		lead = " ",
 		nbsp = "‿",
 	},
 	path = {
