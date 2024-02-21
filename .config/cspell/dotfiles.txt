@@ -37,6 +37,7 @@ gsub
 gyotaku
 hadolint
 hatena
+hhkb
 hoge
 honnef
 horiz
