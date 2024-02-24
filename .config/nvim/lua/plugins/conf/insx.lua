@@ -13,4 +13,6 @@ for _, close in ipairs({ '"', "'", "`" }) do
 			}
 		)
 	)
+	-- quote系は2個挿入するのをやめる
+	vim.api.nvim_del_keymap("i", close)
 end
