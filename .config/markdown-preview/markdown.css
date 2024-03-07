@@ -1,5 +1,30 @@
+[data-theme="dark"] {
+  --color-text-primary: #f6f8fa !important;
+  --foreground-color: #c9d1d9 !important;
+  --background-color: #0d1117 !important;
+  --border-color: #30363d !important;
+  --secondary-background-color: #181a1b !important;
+  fill: #f6f8fa !important;
+}
+
 * {
   background-color: #0d1117 !important;
+}
+
+blockquote {
+  border-style: solid;
+  border-color: #c9d1d9 !important;
+  border-width: 0 0 0 1px !important;
+  margin-inline-start: 0.6em;
+  padding-left: 1em;
+}
+
+a {
+  color: #0086b3;
+}
+
+a:visited {
+  color: #c9d1d9;
 }
 
 #page-header {
