@@ -11,8 +11,7 @@ if wezterm.config_builder then
 end
 
 config.font = wezterm.font_with_fallback({
-	"0xProto Nerd Font Mono",
-	"UDEV Gothic NFLG",
+	"Moralerspace Neon HWNF",
 })
 config.color_scheme = "OneDark (base16)"
 config.window_decorations = "RESIZE"
