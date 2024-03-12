@@ -39,8 +39,18 @@ require("lualine").setup({
 		lualine_z = { "location", "progress" },
 	},
 	tabline = {
-		lualine_a = { "buffers" },
-		lualine_z = { "tabs" },
+		lualine_a = {
+			{
+				"buffers",
+				use_mode_colors = true,
+			},
+		},
+		lualine_z = {
+			{
+				"tabs",
+				use_mode_colors = true,
+			},
+		},
 	},
 	winbar = {
 		lualine_c = {
