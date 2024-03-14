@@ -14,6 +14,7 @@ brew "less"
 brew "llvm"
 brew "libgit2"
 brew "libsodium"
+brew "libyaml"
 brew "openssl"
 
 brew "bluetoothconnector"
