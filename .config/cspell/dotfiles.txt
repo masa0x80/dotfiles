@@ -21,9 +21,11 @@ dups
 easc
 endgantt
 enduml
+endwbs
 envrc
 epub
 fpath
+freee
 fuga
 gantt
 gdbm
@@ -100,6 +102,7 @@ splatoon
 sprompt
 startgantt
 startuml
+startwbs
 stringio
 strs
 struct
