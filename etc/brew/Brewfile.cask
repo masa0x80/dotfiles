@@ -1,5 +1,6 @@
 cask "altair-graphql-client"
 cask "audacity"
+cask "box-drive"
 cask "chromedriver"
 cask "devtoys"
 cask "docker"
