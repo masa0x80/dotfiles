@@ -5,7 +5,9 @@ local utils = require("config.utils")
 local telescope = require("telescope")
 telescope.setup({
 	defaults = {
-		path_display = { "smart" },
+		path_display = {
+			truncate = 3,
+		},
 		sorting_strategy = "ascending",
 		file_ignore_patterns = { "COMMIT_EDITMSG" },
 		vimgrep_arguments = {

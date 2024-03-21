@@ -31,19 +31,69 @@ local lsp_names = function()
 	return #clients == 0 and "" or " " .. table.concat(clients, ", ")
 end
 
+-- ref. 【Neovim】lualineの表示をカスタムしてみる。Visualモードで選択された行数、文字数を表示してみる https://zenn.dev/glaucus03/articles/ff710d27de4e55
+local function selectionCount()
+	local mode = vim.fn.mode()
+
+	-- 選択モードでない場合には無効
+	if not (mode:find("[vV\22]") ~= nil) then
+		return ""
+	end
+
+	local line1 = vim.fn.line("v")
+	local line2 = vim.fn.line(".")
+	local pos1 = vim.fn.col("v")
+	local pos2 = vim.fn.col(".")
+
+	if line1 == line2 and pos1 > pos2 then
+		local tmp = pos1
+		pos1 = pos2
+		pos2 = tmp
+	elseif line1 > line2 then
+		local tmp = line1
+		line1 = line2
+		line2 = tmp
+		tmp = pos1
+		pos1 = pos2
+		pos2 = tmp
+	end
+
+	if mode == "V" then
+		-- 行選択モードの場合は、各行全体をカウントする
+		pos1 = 1
+		pos2 = vim.fn.strlen(vim.fn.getline(line2)) + 1
+	end
+
+	local lines = vim.fn.getline(line1, line2)
+
+	local n = vim.fn.len(lines)
+	if mode == "V" then
+		lines[1] = lines[1]:sub(1, vim.fn.len(lines[1]))
+		lines[n] = lines[n]:sub(1, vim.fn.len(lines[n]))
+	else
+		if n == 1 then
+			lines = { lines[1]:sub(pos1, pos2) }
+		else
+			lines[1] = lines[1]:sub(pos1, vim.fn.len(lines[1]))
+			lines[n] = lines[n]:sub(1, pos2)
+		end
+	end
+
+	local str = vim.fn.join(lines, "")
+	local chars = vim.fn.strchars(str)
+	return tostring(n) .. " lines, " .. tostring(chars) .. " characters"
+end
+
 require("lualine").setup({
 	sections = {
 		lualine_c = filename,
-		lualine_x = { lsp_names },
+		lualine_x = { selectionCount, lsp_names },
 		lualine_y = { "encoding", "fileformat", "filetype" },
 		lualine_z = { "location", "progress" },
 	},
 	tabline = {
 		lualine_a = {
-			{
-				"buffers",
-				use_mode_colors = true,
-			},
+			{ "buffers", max_length = 1 },
 		},
 		lualine_z = {
 			{
