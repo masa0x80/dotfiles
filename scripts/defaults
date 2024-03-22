@@ -16,7 +16,7 @@ defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 defaults write -g AppleLanguages -array en ja
 
 # Change the directory that saves screen shots
-dir=$HOME/Pictures/ScreenShots/
+dir=${SS_DIR:-$HOME/Pictures/ScreenShots/}
 mkdir -p "$dir"
 defaults write com.apple.screencapture location -string "$dir"
 defaults write com.apple.screencapture name -string 'ScreenShot'
