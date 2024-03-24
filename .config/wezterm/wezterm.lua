@@ -24,13 +24,6 @@ config.cell_width = 1.0
 config.line_height = 1.0
 config.use_cap_height_to_scale_fallback_fonts = true
 
--- This increases color saturation by 50%
-config.foreground_text_hsb = {
-	hue = 1.0,
-	saturation = 1.0,
-	brightness = 1.2,
-}
-
 config.color_scheme = "OneDark (base16)"
 config.window_decorations = "RESIZE"
 config.use_fancy_tab_bar = false

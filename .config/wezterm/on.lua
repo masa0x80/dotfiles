@@ -41,27 +41,31 @@ wezterm.on("format-tab-title", function(tab, _, _, _, hover)
 	local background = color.bg3
 	local foreground = color.fg
 
+	local prefix = ""
+	local suffix = ""
 	if tab.is_active then
 		background = color.green
 		foreground = color.black
+		prefix = SOLID_LEFT_ARROW
+		suffix = SOLID_RIGHT_ARROW
 	elseif hover then
 		background = color.fg
 		foreground = color.black
 	end
 
-	local edge_background = "NONE"
+	local edge_background = color.bg3
 	local edge_foreground = background
 
 	return {
 		{ Background = { Color = edge_background } },
 		{ Foreground = { Color = edge_foreground } },
-		{ Text = SOLID_LEFT_ARROW },
+		{ Text = prefix },
 		{ Background = { Color = background } },
 		{ Foreground = { Color = foreground } },
 		{ Text = table.concat(title, " ") },
 		{ Background = { Color = edge_background } },
 		{ Foreground = { Color = edge_foreground } },
-		{ Text = SOLID_RIGHT_ARROW },
+		{ Text = suffix },
 	}
 end)
 
