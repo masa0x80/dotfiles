@@ -47,6 +47,7 @@ fi
 
 # misc
 eval "$(mise activate zsh)"
+eval "$(fzf --zsh)"
 
 for file (
   # Load files under hoooks and conf.d
