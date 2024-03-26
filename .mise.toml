@@ -1,15 +1,36 @@
 [tools]
+# https://github.com/99designs/aws-vault/tags
 aws-vault = "7.2.0"
-deno = "1.40.0"
-go = "1.22.0"
-gradle = "8.6"
-groovy = "4.0.18"
-java = "corretto-21.0.1.12.1"
-neovim = "0.9.5"
-node = "21.6.2"
-python = "3.12.2"
-ruby = "3.3.0"
-rust = "1.76.0"
+# https://github.com/getsops/sops/tags
 sops = "3.8.1"
-terraform = "1.7.3"
+# https://github.com/neovim/neovim/releases
+neovim = "0.9.5"
+
+# https://go.dev/dl/
+go = "1.22.1"
+
+# https://github.com/corretto/corretto-21/tags
+java = "corretto-21.0.2.13.1"
+# https://gradle.org/install/
+gradle = "8.7"
+# https://groovy.apache.org/download.html
+groovy = "4.0.20"
+
+# https://nodejs.org/en/download
+node = "21.6.2"
+# https://github.com/denoland/deno/tags
+deno = "1.41.3"
+
+# https://www.python.org/downloads/
+python = "3.12.2"
+
+# https://www.ruby-lang.org/en/downloads/releases/
+ruby = "3.3.0"
+
+# https://github.com/rust-lang/rust/tags
+rust = "1.77.0"
+
+# https://github.com/hashicorp/terraform/tags
+terraform = "1.7.5"
+# https://github.com/terraform-docs/terraform-docs/tags
 terraform-docs = "0.17.0"
