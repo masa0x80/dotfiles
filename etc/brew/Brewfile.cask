@@ -22,6 +22,7 @@ cask "vlc"
 
 cask "google-chrome"
 cask "vivaldi"
+cask "microsoft-edge"
 
 tap "homebrew/cask-fonts"
 cask "font-biz-udpgothic"
