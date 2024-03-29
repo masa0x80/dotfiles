@@ -213,6 +213,12 @@ abbrevs:
   - name: "| bat"
     abbr: L
     snippet: "| bat"
+    if: (( ${+commands[bat]} ))
+    global: true
+  - name: "| jnv"
+    abbr: J
+    snippet: "| jnv"
+    if: (( ${+commands[jnv]} ))
     global: true
   - name: ">/dev/null 2>&1"
     abbr: N
@@ -291,3 +297,9 @@ abbrevs:
     abbr: sconf
     snippet: "vi ~/.ssh/config"
     if: test -e "$HOME/.ssh/config"
+
+  - name: "jnv"
+    abbr: Jq
+    snippet: "jnv"
+    if: (( ${+commands[jnv]} ))
+    global: true
