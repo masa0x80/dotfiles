@@ -5,100 +5,168 @@
       "@startuml",
       "@startgantt",
       "",
+      "!\\$normal = 13",
+      "!\\$large  = 15",
+      "!\\$color = {",
+      "  \"black\":   \"#16160e\", \"grey\":         \"#dcdddd\",",
+      "  \"red\":     \"#ae2012\", \"light_red\":    \"#e6bcb7\",",
+      "  \"pink\":    \"#e95295\", \"light_pink\":   \"#e8bacf\",",
+      "  \"orange\":  \"#ee9b00\", \"light_orange\": \"#e9d8a6\",",
+      "  \"purple\":  \"#7846a8\", \"light_purple\": \"#d2c1e2\",",
+      "  \"blue\":    \"#0a4d96\", \"light_blue\":   \"#b5c9df\",",
+      "  \"cyan\":    \"#0099cc\", \"light_cyan\":   \"#bce2e8\",",
+      "  \"green\":   \"#4a8e3b\", \"light_green\":  \"#cde8c7\",",
+      "  \"silver\":  \"#71706e\", \"light_silver\": \"#efefef\",",
+      "  \"scarlet\": \"#d3381c\"",
+      "}",
+      "!\\$dark = \\$color.black",
+      "!\\$light = \\$color.grey",
+      "",
       "<style>",
       "ganttDiagram {",
       "  milestone {",
-      "    FontSize 13",
+      "    FontSize \\$normal",
+      "    FontColor \\$color.black",
       "  }",
       "  task {",
-      "    FontSize 13",
+      "    FontSize \\$normal",
+      "    FontColor \\$color.black",
       "  }",
       "  note {",
-      "    FontSize 13",
-      "    BackGroundColor white",
+      "    FontSize \\$normal",
+      "    FontColor \\$color.black",
       "  }",
-      "  separator {",
-      "    FontSize 13",
+      "  arrow {",
+      "    FontColor \\$color.black",
       "  }",
       "  timeline {",
-      "    FontSize 13",
+      "    FontColor \\$color.black",
+      "  }",
+      "  separator {",
+      "    FontSize \\$large",
+      "    FontColor \\$color.black",
+      "    BackgroundColor \\$color.light_grey",
+      "    LineColor transparent",
       "  }",
       "}",
       "</style>",
       "",
       "language ja",
-      "printscale daily zoom 3",
+      "' printscale daily zoom 2",
       "projectscale weekly with calendar date",
       "",
-      "project starts $1",
-      "today is colored in #e06666",
+      "!\\$start_date = %date('yyyy-MM-') + '01'",
+      "!\\$end_date  = %date('yyyy-') + '12-31'",
+      "project starts \\$start_date",
+      "print between \\$start_date and \\$end_date",
+      "",
+      "today is colored in \\$color.scarlet",
       "",
       "@endgantt",
       "@enduml"
     ]
   },
-  "milestone-red": {
-    "prefix": "ms-red",
+  "black": {
+    "prefix": "gantt-color-black",
+    "body": ["!\\$dark = \\$color.black", "!\\$light = \\$color.grey"]
+  },
+  "red": {
+    "prefix": "gantt-color-red",
+    "body": ["!\\$dark = \\$color.red", "!\\$light = \\$color.light_red"]
+  },
+  "orange": {
+    "prefix": "gantt-color-orange",
+    "body": ["!\\$dark = \\$color.orange", "!\\$light = \\$color.light_orange"]
+  },
+  "blue": {
+    "prefix": "gantt-color-blue",
+    "body": ["!\\$dark = \\$color.blue", "!\\$light = \\$color.light_blue"]
+  },
+  "cyan": {
+    "prefix": "gantt-color-cyan",
+    "body": ["!\\$dark = \\$color.cyan", "!\\$light = \\$color.light_cyan"]
+  },
+  "green": {
+    "prefix": "gantt-color-green",
+    "body": ["!\\$dark = \\$color.green", "!\\$light = \\$color.light_green"]
+  },
+  "pink": {
+    "prefix": "gantt-color-pink",
+    "body": ["!\\$dark = \\$color.pink", "!\\$light = \\$color.light_pink"]
+  },
+  "purple": {
+    "prefix": "gantt-color-purple",
+    "body": ["!\\$dark = \\$color.purple", "!\\$light = \\$color.light_purple"]
+  },
+  "milestone": {
+    "prefix": "gantt-ms",
     "body": [
-      "[$1] happens $2 and is colored in #ae2012",
-      "$2 is colored in #e6bcb7",
-      "' [* hoge] starts $2 and is colored in transparent"
+      "!\\$name = '$1'",
+      "!\\$date = '$2'",
+      "[\\$name] happens \\$date and is colored in \\$dark",
+      "' [\\$name] happens after []'s end and is colored in \\$dark",
+      "\\$date is colored in \\$light"
     ]
   },
-  "milestone-orange": {
-    "prefix": "ms-orange",
+  "task": {
+    "prefix": "gantt-task",
     "body": [
-      "[$1] happens $2 and is colored in #ee9b00",
-      "$2 is colored in #e9d8a6",
-      "' [* hoge] starts $2 and is colored in transparent"
+      "!\\$name = '$1'",
+      "[\\$name] is colored in white/\\$dark",
+      "[\\$name] starts at \\$start_date",
+      "[\\$name] requires 2 weeks",
+      "' [\\$name] starts at []'s end",
+      "' [\\$name] ends at \\$end_date",
+      "' [\\$name] ends at []'s end"
     ]
   },
-  "milestone-blue": {
-    "prefix": "ms-blue",
+  "task-red": {
+    "prefix": "gantt-task-red",
     "body": [
-      "[$1] happens $2 and is colored in #0a4d96",
-      "$2 is colored in #b5c9df",
-      "' [* hoge] starts $2 and is colored in transparent"
+      "!\\$name = '$1'",
+      "!\\$dark = \\$color.red",
+      "!\\$name = '<color:' + \\$color.red + '>' + \\$name",
+      "[\\$name] is colored in white/\\$dark",
+      "[\\$name] starts at \\$start_date",
+      "[\\$name] ends at \\$end_date"
     ]
   },
-  "milestone-green": {
-    "prefix": "ms-green",
-    "body": [
-      "[$1] happens $2 and is colored in #4a8e3b",
-      "$2 is colored in #cde8c7",
-      "' [* hoge] starts $2 and is colored in transparent"
-    ]
-  },
-  "milestone-purple": {
-    "prefix": "ms-purple",
-    "body": [
-      "[$1] happens $2 and is colored in #7846a8",
-      "$2 is colored in #d2c1e2",
-      "' [* hoge] starts $2 and is colored in transparent"
-    ]
-  },
-  "milestone-black": {
-    "prefix": "ms-black",
-    "body": [
-      "[$1] happens $2 and is colored in black",
-      "$2 is colored in silver",
-      "' [* hoge] starts $2 and is colored in transparent"
-    ]
-  },
-  "task-simple": {
-    "prefix": "task",
-    "body": ["[$1] starts $2 and ends $3"]
-  },
-  "task-with-link": {
-    "prefix": "task-with-link",
-    "body": ["[$1] starts $2 and ends $3 and links to [[$4]]"]
-  },
-  "link": {
-    "prefix": "link",
-    "body": ["and links to [[$4]]"]
+  "task-transparent": {
+    "prefix": "gantt-task-transparent",
+    "body": ["[$1] starts \\$date and is colored in transparent"]
   },
   "displays-on-same-row": {
-    "prefix": "displays-on-same-row",
-    "body": ["[$1] displays on same row as [$2]"]
+    "prefix": "gantt-displays-on-same-row",
+    "body": ["[\\$name] displays on same row as [$1]"]
+  },
+  "link": {
+    "prefix": "gantt-link",
+    "body": ["[\\$name] links to [[$1]]"]
+  },
+  "separator-style#1": {
+    "prefix": "gantt-separator-style#1",
+    "body": [
+      "<style>",
+      "ganttDiagram {",
+      "  separator {",
+      "    BackgroundColor \\$color.light_silver",
+      "    LineColor transparent",
+      "  }",
+      "}",
+      "</style>"
+    ]
+  },
+  "separator-style#2": {
+    "prefix": "gantt-separator-style#2",
+    "body": [
+      "<style>",
+      "ganttDiagram {",
+      "  separator {",
+      "    BackgroundColor transparent",
+      "    LineColor \\$color.silver",
+      "  }",
+      "}",
+      "</style>"
+    ]
   }
 }
