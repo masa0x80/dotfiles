@@ -90,3 +90,6 @@ brew "zabrze"
 
 tap "daipeihust/tap"
 brew "im-select"
+
+brew "mycli"
+brew "pgcli"
