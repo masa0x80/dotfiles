@@ -90,6 +90,3 @@ brew "zabrze"
 
 tap "daipeihust/tap"
 brew "im-select"
-
-tap "ynqa/tap"
-brew "jnv"

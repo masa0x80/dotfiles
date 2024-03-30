@@ -25,6 +25,9 @@ zinit wait lucid for \
   atload"source zsh-better-npm-completion.plugin.zsh" \
   masa0x80/zsh-better-npm-completion
 
+zinit ice lucid wait
+zinit light reegnz/jq-zsh-plugin
+
 # 時間がかかる設定 ($ZDOTDIR/lazy/init.zsh) 遅延読み込みする
 zinit wait lucid for \
   atload"zsh-defer source $ZDOTDIR/lazy/init.zsh" \
