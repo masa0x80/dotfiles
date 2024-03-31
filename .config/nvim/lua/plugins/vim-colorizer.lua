@@ -1,5 +1,5 @@
 return {
 	"norcalli/nvim-colorizer.lua",
-	event = { "CursorHold", "CursorMoved", "ModeChanged" },
+	event = { "BufNewFile", "BufRead" },
 	config = require("config.utils").load("conf/nvim-colorizer"),
 }
