@@ -62,6 +62,7 @@ return {
 		},
 		config = require("config.utils").load("conf/dap"),
 		dependencies = {
+			"nvim-neotest/nvim-nio",
 			{
 				"rcarriga/nvim-dap-ui",
 				opts = {
