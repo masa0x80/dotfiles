@@ -36,7 +36,7 @@ setopt CORRECT
 SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
 # Remove path separator from WORDCHARS.
-WORDCHARS=${WORDCHARS//[\/=]}
+WORDCHARS=${WORDCHARS//[\/=-]}
 
 # List jobs in verbose format by default.
 setopt LONG_LIST_JOBS
