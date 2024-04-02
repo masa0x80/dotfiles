@@ -22,7 +22,7 @@
         "language": [
           "plantuml"
         ],
-        "path": "plantuml.json"
+        "path": "gantt.json"
       }
     ]
   }
