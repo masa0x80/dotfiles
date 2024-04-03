@@ -14,3 +14,6 @@ vim.api.nvim_create_user_command("PlantUmlPreview", function()
 	vim.fn.execute("StartPlantUmlServer")
 	vim.fn.execute("MarkdownPreview")
 end, {})
+
+vim.opt.foldmethod = "marker"
+vim.opt.foldlevel = 0

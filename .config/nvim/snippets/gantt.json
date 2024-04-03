@@ -5,6 +5,7 @@
       "@startuml",
       "@startgantt",
       "",
+      "' Config {{{",
       "!\\$normal = 13",
       "!\\$large  = 15",
       "!\\$color = {",
@@ -19,8 +20,85 @@
       "  \"silver\":  \"#71706e\", \"light_silver\": \"#efefef\",",
       "  \"scarlet\": \"#d3381c\"",
       "}",
-      "!\\$dark = \\$color.black",
-      "!\\$light = \\$color.grey",
+      "",
+      "!procedure setColor(\\$name)",
+      "  !if \\$name == 'black'",
+      "    !global \\$dark = \\$color.black",
+      "    !global \\$light = \\$color.grey",
+      "  !elseif \\$name == 'red'",
+      "    !global \\$dark = \\$color.red",
+      "    !global \\$light = \\$color.light_red",
+      "  !elseif \\$name == 'pink'",
+      "    !global \\$dark = \\$color.pink",
+      "    !global \\$light = \\$color.light_pink",
+      "  !elseif \\$name == 'orange'",
+      "    !global \\$dark = \\$color.orange",
+      "    !global \\$light = \\$color.light_orange",
+      "  !elseif \\$name == 'purple'",
+      "    !global \\$dark = \\$color.purple",
+      "    !global \\$light = \\$color.light_purple",
+      "  !elseif \\$name == 'blue'",
+      "    !global \\$dark = \\$color.blue",
+      "    !global \\$light = \\$color.light_blue",
+      "  !elseif \\$name == 'cyan'",
+      "    !global \\$dark = \\$color.cyan",
+      "    !global \\$light = \\$color.light_cyan",
+      "  !elseif \\$name == 'green'",
+      "    !global \\$dark = \\$color.green",
+      "    !global \\$light = \\$color.light_green",
+      "  !elseif \\$name == 'silver'",
+      "    !global \\$dark = \\$color.silver",
+      "    !global \\$light = \\$color.light_silver",
+      "  !endif",
+      "!endprocedure",
+      "setColor('black')",
+      "",
+      "!procedure resetSeparator()",
+      "  <style>",
+      "  ganttDiagram {",
+      "    separator {",
+      "      BackgroundColor \\$color.light_silver",
+      "      LineColor transparent",
+      "    }",
+      "  }",
+      "  </style>",
+      "!endprocedure",
+      "",
+      "!procedure fixSeparator()",
+      "  <style>",
+      "  ganttDiagram {",
+      "    separator {",
+      "      BackgroundColor transparent",
+      "      LineColor \\$color.silver",
+      "    }",
+      "  }",
+      "  </style>",
+      "!endprocedure",
+      "",
+      "!function is_date(\\$date)",
+      "  !return %substr(\\$date, 0, 1) != '['",
+      "!endfunction",
+      "",
+      "!function end_wrap(\\$date)",
+      "  !if is_date(\\$date)",
+      "    !return \\$date",
+      "  !else",
+      "    !return \\$date + \"'s end\"",
+      "  !endif",
+      "!endfunction",
+      "",
+      "!procedure milestone(\\$name, \\$date, \\$asName = '')",
+      "  !global \\$name = \\$name",
+      "  !global \\$date = \\$date",
+      "  !if \\$asName == ''",
+      "    [\\$name] happens at end_wrap(\\$date) and is colored in \\$dark",
+      "  !else",
+      "    [\\$name] as [\\$asName] happens at end_wrap(\\$date) and is colored in \\$dark",
+      "  !endif",
+      "  !if is_date(\\$date)",
+      "    \\$date is colored in \\$light",
+      "  !endif",
+      "!endprocedure",
       "",
       "<style>",
       "ganttDiagram {",
@@ -45,11 +123,11 @@
       "  separator {",
       "    FontSize \\$large",
       "    FontColor \\$color.black",
-      "    BackgroundColor \\$color.light_grey",
-      "    LineColor transparent",
       "  }",
       "}",
       "</style>",
+      "resetSeparator()",
+      "' }}}",
       "",
       "language ja",
       "' printscale daily zoom 2",
@@ -68,43 +146,47 @@
   },
   "black": {
     "prefix": "gantt-color-black",
-    "body": ["!\\$dark = \\$color.black", "!\\$light = \\$color.grey"]
+    "body": ["setColor('black')"]
   },
   "red": {
     "prefix": "gantt-color-red",
-    "body": ["!\\$dark = \\$color.red", "!\\$light = \\$color.light_red"]
-  },
-  "orange": {
-    "prefix": "gantt-color-orange",
-    "body": ["!\\$dark = \\$color.orange", "!\\$light = \\$color.light_orange"]
-  },
-  "blue": {
-    "prefix": "gantt-color-blue",
-    "body": ["!\\$dark = \\$color.blue", "!\\$light = \\$color.light_blue"]
-  },
-  "cyan": {
-    "prefix": "gantt-color-cyan",
-    "body": ["!\\$dark = \\$color.cyan", "!\\$light = \\$color.light_cyan"]
-  },
-  "green": {
-    "prefix": "gantt-color-green",
-    "body": ["!\\$dark = \\$color.green", "!\\$light = \\$color.light_green"]
+    "body": ["setColor('red')"]
   },
   "pink": {
     "prefix": "gantt-color-pink",
-    "body": ["!\\$dark = \\$color.pink", "!\\$light = \\$color.light_pink"]
+    "body": ["setColor('pink')"]
+  },
+  "orange": {
+    "prefix": "gantt-color-orange",
+    "body": ["setColor('orange')"]
   },
   "purple": {
     "prefix": "gantt-color-purple",
-    "body": ["!\\$dark = \\$color.purple", "!\\$light = \\$color.light_purple"]
+    "body": ["setColor('purple')"]
+  },
+  "blue": {
+    "prefix": "gantt-color-blue",
+    "body": ["setColor('blue')"]
+  },
+  "cyan": {
+    "prefix": "gantt-color-cyan",
+    "body": ["setColor('cyan')"]
+  },
+  "green": {
+    "prefix": "gantt-color-green",
+    "body": ["setColor('green')"]
+  },
+  "silver": {
+    "prefix": "gantt-color-silver",
+    "body": ["setColor('silver')"]
   },
   "milestone": {
-    "prefix": "gantt-ms",
+    "prefix": "gantt-milestone",
     "body": [
       "!\\$name = '$1'",
       "!\\$date = '$2'",
       "[\\$name] happens \\$date and is colored in \\$dark",
-      "' [\\$name] happens after []'s end and is colored in \\$dark",
+      "' [\\$name] happens at []'s end and is colored in \\$dark",
       "\\$date is colored in \\$light"
     ]
   },
@@ -144,30 +226,12 @@
     "body": ["[\\$name] links to [[$1]]"]
   },
   "separator-style#1": {
-    "prefix": "gantt-separator-style#1",
-    "body": [
-      "<style>",
-      "ganttDiagram {",
-      "  separator {",
-      "    BackgroundColor \\$color.light_silver",
-      "    LineColor transparent",
-      "  }",
-      "}",
-      "</style>"
-    ]
+    "prefix": "gantt-reset-separator",
+    "body": ["resetSeparator()"]
   },
   "separator-style#2": {
-    "prefix": "gantt-separator-style#2",
-    "body": [
-      "<style>",
-      "ganttDiagram {",
-      "  separator {",
-      "    BackgroundColor transparent",
-      "    LineColor \\$color.silver",
-      "  }",
-      "}",
-      "</style>"
-    ]
+    "prefix": "gantt-fix-separator",
+    "body": ["fixSeparator()"]
   },
   "font-red": {
     "prefix": "gantt-font-red",
