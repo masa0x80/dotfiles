@@ -10,7 +10,7 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.font = wezterm.font("Moralerspace Argon HWNF", {
+config.font = wezterm.font("Moralerspace Neon HWNF", {
 	stretch = "Normal",
 	weight = "Regular",
 	bold = false,
