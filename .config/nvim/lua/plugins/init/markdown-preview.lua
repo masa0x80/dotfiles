@@ -5,4 +5,5 @@ vim.g.mkdp_preview_options = {
 		server = "http://127.0.0.1:8765",
 		imageFormat = "svg",
 	},
+	sync_scroll_type = "top",
 }
