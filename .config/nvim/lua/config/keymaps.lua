@@ -175,23 +175,9 @@ keymap("n", "<C-c><C-c>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>
 keymap({ "n", "v" }, ";;", "<Cmd>write<CR>", { noremap = true })
 
 -- folding
-local function foldlevel(num)
-	local n = vim.o.foldlevel + num
-	if n < 0 then
-		n = 0
-	end
-	vim.o.foldlevel = n
-	vim.notify("foldlevel: " .. n)
-end
-keymap("n", "z-", function()
-	foldlevel(-1)
-end, { noremap = true, desc = "Subtract foldlevel" })
-keymap("n", "z+", function()
-	foldlevel(1)
-end, { noremap = true, desc = "Add foldlevel" })
-keymap("n", "z=", function()
-	foldlevel(1)
-end, { noremap = true, desc = "Add foldlevel" })
+keymap("n", "z-", "zmzX", opts)
+keymap("n", "z+", "zrzX", opts)
+keymap("n", "z=", "zrzX", opts)
 keymap("n", "z'", "zX", opts)
 keymap("n", "_", "zc", opts)
 keymap("n", "+", "zO", opts)

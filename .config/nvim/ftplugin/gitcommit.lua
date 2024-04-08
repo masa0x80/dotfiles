@@ -1,4 +1,4 @@
 vim.cmd([[
   call cursor(1, 128)
-  setlocal textwidth=72
 ]])
+vim.opt_local.textwidth = 72
