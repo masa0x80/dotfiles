@@ -98,6 +98,7 @@ ripgreprc
 rubocop
 shfmt
 siri
+skinparam
 splatoon
 sprompt
 startgantt
