@@ -1,6 +1,6 @@
 -- ref.
 --   - https://zenn.dev/kawarimidoll/articles/ad35f3dc4a5009
---   -  https://zenn.dev/kawarimidoll/articles/2e99432d27eda3
+--   - https://zenn.dev/kawarimidoll/articles/2e99432d27eda3
 
 local cspell_config_dir = vim.fn.expand("$XDG_CONFIG_HOME/cspell")
 local cspell_data_dir = vim.fn.expand("$XDG_DATA_HOME/cspell")

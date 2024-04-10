@@ -1,8 +1,7 @@
-local u = require("config.utils")
 return {
 	"hrsh7th/nvim-cmp",
 	event = { "InsertEnter", "CmdlineEnter" },
-	config = u.load("conf/cmp"),
+	config = require("config.utils").load("conf/cmp"),
 	dependencies = {
 		"onsails/lspkind.nvim",
 		"hrsh7th/cmp-nvim-lsp",
