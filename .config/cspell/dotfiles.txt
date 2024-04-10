@@ -45,6 +45,7 @@ honnef
 horiz
 httpie
 hygen
+iabbr
 ideco
 imgcat
 intellij
