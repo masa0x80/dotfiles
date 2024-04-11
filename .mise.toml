@@ -7,30 +7,30 @@ sops = "3.8.1"
 neovim = "0.9.5"
 
 # https://go.dev/dl/
-go = "1.22.1"
+go = "1.22.2"
 
 # https://github.com/corretto/corretto-21/tags
 java = "corretto-21.0.2.13.1"
 # https://gradle.org/install/
 gradle = "8.7"
 # https://groovy.apache.org/download.html
-groovy = "4.0.20"
+groovy = "4.0.21"
 
 # https://nodejs.org/en/download
-node = "21.6.2"
+node = "21.7.3"
 # https://github.com/denoland/deno/tags
-deno = "1.41.3"
+deno = "1.42.2"
 
 # https://www.python.org/downloads/
-python = "3.12.2"
+python = "3.12.3"
 
 # https://www.ruby-lang.org/en/downloads/releases/
 ruby = "3.3.0"
 
 # https://github.com/rust-lang/rust/tags
-rust = "1.77.0"
+rust = "1.77.2"
 
 # https://github.com/hashicorp/terraform/tags
-terraform = "1.7.5"
+terraform = "1.8.0"
 # https://github.com/terraform-docs/terraform-docs/tags
 terraform-docs = "0.17.0"
