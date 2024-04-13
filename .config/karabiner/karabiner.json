@@ -1310,6 +1310,45 @@
                         ]
                     },
                     {
+                        "description": "Global Zoom Mute",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "grave_accent_and_tilde",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control",
+                                            "command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                      "shell_command": "/bin/zsh $HOME/.bin/mute-zoom"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "backslash",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control",
+                                            "command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                      "shell_command": "/bin/zsh $HOME/.bin/mute-zoom"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "NuPhy Air60 Custom",
                         "manipulators": [
                             {
