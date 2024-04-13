@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+
+identifier="$(defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure | awk -F'"' '/http;/{print window[(NR)-1]}{window[NR]=$2}')"
+case "$identifier" in
+"net.kassett.finicky")
+  browser="Vivaldi"
+  ;;
+"com.vivaldi.vivaldi")
+  browser="Vivaldi"
+  ;;
+"com.microsoft.edgemac")
+  browser="Microsoft Edge"
+  ;;
+"com.google.chrome")
+  browser="Google Chrome"
+  ;;
+*)
+  browser="Safari"
+  ;;
+esac
+
+url=$(osascript -e "tell application \"$browser\" to get URL of active tab of front window")
+
+: "${TARGET_BROWSER:=Safari}"
+open -a "$TARGET_BROWSER" "$url" && echo "
+tell application \"$TARGET_BROWSER\"
+  activate
+  delay 0.5
+  tell application \"System Events\"
+    keystroke \"d\" using command down
+  end tell
+end tell
+" | osascript -

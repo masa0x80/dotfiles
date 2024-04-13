@@ -1349,6 +1349,28 @@
                         ]
                     },
                     {
+                        "description": "Add bookmark",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control",
+                                            "command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                      "shell_command": "/bin/zsh $HOME/.bin/add-bookmark"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "NuPhy Air60 Custom",
                         "manipulators": [
                             {
