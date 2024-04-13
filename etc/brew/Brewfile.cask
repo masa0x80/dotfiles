@@ -29,3 +29,6 @@ tap "homebrew/cask-fonts"
 cask "font-biz-udpgothic"
 cask "font-udev-gothic-nf"
 cask "font-0xproto-nerd-font"
+
+tap "hanasuke/moralerspace"
+cask "font-moralerspace"
