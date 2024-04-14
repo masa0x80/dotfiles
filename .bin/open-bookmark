@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-
-BOOKMARKS_PATH="$SCRAPBOOK_DIR/bookmarks.md"
-BOOKMARK="$(cat "$BOOKMARKS_PATH" | sed 's|^\[\(.*\)\](\(.*\))\s\?\(.*\)|\1\t \3\t \2|' | fzf --cycle --reverse +m)"
-test "$BOOKMARK" != "" && open "${BOOKMARK##* }"
