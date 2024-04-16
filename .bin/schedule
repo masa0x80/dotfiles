@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+icalBuddy --bullet "- [ ] " -sd eventsToday | grep -oP '\- \[ \] .+(?=\(.*\))'
