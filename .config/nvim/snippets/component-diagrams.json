@@ -1,0 +1,17 @@
+{
+  "startcomponent": {
+    "prefix": "startcomponent",
+    "body": [
+      "@startuml",
+      "",
+      "!theme mars",
+      "top to bottom direction",
+      "skinparam componentStyle rectangle",
+      "remove @unlinked",
+      "' skinparam linetype ortho",
+      "' skinparam linetype polyline",
+      "",
+      "@enduml"
+    ]
+  }
+}
