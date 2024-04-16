@@ -40,7 +40,7 @@ require("obsidian").setup({
 			[">"] = { char = "", hl_group = "ObsidianRightArrow" },
 			["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
 		},
-		bullets = { char = "", hl_group = "ObsidianBullet" },
+		bullets = { char = "-", hl_group = "ObsidianBullet" },
 		hl_groups = {
 			ObsidianTodo = { bold = true, fg = c.orange },
 			ObsidianDone = { bold = true, fg = c.cyan },
