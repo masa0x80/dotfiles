@@ -2,7 +2,6 @@
   "startgantt": {
     "prefix": "startgantt",
     "body": [
-      "@startuml",
       "@startgantt",
       "",
       "' Config {{{",
@@ -16,7 +15,7 @@
       "!\\$normal = 13",
       "!\\$large  = 15",
       "!\\$color = {",
-      "  \"black\":   \"#16160e\", \"grey\":         \"#dcdddd\",",
+      "  \"black\":   \"#16160e\", \"grey\":        \"#dcdddd\",",
       "  \"red\":     \"#ae2012\", \"lightRed\":    \"#e6bcb7\",",
       "  \"pink\":    \"#e95295\", \"lightPink\":   \"#e8bacf\",",
       "  \"orange\":  \"#ee9b00\", \"lightOrange\": \"#e9d8a6\",",
@@ -158,8 +157,7 @@
       "today is colored in \\$color.scarlet",
       "' }}}",
       "",
-      "@endgantt",
-      "@enduml"
+      "@endgantt"
     ]
   },
   "black": {
