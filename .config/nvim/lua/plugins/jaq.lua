@@ -13,7 +13,7 @@ return {
 				sh = "TermExec cmd='sh %'",
 				markdown = "MarkdownPreview",
 				mermaid = "MarkdownPreview",
-				plantuml = "PlantUmlPreview",
+				plantuml = "PlantumlOpen",
 			},
 		},
 	},

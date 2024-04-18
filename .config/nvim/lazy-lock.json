@@ -72,6 +72,7 @@
   "onedark.nvim": { "branch": "master", "commit": "1230aaf2a427b2c5b73aba6e4a9a5881d3e69429" },
   "onedark.vim": { "branch": "main", "commit": "57b77747694ea5676c3ca0eeaf9567dc499730c0" },
   "open-browser.vim": { "branch": "master", "commit": "7d4c1d8198e889d513a030b5a83faa07606bac27" },
+  "plantuml-previewer.vim": { "branch": "master", "commit": "1dd4d0f2b09cd80a217f76d82f93830dbbe689b3" },
   "plantuml-syntax": { "branch": "master", "commit": "309c15c77794433f276fb09eb4e3b8f381003cfd" },
   "plenary.nvim": { "branch": "master", "commit": "8aad4396840be7fc42896e3011751b7609ca4119" },
   "pretty-fold.nvim": { "branch": "master", "commit": "a7d8b424abe0eedf50116c460fbe6dfd5783b1d5" },
