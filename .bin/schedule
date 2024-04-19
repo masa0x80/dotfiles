@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-icalBuddy --bullet "- [ ] " -sd eventsToday | grep -oP '\- \[ \] .+(?=\(.*\))'
+icalBuddy --bullet "- [ ] " --noCalendarNames --excludeEventProps '*' --excludeAllDayEvents eventsToday
