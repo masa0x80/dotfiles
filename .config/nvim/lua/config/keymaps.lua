@@ -195,3 +195,42 @@ vim.keymap.set("n", ";M", function()
 	path = string.gsub(path, "%%20", " ")
 	utils.preview(vim.fn.expand("%:p:h") .. "/" .. path)
 end, { noremap = true, silent = true, desc = "Preview multimedia file" })
+
+-- JSON.stringify
+vim.api.nvim_create_user_command("JsonStringify", function(args)
+	local cmd
+	if args.range == 2 then
+		cmd = args.line1 .. "," .. args.line2 .. "!xargs -0 -I {} node -e 'console.log(JSON.stringify({}, null, 2))'"
+	else
+		cmd = "%!xargs -0 -I {} node -e 'console.log(JSON.stringify({}, null, 2))'"
+	end
+	vim.fn.execute(cmd)
+end, {
+	range = 2,
+})
+
+-- JSON.parse
+vim.api.nvim_create_user_command("JsonParse", function(args)
+	local cmd
+	if args.range == 2 then
+		cmd = args.line1 .. "," .. args.line2 .. "!xargs -0 -I {} node -e 'console.log({})'"
+	else
+		cmd = "%!xargs -0 -I {} node -e 'console.log({})'"
+	end
+	vim.fn.execute(cmd)
+end, {
+	range = 2,
+})
+
+-- Jq
+vim.api.nvim_create_user_command("Jq", function(args)
+	local cmd
+	if args.range == 2 then
+		cmd = args.line1 .. "," .. args.line2 .. "!jq ."
+	else
+		cmd = "%!jq ."
+	end
+	vim.fn.execute(cmd)
+end, {
+	range = 2,
+})
