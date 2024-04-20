@@ -11,7 +11,7 @@ return {
 				cpp = "TermExec cmd='g++ % -o $fileBase && $fileBase'",
 				go = "TermExec cmd='go run %'",
 				sh = "TermExec cmd='sh %'",
-				markdown = "MarkdownPreview",
+				markdown = "MarkdownPreviewWrapper",
 				mermaid = "MarkdownPreview",
 				plantuml = "PlantumlOpen",
 			},
