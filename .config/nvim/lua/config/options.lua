@@ -56,6 +56,7 @@ end
 
 vim.opt.shortmess:append("I")
 vim.opt.whichwrap:append("<,>,[,],h,l")
+vim.opt.iskeyword:append("-")
 
 -- store tabpages and globals in session
 vim.opt.sessionoptions:append("tabpages,globals")
