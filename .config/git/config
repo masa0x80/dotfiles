@@ -5,7 +5,7 @@
   hooksPath = ~/.config/git/hooks
   quotepath = false
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [include]
   path = ~/.config.local/git/config
 [push]
@@ -45,9 +45,9 @@
 [harrow]
   disabled = true
 [diff]
-	tool = difftastic
+  tool = difftastic
 [diff "sopsdiffer"]
-	textconv = sops -d
+  textconv = sops -d
 [difftool]
   prompt = false
 [difftool "difftastic"]
