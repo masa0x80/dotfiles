@@ -1,5 +1,6 @@
 return {
-	"iamcco/markdown-preview.nvim",
+	"masa0x80/markdown-preview.nvim",
+	branch = "feat/support-gantt",
 	build = function()
 		vim.fn["mkdp#util#install"]()
 	end,
