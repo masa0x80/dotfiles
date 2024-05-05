@@ -82,22 +82,23 @@ local on_attach = function(client, bufnr)
 	-- Lesser used LSP functionality
 	nmap("gD", vim.lsp.buf.declaration, "[GD] Goto Declaration")
 
-	-- Create a command `:Format` local to the LSP buffer
-	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-		vim.lsp.buf.format()
-	end, { desc = "Format current buffer with LSP" })
+	if vim.env.DISABLED_FORMATTER == nil then
+		-- Create a command `:Format` local to the LSP buffer
+		vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+			vim.lsp.buf.format()
+		end, { desc = "Format current buffer with LSP" })
 
-	if client.name == "rubocop" or client.name == "terraformls" then
-		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-			buffer = bufnr,
-			command = "Format",
-		})
-	end
-	if client.name == "eslint" then
-		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-			buffer = bufnr,
-			command = "EslintFixAll",
-		})
+		if client.name == "rubocop" or client.name == "terraformls" then
+			vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+				buffer = bufnr,
+				command = "Format",
+			})
+		elseif client.name == "eslint" then
+			vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+				buffer = bufnr,
+				command = "EslintFixAll",
+			})
+		end
 	end
 end
 

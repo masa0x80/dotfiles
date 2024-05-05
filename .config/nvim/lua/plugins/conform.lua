@@ -38,10 +38,15 @@ return {
 				stdin = false,
 			},
 		},
-		format_on_save = {
-			timeout_ms = 3000,
-			lsp_fallback = true,
-		},
+		format_on_save = function()
+			if vim.env.DISABLED_FORMATTER ~= nil then
+				return
+			end
+			return {
+				timeout_ms = 3000,
+				lsp_fallback = true,
+			}
+		end,
 	},
 	event = "VeryLazy",
 }
