@@ -234,3 +234,14 @@ vim.api.nvim_create_user_command("Jq", function(args)
 end, {
 	range = 2,
 })
+vim.api.nvim_create_user_command("JqCompact", function(args)
+	local cmd
+	if args.range == 2 then
+		cmd = args.line1 .. "," .. args.line2 .. "!jq -c ."
+	else
+		cmd = "%!jq -c ."
+	end
+	vim.fn.execute(cmd)
+end, {
+	range = 2,
+})
