@@ -87,6 +87,7 @@
   "toggleterm.nvim": { "branch": "main", "commit": "066cccf48a43553a80a210eb3be89a15d789d6e6" },
   "treesitter-indent-object.nvim": { "branch": "master", "commit": "39be537b5568f36dfe0ab0497c31555147f69489" },
   "treesitter-unit": { "branch": "main", "commit": "89968a1f8c72427691088e6d09d26a52c2ddc6f4" },
+  "treesj": { "branch": "main", "commit": "e1e82ab4237619d342c7102c9f13d4b9833bfd39" },
   "trouble.nvim": { "branch": "main", "commit": "b9cf677f20bb2faa2dacfa870b084e568dca9572" },
   "vim-easy-align": { "branch": "master", "commit": "9815a55dbcd817784458df7a18acacc6f82b1241" },
   "vim-fugitive": { "branch": "master", "commit": "ce882460cf3db12e99f8bf579cbf99e331f6dd4f" },

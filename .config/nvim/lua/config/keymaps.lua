@@ -80,10 +80,10 @@ keymap("n", "<C-g><C-n>", ">>", opts)
 keymap("n", "<C-t><C-p>", "<<", opts)
 keymap("n", "<C-t><C-n>", ">>", opts)
 
-keymap("n", ";p", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { noremap = true, silent = true, desc = "cd $PWD" })
+keymap("n", ";P", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { noremap = true, silent = true, desc = "cd $PWD" })
 keymap(
 	"n",
-	";s",
+	";S",
 	"<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>",
 	{ noremap = true, silent = true, desc = "cd $SCRAPBOOK_DIR" }
 )
