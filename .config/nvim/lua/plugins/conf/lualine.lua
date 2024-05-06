@@ -91,17 +91,6 @@ require("lualine").setup({
 		lualine_y = { "encoding", "fileformat", "filetype" },
 		lualine_z = { "location", "progress" },
 	},
-	tabline = {
-		lualine_a = {
-			{ "buffers", max_length = 1 },
-		},
-		lualine_z = {
-			{
-				"tabs",
-				use_mode_colors = true,
-			},
-		},
-	},
 	winbar = {
 		lualine_c = {
 			{
