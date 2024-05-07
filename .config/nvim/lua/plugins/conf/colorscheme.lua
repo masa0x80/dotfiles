@@ -1,3 +1,4 @@
+vim.cmd.colorscheme("onedark")
 vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
 	group = "_",
 	pattern = { "*" },

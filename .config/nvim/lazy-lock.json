@@ -30,6 +30,7 @@
   "jaq-nvim": { "branch": "master", "commit": "236296aae555657487d1bb4d066cbde9d79d8cd4" },
   "kensaku-search.vim": { "branch": "main", "commit": "9568c2b174a9cf31bd9922c0a991117f4dd4f0c3" },
   "kensaku.vim": { "branch": "main", "commit": "7ddad2f355a3678597ebbac666e2ee6dda6b9cf3" },
+  "keymap-amend.nvim": { "branch": "master", "commit": "b8bf9d820878d5497fdd11d6de55dea82872d98e" },
   "lasterisk.nvim": { "branch": "main", "commit": "bbcfcaeca50f686e338a03386e41645fc3305f44" },
   "lazy.nvim": { "branch": "main", "commit": "d3974346b6cef2116c8e7b08423256a834cb7cbc" },
   "lspkind.nvim": { "branch": "master", "commit": "1735dd5a5054c1fb7feaf8e8658dbab925f4f0cf" },

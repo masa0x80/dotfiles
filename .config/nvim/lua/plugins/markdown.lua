@@ -1,13 +1,12 @@
 return {
 	{
-		"ixru/nvim-markdown",
-		event = "VeryLazy",
-	},
-	{
 		"MeanderingProgrammer/markdown.nvim",
 		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-		event = "VeryLazy",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		ft = { "markdown" },
+		dependencies = {
+			"ixru/nvim-markdown",
+			"nvim-treesitter/nvim-treesitter",
+		},
 		config = require("config.utils").load("conf/render-markdown"),
 	},
 	{

@@ -6,8 +6,9 @@ return {
 			comments = "none",
 		},
 	},
-	init = function()
-		vim.cmd.colorscheme("onedark")
-	end,
 	config = require("config.utils").load("conf/colorscheme"),
+
+	-- ref. https://github.com/folke/lazy.nvim?tab=readme-ov-file#-colorschemes
+	lazy = false,
+	priority = 1000,
 }

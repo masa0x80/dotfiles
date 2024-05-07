@@ -1,10 +1,15 @@
 local fp = require("fold-preview")
+local keymap = vim.keymap
+keymap.amend = require("keymap-amend")
+
 fp.setup({
 	default_keybindings = false,
 })
 
-local opts = { noremap = true, silent = true }
-local keymap = vim.keymap.set
-keymap("n", "K", fp.show_preview, opts)
+keymap.amend("n", "K", function(original)
+	if not fp.show_preview() then
+		original()
+	end
+end)
 
 require("pretty-fold").setup({})
