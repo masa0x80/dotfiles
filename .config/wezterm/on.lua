@@ -69,82 +69,82 @@ wezterm.on("format-tab-title", function(tab, _, _, _, hover)
 	}
 end)
 
-local old_m, old_s, date, time, bat, bat_charging, bat_suffix = "", "", "", "", "", "", ""
-wezterm.on("update-right-status", function(window)
-	local update_flag = old_m == "" or old_m ~= wezterm.strftime("%M")
-	if update_flag then
-		old_m = wezterm.strftime("%M")
-		date = nerdfonts.cod_calendar .. " " .. wezterm.strftime("%Y-%m-%d %a") .. "  "
-
-		local clock_icon = ""
-		local h = tonumber(wezterm.strftime("%H")) % 12
-		if h == 1 then
-			clock_icon = nerdfonts.md_clock_time_one_outline
-		elseif h == 2 then
-			clock_icon = nerdfonts.md_clock_time_two_outline
-		elseif h == 3 then
-			clock_icon = nerdfonts.md_clock_time_three_outline
-		elseif h == 4 then
-			clock_icon = nerdfonts.md_clock_time_four_outline
-		elseif h == 5 then
-			clock_icon = nerdfonts.md_clock_time_five_outline
-		elseif h == 6 then
-			clock_icon = nerdfonts.md_clock_time_six_outline
-		elseif h == 7 then
-			clock_icon = nerdfonts.md_clock_time_seven_outline
-		elseif h == 8 then
-			clock_icon = nerdfonts.md_clock_time_eight_outline
-		elseif h == 9 then
-			clock_icon = nerdfonts.md_clock_time_nine_outline
-		elseif h == 10 then
-			clock_icon = nerdfonts.md_clock_time_ten_outline
-		elseif h == 11 then
-			clock_icon = nerdfonts.md_clock_time_eleven_outline
-		else
-			clock_icon = nerdfonts.md_clock_time_twelve_outline
-		end
-		time = clock_icon .. " " .. wezterm.strftime("%H:%M:")
-
-		local b = wezterm.battery_info()[1]
-		bat = b.state_of_charge * 100
-		if bat > 95 then
-			bat_suffix = ""
-		elseif bat > 90 then
-			bat_suffix = "_90"
-		elseif bat > 80 then
-			bat_suffix = "_80"
-		elseif bat > 70 then
-			bat_suffix = "_70"
-		elseif bat > 60 then
-			bat_suffix = "_60"
-		elseif bat > 50 then
-			bat_suffix = "_50"
-		elseif bat > 40 then
-			bat_suffix = "_40"
-		elseif bat > 30 then
-			bat_suffix = "_30"
-		elseif bat > 20 then
-			bat_suffix = "_20"
-		elseif bat > 10 then
-			bat_suffix = "_10"
-		end
-		bat = string.format(" %.0f%% ", bat)
-	end
-
-	if old_s ~= wezterm.strftime("%S") then
-		local b = wezterm.battery_info()[1]
-		if b.state == "Charging" or b.state == "Unknown" then
-			bat_charging = "_charging"
-		else
-			bat_charging = ""
-		end
-		old_s = wezterm.strftime("%S")
-	end
-	local icon = "  " .. nerdfonts["md_battery" .. bat_charging .. bat_suffix]
-	window:set_right_status(wezterm.format({
-		{ Text = date .. time .. wezterm.strftime("%S") .. icon .. bat },
-	}))
-end)
+-- local old_m, old_s, date, time, bat, bat_charging, bat_suffix = "", "", "", "", "", "", ""
+-- wezterm.on("update-right-status", function(window)
+-- 	local update_flag = old_m == "" or old_m ~= wezterm.strftime("%M")
+-- 	if update_flag then
+-- 		old_m = wezterm.strftime("%M")
+-- 		date = nerdfonts.cod_calendar .. " " .. wezterm.strftime("%Y-%m-%d %a") .. "  "
+--
+-- 		local clock_icon = ""
+-- 		local h = tonumber(wezterm.strftime("%H")) % 12
+-- 		if h == 1 then
+-- 			clock_icon = nerdfonts.md_clock_time_one_outline
+-- 		elseif h == 2 then
+-- 			clock_icon = nerdfonts.md_clock_time_two_outline
+-- 		elseif h == 3 then
+-- 			clock_icon = nerdfonts.md_clock_time_three_outline
+-- 		elseif h == 4 then
+-- 			clock_icon = nerdfonts.md_clock_time_four_outline
+-- 		elseif h == 5 then
+-- 			clock_icon = nerdfonts.md_clock_time_five_outline
+-- 		elseif h == 6 then
+-- 			clock_icon = nerdfonts.md_clock_time_six_outline
+-- 		elseif h == 7 then
+-- 			clock_icon = nerdfonts.md_clock_time_seven_outline
+-- 		elseif h == 8 then
+-- 			clock_icon = nerdfonts.md_clock_time_eight_outline
+-- 		elseif h == 9 then
+-- 			clock_icon = nerdfonts.md_clock_time_nine_outline
+-- 		elseif h == 10 then
+-- 			clock_icon = nerdfonts.md_clock_time_ten_outline
+-- 		elseif h == 11 then
+-- 			clock_icon = nerdfonts.md_clock_time_eleven_outline
+-- 		else
+-- 			clock_icon = nerdfonts.md_clock_time_twelve_outline
+-- 		end
+-- 		time = clock_icon .. " " .. wezterm.strftime("%H:%M:")
+--
+-- 		local b = wezterm.battery_info()[1]
+-- 		bat = b.state_of_charge * 100
+-- 		if bat > 95 then
+-- 			bat_suffix = ""
+-- 		elseif bat > 90 then
+-- 			bat_suffix = "_90"
+-- 		elseif bat > 80 then
+-- 			bat_suffix = "_80"
+-- 		elseif bat > 70 then
+-- 			bat_suffix = "_70"
+-- 		elseif bat > 60 then
+-- 			bat_suffix = "_60"
+-- 		elseif bat > 50 then
+-- 			bat_suffix = "_50"
+-- 		elseif bat > 40 then
+-- 			bat_suffix = "_40"
+-- 		elseif bat > 30 then
+-- 			bat_suffix = "_30"
+-- 		elseif bat > 20 then
+-- 			bat_suffix = "_20"
+-- 		elseif bat > 10 then
+-- 			bat_suffix = "_10"
+-- 		end
+-- 		bat = string.format(" %.0f%% ", bat)
+-- 	end
+--
+-- 	if old_s ~= wezterm.strftime("%S") then
+-- 		local b = wezterm.battery_info()[1]
+-- 		if b.state == "Charging" or b.state == "Unknown" then
+-- 			bat_charging = "_charging"
+-- 		else
+-- 			bat_charging = ""
+-- 		end
+-- 		old_s = wezterm.strftime("%S")
+-- 	end
+-- 	local icon = "  " .. nerdfonts["md_battery" .. bat_charging .. bat_suffix]
+-- 	window:set_right_status(wezterm.format({
+-- 		{ Text = date .. time .. wezterm.strftime("%S") .. icon .. bat },
+-- 	}))
+-- end)
 
 wezterm.on("toggle-opacity", function(window)
 	local overrides = window:get_config_overrides() or {}
