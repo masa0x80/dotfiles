@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
 })
 vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 	group = "_",
-	pattern = { "*" },
+	pattern = "*",
 	callback = function()
 		vim.api.nvim_set_hl(0, "ExtraWhiteSpace", { bg = "#2b5d63" })
 		vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#dbb671" })
