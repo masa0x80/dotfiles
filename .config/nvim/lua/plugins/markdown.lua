@@ -1,10 +1,14 @@
 return {
 	{
+		"ixru/nvim-markdown",
+		ft = { "markdown" },
+		config = require("config.utils").load("conf/nvim-markdown"),
+	},
+	{
 		"MeanderingProgrammer/markdown.nvim",
 		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
 		ft = { "markdown" },
 		dependencies = {
-			"ixru/nvim-markdown",
 			"nvim-treesitter/nvim-treesitter",
 		},
 		config = require("config.utils").load("conf/render-markdown"),
