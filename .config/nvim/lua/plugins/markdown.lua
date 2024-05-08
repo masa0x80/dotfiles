@@ -1,6 +1,7 @@
 return {
 	{
-		"ixru/nvim-markdown",
+		"masa0x80/nvim-markdown",
+		branch = "feat/disable-fold-feature",
 		ft = { "markdown" },
 		config = require("config.utils").load("conf/nvim-markdown"),
 	},
