@@ -111,4 +111,8 @@ require("nvim-treesitter.configs").setup({
 	autotag = {
 		enable = true,
 	},
+	-- https://github.com/tadmccorkle/markdown.nvim
+	markdown = {
+		enable = true,
+	},
 })
