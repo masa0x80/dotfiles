@@ -7,7 +7,7 @@ return {
 			lua = { "stylua" },
 			luau = { "stylua" },
 			python = { "black" },
-			markdown = { "textlint", "markdownlint" },
+			markdown = { "textlint", "markdownlint", "delete_single_space_after_japanese_punctuation_marks" },
 			sh = { "shfmt" },
 			text = { "textlint" },
 
@@ -36,6 +36,10 @@ return {
 				args = { "--config", "~/.config/markdownlint/config.json", "--fix", "$FILENAME" },
 				exit_codes = { 0, 1 },
 				stdin = false,
+			},
+			delete_single_space_after_japanese_punctuation_marks = {
+				command = "sed",
+				args = { "s|\\([。、]\\) \\(\\S\\)|\\1\\2|g" },
 			},
 		},
 		format_on_save = function()

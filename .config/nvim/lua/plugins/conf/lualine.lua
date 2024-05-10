@@ -25,7 +25,9 @@ local lsp_names = function()
 		if type(formatter) == "table" then
 			table.insert(clients, "{" .. table.concat(formatter, ",") .. "}")
 		else
-			table.insert(clients, formatter)
+			if formatter ~= "delete_single_space_after_japanese_punctuation_marks" then
+				table.insert(clients, formatter)
+			end
 		end
 	end
 	return #clients == 0 and "" or " " .. table.concat(clients, ", ")
