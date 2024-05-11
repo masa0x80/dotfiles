@@ -1,3 +1,20 @@
+local formatters = {
+	textlint = {
+		command = "textlint",
+		args = { "--fix", "$FILENAME" },
+		stdin = false,
+	},
+	markdownlint = {
+		command = "markdownlint",
+		args = { "--config", "~/.config/markdownlint/config.json", "--fix", "$FILENAME" },
+		exit_codes = { 0, 1 },
+		stdin = false,
+	},
+}
+for k, v in pairs(require("config.utils").hidden_formatters) do
+	formatters[k] = v
+end
+
 return {
 	"stevearc/conform.nvim",
 	opts = {
@@ -7,7 +24,12 @@ return {
 			lua = { "stylua" },
 			luau = { "stylua" },
 			python = { "black" },
-			markdown = { "textlint", "markdownlint", "delete_single_space_after_japanese_punctuation_marks" },
+			markdown = {
+				"textlint",
+				"markdownlint",
+				"delete_single_space_after_japanese_punctuation_marks",
+				"delete_parentheses_inside_space",
+			},
 			sh = { "shfmt" },
 			text = { "textlint" },
 
@@ -25,23 +47,7 @@ return {
 			yaml = { "prettier" },
 			graphql = { "prettier" },
 		},
-		formatters = {
-			textlint = {
-				command = "textlint",
-				args = { "--fix", "$FILENAME" },
-				stdin = false,
-			},
-			markdownlint = {
-				command = "markdownlint",
-				args = { "--config", "~/.config/markdownlint/config.json", "--fix", "$FILENAME" },
-				exit_codes = { 0, 1 },
-				stdin = false,
-			},
-			delete_single_space_after_japanese_punctuation_marks = {
-				command = "sed",
-				args = { "s|\\([。、]\\) \\(\\S\\)|\\1\\2|g" },
-			},
-		},
+		formatters = formatters,
 		format_on_save = function()
 			if vim.env.DISABLED_FORMATTER ~= nil then
 				return

@@ -21,13 +21,16 @@ local lsp_names = function()
 		table.insert(clients, linter)
 	end
 	local filetype = require("conform").formatters_by_ft[ft]
+	local List = require("plenary.collections.py_list")
 	for _, formatter in ipairs(filetype or {}) do
 		if type(formatter) == "table" then
 			table.insert(clients, "{" .. table.concat(formatter, ",") .. "}")
 		else
-			if formatter ~= "delete_single_space_after_japanese_punctuation_marks" then
-				table.insert(clients, formatter)
+			if List(vim.tbl_keys(require("config.utils").hidden_formatters)):contains(formatter) then
+				goto continue
 			end
+			table.insert(clients, formatter)
+			::continue::
 		end
 	end
 	return #clients == 0 and "" or " " .. table.concat(clients, ", ")

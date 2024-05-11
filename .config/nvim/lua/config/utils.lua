@@ -84,4 +84,15 @@ M.js_based_languages = {
 	"vue",
 }
 
+M.hidden_formatters = {
+	delete_single_space_after_japanese_punctuation_marks = {
+		command = "sed",
+		args = { "s|\\([。、]\\) \\(\\S\\)|\\1\\2|g" },
+	},
+	delete_parentheses_inside_space = {
+		command = "sed",
+		args = { "s|\\([(<{]\\) \\(.*\\) \\([)>}]\\)|\\1\\2\\3|g" },
+	},
+}
+
 return M
