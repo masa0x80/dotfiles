@@ -2,8 +2,7 @@ local M = {}
 
 M.preview = function(path)
 	local ext = path:match("^.+%.(.+)$")
-	local List = require("plenary.collections.py_list")
-	if List({ "bmp", "jpg", "jpeg", "png", "gif", "ico" }):contains(string.lower(ext)) then
+	if vim.tbl_contains({ "bmp", "jpg", "jpeg", "png", "gif", "ico" }, string.lower(ext)) then
 		if os.getenv("TMUX") == nil then
 			vim.fn.execute(
 				string.format(
@@ -18,7 +17,7 @@ M.preview = function(path)
 			)
 		end
 	elseif
-		List({
+		vim.tbl_contains({
 			"svg",
 			"webp",
 			"heic",
@@ -45,7 +44,7 @@ M.preview = function(path)
 
 			"pdf",
 			"epub",
-		}):contains(string.lower(ext))
+		}, string.lower(ext))
 	then
 		vim.fn.execute(string.format("!open '%s'", path))
 	else

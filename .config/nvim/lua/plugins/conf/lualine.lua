@@ -21,17 +21,12 @@ local lsp_names = function()
 		table.insert(clients, linter)
 	end
 	local filetype = require("conform").formatters_by_ft[ft]
-	local List = require("plenary.collections.py_list")
-	for _, formatter in ipairs(filetype or {}) do
-		if type(formatter) == "table" then
-			table.insert(clients, "{" .. table.concat(formatter, ",") .. "}")
-		else
-			if List(vim.tbl_keys(require("config.utils").hidden_formatters)):contains(formatter) then
-				goto continue
-			end
-			table.insert(clients, formatter)
-			::continue::
-		end
+	for _, formatter in
+		ipairs(vim.tbl_filter(function(f)
+			return not vim.tbl_contains(vim.tbl_keys(require("config.utils").hidden_formatters), f)
+		end, filetype or {}))
+	do
+		table.insert(clients, formatter)
 	end
 	return #clients == 0 and "" or " " .. table.concat(clients, ", ")
 end
