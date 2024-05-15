@@ -52,12 +52,12 @@ local function backspace()
 
 	local cw = vim.api.nvim_replace_termcodes("<C-w>", true, false, true)
 	local bs = vim.api.nvim_replace_termcodes("<C-h>", true, false, true)
-	if
-		string.match(str, UNORDERED_LIST_PATTERN)
-		or string.match(str, ORDERED_LIST_PATTERN)
-		or string.match(str, TASK_PATTERN)
-	then
+	if string.match(str, UNORDERED_LIST_PATTERN) then
 		vim.api.nvim_feedkeys(cw, "n", true)
+	elseif string.match(str, ORDERED_LIST_PATTERN) then
+		vim.api.nvim_feedkeys(cw .. cw, "n", true)
+	elseif string.match(str, TASK_PATTERN) then
+		vim.api.nvim_feedkeys(cw .. cw .. cw, "n", true)
 	else
 		vim.api.nvim_feedkeys(bs, "n", true)
 	end
@@ -70,9 +70,9 @@ keymap("i", "<Tab>", function()
 
 	local tab = vim.api.nvim_replace_termcodes("<Tab>", true, false, true)
 	if
-		string.match(str, UNORDERED_LIST_PATTERN)
-		or string.match(str, ORDERED_LIST_PATTERN)
-		or string.match(str, TASK_PATTERN)
+		string.match(str, string.sub(UNORDERED_LIST_PATTERN, 0, -2))
+		or string.match(str, string.sub(ORDERED_LIST_PATTERN, 0, -2))
+		or string.match(str, string.sub(TASK_PATTERN, 0, -2))
 	then
 		vim.fn.execute("normal >>")
 		vim.fn.execute("startinsert!")
@@ -86,13 +86,28 @@ keymap("i", "<S-Tab>", function()
 
 	local tab = vim.api.nvim_replace_termcodes("<S-Tab>", true, false, true)
 	if
-		string.match(str, UNORDERED_LIST_PATTERN)
-		or string.match(str, ORDERED_LIST_PATTERN)
-		or string.match(str, TASK_PATTERN)
+		string.match(str, string.sub(UNORDERED_LIST_PATTERN, 0, -2))
+		or string.match(str, string.sub(ORDERED_LIST_PATTERN, 0, -2))
+		or string.match(str, string.sub(TASK_PATTERN, 0, -2))
 	then
 		vim.fn.execute("normal <<")
 		vim.fn.execute("startinsert!")
 	else
 		vim.api.nvim_feedkeys(tab, "n", true)
+	end
+end, { noremap = true, silent = true })
+keymap("i", "<CR>", function()
+	local row, col = cursor_pos()
+	local str = vim.api.nvim_buf_get_text(0, row, 0, row, col, {})[1]
+
+	if
+		string.match(str, UNORDERED_LIST_PATTERN)
+		or string.match(str, ORDERED_LIST_PATTERN)
+		or string.match(str, TASK_PATTERN)
+	then
+		vim.api.nvim_buf_set_text(0, row, 0, row, col, { "" })
+		vim.fn.execute("startinsert!")
+	else
+		vim.fn.execute("MDListItemBelow")
 	end
 end, { noremap = true, silent = true })
