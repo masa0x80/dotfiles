@@ -1,6 +1,12 @@
 local c = require("config.color")
 
 require("hlchunk").setup({
+	chunk = {
+		exclude_filetypes = {
+			gitcommit = true,
+			plantuml = true,
+		},
+	},
 	blank = {
 		chars = { "" },
 	},
