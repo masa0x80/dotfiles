@@ -95,6 +95,14 @@ keymap("n", "x", '"_x', opts)
 keymap("n", ",M", "<Cmd>messages<CR>", opts)
 
 -- # Insert
+
+-- Insertモードを抜けたときにIMEオフ
+keymap("i", "<Esc>", function()
+	local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
+	vim.fn.execute("!im-select com.apple.keylayout.ABC", "silent")
+	vim.api.nvim_feedkeys(esc, "n", true)
+end, opts)
+
 keymap("i", "<C-b>", "<Left>", opts)
 keymap("i", "<C-f>", "<Right>", opts)
 keymap("i", "<C-a>", "<Esc>I", opts)
