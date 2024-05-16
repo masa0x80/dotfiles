@@ -54,10 +54,8 @@ local function backspace()
 	local bs = vim.api.nvim_replace_termcodes("<C-h>", true, false, true)
 	if string.match(str, UNORDERED_LIST_PATTERN) then
 		vim.api.nvim_feedkeys(cw, "n", true)
-	elseif string.match(str, ORDERED_LIST_PATTERN) then
+	elseif string.match(str, ORDERED_LIST_PATTERN) or string.match(str, TASK_PATTERN) then
 		vim.api.nvim_feedkeys(cw .. cw, "n", true)
-	elseif string.match(str, TASK_PATTERN) then
-		vim.api.nvim_feedkeys(cw .. cw .. cw, "n", true)
 	else
 		vim.api.nvim_feedkeys(bs, "n", true)
 	end
