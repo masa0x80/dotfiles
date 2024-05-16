@@ -51,7 +51,8 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = languages,
 	highlight = {
 		enable = true,
-		additional_vim_regex_highlighting = true,
+		-- 調子悪いのでオフに
+		additional_vim_regex_highlighting = false,
 	},
 	indent = {
 		enable = true,
