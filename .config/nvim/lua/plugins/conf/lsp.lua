@@ -189,7 +189,6 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
-keymap("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
 keymap("n", "gh", "<Cmd>Lspsaga finder<CR>", opts)
 keymap("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>", opts)
 

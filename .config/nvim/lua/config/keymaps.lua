@@ -146,12 +146,9 @@ keymap("n", "<C-c><C-c>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>
 keymap({ "n", "v" }, ";;", "<Cmd>write<CR>", { noremap = true })
 
 -- folding
-keymap("n", "z-", "zmzX", opts)
-keymap("n", "z+", "zrzX", opts)
-keymap("n", "z=", "zrzX", opts)
-keymap("n", "z'", "zX", opts)
 keymap("n", "_", "zc", opts)
 keymap("n", "+", "zO", opts)
+keymap("n", "z'", "zA", opts)
 keymap("n", "z;", "za", opts)
 
 -- Jira

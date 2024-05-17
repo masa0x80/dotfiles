@@ -64,7 +64,9 @@ vim.opt.sessionoptions:append("tabpages,globals")
 -- Folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevel = 6
+vim.opt.foldcolumn = "1"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
 
 vim.opt.includeexpr = "substitute(v:fname, '\\.', '/', 'g')"
 
