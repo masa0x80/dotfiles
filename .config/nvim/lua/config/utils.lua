@@ -16,51 +16,8 @@ M.preview = function(path)
 				string.format('!tmux popup \'bat --style="numbers,changes,header,grid" "%s"; read\'', path, path)
 			)
 		end
-	elseif
-		vim.tbl_contains({
-			"svg",
-			"webp",
-			"heic",
-			"avif",
-
-			"avi",
-			"mp4",
-			"wmv",
-			"dat",
-			"3gp",
-			"ogv",
-			"mkv",
-			"mpg",
-			"mpeg",
-			"vob",
-			"m2v",
-			"mov",
-			"webm",
-			"mts",
-			"m4v",
-			"rm",
-			"qt",
-			"divx",
-
-			"pdf",
-			"epub",
-		}, string.lower(ext))
-	then
-		vim.fn.execute(string.format("!open '%s'", path))
 	else
-		if os.getenv("TMUX") == nil then
-			vim.fn.execute(
-				string.format(
-					'!wezterm cli spawn --new-window -- zsh -c \'bat --style="numbers,changes,header,grid" "%s"; read\'',
-					path,
-					path
-				)
-			)
-		else
-			vim.fn.execute(
-				string.format('!tmux popup \'bat --style="numbers,changes,header,grid" "%s"; read\'', path, path)
-			)
-		end
+		vim.fn.execute(string.format("!open '%s'", path))
 	end
 end
 
