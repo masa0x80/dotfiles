@@ -48,6 +48,17 @@ local options = {
 		vim.fn.fnameescape(vim.fn.expand("$SCRAPBOOK_DIR")),
 	},
 	suffixesadd = { ".md", ".lua" },
+	foldmethod = "expr",
+	foldexpr = "nvim_treesitter#foldexpr()",
+	foldcolumn = "1",
+	foldlevel = 99,
+	foldlevelstart = 99,
+	fillchars = {
+		foldopen = "▾",
+		foldclose = "▸",
+		foldsep = "┊",
+		fold = "┊",
+	},
 }
 
 for k, v in pairs(options) do
@@ -62,13 +73,6 @@ vim.opt.iskeyword:append("-")
 vim.opt.sessionoptions:append("tabpages,globals")
 
 -- Folding
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldcolumn = "1"
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 99
-
-vim.opt.includeexpr = "substitute(v:fname, '\\.', '/', 'g')"
 
 -- disable netrw
 vim.g.loaded_netrw = true
