@@ -4,7 +4,7 @@ aws-vault = "7.2.0"
 # https://github.com/getsops/sops/tags
 sops = "3.8.1"
 # https://github.com/neovim/neovim/releases
-neovim = "0.9.5"
+neovim = "0.10.0"
 
 # https://go.dev/dl/
 go = "1.22.2"
