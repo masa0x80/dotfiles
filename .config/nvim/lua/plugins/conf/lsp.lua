@@ -82,7 +82,7 @@ local on_attach = function(client, bufnr)
 	-- Lesser used LSP functionality
 	nmap("gD", vim.lsp.buf.declaration, "[GD] Goto Declaration")
 
-	if vim.env.DISABLED_FORMATTER == nil then
+	if vim.g.formatter_enabled then
 		-- Create a command `:Format` local to the LSP buffer
 		vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
 			vim.lsp.buf.format()

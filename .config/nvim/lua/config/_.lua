@@ -17,3 +17,13 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 		end
 	end,
 })
+
+vim.g.formatter_enabled = true
+vim.api.nvim_create_user_command("ToggleFormatter", function()
+	vim.g.formatter_enabled = not vim.g.formatter_enabled
+	if vim.g.formatter_enabled then
+		vim.notify("Formatter enabled")
+	else
+		vim.notify("Formatter disabled")
+	end
+end, { desc = "Toggle auto format enabled / disabled" })

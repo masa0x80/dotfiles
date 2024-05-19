@@ -49,7 +49,7 @@ return {
 		},
 		formatters = formatters,
 		format_on_save = function()
-			if vim.env.DISABLED_FORMATTER ~= nil then
+			if not vim.g.formatter_enabled then
 				return
 			end
 			return {
