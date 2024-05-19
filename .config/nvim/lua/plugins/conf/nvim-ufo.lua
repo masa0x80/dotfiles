@@ -46,11 +46,12 @@ require("ufo").setup({
 	fold_virt_text_handler = handler,
 })
 
-vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
-vim.keymap.set("n", "zm", require("ufo").closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
-vim.keymap.set("n", "K", function()
+local map = vim.keymap.set
+map("n", "zR", require("ufo").openAllFolds)
+map("n", "zM", require("ufo").closeAllFolds)
+map("n", "zr", require("ufo").openFoldsExceptKinds)
+map("n", "zm", require("ufo").closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+map("n", "K", function()
 	local winid = require("ufo").peekFoldedLinesUnderCursor()
 	if not winid then
 		vim.fn.execute("Lspsaga hover_doc")

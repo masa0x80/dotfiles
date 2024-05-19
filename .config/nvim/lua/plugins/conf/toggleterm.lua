@@ -7,10 +7,10 @@ require("toggleterm").setup({
 	close_on_exit = true,
 })
 
-local keymap = vim.keymap.set
+local map = vim.keymap.set
 function _G.set_terminal_keymaps()
 	local opts = { buffer = 0 }
-	keymap("t", "<Esc>", [[<C-\><C-n>]], opts)
+	map("t", "<Esc>", [[<C-\><C-n>]], opts)
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead

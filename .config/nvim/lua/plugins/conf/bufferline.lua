@@ -10,5 +10,5 @@ bufferline.setup({
 	},
 })
 
-local keymap = vim.keymap.set
-keymap("n", "BO", "<Cmd>BufferLineCloseOthers<CR>", { noremap = true })
+local map = vim.keymap.set
+map("n", "BO", "<Cmd>BufferLineCloseOthers<CR>", { noremap = true })

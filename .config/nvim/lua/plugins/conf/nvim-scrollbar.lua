@@ -1,9 +1,10 @@
-vim.keymap.set("n", "*", function()
+local map = vim.keymap.set
+map("n", "*", function()
 	require("lasterisk").search()
 	require("hlslens").start()
 end)
 
-vim.keymap.set({ "n", "x" }, "g*", function()
+map({ "n", "x" }, "g*", function()
 	require("lasterisk").search({ is_whole = false, silent = true })
 	require("hlslens").start()
 end)
