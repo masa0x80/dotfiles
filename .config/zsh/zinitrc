@@ -12,21 +12,6 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit wait lucid for \
-  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-     zdharma-continuum/fast-syntax-highlighting \
-     zdharma-continuum/history-search-multi-word \
-  blockf \
-     zsh-users/zsh-completions \
-  atload"!_zsh_autosuggest_start" \
-     zsh-users/zsh-autosuggestions
-
-zinit wait lucid for \
-  atload"source zsh-better-npm-completion.plugin.zsh" \
-  masa0x80/zsh-better-npm-completion
-
-zinit ice lucid wait
-zinit light reegnz/jq-zsh-plugin
 
 # 時間がかかる設定 ($ZDOTDIR/lazy/init.zsh) 遅延読み込みする
 zinit wait lucid for \
@@ -35,3 +20,25 @@ zinit wait lucid for \
 
 zinit ice lucid wait atload'!_zsh_git_prompt_precmd_hook'
 zinit light woefe/git-prompt.zsh
+
+zinit ice lucid wait
+zinit light reegnz/jq-zsh-plugin
+
+zinit ice lucid wait
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit ice lucid wait
+zinit light zdharma-continuum/history-search-multi-word
+
+zinit ice lucid wait atload"!_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice lucid wait atload"source zsh-better-npm-completion.plugin.zsh"
+zinit light masa0x80/zsh-better-npm-completion
+
+zinit for \
+    atload"zicompinit; zicdreplay" \
+    blockf \
+    lucid \
+    wait \
+  zsh-users/zsh-completions

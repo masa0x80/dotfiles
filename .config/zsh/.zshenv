@@ -77,6 +77,11 @@ path=(
   $GOPATH/bin(N-/)
   $path
 )
+fpath=(
+  $fpath
+  $ZDOTDIR/functions(N-/)
+  $HOMEBREW_PREFIX/share/zsh/site-functions(N-/)
+)
 
 # RIPGREP
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/ripgreprc
