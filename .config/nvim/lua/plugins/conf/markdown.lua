@@ -1,3 +1,5 @@
+local utils = require("config.utils")
+
 local UNORDERED_LIST_PATTERN = "^%s*[-*+] $"
 local ORDERED_LIST_PATTERN = "^%s*%d+[%.%)] $"
 local TASK_PATTERN = "^%s*[-*+] %[[x ]%] $"
@@ -82,8 +84,7 @@ require("markdown").setup({
 				or string.match(str, string.sub(ORDERED_LIST_PATTERN, 0, -2))
 				or string.match(str, string.sub(TASK_PATTERN, 0, -2))
 			then
-				vim.fn.execute("normal >>")
-				vim.fn.execute("startinsert!")
+				utils.indent()
 			else
 				vim.api.nvim_feedkeys(tab, "n", true)
 			end
@@ -98,8 +99,7 @@ require("markdown").setup({
 				or string.match(str, string.sub(ORDERED_LIST_PATTERN, 0, -2))
 				or string.match(str, string.sub(TASK_PATTERN, 0, -2))
 			then
-				vim.fn.execute("normal <<")
-				vim.fn.execute("startinsert!")
+				utils.indent(false)
 			else
 				vim.api.nvim_feedkeys(tab, "n", true)
 			end

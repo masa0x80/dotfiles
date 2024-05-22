@@ -1,3 +1,4 @@
+local utils = require("config.utils")
 local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 
@@ -114,32 +115,17 @@ map("i", "<C-g><C-l>", "<Esc>ea", { noremap = true, silent = true, desc = "forwa
 -- Insert ellipsis
 map("i", "<A-;>", "…", opts)
 
--- Indent
-local function indent(sign)
-	local l, c = unpack(vim.api.nvim_win_get_cursor(0))
-	local n = vim.o.shiftwidth
-	sign = sign == nil and true or sign
-	if sign then
-		vim.fn.execute("normal >>")
-	else
-		vim.fn.execute("normal <<")
-		n = -1 * n
-	end
-	vim.fn.execute("normal i")
-	local col = c + n < 0 and 0 or c + n
-	vim.api.nvim_win_set_cursor(0, { l, col })
-end
 map("i", "<C-g><C-n>", function()
-	indent()
+	utils.indent()
 end, { noremap = true, silent = true, desc = "Indent >>" })
 map("i", "<C-t><C-n>", function()
-	indent()
+	utils.indent()
 end, { noremap = true, silent = true, desc = "Indent >>" })
 map("i", "<C-g><C-p>", function()
-	indent(false)
+	utils.indent(false)
 end, { noremap = true, silent = true, desc = "Indent <<" })
 map("i", "<C-t><C-p>", function()
-	indent(false)
+	utils.indent(false)
 end, { noremap = true, silent = true, desc = "Indent <<" })
 
 -- # Visual
@@ -183,7 +169,6 @@ map("n", "z;", "za", opts)
 map("n", "<Leader>J", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)
 
 -- Preview
-local utils = require("config.utils")
 map("n", ";<C-g>", function()
 	vim.cmd("normal yy")
 	local line = vim.fn.getreg('"')
