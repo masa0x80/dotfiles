@@ -1,5 +1,5 @@
 require("render-markdown").setup({
-	headings = { "󰽭 " },
+	headings = { "󰉫 ", "󰉬  ", "󰉭   ", "󰉮    ", "󰉯     ", "󰉰      " },
 	bullets = { "󱠦" },
 	highlights = {
 		bullet = "Comment",
