@@ -23,7 +23,7 @@ wezterm.on("format-tab-title", function(tab, _, _, _, hover)
 	local process_name = utils.basename(pane.foreground_process_name)
 	local index = tab.tab_index
 	local icon = nerd_icons[process_name]
-	local current_dir = string.gsub(pane.current_working_dir.path, "(.*[/\\])(.*[/\\].*)", "%2")
+	local current_dir = string.gsub(pane.current_working_dir.path, ".*/(.*)", "%1")
 
 	local title = { "" }
 	if tab.active_pane.is_zoomed then
