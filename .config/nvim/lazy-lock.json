@@ -26,6 +26,7 @@
   "gx.nvim": { "branch": "main", "commit": "cf6ed6ba86ffe4e3f51a898c03a05023b7a2fe48" },
   "hlchunk.nvim": { "branch": "main", "commit": "350e4e8f1b6f4c6dbd9a98946547ed557bab5335" },
   "hop.nvim": { "branch": "master", "commit": "036462a345792279c58f2f6445756efab706f04a" },
+  "hover.nvim": { "branch": "main", "commit": "82684ebd5f2a812d6d05a629b14109618b54cbfc" },
   "jaq-nvim": { "branch": "master", "commit": "236296aae555657487d1bb4d066cbde9d79d8cd4" },
   "kensaku-search.vim": { "branch": "main", "commit": "9568c2b174a9cf31bd9922c0a991117f4dd4f0c3" },
   "kensaku.vim": { "branch": "main", "commit": "7ddad2f355a3678597ebbac666e2ee6dda6b9cf3" },

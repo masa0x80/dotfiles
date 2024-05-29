@@ -82,6 +82,26 @@ local on_attach = function(client, bufnr)
 	-- Lesser used LSP functionality
 	nmap("gD", vim.lsp.buf.declaration, "[GD] Goto Declaration")
 
+	-- Setup hover keymap
+	nmap("K", require("hover").hover, "hover.nvim")
+	nmap("gK", require("hover").hover_select, "hover.nvim (select)")
+	nmap("<C-p>", function()
+		require("hover").hover_switch("previous")
+	end, "hover.nvim (previous source)")
+	nmap("<C-n>", function()
+		require("hover").hover_switch("next")
+	end, "hover.nvim (next source)")
+
+	-- Mouse support
+	vim.keymap.set("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
+
+	vim.api.nvim_create_autocmd({ "CursorHold" }, {
+		group = "_",
+		callback = function()
+			require("hover").hover()
+		end,
+	})
+
 	if vim.g.formatter_enabled then
 		-- Create a command `:Format` local to the LSP buffer
 		vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
@@ -227,6 +247,30 @@ mason_lspconfig.setup_handlers({
 		end
 		require("lspconfig")[server_name].setup(args)
 	end,
+})
+
+require("hover").setup({
+	init = function()
+		-- Require providers
+		require("hover.providers.lsp")
+		-- require('hover.providers.gh')
+		-- require('hover.providers.gh_user')
+		-- require('hover.providers.jira')
+		-- require('hover.providers.dap')
+		-- require('hover.providers.man')
+		-- require('hover.providers.dictionary')
+	end,
+	preview_opts = {
+		border = "single",
+	},
+	-- Whether the contents of a currently open hover window should be moved
+	-- to a :h preview-window when pressing the hover keymap.
+	preview_window = false,
+	title = true,
+	mouse_providers = {
+		"LSP",
+	},
+	mouse_delay = 1000,
 })
 
 -- https://github.com/williamboman/mason.nvim/issues/1309#issuecomment-1555018732

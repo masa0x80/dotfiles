@@ -13,5 +13,10 @@ return {
 		"nvimdev/lspsaga.nvim",
 
 		"b0o/schemastore.nvim",
+
+		{
+			"lewis6991/hover.nvim",
+			config = function() end,
+		},
 	},
 }
