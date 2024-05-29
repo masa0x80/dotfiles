@@ -1,4 +1,4 @@
 return {
-	"dhruvasagar/vim-table-mode",
+	"mattn/vim-maketable",
 	ft = { "markdown" },
 }
