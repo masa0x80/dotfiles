@@ -78,7 +78,7 @@
   "plantuml-syntax": { "branch": "master", "commit": "44054d6d2cbcf01a064858faa3364cd30d38057d" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "promise-async": { "branch": "main", "commit": "93540c168c5ed2b030ec3e6c40ab8bbb85e36355" },
-  "render-markdown": { "branch": "main", "commit": "c1d9edc2f2690ef326bd8afbe7fc080412cbb224" },
+  "render-markdown": { "branch": "main", "commit": "fbd4c45dc4a8e7490c6cfb1827360f5943a76b76" },
   "schemastore.nvim": { "branch": "main", "commit": "931f9f3b7b60ec976159cb01b4a40da3829ac2fd" },
   "statuscol.nvim": { "branch": "main", "commit": "483b9a596dfd63d541db1aa51ee6ee9a1441c4cc" },
   "telekasten.nvim": { "branch": "main", "commit": "319276a7853ff996b7bb1ed4250d8047c84ad29d" },

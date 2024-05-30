@@ -7,6 +7,7 @@ return {
 	},
 	{
 		"MeanderingProgrammer/markdown.nvim",
+		commit = "fbd4c45dc4a8e7490c6cfb1827360f5943a76b76",
 		name = "render-markdown",
 		ft = { "markdown" },
 		dependencies = {
