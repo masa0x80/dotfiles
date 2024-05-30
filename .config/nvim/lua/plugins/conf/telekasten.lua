@@ -29,6 +29,7 @@ require("telekasten").setup({
 	uuid_sep = "-",
 
 	tag_notation = "#tag",
+	subdirs_in_links = true,
 
 	follow_creates_nonexisting = true,
 	dailies_create_nonexisting = true,
