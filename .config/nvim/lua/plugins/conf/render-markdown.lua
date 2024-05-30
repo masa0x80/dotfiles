@@ -1,6 +1,7 @@
 require("render-markdown").setup({
 	headings = { "󰉫 ", "󰉬  ", "󰉭   ", "󰉮    ", "󰉯     ", "󰉰      " },
 	bullets = { "󱠦" },
+	table_style = "normal",
 	highlights = {
 		heading = {
 			backgrounds = { "DiffAdd", "DiffChange", "DiffDelete" },
