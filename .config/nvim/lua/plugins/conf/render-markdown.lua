@@ -1,6 +1,10 @@
 require("render-markdown").setup({
 	headings = { "󰉫 ", "󰉬  ", "󰉭   ", "󰉮    ", "󰉯     ", "󰉰      " },
 	bullets = { "󱠦" },
+	checkbox = {
+		unchecked = "󰄱  ",
+		checked = "  ",
+	},
 	table_style = "normal",
 	highlights = {
 		heading = {
