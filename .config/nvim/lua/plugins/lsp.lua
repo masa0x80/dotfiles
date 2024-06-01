@@ -14,9 +14,6 @@ return {
 
 		"b0o/schemastore.nvim",
 
-		{
-			"lewis6991/hover.nvim",
-			config = function() end,
-		},
+		"lewis6991/hover.nvim",
 	},
 }
