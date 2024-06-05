@@ -18,7 +18,7 @@ brew "libsodium"
 brew "libyaml"
 brew "openssl"
 
-brew "bluetoothconnector"
+brew "blueutil"
 brew "fzf"
 brew "gibo"
 brew "git"
