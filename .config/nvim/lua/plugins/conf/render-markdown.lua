@@ -3,14 +3,19 @@ require("render-markdown").setup({
 	bullets = { "󱠦" },
 	checkbox = {
 		unchecked = "󰄱  ",
-		checked = "  ",
+		checked = "󰄵  ",
+	},
+	win_options = {
+		concealcursor = {
+			rendered = "",
+		},
 	},
 	table_style = "normal",
 	highlights = {
 		heading = {
 			backgrounds = { "DiffAdd", "DiffChange", "DiffDelete" },
 			foregrounds = {
-				"comment",
+				"normal",
 				"markdownH2",
 				"markdownH3",
 				"markdownH4",
