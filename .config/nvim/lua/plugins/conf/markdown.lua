@@ -4,14 +4,19 @@ local UNORDERED_LIST_PATTERN = "^%s*[-*+] $"
 local ORDERED_LIST_PATTERN = "^%s*%d+[%.%)] $"
 local TASK_PATTERN = "^%s*[-*+] %[[x ]%] $"
 
-local function cursor_pos()
-	local cursor = vim.api.nvim_win_get_cursor(0) -- 1-based row, 0-based col
-	local row = cursor[1] - 1
-	local col = vim.fn.charcol("$") - 1
-	return row, col
+local function is_list_item()
+	local md_ts = require("markdown.treesitter")
+	local curr_row = vim.fn.line(".") - 1
+	local curr_eol = vim.fn.col("$") - 1
+
+	return md_ts.find_node(function(node)
+		return node:type() == "list_item"
+	end, { pos = { curr_row, curr_eol } })
 end
+
 local function backspace()
-	local row, col = cursor_pos()
+	local row = vim.fn.line(".") - 3
+	local col = vim.fn.col("$") - 1
 	local str = vim.api.nvim_buf_get_text(0, row, 0, row, col, {})[1]
 
 	local cw = vim.api.nvim_replace_termcodes("<C-w>", true, false, true)
@@ -70,42 +75,34 @@ require("markdown").setup({
 	on_attach = function(bufnr)
 		local map = vim.keymap.set
 		local opts = { noremap = true, buffer = bufnr }
-		map({ "n" }, "o", "<Cmd>MDListItemBelow<CR>", opts)
-		map({ "n" }, "O", "<Cmd>MDListItemAbove<CR>", opts)
-		map("i", "<BS>", backspace, opts)
-		map("i", "<C-h>", backspace, opts)
-		map("i", "<Tab>", function()
-			local row, col = cursor_pos()
-			local str = vim.api.nvim_buf_get_text(0, row, 0, row, col, {})[1]
 
-			local tab = vim.api.nvim_replace_termcodes("<Tab>", true, false, true)
-			if
-				string.match(str, string.sub(UNORDERED_LIST_PATTERN, 0, -2))
-				or string.match(str, string.sub(ORDERED_LIST_PATTERN, 0, -2))
-				or string.match(str, string.sub(TASK_PATTERN, 0, -2))
-			then
-				utils.indent()
-			else
-				vim.api.nvim_feedkeys(tab, "n", true)
+		-- New list item below on `o` if in a list
+		map("n", "o", function()
+			if is_list_item() then
+				vim.cmd("MDListItemBelow")
+				return
 			end
-		end, opts)
-		map("i", "<S-Tab>", function()
-			local row, col = cursor_pos()
-			local str = vim.api.nvim_buf_get_text(0, row, 0, row, col, {})[1]
 
-			local tab = vim.api.nvim_replace_termcodes("<S-Tab>", true, false, true)
-			if
-				string.match(str, string.sub(UNORDERED_LIST_PATTERN, 0, -2))
-				or string.match(str, string.sub(ORDERED_LIST_PATTERN, 0, -2))
-				or string.match(str, string.sub(TASK_PATTERN, 0, -2))
-			then
-				utils.indent(false)
-			else
-				vim.api.nvim_feedkeys(tab, "n", true)
+			vim.api.nvim_feedkeys("o", "n", true)
+		end, { buffer = bufnr, desc = "Insert list item below" })
+
+		-- New list item above on `O` if in a list
+		map("n", "O", function()
+			if is_list_item() then
+				vim.cmd("MDListItemAbove")
+				return
 			end
-		end, opts)
+
+			vim.api.nvim_feedkeys("O", "n", true)
+		end, { buffer = bufnr, desc = "Insert list item above" })
+
+		-- New list item below on `<cr>` if in a list and at the end of the line
 		map("i", "<CR>", function()
-			local row, col = cursor_pos()
+			local row = vim.fn.line(".") - 1
+			local col = vim.fn.col("$") - 1
+			local is_eol = vim.fn.col(".") == col + 1
+			local in_list = is_list_item()
+
 			local str = vim.api.nvim_buf_get_text(0, row, 0, row, col, {})[1]
 
 			if
@@ -114,10 +111,53 @@ require("markdown").setup({
 				or string.match(str, TASK_PATTERN)
 			then
 				vim.api.nvim_buf_set_text(0, row, 0, row, col, { "" })
-				vim.fn.execute("startinsert!")
-			else
-				vim.fn.execute("MDListItemBelow")
+			elseif is_eol and in_list then
+				vim.cmd("MDListItemBelow")
+				return
 			end
+
+			local key = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
+			vim.api.nvim_feedkeys(key, "n", false)
+		end, { buffer = bufnr, desc = "Insert list item below" })
+
+		map("i", "<BS>", backspace, opts)
+		map("i", "<C-h>", backspace, opts)
+		map("i", "<Tab>", function()
+			local row = vim.fn.line(".") - 1
+			local col = vim.fn.col("$") - 1
+			local str = vim.api.nvim_buf_get_text(0, row, 0, row, col, {})[1]
+
+			if
+				string.match(str, string.sub(UNORDERED_LIST_PATTERN, 0, -2))
+				or string.match(str, string.sub(ORDERED_LIST_PATTERN, 0, -2))
+				or string.match(str, string.sub(TASK_PATTERN, 0, -2))
+			then
+				utils.indent()
+				return
+			end
+
+			local tab = vim.api.nvim_replace_termcodes("<Tab>", true, false, true)
+			vim.api.nvim_feedkeys(tab, "n", true)
+		end, opts)
+		map("i", "<S-Tab>", function()
+			local row = vim.fn.line(".") - 1
+			local col = vim.fn.col("$") - 1
+			local str = vim.api.nvim_buf_get_text(0, row, 0, row, col, {})[1]
+
+			if
+				string.match(str, string.sub(UNORDERED_LIST_PATTERN, 0, -2))
+				or string.match(str, string.sub(ORDERED_LIST_PATTERN, 0, -2))
+				or string.match(str, string.sub(TASK_PATTERN, 0, -2))
+			then
+				if string.sub(str, 0, 1) ~= " " then
+					return
+				end
+				utils.indent(false)
+				return
+			end
+
+			local tab = vim.api.nvim_replace_termcodes("<S-Tab>", true, false, true)
+			vim.api.nvim_feedkeys(tab, "n", true)
 		end, opts)
 	end,
 })

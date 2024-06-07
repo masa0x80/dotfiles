@@ -1,7 +1,6 @@
 return {
 	{
-		"masa0x80/markdown.nvim",
-		branch = "feat/supports-insert-mode",
+		"tadmccorkle/markdown.nvim",
 		ft = { "markdown" },
 		config = require("config.utils").load("conf/markdown"),
 	},
