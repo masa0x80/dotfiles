@@ -78,47 +78,37 @@ require("markdown").setup({
 
 		-- New list item below on `o` if in a list
 		map("n", "o", function()
-			if is_list_item() then
-				vim.cmd("MDListItemBelow")
-				return
+			if not require("markdown.list").insert_list_item_below() then
+				vim.api.nvim_feedkeys("o", "n", false)
 			end
+		end, opts)
 
-			vim.api.nvim_feedkeys("o", "n", true)
-		end, { buffer = bufnr, desc = "Insert list item below" })
-
-		-- New list item above on `O` if in a list
 		map("n", "O", function()
-			if is_list_item() then
-				vim.cmd("MDListItemAbove")
-				return
+			if not require("markdown.list").insert_list_item_above() then
+				vim.api.nvim_feedkeys("O", "n", false)
 			end
+		end, opts)
 
-			vim.api.nvim_feedkeys("O", "n", true)
-		end, { buffer = bufnr, desc = "Insert list item above" })
-
-		-- New list item below on `<cr>` if in a list and at the end of the line
 		map("i", "<CR>", function()
 			local row = vim.fn.line(".") - 1
 			local col = vim.fn.col("$") - 1
 			local is_eol = vim.fn.col(".") == col + 1
-			local in_list = is_list_item()
 
 			local str = vim.api.nvim_buf_get_text(0, row, 0, row, col, {})[1]
+			local key = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
 
-			if
+			if str == "" then
+				vim.api.nvim_feedkeys(key, "n", false)
+			elseif
 				string.match(str, UNORDERED_LIST_PATTERN)
 				or string.match(str, ORDERED_LIST_PATTERN)
 				or string.match(str, TASK_PATTERN)
 			then
 				vim.api.nvim_buf_set_text(0, row, 0, row, col, { "" })
-			elseif is_eol and in_list then
-				vim.cmd("MDListItemBelow")
-				return
+			elseif not (is_eol and require("markdown.list").insert_list_item_below()) then
+				vim.api.nvim_feedkeys(key, "n", false)
 			end
-
-			local key = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
-			vim.api.nvim_feedkeys(key, "n", false)
-		end, { buffer = bufnr, desc = "Insert list item below" })
+		end, opts)
 
 		map("i", "<BS>", backspace, opts)
 		map("i", "<C-h>", backspace, opts)
