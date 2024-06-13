@@ -15,7 +15,7 @@ local function is_list_item()
 end
 
 local function backspace()
-	local row = vim.fn.line(".") - 3
+	local row = vim.fn.line(".") - 1
 	local col = vim.fn.col("$") - 1
 	local str = vim.api.nvim_buf_get_text(0, row, 0, row, col, {})[1]
 
