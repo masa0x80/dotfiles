@@ -51,9 +51,3 @@ map("n", "zR", require("ufo").openAllFolds)
 map("n", "zM", require("ufo").closeAllFolds)
 map("n", "zr", require("ufo").openFoldsExceptKinds)
 map("n", "zm", require("ufo").closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
-map("n", "K", function()
-	local winid = require("ufo").peekFoldedLinesUnderCursor()
-	if not winid then
-		vim.fn.execute("Lspsaga hover_doc")
-	end
-end)
