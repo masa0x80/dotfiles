@@ -1,5 +1,4 @@
 local actions = require("telescope.actions")
-local fb_actions = require("telescope._extensions.file_browser.actions")
 local utils = require("config.utils")
 
 local telescope = require("telescope")
@@ -90,46 +89,27 @@ telescope.setup({
 			},
 		},
 	},
-	extensions = {
-		file_browser = {
-			hide_parent_dir = true,
-			grouped = true,
-			auto_depth = true,
-			hijack_netrw = true,
-			mappings = {
-				["i"] = {
-					["<C-l>"] = actions.select_default,
-					["<C-h>"] = { "<BS>", type = "command" },
-					["<A-h>"] = fb_actions.toggle_hidden,
-					["<C-u>"] = fb_actions.goto_parent_dir,
-					["<C-z>"] = fb_actions.toggle_all,
-					["<C-g>"] = function()
-						local selection = require("telescope.actions.state").get_selected_entry()
-						local path = selection.path
-						utils.preview(path)
-					end,
-				},
-				["n"] = {
-					["l"] = actions.select_default,
-					["<C-l>"] = actions.select_default,
-					["u"] = fb_actions.goto_parent_dir,
-					["<C-u>"] = fb_actions.goto_parent_dir,
-					["h"] = fb_actions.goto_parent_dir,
-					["<C-h>"] = fb_actions.goto_parent_dir,
-					["<A-h>"] = fb_actions.goto_parent_dir,
-					["H"] = fb_actions.toggle_hidden,
-					["<C-g>"] = function()
-						local selection = require("telescope.actions.state").get_selected_entry()
-						local path = selection.path
-						utils.preview(path)
-					end,
-				},
-			},
-		},
-	},
 })
 
 telescope.load_extension("fzf")
 telescope.load_extension("ghq")
-telescope.load_extension("file_browser")
 telescope.load_extension("dap")
+telescope.load_extension("kensaku")
+
+-- local map = vim.keymap.set
+-- map("n", ";g", function()
+-- 	return "<Cmd>Telescope kensaku cwd=" .. require("telekasten").Cfg.home .. "<CR>"
+-- end, {
+-- 	noremap = true,
+-- 	silent = true,
+-- 	expr = true,
+-- 	desc = "Telekasten grep_string",
+-- })
+-- map("n", ";g", function()
+-- 	local vault = require("telekasten").Cfg.home
+-- 	vim.cmd("Telescope kensaku cwd=" .. vault)
+-- end, {
+-- 	noremap = true,
+-- 	silent = true,
+-- 	desc = "telekasten grep_string",
+-- })
