@@ -4,4 +4,4 @@ end, {})
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
-keymap("n", "<Leader>gp", "<Cmd>GhOpenPR<CR>", opts)
+keymap("n", "<Leader>ogp", "<Cmd>GhOpenPR<CR>", opts)

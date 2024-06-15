@@ -1,19 +1,19 @@
 local map = vim.keymap.set
 map(
 	"n",
-	"<leader>gY",
+	"<leader>ogY",
 	'<Cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
 	{ silent = true }
 )
 map(
 	"v",
-	"<leader>gY",
+	"<leader>ogY",
 	'<Cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
 	{ silent = true }
 )
 map(
 	"n",
-	"<Leader>gr",
+	"<Leader>ogr",
 	'<Cmd>lua require"gitlinker".get_repo_url({action_callback = require"gitlinker.actions".open_in_browser})<CR>',
 	{ silent = true }
 )

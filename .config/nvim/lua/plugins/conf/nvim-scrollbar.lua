@@ -23,6 +23,14 @@ require("scrollbar").setup({
 		Hint = { color = c.purple },
 		Misc = { color = c.purple },
 	},
+	excluded_filetypes = {
+		"",
+		"cmp_docs",
+		"cmp_menu",
+		"noice",
+		"prompt",
+		"TelescopePrompt",
+	},
 	handlers = {
 		search = true, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
 	},
