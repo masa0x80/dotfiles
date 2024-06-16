@@ -29,6 +29,7 @@ return {
 				"markdownlint",
 				"delete_single_space_after_japanese_punctuation_marks",
 				"delete_parentheses_inside_space",
+				"delete_no_break_spaces",
 			},
 			sh = { "shfmt" },
 			text = { "textlint" },

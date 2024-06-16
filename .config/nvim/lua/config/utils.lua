@@ -71,6 +71,10 @@ M.hidden_formatters = {
 		command = "sed",
 		args = { "s|\\([(<{]\\) \\(.*\\) \\([)>}]\\)|\\1\\2\\3|g" },
 	},
+	delete_no_break_spaces = {
+		command = "sed",
+		args = { "s|[  ]| |g" },
+	},
 }
 
 return M
