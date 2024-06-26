@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+echo '
+tell application "WezTerm"
+  activate
+  tell application "System Events"
+    keystroke "j" using {command down}
+  end tell
+end tell
+' | osascript -
