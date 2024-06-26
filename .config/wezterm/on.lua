@@ -166,3 +166,19 @@ wezterm.on("select-tab", function(window, pane)
 		pane
 	)
 end)
+
+wezterm.on("open-bookmark", function(window, pane)
+	local tab = window:active_tab()
+	local index = 0
+	for _, t in ipairs(tab:window():tabs_with_info()) do
+		if t.is_active then
+			index = t.index
+		end
+	end
+	window:perform_action(
+		wezterm.action.SpawnCommandInNewTab({
+			args = { os.getenv("HOME") .. "/.bin/bookmark", tostring(index) },
+		}),
+		pane
+	)
+end)

@@ -250,6 +250,12 @@ M.keys = {
 		mods = "SUPER",
 		action = act.EmitEvent("toggle-opacity"),
 	},
+
+	{
+		key = "j",
+		mods = "SUPER",
+		action = act.EmitEvent("open-bookmark"),
+	},
 }
 
 for i = 0, 7 do

@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+bat $OBSIDIAN_BOOKMARKS_DIR/* | grep -oP "(?<=^# ).*" | fzf | xargs -I{} echo {} | sed -e "s/\[.*\](\(.*\)).*/\1/" | xargs -I{} open {}
