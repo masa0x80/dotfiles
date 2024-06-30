@@ -1,6 +1,3 @@
-# Autoload functions
-for config_file ($ZDOTDIR/functions/*(N)) autoload $(basename "$config_file")
-
 # less
 export LESS='-RFIX'
 # colored less (0: Black, 1: Red, 2: Green, 3: Yellow, 4: Blue, 5: Magenta, 6: Cyan, 7: White)
@@ -45,8 +42,9 @@ if installed ghq; then
 fi
 
 # misc
-eval "$(mise activate zsh)"
-eval "$(fzf --zsh)"
+if_installed mise eval "$(mise activate zsh)"
+if_installed fzf eval "$(fzf --zsh)"
+if_installed direnv eval "$(direnv hook zsh)"
 
 for file (
   # Load files under hoooks and conf.d
@@ -64,11 +62,3 @@ path=(
   $HOME/.bin(N-/)
   $path
 )
-
-# NOTE: Create zsh compiled files
-() {
-  local src
-  for src in $@; do
-    [ ! -f ${src}.zwc -o $src -nt ${src}.zwc ] && zcompile $src
-  done
-} $HOME/.zshenv(N) $ZDOTDIR/.zshrc(N) $ZDOTDIR/zinitrc(N) $ZDOTDIR/conf.d/*.zsh(N) $ZDOTDIR/hooks/*.zsh(N) $ZDOTDIR/lazy/*.zsh(N) $HOME/.local/share/zinit/zinit.git/*.zsh(N)

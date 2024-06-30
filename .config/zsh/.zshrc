@@ -1,57 +1,45 @@
 autoload -Uz add-zsh-hook
 
-# Perform cd to a directory if the typed command is invalid, but is a directory.
-setopt AUTO_CD
-
-# Make cd push the old directory to the directory stack.
-setopt AUTO_PUSHD
-
-setopt CD_SILENT
-
-# Don't push multiple copies of the same directory to the stack.
-setopt PUSHD_IGNORE_DUPS
-
-# Don't print the directory stack after pushd or popd.
-setopt PUSHD_SILENT
-
-# Have pushd without arguments act like `pushd ${HOME}`.
-setopt PUSHD_TO_HOME
-
-# Treat `#`, `~`, and `^` as patterns for filename globbing.
-setopt EXTENDED_GLOB
-
-# Set editor default keymap to emacs (`-e`) or vi (`-v`)
-bindkey -e
-
-# Allow comments starting with `#` in the interactive shell.
-setopt INTERACTIVE_COMMENTS
-
-# Disallow `>` to overwrite existing files. Use `>|` or `>!` instead.
-setopt NO_CLOBBER
-
-# Prompt for spelling correction of commands.
-setopt CORRECT
-
-# Customize spelling correction prompt.
-SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
-
 # Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/=-]}
 
-# List jobs in verbose format by default.
-setopt LONG_LIST_JOBS
+setopt auto_cd
+setopt auto_pushd
+setopt auto_param_slash
+setopt auto_menu
+setopt cd_silent
+setopt pushd_ignore_dups
+setopt list_packed
+setopt list_types
+setopt auto_list
+setopt magic_equal_subst
+setopt brace_ccl
+setopt nolistbeep
+setopt extended_glob
+setopt interactive_comments
+setopt long_list_jobs
+setopt no_bg_nice
+setopt no_check_jobs
+setopt no_hup
 
-# Prevent background jobs being given a lower priority.
-setopt NO_BG_NICE
+setopt correct
+SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
-# Prevent status report of jobs on shell exit.
-setopt NO_CHECK_JOBS
+bindkey -e
 
-# Prevent SIGHUP to jobs on shell exit.
-setopt NO_HUP
+if (( ! ${+HISTFILE} )) typeset -g HISTFILE=${ZDOTDIR:-${HOME}}/.zhistory
+HISTSIZE=30000
+SAVEHIST=30000
 
-# Lazy loadするとwindow作成直後に読み込まれない
-(( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
+setopt hist_ignore_all_dups
+setopt hist_expire_dups_first
+setopt hist_ignore_space
+setopt hist_verify
+setopt share_history
 
-# Initialize modules.
-source $ZDOTDIR/zinitrc
+autoload -Uz url-quote-magic
+
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+source $ZDOTDIR/sheldon.zsh
