@@ -176,7 +176,7 @@ wezterm.on("open-bookmark", function(window, pane)
 		end
 	end
 	window:perform_action(
-		wezterm.action.SpawnCommandInNewTab({
+		wezterm.action.SpawnCommandInNewWindow({
 			args = { os.getenv("HOME") .. "/.bin/bookmark", tostring(index) },
 		}),
 		pane

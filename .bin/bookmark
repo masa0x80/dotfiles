@@ -2,4 +2,20 @@
 
 set -euo pipefail
 
-bat $OBSIDIAN_BOOKMARKS_DIR/* | grep -oP "(?<=^# ).*" | fzf | xargs -I{} echo {} | sed -e "s/\[.*\](\(.*\)).*/\1/" | xargs -I{} open {}
+() {
+  selected=$(FZF_DEFAULT_COMMAND="rg '' ${OBSIDIAN_BOOKMARKS_DIR:q}" \
+      fzf --ansi --reverse --extended --multi --cycle --bind=ctrl-u:page-up,ctrl-d:page-down,ctrl-j:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-/:deselect-all,ctrl-q:deselect-all \
+          --delimiter=":" \
+          --bind "ctrl-y:execute-silent: (echo \"{1}\" | pbcopy)" \
+          --header 'Press CTRL-y to copy filepath into clipboard' \
+          --preview="bat --color=always {1}" \
+          --preview-window='down:30%:+{2}-10' | cut -d: -f1)
+  test -z "$selected" && return
+
+  IFS=$'\n'
+  for f in $(echo $selected); do
+    url=$(bat "$f" | grep -oP '(?<=^# ).*' | sed -e 's/\[.*\](\(.*\)).*/\1/')
+    open "obsidian://open?vault=${SCRAPBOOK_DIR:t}&file=${f:t:r}"
+    open ${url}
+  done
+}
