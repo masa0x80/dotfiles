@@ -29,7 +29,7 @@ install: \
 	navi \
 	bat \
 	silicon \
-	zinit
+	sheldon
 
 .PHONY: deploy
 deploy:
@@ -109,6 +109,6 @@ silicon: brew
 navi: brew
 	./scripts/navi
 
-.PHONY: zinit
-zinit:
-	./scripts/zinit
+.PHONY: sheldon
+sheldon:
+	./scripts/sheldon

@@ -96,3 +96,5 @@ brew "pgcli"
 
 brew "ical-buddy"
 brew "totp-cli"
+
+brew "sheldon"

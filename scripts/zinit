@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-. .config/zsh/zinitrc
-autoload -Uz _zinit
-
-zinit self-update
-zinit update --all

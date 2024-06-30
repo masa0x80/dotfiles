@@ -19,6 +19,9 @@ bindkey '^G^L' forward-word
 # reegnz/jq-zsh-plugin
 bindkey '^G^J' jq-complete
 
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
+
 # zabrze (brewで入れる想定)
 eval "$(zabrze init --bind-keys)"
 
