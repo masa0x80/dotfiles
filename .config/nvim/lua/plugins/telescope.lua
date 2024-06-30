@@ -73,9 +73,9 @@ return {
 				{ ";n", "<Cmd>Telekasten new_note<CR>", noremap = true, silent = true },
 				{ ";r", "<Cmd>Telekasten find_friends<CR>", noremap = true, silent = true },
 				{ ";t", "<Cmd>Telekasten show_tags<CR>", noremap = true, silent = true },
-				{ "<C-t><C-i>", "<Cmd>Telekasten toggle_todo<CR>", noremap = true, silent = true },
+				{ "<C-g><C-i>", "<Cmd>Telekasten toggle_todo<CR>", noremap = true, silent = true },
 				{
-					"<C-t><C-i>",
+					"<C-g><C-i>",
 					"<Esc><Cmd>Telekasten toggle_todo<CR><Right>I",
 					noremap = true,
 					silent = true,

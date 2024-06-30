@@ -66,6 +66,7 @@ map(
 	":<C-u>%s;<C-r><C-w>;g<Left><Left>;",
 	{ noremap = true, silent = true, desc = "[re]place Current Word" }
 )
+map("n", ",R", "*Ncgn", { noremap = true, silent = true, desc = "[R]eplace Current Word `*cgn`" })
 
 -- Toggle relativenumber
 map(
@@ -115,18 +116,8 @@ map("i", "<C-g><C-l>", "<Esc>ea", { noremap = true, silent = true, desc = "forwa
 -- Insert ellipsis
 map("i", "<A-;>", "…", opts)
 
-map("i", "<C-g><C-n>", function()
-	utils.indent()
-end, { noremap = true, silent = true, desc = "Indent >>" })
-map("i", "<C-t><C-n>", function()
-	utils.indent()
-end, { noremap = true, silent = true, desc = "Indent >>" })
-map("i", "<C-g><C-p>", function()
-	utils.indent(false)
-end, { noremap = true, silent = true, desc = "Indent <<" })
-map("i", "<C-t><C-p>", function()
-	utils.indent(false)
-end, { noremap = true, silent = true, desc = "Indent <<" })
+map("i", "<C-g><C-n>", "<C-t>", { noremap = true, silent = true, desc = "Indent >>" })
+map("i", "<C-g><C-p>", "<C-d>", { noremap = true, silent = true, desc = "Indent <<" })
 
 -- # Visual
 

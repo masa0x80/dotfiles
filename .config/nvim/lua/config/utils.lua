@@ -32,28 +32,6 @@ M.load = function(name)
 	end
 end
 
--- Indent
-M.indent = function(sign)
-	local l, c = unpack(vim.api.nvim_win_get_cursor(0))
-	local n = 1
-	sign = sign == nil and true or sign
-	if sign then
-		vim.fn.execute("normal >>")
-		if vim.o.expandtab then
-			n = vim.o.shiftwidth
-		end
-	else
-		vim.fn.execute("normal <<")
-		n = -1
-		if vim.o.expandtab then
-			n = n * vim.o.shiftwidth
-		end
-	end
-	vim.fn.execute("normal i")
-	local col = c + n < 0 and 0 or c + n
-	vim.api.nvim_win_set_cursor(0, { l, col })
-end
-
 M.js_based_languages = {
 	"typescript",
 	"javascript",

@@ -1,5 +1,3 @@
-local utils = require("config.utils")
-
 local UNORDERED_LIST_PATTERN = "^%s*[-*+] $"
 local ORDERED_LIST_PATTERN = "^%s*%d+[%.%)] $"
 local TASK_PATTERN = "^%s*[-*+] %[[x ]%] $"
@@ -122,7 +120,8 @@ require("markdown").setup({
 				or string.match(str, string.sub(ORDERED_LIST_PATTERN, 0, -2))
 				or string.match(str, string.sub(TASK_PATTERN, 0, -2))
 			then
-				utils.indent()
+				local ct = vim.api.nvim_replace_termcodes("<C-t>", true, false, true)
+				vim.api.nvim_feedkeys(ct, "n", true)
 				return
 			end
 
@@ -142,7 +141,8 @@ require("markdown").setup({
 				if string.sub(str, 0, 1) ~= " " then
 					return
 				end
-				utils.indent(false)
+				local cd = vim.api.nvim_replace_termcodes("<C-d>", true, false, true)
+				vim.api.nvim_feedkeys(cd, "n", true)
 				return
 			end
 
