@@ -6,6 +6,7 @@ if [ "$1" = 'show' ]; then
     git log --color=always --graph \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
         fzf --no-sort --tiebreak=index +m \
+        --header 'Press CTRL-y to copy commit-hash into clipboard' \
         --preview 'echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c "git show --color=always %"' \
         --bind "ctrl-y:execute-silent: (echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | tr -d '\n' | pbcopy)" \
         --bind "ctrl-m:execute: (echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c 'git show --color=always %')"
@@ -13,6 +14,7 @@ else
     git log --color=always --graph \
         --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN" | \
         fzf --no-sort --tiebreak=index +m \
+        --header 'Press CTRL-y to copy commit-hash into clipboard' \
         --preview 'echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | xargs -I % sh -c "git show --color=always %"' \
         --bind "ctrl-y:execute-silent: (echo {} | rg -o \[a-f0-9\]\{7\} | head -1 | tr -d '\n' | pbcopy)" \
         | rg -o \[a-f0-9\]\{7\}

@@ -9,16 +9,6 @@ telescope.setup({
 		},
 		sorting_strategy = "ascending",
 		file_ignore_patterns = { "COMMIT_EDITMSG" },
-		vimgrep_arguments = {
-			"rg",
-			"--color=never",
-			"--no-heading",
-			"--with-filename",
-			"--line-number",
-			"--column",
-			"--smart-case",
-			"--hidden",
-		},
 		mappings = {
 			i = {
 				["<C-f>"] = { "<Right>", type = "command" },
@@ -95,21 +85,3 @@ telescope.load_extension("fzf")
 telescope.load_extension("ghq")
 telescope.load_extension("dap")
 telescope.load_extension("kensaku")
-
--- local map = vim.keymap.set
--- map("n", ";g", function()
--- 	return "<Cmd>Telescope kensaku cwd=" .. require("telekasten").Cfg.home .. "<CR>"
--- end, {
--- 	noremap = true,
--- 	silent = true,
--- 	expr = true,
--- 	desc = "Telekasten grep_string",
--- })
--- map("n", ";g", function()
--- 	local vault = require("telekasten").Cfg.home
--- 	vim.cmd("Telescope kensaku cwd=" .. vault)
--- end, {
--- 	noremap = true,
--- 	silent = true,
--- 	desc = "telekasten grep_string",
--- })
