@@ -3,7 +3,7 @@
 set -euo pipefail
 
 () {
-  selected=$(FZF_DEFAULT_COMMAND="rg '# ' ${OBSIDIAN_BOOKMARKS_DIR:q}" \
+  selected=$(FZF_DEFAULT_COMMAND="rg '# ' ${OBSIDIAN_BOOKMARKS_DIR:q} | shuf" \
       fzf --ansi --reverse --extended --multi --cycle --bind=ctrl-u:page-up,ctrl-d:page-down,ctrl-j:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-/:deselect-all,ctrl-q:deselect-all \
           --delimiter=":" \
           --bind "ctrl-y:execute-silent: (echo \"{1}\" | pbcopy)" \
