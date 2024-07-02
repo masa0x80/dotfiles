@@ -1,3 +1,6 @@
+local UNORDERED_LIST_PATTERN = "^%s*[-*+] $"
+local TASK_PATTERN = "^%s*[-*+] %[[x ]%] $"
+
 return {
 	"nvim-telescope/telescope.nvim",
 	keys = {
@@ -73,13 +76,38 @@ return {
 				{ ";n", "<Cmd>Telekasten new_note<CR>", noremap = true, silent = true },
 				{ ";r", "<Cmd>Telekasten find_friends<CR>", noremap = true, silent = true },
 				{ ";t", "<Cmd>Telekasten show_tags<CR>", noremap = true, silent = true },
-				{ "<C-g><C-g><C-i>", "<Cmd>Telekasten toggle_todo<CR>", noremap = true, silent = true },
+				{
+					"<C-g><C-i>",
+					function()
+						local row = vim.fn.line(".") - 1
+						local line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
+
+						if string.match(line, string.sub(TASK_PATTERN, 0, -2)) then
+							require("telekasten").toggle_todo()
+							return
+						elseif string.match(line, string.sub(UNORDERED_LIST_PATTERN, 0, -2)) then
+							new = line:gsub("[-*+] (%S)", "%1", 1)
+						else
+							new = line:gsub("(%S)", "- %1", 1)
+						end
+						vim.api.nvim_buf_set_lines(0, row, row + 1, false, { new })
+					end,
+					noremap = true,
+					silent = true,
+					mode = { "n", "i" },
+				},
 				{
 					"<C-g><C-g><C-i>",
-					"<Esc><Cmd>Telekasten toggle_todo<CR><Right>I",
+					"<Esc><Cmd>lua require('telekasten').toggle_todo({ i = true })<CR>",
 					noremap = true,
 					silent = true,
 					mode = "i",
+				},
+				{
+					"<C-g><C-g><C-i>",
+					"<Cmd>lua require('telekasten').toggle_todo()<CR>",
+					noremap = true,
+					silent = true,
 				},
 				{ ";d", "<Cmd>Telekasten goto_today<CR>", noremap = true, silent = true },
 				{ ";w", "<Cmd>Telekasten goto_thisweek<CR>", noremap = true, silent = true },
