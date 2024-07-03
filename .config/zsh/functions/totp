@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+totp() {
+  pass=$(pass totp/password)
+  ns=${1:-${TOTP_NAMESPACE:-ns}}
+  selected=$2
+  if [ "$selected" = "" ]; then
+    selected=$(totp-cli list $ns < <(echo $pass) 2>/dev/null | cut -d. -f2 | fzf +m)
+  fi
+  totp-cli generate $ns $selected < <(echo $pass) 2>/dev/null | tee >(pbcopy)
+}
