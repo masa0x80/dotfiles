@@ -188,9 +188,9 @@ abbrevs:
     abbr: Get
     snippet: "ghq get"
 
-  - name: "| pbcopy"
+  - name: "| tee >(pbcopy)"
     abbr: C
-    snippet: "| pbcopy"
+    snippet: "| tee >(pbcopy)"
     global: true
   - name: "| fzf"
     abbr: F
