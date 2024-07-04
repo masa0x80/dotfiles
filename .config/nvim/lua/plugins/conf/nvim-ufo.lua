@@ -50,4 +50,5 @@ local map = vim.keymap.set
 map("n", "zR", require("ufo").openAllFolds)
 map("n", "zM", require("ufo").closeAllFolds)
 map("n", "zr", require("ufo").openFoldsExceptKinds)
+map("n", "zi", require("ufo").openFoldsExceptKinds)
 map("n", "zm", require("ufo").closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)

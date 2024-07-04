@@ -47,10 +47,6 @@ if_installed fzf eval "$(fzf --zsh)"
 if_installed direnv eval "$(direnv hook zsh)"
 
 for file (
-  # Load files under hoooks and conf.d
-  $ZDOTDIR/hooks/*.zsh(N)
-  $ZDOTDIR/conf.d/*.zsh(N)
-
   # Load local configurations
   $HOME/.config.local/zsh/zshrc(N)
   $HOME/.zshrc.local(N)
