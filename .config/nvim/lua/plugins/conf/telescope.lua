@@ -9,6 +9,17 @@ telescope.setup({
 		},
 		sorting_strategy = "ascending",
 		file_ignore_patterns = { "COMMIT_EDITMSG" },
+		-- add `--hidden` option
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--hidden",
+		},
 		mappings = {
 			i = {
 				["<C-f>"] = { "<Right>", type = "command" },
