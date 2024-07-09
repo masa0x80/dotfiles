@@ -1,19 +1,29 @@
 require("render-markdown").setup({
 	render_modes = { "n" },
-	headings = { "󰉫 ", "󰉬  ", "󰉭   ", "󰉮    ", "󰉯     ", "󰉰      " },
-	bullets = { "󱠦" },
-	checkbox = {
-		unchecked = "󰄱  ",
-		checked = "󰄵  ",
+	heading = {
+		icons = { "# ", "#  ", "#   ", "#    ", "#     ", "#      " },
+		signs = { "󰉫 ", "󰉬 ", "󰉭 ", "󰉮 ", "󰉯 ", "󰉰 " },
 	},
-	table_style = "normal",
-	highlights = {
-		heading = {
-			backgrounds = { "DiffAdd", "DiffChange", "DiffDelete" },
-			foregrounds = {
-				"Comment",
+	bullet = {
+		icons = { "󱠦" },
+		highlight = "Comment",
+	},
+	checkbox = {
+		unchecked = {
+			icon = "󰄱  ",
+		},
+		checked = {
+			icon = "󰄵  ",
+		},
+		custom = {
+			todo = {
+				raw = "[-]",
+				rendered = "󰡖  ",
+				highlight = "@markup.raw",
 			},
 		},
-		bullet = "Comment",
+	},
+	pipe_table = {
+		style = "normal",
 	},
 })
