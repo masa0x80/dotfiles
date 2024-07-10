@@ -1,11 +1,11 @@
 require("render-markdown").setup({
 	render_modes = { "n" },
 	heading = {
-		icons = { "# ", "#  ", "#   ", "#    ", "#     ", "#      " },
+		icons = { "󱠦 " },
 		signs = { "󰉫 ", "󰉬 ", "󰉭 ", "󰉮 ", "󰉯 ", "󰉰 " },
 	},
 	bullet = {
-		icons = { "󱠦" },
+		icons = { "󰐝" },
 		highlight = "Comment",
 	},
 	checkbox = {
@@ -25,5 +25,11 @@ require("render-markdown").setup({
 	},
 	pipe_table = {
 		style = "normal",
+	},
+	win_options = {
+		concealcursor = {
+			default = vim.api.nvim_get_option_value("concealcursor", {}),
+			rendered = "",
+		},
 	},
 })
