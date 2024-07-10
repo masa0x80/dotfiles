@@ -1,5 +1,5 @@
 return {
 	"klen/nvim-config-local",
-	event = "VeryLazy",
+	lazy = false,
 	config = require("config.utils").load("conf/nvim-config-local"),
 }

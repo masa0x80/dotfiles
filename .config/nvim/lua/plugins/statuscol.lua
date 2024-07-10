@@ -1,5 +1,5 @@
 return {
 	"luukvbaal/statuscol.nvim",
-	event = "VeryLazy",
+	lazy = false,
 	config = require("config.utils").load("conf/statuscol"),
 }

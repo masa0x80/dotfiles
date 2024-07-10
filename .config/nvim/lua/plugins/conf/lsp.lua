@@ -95,12 +95,12 @@ local on_attach = function(client, bufnr)
 	-- Mouse support
 	vim.keymap.set("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
 
-	vim.api.nvim_create_autocmd({ "CursorHold" }, {
-		group = "_",
-		callback = function()
-			require("hover").hover()
-		end,
-	})
+	-- vim.api.nvim_create_autocmd({ "CursorHold" }, {
+	-- 	group = "_",
+	-- 	callback = function()
+	-- 		require("hover").hover()
+	-- 	end,
+	-- })
 
 	if vim.g.formatter_enabled then
 		-- Create a command `:Format` local to the LSP buffer
@@ -264,14 +264,6 @@ require("hover").setup({
 	preview_opts = {
 		border = "single",
 	},
-	-- Whether the contents of a currently open hover window should be moved
-	-- to a :h preview-window when pressing the hover keymap.
-	preview_window = false,
-	title = true,
-	mouse_providers = {
-		"LSP",
-	},
-	mouse_delay = 1000,
 })
 
 -- https://github.com/williamboman/mason.nvim/issues/1309#issuecomment-1555018732
