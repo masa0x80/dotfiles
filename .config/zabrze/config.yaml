@@ -297,3 +297,12 @@ abbrevs:
     abbr: sconf
     snippet: "vi ~/.ssh/config"
     if: test -e "$HOME/.ssh/config"
+
+  - name: "test"
+    abbr: t
+    snippet: "rspec"
+    if: (( ${+commands[rspec]} ))
+  - name: "test"
+    abbr: t
+    snippet: "npm run test"
+    if: test -e package.json
