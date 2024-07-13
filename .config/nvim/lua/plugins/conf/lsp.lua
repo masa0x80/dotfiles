@@ -85,10 +85,10 @@ local on_attach = function(client, bufnr)
 	-- Setup hover keymap
 	nmap("K", require("hover").hover, "hover.nvim")
 	nmap("gK", require("hover").hover_select, "hover.nvim (select)")
-	nmap("<C-p>", function()
+	nmap("[h", function()
 		require("hover").hover_switch("previous")
 	end, "hover.nvim (previous source)")
-	nmap("<C-n>", function()
+	nmap("]h", function()
 		require("hover").hover_switch("next")
 	end, "hover.nvim (next source)")
 
@@ -264,6 +264,7 @@ require("hover").setup({
 	preview_opts = {
 		border = "single",
 	},
+	preview_window = false,
 })
 
 -- https://github.com/williamboman/mason.nvim/issues/1309#issuecomment-1555018732
