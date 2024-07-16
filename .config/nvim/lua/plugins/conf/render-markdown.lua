@@ -8,6 +8,9 @@ require("render-markdown").setup({
 		icons = { "󱠦 ", "󱠦 .", "󱠦 󱠦 ", "󱠦 󱠦 .", "󱠦 󱠦 󱠦 ", "󱠦 󱠦 󱠦 ." },
 		signs = { "󰉫 ", "󰉬 ", "󰉭 ", "󰉮 ", "󰉯 ", "󰉰 " },
 	},
+	code = {
+		border = "thick",
+	},
 	bullet = {
 		icons = { "󰐝" },
 		highlight = "MarkdownBullet",
