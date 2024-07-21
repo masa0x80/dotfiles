@@ -7,6 +7,9 @@
     "snippets": [
       {
         "language": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
           "typescriptreact"
         ],
         "path": "react.json"
