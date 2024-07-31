@@ -5,13 +5,22 @@ set_hl(0, "MarkdownBullet", { fg = c.dark_red })
 require("render-markdown").setup({
 	render_modes = { "n" },
 	heading = {
-		icons = { "󱠦 ", "󱠦 .", "󱠦 󱠦 ", "󱠦 󱠦 .", "󱠦 󱠦 󱠦 ", "󱠦 󱠦 󱠦 ." },
+		position = "inline",
+		icons = {
+			"󱠦 ",
+			"󱠦 󱠦 ",
+			"󱠦 󱠦 󱠦 ",
+			"󱠦 󱠦 󱠦 󱠦 ",
+			"󱠦 󱠦 󱠦 󱠦 󱠦 ",
+			"󱠦 󱠦 󱠦 󱠦 󱠦 󱠦 ",
+		},
 		signs = { "󰉫 ", "󰉬 ", "󰉭 ", "󰉮 ", "󰉯 ", "󰉰 " },
 	},
 	code = {
 		border = "thick",
 	},
 	bullet = {
+		position = "inline",
 		icons = { "󰐝" },
 		highlight = "MarkdownBullet",
 	},
