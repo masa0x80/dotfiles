@@ -6,22 +6,14 @@ require("render-markdown").setup({
 	render_modes = { "n" },
 	heading = {
 		position = "inline",
-		icons = {
-			"󱠦 ",
-			"󱠦 󱠦 ",
-			"󱠦 󱠦 󱠦 ",
-			"󱠦 󱠦 󱠦 󱠦 ",
-			"󱠦 󱠦 󱠦 󱠦 󱠦 ",
-			"󱠦 󱠦 󱠦 󱠦 󱠦 󱠦 ",
-		},
-		signs = { "󰉫 ", "󰉬 ", "󰉭 ", "󰉮 ", "󰉯 ", "󰉰 " },
+		icons = { "󰉫 ", "󰉬 ", "󰉭 ", "󰉮 ", "󰉯 ", "󰉰 " },
+		signs = { "󰉴" },
 	},
 	code = {
 		border = "thick",
 	},
 	bullet = {
-		position = "inline",
-		icons = { "󰐝" },
+		icons = { "󱠦" },
 		highlight = "MarkdownBullet",
 	},
 	checkbox = {
