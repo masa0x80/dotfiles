@@ -125,7 +125,7 @@
       "  !endif",
       "!endprocedure",
       "",
-      "!\\$font = 'VL PGothic'",
+      "!\\$font = 'Moralerspace Neon;VL PGothic'",
       "<style>",
       "  ganttDiagram {",
       "    milestone {",
