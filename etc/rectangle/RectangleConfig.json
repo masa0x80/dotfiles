@@ -85,6 +85,9 @@
     "gapSize" : {
       "float" : 3
     },
+    "hapticFeedbackOnSnap" : {
+      "int" : 0
+    },
     "hideMenubarIcon" : {
       "bool" : false
     },
@@ -151,6 +154,9 @@
     "screenEdgeGapTop" : {
       "float" : 0
     },
+    "screenEdgeGapTopNotch" : {
+      "float" : 0
+    },
     "shortEdgeSnapAreaSize" : {
       "float" : 145
     },
@@ -195,6 +201,9 @@
     },
     "systemWideMouseDown" : {
       "int" : 0
+    },
+    "systemWideMouseDownApps" : {
+
     },
     "todo" : {
       "int" : 0
@@ -246,7 +255,7 @@
       "keyCode" : 46,
       "modifierFlags" : 1310720
     },
-    "firstFourth" : {
+    "firstTwoThirds" : {
       "keyCode" : 123,
       "modifierFlags" : 1179648
     },
@@ -254,7 +263,7 @@
       "keyCode" : 24,
       "modifierFlags" : 1310720
     },
-    "lastThreeFourths" : {
+    "lastThird" : {
       "keyCode" : 124,
       "modifierFlags" : 1179648
     },
@@ -323,5 +332,5 @@
       "modifierFlags" : 786432
     }
   },
-  "version" : "81"
+  "version" : "87"
 }
