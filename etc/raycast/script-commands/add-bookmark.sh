@@ -19,14 +19,14 @@ CURRENT_DIR=$(
 )
 source "$CURRENT_DIR/utils/_fetch_url_and_page_title"
 
-: ${OBSIDIAN_BOOKMARKS_DIR:=$SCRAPBOOK_DIR/Bookmarks}
-FILENAME=$(rg -l "^# \[.*\]\(${url:q}\)" $OBSIDIAN_BOOKMARKS_DIR)
+: ${BOOKMARKS_DIR:=$SCRAPBOOK_DIR/Bookmarks}
+FILENAME=$(rg -l "^# \[.*\]\(${url:q}\)" $BOOKMARKS_DIR)
 if [ "$?" -eq 0 ]; then
   echo "ブックマーク済みです"
 else
   DATE=$(date +%Y-%m-%d)
   TIME=$(date +%H%M%S)
-  FILENAME="${OBSIDIAN_BOOKMARKS_DIR}/${DATE//-}${TIME}.md"
+  FILENAME="${BOOKMARKS_DIR}/${DATE//-}${TIME}.md"
 
   echo "# [$title]($url) #bookmark" > $FILENAME
 fi
