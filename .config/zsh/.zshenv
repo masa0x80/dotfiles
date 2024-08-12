@@ -69,6 +69,26 @@ export HOMEBREW_NO_ANALYTICS=1
 
 export PURE_PROMPT_SYMBOL="%F{magenta}ミ:匚＞%f"
 
+identifier="$(defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure | awk -F'"' '/http;/{print window[(NR)-1]}{window[NR]=$2}')"
+case "$identifier" in
+"net.kassett.finicky")
+  BROWSER="Vivaldi"
+  ;;
+"com.vivaldi.vivaldi")
+  BROWSER="Vivaldi"
+  ;;
+"com.microsoft.edgemac")
+  BROWSER="Microsoft Edge"
+  ;;
+"com.google.chrome")
+  BROWSER="Google Chrome"
+  ;;
+*)
+  BROWSER="Safari"
+  ;;
+esac
+export BROWSER
+
 for file (
   # Load .config.local
   $HOME/.config.local/zsh/zshenv(N)
