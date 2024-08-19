@@ -19,6 +19,6 @@ CURRENT_DIR=$(
 )
 source "$CURRENT_DIR/utils/_fetch_url_and_page_title"
 
-url=$(osascript -e "tell application \"$browser\" to get URL of active tab of front window")
-osascript -e "tell application \"$browser\" to set URL of active tab of front window to \"${url//\?*/}\""
-osascript -e "tell application \"$browser\" to activate"
+url=$(osascript -e "tell application \"$BROWSER\" to get URL of active tab of front window")
+osascript -e "tell application \"$BROWSER\" to set URL of active tab of front window to \"${url//\?*/}\""
+osascript -e "tell application \"$BROWSER\" to activate"

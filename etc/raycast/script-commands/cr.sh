@@ -20,5 +20,5 @@ CURRENT_DIR=$(
 source "$CURRENT_DIR/utils/_fetch_url_and_page_title"
 
 url="javascript:(()=>{const clipNode=document.createElement('a');const range=document.createRange();const sel=window.getSelection();clipNode.setAttribute('href',location.href);clipNode.innerText='$trimmedTitle';document.body.appendChild(clipNode);range.selectNode(clipNode);sel.removeAllRanges();sel.addRange(range);document.execCommand('copy',false,null);document.body.removeChild(clipNode);})();"
-osascript -e "tell application \"$browser\" to set URL of active tab of front window to \"$url\""
+osascript -e "tell application \"$BROWSER\" to set URL of active tab of front window to \"$url\""
 echo "Copy Current Page URL (Rich Text)"
