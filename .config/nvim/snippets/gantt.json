@@ -272,14 +272,14 @@
   },
   "font-red": {
     "prefix": "gantt-font-red",
-    "body": ["<color:$color.red>"]
+    "body": ["<color:\\$color.red>"]
   },
   "font-green": {
     "prefix": "gantt-font-green",
-    "body": ["<color:$color.green>"]
+    "body": ["<color:\\$color.green>"]
   },
   "font-blue": {
     "prefix": "gantt-font-blue",
-    "body": ["<color:$color.blue>"]
+    "body": ["<color:\\$color.blue>"]
   }
 }
