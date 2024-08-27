@@ -129,6 +129,9 @@ abbrevs:
   - name: "git review"
     abbr: review
     snippet: "git review"
+  - name: "lazygit"
+    abbr: LG
+    snippet: "lazygit"
 
   - name: "vagrant destroy -f"
     abbr: vdf
