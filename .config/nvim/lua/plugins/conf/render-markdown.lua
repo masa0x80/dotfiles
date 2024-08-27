@@ -18,15 +18,15 @@ require("render-markdown").setup({
 	},
 	checkbox = {
 		unchecked = {
-			icon = "󰄱  ",
+			icon = "󰄱",
 		},
 		checked = {
-			icon = "󰄵  ",
+			icon = "󰄵",
 		},
 		custom = {
 			todo = {
 				raw = "[-]",
-				rendered = "󰡖  ",
+				rendered = "󰡖",
 				highlight = "@markup.raw",
 			},
 		},
