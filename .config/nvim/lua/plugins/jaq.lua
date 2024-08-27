@@ -84,6 +84,13 @@ return {
 					silent = true,
 					desc = "<v:count1>ToggleTerm direction=horizontal",
 				},
+				{
+					"<leader>lg",
+					"<CMD>lua _lazygit_toggle()<CR>",
+					noremap = true,
+					silent = true,
+					desc = "LazyGit",
+				},
 			},
 			config = require("config.utils").load("conf/toggleterm"),
 		},
