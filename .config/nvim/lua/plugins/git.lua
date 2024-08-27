@@ -1,5 +1,10 @@
 return {
 	{
+		"dinhhuy258/git.nvim",
+		event = "VeryLazy",
+		config = require("config.utils").load("conf/git"),
+	},
+	{
 		"akinsho/git-conflict.nvim",
 		opts = {
 			highlights = { -- They must have background color, otherwise the default color will be used
