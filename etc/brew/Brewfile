@@ -99,4 +99,6 @@ brew "totp-cli"
 
 brew "lazygit"
 
+brew 'rage'
+
 brew "sheldon"

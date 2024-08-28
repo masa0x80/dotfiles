@@ -69,6 +69,9 @@ export HOMEBREW_NO_ANALYTICS=1
 
 export PURE_PROMPT_SYMBOL="%F{magenta}ミ:匚＞%f"
 
+export AGE_IDENTITY="$HOME/.config/age/key.txt"
+export AGE_RECIPIENT=$(grep -oP '(?<=# public key: ).+(?=)' $AGE_IDENTITY)
+
 identifier="$(defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure | awk -F'"' '/http;/{print window[(NR)-1]}{window[NR]=$2}')"
 case "$identifier" in
 "net.kassett.finicky")
