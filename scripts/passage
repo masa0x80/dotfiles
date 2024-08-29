@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+ghq get https://github.com/FiloSottile/passage.git
+cd "$(ghq root)/github.com/FiloSottile/passage"
+make install PREFIX="$(brew --cellar)/passage/$(git describe --tags)"
+brew unlink passage
+brew link passage

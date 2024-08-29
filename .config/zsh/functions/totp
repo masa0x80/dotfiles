@@ -1,11 +1,26 @@
 #!/bin/zsh
 
 totp() {
-  pass=$(pass totp/password)
-  ns=${1:-${TOTP_NAMESPACE:-ns}}
-  selected=$2
-  if [ "$selected" = "" ]; then
-    selected=$(totp-cli list $ns < <(echo $pass) 2>/dev/null | cut -d. -f2 | fzf +m)
+  ns="${TOTP_NAMESPACE:-ns}"
+  pass=$(passage master/password)
+  if [ "$1" = "add" ]; then
+    account="$2"
+    TOTP_PASS="$pass" totp-cli add $ns $accont
+  elif [ "$1" = "delete" ]; then
+    selected=$2
+    if [ "$selected" = "" ]; then
+      selected=$(TOTP_PASS="$pass" totp-cli list $ns 2>/dev/null | cut -d. -f2 | fzf +m)
+    fi
+    if [ ! "$selected" = "" ]; then
+      TOTP_PASS="$pass" totp-cli delete $ns $selected
+    fi
+  else
+    selected=$1
+    if [ "$selected" = "" ]; then
+      selected=$(TOTP_PASS="$pass" totp-cli list $ns 2>/dev/null | cut -d. -f2 | fzf +m)
+    fi
+    if [ ! "$selected" = "" ]; then
+      TOTP_PASS="$pass" totp-cli generate $ns $selected 2>/dev/null | tee >(pbcopy)
+    fi
   fi
-  totp-cli generate $ns $selected < <(echo $pass) 2>/dev/null | tee >(pbcopy)
 }

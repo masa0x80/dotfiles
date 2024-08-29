@@ -29,7 +29,8 @@ install: \
 	navi \
 	bat \
 	silicon \
-	sheldon
+	sheldon \
+	passage
 
 .PHONY: deploy
 deploy:
@@ -112,3 +113,7 @@ navi: brew
 .PHONY: sheldon
 sheldon:
 	./scripts/sheldon
+
+.PHONY: passage
+passage:
+	./scripts/passage

@@ -1,7 +1,9 @@
 #!/bin/zsh
 
 pc() {
-  local pass_name=$(fd . $PASSWORD_STORE_DIR -e gpg -x echo '{.}' | grep -oP "(?<=\\$PASSWORD_STORE_DIR/).*" | fzf +m --query "$*")
-  test -z "$pass_name" && return 1
-  pass -c $pass_name
+  PREFIX="${PASSAGE_DIR:-$HOME/.passage/store}"
+  name="$(find "$PREFIX" -type f -name '*.age' | \
+    sed -e "s|$PREFIX/||" -e 's|\.age$||' | \
+    fzf +m)"
+  passage --clip "$name"
 }
