@@ -1,5 +1,5 @@
 services:
   plantuml-server:
-    image: plantuml/plantuml-server:v1.2022.7
+    image: plantuml/plantuml-server:v1.2024.5
     ports:
       - "8765:8080"
