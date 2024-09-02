@@ -53,6 +53,12 @@ M.hidden_formatters = {
 		command = "sed",
 		args = { "s|[  ]| |g" },
 	},
+	markdown_table_formatter = {
+		command = "markdown-table-formatter",
+		args = { "$FILENAME" },
+		exit_codes = { 0, 1 },
+		stdin = false,
+	},
 }
 
 return M

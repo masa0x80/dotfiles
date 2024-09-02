@@ -27,6 +27,7 @@ return {
 			markdown = {
 				"textlint",
 				"markdownlint",
+				"markdown_table_formatter",
 				"delete_single_space_after_japanese_punctuation_marks",
 				"delete_parentheses_inside_space",
 				"delete_no_break_spaces",
