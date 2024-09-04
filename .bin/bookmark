@@ -15,7 +15,7 @@ set -euo pipefail
   IFS=$'\n'
   for f in $(echo $selected); do
     url=$(bat "$f" | grep -oP '(?<=^# ).*' | sed -e 's/\[.*\](\(.*\)).*/\1/')
-    open "obsidian://open?vault=${SCRAPBOOK_DIR:t}&file=${f:t:r}"
+    open -g "obsidian://open?vault=${SCRAPBOOK_DIR:t}&file=${f:t:r}"
     open ${url}
   done
 }

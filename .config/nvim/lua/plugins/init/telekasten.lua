@@ -11,5 +11,5 @@ end, {
 
 vim.api.nvim_create_user_command("OpenObsidian", function()
 	local path = vim.fn.expand("%:p")
-	vim.fn.jobstart(("open --background 'obsidian://open?path=%s'"):format(path))
+	vim.fn.jobstart(("open -g 'obsidian://open?path=%s'"):format(path))
 end, {})
