@@ -53,6 +53,18 @@ M.hidden_formatters = {
 		command = "sed",
 		args = { "s|[  ]| |g" },
 	},
+	delete_jira_status_icon = {
+		command = "sed",
+		args = {
+			("s|\\[!\\[\\](%s.*png)\\(.*\\)\\](\\(\\S*\\)) - \\([^ ]*\\) [^ ]* |[\\1 \\3](\\2)|g"):format(
+				vim.fn.expand("$JIRA_BASE_URL"):gsub("/browse", "/images")
+			),
+		},
+	},
+	markdown_todo_format = {
+		command = "sed",
+		args = { "s|\\([-*+.)]\\) \\[\\]|\\1 [ ]|g" },
+	},
 	markdown_table_formatter = {
 		command = "markdown-table-formatter",
 		args = { "$FILENAME" },
