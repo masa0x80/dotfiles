@@ -61,64 +61,64 @@ return {
 			},
 		},
 		config = require("config.utils").load("conf/dap"),
-		dependencies = {
-			"nvim-neotest/nvim-nio",
-			{
-				"rcarriga/nvim-dap-ui",
-				opts = {
-					layouts = {
+	},
+	{
+		"nvim-neotest/nvim-nio",
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		opts = {
+			layouts = {
+				{
+					elements = {
 						{
-							elements = {
-								{
-									id = "scopes",
-									size = 0.25,
-								},
-								{
-									id = "breakpoints",
-									size = 0.25,
-								},
-								{
-									id = "stacks",
-									size = 0.25,
-								},
-								{
-									id = "watches",
-									size = 0.25,
-								},
-							},
-							position = "left",
-							size = 48,
+							id = "scopes",
+							size = 0.25,
 						},
 						{
-							elements = {
-								{
-									id = "repl",
-									size = 1,
-								},
-							},
-							position = "bottom",
-							size = 8,
+							id = "breakpoints",
+							size = 0.25,
+						},
+						{
+							id = "stacks",
+							size = 0.25,
+						},
+						{
+							id = "watches",
+							size = 0.25,
 						},
 					},
+					position = "left",
+					size = 48,
+				},
+				{
+					elements = {
+						{
+							id = "repl",
+							size = 1,
+						},
+					},
+					position = "bottom",
+					size = 8,
 				},
 			},
-			{
-				"theHamsta/nvim-dap-virtual-text",
-				opts = {},
-			},
-			{
-				"microsoft/vscode-js-debug",
-				build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && mv dist out",
-				commit = "bc551bf4f87a6ef9330b28514bf7447cbbdb2a9e",
-			},
-			{
-				"mxsdev/nvim-dap-vscode-js",
-				config = require("config.utils").load("conf/dap-vscode-js"),
-			},
-			{
-				"Joakker/lua-json5",
-				build = "./install.sh",
-			},
 		},
+	},
+	{
+		"theHamsta/nvim-dap-virtual-text",
+		opts = {},
+	},
+	{
+		"microsoft/vscode-js-debug",
+		build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && mv dist out",
+		commit = "bc551bf4f87a6ef9330b28514bf7447cbbdb2a9e",
+	},
+	{
+		"mxsdev/nvim-dap-vscode-js",
+		config = require("config.utils").load("conf/dap-vscode-js"),
+	},
+	{
+		"Joakker/lua-json5",
+		build = "./install.sh",
 	},
 }

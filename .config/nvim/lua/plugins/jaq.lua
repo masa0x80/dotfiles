@@ -1,98 +1,98 @@
 return {
-	"is0n/jaq-nvim",
-	opts = {
-		cmds = {
-			internal = {
-				lua = "luafile %",
-				vim = "source %",
-				javascript = "TermExec cmd='node %'",
-				python = "TermExec cmd='python %'",
-				rust = "TermExec cmd='rustc % && $fileBase && rm $fileBase'",
-				cpp = "TermExec cmd='g++ % -o $fileBase && $fileBase'",
-				go = "TermExec cmd='go run %'",
-				sh = "TermExec cmd='sh %'",
-				markdown = "MarkdownPreviewWrapper",
-				plantuml = "PlantUMLPreview",
-				mermaid = "MarkdownPreview",
+	{
+		"is0n/jaq-nvim",
+		opts = {
+			cmds = {
+				internal = {
+					lua = "luafile %",
+					vim = "source %",
+					javascript = "TermExec cmd='node %'",
+					python = "TermExec cmd='python %'",
+					rust = "TermExec cmd='rustc % && $fileBase && rm $fileBase'",
+					cpp = "TermExec cmd='g++ % -o $fileBase && $fileBase'",
+					go = "TermExec cmd='go run %'",
+					sh = "TermExec cmd='sh %'",
+					markdown = "MarkdownPreviewWrapper",
+					plantuml = "PlantUMLPreview",
+					mermaid = "MarkdownPreview",
+				},
+			},
+		},
+		keys = {
+			{
+				",x",
+				function()
+					if string.find(vim.fn.expand("%"), "_spec.rb$") ~= nil then
+						require("jaq-nvim").setup({
+							cmds = {
+								internal = {
+									ruby = "TermExec cmd='rspec -f p %" .. ":" .. vim.fn.line(".") .. "'",
+								},
+							},
+						})
+					elseif
+						string.find(vim.fn.expand("%"), ".+spec.tsx?$") ~= nil
+						or string.find(vim.fn.expand("%"), ".+test.tsx?$") ~= nil
+					then
+						local test_name = vim.fn.system(
+							"head -n "
+								.. vim.fn.line(".")
+								.. " "
+								.. vim.fn.expand("%")
+								.. ' | tac | rg -o "(it|test|describe)\\(.(.*).," --replace "\\$2" | head -n1 | sed -e "s/\\\'\\"\\`/./g" | tr -d "\n"'
+						)
+						require("jaq-nvim").setup({
+							cmds = {
+								internal = {
+									typescript = 'TermExec cmd="npm run test % --testNamePattern=' .. test_name .. '"',
+								},
+							},
+						})
+					else
+						require("jaq-nvim").setup({
+							cmds = {
+								internal = {
+									ruby = "TermExec cmd='ruby %'",
+									typescript = "TermExec cmd='ts-node %'",
+								},
+							},
+						})
+					end
+					vim.cmd("Jaq")
+				end,
+				noremap = true,
+				silent = true,
+				desc = "QuickRun",
 			},
 		},
 	},
-	keys = {
-		{
-			",x",
-			function()
-				if string.find(vim.fn.expand("%"), "_spec.rb$") ~= nil then
-					require("jaq-nvim").setup({
-						cmds = {
-							internal = {
-								ruby = "TermExec cmd='rspec -f p %" .. ":" .. vim.fn.line(".") .. "'",
-							},
-						},
-					})
-				elseif
-					string.find(vim.fn.expand("%"), ".+spec.tsx?$") ~= nil
-					or string.find(vim.fn.expand("%"), ".+test.tsx?$") ~= nil
-				then
-					local test_name = vim.fn.system(
-						"head -n "
-							.. vim.fn.line(".")
-							.. " "
-							.. vim.fn.expand("%")
-							.. ' | tac | rg -o "(it|test|describe)\\(.(.*).," --replace "\\$2" | head -n1 | sed -e "s/\\\'\\"\\`/./g" | tr -d "\n"'
-					)
-					require("jaq-nvim").setup({
-						cmds = {
-							internal = {
-								typescript = 'TermExec cmd="npm run test % --testNamePattern=' .. test_name .. '"',
-							},
-						},
-					})
-				else
-					require("jaq-nvim").setup({
-						cmds = {
-							internal = {
-								ruby = "TermExec cmd='ruby %'",
-								typescript = "TermExec cmd='ts-node %'",
-							},
-						},
-					})
-				end
-				vim.cmd("Jaq")
-			end,
-			noremap = true,
-			silent = true,
-			desc = "QuickRun",
-		},
-	},
-	dependencies = {
-		{
-			"akinsho/toggleterm.nvim",
-			cmd = { "LG", "REV" },
-			keys = {
-				{ "<C-\\>" },
-				{
-					";F",
-					"<Cmd>lua vim.cmd(vim.v.count1 .. 'ToggleTerm direction=float')<CR>",
-					noremap = true,
-					silent = true,
-					desc = "<v:count1>ToggleTerm direction=float",
-				},
-				{
-					";J",
-					"<Cmd>lua vim.cmd(vim.v.count1 .. 'ToggleTerm direction=horizontal')<CR>",
-					noremap = true,
-					silent = true,
-					desc = "<v:count1>ToggleTerm direction=horizontal",
-				},
-				{
-					"<leader>lg",
-					"<CMD>lua _lazygit_toggle()<CR>",
-					noremap = true,
-					silent = true,
-					desc = "LazyGit",
-				},
+	{
+		"akinsho/toggleterm.nvim",
+		cmd = { "LG", "REV" },
+		keys = {
+			{ "<C-\\>" },
+			{
+				";F",
+				"<Cmd>lua vim.cmd(vim.v.count1 .. 'ToggleTerm direction=float')<CR>",
+				noremap = true,
+				silent = true,
+				desc = "<v:count1>ToggleTerm direction=float",
 			},
-			config = require("config.utils").load("conf/toggleterm"),
+			{
+				";J",
+				"<Cmd>lua vim.cmd(vim.v.count1 .. 'ToggleTerm direction=horizontal')<CR>",
+				noremap = true,
+				silent = true,
+				desc = "<v:count1>ToggleTerm direction=horizontal",
+			},
+			{
+				"<leader>lg",
+				"<CMD>lua _lazygit_toggle()<CR>",
+				noremap = true,
+				silent = true,
+				desc = "LazyGit",
+			},
 		},
+		config = require("config.utils").load("conf/toggleterm"),
 	},
 }

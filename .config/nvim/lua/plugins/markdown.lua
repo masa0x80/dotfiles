@@ -8,10 +8,10 @@ return {
 		"MeanderingProgrammer/markdown.nvim",
 		name = "render-markdown",
 		ft = { "markdown" },
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
 		config = require("config.utils").load("conf/render-markdown"),
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
 	},
 	{
 		"iamcco/markdown-preview.nvim",

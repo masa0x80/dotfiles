@@ -1,7 +1,11 @@
 return {
-	"chrishrb/gx.nvim",
-	keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
-	cmd = { "Browse" },
-	config = require("config.utils").load("conf/gx"),
-	dependencies = { "nvim-lua/plenary.nvim" },
+	{
+		"chrishrb/gx.nvim",
+		keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+		cmd = { "Browse" },
+		config = require("config.utils").load("conf/gx"),
+	},
+	{
+		"nvim-lua/plenary.nvim",
+	},
 }

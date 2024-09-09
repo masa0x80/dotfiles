@@ -28,7 +28,9 @@ return {
 		"ruifm/gitlinker.nvim",
 		event = "VeryLazy",
 		config = require("config.utils").load("conf/gitlinker"),
-		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	{
+		"nvim-lua/plenary.nvim",
 	},
 	{
 		"lewis6991/gitsigns.nvim",
