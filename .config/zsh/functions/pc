@@ -5,5 +5,7 @@ pc() {
   name="$(find "$PREFIX" -type f -name '*.age' | \
     sed -e "s|$PREFIX/||" -e 's|\.age$||' | \
     fzf +m)"
-  passage --clip "$name"
+  if [ "$name" != "" ]; then
+    passage --clip "$name"
+  fi
 }
