@@ -33,7 +33,7 @@ wezterm.on("format-tab-title", function(tab, _, _, _, hover)
 		table.insert(title, nerdfonts[string.format("md_numeric_%d_box_outline", index)])
 	end
 	if icon ~= nil then
-		table.insert(title, icon)
+		table.insert(title, " " .. icon .. " ")
 	end
 	table.insert(title, current_dir)
 	table.insert(title, "")
