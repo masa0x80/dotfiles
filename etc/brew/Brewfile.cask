@@ -27,10 +27,12 @@ cask "google-chrome"
 cask "vivaldi"
 cask "microsoft-edge"
 
-tap "homebrew/cask-fonts"
 cask "font-biz-udpgothic"
 cask "font-udev-gothic-nf"
 cask "font-0xproto-nerd-font"
 
 tap "hanasuke/moralerspace"
 cask "font-moralerspace"
+
+tap "masa0x80/tap"
+cask "font-explex"
