@@ -90,11 +90,43 @@ map(
 	{ noremap = true, silent = true, desc = "cd $SCRAPBOOK_DIR" }
 )
 
--- Delete a character without yanking
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#m%E3%81%A7%E6%8B%AC%E5%BC%A7%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%97
+map("n", "<C-m>", "%", { remap = true })
+
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#u%E3%81%A7%E3%83%AA%E3%83%89%E3%82%A5
+map("n", "U", "<C-r>", opts)
+
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#x%E3%81%A7%E5%89%8A%E9%99%A4
 map("n", "x", '"_x', opts)
+map("n", "X", '"_D', opts)
+
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E7%A9%BA%E8%A1%8C%E3%81%A7%E3%81%AE%E7%B7%A8%E9%9B%86%E9%96%8B%E5%A7%8B%E6%99%82%E3%81%AB%E8%87%AA%E5%8B%95%E3%81%A7%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88
+map("n", "i", function()
+	return vim.fn.empty(vim.fn.getline(".")) == 1 and '"_cc' or "i"
+end, { expr = true })
+map("n", "A", function()
+	return vim.fn.empty(vim.fn.getline(".")) == 1 and '"_cc' or "A"
+end, { expr = true })
+
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E3%83%9A%E3%83%BC%E3%82%B9%E3%83%88%E7%B5%90%E6%9E%9C%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88%E3%82%92%E8%87%AA%E5%8B%95%E3%81%A7%E6%8F%83%E3%81%88%E3%82%8B
+map("n", "p", "]p`]", opts)
+map("n", "P", "]P`]", opts)
+
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E7%9B%B4%E5%89%8D%E3%81%AE%E3%83%9A%E3%83%BC%E3%82%B9%E3%83%88%E7%AF%84%E5%9B%B2%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B
+map("n", "gV", "`[v`]", opts)
+
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E7%9B%B4%E5%89%8D%E3%83%BB%E7%9B%B4%E5%BE%8C%E3%81%AE%E7%A9%BA%E8%A1%8C%E3%81%AB%E9%A3%9B%E3%81%B6
+map("n", "f<CR>", "}", opts)
+map("n", "F<CR>", "{", opts)
 
 -- messages
 map("n", ",M", "<Cmd>messages<CR>", opts)
+
+-- folding
+map("n", "_", "zc", opts)
+map("n", "+", "zO", opts)
+map("n", "z'", "zA", opts)
+map("n", "z;", "za", opts)
 
 -- # Insert
 
@@ -121,21 +153,6 @@ map("i", "<C-g><C-p>", "<C-d>", { noremap = true, silent = true, desc = "Indent 
 
 -- # Visual
 
--- Paste
-map("v", "p", '"_dP', opts)
-
--- Stay in indent mode
-map("v", "<", "<gv", opts)
-map("v", ">", ">gv", opts)
-map("v", "<C-g><C-p>", "<gv", opts)
-map("v", "<C-g><C-n>", ">gv", opts)
-map("v", "<C-t><C-p>", "<gv", opts)
-map("v", "<C-t><C-n>", ">gv", opts)
-
--- Move text up and down
-map("v", "J", ":move '>+1<CR>gv-gv", opts)
-map("v", "K", ":move '<-2<CR>gv-gv", opts)
-
 -- # Command
 map("c", "<C-b>", "<Left>", {})
 map("c", "<C-f>", "<Right>", {})
@@ -150,11 +167,22 @@ map("n", "<C-c><C-c>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", 
 -- Save
 map({ "n", "v" }, ";;", "<Cmd>write<CR>", { noremap = true })
 
--- folding
-map("n", "_", "zc", opts)
-map("n", "+", "zO", opts)
-map("n", "z'", "zA", opts)
-map("n", "z;", "za", opts)
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#i%3Cspace%3E%E3%81%A7word%E9%81%B8%E6%8A%9E
+map({ "o", "x" }, "i<Space>", "iW", opts)
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%E3%82%B3%E3%83%94%E3%83%BC%E6%99%82%E3%81%AB%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E4%BD%8D%E7%BD%AE%E3%82%92%E4%BF%9D%E5%AD%98
+map("x", "y", "mzy`z", opts)
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%E3%83%9A%E3%83%BC%E3%82%B9%E3%83%88%E6%99%82%E3%81%AB%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%81%AE%E5%A4%89%E6%9B%B4%E3%82%92%E9%98%B2%E6%AD%A2
+map("x", "p", "P", opts)
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%3C%2C-%3E%E3%81%A7%E9%80%A3%E7%B6%9A%E3%81%97%E3%81%A6%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88%E3%82%92%E6%93%8D%E4%BD%9C
+map("x", "<", "<gv", opts)
+map("x", ">", ">gv", opts)
+map("x", "<C-g><C-p>", "<gv", opts)
+map("x", "<C-g><C-n>", ">gv", opts)
+map("x", "<C-t><C-p>", "<gv", opts)
+map("x", "<C-t><C-n>", ">gv", opts)
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E8%A1%8C%E3%82%92%E4%B8%8A%E4%B8%8B%E3%81%AB%E7%A7%BB%E5%8B%95
+map("x", "K", ":move'<-2<CR>gv=gv", opts)
+map("x", "J", ":move'>+1<CR>gv=gv", opts)
 
 -- Jira
 map("n", "<Leader>J", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)
