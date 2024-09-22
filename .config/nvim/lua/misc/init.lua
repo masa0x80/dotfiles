@@ -1,3 +1,4 @@
+require("misc.age")
 require("misc.gh")
 require("misc.markdown")
 require("misc.silicon")

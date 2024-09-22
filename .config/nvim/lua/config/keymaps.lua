@@ -165,7 +165,7 @@ map("n", "<Esc><Esc>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", 
 map("n", "<C-c><C-c>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
 
 -- Save
-map({ "n", "v" }, ";;", "<Cmd>write<CR>", { noremap = true })
+map({ "n", "v" }, ";;", "mm<Cmd>write<CR>`m", { noremap = true })
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#i%3Cspace%3E%E3%81%A7word%E9%81%B8%E6%8A%9E
 map({ "o", "x" }, "i<Space>", "iW", opts)
