@@ -75,3 +75,10 @@ vim.api.nvim_create_user_command("PlantUMLPreview", function()
 		callback = writeSvg,
 	})
 end, {})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = "markdown",
+	callback = function(args)
+		require("editorconfig").config(args.buf)
+	end,
+})

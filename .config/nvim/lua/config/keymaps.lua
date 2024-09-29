@@ -181,8 +181,8 @@ map("x", "<C-g><C-n>", ">gv", opts)
 map("x", "<C-t><C-p>", "<gv", opts)
 map("x", "<C-t><C-n>", ">gv", opts)
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E8%A1%8C%E3%82%92%E4%B8%8A%E4%B8%8B%E3%81%AB%E7%A7%BB%E5%8B%95
-map("x", "K", ":move'<-2<CR>gv=gv", opts)
-map("x", "J", ":move'>+1<CR>gv=gv", opts)
+map("x", "K", ":move'<-2<CR>gv", opts)
+map("x", "J", ":move'>+1<CR>gv", opts)
 
 -- Jira
 map("n", "<Leader>J", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)
