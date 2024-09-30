@@ -10,7 +10,7 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.font = wezterm.font("Explex Console", {
+config.font = wezterm.font("Explex Console NF", {
 	stretch = "Normal",
 	weight = "Regular",
 	bold = false,

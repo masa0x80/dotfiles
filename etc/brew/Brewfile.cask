@@ -36,3 +36,4 @@ cask "font-moralerspace"
 
 tap "masa0x80/tap"
 cask "font-explex"
+cask "font-explex-nf"
