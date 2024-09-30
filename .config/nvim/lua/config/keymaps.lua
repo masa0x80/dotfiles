@@ -245,3 +245,21 @@ vim.api.nvim_create_user_command("JqCompact", function(args)
 end, {
 	range = 2,
 })
+
+vim.api.nvim_create_user_command("F", function(args)
+	local ft = args.fargs[1]
+	if ft ~= nil then
+		vim.bo.filetype = ft
+	else
+		ft = string.match(vim.fn.expand("%:t"), "%.(%w+)%.%w+")
+		if ft ~= nil then
+			if ft == "md" then
+				vim.bo.filetype = "markdown"
+			else
+				vim.bo.filetype = ft
+			end
+		end
+	end
+end, {
+	nargs = "?",
+})

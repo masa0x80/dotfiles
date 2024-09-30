@@ -7,8 +7,5 @@ vim.filetype.add({
 	pattern = {
 		["Brewfile.*"] = "ruby",
 		["zinitrc"] = "zsh",
-		[".*%.md%.age"] = "markdown",
-		[".*%.json%.age"] = "json",
-		[".*%.csv%.age"] = "csv",
 	},
 })
