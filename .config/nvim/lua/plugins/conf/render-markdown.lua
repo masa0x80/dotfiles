@@ -6,7 +6,7 @@ require("render-markdown").setup({
 	render_modes = { "n" },
 	heading = {
 		position = "inline",
-		icons = { "󰉫 ", "󰉬 ", "󰉭 ", "󰉮 ", "󰉯 ", "󰉰 " },
+		icons = { "󰉫", "󰉬", "󰉭", "󰉮", "󰉯", "󰉰" },
 		signs = { "󰉴" },
 	},
 	code = {
