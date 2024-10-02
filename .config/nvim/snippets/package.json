@@ -22,12 +22,14 @@
       },
       {
         "language": [
+          "markdown",
           "plantuml"
         ],
         "path": "gantt.json"
       },
       {
         "language": [
+          "markdown",
           "plantuml"
         ],
         "path": "component-diagrams.json"

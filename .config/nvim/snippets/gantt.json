@@ -11,6 +11,7 @@
       "' printscale daily zoom 2",
       "projectscale weekly",
       "",
+      "!\\$font = 'Explex Console NF'",
       "!\\$startDate = %date('yyyy-MM-') + '01'",
       "!\\$endDate  = %date('yyyy-') + '12-31'",
       "!\\$infDate  = %intval(%substr(\\$endDate, 8, 2))",
@@ -35,7 +36,7 @@
       "}",
       "today is colored in %lighten(\\$color.scarlet, 32)",
       "",
-      "!procedure setColor(\\$name)",
+      "!unquoted procedure color(\\$name)",
       "  !if \\$name == 'red'",
       "    !global \\$dark = \\$color.red",
       "    !global \\$light = \\$color.lightRed",
@@ -62,7 +63,7 @@
       "    !global \\$light = %darken(\\$color.silver, 10)",
       "  !endif",
       "!endprocedure",
-      "setColor('black')",
+      "color(black)",
       "",
       "!procedure separator1()",
       "  <style>",
@@ -86,11 +87,11 @@
       "  </style>",
       "!endprocedure",
       "",
-      "!function is_date(\\$date)",
+      "!unquoted function is_date(\\$date)",
       "  !return %substr(\\$date, 0, 1) != '['",
       "!endfunction",
       "",
-      "!function end_wrap(\\$date)",
+      "!unquoted function end_wrap(\\$date)",
       "  !if is_date(\\$date)",
       "    !return \\$date",
       "  !else",
@@ -98,7 +99,7 @@
       "  !endif",
       "!endfunction",
       "",
-      "!procedure milestone(\\$name, \\$date, \\$asName = '')",
+      "!unquoted procedure milestone(\\$name, \\$date, \\$asName = '')",
       "  !global \\$name = \\$name",
       "  !global \\$date = \\$date",
       "  !if \\$asName == ''",
@@ -111,23 +112,27 @@
       "  !endif",
       "!endprocedure",
       "",
-      "!procedure task(\\$name, \\$startDate, \\$endDate = '', \\$asName = '')",
+      "!unquoted procedure task(\\$name, \\$date1 = '', \\$date2 = '', \\$asName = '')",
       "  !global \\$name = \\$name",
-      "  !global \\$date = \\$startDate",
+      "  !if \\$date1 == ''",
+      "    !global \\$date = \\$date",
+      "    !if \\$date == ''",
+      "      !global \\$date = \\$startDate",
+      "    !endif",
+      "  !else",
+      "    !global \\$date = \\$date1",
+      "  !endif",
       "  !if \\$asName == ''",
       "    [\\$name] is colored in white/\\$dark",
       "  !else",
       "    [\\$name] as [\\$asName] is colored in white/\\$dark",
       "  !endif",
-      "  !if \\$startDate != ''",
-      "    [\\$name] starts at end_wrap(\\$startDate)",
-      "  !endif",
-      "  !if \\$endDate != ''",
-      "    [\\$name] ends at end_wrap(\\$endDate)",
+      "  [\\$name] starts at end_wrap(\\$date)",
+      "  !if \\$date2 != ''",
+      "    [\\$name] ends at end_wrap(\\$date2)",
       "  !endif",
       "!endprocedure",
       "",
-      "!\\$font = 'Moralerspace Neon'",
       "<style>",
       "  ganttDiagram {",
       "    milestone {",
@@ -170,35 +175,35 @@
   },
   "black": {
     "prefix": "gantt-color-black",
-    "body": ["setColor('black')"]
+    "body": ["color(black)"]
   },
   "red": {
     "prefix": "gantt-color-red",
-    "body": ["setColor('red')"]
+    "body": ["color('red')"]
   },
   "pink": {
     "prefix": "gantt-color-pink",
-    "body": ["setColor('pink')"]
+    "body": ["color('pink')"]
   },
   "orange": {
     "prefix": "gantt-color-orange",
-    "body": ["setColor('orange')"]
+    "body": ["color('orange')"]
   },
   "purple": {
     "prefix": "gantt-color-purple",
-    "body": ["setColor('purple')"]
+    "body": ["color('purple')"]
   },
   "blue": {
     "prefix": "gantt-color-blue",
-    "body": ["setColor('blue')"]
+    "body": ["color('blue')"]
   },
   "cyan": {
     "prefix": "gantt-color-cyan",
-    "body": ["setColor('cyan')"]
+    "body": ["color('cyan')"]
   },
   "green": {
     "prefix": "gantt-color-green",
-    "body": ["setColor('green')"]
+    "body": ["color('green')"]
   },
   "milestone-manual": {
     "prefix": "gantt-milestone-manual",
@@ -212,11 +217,11 @@
   },
   "milestone": {
     "prefix": "gantt-milestone",
-    "body": ["milestone('$1', '$2')"]
+    "body": ["milestone($1, $2)"]
   },
   "task": {
     "prefix": "gantt-task",
-    "body": ["task('$1', '$2', '$3')"]
+    "body": ["task($1)"]
   },
   "task-manual": {
     "prefix": "gantt-task-manual",
@@ -244,23 +249,43 @@
   },
   "task-transparent": {
     "prefix": "gantt-task-transparent",
-    "body": ["[$1] starts at \\$date and is colored in transparent"]
+    "body": ["[\\$name] is colored in transparent"]
+  },
+  "task-and-transparent": {
+    "prefix": "gantt-task-and-transparent",
+    "body": [" and is colored in transparent"]
   },
   "task-ends-at": {
     "prefix": "gantt-task-ends-at",
     "body": "[\\$name] ends at $1"
   },
+  "task-and-ends-at": {
+    "prefix": "gantt-task-and-ends-at",
+    "body": " and ends at $1"
+  },
   "task-lasts": {
     "prefix": "gantt-task-lasts",
     "body": "[\\$name] lasts $1 weeks"
+  },
+  "task-and-lasts": {
+    "prefix": "gantt-and-task-lasts",
+    "body": " and lasts $1 weeks"
   },
   "displays-on-same-row": {
     "prefix": "gantt-displays-on-same-row",
     "body": ["[\\$name] displays on same row as [$1]"]
   },
+  "and-displays-on-same-row": {
+    "prefix": "gantt-and-displays-on-same-row",
+    "body": [" and displays on same row as [$1]"]
+  },
   "link": {
     "prefix": "gantt-link",
     "body": ["[\\$name] links to [[$1]]"]
+  },
+  "and-link": {
+    "prefix": "gantt-and-link",
+    "body": [" and links to [[$1]]"]
   },
   "separator-style-1": {
     "prefix": "gantt-separator-style-1",
