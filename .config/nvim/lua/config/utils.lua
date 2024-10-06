@@ -61,6 +61,10 @@ M.hidden_formatters = {
 			),
 		},
 	},
+	format_jira_link = {
+		command = "sed",
+		args = { "s|\\[\\[\\(.*\\)\\] \\(.*\\)\\](\\(\\S*\\))|[\\1 \\2](\\3)|g" },
+	},
 	markdown_todo_format = {
 		command = "sed",
 		args = { "s|\\([-*+.)]\\) \\[\\]|\\1 [ ]|g" },

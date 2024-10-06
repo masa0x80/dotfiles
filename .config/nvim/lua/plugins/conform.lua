@@ -29,6 +29,7 @@ return {
 				"delete_parentheses_inside_space",
 				"delete_jira_status_icon",
 				"delete_no_break_spaces",
+				"format_jira_link",
 				"markdown_todo_format",
 				"textlint",
 				"markdownlint",

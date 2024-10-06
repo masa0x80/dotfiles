@@ -6,8 +6,8 @@ return {
 	{
 		"weirongxu/plantuml-previewer.vim",
 		ft = "plantuml",
-	},
-	{
-		"tyru/open-browser.vim",
+		dependencies = {
+			"tyru/open-browser.vim",
+		},
 	},
 }
