@@ -13,7 +13,7 @@ return {
 					go = "TermExec cmd='go run %'",
 					sh = "TermExec cmd='sh %'",
 					markdown = "MarkdownPreviewWrapper",
-					plantuml = "MarkdownPreviewWrapper",
+					plantuml = "PlantUMLPreview",
 					mermaid = "MarkdownPreview",
 				},
 			},
