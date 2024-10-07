@@ -5,8 +5,7 @@ return {
 		config = require("config.utils").load("conf/markdown"),
 	},
 	{
-		"MeanderingProgrammer/markdown.nvim",
-		name = "render-markdown",
+		"MeanderingProgrammer/render-markdown.nvim",
 		ft = { "markdown" },
 		config = require("config.utils").load("conf/render-markdown"),
 	},
