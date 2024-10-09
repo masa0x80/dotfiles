@@ -1,4 +1,5 @@
 [
+  { "name": "slackfont", "text": "/slackfont Explex" },
   { "name": "cm-feat", "text": "🎸 feat: " },
   { "name": "cm-bug", "text": "🐛 bug: " },
   { "name": "cm-fix", "text": "✏️ fix: " },
@@ -27,4 +28,3 @@
   { "name": "cm-downgrade", "text": "⬇️ Downgrade dependencies" },
   { "name": "cm-init", "text": "🌱 Initial commit" }
 ]
-
