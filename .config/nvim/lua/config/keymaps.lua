@@ -160,7 +160,7 @@ map("c", "<C-a>", "<Home>", {})
 map("c", "<C-e>", "<End>", {})
 
 -- Esc
-map({ "n", "i" }, "<C-c>", "<Esc>", opts)
+map({ "n", "i", "v" }, "<C-c>", "<Esc>", opts)
 map("n", "<Esc><Esc>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
 map("n", "<C-c><C-c>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
 
