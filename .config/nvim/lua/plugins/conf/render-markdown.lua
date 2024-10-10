@@ -1,7 +1,3 @@
-local c = require("config.color")
-local set_hl = vim.api.nvim_set_hl
-set_hl(0, "MarkdownBullet", { fg = c.dark_red })
-
 require("render-markdown").setup({
 	render_modes = { "n" },
 	heading = {
@@ -27,7 +23,7 @@ require("render-markdown").setup({
 			todo = {
 				raw = "[-]",
 				rendered = "󰡖",
-				highlight = "@markup.raw",
+				highlight = "@markup.list.in_progress",
 			},
 		},
 	},

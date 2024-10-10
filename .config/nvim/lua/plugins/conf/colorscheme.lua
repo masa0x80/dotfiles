@@ -1,4 +1,35 @@
-vim.cmd.colorscheme("onedark")
+local c = require("config.color")
+require("onedarkpro").setup({
+	colors = {
+		dark_yellow = { bg = c.git_change }, -- yellow
+	},
+	highlights = {
+		ExtraWhiteSpace = { bg = "${diff_text}" },
+
+		GitConflictCurrentLabel = { fg = "${black}", bg = "${green}" },
+		GitConflictIncomingLabel = { fg = "${black}", bg = "${blue}" },
+		GitConflictAncestorLabel = { fg = "${black}", bg = "${fg}" },
+
+		-- render-markdown
+		MarkdownBullet = { fg = "${git_change}", italic = true },
+		RenderMarkdownH1Bg = { bg = "${bg_statusline}", bold = true },
+		RenderMarkdownH2Bg = { bg = "${bg_statusline}", bold = true },
+		RenderMarkdownH3Bg = { bg = "${bg_statusline}", bold = true },
+		RenderMarkdownH4Bg = { bg = "${bg_statusline}", bold = true },
+		RenderMarkdownH5Bg = { bg = "${bg_statusline}", bold = true },
+		RenderMarkdownH6Bg = { bg = "${bg_statusline}", bold = true },
+		RenderMarkdownH1 = { fg = "${red}", bold = true },
+		RenderMarkdownH2 = { fg = "${purple}", bold = true },
+		RenderMarkdownH3 = { fg = "${orange}", bold = true },
+		RenderMarkdownH4 = { fg = "${red}", bold = true },
+		RenderMarkdownH5 = { fg = "${purple}", bold = true },
+		RenderMarkdownH6 = { fg = "${orange}", bold = true },
+		RenderMarkdownUnchecked = { fg = "${orange}" },
+		RenderMarkdownChecked = { fg = "${green}" },
+		["@markup.list.checked"] = { fg = "${green}" },
+		["@markup.list.in_progress"] = { fg = "${cyan}" },
+	},
+})
 vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
 	group = "_",
 	pattern = { "*" },
@@ -19,11 +50,5 @@ vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
 	-- u3000 '　' ideographic (zenkaku) space
 	command = [[call matchadd('ExtraWhitespace', "[\u00A0\u2000-\u200B\u202F\u3000]")]],
 })
-vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-	group = "_",
-	pattern = "*",
-	callback = function()
-		vim.api.nvim_set_hl(0, "ExtraWhiteSpace", { bg = "#2b5d63" })
-		vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#dbb671" })
-	end,
-})
+
+vim.cmd.colorscheme("onedark")
