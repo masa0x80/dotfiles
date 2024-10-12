@@ -97,6 +97,9 @@ export BROWSER
 
 export JIRA_BASE_URL='https://jira.atlassian.com'
 
+# https://github.com/nivekuil/rip
+export GRAVEYARD="$XDG_DATA_HOME/trash"
+
 for file (
   # Load .config.local
   $HOME/.config.local/zsh/zshenv(N)

@@ -60,6 +60,7 @@ brew "ripgrep"
 brew "sd"
 brew "silicon"
 brew "grex"
+brew "rm-improved"
 
 brew "hub"
 brew "gh"
@@ -99,6 +100,6 @@ brew "totp-cli"
 
 brew "lazygit"
 
-brew 'rage'
+brew "rage"
 
 brew "sheldon"

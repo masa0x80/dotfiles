@@ -11,12 +11,6 @@ abbrevs:
   - name: "mkdir -p"
     abbr: md
     snippet: "mkdir -p"
-  - name: "rmdir"
-    abbr: rd
-    snippet: "rmdir"
-  - name: "rm -rf"
-    abbr: rf
-    snippet: "rm -rf"
 
   - name: "git add"
     abbr: ga
@@ -278,6 +272,19 @@ abbrevs:
     abbr: tree
     snippet: "eza -T --icons"
     if: (( ${+commands[eza]} ))
+
+  - name: "rm"
+    abbr: rm
+    snippet: "rip"
+    if: (( ${+commands[rip]} ))
+  - name: "rmdir"
+    abbr: rd
+    snippet: "rip"
+    if: (( ${+commands[rip]} ))
+  - name: "rip"
+    abbr: rf
+    snippet: "rip"
+    if: (( ${+commands[rip]} ))
 
   - name: "silicon --to-clipboard --from-clipboard -l ts"
     abbr: Si
