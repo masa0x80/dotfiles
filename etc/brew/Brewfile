@@ -42,7 +42,7 @@ brew "zsh"
 
 brew "navi"
 
-brew "mysql"
+brew "mysql-client"
 brew "postgresql"
 brew "redis"
 
