@@ -47,6 +47,7 @@ config.inactive_pane_hsb = {
 	saturation = 0.9,
 	brightness = 0.8,
 }
+config.default_cursor_style = "BlinkingBlock"
 
 utils.merge_tables(config, keys)
 utils.merge_tables(config, mouse_bindings)
