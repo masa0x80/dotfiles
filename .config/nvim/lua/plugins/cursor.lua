@@ -4,7 +4,7 @@ return {
 	opts = {
 		cursors = {
 			{
-				mode = { "n" },
+				mode = { "n", "v" },
 				-- NOTE: blinking times don't affect cursor blinking times,
 				-- ref. https://github.com/rasulomaroff/cursor.nvim?tab=readme-ov-file#terminals
 				blink = 10,
