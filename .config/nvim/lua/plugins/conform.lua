@@ -43,6 +43,7 @@ return {
 				"delete_no_break_spaces",
 				"format_jira_link",
 				"markdown_todo_format",
+				"replace_ka",
 				"textlint",
 				"markdownlint",
 				"markdown_table_formatter",

@@ -69,6 +69,10 @@ M.hidden_formatters = {
 		command = "sed",
 		args = { "s|\\([-*+.)]\\) \\[\\]|\\1 [ ]|g" },
 	},
+	replace_ka = {
+		command = "sed",
+		args = { "s|[ヶケ]\\([月所]\\)|か\\1|g" },
+	},
 	markdown_table_formatter = {
 		command = "markdown-table-formatter",
 		args = { "$FILENAME" },
