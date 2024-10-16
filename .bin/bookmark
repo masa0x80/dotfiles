@@ -3,18 +3,18 @@
 set -euo pipefail
 
 () {
-  selected=$(FZF_DEFAULT_COMMAND="rg '# ' ${BOOKMARKS_DIR:q} | shuf" \
+  IFS=$'\n'
+  selected=$(for f in $(fd . "$BOOKMARKS_DIR"); do (echo "$f:" | sed -e "s|$BOOKMARKS_DIR/||"; cat $f) | tr "\n" " "; echo; done | shuf | \
       fzf --ansi --reverse --extended --multi --cycle --bind=ctrl-u:page-up,ctrl-d:page-down,ctrl-j:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-/:deselect-all,ctrl-q:deselect-all \
           --delimiter=":" \
-          --bind "ctrl-y:execute-silent: (echo \"{1}\" | pbcopy)" \
+          --bind "ctrl-y:execute-silent: echo '$BOOKMARKS_DIR/{1}' | pbcopy" \
           --header 'Press CTRL-y to copy filepath into clipboard' \
-          --preview="bat --color=always {1}" \
+          --preview="bat --color=always '$BOOKMARKS_DIR/{1}'" \
           --preview-window='down:30%:+{2}-10' | cut -d: -f1)
   test -z "$selected" && return
 
-  IFS=$'\n'
   for f in $(echo $selected); do
-    url=$(bat "$f" | grep -oP '(?<=^# ).*' | sed -e 's/\[.*\](\(.*\)).*/\1/')
+    url=$(bat "$BOOKMARKS_DIR/$f" | grep -oP '(?<=^# ).*' | sed -e 's/\[.*\](\(.*\)).*/\1/')
     open -g "obsidian://open?vault=${SCRAPBOOK_DIR:t}&file=${f:t:r}"
     open ${url}
   done
