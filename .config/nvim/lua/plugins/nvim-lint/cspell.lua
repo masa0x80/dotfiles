@@ -79,8 +79,8 @@ end
 vim.api.nvim_create_user_command("CSpellAppend", cspell_append, { nargs = "?", bang = true })
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
-keymap("n", "<Leader>a", "<Cmd>CSpellAppend<CR>", opts)
-keymap("n", "<Leader>A", "<Cmd>CSpellAppend!<CR>", opts)
+keymap("n", "<Leader>au", "<Cmd>CSpellAppend<CR>", opts)
+keymap("n", "<Leader>ag", "<Cmd>CSpellAppend!<CR>", opts)
 
 vim.api.nvim_create_user_command("OpenCSpellDotfile", "edit " .. cspell_files.dotfiles, {})
 vim.api.nvim_create_user_command("OpenCSpellLocal", "edit " .. cspell_files.dotfiles_local, {})
