@@ -31,9 +31,17 @@ brew "pass"
 brew "rsync"
 brew "watch"
 
-# NOTE diagrams requires installing graphviz
+# NOTE diagrams
 # ref. https://diagrams.mingrammer.com/docs/getting-started/installation
 brew "graphviz"
+
+# NOTE: 3rd/images.nvim
+brew "imagemagick"
+# https://github.com/3rd/image.nvim/issues/91#issuecomment-2417623824
+brew "pkgconfig"
+
+# NOTE: HakonHarnes/img-clip.nvim
+brew "pngpaste"
 
 brew "mise"
 brew "direnv"
