@@ -2,5 +2,8 @@
 
 re() {
   local option="$(echo -e "--staged\n--worktree" | fzf +m --query="$@")"
-  git -c color.status=always status -s -uno | fzf --preview 'F=$(echo {2..} | sed "s|\"\(.*\)\"|\1|"); [[ {} =~ "^ M" ]] && git diff --color=always "$F" || git diff --staged --color=always "$F" || [[ {} =~ "^D " ]] && git diff --cached -- "$F"' --prompt="\$ git restore $option (git status -s -uno)> " | cut -c4- | xargs -I% git restore $option %
+  git -c color.status=always status -s -uno | fzf --preview 'F=$(echo {2..} | sed "s|\"\(.*\)\"|\1|"); \
+    [[ {} =~ "^M. " ]] && git diff --color=always --staged -- "$F" || \
+    [[ {} =~ "^D. " ]] && git diff --color=always --cached -- "$F" || \
+    git diff --color=always -- "$F"' --prompt="\$ git restore $option (git status -s -uno)> " | cut -c4- | xargs -I% git restore $option %
 }
