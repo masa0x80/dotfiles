@@ -12,12 +12,12 @@ require("onedarkpro").setup({
 
 		-- render-markdown
 		MarkdownBullet = { fg = "${git_change}", italic = true },
-		RenderMarkdownH1Bg = { bg = "${bg_statusline}", bold = true },
-		RenderMarkdownH2Bg = { bg = "${bg_statusline}", bold = true },
-		RenderMarkdownH3Bg = { bg = "${bg_statusline}", bold = true },
-		RenderMarkdownH4Bg = { bg = "${bg_statusline}", bold = true },
-		RenderMarkdownH5Bg = { bg = "${bg_statusline}", bold = true },
-		RenderMarkdownH6Bg = { bg = "${bg_statusline}", bold = true },
+		RenderMarkdownH1Bg = { bg = "${indentline}", bold = true },
+		RenderMarkdownH2Bg = { bg = "${indentline}", bold = true },
+		RenderMarkdownH3Bg = { bg = "${indentline}", bold = true },
+		RenderMarkdownH4Bg = { bg = "${indentline}", bold = true },
+		RenderMarkdownH5Bg = { bg = "${indentline}", bold = true },
+		RenderMarkdownH6Bg = { bg = "${indentline}", bold = true },
 		RenderMarkdownH1 = { fg = "${red}", bold = true },
 		RenderMarkdownH2 = { fg = "${purple}", bold = true },
 		RenderMarkdownH3 = { fg = "${orange}", bold = true },
@@ -28,6 +28,9 @@ require("onedarkpro").setup({
 		RenderMarkdownChecked = { fg = "${green}" },
 		["@markup.list.checked"] = { fg = "${green}" },
 		["@markup.list.in_progress"] = { fg = "${cyan}" },
+
+		-- neo-tree
+		NeoTreeDirectoryIcon = { fg = "${blue}" },
 	},
 })
 vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
