@@ -1,24 +1,7 @@
 local M = {}
 
 M.preview = function(path)
-	local ext = path:match("^.+%.(.+)$")
-	if vim.tbl_contains({ "bmp", "jpg", "jpeg", "png", "gif", "ico" }, string.lower(ext)) then
-		if os.getenv("TMUX") == nil then
-			vim.fn.execute(
-				string.format(
-					'!wezterm cli spawn --new-window -- zsh -c \'wezterm imgcat "%s"; echo "%s";  read\'',
-					path,
-					path
-				)
-			)
-		else
-			vim.fn.execute(
-				string.format('!tmux popup \'bat --style="numbers,changes,header,grid" "%s"; read\'', path, path)
-			)
-		end
-	else
-		vim.fn.execute(string.format("!open '%s'", path))
-	end
+	vim.fn.execute(string.format("!open '%s'", path))
 end
 
 M.load = function(name)

@@ -37,7 +37,7 @@ telescope.setup({
 					local path = vim.fn.fnamemodify(selection.path, ":p:t")
 					vim.notify(path, vim.log.levels.INFO, { title = "File Path" })
 				end,
-				["<C-g>"] = function()
+				["<C-S-k>"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = selection.path
 					utils.preview(path)
@@ -82,7 +82,7 @@ telescope.setup({
 					vim.fn.setreg('"', path)
 					vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
 				end,
-				["<C-g>"] = function()
+				["K"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = selection.path
 					utils.preview(path)

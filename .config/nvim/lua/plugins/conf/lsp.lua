@@ -83,7 +83,18 @@ local on_attach = function(client, bufnr)
 	nmap("gD", vim.lsp.buf.declaration, "[GD] Goto Declaration")
 
 	-- Setup hover keymap
-	nmap("K", require("hover").hover, "hover.nvim")
+	nmap("K", function()
+		local line = vim.api.nvim_get_current_line()
+		local pattern = "!%[%S*%]%(([^%)]+)%)"
+		local startIndex = 1
+		local _, _, path = string.find(line, pattern, startIndex)
+		-- string.find(vim.api.nvim_get_current_line(), "!%[%]%((.+)%)", 1)
+		if path ~= nil then
+			require("config.utils").preview(vim.fn.expand("%:p:h") .. "/" .. path)
+		else
+			require("hover").hover()
+		end
+	end, "open the file or hover.nvim")
 	nmap("gK", require("hover").hover_select, "hover.nvim (select)")
 	nmap("[h", function()
 		require("hover").hover_switch("previous")

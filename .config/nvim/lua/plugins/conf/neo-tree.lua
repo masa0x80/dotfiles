@@ -53,7 +53,7 @@ require("neo-tree").setup({
 			["<A-p>"] = { "toggle_preview", config = { use_float = true } },
 			["<C-w><C-w>"] = "focus_preview",
 			["<C-c><C-c>"] = "cancel",
-			["<C-g>"] = "custom_preview",
+			["K"] = "custom_preview",
 		},
 	},
 	commands = {
