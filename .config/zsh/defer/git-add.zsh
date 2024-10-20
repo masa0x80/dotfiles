@@ -5,7 +5,7 @@ git-add() {
       [[ {1} = "??" ]] && bat --color=always "$F" || \
       [[ {} =~ "^D. " ]] && git diff --color=always --cached -- "$F" || \
       [[ {} =~ "^[MA]. " ]] && git diff --color=always --staged -- "$F" || \
-      git diff --color=always "$F"' | cut -c4-); do
+      git diff --color=always -- "$F"' | cut -c4-); do
       if [ "$BUFFER" = "" ]; then
           BUFFER="git add"
       fi
