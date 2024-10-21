@@ -63,37 +63,21 @@ require("markdown").setup({
 		local map = vim.keymap.set
 		local opts = { noremap = true, buffer = bufnr }
 
-		-- New list item below on `o` if in a list
-		map("n", "o", function()
-			if not require("markdown.list").insert_list_item_below() then
-				vim.api.nvim_feedkeys("o", "n", false)
-			end
-		end, opts)
-
-		map("n", "O", function()
-			if not require("markdown.list").insert_list_item_above() then
-				vim.api.nvim_feedkeys("O", "n", false)
-			end
-		end, opts)
-
 		map("i", "<CR>", function()
 			local row = vim.fn.line(".") - 1
 			local line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
 
 			local col = vim.fn.col("$") - 1
-			local is_eol = vim.fn.col(".") == col + 1
 
 			local key = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
 
-			if line == "" then
-				vim.api.nvim_feedkeys(key, "n", false)
-			elseif
+			if
 				string.match(line, UNORDERED_LIST_PATTERN)
 				or string.match(line, ORDERED_LIST_PATTERN)
 				or string.match(line, TASK_PATTERN)
 			then
 				vim.api.nvim_buf_set_text(0, row, 0, row, col, { "" })
-			elseif not (is_eol and require("markdown.list").insert_list_item_below()) then
+			else
 				vim.api.nvim_feedkeys(key, "n", false)
 			end
 		end, opts)
