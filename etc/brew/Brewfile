@@ -89,7 +89,7 @@ brew "protobuf"
 tap "arkweid/lefthook"
 brew "lefthook"
 
-brew "markdownlint-cli"
+brew "markdownlint-cli2"
 
 # for telescope / telekasten
 brew "catimg"
