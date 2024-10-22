@@ -15,7 +15,7 @@ return {
 	git_hunk_delete = "#502d30",
 	git_hunk_add = "#43554d",
 	git_delete = "#9a353d",
-	git_change = "#948B60",
+	git_change = "#948b60",
 	indentline = "#3b4048",
 	black = "#282c34",
 	inlay_hint = "#4c525c",
