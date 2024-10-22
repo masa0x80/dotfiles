@@ -43,6 +43,7 @@ require("conform").setup({
 			"markdown_todo_format",
 			"replace_ka",
 			"replace_ordered_list",
+			"replace_m_on_n",
 			"textlint",
 			"markdownlint_cli2",
 			"markdown_table_formatter",

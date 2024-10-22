@@ -60,6 +60,10 @@ M.hidden_formatters = {
 		command = "sed",
 		args = { "s|^\\(\\s*\\)[0-9]\\+[\\.)] |\\11. |g" },
 	},
+	replace_m_on_n = {
+		command = "sed",
+		args = { "s|\\([0-9]\\)on\\([0-9]\\)|\\1-on-\\2|g" },
+	},
 	markdown_table_formatter = {
 		command = "markdown-table-formatter",
 		args = { "$FILENAME" },
