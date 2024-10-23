@@ -247,6 +247,12 @@ mason_lspconfig.setup_handlers({
 			on_attach = on_attach,
 			settings = servers[server_name],
 		}
+		-- XXX: settingsと並列に並べるとts_lsがうまく動く
+		if servers[server_name] ~= nil then
+			for k, v in pairs(servers[server_name]) do
+				args[k] = v
+			end
+		end
 		if server_name == "clangd" then
 			args.capabilities.offsetEncoding = { "utf-16" }
 			args.filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }

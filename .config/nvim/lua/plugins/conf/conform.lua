@@ -53,7 +53,7 @@ require("conform").setup({
 
 		javascript = { "prettier" },
 		javascriptreact = { "prettier" },
-		typescripttypescript = { "prettier" },
+		typescript = { "prettier" },
 		typescriptreact = { "prettier" },
 		vue = { "prettier" },
 		css = { "prettier" },
@@ -73,6 +73,9 @@ require("conform").setup({
 		return {
 			timeout_ms = 3000,
 			lsp_fallback = true,
+			filter = function(client)
+				return client.name ~= "ts_ls"
+			end,
 		}
 	end,
 })
