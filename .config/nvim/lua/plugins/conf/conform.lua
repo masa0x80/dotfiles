@@ -5,7 +5,7 @@ local formatters = {
 		stdin = false,
 	},
 	markdownlint_cli2 = {
-		command = "markdownlint-cli2",
+		command = "markdownlint",
 		args = { "--config", vim.fn.expand("$HOME/.config/markdownlint/.markdownlint.json"), "--fix", "$FILENAME" },
 		exit_codes = { 0, 1 },
 		stdin = false,
@@ -35,6 +35,7 @@ require("conform").setup({
 		luau = { "stylua" },
 		python = { "black" },
 		markdown = {
+			"delete_single_space_before_japanese_punctuation_marks",
 			"delete_single_space_after_japanese_punctuation_marks",
 			"delete_parentheses_inside_space",
 			"delete_jira_status_icon",
@@ -45,7 +46,7 @@ require("conform").setup({
 			"replace_ordered_list",
 			"replace_m_on_n",
 			"textlint",
-			"markdownlint_cli2",
+			"markdownlint",
 			"markdown_table_formatter",
 		},
 		sh = { "shfmt" },

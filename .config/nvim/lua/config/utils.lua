@@ -24,6 +24,10 @@ M.js_based_languages = {
 }
 
 M.hidden_formatters = {
+	delete_single_space_before_japanese_punctuation_marks = {
+		command = "sed",
+		args = { "s|\\(\\S\\) \\([。、]\\)|\\1\\2|g" },
+	},
 	delete_single_space_after_japanese_punctuation_marks = {
 		command = "sed",
 		args = { "s|\\([。、]\\) \\(\\S\\)|\\1\\2|g" },
