@@ -35,6 +35,7 @@ require("onedarkpro").setup({
 		["@markup.heading.6.markdown"] = { fg = "${fg_gutter_inactive}", bold = true },
 		["@markup.list.checked"] = { fg = "${green}" },
 		["@markup.list.in_progress"] = { fg = "${cyan}" },
+		["@markup.strong.markdown_inline"] = { sp = "${red}", bold = true, underline = true },
 
 		-- neo-tree
 		NeoTreeDirectoryIcon = { fg = "${blue}" },

@@ -119,6 +119,9 @@ ul,
 ol {
   margin-bottom: 0;
 }
+li {
+  line-height: 1.6em;
+}
 li::marker {
   color: #948b60;
 }
@@ -141,7 +144,12 @@ ol > li > input {
 /*   padding-left: 0.1em; */
 /* } */
 
-ul + img {
+ul + ul,
+ol + ol,
+ul + ol,
+ol + ul,
+ul + img,
+ol + img {
   margin-top: 1em;
 }
 
@@ -152,7 +160,7 @@ p.source-line {
 
 strong {
   font-weight: bold;
-  color: #d19a66;
+  background: linear-gradient(transparent 86%, #e8939a 0%);
 }
 
 em {
