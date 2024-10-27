@@ -24,21 +24,13 @@ M.js_based_languages = {
 }
 
 M.hidden_formatters = {
-	delete_single_space_before_japanese_punctuation_marks = {
+	delete_single_space_before_marks = {
 		command = "sed",
-		args = { "s|\\(\\S\\) \\([。、]\\)|\\1\\2|g" },
+		args = { "s|\\(\\S\\) \\([。、)>}]\\)|\\1\\2|g" },
 	},
-	delete_single_space_after_japanese_punctuation_marks = {
+	delete_single_space_after_marks = {
 		command = "sed",
-		args = { "s|\\([。、]\\) \\(\\S\\)|\\1\\2|g" },
-	},
-	delete_parentheses_inside_space = {
-		command = "sed",
-		args = { "s|\\([(<{]\\) \\(.*\\) \\([)>}]\\)|\\1\\2\\3|g" },
-	},
-	delete_no_break_spaces = {
-		command = "sed",
-		args = { "s|[  ]| |g" },
+		args = { "s|\\([。、(<{]\\) \\(\\S\\)|\\1\\2|g" },
 	},
 	delete_jira_status_icon = {
 		command = "sed",
@@ -56,17 +48,9 @@ M.hidden_formatters = {
 		command = "sed",
 		args = { "s|\\([-*+.)]\\) \\[\\]|\\1 [ ]|g" },
 	},
-	replace_ka = {
-		command = "sed",
-		args = { "s|[ヶケ]\\([月所]\\)|か\\1|g" },
-	},
 	replace_ordered_list = {
 		command = "sed",
 		args = { "s|^\\(\\s*\\)[0-9]\\+[\\.)] |\\11. |g" },
-	},
-	replace_m_on_n = {
-		command = "sed",
-		args = { "s|\\([0-9]\\)on\\([0-9]\\)|\\1-on-\\2|g" },
 	},
 	markdown_table_formatter = {
 		command = "markdown-table-formatter",

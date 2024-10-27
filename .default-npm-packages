@@ -3,7 +3,10 @@ prettier
 textlint
 textlint-filter-rule-allowlist
 textlint-rule-preset-ja-spacing
+textlint-rule-doubled-spaces
 textlint-rule-no-zero-width-spaces
+textlint-rule-prh
+textlint-rule-terminology
 @textlint-rule/textlint-rule-no-invalid-control-character
 ts-node
 markdown2confluence-cws
