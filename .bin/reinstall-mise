@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+str=$(mise current | fzf +m)
+eval mise uninstall "$str"
+eval mise install "$str"
