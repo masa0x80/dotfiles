@@ -7,9 +7,8 @@ telescope.setup({
 		path_display = {
 			truncate = 3,
 		},
-		sorting_strategy = "ascending",
 		file_ignore_patterns = { "COMMIT_EDITMSG" },
-		-- add `--hidden` option
+		-- add `--sortr`, `--uu` option
 		vimgrep_arguments = {
 			"rg",
 			"--color=never",
@@ -18,8 +17,11 @@ telescope.setup({
 			"--line-number",
 			"--column",
 			"--smart-case",
-			"--hidden",
+			"--sortr=path",
+			"--uu",
 		},
+		sorting_strategy = "ascending",
+		layout_config = { prompt_position = "top" },
 		mappings = {
 			i = {
 				["<C-f>"] = { "<Right>", type = "command" },
