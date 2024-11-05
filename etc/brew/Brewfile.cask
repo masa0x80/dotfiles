@@ -1,3 +1,4 @@
+cask "1password"
 cask "altair-graphql-client"
 cask "audacity"
 cask "box-drive"
