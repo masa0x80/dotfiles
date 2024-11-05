@@ -4,7 +4,7 @@ return {
 	},
 	{
 		"3rd/image.nvim",
-		event = "VeryLazy",
+		-- event = "VeryLazy",
 		opts = {
 			integrations = {
 				markdown = {
