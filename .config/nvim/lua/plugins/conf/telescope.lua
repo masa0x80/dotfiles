@@ -8,7 +8,7 @@ telescope.setup({
 			truncate = 3,
 		},
 		file_ignore_patterns = { "COMMIT_EDITMSG" },
-		-- add `--sortr`, `--uu` option
+		-- add `--sortr`, `-uu` option
 		vimgrep_arguments = {
 			"rg",
 			"--color=never",
@@ -18,7 +18,7 @@ telescope.setup({
 			"--column",
 			"--smart-case",
 			"--sortr=path",
-			"--uu",
+			"-uu",
 		},
 		sorting_strategy = "ascending",
 		layout_config = { prompt_position = "top" },
