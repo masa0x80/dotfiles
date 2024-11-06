@@ -73,32 +73,6 @@ export HOMEBREW_NO_ANALYTICS=1
 
 export PURE_PROMPT_SYMBOL="%F{magenta}ミ:匚＞%f"
 
-export AGE_IDENTITY="$HOME/.config/age/key.txt"
-export AGE_RECIPIENT=$(grep -oP '(?<=# public key: ).+(?=)' $AGE_IDENTITY)
-export PASSAGE_IDENTITIES_FILE="$HOME/.ssh/key"
-export PASSAGE_RECIPIENTS_FILE="$HOME/.ssh/key.pub"
-export PASSAGE_AGE="$HOMEBREW_PREFIX/bin/rage"
-
-identifier="$(defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure | awk -F'"' '/http;/{print window[(NR)-1]}{window[NR]=$2}')"
-case "$identifier" in
-"net.kassett.finicky")
-  BROWSER="Vivaldi"
-  ;;
-"com.vivaldi.vivaldi")
-  BROWSER="Vivaldi"
-  ;;
-"com.microsoft.edgemac")
-  BROWSER="Microsoft Edge"
-  ;;
-"com.google.chrome")
-  BROWSER="Google Chrome"
-  ;;
-*)
-  BROWSER="Safari"
-  ;;
-esac
-export BROWSER
-
 export JIRA_BASE_URL='https://jira.atlassian.com'
 
 # https://github.com/nivekuil/rip

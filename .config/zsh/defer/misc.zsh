@@ -46,6 +46,14 @@ if_installed mise eval "$(mise activate zsh)"
 if_installed fzf eval "$(fzf --zsh)"
 if_installed direnv eval "$(direnv hook zsh)"
 
+export AGE_IDENTITY="$HOME/.config/age/key.txt"
+export AGE_RECIPIENT=$(grep -oP '(?<=# public key: ).+(?=)' $AGE_IDENTITY)
+export PASSAGE_IDENTITIES_FILE="$HOME/.ssh/key"
+export PASSAGE_RECIPIENTS_FILE="$HOME/.ssh/key.pub"
+export PASSAGE_AGE="$HOMEBREW_PREFIX/bin/rage"
+
+source $HOME/.bin/_set_browser
+
 for file (
   # Load local configurations
   $HOME/.config.local/zsh/zshrc(N)

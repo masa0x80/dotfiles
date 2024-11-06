@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+source $HOME/.bin/_set_browser
+
 export LANG="ja_JP.UTF-8"
 url=$(osascript -e "tell application \"$BROWSER\" to get URL of active tab of front window")
 title=$(osascript -e "tell application \"$BROWSER\" to get title of active tab of front window")
