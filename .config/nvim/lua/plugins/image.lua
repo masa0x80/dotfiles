@@ -4,13 +4,14 @@ return {
 	},
 	{
 		"3rd/image.nvim",
-		-- event = "VeryLazy",
+		cond = false,
+		event = "VeryLazy",
 		opts = {
-			integrations = {
-				markdown = {
-					only_render_image_at_cursor = true,
-				},
-			},
+			-- integrations = {
+			-- 	markdown = {
+			-- 		only_render_image_at_cursor = true,
+			-- 	},
+			-- },
 		},
 	},
 }
