@@ -137,13 +137,8 @@ ul > li {
 ol > li > input {
   margin-left: -0.2em;
 }
-/* ul > li:not(li > input) { */
-/*   padding-left: 1.1em; */
-/* } */
-/* ol > li:not(li > input) { */
-/*   padding-left: 0.1em; */
-/* } */
 
+p.source-line + p.source-line,
 ul + ul,
 ol + ol,
 ul + ol,
