@@ -61,6 +61,7 @@ require("conform").setup({
 		jsonc = { "prettier" },
 		yaml = { "prettier" },
 		graphql = { "prettier" },
+		["*"] = { "injected" },
 	},
 	formatters = formatters,
 	format_on_save = function()

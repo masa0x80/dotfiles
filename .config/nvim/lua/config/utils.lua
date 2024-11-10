@@ -58,6 +58,7 @@ M.hidden_formatters = {
 		exit_codes = { 0, 1 },
 		stdin = false,
 	},
+	injected = {},
 }
 
 return M
