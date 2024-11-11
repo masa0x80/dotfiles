@@ -15,6 +15,6 @@ set -euo pipefail
   test -z "$selected" && return
 
   for f in $(echo $selected); do
-    open $(bat $(echo "$f" | cut -d: -f1) | grep -oP '(?<=^# ).*' | sed -e 's/\[.*\](\(.*\)).*/\1/')
+    open $(bat $(echo "$f" | cut -d: -f1) | sed -e 's|^# \(.*\)|\1|' | sed -e 's/\[.*\](\(.*\)).*/\1/')
   done
 }
