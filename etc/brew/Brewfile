@@ -46,8 +46,6 @@ brew "pngpaste"
 brew "mise"
 brew "direnv"
 
-brew "zsh"
-
 brew "navi"
 
 brew "mysql-client"
