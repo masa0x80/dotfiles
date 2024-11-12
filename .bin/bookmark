@@ -9,12 +9,12 @@ set -euo pipefail
       -d: --disabled \
       --bind "start:reload:$rg_prefix ''" \
       --bind "change:reload:$rg_prefix {q} || true" \
-      --preview="bat --color=always '$BOOKMARKS_DIR/{1}'" \
+      --preview="bat --color=always '{1}'" \
       --preview-window='down:30%:+{2}-10' | cut -d: -f1)
 
   test -z "$selected" && return
 
   for f in $(echo $selected); do
-    open $(bat $(echo "$f" | cut -d: -f1) | sed -e 's|^# \(.*\)|\1|' | sed -e 's/\[.*\](\(.*\)).*/\1/')
+    open $(head -n1 $(echo "$f" | cut -d: -f1) | sed -e 's|^# \[.*\](\(.*\)).*|\1|')
   done
 }
