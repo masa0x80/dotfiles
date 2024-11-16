@@ -30,9 +30,10 @@ fi
 if_installed bat export PAGER=bat
 
 # NOTE: must place before loading `$HOME/.config.local/zsh/zshrc
+export GHQ_ROOT=$(ghq root)
 if installed ghq; then
-  if [[ ! -d $(ghq root)/github.com/masa0x80/dotfiles ]]; then
-    export DOTFILE=$(ghq root)/github.com/masa0x80/dotfiles
+  if [[ ! -d "$GHQ_ROOT/github.com/masa0x80/dotfiles" ]]; then
+    export DOTFILE="$GHQ_ROOT/github.com/masa0x80/dotfiles"
   else
     export DOTFILE="${DOTFILE:-$HOME/.dotfiles}"
   fi
