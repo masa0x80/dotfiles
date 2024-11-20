@@ -43,4 +43,4 @@ apply = ["defer"]
 inline = 'autoload -U $(ls $ZDOTDIR/functions)'
 
 [plugins.load-files]
-inline = "for f ($ZDOTDIR/defer/*.zsh(N)) zsh-defer source $f"
+inline = "for f ($ZDOTDIR/defer/*.zsh(N) $ZDOTDIR/defer/after/*.zsh(N)) zsh-defer source $f"
