@@ -1,3 +1,5 @@
+autoload -U $(ls $ZDOTDIR/functions)
+
 # homebrew
 eval "$(brew shellenv)"
 
