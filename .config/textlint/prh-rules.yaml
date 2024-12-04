@@ -3,8 +3,8 @@ rules:
   - expected: " "
     pattern: "/[  ]/"
 
-  - expected: "か$1"
-    pattern: "/[ヶケ箇]([月所])/"
+  - expected: "$1か$2"
+    pattern: "/([\\d０-９一-十百千万億兆京])[ヶケ箇]([月所])/"
 
   - expected: "$1-on-$2"
     pattern: "/([\\dA-Z])on([\\dA-Z])/"
