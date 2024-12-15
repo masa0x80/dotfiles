@@ -1,0 +1,4 @@
+[settings]
+
+[settings.node]
+gpg_verify = false

@@ -9,6 +9,7 @@
 !/lazygit
 !/markdownlint
 !/markdown-preview
+!/mise
 !/nvim
 !/pry
 !/ripgrep
@@ -38,3 +39,4 @@
 !/karabiner/.editorconfig
 
 !/hadolint.yaml
+!/mise.toml
