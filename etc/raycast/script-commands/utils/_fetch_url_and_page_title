@@ -6,7 +6,9 @@ source "$HOME/.bin/_set_browser"
 export LANG="ja_JP.UTF-8"
 url=$(osascript -e "tell application \"$BROWSER\" to get URL of active tab of front window")
 title=$(osascript -e "tell application \"$BROWSER\" to get title of active tab of front window")
-trimmedTitle="${title%% [-:·|｜]*}"
+trimmedTitle="${title/GitHub - /}"
+trimmedTitle="${trimmedTitle/: / : }"
+trimmedTitle="${trimmedTitle%% [-:|｜]*}"
 test "$trimmedTitle" = '' && trimmedTitle="$title"
 # 末尾スペースを削除
 trimmedTitle="${trimmedTitle% }"
