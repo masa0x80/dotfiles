@@ -3,8 +3,8 @@ local utils = require("utils")
 local color = require("color")
 local nerdfonts = wezterm.nerdfonts
 
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_lower_left_triangle
 
 wezterm.on("format-tab-title", function(tab, _, _, _, hover)
 	local nerd_icons = {
