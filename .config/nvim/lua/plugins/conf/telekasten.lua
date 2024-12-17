@@ -39,4 +39,6 @@ require("telekasten").setup({
 	new_note_location = "prefer_home",
 
 	rename_update_links = true,
+
+	find_command = { "rg", "--files", "--sortr", "created", "--glob=!**/*.age" },
 })
