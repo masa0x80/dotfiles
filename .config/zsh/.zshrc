@@ -42,4 +42,14 @@ autoload -Uz url-quote-magic
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
+installed() {
+  (( ${+commands[$1]} ))
+}
+
+if_installed() {
+  local cmd=$1
+  shift
+  eval "installed $cmd && $*"
+}
+
 source $ZDOTDIR/sheldon.zsh

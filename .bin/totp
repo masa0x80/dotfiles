@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 totp() {
   ns="${TOTP_NAMESPACE:-ns}"
@@ -24,3 +24,4 @@ totp() {
     fi
   fi
 }
+totp "$@"

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 abbr-current-dir() {
   local current_dir=${(%):-%~}
@@ -7,3 +7,4 @@ abbr-current-dir() {
   fi
   echo $current_dir
 }
+abbr-current-dir

@@ -1,3 +1,5 @@
+autoload -U compinit && compinit
+
 # NOTE: must place before loading `$HOME/.config.local/zsh/zshrc
 export GHQ_ROOT=$(ghq root)
 if installed ghq; then

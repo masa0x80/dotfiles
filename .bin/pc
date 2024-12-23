@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 pc() {
   PREFIX="${PASSAGE_DIR:-$HOME/.passage/store}"
@@ -9,3 +9,4 @@ pc() {
     passage --clip "$name"
   fi
 }
+pc

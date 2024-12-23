@@ -6,12 +6,12 @@ git-add() {
       [[ {} =~ "^D. " ]] && git diff --color=always --cached -- "$F" || \
       [[ {} =~ "^[MA]. " ]] && git diff --color=always --staged -- "$F" || \
       git diff --color=always -- "$F"' | cut -c4-); do
-      if [ "$BUFFER" = "" ]; then
-          BUFFER="git add"
-      fi
-      BUFFER+=" ./$f"
-      zle end-of-line
-      zle accept-line
+    if [ "$BUFFER" = "" ]; then
+      BUFFER="git add"
+    fi
+    BUFFER+=" ./$f"
+    zle end-of-line
+    zle accept-line
   done
 }
 zle -N git-add

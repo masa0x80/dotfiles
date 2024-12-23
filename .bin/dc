@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 dc() {
   local project_name=$(current_dir -)
@@ -18,3 +18,4 @@ dc() {
   echo "RUN: $cmd $@ $services"
   eval "$cmd $@ $services"
 }
+dc "$@"

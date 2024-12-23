@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 dinit() {
   test -e .envrc && return 1
@@ -11,3 +11,4 @@ dinit() {
   echo 'source_env_if_exists .envrc.local' >>.envrc
   direnv allow
 }
+dinit

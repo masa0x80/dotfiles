@@ -1,5 +1,6 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 wp() {
   watch -n 0.5 "ps -ef | grep $(echo "$1" | sed -e 's/\(.\)\(.*\)/\[\1\]\2/') | grep -v 'wp $1'"
 }
+wp "$@"

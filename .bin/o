@@ -1,7 +1,7 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 o() {
-  if installed open; then
+  if (( ${+commands[open]} )); then
     if [ -n "$1" ]; then
       command open "$@"
     else
@@ -9,3 +9,4 @@ o() {
     fi
   fi
 }
+o "$@"

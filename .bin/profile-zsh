@@ -1,5 +1,6 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 profile-zsh() {
   ZSHRC_PROFILE=1 zsh -i -c zprof
 }
+profile-zsh

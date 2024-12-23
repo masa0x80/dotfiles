@@ -1,5 +1,3 @@
-autoload -U $(ls $ZDOTDIR/functions)
-
 # homebrew
 eval "$(brew shellenv)"
 
@@ -18,14 +16,9 @@ path=(
   $path
 )
 fpath=(
-  $fpath
   $ZDOTDIR/functions(N-/)
-  $HOMEBREW_PREFIX/share/zsh/site-functions(N-/)
+  $fpath
 )
-
-# 3rd/image.nvim
-# https://github.com/3rd/image.nvim?tab=readme-ov-file#installing-imagemagick
-export DYLD_LIBRARY_PATH="$HOMEBREW_PREFIX/lib:$DYLD_LIBRARY_PATH"
 
 # EDITOR
 if installed nvim; then

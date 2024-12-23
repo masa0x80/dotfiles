@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-function startuptime-nvim() {
-  vim-startuptime -vimpath nvim
-}

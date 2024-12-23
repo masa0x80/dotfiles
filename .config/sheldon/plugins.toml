@@ -11,9 +11,6 @@ apply = ["source"]
 github = "sindresorhus/pure"
 use = ["async.zsh", "pure.zsh"]
 
-[plugins.compinit]
-inline = 'autoload -Uz compinit && zsh-defer compinit'
-
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 apply = ["defer"]
@@ -29,10 +26,6 @@ apply = ["defer"]
 
 [plugins.jq-zsh-plugin]
 github = "reegnz/jq-zsh-plugin"
-apply = ["defer"]
-
-[plugins.zsh-better-npm-completion]
-github = "masa0x80/zsh-better-npm-completion"
 apply = ["defer"]
 
 [plugins.zsh-completions]

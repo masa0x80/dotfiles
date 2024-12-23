@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-if_installed() {
-  local cmd=$1
-  shift
-  eval "installed $cmd && $*"
-}

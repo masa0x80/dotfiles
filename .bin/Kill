@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 Kill() {
   local pids=$(ps -e -o pid,command | fzf --query="$@" | awk '{print $1}')
@@ -6,3 +6,4 @@ Kill() {
   [ -z "$pids" ] && return 0
   kill -9 $(echo $pids | tr "\n" ' ')
 }
+Kill "$@"

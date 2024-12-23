@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 re() {
   local option="$(echo -e "--staged\n--worktree" | fzf +m --query="$@")"
@@ -7,3 +7,4 @@ re() {
     [[ {} =~ "^D. " ]] && git diff --color=always --cached -- "$F" || \
     git diff --color=always -- "$F"' --prompt="\$ git restore $option (git status -s -uno)> " | cut -c4- | xargs -I% git restore $option %
 }
+re "$@"

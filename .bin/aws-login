@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 aws-login() {
   local profile=$(aws-vault list --profiles | fzf +m)
@@ -11,3 +11,4 @@ aws-login() {
     echo 'usage: aws-login <profile>'
   fi
 }
+aws-login

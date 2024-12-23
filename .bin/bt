@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 bt() {
   installed blueutil || return 1
@@ -14,3 +14,4 @@ bt() {
   test -z "$selected_mac" && return 0
   blueutil --$op $selected_mac
 }
+bt
