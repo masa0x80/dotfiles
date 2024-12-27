@@ -108,4 +108,5 @@ brew "lazygit"
 
 brew "rage"
 
+brew "starship"
 brew "sheldon"
