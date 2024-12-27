@@ -8,8 +8,6 @@ fi
 setopt no_global_rcs
 setopt magic_equal_subst
 
-PS1="%F{blue}%~%f"$'\n'"%F{magenta}彡:匚＞%f "
-
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -43,8 +41,6 @@ export RAILS_SERVER_PORT=3000
 export GIT_HOOK_DIR="$HOME/.config/git/hooks"
 
 export HOMEBREW_NO_ANALYTICS=1
-
-export PURE_PROMPT_SYMBOL="%F{magenta}ミ:匚＞%f"
 
 export JIRA_BASE_URL='https://jira.atlassian.com'
 

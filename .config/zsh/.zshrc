@@ -23,7 +23,6 @@ setopt no_check_jobs
 setopt no_hup
 
 setopt correct
-SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
 bindkey -e
 
@@ -39,7 +38,6 @@ setopt share_history
 
 autoload -Uz url-quote-magic
 
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 installed() {

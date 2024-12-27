@@ -1,5 +1,8 @@
 autoload -U compinit && compinit
 
+# XXX
+compdef _zbnc_zsh_better_npm_completion npm
+
 # NOTE: must place before loading `$HOME/.config.local/zsh/zshrc
 export GHQ_ROOT=$(ghq root)
 if installed ghq; then
