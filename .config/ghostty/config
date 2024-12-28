@@ -4,6 +4,20 @@ font-family =
 font-family = Explex Console NF
 font-size = 14
 
+cursor-style = block
+cursor-style-blink = false
+
+window-theme = ghostty
+background-opacity = 0.85
+background-blur-radius = 18
+macos-titlebar-style = transparent
+macos-non-native-fullscreen = true
+
+# quick-terminal
+quick-terminal-position = bottom
+quick-terminal-screen = mouse
+quick-terminal-animation-duration = 0
+
 keybind = ctrl+s>ctrl+c=new_tab
 keybind = ctrl+s>c=new_tab
 keybind = ctrl+s>ctrl+p=previous_tab
@@ -11,10 +25,13 @@ keybind = ctrl+s>p=previous_tab
 keybind = ctrl+s>ctrl+n=next_tab
 keybind = ctrl+s>n=next_tab
 
-keybind = ctrl+s>-=new_split:up
+keybind = ctrl+s>-=new_split:down
 keybind = ctrl+s>\=new_split:right
 keybind = ctrl+s>ctrl+i=goto_split:next
 keybind = ctrl+s>i=goto_split:next
 keybind = ctrl+s>ctrl+o=goto_split:previous
 keybind = ctrl+s>o=goto_split:previous
 keybind = ctrl+s>z=toggle_split_zoom
+keybind = ctrl+s>equal=equalize_splits
+
+keybind = global:ctrl+cmd+j=toggle_quick_terminal
