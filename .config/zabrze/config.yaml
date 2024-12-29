@@ -316,3 +316,7 @@ abbrevs:
     abbr: t
     snippet: "npm run test"
     if: test -e package.json
+
+  - name: "bookark"
+    abbr: b
+    snippet: "bookmark"

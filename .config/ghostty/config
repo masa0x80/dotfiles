@@ -5,7 +5,6 @@ font-family = Explex Console NF
 font-size = 14
 
 cursor-style = block
-cursor-style-blink = false
 
 window-theme = ghostty
 background-opacity = 0.85
