@@ -30,7 +30,8 @@ install: \
 	bat \
 	silicon \
 	sheldon \
-	passage
+	passage \
+	term-definition
 
 .PHONY: deploy
 deploy:
@@ -46,7 +47,7 @@ list:
 clean:
 	@echo 'Remove dot files in your home directory...'
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
-	-rm -rf $(DOTFILE)
+	-rm -rf$(DOTFILE)
 
 # brew {{{
 
@@ -100,11 +101,11 @@ rust-update: mise
 
 .PHONY: bat
 bat: brew
-	cd ~/.config/bat; bat cache --build
+	cd ~/.config/bat && bat cache --build
 
 .PHONY: silicon
 silicon: brew
-	cd ~/.config/bat; silicon --build-cache
+	cd ~/.config/bat && silicon --build-cache
 
 .PHONY: navi
 navi: brew
@@ -117,3 +118,7 @@ sheldon:
 .PHONY: passage
 passage:
 	./scripts/passage
+
+.PHONY: term-definition
+term-definition:
+	./scripts/term-definition
