@@ -116,39 +116,3 @@ require("lualine").setup({
 		lualine_z = { "filename" },
 	},
 })
-
-local c = require("config.color")
-local icon_colors = {
-	File = c.blue,
-	Module = c.dark_yellow,
-	Namespace = c.red,
-	Package = c.yellow,
-	Class = c.yellow,
-	Method = c.blue,
-	Property = c.cyan,
-	Field = c.purple,
-	Constructor = c.blue,
-	Enum = c.purple,
-	Interface = c.green,
-	Function = c.blue,
-	Variable = c.purple,
-	Constant = c.dark_yellow,
-	String = c.green,
-	Number = c.dark_yellow,
-	Boolean = c.dark_yellow,
-	Array = c.yellow,
-	Object = c.red,
-	Key = c.cyan,
-	Null = c.fg,
-	EnumMember = c.yellow,
-	Struct = c.purple,
-	Event = c.yellow,
-	Operator = c.red,
-	TypeParameter = c.red,
-}
-local set_hl = vim.api.nvim_set_hl
-for kind, color in pairs(icon_colors) do
-	set_hl(0, "NavicIcons" .. kind, { fg = color })
-end
-set_hl(0, "NavicText", { fg = c.fg })
-set_hl(0, "NavicSeparator", { fg = c.cyan })

@@ -1,46 +1,12 @@
-local c = require("config.color")
-require("onedarkpro").setup({
-	colors = {
-		dark_yellow = { bg = c.git_change }, -- yellow
-	},
-	highlights = {
-		ExtraWhiteSpace = { bg = "${diff_text}" },
-
-		GitConflictCurrentLabel = { fg = "${black}", bg = "${green}" },
-		GitConflictIncomingLabel = { fg = "${black}", bg = "${blue}" },
-		GitConflictAncestorLabel = { fg = "${black}", bg = "${fg}" },
-
-		-- render-markdown
-		MarkdownBullet = { fg = "${git_change}", italic = true },
-		RenderMarkdownH1Bg = { bg = "${indentline}", bold = true },
-		RenderMarkdownH2Bg = { bg = "${indentline}", bold = true },
-		RenderMarkdownH3Bg = { bg = "${indentline}", bold = true },
-		RenderMarkdownH4Bg = { bg = "${indentline}", bold = true },
-		RenderMarkdownH5Bg = { bg = "${indentline}", bold = true },
-		RenderMarkdownH6Bg = { bg = "${indentline}", bold = true },
-		RenderMarkdownH1 = { fg = "${comment}" },
-		RenderMarkdownH2 = { fg = "${comment}" },
-		RenderMarkdownH3 = { fg = "${comment}" },
-		RenderMarkdownH4 = { fg = "${comment}" },
-		RenderMarkdownH5 = { fg = "${comment}" },
-		RenderMarkdownH6 = { fg = "${comment}" },
-		RenderMarkdownUnchecked = { fg = "${orange}" },
-		RenderMarkdownChecked = { fg = "${green}" },
-		RenderMarkdownCodeInline = { fg = "${virtual_text_error}" },
-		["@markup.heading.1.markdown"] = { fg = "${red}", bold = true },
-		["@markup.heading.2.markdown"] = { fg = "${cyan}", bold = true },
-		["@markup.heading.3.markdown"] = { fg = "${green}", bold = true },
-		["@markup.heading.4.markdown"] = { fg = "${purple}", bold = true },
-		["@markup.heading.5.markdown"] = { fg = "${virtual_text_warning}", bold = true },
-		["@markup.heading.6.markdown"] = { fg = "${fg_gutter_inactive}", bold = true },
-		["@markup.list.checked"] = { fg = "${green}" },
-		["@markup.list.in_progress"] = { fg = "${cyan}" },
-		["@markup.strong.markdown_inline"] = { sp = "${red}", bold = true, underline = true },
-
-		-- neo-tree
-		NeoTreeDirectoryIcon = { fg = "${blue}" },
-	},
+---@diagnostic disable-next-line: missing-fields
+require("everforest").setup({
+	on_highlights = function(hl, palette)
+		hl.ExtraWhiteSpace = { fg = palette.none, bg = palette.bg_blue }
+		hl.MarkdownBullet = { fg = palette.grey1, bg = palette.none }
+	end,
 })
+require("everforest").load()
+
 vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
 	group = "_",
 	pattern = { "*" },
@@ -61,5 +27,3 @@ vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
 	-- u3000 '　' ideographic (zenkaku) space
 	command = [[call matchadd('ExtraWhitespace', "[\u00A0\u2000-\u200B\u202F\u3000]")]],
 })
-
-vim.cmd.colorscheme("onedark")

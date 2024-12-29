@@ -1,5 +1,5 @@
 # Set the theme
---theme=OneDark
+--theme='Everforest Dark'
 
 # Show line numbers, Git modifications and file header (but no grid)
 --style='changes'

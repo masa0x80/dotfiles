@@ -1,6 +1,5 @@
 return {
-	"olimorris/onedarkpro.nvim",
-	config = require("config.utils").load("conf/colorscheme"),
+	"neanias/everforest-nvim",
 	lazy = false,
-	priority = 1000,
+	config = require("config.utils").load("conf/colorscheme"),
 }

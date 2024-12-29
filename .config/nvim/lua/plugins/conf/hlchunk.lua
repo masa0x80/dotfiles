@@ -1,5 +1,3 @@
-local c = require("config.color")
-
 require("hlchunk").setup({
 	chunk = {
 		enable = true,
@@ -18,13 +16,9 @@ require("hlchunk").setup({
 			"┊",
 		},
 		style = {
-			c.red,
-			c.orange,
-			c.yellow,
-			c.green,
-			c.cyan,
-			c.blue,
-			c.purple,
+			"Orange",
+			"Cyan",
+			"Yellow",
 		},
 	},
 })

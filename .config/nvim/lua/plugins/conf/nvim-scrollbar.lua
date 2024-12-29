@@ -9,19 +9,12 @@ map({ "n", "x" }, "g*", function()
 	require("hlslens").start()
 end)
 
-local c = require("config.color")
 require("scrollbar").setup({
-	handle = {
-		color = c.black,
-		hide_if_all_visible = false,
-	},
+	hide_if_all_visible = true,
 	marks = {
-		Search = { color = c.orange },
-		Error = { color = c.red },
-		Warn = { color = c.yellow },
-		Info = { color = c.cyan },
-		Hint = { color = c.purple },
-		Misc = { color = c.purple },
+		Search = {
+			highlight = "Orange",
+		},
 	},
 	excluded_filetypes = {
 		"",

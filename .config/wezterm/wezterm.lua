@@ -17,14 +17,14 @@ config.font = wezterm.font("Explex Console NF", {
 	italic = false,
 })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
-config.text_background_opacity = 0.95
+config.text_background_opacity = 0.85
 config.font_size = 14.0
 config.adjust_window_size_when_changing_font_size = true
 config.cell_width = 1.0
 config.line_height = 1.0
 config.use_cap_height_to_scale_fallback_fonts = true
 
-config.color_scheme = "OneDark (base16)"
+config.color_scheme = "Everforest Dark (Gogh)"
 config.window_decorations = "RESIZE"
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
