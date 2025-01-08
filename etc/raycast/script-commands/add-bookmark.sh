@@ -19,7 +19,7 @@ CURRENT_DIR=$(
 )
 source "$CURRENT_DIR/utils/_fetch_url_and_page_title"
 
-: ${BOOKMARKS_DIR:=$SCRAPBOOK_DIR/Bookmarks}
+: ${BOOKMARKS_DIR:=$SCRAPBOOK_DIR/bookmarks}
 FILENAME=$(rg -l "^# \[.*\]\(${url:q}\)" $BOOKMARKS_DIR)
 if [ "$?" -eq 0 ]; then
   echo "ブックマーク済みです"
