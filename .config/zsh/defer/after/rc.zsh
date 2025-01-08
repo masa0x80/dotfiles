@@ -1,16 +1,11 @@
-autoload -U compinit && compinit
-
 # XXX
 compdef _zbnc_zsh_better_npm_completion npm
 
 # NOTE: must place before loading `$HOME/.config.local/zsh/zshrc
 export GHQ_ROOT=$(ghq root)
-if installed ghq; then
-  if [[ ! -d "$GHQ_ROOT/github.com/masa0x80/dotfiles" ]]; then
-    export DOTFILE="$GHQ_ROOT/github.com/masa0x80/dotfiles"
-  else
-    export DOTFILE="${DOTFILE:-$HOME/.dotfiles}"
-  fi
+export DOTFILE="$GHQ_ROOT/github.com/masa0x80/dotfiles"
+if [[ ! -d "$DOTFILE" ]]; then
+  export DOTFILE="$HOME/.dotfiles"
 fi
 
 source $HOME/.bin/_set_browser
