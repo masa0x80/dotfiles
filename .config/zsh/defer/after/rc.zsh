@@ -8,7 +8,7 @@ if [[ ! -d "$DOTFILE" ]]; then
   export DOTFILE="$HOME/.dotfiles"
 fi
 
-source $HOME/.bin/_set_browser
+zsh-defer source $HOME/.bin/_set_browser
 
 for file (
   # Load local configurations

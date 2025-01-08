@@ -1,5 +1,8 @@
 # homebrew
-eval "$(brew shellenv)"
+cache_file="$ZDOTDIR/cache/brew.zsh"
+test -r "$cache_file" || brew shellenv > $cache_file
+# Do not apply `zsh-defer`
+source $cache_file
 
 path=(
   $HOMEBREW_PREFIX/opt/curl/bin(N-/)
@@ -38,9 +41,19 @@ fi
 if_installed bat export PAGER=bat
 
 # misc
-if_installed mise eval "$(mise activate zsh)"
-if_installed fzf eval "$(fzf --zsh)"
-if_installed direnv eval "$(direnv hook zsh)"
+cache_file="$ZDOTDIR/cache/mise.zsh"
+test -r "$cache_file" || mise activate zsh > $cache_file
+cache_file="$ZDOTDIR/cache/fzf.zsh"
+test -r "$cache_file" || fzf --zsh > $cache_file
+cache_file="$ZDOTDIR/cache/direnv.zsh"
+test -r "$cache_file" || direnv hook zsh > $cache_file
+for file (
+  $ZDOTDIR/cache/mise.zsh(N)
+  $ZDOTDIR/cache/fzf.zsh(N)
+  $ZDOTDIR/cache/direnv.zsh(N)
+) zsh-defer source $file
+
+zsh-defer find $ZDOTDIR/cache -type f -mtime +7 | xargs -I{} rm {}
 
 export AGE_IDENTITY="$HOME/.config/age/key.txt"
 export AGE_RECIPIENT=$(grep -oP '(?<=# public key: ).+(?=)' $AGE_IDENTITY)
