@@ -1,10 +1,8 @@
-#!/usr/bin/env zsh
+#!/usr/bin/osascript
 
-echo '
 tell application "zoom.us"
   activate
   tell application "System Events"
     keystroke "a" using {shift down, command down}
   end tell
 end tell
-' | osascript -
