@@ -1061,7 +1061,7 @@
                                     "key_code": "grave_accent_and_tilde",
                                     "modifiers": { "mandatory": ["control", "command"] }
                                 },
-                                "to": [{ "shell_command": "#!/usr/bin/osascript $HOME/.bin/mute-zoom" }],
+                                "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/mute-zoom" }],
                                 "type": "basic"
                             },
                             {
@@ -1069,7 +1069,7 @@
                                     "key_code": "backslash",
                                     "modifiers": { "mandatory": ["control", "command"] }
                                 },
-                                "to": [{ "shell_command": "#!/usr/bin/osascript $HOME/.bin/mute-zoom" }],
+                                "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/mute-zoom" }],
                                 "type": "basic"
                             }
                         ]
@@ -1090,7 +1090,7 @@
                                     "key_code": "j",
                                     "modifiers": { "mandatory": ["command"] }
                                 },
-                                "to": [{ "shell_command": "/bin/zsh $HOME/.bin/bookmark-wrapper" }],
+                                "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/bookmark-wrapper" }],
                                 "type": "basic"
                             }
                         ]
