@@ -2,7 +2,7 @@
 compdef _zbnc_zsh_better_npm_completion npm
 
 # NOTE: must place before loading `$HOME/.config.local/zsh/zshrc
-export GHQ_ROOT=$(ghq root)
+export GHQ_ROOT="$HOME/.ghq"
 export DOTFILE="$GHQ_ROOT/github.com/masa0x80/dotfiles"
 if [[ ! -d "$DOTFILE" ]]; then
   export DOTFILE="$HOME/.dotfiles"
