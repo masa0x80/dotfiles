@@ -7,6 +7,10 @@ defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file 
 github = "romkatv/zsh-defer"
 apply = ["source"]
 
+[plugins.pure]
+github = "sindresorhus/pure"
+use = ["async.zsh", "pure.zsh"]
+
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 apply = ["defer"]
@@ -33,7 +37,4 @@ github = "masa0x80/zsh-better-npm-completion"
 apply = ["defer"]
 
 [plugins.load-files]
-inline = "for f ($ZDOTDIR/defer/*.zsh(N) $ZDOTDIR/defer/after/*.zsh(N)) zsh-defer source $f"
-
-[plugins.starship]
-inline = "eval \"$(starship init zsh)\""
+inline = "zsh-defer source $ZDOTDIR/defer.zsh"

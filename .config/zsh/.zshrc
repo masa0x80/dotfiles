@@ -50,4 +50,50 @@ if_installed() {
   eval "installed $cmd && $*"
 }
 
+# homebrew
+cache_file="$ZDOTDIR/cache/brew.zsh"
+test -r "$cache_file" || brew shellenv > $cache_file
+# Do not apply `zsh-defer`
+source $cache_file
+
+path=(
+  $HOMEBREW_PREFIX/opt/curl/bin(N-/)
+  $HOMEBREW_PREFIX/opt/openssl/bin(N-/)
+  $HOMEBREW_PREFIX/opt/sqlite/bin(N-/)
+  $HOMEBREW_PREFIX/opt/gettext/bin(N-/)
+  $HOMEBREW_PREFIX/opt/gnu-getopt/bin(N-/)
+  $HOMEBREW_PREFIX/opt/grep/libexec/gnubin(N-/)
+  $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin(N-/)
+  $HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin(N-/)
+  $HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin(N-/)
+  # golang
+  $GOPATH/bin(N-/)
+  $path
+)
+fpath=(
+  $ZDOTDIR/functions(N-/)
+  $fpath
+)
+
+# EDITOR
+if installed nvim; then
+  export EDITOR=nvim
+  alias vi=nvim
+elif installed vim; then
+  export EDITOR=vim
+  alias vi=vim
+fi
+
+# ls
+if installed eza; then
+  alias ls='eza --group-directories-first --icons'
+fi
+
+# Pager
+if_installed bat export PAGER=bat
+# less
+export LESS='-RFIX'
+# MANPAGER
+export MANPAGER='nvim +Man!'
+
 source $ZDOTDIR/sheldon.zsh
