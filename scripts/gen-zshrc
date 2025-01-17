@@ -1,0 +1,60 @@
+#!/bin/zsh
+
+tmpl_dir="$ZDOTDIR/tmpl"
+zshrc="$ZDOTDIR/.zshrc"
+
+for file (
+  # Load .config.local
+  $HOME/.config.local/zsh/zshenv(N)
+  # Load .zshenv.local
+  $HOME/.zshenv.local(N)
+) cat $file >> $zshrc
+
+cat $tmpl_dir/init.zsh >> $zshrc
+
+# sheldon
+sheldon source >> $zshrc
+
+# homebrew
+brew shellenv >> $zshrc
+
+# misc
+(( ${+commands[mise]} )) && mise mise activate zsh >> $zshrc
+(( ${+commands[fzf]} )) && fzf --zsh >> $zshrc
+(( ${+commands[direnv]} )) && direnv hook zsh >> $zshrc
+cat $tmpl_dir/misc.zsh >> $zshrc
+
+cat $tmpl_dir/check-envrc-exist.zsh >> $zshrc
+cat $tmpl_dir/check-local-git-config.zsh >> $zshrc
+cat $tmpl_dir/complete-ssh-host.zsh >> $zshrc
+cat $tmpl_dir/completion.zsh >> $zshrc
+cat $tmpl_dir/dotdot.zsh >> $zshrc
+cat $tmpl_dir/fzf.zsh >> $zshrc
+cat $tmpl_dir/git-add.zsh >> $zshrc
+cat $tmpl_dir/git-branch.zsh >> $zshrc
+cat $tmpl_dir/key-bindings.zsh >> $zshrc
+cat $tmpl_dir/navi.zsh >> $zshrc
+cat $tmpl_dir/r.zsh >> $zshrc
+
+# zabrze (brewで入れる想定)
+zabrze init --bind-keys >> $zshrc
+
+# Load gcloud
+if test -d $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/; then
+  cat $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc >> $zshrc
+  cat $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc >> $zshrc
+fi
+
+cat $tmpl_dir/ghq.zsh >> $zshrc
+cat $HOME/.bin/_set_browser >> $zshrc
+
+for file (
+  # Load local configurations
+  $HOME/.config.local/zsh/zshrc(N)
+  $HOME/.zshrc.local(N)
+) cat $file >> $zshrc
+
+cat $tmpl_dir/local-bin.zsh >> $zshrc
+
+zcompile $HOME/.zshenv
+zcompile $zshrc

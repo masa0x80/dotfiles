@@ -2,3 +2,5 @@
 .zsh_history
 .zcompdump
 .zcompcache
+
+.zshrc

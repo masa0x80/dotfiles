@@ -31,7 +31,8 @@ install: \
 	silicon \
 	sheldon \
 	passage \
-	term-definition
+	term-definition \
+	gen-zshrc
 
 .PHONY: deploy
 deploy:
@@ -122,3 +123,7 @@ passage:
 .PHONY: term-definition
 term-definition:
 	./scripts/term-definition
+
+.PHONY: gen-zshrc
+gen-zshrc:
+	./scripts/gen-zshrc

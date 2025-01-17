@@ -22,9 +22,6 @@ bindkey '^G^J' jq-complete
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
-# zabrze (brewで入れる想定)
-eval "$(zabrze init --bind-keys)"
-
 # ref. [最近のzshrcとその解説](https://mollifier.hatenablog.com/entry/20090502/p1)
 # quote previous word in single or double quote
 autoload -U modify-current-argument
