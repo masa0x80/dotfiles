@@ -47,8 +47,6 @@ export JIRA_BASE_URL='https://jira.atlassian.com'
 # https://github.com/nivekuil/rip
 export GRAVEYARD="$XDG_DATA_HOME/trash"
 
-export PURE_PROMPT_SYMBOL="%F{magenta}ミ:匚＞%f"
-
 for file (
   # Load .config.local
   $HOME/.config.local/zsh/zshenv(N)
