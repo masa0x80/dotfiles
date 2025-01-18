@@ -1,8 +1,6 @@
 check-envrc-exist() {
-  if [ -f $(pwd)/.envrc ]; then
-    if [ ! $(grep -q '\[env\]' mise.toml >/dev/null 2>&1) ]; then
-      echo -e '\n\033[7;36m[WARN] .envrc is found.\033[0;39m'
-    fi
+  if [ -f $(pwd)/.envrc -a -f mise.toml -a ! $(grep -q '\[env\]' mise.toml >/dev/null 2>&1) ]; then
+    echo -e '\n\033[7;36m[WARN] [env] is not found in mise.toml.\033[0;39m'
   fi
 }
 add-zsh-hook precmd check-envrc-exist

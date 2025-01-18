@@ -1,52 +1,49 @@
 #!/bin/zsh
 
 tmpl_dir="$ZDOTDIR/tmpl"
+zsh_cache="$XDG_CACHE_HOME/zsh-cache.zsh"
 zshrc="$ZDOTDIR/.zshrc"
 
-for file (
-  # Load .config.local
-  $HOME/.config.local/zsh/zshenv(N)
-  # Load .zshenv.local
-  $HOME/.zshenv.local(N)
-) cat $file >> $zshrc
+echo -n > $zsh_cache
+
+# homebrew
+brew shellenv >> $zsh_cache
+source $zsh_cache
+
+# misc
+(( ${+commands[mise]} )) && mise mise activate zsh >> $zsh_cache
+(( ${+commands[fzf]} )) && fzf --zsh >> $zsh_cache
+(( ${+commands[direnv]} )) && direnv hook zsh >> $zsh_cache
+
+echo -n > $zshrc
 
 cat $tmpl_dir/init.zsh >> $zshrc
 
 # sheldon
 sheldon source >> $zshrc
 
-# homebrew
-brew shellenv >> $zshrc
+for file (
+  $tmpl_dir/check-envrc-exist.zsh(N)
+  $tmpl_dir/check-local-git-config.zsh(N)
+  $tmpl_dir/complete-ssh-host.zsh(N)
+  $tmpl_dir/completion.zsh(N)
+  $tmpl_dir/dotdot.zsh(N)
+  $tmpl_dir/fzf.zsh(N)
+  $tmpl_dir/ghq.zsh(N)
+  $tmpl_dir/git-add.zsh(N)
+  $tmpl_dir/git-branch.zsh(N)
+  $tmpl_dir/key-bindings.zsh(N)
+  $tmpl_dir/navi.zsh(N)
+  $tmpl_dir/prompt.zsh(N)
+  $tmpl_dir/r.zsh(N)
 
-# misc
-(( ${+commands[mise]} )) && mise mise activate zsh >> $zshrc
-(( ${+commands[fzf]} )) && fzf --zsh >> $zshrc
-(( ${+commands[direnv]} )) && direnv hook zsh >> $zshrc
-cat $tmpl_dir/misc.zsh >> $zshrc
+  # Load gcloud
+  $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc(N)
+  $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc(N)
+) cat $file >> $zshrc
 
-cat $tmpl_dir/check-envrc-exist.zsh >> $zshrc
-cat $tmpl_dir/check-local-git-config.zsh >> $zshrc
-cat $tmpl_dir/complete-ssh-host.zsh >> $zshrc
-cat $tmpl_dir/completion.zsh >> $zshrc
-cat $tmpl_dir/dotdot.zsh >> $zshrc
-cat $tmpl_dir/fzf.zsh >> $zshrc
-cat $tmpl_dir/git-add.zsh >> $zshrc
-cat $tmpl_dir/git-branch.zsh >> $zshrc
-cat $tmpl_dir/key-bindings.zsh >> $zshrc
-cat $tmpl_dir/navi.zsh >> $zshrc
-cat $tmpl_dir/r.zsh >> $zshrc
-
-# zabrze (brewで入れる想定)
+# zabrze
 zabrze init --bind-keys >> $zshrc
-
-# Load gcloud
-if test -d $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/; then
-  cat $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc >> $zshrc
-  cat $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc >> $zshrc
-fi
-
-cat $tmpl_dir/ghq.zsh >> $zshrc
-cat $HOME/.bin/_set_browser >> $zshrc
 
 for file (
   # Load local configurations
@@ -56,5 +53,10 @@ for file (
 
 cat $tmpl_dir/local-bin.zsh >> $zshrc
 
-zcompile $HOME/.zshenv
-zcompile $zshrc
+# zcompile
+for file (
+  $zshrc
+  $HOME/.zshenv(N)
+  $HOME/.config.local/zsh/zshenv(N)
+  $HOME/.zshenv.local(N)
+) zcompile $file
