@@ -1,8 +1,3 @@
-autoload -Uz add-zsh-hook
-
-# Remove path separator from WORDCHARS.
-WORDCHARS=${WORDCHARS//[\/=-]}
-
 setopt auto_cd
 setopt auto_pushd
 setopt auto_param_slash
@@ -39,15 +34,3 @@ setopt share_history
 autoload -Uz url-quote-magic
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-
-installed() {
-  (( ${+commands[$1]} ))
-}
-
-if_installed() {
-  local cmd=$1
-  shift
-  eval "installed $cmd && $*"
-}
-
-source $ZDOTDIR/sheldon.zsh

@@ -38,7 +38,7 @@ alias grep='grep --color=auto'
 # rails (for rails server alias)
 export RAILS_SERVER_PORT=3000
 
-export GIT_HOOK_DIR="$HOME/.config/git/hooks"
+export GIT_HOOK_DIR="$XDG_CONFIG_HOME/git/hooks"
 
 export HOMEBREW_NO_ANALYTICS=1
 
@@ -47,9 +47,4 @@ export JIRA_BASE_URL='https://jira.atlassian.com'
 # https://github.com/nivekuil/rip
 export GRAVEYARD="$XDG_DATA_HOME/trash"
 
-for file (
-  # Load .config.local
-  $HOME/.config.local/zsh/zshenv(N)
-  # Load .zshenv.local
-  $HOME/.zshenv.local(N)
-) source $file
+export PURE_PROMPT_SYMBOL="%F{magenta}ミ:匚＞%f"
