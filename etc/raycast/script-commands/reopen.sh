@@ -11,7 +11,6 @@
 #
 # @raycast.description This script reopen URL of currently opened page.
 # @raycast.author KIMURA Masayuki
-# @raycast.authorURL https://github.com/masa0x80
 #
 # @raycast.argument1 { "type": "text", "placeholder": "Browser", "optional": true }
 

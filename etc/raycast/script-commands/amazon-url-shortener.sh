@@ -11,7 +11,6 @@
 #
 # @raycast.description Amazon URL shortener
 # @raycast.author KIMURA Masayuki
-# @raycast.authorURL https://github.com/masa0x80
 
 CURRENT_DIR=$(
   cd "$(dirname "$0")" || exit

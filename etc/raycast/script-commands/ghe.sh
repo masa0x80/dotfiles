@@ -11,7 +11,6 @@
 #
 # @raycast.description Open GHE Org/Repository page
 # @raycast.author KIMURA Masayuki
-# @raycast.authorURL https://github.com/masa0x80
 #
 # @raycast.argument1 { "type": "text", "placeholder": "Org", "optional": false }
 # @raycast.argument2 { "type": "text", "placeholder": "Repository", "optional": true }

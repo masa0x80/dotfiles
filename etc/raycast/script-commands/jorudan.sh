@@ -11,7 +11,6 @@
 #
 # @raycast.description Open transfer guide
 # @raycast.author KIMURA Masayuki
-# @raycast.authorURL https://github.com/masa0x80
 #
 # @raycast.argument1 { "type": "text", "placeholder": "駅1", "optional": true }
 # @raycast.argument2 { "type": "text", "placeholder": "駅2", "optional": true }
