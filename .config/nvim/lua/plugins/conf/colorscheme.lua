@@ -3,6 +3,7 @@ require("everforest").setup({
 	on_highlights = function(hl, palette)
 		hl.ExtraWhiteSpace = { fg = palette.none, bg = palette.bg_blue }
 		hl.MarkdownBullet = { fg = palette.grey1, bg = palette.none }
+		hl.NeoTreeGitUntracked = { fg = palette.purple }
 	end,
 })
 require("everforest").load()
