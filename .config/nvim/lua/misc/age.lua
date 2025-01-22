@@ -5,10 +5,8 @@ if recipient ~= nil and identity ~= nil then
 	vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
 		pattern = "*.age",
 		callback = function()
-			if vim.bo.filetype == "age" then
-				vim.cmd("F")
-			end
 			vim.cmd(string.format("silent '[,']!rage --decrypt -i %s", identity))
+			vim.cmd("F")
 		end,
 	})
 

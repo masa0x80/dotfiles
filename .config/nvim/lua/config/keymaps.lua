@@ -249,6 +249,7 @@ vim.api.nvim_create_user_command("F", function(args)
 			else
 				vim.bo.filetype = ft
 			end
+			vim.fn.execute("TSBufEnable " .. vim.bo.filetype)
 		end
 	end
 end, {
