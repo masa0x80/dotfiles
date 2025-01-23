@@ -16,6 +16,9 @@ export XDG_DATA_HOME=$HOME/.local/share
 # zsh
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
+# Remove path separator from WORDCHARS
+WORDCHARS="${WORDCHARS//[\/=]}"
+
 # golang
 export GO111MODULE=on
 export GOPATH=$HOME/go
