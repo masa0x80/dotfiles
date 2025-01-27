@@ -34,6 +34,7 @@ require("conform").setup({
 		lua = { "stylua" },
 		luau = { "stylua" },
 		python = { "black" },
+		make = { "" },
 		markdown = {
 			"delete_single_space_before_marks",
 			"delete_single_space_after_marks",
