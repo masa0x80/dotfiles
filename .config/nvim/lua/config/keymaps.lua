@@ -185,7 +185,7 @@ map("x", "K", ":move'<-2<CR>gv", opts)
 map("x", "J", ":move'>+1<CR>gv", opts)
 
 -- Jira
-map("n", "<Leader>J", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)
+map("n", ",j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)
 
 -- JSON.stringify
 vim.api.nvim_create_user_command("JsonStringify", function(args)
