@@ -4,8 +4,8 @@ require("telekasten").setup({
 
 	auto_set_filetype = false,
 
-	dailies = home .. "/" .. "daily",
-	weeklies = home .. "/" .. "weekly",
+	dailies = home .. "/" .. "daily/" .. os.date("%Y"),
+	weeklies = home .. "/" .. "weekly/" .. os.date("%Y"),
 	templates = home .. "/" .. "templates",
 
 	template_new_note = home .. "/" .. "templates/new_note.md",
