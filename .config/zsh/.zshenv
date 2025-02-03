@@ -112,19 +112,19 @@ export LESS='-RFIX'
 identifier="$(defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure | awk -F'"' '/http;/{print window[(NR)-1]}{window[NR]=$2}')"
 case "$identifier" in
 "net.kassett.finicky")
-  BROWSER="Vivaldi"
+  TARGET_BROWSER="Vivaldi"
   ;;
 "com.vivaldi.vivaldi")
-  BROWSER="Vivaldi"
+  TARGET_BROWSER="Vivaldi"
   ;;
 "com.microsoft.edgemac")
-  BROWSER="Microsoft Edge"
+  TARGET_BROWSER="Microsoft Edge"
   ;;
 "com.google.chrome")
-  BROWSER="Google Chrome"
+  TARGET_BROWSER="Google Chrome"
   ;;
 *)
-  BROWSER="Safari"
+  TARGET_BROWSER="Safari"
   ;;
 esac
-export BROWSER
+export TARGET_BROWSER

@@ -63,7 +63,7 @@ vim.api.nvim_create_user_command("PlantUMLPreview", function()
 		"open",
 		"-n",
 		"-a",
-		vim.fn.expand("$BROWSER"),
+		vim.fn.expand("$TARGET_BROWSER"),
 		"--args",
 		"http://localhost:" .. port .. "/viewer.html?filename=" .. filename,
 	})

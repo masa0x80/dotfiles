@@ -19,5 +19,5 @@ CURRENT_DIR=$(
 source "$CURRENT_DIR/utils/_fetch_url_and_page_title"
 
 url="$(echo "$url" | sed 's|.*/\(dp/[^/?#]*\).*|https://www.amazon.co.jp/\1|')"
-osascript -e "tell application \"$BROWSER\" to set URL of active tab of front window to \"$url\""
-osascript -e "tell application \"$BROWSER\" to activate"
+osascript -e "tell application \"$TARGET_BROWSER\" to set URL of active tab of front window to \"$url\""
+osascript -e "tell application \"$TARGET_BROWSER\" to activate"
