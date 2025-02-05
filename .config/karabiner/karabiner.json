@@ -917,7 +917,7 @@
                                 "to": [
                                     {
                                         "key_code": "return_or_enter",
-                                        "modifiers": ["control"]
+                                        "modifiers": ["option"]
                                     }
                                 ],
                                 "type": "basic"
@@ -1061,7 +1061,12 @@
                                     "key_code": "grave_accent_and_tilde",
                                     "modifiers": { "mandatory": ["control", "command"] }
                                 },
-                                "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/mute-zoom" }],
+                                "to": [
+                                    {
+                                        "key_code": "a",
+                                        "modifiers": ["command", "shift"]
+                                    }
+                                ],
                                 "type": "basic"
                             },
                             {
@@ -1069,7 +1074,12 @@
                                     "key_code": "backslash",
                                     "modifiers": { "mandatory": ["control", "command"] }
                                 },
-                                "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/mute-zoom" }],
+                                "to": [
+                                    {
+                                        "key_code": "a",
+                                        "modifiers": ["command", "shift"]
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
@@ -1090,7 +1100,12 @@
                                     "key_code": "j",
                                     "modifiers": { "mandatory": ["command"] }
                                 },
-                                "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/bookmark-wrapper" }],
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
