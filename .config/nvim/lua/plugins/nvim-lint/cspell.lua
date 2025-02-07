@@ -9,10 +9,10 @@ local cspell_files = {
 	config = cspell_config_dir .. "/cspell.json",
 	dotfiles = cspell_config_dir .. "/dotfiles.txt",
 	dotfiles_local = dotfiles_local_dir .. "/local.txt",
+	user = cspell_data_dir .. "/user.txt",
 	lua = cspell_data_dir .. "/lua.txt",
 	ruby = cspell_data_dir .. "/ruby.txt",
 	vim = cspell_data_dir .. "/vim.txt",
-	user = cspell_data_dir .. "/user.txt",
 }
 
 -- dotfiles辞書がなければ作成
@@ -54,14 +54,14 @@ if vim.fn.filereadable(cspell_files.dotfiles_local) ~= 1 then
 end
 
 local cspell_append = function(opts)
-	local word = opts.args
+	local target = opts.fargs[1]
+	local dictionary_name = target == "global" and "dotfiles" or target == "local" and "local" or "user"
+
+	local word = opts.fargs[2]
 	if not word or word == "" then
 		-- 引数がなければcwordを取得
 		word = vim.fn.expand("<cword>"):lower()
 	end
-
-	-- bangの有無で保存先を分岐
-	local dictionary_name = opts.bang and "dotfiles" or "user"
 
 	-- shellのechoコマンドで辞書ファイルに追記
 	io.popen("echo " .. word .. " >> " .. cspell_files[dictionary_name])
@@ -76,11 +76,12 @@ local cspell_append = function(opts)
 	end
 end
 
-vim.api.nvim_create_user_command("CSpellAppend", cspell_append, { nargs = "?", bang = true })
+vim.api.nvim_create_user_command("CSpellAppend", cspell_append, { nargs = "*" })
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
-keymap("n", "<Leader>au", "<Cmd>CSpellAppend<CR>", opts)
-keymap("n", "<Leader>ag", "<Cmd>CSpellAppend!<CR>", opts)
+keymap("n", "<Leader>ag", "<Cmd>CSpellAppend dotfiles<CR>", opts)
+keymap("n", "<Leader>al", "<Cmd>CSpellAppend dotfiles_local<CR>", opts)
+keymap("n", "<Leader>au", "<Cmd>CSpellAppend user<CR>", opts)
 
 vim.api.nvim_create_user_command("OpenCSpellDotfile", "edit " .. cspell_files.dotfiles, {})
 vim.api.nvim_create_user_command("OpenCSpellLocal", "edit " .. cspell_files.dotfiles_local, {})

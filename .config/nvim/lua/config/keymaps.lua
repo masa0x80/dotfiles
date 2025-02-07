@@ -214,10 +214,10 @@ end, {
 })
 
 -- Jq
-vim.api.nvim_create_user_command("Jq", function(args)
+vim.api.nvim_create_user_command("Jq", function(opts)
 	local cmd
-	if args.range == 2 then
-		cmd = args.line1 .. "," .. args.line2 .. "!jq ."
+	if opts.range == 2 then
+		cmd = opts.line1 .. "," .. opts.line2 .. "!jq ."
 	else
 		cmd = "%!jq ."
 	end
@@ -225,10 +225,10 @@ vim.api.nvim_create_user_command("Jq", function(args)
 end, {
 	range = 2,
 })
-vim.api.nvim_create_user_command("JqCompact", function(args)
+vim.api.nvim_create_user_command("JqCompact", function(opts)
 	local cmd
-	if args.range == 2 then
-		cmd = args.line1 .. "," .. args.line2 .. "!jq -c ."
+	if opts.range == 2 then
+		cmd = opts.line1 .. "," .. opts.line2 .. "!jq -c ."
 	else
 		cmd = "%!jq -c ."
 	end
@@ -237,8 +237,8 @@ end, {
 	range = 2,
 })
 
-vim.api.nvim_create_user_command("F", function(args)
-	local ft = args.fargs[1]
+vim.api.nvim_create_user_command("F", function(opts)
+	local ft = opts.fargs[1]
 	if ft ~= nil then
 		vim.bo.filetype = ft
 	else
@@ -254,4 +254,13 @@ vim.api.nvim_create_user_command("F", function(args)
 	end
 end, {
 	nargs = "?",
+})
+
+vim.api.nvim_create_user_command("AddAbbrComma", function(opts)
+	local k = opts.fargs[1]
+	local v = opts.fargs[2]
+	local cmd = "iabbr " .. k .. " " .. v .. ":<Space>"
+	vim.fn.execute(cmd)
+end, {
+	nargs = "*",
 })
