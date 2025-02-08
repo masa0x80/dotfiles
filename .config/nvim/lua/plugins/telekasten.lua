@@ -57,6 +57,21 @@ return {
 		},
 		{
 			";g",
+			"<Cmd>lua require('telekasten').search_notes({ cwd = require('telekasten').Cfg.home })<CR>",
+			noremap = true,
+			silent = true,
+		},
+		{
+			";G",
+			function()
+				require("telekasten").search_notes({ cwd = require("telekasten").Cfg.home })
+				return vim.fn.expand("<cword>")
+			end,
+			noremap = true,
+			silent = true,
+		},
+		{
+			";k",
 			"<Cmd>lua require('telescope._extensions.kensaku').exports.kensaku({ cwd = require('telekasten').Cfg.home })<CR>",
 			noremap = true,
 			silent = true,

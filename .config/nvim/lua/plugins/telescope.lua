@@ -30,12 +30,13 @@ return {
 				desc = "Search [F]iles",
 			},
 			{ "<Leader>sh", "<Cmd>lua require('telescope.builtin').help_tags()<CR>", desc = "[S]earch [H]elp" },
-			{ "<Leader>g", "<Cmd>Telescope kensaku<CR>", desc = "Search by [G]rep" },
+			{ "<Leader>g", "<Cmd>lua require('telescope.builtin').live_grep()<CR>", desc = "Search by [G]rep" },
 			{
 				"<Leader>G",
 				"<Cmd>lua require('telescope.builtin').grep_string()<CR>",
 				desc = "[G] Search current Word",
 			},
+			{ "<Leader>k", "<Cmd>Telescope kensaku<CR>", desc = "Search by [K]ensaku" },
 			{
 				"<Leader>sd",
 				"<Cmd>lua require('telescope.builtin').diagnostics()<CR>",
