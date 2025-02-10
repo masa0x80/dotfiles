@@ -1100,12 +1100,7 @@
                                     "key_code": "j",
                                     "modifiers": { "mandatory": ["command"] }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "right_arrow",
-                                        "modifiers": ["shift"]
-                                    }
-                                ],
+                                "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/bookmark-wrapper" }],
                                 "type": "basic"
                             }
                         ]
