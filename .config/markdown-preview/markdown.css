@@ -179,6 +179,11 @@ code::before,
 code::after {
   content: "`";
 }
+strong > code {
+  line-height: 1em;
+  background-color: #30333d !important;
+  background: linear-gradient(transparent 86%, #e8939a 0%);
+}
 pre > code {
   line-height: 1em;
 }
