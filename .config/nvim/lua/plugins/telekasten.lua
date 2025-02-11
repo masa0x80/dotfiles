@@ -1,5 +1,20 @@
 local UNORDERED_LIST_PATTERN = "^%s*[-*+] $"
 local TASK_PATTERN = "^%s*[-*+] %[[x ]%] $"
+local toggle_check = function()
+	local row = vim.fn.line(".") - 1
+	local line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
+	local new
+
+	if string.match(line, string.sub(TASK_PATTERN, 0, -2)) then
+		require("telekasten").toggle_todo()
+		return
+	elseif string.match(line, string.sub(UNORDERED_LIST_PATTERN, 0, -2)) then
+		new = line:gsub("[-*+] (%S)", "%1", 1)
+	else
+		new = line:gsub("(%S)", "- %1", 1)
+	end
+	vim.api.nvim_buf_set_lines(0, row, row + 1, false, { new })
+end
 
 return {
 	"renerocksai/telekasten.nvim",
@@ -14,21 +29,14 @@ return {
 		{ ";t", "<Cmd>Telekasten show_tags<CR>", noremap = true, silent = true },
 		{
 			"<C-g><C-i>",
-			function()
-				local row = vim.fn.line(".") - 1
-				local line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
-				local new
-
-				if string.match(line, string.sub(TASK_PATTERN, 0, -2)) then
-					require("telekasten").toggle_todo()
-					return
-				elseif string.match(line, string.sub(UNORDERED_LIST_PATTERN, 0, -2)) then
-					new = line:gsub("[-*+] (%S)", "%1", 1)
-				else
-					new = line:gsub("(%S)", "- %1", 1)
-				end
-				vim.api.nvim_buf_set_lines(0, row, row + 1, false, { new })
-			end,
+			toggle_check,
+			noremap = true,
+			silent = true,
+			mode = { "n", "i" },
+		},
+		{
+			"<C-g><C-o>",
+			toggle_check,
 			noremap = true,
 			silent = true,
 			mode = { "n", "i" },
@@ -41,8 +49,21 @@ return {
 			mode = "i",
 		},
 		{
+			"<C-g><C-g><C-o>",
+			"<Esc><Cmd>lua require('telekasten').toggle_todo()<CR><Cmd>lua require('telekasten').toggle_todo({ i = true })<CR>",
+			noremap = true,
+			silent = true,
+			mode = "i",
+		},
+		{
 			"<C-g><C-g><C-i>",
 			"<Cmd>lua require('telekasten').toggle_todo()<CR>",
+			noremap = true,
+			silent = true,
+		},
+		{
+			"<C-g><C-g><C-o>",
+			"<Cmd>lua require('telekasten').toggle_todo()<CR><Cmd>lua require('telekasten').toggle_todo()<CR>",
 			noremap = true,
 			silent = true,
 		},
