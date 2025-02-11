@@ -72,16 +72,6 @@ local on_attach = function(client, bufnr)
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	nmap("gd", vim.lsp.buf.definition, "[GD] Goto Definition")
-	nmap("gr", require("telescope.builtin").lsp_references, "[GR] Goto References")
-	nmap("gI", vim.lsp.buf.implementation, "[GI] Goto Implementation")
-	nmap("<Leader>D", vim.lsp.buf.type_definition, "[D] Type Definition")
-	nmap("<Leader>ds", require("telescope.builtin").lsp_document_symbols, "[DS] Document Symbols")
-	nmap("<Leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[WS] Workspace Symbols")
-
-	-- Lesser used LSP functionality
-	nmap("gD", vim.lsp.buf.declaration, "[GD] Goto Declaration")
-
 	-- Setup hover keymap
 	nmap("K", function()
 		local line = vim.api.nvim_get_current_line()
@@ -215,7 +205,6 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
-keymap("n", "gh", "<Cmd>Lspsaga finder<CR>", opts)
 keymap("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>", opts)
 
 keymap("n", "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", opts)

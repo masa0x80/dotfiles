@@ -71,18 +71,6 @@ return {
 		{ ";w", "<Cmd>Telekasten goto_thisweek<CR>", noremap = true, silent = true },
 		{ ";c", "<Cmd>Telekasten show_calendar<CR>", noremap = true, silent = true },
 		{
-			";f",
-			"<Cmd>lua require('telescope.builtin').find_files({ cwd = require('telekasten').Cfg.home })<CR>",
-			noremap = true,
-			silent = true,
-		},
-		{
-			";g",
-			"<Cmd>lua require('telekasten').search_notes({ cwd = require('telekasten').Cfg.home })<CR>",
-			noremap = true,
-			silent = true,
-		},
-		{
 			";G",
 			function()
 				require("telekasten").search_notes({ cwd = require("telekasten").Cfg.home })

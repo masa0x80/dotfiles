@@ -13,8 +13,8 @@ return {
 			},
 		},
 		event = { "BufNewFile", "BufRead" },
+		init = require("config.utils").load("init/git-conflict"),
 	},
-
 	{
 		"rhysd/git-messenger.vim",
 		keys = {

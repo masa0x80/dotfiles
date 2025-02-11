@@ -4,6 +4,8 @@ require("everforest").setup({
 		hl.ExtraWhiteSpace = { fg = palette.none, bg = palette.bg_blue }
 		hl.MarkdownBullet = { fg = palette.grey1, bg = palette.none }
 		hl.NeoTreeGitUntracked = { fg = palette.purple }
+		hl.SnacksPickerDir = { fg = palette.grey1 }
+		hl.SnacksPickerPathHidden = { fg = palette.grey1 }
 	end,
 })
 require("everforest").load()
