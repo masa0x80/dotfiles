@@ -150,6 +150,8 @@ map("i", "<A-;>", "…", opts)
 
 map("i", "<C-g><C-n>", "<C-t>", { noremap = true, silent = true, desc = "Indent >>" })
 map("i", "<C-g><C-p>", "<C-d>", { noremap = true, silent = true, desc = "Indent <<" })
+map("i", "<Tab>", "<C-t>", { noremap = true, silent = true, desc = "Indent <<" })
+map("i", "<S-Tab>", "<C-d>", { noremap = true, silent = true, desc = "Indent <<" })
 
 -- # Visual
 

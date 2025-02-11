@@ -84,42 +84,5 @@ require("markdown").setup({
 
 		map("i", "<BS>", backspace, opts)
 		map("i", "<C-h>", backspace, opts)
-		map("i", "<Tab>", function()
-			local row = vim.fn.line(".") - 1
-			local line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
-
-			if
-				string.match(line, string.sub(UNORDERED_LIST_PATTERN, 0, -2))
-				or string.match(line, string.sub(ORDERED_LIST_PATTERN, 0, -2))
-				or string.match(line, string.sub(TASK_PATTERN, 0, -2))
-			then
-				local ct = vim.api.nvim_replace_termcodes("<C-t>", true, false, true)
-				vim.api.nvim_feedkeys(ct, "n", true)
-				return
-			end
-
-			local tab = vim.api.nvim_replace_termcodes("<Tab>", true, false, true)
-			vim.api.nvim_feedkeys(tab, "n", true)
-		end, opts)
-		map("i", "<S-Tab>", function()
-			local row = vim.fn.line(".") - 1
-			local line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
-
-			if
-				string.match(line, string.sub(UNORDERED_LIST_PATTERN, 0, -2))
-				or string.match(line, string.sub(ORDERED_LIST_PATTERN, 0, -2))
-				or string.match(line, string.sub(TASK_PATTERN, 0, -2))
-			then
-				if string.sub(line, 0, 1) ~= " " then
-					return
-				end
-				local cd = vim.api.nvim_replace_termcodes("<C-d>", true, false, true)
-				vim.api.nvim_feedkeys(cd, "n", true)
-				return
-			end
-
-			local tab = vim.api.nvim_replace_termcodes("<S-Tab>", true, false, true)
-			vim.api.nvim_feedkeys(tab, "n", true)
-		end, opts)
 	end,
 })
