@@ -30,6 +30,11 @@ require("render-markdown").setup({
 	pipe_table = {
 		style = "normal",
 	},
+	html = {
+		comment = {
+			text = "…snip…",
+		},
+	},
 	win_options = {
 		concealcursor = {
 			default = vim.api.nvim_get_option_value("concealcursor", {}),
