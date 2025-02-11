@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 require("hop").setup({})
 
 local map = vim.keymap.set
@@ -7,16 +8,16 @@ local direction = require("hop.hint").HintDirection
 map("", "<Leader><Space>", function()
 	hop.hint_words({ current_line_only = true })
 end, opts)
-map("", "<Leader>k", function()
+map("", "<C-g><C-k>", function()
 	hop.hint_lines({ direction = direction.BEFORE_CURSOR })
 end, opts)
-map("", "<Leader>K", function()
+map("", "<C-g><C-p>", function()
 	hop.hint_words({ direction = direction.BEFORE_CURSOR })
 end, opts)
-map("", "<Leader>j", function()
+map("", "<C-g><C-j>", function()
 	hop.hint_lines({ direction = direction.AFTER_CURSOR })
 end, opts)
-map("", "<Leader>J", function()
+map("", "<C-g><C-n>", function()
 	hop.hint_words({ direction = direction.AFTER_CURSOR })
 end, opts)
 
