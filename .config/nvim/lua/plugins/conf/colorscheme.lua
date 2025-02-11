@@ -6,6 +6,7 @@ require("everforest").setup({
 		hl.NeoTreeGitUntracked = { fg = palette.purple }
 		hl.SnacksPickerDir = { fg = palette.grey1 }
 		hl.SnacksPickerPathHidden = { fg = palette.grey1 }
+		hl["@markup.strong.markdown_inline"] = { sp = palette.red, bold = true, underdouble = true }
 	end,
 })
 require("everforest").load()
