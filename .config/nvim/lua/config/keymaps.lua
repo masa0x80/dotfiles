@@ -79,8 +79,6 @@ map(
 -- Indent
 map("n", "<C-g><C-p>", "<<", opts)
 map("n", "<C-g><C-n>", ">>", opts)
-map("n", "<C-t><C-p>", "<<", opts)
-map("n", "<C-t><C-n>", ">>", opts)
 
 map("n", ";P", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { noremap = true, silent = true, desc = "cd $PWD" })
 map(

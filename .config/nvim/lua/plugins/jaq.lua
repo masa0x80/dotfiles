@@ -68,24 +68,11 @@ return {
 	},
 	{
 		"akinsho/toggleterm.nvim",
-		cmd = { "LG", "REV" },
+		cmd = { "ToggleTerm", "LG", "REV" },
 		keys = {
 			{ "<C-\\>" },
-			{
-				";F",
-				"<Cmd>lua vim.cmd(vim.v.count1 .. 'ToggleTerm direction=float')<CR>",
-				noremap = true,
-				silent = true,
-				desc = "<v:count1>ToggleTerm direction=float",
-			},
-			{
-				";J",
-				"<Cmd>lua vim.cmd(vim.v.count1 .. 'ToggleTerm direction=horizontal')<CR>",
-				noremap = true,
-				silent = true,
-				desc = "<v:count1>ToggleTerm direction=horizontal",
-			},
 		},
+		init = require("config.utils").load("init/toggleterm"),
 		config = require("config.utils").load("conf/toggleterm"),
 	},
 }

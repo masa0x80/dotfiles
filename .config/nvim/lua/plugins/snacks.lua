@@ -11,13 +11,23 @@ return {
 		input = { enabled = true },
 		picker = {
 			enabled = true,
+			hidden = true,
+			sort = {
+				fields = { "score:desc", "idx:desc", "#text" },
+			},
 			win = {
+				list = {
+					keys = {
+						["<C-y>"] = { "yank", mode = { "n", "i" } },
+					},
+				},
 				input = {
 					keys = {
 						["<C-a>"] = { "C_a", mode = { "i" } },
 						["<C-f>"] = { "C_f", mode = { "i" } },
 						["<C-b>"] = { "C_b", mode = { "i" } },
 						["<C-z>"] = { "select_all", mode = { "n", "i" } },
+						["<C-y>"] = { "yank", mode = { "n", "i" } },
 					},
 				},
 			},
@@ -127,13 +137,6 @@ return {
 			desc = "Buffer Lines",
 		},
 		{
-			"<Leader>fp",
-			function()
-				Snacks.explorer.open({ cwd = "~/.ghq" })
-			end,
-			desc = "Projects",
-		},
-		{
 			"<Leader>fr",
 			function()
 				Snacks.picker.recent()
@@ -208,14 +211,14 @@ return {
 		{
 			"<Leader>sg",
 			function()
-				Snacks.picker.grep({ hidden = true })
+				Snacks.picker.grep()
 			end,
 			desc = "Grep",
 		},
 		{
 			"<Leader>sG",
 			function()
-				Snacks.picker.grep_word({ hidden = true })
+				Snacks.picker.grep_word()
 			end,
 			desc = "Visual selection or word",
 			mode = { "n", "x" },
@@ -223,7 +226,7 @@ return {
 		{
 			"<Leader>G",
 			function()
-				Snacks.picker.grep_word({ hidden = true })
+				Snacks.picker.grep_word()
 			end,
 			desc = "Visual selection or word",
 			mode = { "n", "x" },
@@ -233,7 +236,6 @@ return {
 			function()
 				Snacks.picker.grep({
 					cwd = require("telekasten").Cfg.home,
-					hidden = true,
 					exclude = { "*.age" },
 				})
 			end,
@@ -245,7 +247,6 @@ return {
 			function()
 				Snacks.picker.grep_word({
 					cwd = require("telekasten").Cfg.home,
-					hidden = true,
 					exclude = { "*.age" },
 				})
 			end,
@@ -258,7 +259,6 @@ return {
 			function()
 				Snacks.picker.grep_word({
 					cwd = require("telekasten").Cfg.home,
-					hidden = true,
 					exclude = { "*.age" },
 				})
 			end,
@@ -491,16 +491,16 @@ return {
 		{
 			"<Leader>z",
 			function()
-				Snacks.zen()
+				Snacks.zen.zoom()
 			end,
-			desc = "Toggle Zen Mode",
+			desc = "Toggle Zoom",
 		},
 		{
 			"<Leader>Z",
 			function()
-				Snacks.zen.zoom()
+				Snacks.zen()
 			end,
-			desc = "Toggle Zoom",
+			desc = "Toggle Zen Mode",
 		},
 		{
 			"<Leader>.",
@@ -522,13 +522,6 @@ return {
 				Snacks.notifier.show_history()
 			end,
 			desc = "Notification History",
-		},
-		{
-			"<Leader>D",
-			function()
-				Snacks.bufdelete()
-			end,
-			desc = "Delete Buffer",
 		},
 		{
 			"<Leader>cR",

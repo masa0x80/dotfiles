@@ -9,3 +9,6 @@ bufferline.setup({
 		separator_style = "slant",
 	},
 })
+
+local map = vim.keymap.set
+map("n", "BO", "<Cmd>BufferLineCloseOthers<CR>", { noremap = true })

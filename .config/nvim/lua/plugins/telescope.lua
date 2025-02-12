@@ -5,7 +5,7 @@ return {
 			{ "<Leader>k", "<Cmd>Telescope kensaku<CR>", desc = "Search by [K]ensaku" },
 
 			{
-				";e",
+				"<Leader>E",
 				"<Cmd>lua require('telescope._extensions.ghq_builtin').list()<CR>",
 				desc = "Telescope ghq list",
 			},
