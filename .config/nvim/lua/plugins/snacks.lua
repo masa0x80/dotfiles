@@ -18,7 +18,8 @@ return {
 			win = {
 				list = {
 					keys = {
-						["<C-y>"] = { "yank", mode = { "n", "i" } },
+						["<C-y>"] = { "list_up" },
+						["<C-e>"] = { "list_down" },
 					},
 				},
 				input = {
@@ -76,6 +77,43 @@ return {
 			"<Leader>e",
 			function()
 				Snacks.explorer()
+			end,
+			desc = "File Explorer",
+		},
+		{
+			"-",
+			function()
+				Snacks.explorer({
+					layout = {
+						preview = true,
+						layout = {
+							box = "horizontal",
+							backdrop = false,
+							width = 0.8,
+							height = 0.9,
+							border = "none",
+							{
+								box = "vertical",
+								{
+									win = "input",
+									height = 1,
+									border = "rounded",
+									title = "{title} {live} {flags}",
+									title_pos = "center",
+								},
+								{ win = "list", title = " Results ", title_pos = "center", border = "rounded" },
+							},
+							{
+								win = "preview",
+								title = "{preview:Preview}",
+								width = 0.45,
+								border = "rounded",
+								title_pos = "center",
+							},
+						},
+					},
+					auto_close = true,
+				})
 			end,
 			desc = "File Explorer",
 		},
