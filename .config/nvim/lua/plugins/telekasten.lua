@@ -35,11 +35,25 @@ return {
 			mode = { "n", "i" },
 		},
 		{
+			"<C-g><C-i>",
+			"<Esc><Cmd>:'<,'>s/^\\(\\s*\\)\\(\\S\\)/\\1- \\2/g<CR>:nohlsearch<CR>",
+			noremap = true,
+			silent = true,
+			mode = { "x" },
+		},
+		{
 			"<C-g><C-o>",
 			toggle_check,
 			noremap = true,
 			silent = true,
 			mode = { "n", "i" },
+		},
+		{
+			"<C-g><C-o>",
+			"<Esc><Cmd>:'<,'>s/^\\(\\s*\\)[-*+] \\(\\[[ x]\\] \\)\\?\\(\\S\\)/\\1\\3/g<CR>:nohlsearch<CR>",
+			noremap = true,
+			silent = true,
+			mode = { "x" },
 		},
 		{
 			"<C-g><C-g><C-i>",
@@ -49,11 +63,25 @@ return {
 			mode = "i",
 		},
 		{
+			"<C-g><C-g><C-i>",
+			"<Esc><Cmd>:'<,'>s/^\\(\\s*\\)\\(\\S\\)/\\1- [ ] \\2/g<CR>:nohlsearch<CR>",
+			noremap = true,
+			silent = true,
+			mode = "x",
+		},
+		{
 			"<C-g><C-g><C-o>",
 			"<Esc><Cmd>lua require('telekasten').toggle_todo()<CR><Cmd>lua require('telekasten').toggle_todo({ i = true })<CR>",
 			noremap = true,
 			silent = true,
 			mode = "i",
+		},
+		{
+			"<C-g><C-g><C-o>",
+			"<Esc><Cmd>:'<,'>s/^\\(\\s*\\)\\(\\S\\)/\\1- [x] \\2/g<CR>:nohlsearch<CR>",
+			noremap = true,
+			silent = true,
+			mode = "x",
 		},
 		{
 			"<C-g><C-g><C-i>",

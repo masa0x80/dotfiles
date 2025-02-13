@@ -12,34 +12,35 @@ return {
 		picker = {
 			enabled = true,
 			hidden = true,
-			sort = {
-				fields = { "score:desc", "idx:desc", "#text" },
-			},
 			win = {
 				list = {
 					keys = {
+						["<C-j>"] = { "preview_scroll_down", mode = { "n", "i" } },
+						["<C-k>"] = { "preview_scroll_up", mode = { "n", "i" } },
 						["<C-y>"] = { "list_up" },
 						["<C-e>"] = { "list_down" },
 					},
 				},
 				input = {
 					keys = {
-						["<C-a>"] = { "C_a", mode = { "i" } },
-						["<C-f>"] = { "C_f", mode = { "i" } },
-						["<C-b>"] = { "C_b", mode = { "i" } },
+						["<C-j>"] = { "preview_scroll_down", mode = { "n", "i" } },
+						["<C-k>"] = { "preview_scroll_up", mode = { "n", "i" } },
+						["<C-a>"] = { "ctr_a", mode = { "i" } },
+						["<C-f>"] = { "ctr_f", mode = { "i" } },
+						["<C-b>"] = { "ctr_b", mode = { "i" } },
 						["<C-z>"] = { "select_all", mode = { "n", "i" } },
 						["<C-y>"] = { "yank", mode = { "n", "i" } },
 					},
 				},
 			},
 			actions = {
-				C_a = function()
+				ctr_a = function()
 					vim.fn.execute("normal I")
 				end,
-				C_f = function()
+				ctr_f = function()
 					vim.fn.execute("normal l")
 				end,
-				C_b = function()
+				ctr_b = function()
 					vim.fn.execute("normal h")
 				end,
 			},
@@ -76,7 +77,10 @@ return {
 		{
 			"<Leader>e",
 			function()
-				Snacks.explorer()
+				Snacks.explorer({
+					hidden = true,
+					ignored = true,
+				})
 			end,
 			desc = "File Explorer",
 		},
@@ -84,6 +88,8 @@ return {
 			"-",
 			function()
 				Snacks.explorer({
+					hidden = true,
+					ignored = true,
 					layout = {
 						preview = true,
 						layout = {
@@ -156,14 +162,24 @@ return {
 		{
 			";ff",
 			function()
-				Snacks.picker.git_files({ cwd = require("telekasten").Cfg.home })
+				Snacks.picker.git_files({
+					cwd = require("telekasten").Cfg.home,
+					sort = {
+						fields = { "score:desc", "idx:desc", "#text" },
+					},
+				})
 			end,
 			desc = "Find Git Files (under Telekasten home)",
 		},
 		{
 			";F",
 			function()
-				Snacks.picker.files({ cwd = require("telekasten").Cfg.home })
+				Snacks.picker.files({
+					cwd = require("telekasten").Cfg.home,
+					sort = {
+						fields = { "score:desc", "idx:desc", "#text" },
+					},
+				})
 			end,
 			desc = "Find Files (under Telekasten home)",
 		},
