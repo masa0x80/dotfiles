@@ -11,8 +11,8 @@ return {
 		input = { enabled = true },
 		picker = {
 			enabled = true,
-			hidden = true,
 			win = {
+				explorer = {},
 				list = {
 					keys = {
 						["<C-j>"] = { "preview_scroll_down", mode = { "n", "i" } },
@@ -50,7 +50,7 @@ return {
 		scope = { enabled = true },
 		scroll = { enabled = false },
 		statuscolumn = { enabled = true },
-		words = { enabled = true },
+		words = { enabled = false },
 	},
 	keys = {
 		{
@@ -80,6 +80,15 @@ return {
 				Snacks.explorer({
 					hidden = true,
 					ignored = true,
+					win = {
+						explorer = {},
+						list = {
+							keys = {
+								["<C-l>"] = { "lcd" },
+								["<C-c>"] = { "close" },
+							},
+						},
+					},
 				})
 			end,
 			desc = "File Explorer",
@@ -118,6 +127,15 @@ return {
 							},
 						},
 					},
+					win = {
+						explorer = {},
+						list = {
+							keys = {
+								["<C-l>"] = { "lcd" },
+								["<C-c>"] = { "close" },
+							},
+						},
+					},
 					auto_close = true,
 				})
 			end,
@@ -141,31 +159,40 @@ return {
 		{
 			"<Leader>fc",
 			function()
-				Snacks.picker.git_files({ cwd = os.getenv("DOTFILES") })
+				Snacks.picker.git_files({
+					cwd = os.getenv("DOTFILES"),
+					hidden = true,
+					ignored = true,
+				})
 			end,
 			desc = "Find Dotfiles",
 		},
 		{
 			"<Leader>ff",
 			function()
+				Snacks.picker.files({
+					hidden = true,
+					ignored = true,
+				})
+			end,
+			desc = "Find Files",
+		},
+		{
+			"<Leader>F",
+			function()
 				Snacks.picker.git_files()
 			end,
 			desc = "Find Git Files",
 		},
 		{
-			"<Leader>F",
-			function()
-				Snacks.picker.files()
-			end,
-			desc = "Find Files",
-		},
-		{
 			";ff",
 			function()
-				Snacks.picker.git_files({
+				Snacks.picker.files({
 					cwd = require("telekasten").Cfg.home,
+					hidden = true,
+					ignored = true,
 					sort = {
-						fields = { "score:desc", "idx:desc", "#text" },
+						fields = { "idx:desc", "score:desc", "#text" },
 					},
 				})
 			end,
@@ -174,10 +201,10 @@ return {
 		{
 			";F",
 			function()
-				Snacks.picker.files({
+				Snacks.picker.git_files({
 					cwd = require("telekasten").Cfg.home,
 					sort = {
-						fields = { "score:desc", "idx:desc", "#text" },
+						fields = { "idx:desc", "score:desc", "#text" },
 					},
 				})
 			end,
@@ -196,6 +223,19 @@ return {
 				Snacks.picker.recent()
 			end,
 			desc = "Recent",
+		},
+		{
+			";fr",
+			function()
+				Snacks.picker.recent({
+					filter = {
+						paths = {
+							[require("telekasten").Cfg.home] = true,
+						},
+					},
+				})
+			end,
+			desc = "Recent (under Telekasten home)",
 		},
 		-- Git
 		{
