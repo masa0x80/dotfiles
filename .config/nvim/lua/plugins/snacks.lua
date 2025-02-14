@@ -7,12 +7,12 @@ return {
 		bigfile = { enabled = true },
 		dashboard = { enabled = false },
 		explorer = { enabled = true },
+		image = { enabled = true },
 		indent = { enabled = true },
 		input = { enabled = true },
 		picker = {
 			enabled = true,
 			win = {
-				explorer = {},
 				list = {
 					keys = {
 						["<C-j>"] = { "preview_scroll_down", mode = { "n", "i" } },
@@ -192,7 +192,7 @@ return {
 					hidden = true,
 					ignored = true,
 					sort = {
-						fields = { "idx:desc", "score:desc", "#text" },
+						fields = { "file:desc" },
 					},
 				})
 			end,
@@ -204,7 +204,7 @@ return {
 				Snacks.picker.git_files({
 					cwd = require("telekasten").Cfg.home,
 					sort = {
-						fields = { "idx:desc", "score:desc", "#text" },
+						fields = { "file:desc" },
 					},
 				})
 			end,
