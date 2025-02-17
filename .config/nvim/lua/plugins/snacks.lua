@@ -15,10 +15,12 @@ return {
 			win = {
 				list = {
 					keys = {
-						["<C-j>"] = { "preview_scroll_down", mode = { "n", "i" } },
-						["<C-k>"] = { "preview_scroll_up", mode = { "n", "i" } },
+						["<C-j>"] = { "preview_scroll_down" },
+						["<C-k>"] = { "preview_scroll_up" },
 						["<C-y>"] = { "list_up" },
 						["<C-e>"] = { "list_down" },
+						["<C-f>"] = { "list_scroll_down" },
+						["<C-b>"] = { "list_scroll_up" },
 					},
 				},
 				input = {
@@ -28,6 +30,8 @@ return {
 						["<C-a>"] = { "ctr_a", mode = { "i" } },
 						["<C-f>"] = { "ctr_f", mode = { "i" } },
 						["<C-b>"] = { "ctr_b", mode = { "i" } },
+						["<C-f>"] = { "list_scroll_down", mode = { "n" } },
+						["<C-b>"] = { "list_scroll_up", mode = { "n" } },
 						["<C-z>"] = { "select_all", mode = { "n", "i" } },
 						["<C-y>"] = { "yank", mode = { "n", "i" } },
 					},
