@@ -224,7 +224,14 @@ return {
 		{
 			"<Leader>fr",
 			function()
-				Snacks.picker.recent()
+				Snacks.picker.recent({
+					filter = {
+						paths = {
+							[Snacks.git.get_root()] = true,
+							[Snacks.git.get_root() .. "/.git/COMMIT_EDITMSG"] = false,
+						},
+					},
+				})
 			end,
 			desc = "Recent",
 		},
@@ -235,6 +242,7 @@ return {
 					filter = {
 						paths = {
 							[require("telekasten").Cfg.home] = true,
+							[require("telekasten").Cfg.home .. "/.git/COMMIT_EDITMSG"] = false,
 						},
 					},
 				})
