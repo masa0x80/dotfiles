@@ -2,7 +2,6 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
-	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
 		dashboard = { enabled = false },
@@ -85,13 +84,33 @@ return {
 					hidden = true,
 					ignored = true,
 					win = {
-						explorer = {},
 						list = {
 							keys = {
 								["<C-l>"] = { "lcd" },
 								["<C-c>"] = { "close" },
+								["c"] = { { "yank_only_filename", "explorer_copy" } },
+								["y"] = { "yank_only_filename" },
+								["Y"] = { "explorer_yank" },
 							},
 						},
+					},
+					actions = {
+						yank_only_filename = function(picker, item, action)
+							if item then
+								local reg = action.reg or vim.v.register
+								local value = item[action.field] or item.data or item.text
+								value = string.match(value, "[^/]*$")
+								vim.fn.setreg(reg, value)
+								if action.notify ~= false then
+									local buf = item.buf or vim.api.nvim_win_get_buf(picker.main)
+									local ft = vim.bo[buf].filetype
+									Snacks.notify(
+										("Yanked to register `%s`:\n```%s\n%s\n```"):format(reg, ft, value),
+										{ title = "Snacks Picker" }
+									)
+								end
+							end
+						end,
 					},
 				})
 			end,
@@ -103,6 +122,34 @@ return {
 				Snacks.explorer({
 					hidden = true,
 					ignored = true,
+					win = {
+						list = {
+							keys = {
+								["<C-l>"] = { "lcd" },
+								["<C-c>"] = { "close" },
+								["y"] = { "yank_only_filename" },
+								["Y"] = { "explorer_yank" },
+							},
+						},
+					},
+					actions = {
+						yank_only_filename = function(picker, item, action)
+							if item then
+								local reg = action.reg or vim.v.register
+								local value = item[action.field] or item.data or item.text
+								value = string.match(value, "[^/]*$")
+								vim.fn.setreg(reg, value)
+								if action.notify ~= false then
+									local buf = item.buf or vim.api.nvim_win_get_buf(picker.main)
+									local ft = vim.bo[buf].filetype
+									Snacks.notify(
+										("Yanked to register `%s`:\n```%s\n%s\n```"):format(reg, ft, value),
+										{ title = "Snacks Picker" }
+									)
+								end
+							end
+						end,
+					},
 					layout = {
 						preview = true,
 						layout = {
@@ -128,15 +175,6 @@ return {
 								width = 0.45,
 								border = "rounded",
 								title_pos = "center",
-							},
-						},
-					},
-					win = {
-						explorer = {},
-						list = {
-							keys = {
-								["<C-l>"] = { "lcd" },
-								["<C-c>"] = { "close" },
 							},
 						},
 					},
