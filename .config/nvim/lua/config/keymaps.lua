@@ -3,8 +3,8 @@ local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 
 -- <Space> as leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ";"
+vim.g.maplocalleader = ";"
 
 -- # Normal
 -- Better window navigation
@@ -80,10 +80,10 @@ map(
 map("n", "<C-g><C-p>", "<<", opts)
 map("n", "<C-g><C-n>", ">>", opts)
 
-map("n", ";P", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { noremap = true, silent = true, desc = "cd $PWD" })
+map("n", "<Space>P", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { noremap = true, silent = true, desc = "cd $PWD" })
 map(
 	"n",
-	";S",
+	"<Space>S",
 	"<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>",
 	{ noremap = true, silent = true, desc = "cd $SCRAPBOOK_DIR" }
 )
@@ -185,4 +185,4 @@ map("x", "K", ":move'<-2<CR>gv", opts)
 map("x", "J", ":move'>+1<CR>gv", opts)
 
 -- Jira
-map("n", ",j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)
+map("n", "<Space>j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)

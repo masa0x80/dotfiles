@@ -189,7 +189,7 @@ return {
 			desc = "Find Git Files",
 		},
 		{
-			";ff",
+			"<Space>ff",
 			function()
 				Snacks.picker.files({
 					cwd = require("telekasten").Cfg.home,
@@ -203,7 +203,7 @@ return {
 			desc = "Find Git Files (under Telekasten home)",
 		},
 		{
-			";F",
+			"<Space>F",
 			function()
 				Snacks.picker.git_files({
 					cwd = require("telekasten").Cfg.home,
@@ -236,7 +236,7 @@ return {
 			desc = "Recent",
 		},
 		{
-			";fr",
+			"<Space>fr",
 			function()
 				Snacks.picker.recent({
 					filter = {
@@ -317,14 +317,18 @@ return {
 		{
 			"<Leader>sg",
 			function()
-				Snacks.picker.grep()
+				Snacks.picker.grep({
+					hidden = true,
+				})
 			end,
 			desc = "Grep",
 		},
 		{
 			"<Leader>sG",
 			function()
-				Snacks.picker.grep_word()
+				Snacks.picker.grep_word({
+					hidden = true,
+				})
 			end,
 			desc = "Visual selection or word",
 			mode = { "n", "x" },
@@ -338,9 +342,10 @@ return {
 			mode = { "n", "x" },
 		},
 		{
-			";sg",
+			"<Space>sg",
 			function()
 				Snacks.picker.grep({
+					hidden = true,
 					cwd = require("telekasten").Cfg.home,
 					exclude = { "*.age" },
 				})
@@ -349,9 +354,10 @@ return {
 		},
 		{
 
-			";sG",
+			"<Space>sG",
 			function()
 				Snacks.picker.grep_word({
+					hidden = true,
 					cwd = require("telekasten").Cfg.home,
 					exclude = { "*.age" },
 				})
@@ -361,9 +367,10 @@ return {
 		},
 		{
 
-			";G",
+			"<Space>G",
 			function()
 				Snacks.picker.grep_word({
+					hidden = true,
 					cwd = require("telekasten").Cfg.home,
 					exclude = { "*.age" },
 				})

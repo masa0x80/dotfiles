@@ -1,7 +1,7 @@
 return {
 	{
 		"Wansmer/treesj",
-		keys = { ";m", ";j", ";s" },
+		keys = { "<Space>m", "<Space>j", "<Space>s" },
 		config = require("config.utils").load("conf/treesj"),
 	},
 	{
