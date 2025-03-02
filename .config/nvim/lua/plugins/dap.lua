@@ -13,14 +13,6 @@ return {
 			{
 				",c",
 				function()
-					if vim.fn.filereadable(".vscode/launch.json") then
-						local dap_vscode = require("dap.ext.vscode")
-						dap_vscode.load_launchjs(nil, {
-							["pwa-node"] = require("config.utils").js_based_languages,
-							["chrome"] = require("config.utils").js_based_languages,
-							["pwa-chrome"] = require("config.utils").js_based_languages,
-						})
-					end
 					require("dap").continue()
 				end,
 				noremap = true,
@@ -116,9 +108,5 @@ return {
 	{
 		"mxsdev/nvim-dap-vscode-js",
 		config = require("config.utils").load("conf/dap-vscode-js"),
-	},
-	{
-		"Joakker/lua-json5",
-		build = "./install.sh",
 	},
 }
