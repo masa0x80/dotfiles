@@ -127,6 +127,7 @@ return {
 							keys = {
 								["<C-l>"] = { "lcd" },
 								["<C-c>"] = { "close" },
+								["c"] = { { "yank_only_filename", "explorer_copy" } },
 								["y"] = { "yank_only_filename" },
 								["Y"] = { "explorer_yank" },
 							},
