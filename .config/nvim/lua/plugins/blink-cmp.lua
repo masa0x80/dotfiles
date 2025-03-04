@@ -30,7 +30,7 @@ return {
 				nerd_font_variant = "mono",
 			},
 			sources = {
-				default = { "snippets", "lsp", "path", "buffer" },
+				default = { "lsp", "snippets", "path" },
 				-- NOTE: Neovim補完プラグインblink.cmpの使い方とカスタマイズ https://eiji.page/blog/neovim-blink-cmp-intro/
 				min_keyword_length = function(ctx)
 					-- :wq, :qa -> menu doesn't popup
