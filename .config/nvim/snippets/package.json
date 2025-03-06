@@ -1,7 +1,4 @@
 {
-  "categories": [
-    "Snippets"
-  ],
   "name": "snippets",
   "contributes": {
     "snippets": [

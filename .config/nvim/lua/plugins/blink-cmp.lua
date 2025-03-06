@@ -42,13 +42,14 @@ return {
 				end,
 			},
 		},
-		snippets = { preset = "luasnip" },
 		opts_extend = { "sources.default" },
 	},
 	{
 		"rafamadriz/friendly-snippets",
+		event = "VeryLazy",
 	},
 	{
 		"L3MON4D3/LuaSnip",
+		event = "VeryLazy",
 	},
 }
