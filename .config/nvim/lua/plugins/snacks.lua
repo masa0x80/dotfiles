@@ -1,3 +1,71 @@
+local explorer_opts = {
+	hidden = true,
+	ignored = true,
+	win = {
+		list = {
+			keys = {
+				["<C-l>"] = { "lcd" },
+				["<C-c>"] = { "close" },
+				["c"] = { { "yank_only_filename", "explorer_copy" } },
+				["y"] = { "copy_file_path" },
+				["Y"] = { "explorer_yank" },
+			},
+		},
+	},
+	actions = {
+		-- NOTE: https://ricoberger.de/blog/posts/neovim-extend-snacks-nvim-explorer/
+		copy_file_path = {
+			action = function(_, item)
+				if not item then
+					return
+				end
+
+				local vals = {
+					["Basename"] = vim.fn.fnamemodify(item.file, ":t:r"),
+					["Extension"] = vim.fn.fnamemodify(item.file, ":t:e"),
+					["Filename"] = vim.fn.fnamemodify(item.file, ":t"),
+					["Path"] = item.file,
+					["Path (CWD)"] = vim.fn.fnamemodify(item.file, ":."),
+					["Path (HOME)"] = vim.fn.fnamemodify(item.file, ":~"),
+					["URI"] = vim.uri_from_fname(item.file),
+				}
+
+				local options = vim.tbl_filter(function(val)
+					return vals[val] ~= ""
+				end, vim.tbl_keys(vals))
+				if vim.tbl_isempty(options) then
+					vim.notify("No values to copy", vim.log.levels.WARN)
+					return
+				end
+				table.sort(options)
+				vim.ui.select(options, {
+					prompt = "Choose to copy to clipboard:",
+					format_item = function(list_item)
+						return ("%s: %s"):format(list_item, vals[list_item])
+					end,
+				}, function(choice)
+					local result = vals[choice]
+					if result then
+						vim.fn.setreg("+", result)
+						Snacks.notify.info("Yanked `" .. result .. "`")
+					end
+				end)
+			end,
+		},
+		yank_only_filename = {
+			action = function(_, item)
+				if not item then
+					return
+				end
+
+				local result = vim.fn.fnamemodify(item.file, ":t")
+				vim.fn.setreg("+", result)
+				Snacks.notify.info("Yanked `" .. result .. "`")
+			end,
+		},
+	},
+}
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -80,77 +148,14 @@ return {
 		{
 			"<Leader>e",
 			function()
-				Snacks.explorer({
-					hidden = true,
-					ignored = true,
-					win = {
-						list = {
-							keys = {
-								["<C-l>"] = { "lcd" },
-								["<C-c>"] = { "close" },
-								["c"] = { { "yank_only_filename", "explorer_copy" } },
-								["y"] = { "yank_only_filename" },
-								["Y"] = { "explorer_yank" },
-							},
-						},
-					},
-					actions = {
-						yank_only_filename = function(picker, item, action)
-							if item then
-								local reg = action.reg or vim.v.register
-								local value = item[action.field] or item.data or item.text
-								value = string.match(value, "[^/]*$")
-								vim.fn.setreg(reg, value)
-								if action.notify ~= false then
-									local buf = item.buf or vim.api.nvim_win_get_buf(picker.main)
-									local ft = vim.bo[buf].filetype
-									Snacks.notify(
-										("Yanked to register `%s`:\n```%s\n%s\n```"):format(reg, ft, value),
-										{ title = "Snacks Picker" }
-									)
-								end
-							end
-						end,
-					},
-				})
+				Snacks.explorer(explorer_opts)
 			end,
 			desc = "File Explorer",
 		},
 		{
 			"-",
 			function()
-				Snacks.explorer({
-					hidden = true,
-					ignored = true,
-					win = {
-						list = {
-							keys = {
-								["<C-l>"] = { "lcd" },
-								["<C-c>"] = { "close" },
-								["c"] = { { "yank_only_filename", "explorer_copy" } },
-								["y"] = { "yank_only_filename" },
-								["Y"] = { "explorer_yank" },
-							},
-						},
-					},
-					actions = {
-						yank_only_filename = function(picker, item, action)
-							if item then
-								local reg = action.reg or vim.v.register
-								local value = item[action.field] or item.data or item.text
-								value = string.match(value, "[^/]*$")
-								vim.fn.setreg(reg, value)
-								if action.notify ~= false then
-									local buf = item.buf or vim.api.nvim_win_get_buf(picker.main)
-									local ft = vim.bo[buf].filetype
-									Snacks.notify(
-										("Yanked to register `%s`:\n```%s\n%s\n```"):format(reg, ft, value),
-										{ title = "Snacks Picker" }
-									)
-								end
-							end
-						end,
-					},
+				Snacks.explorer(vim.tbl_deep_extend("force", explorer_opts, {
 					layout = {
 						preview = true,
 						layout = {
@@ -180,7 +185,7 @@ return {
 						},
 					},
 					auto_close = true,
-				})
+				}))
 			end,
 			desc = "File Explorer",
 		},
@@ -216,6 +221,9 @@ return {
 				Snacks.picker.files({
 					hidden = true,
 					ignored = true,
+					sort = {
+						fields = { "file:asc" },
+					},
 				})
 			end,
 			desc = "Find Files",
