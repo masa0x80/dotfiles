@@ -10,6 +10,7 @@ return {
 				desc = "Telescope ghq list",
 			},
 		},
+		cmd = { "Telescope" },
 		config = require("config.utils").load("conf/telescope"),
 	},
 	{
