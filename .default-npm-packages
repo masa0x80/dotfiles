@@ -11,3 +11,4 @@ textlint-rule-terminology
 ts-node
 markdown-table-formatter
 @nestjs/cli
+jsmigemo

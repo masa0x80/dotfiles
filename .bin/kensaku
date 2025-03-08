@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+WORD=$(mise exec node -- jsmigemo -w "$*")
+rg --column --line-number --no-heading --color=always --smart-case -e "${WORD//\)\(/|}"

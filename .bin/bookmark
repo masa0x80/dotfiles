@@ -5,7 +5,7 @@ set -euo pipefail
 () {
   : ${BOOKMARKS_DIR:=$SCRAPBOOK_DIR/bookmarks}
   cd $BOOKMARKS_DIR
-  rg_prefix='rg --column --line-number --no-heading --color=always --smart-case'
+  rg_prefix='kensaku'
   selected=$(fzf --ansi --reverse --extended --multi --cycle --bind=ctrl-u:page-up,ctrl-d:page-down,ctrl-j:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-/:deselect-all,ctrl-q:deselect-all \
       -d: --disabled \
       --bind "start:reload:$rg_prefix ''" \
