@@ -207,3 +207,14 @@ input.task-list-item-checkbox[type="checkbox"]:checked {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+th,
+tr,
+td {
+  border: solid 1px #abb2bf;
+  padding: 10px;
+}
+
+th {
+  font-weight: bold;
+}
