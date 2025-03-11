@@ -9,7 +9,7 @@ git-add() {
     if [ "$BUFFER" = "" ]; then
       BUFFER="git add"
     fi
-    BUFFER+=" ./$f"
+    BUFFER+=" ./${f:q}"
     zle end-of-line
     zle accept-line
   done
