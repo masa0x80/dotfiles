@@ -218,9 +218,7 @@ return {
 		{
 			"<Leader>ff",
 			function()
-				Snacks.picker.files({
-					hidden = true,
-					ignored = true,
+				Snacks.picker.git_files({
 					sort = {
 						fields = { "file:asc" },
 					},
@@ -231,17 +229,21 @@ return {
 		{
 			"<Leader>F",
 			function()
-				Snacks.picker.git_files()
+				Snacks.picker.files({
+					hidden = true,
+					ignored = true,
+					sort = {
+						fields = { "file:asc" },
+					},
+				})
 			end,
 			desc = "Find Git Files",
 		},
 		{
 			"<Space>ff",
 			function()
-				Snacks.picker.files({
+				Snacks.picker.git_files({
 					cwd = require("telekasten").Cfg.home,
-					hidden = true,
-					ignored = true,
 					sort = {
 						fields = { "file:desc" },
 					},
@@ -252,8 +254,10 @@ return {
 		{
 			"<Space>F",
 			function()
-				Snacks.picker.git_files({
+				Snacks.picker.files({
 					cwd = require("telekasten").Cfg.home,
+					hidden = true,
+					ignored = true,
 					sort = {
 						fields = { "file:desc" },
 					},
