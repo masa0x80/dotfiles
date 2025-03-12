@@ -41,3 +41,5 @@
 
 !/hadolint.yaml
 !/mise.toml
+!/starship.toml
+!/starship2.toml

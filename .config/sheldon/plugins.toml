@@ -7,10 +7,6 @@ defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file 
 github = "romkatv/zsh-defer"
 apply = ["source"]
 
-[plugins.pure]
-github = "sindresorhus/pure"
-use = ["async.zsh", "pure.zsh"]
-
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 apply = ["defer"]
