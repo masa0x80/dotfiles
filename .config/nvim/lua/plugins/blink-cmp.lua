@@ -12,6 +12,7 @@ return {
 					preset = "super-tab",
 					["<CR>"] = { "accept_and_enter", "fallback" },
 				},
+				completion = { menu = { auto_show = true } },
 			},
 			keymap = {
 				preset = "super-tab",
