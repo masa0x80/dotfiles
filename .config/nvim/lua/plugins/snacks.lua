@@ -115,6 +115,7 @@ return {
 					vim.fn.execute("normal h")
 				end,
 			},
+			formatters = { file = { truncate = 128 } },
 		},
 		notifier = { enabled = true },
 		quickfile = { enabled = true },
