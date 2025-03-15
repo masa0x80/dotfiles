@@ -7,6 +7,10 @@ require("everforest").setup({
 		hl.SnacksPickerPathHidden = { fg = palette.grey1 }
 		hl.SnacksPickerGitStatusUntracked = { fg = palette.purple }
 		hl["@markup.strong.markdown_inline"] = { sp = palette.red, bold = true, underdouble = true }
+		hl.FlashMatch = { fg = palette.grey1, underline = true }
+		hl.FlashCurrent = { fg = palette.purple }
+		hl.FlashLabel = { fg = palette.orange }
+		hl.FlashBackdrop = { fg = palette.grey1 }
 	end,
 })
 require("everforest").load()
