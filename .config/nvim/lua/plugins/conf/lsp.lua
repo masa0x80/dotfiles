@@ -19,42 +19,6 @@ vim.diagnostic.config({
 	},
 })
 
-local icon = require("config.icon")
-local navic = require("nvim-navic")
-navic.setup({
-	icons = {
-		File = icon.File .. " ",
-		Module = icon.Module .. " ",
-		Namespace = icon.Namespace .. " ",
-		Package = icon.Package .. " ",
-		Class = icon.Class .. " ",
-		Method = icon.Method .. " ",
-		Property = icon.Property .. " ",
-		Field = icon.Field .. " ",
-		Constructor = icon.Constructor .. " ",
-		Enum = icon.Enum .. " ",
-		Interface = icon.Interface .. " ",
-		Function = icon.Function .. " ",
-		Variable = icon.Variable .. " ",
-		Constant = icon.Constant .. " ",
-		String = icon.String .. " ",
-		Number = icon.Number .. " ",
-		Boolean = icon.Boolean .. " ",
-		Array = icon.Array .. " ",
-		Object = icon.Object .. " ",
-		Key = icon.Key .. " ",
-		Null = icon.Null .. " ",
-		EnumMember = icon.EnumMember .. " ",
-		Struct = icon.Struct .. " ",
-		Event = icon.Event .. " ",
-		Operator = icon.Operator .. " ",
-		TypeParameter = icon.TypeParameter .. " ",
-	},
-	lsp = {
-		auto_attach = true,
-	},
-})
-
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(client, bufnr)
@@ -116,6 +80,8 @@ local on_attach = function(client, bufnr)
 			})
 		end
 	end
+
+	vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 end
 
 -- Enable the following language servers
@@ -215,7 +181,6 @@ keymap("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 -- Setup neovim lua configuration
 require("neodev").setup()
 
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
@@ -248,24 +213,6 @@ mason_lspconfig.setup_handlers({
 		end
 		require("lspconfig")[server_name].setup(args)
 	end,
-})
-
-require("hover").setup({
-	init = function()
-		-- Require providers
-		require("hover.providers.lsp")
-		require("hover.providers.fold_preview")
-		-- require('hover.providers.gh')
-		-- require('hover.providers.gh_user')
-		-- require('hover.providers.jira')
-		-- require('hover.providers.dap')
-		-- require('hover.providers.man')
-		-- require('hover.providers.dictionary')
-	end,
-	preview_opts = {
-		border = "single",
-	},
-	preview_window = false,
 })
 
 -- https://github.com/williamboman/mason.nvim/issues/1309#issuecomment-1555018732

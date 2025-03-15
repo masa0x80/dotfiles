@@ -128,7 +128,9 @@ return {
 		{
 			"<Leader>/",
 			function()
-				Snacks.picker.grep()
+				Snacks.picker.grep({
+					hidden = true,
+				})
 			end,
 			desc = "Grep",
 		},
@@ -388,7 +390,9 @@ return {
 		{
 			"<Leader>G",
 			function()
-				Snacks.picker.grep_word()
+				Snacks.picker.grep_word({
+					hidden = true,
+				})
 			end,
 			desc = "Visual selection or word",
 			mode = { "n", "x" },

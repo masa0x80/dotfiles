@@ -1,0 +1,35 @@
+local icon = require("config.icon")
+local navic = require("nvim-navic")
+navic.setup({
+	icons = {
+		File = icon.File .. " ",
+		Module = icon.Module .. " ",
+		Namespace = icon.Namespace .. " ",
+		Package = icon.Package .. " ",
+		Class = icon.Class .. " ",
+		Method = icon.Method .. " ",
+		Property = icon.Property .. " ",
+		Field = icon.Field .. " ",
+		Constructor = icon.Constructor .. " ",
+		Enum = icon.Enum .. " ",
+		Interface = icon.Interface .. " ",
+		Function = icon.Function .. " ",
+		Variable = icon.Variable .. " ",
+		Constant = icon.Constant .. " ",
+		String = icon.String .. " ",
+		Number = icon.Number .. " ",
+		Boolean = icon.Boolean .. " ",
+		Array = icon.Array .. " ",
+		Object = icon.Object .. " ",
+		Key = icon.Key .. " ",
+		Null = icon.Null .. " ",
+		EnumMember = icon.EnumMember .. " ",
+		Struct = icon.Struct .. " ",
+		Event = icon.Event .. " ",
+		Operator = icon.Operator .. " ",
+		TypeParameter = icon.TypeParameter .. " ",
+	},
+	lsp = {
+		auto_attach = true,
+	},
+})

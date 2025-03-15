@@ -19,7 +19,4 @@ return {
 	{
 		"b0o/schemastore.nvim",
 	},
-	{
-		"lewis6991/hover.nvim",
-	},
 }

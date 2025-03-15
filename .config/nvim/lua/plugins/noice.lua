@@ -19,7 +19,4 @@ return {
 			timeout = 10000,
 		},
 	},
-	{
-		"MunifTanjim/nui.nvim",
-	},
 }

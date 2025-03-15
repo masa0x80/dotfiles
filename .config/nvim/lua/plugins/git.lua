@@ -29,9 +29,6 @@ return {
 		config = require("config.utils").load("conf/gitlinker"),
 	},
 	{
-		"nvim-lua/plenary.nvim",
-	},
-	{
 		"lewis6991/gitsigns.nvim",
 		event = { "BufNewFile", "BufRead" },
 		config = require("config.utils").load("conf/gitsigns"),

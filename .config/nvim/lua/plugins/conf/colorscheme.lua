@@ -11,6 +11,7 @@ require("everforest").setup({
 		hl.FlashCurrent = { fg = palette.purple }
 		hl.FlashLabel = { fg = palette.orange }
 		hl.FlashBackdrop = { fg = palette.grey1 }
+		hl.GitSignsCurrentLineBlame = { fg = palette.bg5 }
 	end,
 })
 require("everforest").load()

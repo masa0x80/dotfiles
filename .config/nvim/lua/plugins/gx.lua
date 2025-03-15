@@ -5,7 +5,4 @@ return {
 		cmd = { "Browse" },
 		config = require("config.utils").load("conf/gx"),
 	},
-	{
-		"nvim-lua/plenary.nvim",
-	},
 }

@@ -5,9 +5,7 @@ return {
 		config = require("config.utils").load("conf/lualine"),
 	},
 	{
-		"kyazdani42/nvim-web-devicons",
-	},
-	{
 		"SmiteshP/nvim-navic",
+		config = require("config.utils").load("conf/navic"),
 	},
 }
