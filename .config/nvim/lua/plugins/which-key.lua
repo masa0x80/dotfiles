@@ -1,6 +1,7 @@
 return {
 	"folke/which-key.nvim",
-	opts = {},
+	opts = {
+		preset = "helix",
+	},
 	event = "VeryLazy",
-	config = require("config.utils").load("conf/which-key"),
 }
