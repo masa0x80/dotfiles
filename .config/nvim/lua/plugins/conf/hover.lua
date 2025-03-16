@@ -11,7 +11,7 @@ require("hover").setup({
 		-- require('hover.providers.dictionary')
 	end,
 	preview_opts = {
-		border = "single",
+		border = "rounded",
 	},
 	preview_window = false,
 })

@@ -95,9 +95,13 @@ return {
 						["<C-j>"] = { "preview_scroll_down", mode = { "n", "i" } },
 						["<C-k>"] = { "preview_scroll_up", mode = { "n", "i" } },
 						["<C-a>"] = { "ctr_a", mode = { "i" } },
+						---@diagnostic disable-next-line: duplicate-index
 						["<C-f>"] = { "ctr_f", mode = { "i" } },
+						---@diagnostic disable-next-line: duplicate-index
 						["<C-b>"] = { "ctr_b", mode = { "i" } },
+						---@diagnostic disable-next-line: duplicate-index
 						["<C-f>"] = { "list_scroll_down", mode = { "n" } },
+						---@diagnostic disable-next-line: duplicate-index
 						["<C-b>"] = { "list_scroll_up", mode = { "n" } },
 						["<C-z>"] = { "select_all", mode = { "n", "i" } },
 						["<C-y>"] = { "yank", mode = { "n", "i" } },
@@ -212,6 +216,7 @@ return {
 			function()
 				Snacks.picker.git_files({
 					cwd = os.getenv("DOTFILES"),
+					untracked = true,
 					hidden = true,
 					ignored = true,
 				})
@@ -221,11 +226,23 @@ return {
 		{
 			"<Leader>ff",
 			function()
-				Snacks.picker.git_files({
-					sort = {
-						fields = { "file:asc" },
-					},
-				})
+				local root = require("snacks.git").get_root()
+				if root == nil then
+					Snacks.picker.files({
+						hidden = true,
+						ignored = true,
+						sort = {
+							fields = { "file:asc" },
+						},
+					})
+				else
+					Snacks.picker.git_files({
+						untracked = true,
+						sort = {
+							fields = { "file:asc" },
+						},
+					})
+				end
 			end,
 			desc = "Find Files",
 		},
@@ -245,12 +262,25 @@ return {
 		{
 			"<Space>ff",
 			function()
-				Snacks.picker.git_files({
-					cwd = require("telekasten").Cfg.home,
-					sort = {
-						fields = { "file:desc" },
-					},
-				})
+				local root = require("snacks.git").get_root()
+				if root == nil then
+					Snacks.picker.files({
+						hidden = true,
+						ignored = true,
+						cwd = require("telekasten").Cfg.home,
+						sort = {
+							fields = { "file:desc" },
+						},
+					})
+				else
+					Snacks.picker.git_files({
+						untracked = true,
+						cwd = require("telekasten").Cfg.home,
+						sort = {
+							fields = { "file:desc" },
+						},
+					})
+				end
 			end,
 			desc = "Find Git Files (under Telekasten home)",
 		},

@@ -48,7 +48,6 @@ local languages = {
 
 require("nvim-ts-autotag").setup({})
 
----@diagnostic disable-next-line: missing-fields
 require("nvim-treesitter.configs").setup({
 	ensure_installed = languages,
 	highlight = {

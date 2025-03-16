@@ -10,21 +10,14 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
 
-local dap_icons = {
-	DapStopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
-	DapBreakpoint = " ",
-	DapBreakpointCondition = " ",
-	DapBreakpointRejected = { " ", "DiagnosticError" },
-	DapLogPoint = ".>",
-}
-
-for name, sign in pairs(dap_icons) do
-	sign = type(sign) == "table" and sign or { sign }
-	vim.fn.sign_define(
-		name,
-		{ text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
-	)
-end
+vim.fn.sign_define(
+	"DapStopped",
+	{ text = "󰁕 ", texthl = "DiagnosticWarn", linehl = "DapStoppedLine", numhl = "DapStoppedLine" }
+)
+vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointCondition", { text = " ", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointRejected", { text = " ", texthl = "DiagnosticError", linehl = "", numhl = "" })
+vim.fn.sign_define("DapLogPoint", { text = ".>", texthl = "", linehl = "", numhl = "" })
 local set_hl = vim.api.nvim_set_hl
 set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 

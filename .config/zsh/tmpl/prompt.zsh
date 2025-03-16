@@ -1,9 +1,12 @@
+export STARSHIP_CONFIG1="$HOME/.config/starship.toml"
+export STARSHIP_CONFIG2="$HOME/.config/starship2.toml"
+
 _switch_starship_config() {
-  counter=$(expr $(expr ${counter:-1} + 1) % 2)
-  if [ $counter -eq 0 ]; then
-    export STARSHIP_CONFIG=$HOME/.config/starship.toml
+  if [ "$STARSHIP_CONFIG" = "$STARSHIP_CONFIG1" ]; then
+    STARSHIP_CONFIG="$STARSHIP_CONFIG2"
   else
-    export STARSHIP_CONFIG=$HOME/.config/starship2.toml
+    STARSHIP_CONFIG="$STARSHIP_CONFIG1"
   fi
+  export STARSHIP_CONFIG
 }
 add-zsh-hook precmd _switch_starship_config

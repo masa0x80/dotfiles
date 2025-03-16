@@ -1,4 +1,3 @@
----@diagnostic disable-next-line: missing-fields
 require("everforest").setup({
 	on_highlights = function(hl, palette)
 		hl.ExtraWhiteSpace = { fg = palette.none, bg = palette.bg_blue }

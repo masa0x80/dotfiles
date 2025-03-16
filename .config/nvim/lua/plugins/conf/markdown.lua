@@ -33,7 +33,6 @@ local function backspace()
 	end
 end
 
----@diagnostic disable-next-line: missing-fields
 require("markdown").setup({
 	mappings = {
 		inline_surround_toggle = "gs",

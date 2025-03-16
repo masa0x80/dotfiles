@@ -1,21 +1,20 @@
-local signs = {
-	Error = "",
-	Warn = "",
-	Info = "",
-	Hint = "",
-}
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
 vim.diagnostic.config({
-	signs = true,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.HINT] = "",
+			[vim.diagnostic.severity.INFO] = "",
+		},
+	},
 	update_in_insert = false,
 	underline = true,
 	severity_sort = true,
 	virtual_text = {
-		source = true,
+		prefix = "",
+		format = function(diagnostic)
+			return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+		end,
 	},
 })
 
@@ -42,7 +41,6 @@ local on_attach = function(client, bufnr)
 		local pattern = "!%[%S*%]%(([^%)]+)%)"
 		local startIndex = 1
 		local _, _, path = string.find(line, pattern, startIndex)
-		-- string.find(vim.api.nvim_get_current_line(), "!%[%]%((.+)%)", 1)
 		if path ~= nil then
 			require("config.utils").preview(vim.fn.expand("%:p:h") .. "/" .. path)
 		else
@@ -60,6 +58,7 @@ local on_attach = function(client, bufnr)
 	-- Mouse support
 	vim.keymap.set("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
 
+	-- NOTE: 意図しない時（diagnosticsを見ている時とか）に hover() が発火してしまうのでコメントアウト
 	-- vim.api.nvim_create_autocmd({ "CursorHold" }, {
 	-- 	group = "_",
 	-- 	callback = function()

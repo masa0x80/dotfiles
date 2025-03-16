@@ -11,7 +11,6 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 	pattern = "*",
 	callback = function()
 		local line = vim.fn.line
-		---@diagnostic disable-next-line: undefined-field
 		if not vim.regex([[commit\|rebase]]):match_str(vim.o.ft) and line("'\"") > 1 and line("'\"") <= line("$") then
 			vim.fn.execute('normal! g`"')
 		end

@@ -12,7 +12,7 @@ local filename = {
 
 local lsp_names = function()
 	local clients = {}
-	for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+	for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
 		table.insert(clients, client.name)
 	end
 	local ft = vim.api.nvim_eval("&filetype")
