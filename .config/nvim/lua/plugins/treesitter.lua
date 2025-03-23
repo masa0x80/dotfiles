@@ -1,18 +1,22 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		version = "*",
 		event = "VeryLazy",
 		build = ":TSUpdate",
 		config = require("config.utils").load("conf/treesitter"),
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		version = "*",
 	},
 	{
 		"windwp/nvim-ts-autotag",
+		version = "*",
 	},
 	{
 		"David-Kunz/treesitter-unit",
+		version = "*",
 		keys = {
 			{ "iu", ':lua require"treesitter-unit".select()<CR>', noremap = true, mode = "x" },
 			{ "au", ':lua require"treesitter-unit".select(true)<CR>', noremap = true, mode = "x" },
@@ -22,6 +26,7 @@ return {
 	},
 	{
 		"kiyoon/treesitter-indent-object.nvim",
+		version = "*",
 		keys = {
 			{
 				"ai",
@@ -51,11 +56,13 @@ return {
 	},
 	{
 		"numToStr/Comment.nvim",
+		version = "*",
 		event = { "CursorHold", "CursorMoved", "ModeChanged" },
 		config = require("config.utils").load("conf/Comment"),
 		init = require("config.utils").load("init/Comment"),
 	},
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
+		version = "*",
 	},
 }

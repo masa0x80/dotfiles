@@ -1,15 +1,18 @@
 return {
 	{
 		"lambdalisue/kensaku-search.vim",
+		version = "*",
 		event = "VeryLazy",
 		config = require("config.utils").load("conf/kensaku-search"),
 	},
 	{
-		event = "VeryLazy",
 		"lambdalisue/kensaku.vim",
+		version = "*",
+		event = "VeryLazy",
 	},
 	{
-		event = "VeryLazy",
 		"vim-denops/denops.vim",
+		version = "*",
+		event = "VeryLazy",
 	},
 }

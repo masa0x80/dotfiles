@@ -1,5 +1,6 @@
 return {
 	"folke/todo-comments.nvim",
+	version = "*",
 	opts = {
 		highlight = {
 			pattern = [[.*<(KEYWORDS):?\s]],

@@ -1,19 +1,19 @@
 return {
 	{
 		"tadmccorkle/markdown.nvim",
+		version = "*",
 		ft = { "markdown" },
 		config = require("config.utils").load("conf/markdown"),
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
+		version = "*",
 		ft = { "markdown" },
 		config = require("config.utils").load("conf/render-markdown"),
 	},
 	{
-		"nvim-treesitter/nvim-treesitter",
-	},
-	{
 		"iamcco/markdown-preview.nvim",
+		version = "*",
 		build = function(plugin)
 			if vim.fn.executable("npx") then
 				vim.cmd("!cd " .. plugin.dir .. " && cd app && npx --yes yarn install")

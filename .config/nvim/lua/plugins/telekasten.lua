@@ -18,6 +18,7 @@ end
 
 return {
 	"renerocksai/telekasten.nvim",
+	version = "*",
 	keys = {
 		{ ";z", "<Cmd>Telekasten panel<CR>", noremap = true, silent = true },
 		{ ";i", "<Cmd>Telekasten insert_link<CR>", noremap = true, silent = true },

@@ -1,12 +1,14 @@
 return {
 	{
 		"zbirenbaum/copilot.lua",
+		version = "*",
 		cmd = "Copilot",
 		event = "InsertEnter",
 		config = require("config.utils").load("conf/copilot"),
 	},
 	{
 		"jellydn/CopilotChat.nvim",
+		version = "*",
 		opts = {
 			mode = "split",
 			prompts = {

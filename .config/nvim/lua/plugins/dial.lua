@@ -1,5 +1,6 @@
 return {
 	"monaqa/dial.nvim",
+	version = "*",
 	keys = {
 		{ "<C-a>", "<Plug>(dial-increment)", noremap = true },
 		{ "<C-x>", "<Plug>(dial-decrement)", noremap = true },

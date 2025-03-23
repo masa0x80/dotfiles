@@ -1,6 +1,7 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
+		version = "*",
 		keys = {
 			{
 				",b",

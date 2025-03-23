@@ -1,5 +1,6 @@
 return {
 	"simeji/winresizer",
+	version = "*",
 	keys = {
 		{ "<M-r>", nil, desc = "Winresizer" },
 	},
