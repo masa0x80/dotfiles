@@ -21,9 +21,9 @@ local explorer_opts = {
 				end
 
 				local vals = {
+					["Filename"] = vim.fn.fnamemodify(item.file, ":t"),
 					["Basename"] = vim.fn.fnamemodify(item.file, ":t:r"),
 					["Extension"] = vim.fn.fnamemodify(item.file, ":t:e"),
-					["Filename"] = vim.fn.fnamemodify(item.file, ":t"),
 					["Path"] = item.file,
 					["Path (CWD)"] = vim.fn.fnamemodify(item.file, ":."),
 					["Path (HOME)"] = vim.fn.fnamemodify(item.file, ":~"),
@@ -260,7 +260,7 @@ return {
 			desc = "Find Git Files",
 		},
 		{
-			"<Space>ff",
+			";ff",
 			function()
 				local root = require("snacks.git").get_root()
 				if root == nil then
@@ -285,7 +285,7 @@ return {
 			desc = "Find Git Files (under Telekasten home)",
 		},
 		{
-			"<Space>F",
+			";F",
 			function()
 				Snacks.picker.files({
 					cwd = require("telekasten").Cfg.home,
@@ -320,7 +320,7 @@ return {
 			desc = "Recent",
 		},
 		{
-			"<Space>fr",
+			";fr",
 			function()
 				Snacks.picker.recent({
 					filter = {
@@ -428,7 +428,7 @@ return {
 			mode = { "n", "x" },
 		},
 		{
-			"<Space>sg",
+			";sg",
 			function()
 				Snacks.picker.grep({
 					hidden = true,
@@ -440,7 +440,7 @@ return {
 		},
 		{
 
-			"<Space>sG",
+			";sG",
 			function()
 				Snacks.picker.grep_word({
 					hidden = true,
@@ -453,7 +453,7 @@ return {
 		},
 		{
 
-			"<Space>G",
+			";G",
 			function()
 				Snacks.picker.grep_word({
 					hidden = true,

@@ -2,8 +2,8 @@ local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 
 -- <Space> as leader key
-vim.g.mapleader = ";"
-vim.g.maplocalleader = ";"
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- # Normal
 -- Better window navigation
@@ -41,7 +41,7 @@ map("n", "<C-w>o", "<NOP>", opts)
 map("n", "<C-w>O", "<Cmd>only<CR>", opts)
 
 -- Tabs
-map("n", ",t", "<Cmd>tabedit %:p<CR>", opts)
+map("n", "<Leader>t", "<Cmd>tabedit %:p<CR>", opts)
 map("n", "<C-t><C-n>", "<Cmd>tabnext<CR>", opts)
 map("n", "<C-t><C-p>", "<Cmd>tabprevious<CR>", opts)
 map("n", "<C-t>N", "<Cmd>tabmove +<CR>", opts)
@@ -70,7 +70,7 @@ map("n", ",R", "*Ncgn", { noremap = true, silent = true, desc = "[R]eplace Curre
 -- Toggle relativenumber
 map(
 	"n",
-	"<Leader>N",
+	"<C-;>N",
 	"<Cmd>setlocal relativenumber!<CR>",
 	{ noremap = true, silent = true, desc = "Toggle Relative[N]umber" }
 )
@@ -79,10 +79,10 @@ map(
 map("n", "<C-g><C-p>", "<<", opts)
 map("n", "<C-g><C-n>", ">>", opts)
 
-map("n", "<Space>P", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { noremap = true, silent = true, desc = "cd $PWD" })
+map("n", "<C-;>C", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { noremap = true, silent = true, desc = "cd $PWD" })
 map(
 	"n",
-	"<Space>S",
+	"<C-;>S",
 	"<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>",
 	{ noremap = true, silent = true, desc = "cd $SCRAPBOOK_DIR" }
 )
@@ -117,7 +117,7 @@ map("n", "f<CR>", "}", opts)
 map("n", "F<CR>", "{", opts)
 
 -- messages
-map("n", ",M", "<Cmd>messages<CR>", opts)
+map("n", "<Leader>M", "<Cmd>messages<CR>", opts)
 
 -- folding
 map("n", "_", "zc", opts)
@@ -159,12 +159,10 @@ map("c", "<C-a>", "<Home>", {})
 map("c", "<C-e>", "<End>", {})
 
 -- Esc
-map({ "n", "i", "v" }, "<C-c>", "<Esc>", { remap = true })
 map("n", "<Esc><Esc>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
-map("n", "<C-c><C-c>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
 
 -- Save
-map({ "n", "v" }, ";;", "mm<Cmd>write<CR>`m", { noremap = true })
+map({ "n", "v" }, "<C-;><C-;>", "mm<Cmd>write<CR>`m", { noremap = true })
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#i%3Cspace%3E%E3%81%A7word%E9%81%B8%E6%8A%9E
 map({ "o", "x" }, "i<Space>", "iW", opts)
@@ -184,4 +182,4 @@ map("x", "K", ":move'<-2<CR>gv", opts)
 map("x", "J", ":move'>+1<CR>gv", opts)
 
 -- Jira
-map("n", "<Space>j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)
+map("n", "<C-;>j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)
