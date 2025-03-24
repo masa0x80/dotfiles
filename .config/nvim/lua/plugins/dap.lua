@@ -4,7 +4,7 @@ return {
 		version = "*",
 		keys = {
 			{
-				",b",
+				"<C-,>b",
 				function()
 					require("dap").toggle_breakpoint()
 				end,
@@ -12,7 +12,7 @@ return {
 				desc = "DAP: Toggle Breakpoint",
 			},
 			{
-				",c",
+				"<C-,>c",
 				function()
 					require("dap").continue()
 				end,
@@ -20,7 +20,7 @@ return {
 				desc = "DAP: Continue",
 			},
 			{
-				",s",
+				"<C-,>s",
 				function()
 					require("dap").step_into()
 				end,
@@ -28,7 +28,7 @@ return {
 				desc = "DAP: Step Into",
 			},
 			{
-				",n",
+				"<C-,>n",
 				function()
 					require("dap").step_over()
 				end,
@@ -36,7 +36,7 @@ return {
 				desc = "DAP: Step Over",
 			},
 			{
-				",f",
+				"<C-,>f",
 				function()
 					require("dap").step_out()
 				end,
@@ -45,7 +45,7 @@ return {
 			},
 
 			{
-				",du",
+				"<C-,>du",
 				function()
 					require("dapui").toggle()
 				end,

@@ -21,7 +21,7 @@ return {
 		},
 		keys = {
 			{
-				",x",
+				"<Leader>x",
 				function()
 					if string.find(vim.fn.expand("%"), "_spec.rb$") ~= nil then
 						require("jaq-nvim").setup({

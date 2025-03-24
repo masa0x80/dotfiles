@@ -61,11 +61,11 @@ map("n", "]L", "<Cmd>llast<CR>", opts)
 -- Replace
 map(
 	"n",
-	",re",
+	"<C-,>re",
 	":<C-u>%s;<C-r><C-w>;g<Left><Left>;",
 	{ noremap = true, silent = true, desc = "[re]place Current Word" }
 )
-map("n", ",R", "*Ncgn", { noremap = true, silent = true, desc = "[R]eplace Current Word `*cgn`" })
+map("n", "<C-,>R", "*Ncgn", { noremap = true, silent = true, desc = "[R]eplace Current Word `*cgn`" })
 
 -- Toggle relativenumber
 map(
@@ -159,7 +159,7 @@ map("c", "<C-a>", "<Home>", {})
 map("c", "<C-e>", "<End>", {})
 
 -- Esc
-map("n", "<Esc><Esc>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
+map("n", "<C-l>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR><C-l>", opts)
 
 -- Save
 map({ "n", "v" }, "<C-;><C-;>", "mm<Cmd>write<CR>`m", { noremap = true })

@@ -7,4 +7,4 @@ require("noice").setup({
 	},
 })
 
-vim.keymap.set("n", ",m", "<Cmd>NoiceAll<CR>", { noremap = true, silent = true, desc = "Show All Messages" })
+vim.keymap.set("n", "<C-,>m", "<Cmd>NoiceAll<CR>", { noremap = true, silent = true, desc = "Show All Messages" })
