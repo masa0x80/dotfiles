@@ -41,7 +41,7 @@ map("n", "<C-w>o", "<NOP>", opts)
 map("n", "<C-w>O", "<Cmd>only<CR>", opts)
 
 -- Tabs
-map("n", "<Leader>t", "<Cmd>tabedit %:p<CR>", opts)
+map("n", "<C-t><C-t>", "<Cmd>tabedit %:p<CR>", opts)
 map("n", "<C-t><C-n>", "<Cmd>tabnext<CR>", opts)
 map("n", "<C-t><C-p>", "<Cmd>tabprevious<CR>", opts)
 map("n", "<C-t>N", "<Cmd>tabmove +<CR>", opts)
@@ -159,7 +159,7 @@ map("c", "<C-a>", "<Home>", {})
 map("c", "<C-e>", "<End>", {})
 
 -- Esc
-map("n", "<C-l>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR><C-l>", opts)
+map("n", "<C-g><C-g><C-g>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
 
 -- Save
 map({ "n", "v" }, "<C-;><C-;>", "mm<Cmd>write<CR>`m", { noremap = true })

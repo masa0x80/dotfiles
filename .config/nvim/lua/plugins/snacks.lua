@@ -135,6 +135,7 @@ return {
 			function()
 				Snacks.picker.grep({
 					hidden = true,
+					exclude = { "*.age" },
 				})
 			end,
 			desc = "Grep",
@@ -232,16 +233,10 @@ return {
 					Snacks.picker.files({
 						hidden = true,
 						ignored = true,
-						sort = {
-							fields = { "file:asc" },
-						},
 					})
 				else
 					Snacks.picker.git_files({
 						untracked = true,
-						sort = {
-							fields = { "file:asc" },
-						},
 					})
 				end
 			end,
@@ -253,15 +248,12 @@ return {
 				Snacks.picker.files({
 					hidden = true,
 					ignored = true,
-					sort = {
-						fields = { "file:asc" },
-					},
 				})
 			end,
 			desc = "Find Git Files",
 		},
 		{
-			";ff",
+			"<C-;>ff",
 			function()
 				local root = require("snacks.git").get_root()
 				if root == nil then
@@ -286,7 +278,7 @@ return {
 			desc = "Find Git Files (under Telekasten home)",
 		},
 		{
-			";F",
+			"<C-;>F",
 			function()
 				Snacks.picker.files({
 					cwd = require("telekasten").Cfg.home,
@@ -321,7 +313,7 @@ return {
 			desc = "Recent",
 		},
 		{
-			";fr",
+			"<C-;>fr",
 			function()
 				Snacks.picker.recent({
 					filter = {
@@ -404,6 +396,7 @@ return {
 			function()
 				Snacks.picker.grep({
 					hidden = true,
+					exclude = { "*.age" },
 				})
 			end,
 			desc = "Grep",
@@ -413,6 +406,7 @@ return {
 			function()
 				Snacks.picker.grep_word({
 					hidden = true,
+					exclude = { "*.age" },
 				})
 			end,
 			desc = "Visual selection or word",
@@ -423,13 +417,14 @@ return {
 			function()
 				Snacks.picker.grep_word({
 					hidden = true,
+					exclude = { "*.age" },
 				})
 			end,
 			desc = "Visual selection or word",
 			mode = { "n", "x" },
 		},
 		{
-			";sg",
+			"<C-;>sg",
 			function()
 				Snacks.picker.grep({
 					hidden = true,
@@ -441,7 +436,7 @@ return {
 		},
 		{
 
-			";sG",
+			"<C-;>sG",
 			function()
 				Snacks.picker.grep_word({
 					hidden = true,
@@ -454,7 +449,7 @@ return {
 		},
 		{
 
-			";G",
+			"<C-;>G",
 			function()
 				Snacks.picker.grep_word({
 					hidden = true,
