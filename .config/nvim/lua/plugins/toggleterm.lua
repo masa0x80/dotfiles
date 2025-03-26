@@ -1,7 +1,7 @@
 return {
 	"akinsho/toggleterm.nvim",
 	version = "*",
-	cmd = { "ToggleTerm", "LG", "REV" },
+	cmd = { "ToggleTerm" },
 	keys = {
 		{ "<C-\\>" },
 		{
