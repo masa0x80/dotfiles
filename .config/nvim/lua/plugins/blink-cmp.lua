@@ -1,3 +1,6 @@
+local up = vim.api.nvim_replace_termcodes("<Up>", true, false, true)
+local down = vim.api.nvim_replace_termcodes("<Down>", true, false, true)
+
 return {
 	{
 		"saghen/blink.cmp",
@@ -10,13 +13,33 @@ return {
 			cmdline = {
 				keymap = {
 					preset = "super-tab",
+					["<C-CR>"] = { "show", "show_documentation", "hide_documentation" },
 					["<CR>"] = { "accept_and_enter", "fallback" },
 				},
 				completion = { menu = { auto_show = true } },
 			},
 			keymap = {
 				preset = "super-tab",
+				["<C-CR>"] = { "show", "show_documentation", "hide_documentation" },
 				["<CR>"] = { "accept", "fallback" },
+				["<C-n>"] = {
+					function(cmp)
+						if not cmp.is_menu_visible() then
+							vim.api.nvim_feedkeys(down, "n", true)
+						end
+					end,
+					"select_next",
+					"fallback_to_mappings",
+				},
+				["<C-p>"] = {
+					function(cmp)
+						if not cmp.is_menu_visible() then
+							vim.api.nvim_feedkeys(up, "n", true)
+						end
+					end,
+					"select_prev",
+					"fallback_to_mappings",
+				},
 			},
 			completion = {
 				documentation = {
