@@ -1,6 +1,6 @@
 local UNORDERED_LIST_PATTERN = "^%s*[-*+][ >]*$"
 local ORDERED_LIST_PATTERN = "^%s*%d+[%.%)][ >]*$"
-local TASK_PATTERN = "^%s*[-*+] %[[x ]%] $"
+local TASK_PATTERN = "^%s*[-*+] %[[x%- ]%] $"
 local QUOTED_PATTERN = "^%s*>[ >]+$"
 
 local function backspace()

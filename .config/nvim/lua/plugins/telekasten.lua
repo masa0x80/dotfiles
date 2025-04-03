@@ -1,19 +1,94 @@
 local UNORDERED_LIST_PATTERN = "^%s*[-*+] $"
-local TASK_PATTERN = "^%s*[-*+] %[[x ]%] $"
-local toggle_check = function()
-	local row = vim.fn.line(".") - 1
-	local line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
-	local new
+local TASK_PATTERN = "^%s*[-*+] %[[x%- ]%] $"
+local toggle_todo = function(opts)
+	opts = opts or {}
 
-	if string.match(line, string.sub(TASK_PATTERN, 0, -2)) then
-		require("telekasten").toggle_todo()
-		return
-	elseif string.match(line, string.sub(UNORDERED_LIST_PATTERN, 0, -2)) then
-		new = line:gsub("[-*+] (%S)", "%1", 1)
+	local curlinenr = opts.linenr or vim.fn.line(".")
+	local curline = vim.api.nvim_buf_get_lines(0, curlinenr - 1, curlinenr, false)[1]
+	local stripped = vim.trim(curline)
+	local repline
+
+	if opts.reverse ~= true then
+		if
+			vim.startswith(stripped, "- ")
+			and not vim.startswith(stripped, "- [x] ")
+			and not vim.startswith(stripped, "- [-] ")
+			and not vim.startswith(stripped, "- [ ] ")
+		then
+			repline = curline:gsub("%- ", "- [ ] ", 1)
+		else
+			if vim.startswith(stripped, "- [ ]") then
+				if opts.skip_progress ~= true then
+					repline = curline:gsub("%- %[ %]", "- [-]", 1)
+				else
+					repline = curline:gsub("%- %[ %]", "- [x]", 1)
+				end
+			elseif vim.startswith(stripped, "- [-]") then
+				repline = curline:gsub("%- %[%-%]", "- [x]", 1)
+			else
+				if vim.startswith(stripped, "- [x]") then
+					repline = curline:gsub("%- %[x%]", "-", 1)
+				else
+					repline = curline:gsub("(%S)", "- [ ] %1", 1)
+				end
+			end
+		end
 	else
-		new = line:gsub("(%S)", "- %1", 1)
+		if
+			vim.startswith(stripped, "- ")
+			and not vim.startswith(stripped, "- [x] ")
+			and not vim.startswith(stripped, "- [-] ")
+			and not vim.startswith(stripped, "- [ ] ")
+		then
+			repline = curline:gsub("%- ", "- [x] ", 1)
+		else
+			if vim.startswith(stripped, "- [x]") then
+				if opts.skip_progress ~= true then
+					repline = curline:gsub("%- %[x%]", "- [-]", 1)
+				else
+					repline = curline:gsub("%- %[x%]", "- [ ]", 1)
+				end
+			elseif vim.startswith(stripped, "- [-]") then
+				repline = curline:gsub("%- %[%-%]", "- [ ]", 1)
+			else
+				if vim.startswith(stripped, "- [ ]") then
+					repline = curline:gsub("%- %[ %]", "-", 1)
+				else
+					repline = curline:gsub("(%S)", "- [x] %1", 1)
+				end
+			end
+		end
 	end
-	vim.api.nvim_buf_set_lines(0, row, row + 1, false, { new })
+	vim.api.nvim_buf_set_lines(0, curlinenr - 1, curlinenr, false, { repline })
+end
+
+local toggle_check = function(opts)
+	opts = opts or {}
+
+	local curlinenr = opts.linenr or vim.fn.line(".")
+	local curline = vim.api.nvim_buf_get_lines(0, curlinenr - 1, curlinenr, false)[1]
+	local repline
+
+	if string.match(curline, string.sub(TASK_PATTERN, 0, -2)) then
+		toggle_todo(opts)
+		return
+	elseif string.match(curline, string.sub(UNORDERED_LIST_PATTERN, 0, -2)) then
+		repline = curline:gsub("[-*+] (%S)", "%1", 1)
+	else
+		repline = curline:gsub("(%S)", "- %1", 1)
+	end
+	vim.api.nvim_buf_set_lines(0, curlinenr - 1, curlinenr, false, { repline })
+end
+
+local get_lines = function()
+	local startline = vim.fn.line("v")
+	local endline = vim.fn.line(".")
+	if startline > endline then
+		local tmp = startline
+		startline = endline
+		endline = tmp
+	end
+	return { startline, endline }
 end
 
 return {
@@ -25,76 +100,91 @@ return {
 		{ "<C-;>I", "<Cmd>Telekasten insert_img_link<CR>", noremap = true, silent = true },
 		{ "g]", "<Cmd>Telekasten follow_link<CR>", noremap = true, silent = true },
 		{ "g[", "<Cmd>Telekasten show_backlinks<CR>", noremap = true, silent = true },
-		{ "<C-;>n", "<Cmd>Telekasten new_note<CR>", noremap = true, silent = true },
+		{ "<C-;>n", "<Cmd>Telekasten repline_note<CR>", noremap = true, silent = true },
 		{ "<C-;>r", "<Cmd>Telekasten find_friends<CR>", noremap = true, silent = true },
 		{ "<C-;>t", "<Cmd>Telekasten show_tags<CR>", noremap = true, silent = true },
 		{
 			"<C-g><C-i>",
-			toggle_check,
+			function()
+				toggle_check({ skip_progress = true })
+			end,
+			noremap = true,
+			silent = true,
+			mode = { "n", "i" },
+		},
+		{
+			"<C-g><C-o>",
+			function()
+				toggle_check({ skip_progress = true, reverse = true })
+			end,
 			noremap = true,
 			silent = true,
 			mode = { "n", "i" },
 		},
 		{
 			"<C-g><C-i>",
-			"<Esc><Cmd>:'<,'>s/^\\(\\s*\\)\\(\\S\\)/\\1- \\2/g<CR>:nohlsearch<CR>",
+			function()
+				local lines = get_lines()
+				for n = lines[1], lines[2] do
+					toggle_todo({ skip_progress = true, linenr = n })
+				end
+			end,
 			noremap = true,
 			silent = true,
 			mode = { "x" },
 		},
 		{
 			"<C-g><C-o>",
-			toggle_check,
+			function()
+				local lines = get_lines()
+				for n = lines[1], lines[2] do
+					toggle_todo({ skip_progress = true, linenr = n, reverse = true })
+				end
+			end,
+			noremap = true,
+			silent = true,
+			mode = { "x" },
+		},
+		{
+			"<C-g><C-g><C-i>",
+			toggle_todo,
 			noremap = true,
 			silent = true,
 			mode = { "n", "i" },
 		},
 		{
-			"<C-g><C-o>",
-			"<Esc><Cmd>:'<,'>s/^\\(\\s*\\)[-*+] \\(\\[[ x]\\] \\)\\?\\(\\S\\)/\\1\\3/g<CR>:nohlsearch<CR>",
+			"<C-g><C-g><C-o>",
+			function()
+				toggle_todo({ reverse = true })
+			end,
 			noremap = true,
 			silent = true,
-			mode = { "x" },
+			mode = { "n", "i" },
 		},
 		{
 			"<C-g><C-g><C-i>",
-			"<Esc><Cmd>lua require('telekasten').toggle_todo({ i = true })<CR>",
-			noremap = true,
-			silent = true,
-			mode = "i",
-		},
-		{
-			"<C-g><C-g><C-i>",
-			"<Esc><Cmd>:'<,'>s/^\\(\\s*\\)\\(\\S\\)/\\1- [ ] \\2/g<CR>:nohlsearch<CR>",
+			function()
+				local lines = get_lines()
+				for n = lines[1], lines[2] do
+					toggle_todo({ linenr = n })
+				end
+			end,
+			-- "<Esc><Cmd>:'<,'>s/^\\(\\s*\\)\\(\\S\\)/\\1- [ ] \\2/g<CR>:nohlsearch<CR>",
 			noremap = true,
 			silent = true,
 			mode = "x",
 		},
 		{
 			"<C-g><C-g><C-o>",
-			"<Esc><Cmd>lua require('telekasten').toggle_todo()<CR><Cmd>lua require('telekasten').toggle_todo({ i = true })<CR>",
-			noremap = true,
-			silent = true,
-			mode = "i",
-		},
-		{
-			"<C-g><C-g><C-o>",
-			"<Esc><Cmd>:'<,'>s/^\\(\\s*\\)\\(\\S\\)/\\1- [x] \\2/g<CR>:nohlsearch<CR>",
+			function()
+				local lines = get_lines()
+				for n = lines[1], lines[2] do
+					toggle_todo({ linenr = n, reverse = true })
+				end
+			end,
 			noremap = true,
 			silent = true,
 			mode = "x",
-		},
-		{
-			"<C-g><C-g><C-i>",
-			"<Cmd>lua require('telekasten').toggle_todo()<CR>",
-			noremap = true,
-			silent = true,
-		},
-		{
-			"<C-g><C-g><C-o>",
-			"<Cmd>lua require('telekasten').toggle_todo()<CR><Cmd>lua require('telekasten').toggle_todo()<CR>",
-			noremap = true,
-			silent = true,
 		},
 		{ "<C-;>d", "<Cmd>Telekasten goto_today<CR>", noremap = true, silent = true },
 		{ "<C-;>w", "<Cmd>Telekasten goto_thisweek<CR>", noremap = true, silent = true },
