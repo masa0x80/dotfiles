@@ -58,7 +58,7 @@ return {
 					if vim.bo.filetype == "markdown" then
 						return { "lsp", "snippets", "path" }
 					else
-						return { "buffer", "lsp", "snippets", "path" }
+						return { "lsp", "snippets", "buffer", "path" }
 					end
 				end,
 				-- NOTE: Neovim補完プラグインblink.cmpの使い方とカスタマイズ https://eiji.page/blog/neovim-blink-cmp-intro/
