@@ -126,7 +126,7 @@ return {
 			function()
 				local lines = get_lines()
 				for n = lines[1], lines[2] do
-					toggle_todo({ skip_progress = true, linenr = n })
+					toggle_check({ skip_progress = true, linenr = n })
 				end
 			end,
 			noremap = true,
@@ -138,7 +138,7 @@ return {
 			function()
 				local lines = get_lines()
 				for n = lines[1], lines[2] do
-					toggle_todo({ skip_progress = true, linenr = n, reverse = true })
+					toggle_check({ skip_progress = true, linenr = n, reverse = true })
 				end
 			end,
 			noremap = true,
