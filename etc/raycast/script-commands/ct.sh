@@ -11,6 +11,8 @@
 #
 # @raycast.description This script copies URL of currently opened page into clipboard.
 # @raycast.author KIMURA Masayuki
+#
+# @raycast.argument1 { "type": "dropdown", "data": [{"title": "trimmedTitle", "value": "trim"}, {"title": "rawTitle", "value": "raw"}], "placeholder": "trimmedTitle", "optional": true }
 
 CURRENT_DIR=$(
   cd "$(dirname "$0")" || exit
@@ -18,5 +20,9 @@ CURRENT_DIR=$(
 )
 source "$CURRENT_DIR/utils/_fetch_url_and_page_title"
 
-echo "\"$trimmedTitle\":$url" | pbcopy
+if [ "$1" = "raw" ]; then
+  echo "\"$title\":$url" | pbcopy
+else
+  echo "\"$trimmedTitle\":$url" | pbcopy
+fi
 echo "Copy Current Page URL (Textile)"
