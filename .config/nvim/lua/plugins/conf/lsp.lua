@@ -80,7 +80,7 @@ local on_attach = function(client, bufnr)
 		end
 	end
 
-	vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+	-- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 end
 
 -- Enable the following language servers
