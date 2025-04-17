@@ -41,7 +41,8 @@ map("n", "<C-w>o", "<NOP>", opts)
 map("n", "<C-w>O", "<Cmd>only<CR>", opts)
 
 -- Tabs
-map("n", "<C-t><C-t>", "<Cmd>tabedit %:p<CR>", opts)
+map("n", "<C-,><C-t>", "<Cmd>tabedit %:p<CR>", opts)
+map("n", "<C-t><C-t>", "g<Tab>", opts)
 map("n", "<C-t><C-n>", "<Cmd>tabnext<CR>", opts)
 map("n", "<C-t><C-p>", "<Cmd>tabprevious<CR>", opts)
 map("n", "<C-t>N", "<Cmd>tabmove +<CR>", opts)
