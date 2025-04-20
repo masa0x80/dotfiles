@@ -1,5 +1,5 @@
 require("git").setup({
-	default_mappings = true, -- NOTE: `quit_blame` and `blame_commit` are still merged to the keymaps even if `default_mappings = false`
+	default_mappings = false, -- NOTE: `quit_blame` and `blame_commit` are still merged to the keymaps even if `default_mappings = false`
 
 	keymaps = {
 		-- Open blame window
@@ -13,7 +13,7 @@ require("git").setup({
 		-- Open file/folder in git repository
 		browse = "<Leader>go",
 		-- Open pull request of the current branch
-		open_pull_request = "<Leader>gp",
+		open_pull_request = "<Leader>gP",
 		-- Create a pull request with the target branch is set in the `target_branch` option
 		create_pull_request = "<Leader>gn",
 		-- Opens a new diff that compares against the current index
