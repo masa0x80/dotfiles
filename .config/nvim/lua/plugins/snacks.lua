@@ -335,18 +335,18 @@ return {
 			desc = "Git Branches",
 		},
 		{
-			"<Leader>gl",
-			function()
-				Snacks.picker.git_log()
-			end,
-			desc = "Git Log",
-		},
-		{
-			"<leader>gL",
+			"<leader>gl",
 			function()
 				Snacks.picker.git_log_line()
 			end,
 			desc = "Git Log Line",
+		},
+		{
+			"<Leader>gL",
+			function()
+				Snacks.picker.git_log()
+			end,
+			desc = "Git Log",
 		},
 		{
 			"<Leader>gs",
