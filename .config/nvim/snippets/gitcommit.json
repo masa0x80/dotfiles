@@ -9,7 +9,7 @@
   },
   "fix": {
     "prefix": "cm-fix",
-    "body": ["✏️ fix: "]
+    "body": ["✏️ fix "]
   },
   "shell": {
     "prefix": "cm-shell",
@@ -41,11 +41,11 @@
   },
   "move-rename-files": {
     "prefix": "cm-move-rename",
-    "body": ["🚚 Move: "]
+    "body": ["🚚 move "]
   },
   "remove-files": {
     "prefix": "cm-remove",
-    "body": ["🔥 remove: "]
+    "body": ["🔥 remove "]
   },
   "ci": {
     "prefix": "cm-ci",
