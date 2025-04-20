@@ -196,7 +196,6 @@ return {
 			silent = true,
 		},
 		{ "<C-;>v", "<Cmd>Telekasten switch_vault<CR>", noremap = true, silent = true },
-		{ "<C-;>o", "<Cmd>OpenObsidian<CR>", noremap = true, silent = true },
 	},
 	config = require("config.utils").load("conf/telekasten"),
 	init = require("config.utils").load("init/telekasten"),

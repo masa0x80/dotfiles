@@ -303,8 +303,8 @@ return {
 			function()
 				Snacks.picker.recent({
 					filter = {
+						cwd = true,
 						paths = {
-							[Snacks.git.get_root()] = true,
 							[Snacks.git.get_root() .. "/.git/COMMIT_EDITMSG"] = false,
 						},
 					},
@@ -313,16 +313,30 @@ return {
 			desc = "Recent",
 		},
 		{
+			"<Leader>fR",
+			function()
+				Snacks.picker.recent()
+			end,
+			desc = "Recent",
+		},
+		{
 			"<C-;>fr",
 			function()
 				Snacks.picker.recent({
 					filter = {
+						cwd = true,
 						paths = {
-							[require("telekasten").Cfg.home] = true,
 							[require("telekasten").Cfg.home .. "/.git/COMMIT_EDITMSG"] = false,
 						},
 					},
 				})
+			end,
+			desc = "Recent (under Telekasten home)",
+		},
+		{
+			"<C-;>fR",
+			function()
+				Snacks.picker.recent()
 			end,
 			desc = "Recent (under Telekasten home)",
 		},
@@ -779,6 +793,25 @@ return {
 						conceallevel = 3,
 					},
 				})
+			end,
+		},
+		{
+			"<C-;>o",
+			desc = "Open in Obsidian",
+			function()
+				local path = vim.fs.relpath(vim.fs.dirname(require("snacks.git").get_root()), vim.fn.expand("%:p"))
+				vim.fn.jobstart(("open 'obsidian://vault/%s'"):format(path))
+			end,
+		},
+		{
+			"<C-;>q",
+			desc = "Search in Obsidian",
+			function()
+				local vault = vim.fs.basename(require("telekasten").Cfg.home)
+				vim.ui.input({ prompt = "Input query to search in Obsidian" }, function(input)
+					local query = input
+					vim.fn.jobstart(("open 'obsidian://search?vault=%s&query=%s'"):format(vault, query))
+				end)
 			end,
 		},
 	},
