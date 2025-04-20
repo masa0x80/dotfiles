@@ -2,37 +2,37 @@
 # https://github.com/99designs/aws-vault/tags
 aws-vault = "7.2.0"
 # https://github.com/getsops/sops/tags
-sops = "3.9.2"
+sops = "v3.10.2"
 # https://github.com/neovim/neovim/releases
 neovim = "0.11.0"
 
 # https://go.dev/dl/
-go = "1.23.4"
+go = "1.24.2"
 
 # https://github.com/corretto/corretto-21/tags
 java = "corretto-21.0.4.7.1"
 # https://gradle.org/install/
-gradle = "8.11.1"
+gradle = "8.13"
 # https://groovy.apache.org/download.html
-groovy = "4.0.24"
+groovy = "4.0.26"
 
 # https://nodejs.org/en/download
-node = "23.4.0"
+node = "23.11.0"
 # https://github.com/denoland/deno/tags
-deno = "2.1.4"
+deno = "2.2.11"
 
 # https://www.python.org/downloads/
-python = "3.13.1"
+python = "3.13.3"
 
 # https://www.ruby-lang.org/en/downloads/releases/
-ruby = "3.3.6"
+ruby = "3.4.3"
 
 # https://github.com/rust-lang/rust/tags
-rust = "1.83.0"
+rust = "1.86.0"
 
 # https://github.com/hashicorp/terraform/tags
-terraform = "1.10.2"
+terraform = "1.11.4"
 # https://github.com/terraform-docs/terraform-docs/tags
-terraform-docs = "0.19.0"
+terraform-docs = "0.20.0"
 
 usage = "latest"
