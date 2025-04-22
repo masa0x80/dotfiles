@@ -169,7 +169,6 @@ return {
 					toggle_todo({ linenr = n })
 				end
 			end,
-			-- "<Esc><Cmd>:'<,'>s/^\\(\\s*\\)\\(\\S\\)/\\1- [ ] \\2/g<CR>:nohlsearch<CR>",
 			noremap = true,
 			silent = true,
 			mode = "x",

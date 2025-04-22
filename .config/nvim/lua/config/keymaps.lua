@@ -117,9 +117,6 @@ map("n", "gV", "`[v`]", opts)
 map("n", "f<CR>", "}", opts)
 map("n", "F<CR>", "{", opts)
 
--- messages
-map("n", "<Leader>M", "<Cmd>messages<CR>", opts)
-
 -- folding
 map("n", "_", "zc", opts)
 map("n", "+", "zO", opts)
