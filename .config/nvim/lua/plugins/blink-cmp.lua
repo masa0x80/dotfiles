@@ -6,6 +6,11 @@ return {
 		"saghen/blink.cmp",
 		version = "*",
 		event = "VeryLazy",
+		dependencies = {
+			"fang2hou/blink-copilot",
+			"rafamadriz/friendly-snippets",
+			"L3MON4D3/LuaSnip",
+		},
 		enabled = function()
 			return vim.bo.filetype ~= "prompt" and vim.b.completion ~= false
 		end,
@@ -58,7 +63,7 @@ return {
 					if vim.bo.filetype == "markdown" then
 						return { "lsp", "snippets", "path" }
 					else
-						return { "lsp", "snippets", "buffer", "path" }
+						return { "lsp", "snippets", "buffer", "path", "copilot" }
 					end
 				end,
 				-- NOTE: Neovim補完プラグインblink.cmpの使い方とカスタマイズ https://eiji.page/blog/neovim-blink-cmp-intro/
@@ -70,16 +75,16 @@ return {
 					end
 					return 0
 				end,
+				providers = {
+					copilot = {
+						name = "copilot",
+						module = "blink-copilot",
+						score_offset = 100,
+						async = true,
+					},
+				},
 			},
 		},
 		opts_extend = { "sources.default" },
-	},
-	{
-		"rafamadriz/friendly-snippets",
-		event = "VeryLazy",
-	},
-	{
-		"L3MON4D3/LuaSnip",
-		event = "VeryLazy",
 	},
 }
