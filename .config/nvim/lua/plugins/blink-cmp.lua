@@ -21,7 +21,10 @@ return {
 					["<C-CR>"] = { "show", "show_documentation", "hide_documentation" },
 					["<CR>"] = { "accept_and_enter", "fallback" },
 				},
-				completion = { menu = { auto_show = true } },
+				completion = {
+					menu = { auto_show = false },
+					ghost_text = { enabled = false },
+				},
 			},
 			keymap = {
 				preset = "super-tab",
@@ -103,15 +106,6 @@ return {
 					else
 						return { "lsp", "snippets", "buffer", "path", "copilot" }
 					end
-				end,
-				-- NOTE: Neovim補完プラグインblink.cmpの使い方とカスタマイズ https://eiji.page/blog/neovim-blink-cmp-intro/
-				min_keyword_length = function(ctx)
-					-- :wq, :qa -> menu doesn't popup
-					-- :Lazy, :wqa -> menu popup
-					if ctx.mode == "cmdline" and ctx.line:find("^%l+$") ~= nil then
-						return 3
-					end
-					return 0
 				end,
 				providers = {
 					copilot = {
