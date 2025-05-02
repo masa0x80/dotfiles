@@ -29,6 +29,7 @@ return {
 			keymap = {
 				preset = "super-tab",
 				["<C-CR>"] = { "show", "show_documentation", "hide_documentation" },
+				["<Tab>"] = { "show", "fallback" },
 				["<CR>"] = { "accept", "fallback" },
 				["<C-n>"] = {
 					function(cmp)
