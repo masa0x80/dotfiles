@@ -9,6 +9,7 @@ cspell.args = {
 }
 
 require("lint").linters_by_ft = {
+	["yaml.ghaction"] = { "actionlint" },
 	dockerfile = { "hadolint" },
 	zsh = { "shellcheck" },
 }

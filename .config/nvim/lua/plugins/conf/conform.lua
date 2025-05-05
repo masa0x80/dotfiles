@@ -60,6 +60,7 @@ require("conform").setup({
 		html = { "prettier" },
 		json = { "prettier" },
 		jsonc = { "prettier" },
+		["yaml.ghaction"] = { "prettier" },
 		yaml = { "prettier" },
 		graphql = { "prettier" },
 		["*"] = { "injected" },
