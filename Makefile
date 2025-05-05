@@ -87,6 +87,7 @@ defaults:
 mise:
 	mise plugin upgrade
 	mise install -y
+	mise up
 
 .PHONY: python
 python: mise
