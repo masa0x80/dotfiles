@@ -98,6 +98,9 @@ abbrevs:
   - name: "git rebase --skip"
     abbr: grs
     snippet: "git rebase --skip"
+  - name: "git revert $(git fzf)"
+    abbr: grv
+    snippet: "echo $(git fzf) | xargs -I {} git revert {}"
   - name: "git show"
     abbr: gsh
     snippet: "git show"
