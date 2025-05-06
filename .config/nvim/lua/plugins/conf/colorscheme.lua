@@ -7,7 +7,7 @@ require("everforest").setup({
 		hl.SnacksPickerGitStatusUntracked = { fg = palette.purple }
 		hl["@markup.strong.markdown_inline"] = { sp = palette.red, bold = true, underdouble = true }
 		hl["@markup.strikethrough"] = { fg = palette.grey1, strikethrough = true }
-  hl.FlashMatch = { fg = palette.grey1, underline = true }
+		hl.FlashMatch = { fg = palette.grey1, underline = true }
 		hl.FlashCurrent = { fg = palette.purple }
 		hl.FlashLabel = { fg = palette.orange }
 		hl.FlashBackdrop = { fg = palette.grey1 }
@@ -34,5 +34,5 @@ vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
 	-- u200B '​' zero-width space
 	-- u202F ' ' narrow no-break space
 	-- u3000 '　' ideographic (zenkaku) space
-	command = [[call matchadd('ExtraWhitespace', "[\u00A0\u2000-\u200B\u202F\u3000]")]],
+	command = [[call matchadd('ExtraWhiteSpace', "[\u00A0\u2000-\u200B\u202F\u3000]")]],
 })
