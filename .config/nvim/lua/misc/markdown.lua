@@ -44,8 +44,9 @@ vim.api.nvim_create_user_command("PlantUMLPreview", function()
 	vim.system({ "mkdir", "-p", tmp_dir })
 	writeSvg()
 	vim.system({ "cp", vim.fn.expand("$DOTFILE/etc/plantuml/viewer.html"), tmp_dir })
-	-- nvim終了時にpythonも終了するために `jobstart` を利用
-	vim.fn.jobstart("python -m http.server " .. port .. " --directory " .. tmp_dir)
+	-- 前回起動したプロセスが残っていたらkill
+	vim.system({ "pkill", "python", "-m", "http.server", port, "--directory", tmp_dir }):wait()
+	vim.system({ "python", "-m", "http.server", port, "--directory", tmp_dir })
 	vim.system({
 		"open",
 		"-n",
