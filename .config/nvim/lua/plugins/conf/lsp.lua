@@ -83,53 +83,6 @@ local on_attach = function(client, bufnr)
 	-- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 end
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
-local servers = {
-	bashls = {},
-	clangd = {},
-	dockerls = {},
-	eslint = {},
-	gopls = {},
-	jdtls = {},
-	jsonls = {
-		settings = {
-			json = {
-				schemas = require("schemastore").json.schemas(),
-				validate = { enable = true },
-			},
-		},
-	},
-	kotlin_language_server = {},
-	lua_ls = {
-		Lua = {
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
-		},
-	},
-	marksman = {},
-	solargraph = {
-		settings = {
-			solargraph = {
-				diagnostics = false,
-			},
-		},
-	},
-	stylelint_lsp = {},
-	tailwindcss = {},
-	terraformls = {},
-	ts_ls = {
-		init_options = {
-			preferences = {
-				importModuleSpecifierPreference = "non-relative",
-			},
-		},
-	},
-}
-
 local saga = require("lspsaga")
 saga.setup({
 	ui = {
@@ -186,33 +139,7 @@ capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 -- Setup mason so it can manage external tooling
 require("mason").setup({ ui = { border = "rounded" } })
 
--- Ensure the servers above are installed
-local mason_lspconfig = require("mason-lspconfig")
-
-mason_lspconfig.setup({
-	ensure_installed = vim.tbl_keys(servers),
-})
-
-mason_lspconfig.setup_handlers({
-	function(server_name)
-		local args = {
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = servers[server_name],
-		}
-		-- XXX: settingsと並列に並べるとts_lsがうまく動く
-		if servers[server_name] ~= nil then
-			for k, v in pairs(servers[server_name]) do
-				args[k] = v
-			end
-		end
-		if server_name == "clangd" then
-			args.capabilities.offsetEncoding = { "utf-16" }
-			args.filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }
-		end
-		require("lspconfig")[server_name].setup(args)
-	end,
-})
+require("mason-lspconfig").setup()
 
 -- https://github.com/williamboman/mason.nvim/issues/1309#issuecomment-1555018732
 local packages = {
