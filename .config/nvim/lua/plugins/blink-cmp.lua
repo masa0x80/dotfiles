@@ -20,7 +20,7 @@ return {
 					preset = "super-tab",
 					["<C-CR>"] = { "show", "show_documentation", "hide_documentation" },
 					["<Tab>"] = { "show", "fallback" },
-					["<CR>"] = { "accept_and_enter", "fallback" },
+					["<CR>"] = { "accept", "fallback" },
 				},
 				completion = {
 					menu = { auto_show = false },
