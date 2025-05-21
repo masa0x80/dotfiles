@@ -66,13 +66,12 @@ require("conform").setup({
 		["*"] = { "injected" },
 	},
 	formatters = formatters,
-	format_on_save = function()
+	format_after_save = function()
 		if not vim.g.formatter_enabled then
 			return
 		end
 		return {
-			timeout_ms = 3000,
-			lsp_fallback = true,
+			lsp_format = "fallback",
 			filter = function(client)
 				return client.name ~= "ts_ls"
 			end,
