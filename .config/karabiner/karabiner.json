@@ -817,7 +817,7 @@
                         ]
                     },
                     {
-                        "description": "<C-c> ▶ <Esc>",
+                        "description": "<C-r> ▶ gr",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -829,10 +829,15 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "c",
+                                    "key_code": "r",
                                     "modifiers": { "mandatory": ["control"] }
                                 },
-                                "to": [{ "key_code": "escape" }],
+                                "to": [
+                                  { "key_code": "v", "modifiers": ["control"] },
+                                  { "key_code": "g" },
+                                  { "key_code": "v", "modifiers": ["control"] },
+                                  { "key_code": "r" }
+                                ],
                                 "type": "basic"
                             }
                         ]
