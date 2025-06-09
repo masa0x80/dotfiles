@@ -66,7 +66,7 @@ require("conform").setup({
 		["*"] = { "injected" },
 	},
 	formatters = formatters,
-	format_after_save = function()
+	format_on_save = function()
 		if not vim.g.formatter_enabled then
 			return
 		end
