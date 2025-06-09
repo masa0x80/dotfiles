@@ -32,8 +32,6 @@ install: \
 	sheldon \
 	passage \
 	term-definition \
-	export-alt-tab-config \
-	export-ice-config \
 	gen-zshrc \
 
 .PHONY: deploy
@@ -130,19 +128,3 @@ term-definition:
 .PHONY: gen-zshrc
 gen-zshrc:
 	./scripts/gen-zshrc
-
-.PHONY: export-alt-tab-config
-export-alt-tab-config:
-	defaults export com.lwouis.alt-tab-macos $(DOTFILE)/etc/alt-tab/config.plist
-
-.PHONY: import-alt-tab-config
-import-alt-tab-config:
-	defaults import com.lwouis.alt-tab-macos $(DOTFILE)/etc/alt-tab/config.plist
-
-.PHONY: export-ice-config
-export-ice-config:
-	defaults export com.jordanbaird.Ice $(DOTFILE)/etc/ice/config.plist
-
-.PHONY: import-ice-config
-import-ice-config:
-	defaults import com.jordanbaird.Ice $(DOTFILE)/etc/ice/config.plist
