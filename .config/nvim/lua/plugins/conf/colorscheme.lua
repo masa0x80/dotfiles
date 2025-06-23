@@ -12,9 +12,9 @@ require("everforest").setup({
 		hl.FlashLabel = { fg = palette.orange }
 		hl.FlashBackdrop = { fg = palette.grey1 }
 		hl.GitSignsCurrentLineBlame = { fg = palette.bg5 }
-		hl.RenderMarkdownH1Bg = { fg = "#543a48" }
-		hl.RenderMarkdownH4Bg = { fg = palette.bg3 }
-		hl.RenderMarkdownH5Bg = { fg = palette.bg2 }
+		hl.RenderMarkdownH1Bg = { bg = palette.bg1 }
+		hl.RenderMarkdownH4Bg = { bg = palette.bg3 }
+		hl.RenderMarkdownH5Bg = { bg = palette.bg2 }
 	end,
 })
 require("everforest").load()
