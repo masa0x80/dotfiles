@@ -20,7 +20,7 @@ h4,
 h5,
 h6 {
   margin: 1.5em 0 8px 0;
-  padding: 0.3em 0;
+  padding: 0.3em;
   font-weight: bold;
   background-color: #3b4048;
 }
