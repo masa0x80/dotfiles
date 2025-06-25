@@ -75,3 +75,10 @@ vim.api.nvim_create_user_command("AddAbbrComma", function(opts)
 end, {
 	nargs = "*",
 })
+
+vim.api.nvim_create_user_command("EnableCompletion", function()
+	vim.b.completion = true
+end, {})
+vim.api.nvim_create_user_command("DisableCompletion", function()
+	vim.b.completion = false
+end, {})
