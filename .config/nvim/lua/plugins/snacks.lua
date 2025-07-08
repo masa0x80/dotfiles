@@ -9,6 +9,8 @@ local explorer_opts = {
 				["c"] = { { "yank_only_filename", "explorer_copy" } },
 				["y"] = { "copy_file_path" },
 				["Y"] = { "explorer_yank" },
+				["<Leader>h"] = { "toggle_hidden" },
+				["H"] = false,
 			},
 		},
 	},
@@ -89,6 +91,8 @@ return {
 						["<C-e>"] = { "list_down" },
 						["<C-f>"] = { "list_scroll_down" },
 						["<C-b>"] = { "list_scroll_up" },
+						["gi"] = { "toggle_focus" },
+						["/"] = false,
 					},
 				},
 				input = {
