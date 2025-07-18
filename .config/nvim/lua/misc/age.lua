@@ -13,6 +13,8 @@ if recipient ~= nil and identity ~= nil then
 	vim.api.nvim_create_autocmd({ "BufWritePre", "FileWritePre" }, {
 		pattern = "*.age",
 		callback = function()
+			vim.cmd("normal! mm")
+			vim.cmd("normal! Hmt")
 			vim.cmd(string.format("silent '[,']!rage --encrypt -r %s -a", recipient))
 		end,
 	})
@@ -22,6 +24,8 @@ if recipient ~= nil and identity ~= nil then
 		callback = function()
 			vim.cmd("silent undo")
 			require("conform").format({ async = false, lsp_format = "fallback", range = nil })
+			vim.cmd("normal! `tzt")
+			vim.cmd("normal! `m")
 		end,
 	})
 end

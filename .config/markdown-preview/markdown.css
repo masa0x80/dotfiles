@@ -143,6 +143,14 @@ ol + img {
   margin-top: 1em;
 }
 
+ol ol {
+  list-style-type: lower-alpha;
+}
+
+ol ol ol {
+  list-style-type: lower-roman;
+}
+
 p.source-line {
   margin-block-start: 0;
   margin-block-end: 0;

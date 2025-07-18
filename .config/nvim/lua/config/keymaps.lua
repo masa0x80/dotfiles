@@ -76,6 +76,9 @@ map(
 	{ noremap = true, silent = true, desc = "Toggle Relative[N]umber" }
 )
 
+-- marks
+map("n", "<C-g><C-m>", "`mzt", opts)
+
 -- Indent
 map("n", "<C-g><C-p>", "<<", opts)
 map("n", "<C-g><C-n>", ">>", opts)
