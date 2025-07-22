@@ -1,5 +1,5 @@
 [
-  { "name": "slackfont", "text": "/slackfont Explex" },
+  { "name": "slackfont", "text": "/slackfont Monaspace Argon" },
   { "name": "cm-feat", "text": "🎸 feat: " },
   { "name": "cm-bug", "text": "🐛 bug: " },
   { "name": "cm-fix", "text": "✏️ fix " },

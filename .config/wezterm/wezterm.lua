@@ -10,17 +10,12 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.font = wezterm.font("Explex Console NF", {
-	stretch = "Normal",
-	weight = "Regular",
-	bold = false,
-	italic = false,
-})
-config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
+config.font = wezterm.font_with_fallback({ "Monaspace Argon", "BIZ UDGothic" })
+config.harfbuzz_features = { "calt=1", "cv01=2", "cv02=1", "cv31=1", "liga=0" }
 config.text_background_opacity = 0.85
-config.font_size = 13.0
+config.font_size = 12.0
 config.adjust_window_size_when_changing_font_size = true
-config.cell_width = 1.0
+config.cell_width = 0.9
 config.line_height = 1.0
 config.use_cap_height_to_scale_fallback_fonts = true
 

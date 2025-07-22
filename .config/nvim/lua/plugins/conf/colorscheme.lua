@@ -15,6 +15,7 @@ require("everforest").setup({
 		hl.RenderMarkdownH1Bg = { bg = palette.bg1 }
 		hl.RenderMarkdownH4Bg = { bg = palette.bg3 }
 		hl.RenderMarkdownH5Bg = { bg = palette.bg2 }
+		hl.CurrentWord = { underdotted = true }
 	end,
 })
 require("everforest").load()
