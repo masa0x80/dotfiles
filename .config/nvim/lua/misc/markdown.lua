@@ -1,14 +1,10 @@
 local path = vim.fn.expand("$DOTFILE/etc/plantuml/compose.yaml")
 vim.api.nvim_create_user_command("StartPlantUmlServer", function()
-	vim.system(
-		{ "docker", "compose", "-f", vim.fn.expand("$DOTFILE/etc/plantuml/compose.yaml"), "up", "-d" },
-		{ text = true },
-		function(obj)
-			if obj.code ~= 0 then
-				vim.notify(tostring(obj.code), "error", { render = "default", timeout = 10000 })
-			end
+	vim.system({ "docker", "compose", "-f", path, "up", "-d" }, { text = true }, function(obj)
+		if obj.code ~= 0 then
+			vim.notify(tostring(obj.code), "error", { render = "default", timeout = 10000 })
 		end
-	)
+	end)
 end, {})
 
 vim.api.nvim_create_user_command("StopPlantUmlServer", function()
