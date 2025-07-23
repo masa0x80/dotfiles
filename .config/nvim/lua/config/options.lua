@@ -43,6 +43,7 @@ local options = {
 	},
 	path = {
 		".",
+		"./plugins",
 		"/usr/include",
 		vim.fn.fnameescape(vim.fn.expand("$DOTFILE/.config/nvim/lua")),
 		vim.fn.fnameescape(vim.fn.expand("$DOTFILE/.config/nvim/lua/config/plugins")),
@@ -72,8 +73,6 @@ vim.opt.iskeyword:append("-")
 
 -- store tabpages and globals in session
 vim.opt.sessionoptions:append("tabpages,globals")
-
--- Folding
 
 -- disable netrw
 vim.g.loaded_netrw = true
