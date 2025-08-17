@@ -36,13 +36,12 @@ cask "microsoft-edge"
 
 cask "font-biz-udpgothic"
 cask "font-udev-gothic-nf"
+
 cask "font-0xproto-nerd-font"
 
-tap "hanasuke/moralerspace"
-cask "font-moralerspace"
-
-cask "font-biz-udpgothic"
 cask "font-monaspace"
-
 tap "hanasuke/moralerspace"
 cask "font-moralerspace"
+
+tap "masa0x80/tap"
+cask "font-pending-mono-hwnf"
