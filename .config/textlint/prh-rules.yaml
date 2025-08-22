@@ -3,6 +3,9 @@ rules:
   - expected: " "
     pattern: "/[ ]/"
 
+  - expected: ": "
+    pattern: "/：\\s?/"
+
   - expected: "$1か$2"
     pattern: "/([\\d０-９一-十百千万億兆京])[ヶケ箇]([月所])/"
 

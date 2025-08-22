@@ -97,8 +97,12 @@ map("n", "<C-m>", "%", { remap = true, desc = "%" })
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#u%E3%81%A7%E3%83%AA%E3%83%89%E3%82%A5
 map("n", "U", "<C-r>", opts)
 
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#y%E3%81%A7%E8%A1%8C%E6%9C%AB%E3%81%BE%E3%81%A7%E3%82%B3%E3%83%94%E3%83%BC
+map("n", "Y", "y$", opts)
+
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#x%E3%81%A7%E5%89%8A%E9%99%A4
 map("n", "x", '"_x', opts)
+map("v", "x", '"_d', opts)
 map("n", "X", '"_D', opts)
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E7%A9%BA%E8%A1%8C%E3%81%A7%E3%81%AE%E7%B7%A8%E9%9B%86%E9%96%8B%E5%A7%8B%E6%99%82%E3%81%AB%E8%87%AA%E5%8B%95%E3%81%A7%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88
