@@ -187,6 +187,26 @@ return {
 		},
 		{ "<C-;>d", "<Cmd>Telekasten goto_today<CR>", noremap = true, silent = true },
 		{ "<C-;>w", "<Cmd>Telekasten goto_thisweek<CR>", noremap = true, silent = true },
+		{
+			"<C-;>m",
+			function()
+				local vault_path = require("telekasten").Cfg.home
+				local year = os.date("%Y")
+				local month = os.date("%m")
+				local file_path = ("%s/monthly/%s/%s-%s.md"):format(vault_path, year, year, month)
+				if vim.fn.filereadable(file_path) == 0 then
+					vim.fn.execute(("edit %s/templates/monthly.md"):format(vault_path))
+					vim.fn.execute("%y")
+					vim.fn.execute("bd")
+				end
+				vim.fn.execute(("edit %s"):format(file_path))
+				if vim.fn.filereadable(file_path) == 0 then
+					vim.cmd("normal! P")
+				end
+			end,
+			noremap = true,
+			silent = true,
+		},
 		{ "<C-;>c", "<Cmd>Telekasten show_calendar<CR>", noremap = true, silent = true },
 		{
 			"<C-;>k",
