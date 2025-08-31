@@ -54,7 +54,7 @@ return {
 							cmds = {
 								internal = {
 									ruby = "TermExec cmd='ruby %'",
-									typescript = "TermExec cmd='ts-node %'",
+									typescript = "TermExec cmd='npx tsx %'",
 								},
 							},
 						})

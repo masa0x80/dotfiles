@@ -8,7 +8,7 @@ textlint-rule-no-zero-width-spaces
 textlint-rule-prh
 textlint-rule-terminology
 @textlint-rule/textlint-rule-no-invalid-control-character
-ts-node
+tsx
 markdown-table-formatter
 @nestjs/cli
 jsmigemo
