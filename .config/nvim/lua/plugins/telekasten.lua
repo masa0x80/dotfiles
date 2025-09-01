@@ -215,7 +215,15 @@ return {
 			silent = true,
 		},
 		{ "<C-;>v", "<Cmd>Telekasten switch_vault<CR>", noremap = true, silent = true },
-		{ "<C-;>t", "<Cmd>Telekasten new_templated_note<CR>", noremap = true, silent = true },
+		{
+			"<C-;>t",
+			function()
+				vim.fn.setreg("+", vim.fn.expand("%:."))
+				require("telekasten").new_templated_note()
+			end,
+			noremap = true,
+			silent = true,
+		},
 	},
 	config = require("config.utils").load("conf/telekasten"),
 	init = require("config.utils").load("init/telekasten"),
