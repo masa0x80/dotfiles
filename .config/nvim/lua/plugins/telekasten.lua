@@ -218,7 +218,7 @@ return {
 		{
 			"<C-;>t",
 			function()
-				vim.fn.setreg("+", vim.fn.expand("%:."))
+				vim.fn.setreg("+", ("%s/%s"):format(vim.fn.expand("%:.:h"), os.date("%Y-%m-%d")))
 				require("telekasten").new_templated_note()
 			end,
 			noremap = true,
