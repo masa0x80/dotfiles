@@ -77,7 +77,7 @@ map(
 )
 
 -- marks
-map("n", "<C-g><C-m>", "`mzt", opts)
+map("n", "<C-g><C-m>", "`mzt10<C-y>", opts)
 
 -- Indent
 map("n", "<C-g><C-p>", "<<", opts)
