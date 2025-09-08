@@ -78,6 +78,11 @@ map(
 
 -- marks
 map("n", "<C-g><C-m>", "`mzt10<C-y>", opts)
+map("n", "<C-g><C-;>", "zt10<C-y>", opts)
+map("n", "<C-g><C-h>", function()
+	vim.cmd("windo normal! `nzt10k10j")
+	vim.cmd("normal! `zzt10k10j")
+end, opts)
 
 -- Indent
 map("n", "<C-g><C-p>", "<<", opts)
@@ -168,7 +173,7 @@ map("c", "<C-e>", "<End>", {})
 map("n", "<C-g><C-g><C-g>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
 
 -- Save
-map({ "n", "v" }, "<C-;><C-;>", "mm<Cmd>write<CR>`m", { noremap = true })
+map({ "n", "v" }, "<C-;><C-;>", "<Cmd>write<CR>", { noremap = true })
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#i%3Cspace%3E%E3%81%A7word%E9%81%B8%E6%8A%9E
 map({ "o", "x" }, "i<Space>", "iW", opts)
