@@ -10,7 +10,7 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.font = wezterm.font_with_fallback({ "Pending Mono HWNF" })
+config.font = wezterm.font_with_fallback({ "Pending Mono HWNF", "Apple Color Emoji" })
 -- config.harfbuzz_features = { "calt=1", "cv01=2", "cv02=1", "cv31=1", "liga=0" }
 config.text_background_opacity = 0.85
 config.font_size = 13.0
