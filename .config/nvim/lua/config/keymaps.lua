@@ -80,7 +80,10 @@ map(
 map("n", "<C-g><C-m>", "`mzt10<C-y>", opts)
 map("n", "<C-g><C-;>", "zt10<C-y>", opts)
 map("n", "<C-g><C-h>", function()
-	vim.cmd("windo normal! `nzt10k10j")
+	ok, _ = pcall(vim.cmd, "marks n")
+	if ok then
+		vim.cmd("windo normal! `nzt10k10j")
+	end
 	vim.cmd("normal! `zzt10k10j")
 end, opts)
 
