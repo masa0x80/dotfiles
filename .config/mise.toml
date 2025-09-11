@@ -1,6 +1,8 @@
 [tools]
 # https://github.com/rhysd/actionlint/tags
 actionlint = "latest"
+# https://github.com/aws/aws-sam-cli/releases
+aws-sam-cli = "latest"
 # https://github.com/99designs/aws-vault/tags
 aws-vault = "latest"
 # https://github.com/getsops/sops/tags
