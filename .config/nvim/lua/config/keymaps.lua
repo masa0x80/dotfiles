@@ -30,10 +30,6 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- Disable EX-mode (if you enter EX-mode, push gQ)
 map("n", "Q", "<Nop>", opts)
 
--- Quit
-map("n", "<Leader>q", "<Cmd>bd<CR>", opts)
-map("n", "<Leader>Q", "<Cmd>qa<CR>", opts)
-
 -- Windows
 map("n", "<C-w>-", "<Cmd>split<CR>", opts)
 map("n", "<C-w>\\", "<Cmd>vsplit<CR>L", opts)
@@ -110,8 +106,9 @@ map("n", "Y", "y$", opts)
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#x%E3%81%A7%E5%89%8A%E9%99%A4
 map("n", "x", '"_x', opts)
-map("v", "x", '"_d', opts)
 map("n", "X", '"_D', opts)
+map("x", "x", '"_x', opts)
+map("o", "x", "d", opts)
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E7%A9%BA%E8%A1%8C%E3%81%A7%E3%81%AE%E7%B7%A8%E9%9B%86%E9%96%8B%E5%A7%8B%E6%99%82%E3%81%AB%E8%87%AA%E5%8B%95%E3%81%A7%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88
 map("n", "i", function()
@@ -131,12 +128,6 @@ map("n", "gV", "`[v`]", opts)
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E7%9B%B4%E5%89%8D%E3%83%BB%E7%9B%B4%E5%BE%8C%E3%81%AE%E7%A9%BA%E8%A1%8C%E3%81%AB%E9%A3%9B%E3%81%B6
 map("n", "f<CR>", "}", opts)
 map("n", "F<CR>", "{", opts)
-
--- folding
-map("n", "_", "zc", opts)
-map("n", "+", "zO", opts)
-map("n", "z'", "zA", opts)
-map("n", "z;", "za", opts)
 
 -- # Insert
 
@@ -181,7 +172,10 @@ map({ "n", "v" }, "<C-;><C-;>", "<Cmd>write<CR>", { noremap = true })
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#i%3Cspace%3E%E3%81%A7word%E9%81%B8%E6%8A%9E
 map({ "o", "x" }, "i<Space>", "iW", opts)
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%E3%82%B3%E3%83%94%E3%83%BC%E6%99%82%E3%81%AB%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E4%BD%8D%E7%BD%AE%E3%82%92%E4%BF%9D%E5%AD%98
-map("x", "y", "mzy`z", opts)
+map("x", "y", function()
+	vim.fn.execute("normal! myy`y")
+	vim.fn.execute(":delm y<CR>")
+end, opts)
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%E3%83%9A%E3%83%BC%E3%82%B9%E3%83%88%E6%99%82%E3%81%AB%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%81%AE%E5%A4%89%E6%9B%B4%E3%82%92%E9%98%B2%E6%AD%A2
 map("x", "p", "P", opts)
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%3C%2C-%3E%E3%81%A7%E9%80%A3%E7%B6%9A%E3%81%97%E3%81%A6%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88%E3%82%92%E6%93%8D%E4%BD%9C
@@ -194,6 +188,11 @@ map("x", "<C-t><C-n>", ">gv", opts)
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E8%A1%8C%E3%82%92%E4%B8%8A%E4%B8%8B%E3%81%AB%E7%A7%BB%E5%8B%95
 map("x", "K", ":move'<-2<CR>gv", opts)
 map("x", "J", ":move'>+1<CR>gv", opts)
+
+-- https://zenn.dev/vim_jp/articles/2024-06-05-vim-middle-class-features#%E5%BC%95%E7%94%A8%E7%AC%A6%E3%81%A7%E5%9B%B2%E3%81%BE%E3%82%8C%E3%81%9F%E7%AE%87%E6%89%80%E5%85%A8%E4%BD%93%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B
+for _, quote in ipairs({ '"', "'", "`" }) do
+	vim.keymap.set({ "x", "o" }, "a" .. quote, "2i" .. quote)
+end
 
 -- Jira
 map("n", "<C-;>j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)
