@@ -61,6 +61,7 @@ local options = {
 		foldsep = "┊",
 		fold = "┊",
 	},
+	helplang = "ja,en",
 }
 
 for k, v in pairs(options) do

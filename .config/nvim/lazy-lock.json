@@ -91,6 +91,7 @@
   "vim-sandwich": { "branch": "master", "commit": "785fb39d79bb843b545f1d8a9265bd8f2e2285f8" },
   "vim-slim": { "branch": "master", "commit": "a0a57f75f20a03d5fa798484743e98f4af623926" },
   "vim-unimpaired": { "branch": "master", "commit": "efdc6475f7ea789346716dabf9900ac04ee8604a" },
+  "vimdoc-ja": { "branch": "master", "commit": "2cb98fba478f74e45de7885219ac4b80132e0896" },
   "vscode-js-debug": { "branch": "main", "commit": "bc551bf4f87a6ef9330b28514bf7447cbbdb2a9e" },
   "which-key.nvim": { "branch": "main", "commit": "fcbf4eea17cb299c02557d576f0d568878e354a4" },
   "winresizer": { "branch": "master", "commit": "d1c5a4533b07879275878d4aefa91468421576e4" }
