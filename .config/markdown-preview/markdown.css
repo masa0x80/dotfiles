@@ -283,6 +283,10 @@
 .markdown-body img {
   max-width: 100%;
   max-height: 100%;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 10px #555;
+  box-shadow: 0 0 10px #555;
 }
 .markdown-body strong {
   font-weight: bold;
@@ -331,6 +335,7 @@
 
 .markdown-body {
   font-family: "Pending Mono HWNF";
+  font-size: 28px;
 }
 
 .markdown-body h1 {
@@ -470,11 +475,6 @@ s {
   border-bottom: 4px double var(--color-markdown-table-border);
 }
 
-.markdown-body img {
-  max-width: initial;
-  max-height: initial;
-}
-
 .source-line {
   padding-left: 0.3em;
 }
@@ -493,4 +493,5 @@ p.source-line {
 #page-ctn {
   min-height: 200vh;
   max-width: initial;
+  margin-bottom: 50vh;
 }
