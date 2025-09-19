@@ -419,8 +419,24 @@
   margin-left: -0.9em;
 }
 
+.markdown-body ol ul,
+.markdown-body ul ul {
+  list-style: "󱠦 ";
+}
+.markdown-body ol ul ul,
+.markdown-body ul ul ul {
+  list-style: "󱠦 ";
+}
+.markdown-body ul {
+  list-style: "󱠦 ";
+}
+
+ul li::marker {
+  color: #c0c0c0;
+}
+
 .markdown-body kbd {
-  font: 14px "Pending Mono HWNF";
+  font: 1em "Pending Mono HWNF" !important;
 }
 
 .markdown-body code {
@@ -431,6 +447,18 @@
 .markdown-body code:after {
   letter-spacing: 0.2em;
   content: "`";
+}
+
+.markdown-body img {
+  display: block;
+  width: 30%;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+.markdown-body img:hover {
+  width: 100%;
+  height: 100%;
 }
 
 .markdown-body strong {
@@ -451,11 +479,11 @@ s {
 }
 
 .task-list-item input {
-  font: 13px "Pending Mono HWNF";
-  width: 1em;
-  height: 1em;
+  font: 0.8em "Pending Mono HWNF";
+  width: 0.8em;
+  height: 0.8em;
   position: relative;
-  left: 0.25em;
+  left: 0.1em;
 }
 
 .task-list-item input[disabled] {
@@ -491,7 +519,7 @@ p.source-line {
 }
 
 #page-ctn {
-  min-height: 200vh;
   max-width: initial;
+  min-height: 100vh;
   margin-bottom: 50vh;
 }
