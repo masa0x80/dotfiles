@@ -39,7 +39,6 @@ local options = {
 		trail = "-",
 		extends = "»",
 		precedes = "«",
-		nbsp = "‿",
 	},
 	path = {
 		".",
