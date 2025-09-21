@@ -2,7 +2,7 @@ local recipient = vim.fn.getenv("AGE_RECIPIENT")
 local identity = vim.fn.getenv("AGE_IDENTITY")
 
 if recipient ~= nil and identity ~= nil then
-	vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
+	require("utils").create_autocmd({ "BufReadPost", "FileReadPost" }, {
 		pattern = "*.age",
 		callback = function()
 			vim.cmd(string.format("silent '[,']!rage --decrypt -i %s", identity))
@@ -10,7 +10,7 @@ if recipient ~= nil and identity ~= nil then
 		end,
 	})
 
-	vim.api.nvim_create_autocmd({ "BufWritePre", "FileWritePre" }, {
+	require("utils").create_autocmd({ "BufWritePre", "FileWritePre" }, {
 		pattern = "*.age",
 		callback = function()
 			vim.cmd("normal! mz")
@@ -18,7 +18,7 @@ if recipient ~= nil and identity ~= nil then
 		end,
 	})
 
-	vim.api.nvim_create_autocmd({ "BufWritePost", "FileWritePost" }, {
+	require("utils").create_autocmd({ "BufWritePost", "FileWritePost" }, {
 		pattern = "*.age",
 		callback = function()
 			vim.cmd("silent undo")

@@ -53,7 +53,7 @@ return {
 				desc = "DAP: UI Open",
 			},
 		},
-		config = require("config.utils").load("conf/dap"),
+		config = require("utils").load("conf/dap"),
 	},
 	{
 		"nvim-neotest/nvim-nio",
@@ -108,6 +108,6 @@ return {
 	},
 	{
 		"mxsdev/nvim-dap-vscode-js",
-		config = require("config.utils").load("conf/dap-vscode-js"),
+		config = require("utils").load("conf/dap-vscode-js"),
 	},
 }

@@ -3,11 +3,11 @@ return {
 		"nvim-lualine/lualine.nvim",
 		version = "*",
 		event = "VeryLazy",
-		config = require("config.utils").load("conf/lualine"),
+		config = require("utils").load("conf/lualine"),
 	},
 	{
 		"SmiteshP/nvim-navic",
 		version = "*",
-		config = require("config.utils").load("conf/navic"),
+		config = require("utils").load("conf/navic"),
 	},
 }

@@ -11,5 +11,5 @@ return {
 		{ "g<C-a>", "g<Plug>(dial-increment)", noremap = true, mode = "v" },
 		{ "g<C-x>", "g<Plug>(dial-decrement)", noremap = true, mode = "v" },
 	},
-	config = require("config.utils").load("conf/dial"),
+	config = require("utils").load("conf/dial"),
 }

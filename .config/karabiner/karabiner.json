@@ -1090,17 +1090,9 @@
                         ]
                     },
                     {
-                        "description": "Activate WezTerm",
+                        "description": "bookmark",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": { "mandatory": ["command"] }

@@ -3,7 +3,7 @@ return {
 		"dinhhuy258/git.nvim",
 		version = "*",
 		event = "VeryLazy",
-		config = require("config.utils").load("conf/git"),
+		config = require("utils").load("conf/git"),
 	},
 	{
 		"akinsho/git-conflict.nvim",
@@ -22,19 +22,19 @@ return {
 		keys = {
 			{ "<C-g><C-l>", desc = "Show Git Log" },
 		},
-		config = require("config.utils").load("conf/git-messenger"),
-		init = require("config.utils").load("init/git-messenger"),
+		config = require("utils").load("conf/git-messenger"),
+		init = require("utils").load("init/git-messenger"),
 	},
 	{
 		"ruifm/gitlinker.nvim",
 		version = "*",
 		event = "VeryLazy",
-		config = require("config.utils").load("conf/gitlinker"),
+		config = require("utils").load("conf/gitlinker"),
 	},
 	{
 		"lewis6991/gitsigns.nvim",
 		version = "*",
 		event = { "BufNewFile", "BufRead" },
-		config = require("config.utils").load("conf/gitsigns"),
+		config = require("utils").load("conf/gitsigns"),
 	},
 }

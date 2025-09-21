@@ -1,5 +1,6 @@
 return {
-	"tpope/vim-unimpaired",
+	"nvim-mini/mini.surround",
 	version = "*",
 	event = "VeryLazy",
+	opts = {},
 }

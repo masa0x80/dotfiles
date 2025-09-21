@@ -225,8 +225,8 @@ return {
 			silent = true,
 		},
 	},
-	config = require("config.utils").load("conf/telekasten"),
-	init = require("config.utils").load("init/telekasten"),
+	config = require(".utils").load("conf/telekasten"),
+	init = require("utils").load("init/telekasten"),
 	dependencies = {
 		"renerocksai/calendar-vim",
 	},

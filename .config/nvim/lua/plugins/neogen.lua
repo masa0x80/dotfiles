@@ -32,5 +32,5 @@ return {
 			desc = "neogen: type",
 		},
 	},
-	config = require("config.utils").load("conf/neogen"),
+	config = require("utils").load("conf/neogen"),
 }

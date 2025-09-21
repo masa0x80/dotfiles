@@ -1,5 +1,18 @@
 local M = {}
 
+-- augroup for this config file
+local augroup = vim.api.nvim_create_augroup("_", {})
+
+-- wrapper function to use internal augroup
+M.create_autocmd = function(event, opts)
+	vim.api.nvim_create_autocmd(
+		event,
+		vim.tbl_extend("force", {
+			group = augroup,
+		}, opts)
+	)
+end
+
 M.preview = function(path)
 	vim.fn.execute(string.format("!open '%s'", path))
 end

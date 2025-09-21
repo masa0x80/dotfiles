@@ -17,9 +17,12 @@ local options = {
 	updatetime = 2000, -- faster completion (4000ms default)
 	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 	expandtab = true, -- convert tabs to spaces
-	shiftwidth = 0, -- the number of spaces inserted for each indentation
+	shiftwidth = 2, -- the number of spaces inserted for each indentation
+	shiftround = true,
+	softtabstop = 2,
 	tabstop = 2, -- insert 2 spaces for a tab
 	cursorline = true, -- highlight the current line
+	cursorcolumn = true,
 	number = true, -- set numbered lines
 	relativenumber = true, -- set relative numbered lines
 	numberwidth = 4, -- set number column width to 2 {default 4}
@@ -68,7 +71,7 @@ for k, v in pairs(options) do
 end
 
 vim.opt.shortmess:append("I")
-vim.opt.whichwrap:append("<,>,[,],h,l")
+vim.opt.whichwrap:append("b,s,h,l,<,>,[,],~")
 vim.opt.iskeyword:append("-")
 
 -- store tabpages and globals in session

@@ -3,7 +3,7 @@ return {
 		"neovim/nvim-lspconfig",
 		version = "*",
 		event = { "VeryLazy", "BufReadPre" },
-		config = require("config.utils").load("conf/lsp"),
+		config = require("utils").load("conf/lsp"),
 	},
 	{
 		"williamboman/mason.nvim",

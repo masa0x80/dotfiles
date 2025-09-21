@@ -23,7 +23,7 @@ local lsp_names = function()
 	local filetype = require("conform").formatters_by_ft[ft]
 	for _, formatter in
 		ipairs(vim.tbl_filter(function(f)
-			return not vim.tbl_contains(vim.tbl_keys(require("config.utils").hidden_formatters), f)
+			return not vim.tbl_contains(vim.tbl_keys(require("utils").hidden_formatters), f)
 		end, filetype or {}))
 	do
 		table.insert(clients, formatter)

@@ -19,6 +19,6 @@ return {
 			desc = "<v:count1>ToggleTerm direction=horizontal",
 		},
 	},
-	init = require("config.utils").load("init/toggleterm"),
-	config = require("config.utils").load("conf/toggleterm"),
+	init = require("utils").load("init/toggleterm"),
+	config = require("utils").load("conf/toggleterm"),
 }

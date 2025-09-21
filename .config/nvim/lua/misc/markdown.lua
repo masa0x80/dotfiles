@@ -52,15 +52,13 @@ vim.api.nvim_create_user_command("PlantUMLPreview", function()
 		"http://localhost:" .. port .. "/viewer.html?filename=" .. filename,
 	})
 	local group = "PlantUMLPreview:" .. filename
-	vim.api.nvim_create_augroup(group, { clear = true })
 	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 		group = group,
 		buffer = vim.fn.bufnr(),
 		callback = writeSvg,
 	})
 end, {})
-
-vim.api.nvim_create_autocmd({ "FileType" }, {
+require("utils").create_autocmd({ "FileType" }, {
 	pattern = "markdown",
 	callback = function(args)
 		require("editorconfig").config(args.buf)

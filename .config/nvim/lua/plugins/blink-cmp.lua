@@ -31,12 +31,6 @@ return {
 				preset = "super-tab",
 				["<C-CR>"] = { "show", "show_documentation", "hide_documentation" },
 				["<CR>"] = {
-					function(cmp)
-						if cmp.is_menu_visible() then
-							vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>", true, false, true), "n", true)
-							vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
-						end
-					end,
 					"accept",
 					"fallback",
 				},
@@ -112,7 +106,7 @@ return {
 			sources = {
 				default = function()
 					if vim.bo.filetype == "markdown" then
-						return { "lsp", "snippets", "path" }
+						return { "lsp", "path", "copilot" }
 					else
 						return { "lsp", "snippets", "buffer", "path", "copilot" }
 					end
