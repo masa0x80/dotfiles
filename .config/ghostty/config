@@ -1,21 +1,31 @@
-theme = EverForest Dark - Hard
+theme = Everforest Dark   Hard
 
-font-family =
-font-family = Explex Console NF
+font-family = ""
+font-family = Pending Mono HWNF
 font-size = 14
+alpha-blending = linear
 
-cursor-style = block
+custom-shader = ./shaders/cursor_smear.glsl
+
+mouse-hide-while-typing
 
 window-theme = ghostty
 background-opacity = 0.85
 background-blur-radius = 18
-macos-titlebar-style = transparent
 macos-non-native-fullscreen = true
+macos-option-as-alt = false
+macos-window-buttons = hidden
+macos-titlebar-style = tabs
+shell-integration-features = no-title
 
 # quick-terminal
 quick-terminal-position = bottom
 quick-terminal-screen = mouse
 quick-terminal-animation-duration = 0
+
+keybind = cmd+enter=toggle_maximize
+
+keybind = cmd+physical:zero=goto_tab:1
 
 keybind = ctrl+s>ctrl+c=new_tab
 keybind = ctrl+s>c=new_tab
@@ -23,6 +33,8 @@ keybind = ctrl+s>ctrl+p=previous_tab
 keybind = ctrl+s>p=previous_tab
 keybind = ctrl+s>ctrl+n=next_tab
 keybind = ctrl+s>n=next_tab
+keybind = ctrl+shift+n=move_tab:1
+keybind = ctrl+shift+p=move_tab:-1
 
 keybind = ctrl+s>-=new_split:down
 keybind = ctrl+s>\=new_split:right
@@ -33,4 +45,16 @@ keybind = ctrl+s>o=goto_split:previous
 keybind = ctrl+s>z=toggle_split_zoom
 keybind = ctrl+s>equal=equalize_splits
 
-keybind = global:ctrl+cmd+j=toggle_quick_terminal
+keybind = ctrl+down=jump_to_prompt:1
+keybind = ctrl+up=jump_to_prompt:-1
+keybind = ctrl+cmd+j=scroll_page_lines:1
+keybind = ctrl+cmd+k=scroll_page_lines:-1
+
+keybind = shift+up=adjust_selection:up
+keybind = shift+down=adjust_selection:down
+keybind = shift+left=adjust_selection:left
+keybind = shift+right=adjust_selection:right
+
+keybind = ctrl+i=text:\x09
+
+keybind = global:ctrl+cmd+p=toggle_quick_terminal

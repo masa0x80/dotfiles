@@ -1,8 +1,7 @@
 local map = vim.keymap.set
 map("n", "<C-g><C-l>", "<Plug>(git-messenger)<CR>", { desc = "Show Git Log" })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	group = "_",
+require("utils").create_autocmd({ "FileType" }, {
 	pattern = "gitmessengerpopup",
 	callback = function()
 		map("n", "<C-o>", "o", { remap = true, buffer = true, desc = "GitMessenger: Back to older commit at the line" })

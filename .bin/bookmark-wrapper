@@ -1,8 +1,11 @@
 #!/usr/bin/osascript
 
-tell application "WezTerm"
+tell application "Ghostty"
   activate
   tell application "System Events"
-    keystroke "j" using {command down}
+    keystroke "p" using {command down, control down}
+    delay 0.05
+    keystroke "b"
+    keystroke return
   end tell
 end tell

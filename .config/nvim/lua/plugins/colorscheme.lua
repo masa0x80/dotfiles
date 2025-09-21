@@ -1,5 +1,5 @@
 return {
 	"neanias/everforest-nvim",
 	lazy = false,
-	config = require("config.utils").load("conf/colorscheme"),
+	config = require("utils").load("conf/colorscheme"),
 }

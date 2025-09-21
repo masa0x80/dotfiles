@@ -12,7 +12,7 @@ return {
 			},
 		},
 		cmd = { "Telescope" },
-		config = require("config.utils").load("conf/telescope"),
+		config = require("utils").load("conf/telescope"),
 	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",

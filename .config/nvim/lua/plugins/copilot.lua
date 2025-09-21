@@ -4,7 +4,7 @@ return {
 		version = "*",
 		cmd = "Copilot",
 		event = "InsertEnter",
-		config = require("config.utils").load("conf/copilot"),
+		config = require("utils").load("conf/copilot"),
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",

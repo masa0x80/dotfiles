@@ -1,114 +1,71 @@
-local opts = { noremap = true, silent = true }
-local map = vim.keymap.set
+local map = function(modes, lhs, rhs, opts)
+	vim.keymap.set(
+		modes,
+		lhs,
+		rhs,
+		vim.tbl_extend("force", {
+			noremap = true,
+			silent = true,
+		}, opts or {})
+	)
+end
 
 -- <Space> as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- # Normal
--- Better window navigation
-map("n", "<C-h>", "<C-w>h", opts)
-map("n", "<C-j>", "<C-w>j", opts)
-map("n", "<C-k>", "<C-w>k", opts)
-map("n", "<C-l>", "<C-w>l", opts)
-
--- Resize
---   ref. https://iterm2.com/faq.html
---     Q: How do I make the option/alt key act like Meta or send escape codes?
---     A: Go to Preferences > Profiles tab. Select your profile on the left, and then open the Keyboard tab.
---        At the bottom is a set of buttons that lets you select the behavior of the Option key.
---        For most users, Esc+ will be the best choice.
-map("n", "<A-k>", "<Cmd>resize +2<CR>", opts)
-map("n", "<A-j>", "<Cmd>resize -2<CR>", opts)
-map("n", "<A-h>", "<Cmd>vertical resize -2<CR>", opts)
-map("n", "<A-l>", "<Cmd>vertical resize +2<CR>", opts)
 
 -- Remap for dealing with word wrap
-map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
 -- Disable EX-mode (if you enter EX-mode, push gQ)
-map("n", "Q", "<Nop>", opts)
+map("n", "Q", "<Nop>")
 
 -- Windows
-map("n", "<C-w>-", "<Cmd>split<CR>", opts)
-map("n", "<C-w>\\", "<Cmd>vsplit<CR>L", opts)
-map("n", "<C-w>o", "<NOP>", opts)
-map("n", "<C-w>O", "<Cmd>only<CR>", opts)
+map("n", "<C-w>-", "<Cmd>split<CR>")
+map("n", "<C-w>\\", "<Cmd>vsplit<CR>L")
+map("n", "<C-w>o", "<NOP>")
+map("n", "<C-w>O", "<Cmd>only<CR>")
 
 -- Tabs
-map("n", "<C-,><C-t>", "<Cmd>tabedit %:p<CR>", opts)
-map("n", "<C-t><C-t>", "g<Tab>", opts)
-map("n", "<C-t><C-n>", "<Cmd>tabnext<CR>", opts)
-map("n", "<C-t><C-p>", "<Cmd>tabprevious<CR>", opts)
-map("n", "<C-t>N", "<Cmd>tabmove +<CR>", opts)
-map("n", "<C-t>P", "<Cmd>tabmove -<CR>", opts)
-
-map("n", "[t", "<Cmd>tabprevious<CR>", opts)
-map("n", "]t", "<Cmd>tabnext<CR>", opts)
-map("n", "[T", "<Cmd>tabfirst<CR>", opts)
-map("n", "]T", "<Cmd>tablast<CR>", opts)
-
--- Location list
-map("n", "[l", "<Cmd>lpreious<CR>", opts)
-map("n", "]l", "<Cmd>lnext<CR>", opts)
-map("n", "[L", "<Cmd>lfirst<CR>", opts)
-map("n", "]L", "<Cmd>llast<CR>", opts)
+map("n", "<C-,><C-t>", "<Cmd>tabedit %:p<CR>")
+map("n", "<C-t><C-t>", "g<Tab>")
+map("n", "<C-t><C-n>", "<Cmd>tabnext<CR>")
+map("n", "<C-t><C-p>", "<Cmd>tabprevious<CR>")
+map("n", "<C-t>N", "<Cmd>tabmove +<CR>")
+map("n", "<C-t>P", "<Cmd>tabmove -<CR>")
 
 -- Replace
-map(
-	"n",
-	"<C-,>re",
-	":<C-u>%s;<C-r><C-w>;g<Left><Left>;",
-	{ noremap = true, silent = true, desc = "[re]place Current Word" }
-)
+map("n", "<C-,>re", ":<C-u>%s;<C-r><C-w>;g<Left><Left>;", { desc = "[re]place Current Word" })
 map("n", "<C-,>R", "*Ncgn", { noremap = true, silent = true, desc = "[R]eplace Current Word `*cgn`" })
 
--- Toggle relativenumber
-map(
-	"n",
-	"<C-;>N",
-	"<Cmd>setlocal relativenumber!<CR>",
-	{ noremap = true, silent = true, desc = "Toggle Relative[N]umber" }
-)
-
 -- marks
-map("n", "<C-g><C-m>", "`mzt10<C-y>", opts)
-map("n", "<C-g><C-;>", "zt10<C-y>", opts)
+map("n", "<C-g><C-m>", "`mzt10<C-y>")
+map("n", "<C-g><C-;>", "zt10<C-y>")
 map("n", "<C-g><C-h>", function()
 	ok, _ = pcall(vim.cmd, "marks n")
 	if ok then
 		vim.cmd("windo normal! `nzt10k10j")
 	end
 	vim.cmd("normal! `zzt10k10j")
-end, opts)
-
--- Indent
-map("n", "<C-g><C-p>", "<<", opts)
-map("n", "<C-g><C-n>", ">>", opts)
+end)
 
 map("n", "<C-;>C", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { noremap = true, silent = true, desc = "cd $PWD" })
-map(
-	"n",
-	"<C-;>S",
-	"<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>",
-	{ noremap = true, silent = true, desc = "cd $SCRAPBOOK_DIR" }
-)
-
--- https://zenn.dev/vim_jp/articles/43d021f461f3a4#m%E3%81%A7%E6%8B%AC%E5%BC%A7%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%97
-map("n", "<C-m>", "%", { remap = true, desc = "%" })
+map("n", "<C-;>S", "<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>", { desc = "cd $SCRAPBOOK_DIR" })
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#u%E3%81%A7%E3%83%AA%E3%83%89%E3%82%A5
-map("n", "U", "<C-r>", opts)
+map("n", "U", "<C-r>")
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#y%E3%81%A7%E8%A1%8C%E6%9C%AB%E3%81%BE%E3%81%A7%E3%82%B3%E3%83%94%E3%83%BC
-map("n", "Y", "y$", opts)
+map("n", "Y", "y$")
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#x%E3%81%A7%E5%89%8A%E9%99%A4
-map("n", "x", '"_x', opts)
-map("n", "X", '"_D', opts)
-map("x", "x", '"_x', opts)
-map("o", "x", "d", opts)
+map("n", "x", '"_x')
+map("n", "X", '"_D')
+map("x", "x", '"_x')
+map("o", "x", "d")
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E7%A9%BA%E8%A1%8C%E3%81%A7%E3%81%AE%E7%B7%A8%E9%9B%86%E9%96%8B%E5%A7%8B%E6%99%82%E3%81%AB%E8%87%AA%E5%8B%95%E3%81%A7%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88
 map("n", "i", function()
@@ -119,15 +76,18 @@ map("n", "A", function()
 end, { expr = true })
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E3%83%9A%E3%83%BC%E3%82%B9%E3%83%88%E7%B5%90%E6%9E%9C%E3%81%AE%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88%E3%82%92%E8%87%AA%E5%8B%95%E3%81%A7%E6%8F%83%E3%81%88%E3%82%8B
-map("n", "p", "p`]", opts)
-map("n", "P", "P`]", opts)
+map("n", "p", "p`]")
+map("n", "P", "P`]")
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E7%9B%B4%E5%89%8D%E3%81%AE%E3%83%9A%E3%83%BC%E3%82%B9%E3%83%88%E7%AF%84%E5%9B%B2%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B
-map("n", "gV", "`[v`]", opts)
+map("n", "gV", "`[v`]")
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E7%9B%B4%E5%89%8D%E3%83%BB%E7%9B%B4%E5%BE%8C%E3%81%AE%E7%A9%BA%E8%A1%8C%E3%81%AB%E9%A3%9B%E3%81%B6
-map("n", "f<CR>", "}", opts)
-map("n", "F<CR>", "{", opts)
+map("n", "f<CR>", "}")
+map("n", "F<CR>", "{")
+
+map("n", "<Space>;", "@:", { desc = "Re-run the last command" })
+map("n", "q:", "<Nop>", { desc = "Disable cmdwin" })
 
 -- # Insert
 
@@ -136,63 +96,46 @@ map("i", "<Esc>", function()
 	local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
 	vim.fn.execute("!im-select com.apple.keylayout.ABC", "silent")
 	vim.api.nvim_feedkeys(esc, "n", true)
-end, opts)
-
-map("i", "<C-b>", "<Left>", opts)
-map("i", "<C-f>", "<Right>", opts)
-map("i", "<C-a>", "<Esc>I", opts)
-map("i", "<C-e>", "<Esc>A", opts)
-map("i", "<C-d>", "<Del>", opts)
-map("i", "<C-g><C-h>", "<Esc>bi", { noremap = true, silent = true, desc = "backward-word" })
-map("i", "<C-g><C-l>", "<Esc>ea", { noremap = true, silent = true, desc = "forward-word" })
+end)
 
 -- Insert ellipsis
-map("i", "<A-;>", "…", opts)
-map("i", "<A-Space>", " ", opts)
+map("i", "<A-;>", "…")
+map("i", "<A-Space>", " ")
 
-map("i", "<C-g><C-n>", "<C-t>", { noremap = true, silent = true, desc = "Indent >>" })
-map("i", "<C-g><C-p>", "<C-d>", { noremap = true, silent = true, desc = "Indent <<" })
-map("i", "<Tab>", "<C-t>", { noremap = true, silent = true, desc = "Indent <<" })
-map("i", "<S-Tab>", "<C-d>", { noremap = true, silent = true, desc = "Indent <<" })
+map("i", "<Tab>", "<C-t>", { desc = "Indent <<" })
+map("i", "<S-Tab>", "<C-d>", { desc = "Indent <<" })
 
 -- # Visual
 
 -- # Command
-map("c", "<C-b>", "<Left>", {})
-map("c", "<C-f>", "<Right>", {})
-map("c", "<C-a>", "<Home>", {})
-map("c", "<C-e>", "<End>", {})
-
 -- Esc
-map("n", "<C-g><C-g><C-g>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", opts)
-
--- Save
-map({ "n", "v" }, "<C-;><C-;>", "<Cmd>write<CR>", { noremap = true })
+map("n", "<C-g><C-g><C-g>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>")
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#i%3Cspace%3E%E3%81%A7word%E9%81%B8%E6%8A%9E
-map({ "o", "x" }, "i<Space>", "iW", opts)
+map({ "o", "x" }, "i<Space>", "iW")
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%E3%82%B3%E3%83%94%E3%83%BC%E6%99%82%E3%81%AB%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E4%BD%8D%E7%BD%AE%E3%82%92%E4%BF%9D%E5%AD%98
 map("x", "y", function()
 	vim.fn.execute("normal! myy`y")
 	vim.fn.execute(":delm y<CR>")
-end, opts)
+end)
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%E3%83%9A%E3%83%BC%E3%82%B9%E3%83%88%E6%99%82%E3%81%AB%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%81%AE%E5%A4%89%E6%9B%B4%E3%82%92%E9%98%B2%E6%AD%A2
-map("x", "p", "P", opts)
--- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%3C%2C-%3E%E3%81%A7%E9%80%A3%E7%B6%9A%E3%81%97%E3%81%A6%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88%E3%82%92%E6%93%8D%E4%BD%9C
-map("x", "<", "<gv", opts)
-map("x", ">", ">gv", opts)
-map("x", "<C-g><C-p>", "<gv", opts)
-map("x", "<C-g><C-n>", ">gv", opts)
-map("x", "<C-t><C-p>", "<gv", opts)
-map("x", "<C-t><C-n>", ">gv", opts)
--- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E8%A1%8C%E3%82%92%E4%B8%8A%E4%B8%8B%E3%81%AB%E7%A7%BB%E5%8B%95
-map("x", "K", ":move'<-2<CR>gv", opts)
-map("x", "J", ":move'>+1<CR>gv", opts)
+map("x", "p", "P")
 
 -- https://zenn.dev/vim_jp/articles/2024-06-05-vim-middle-class-features#%E5%BC%95%E7%94%A8%E7%AC%A6%E3%81%A7%E5%9B%B2%E3%81%BE%E3%82%8C%E3%81%9F%E7%AE%87%E6%89%80%E5%85%A8%E4%BD%93%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B
 for _, quote in ipairs({ '"', "'", "`" }) do
 	vim.keymap.set({ "x", "o" }, "a" .. quote, "2i" .. quote)
 end
 
+-- Save
+map({ "n", "v" }, "<C-;><C-;>", "<Cmd>write<CR>")
+
+-- Emascs style
+map({ "i", "c" }, "<C-b>", "<Left>", { desc = "Emacs like left" })
+map({ "i", "c" }, "<C-f>", "<Right>", { desc = "Emacs like right" })
+map({ "i", "c" }, "<C-a>", "<Home>", { desc = "Emacs like home" })
+map({ "i", "c" }, "<C-e>", "<End>", { desc = "Emacs like end" })
+map({ "i", "c" }, "<C-h>", "<BS>", { desc = "Emacs like bs" })
+map({ "i", "c" }, "<C-d>", "<Del>", { desc = "Emacs like del" })
+
 -- Jira
-map("n", "<C-;>j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", opts)
+map("n", "<C-;>j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>")

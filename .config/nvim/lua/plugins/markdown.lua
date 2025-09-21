@@ -3,13 +3,13 @@ return {
 		"tadmccorkle/markdown.nvim",
 		version = "*",
 		ft = { "markdown" },
-		config = require("config.utils").load("conf/markdown"),
+		config = require("utils").load("conf/markdown"),
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		version = "*",
 		ft = { "markdown" },
-		config = require("config.utils").load("conf/render-markdown"),
+		config = require("utils").load("conf/render-markdown"),
 	},
 	{
 		"iamcco/markdown-preview.nvim",
@@ -23,6 +23,6 @@ return {
 			end
 		end,
 		ft = { "markdown", "mermaid", "plantuml" },
-		init = require("config.utils").load("init/markdown-preview"),
+		init = require("utils").load("init/markdown-preview"),
 	},
 }

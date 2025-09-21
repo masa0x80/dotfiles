@@ -3,7 +3,7 @@ return {
 		"lambdalisue/kensaku-search.vim",
 		version = "*",
 		event = "VeryLazy",
-		config = require("config.utils").load("conf/kensaku-search"),
+		config = require("utils").load("conf/kensaku-search"),
 	},
 	{
 		"lambdalisue/kensaku.vim",

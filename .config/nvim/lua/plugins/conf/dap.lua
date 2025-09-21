@@ -21,7 +21,7 @@ vim.fn.sign_define("DapLogPoint", { text = ".>", texthl = "", linehl = "", numhl
 local set_hl = vim.api.nvim_set_hl
 set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
-for _, language in ipairs(require("config.utils").js_based_languages) do
+for _, language in ipairs(require("utils").js_based_languages) do
 	dap.configurations[language] = {
 		-- Debug single nodejs
 		{

@@ -11,7 +11,7 @@ local formatters = {
 		stdin = false,
 	},
 }
-for k, v in pairs(require("config.utils").hidden_formatters) do
+for k, v in pairs(require("utils").hidden_formatters) do
 	formatters[k] = v
 end
 

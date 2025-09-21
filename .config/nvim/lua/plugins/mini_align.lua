@@ -1,5 +1,6 @@
 return {
-	"RRethy/vim-illuminate",
+	"nvim-mini/mini.align",
 	version = "*",
 	event = "VeryLazy",
+	opts = {},
 }

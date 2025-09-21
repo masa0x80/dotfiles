@@ -4,7 +4,7 @@ return {
 		version = "*",
 		event = "VeryLazy",
 		build = ":TSUpdate",
-		config = require("config.utils").load("conf/treesitter"),
+		config = require("utils").load("conf/treesitter"),
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
@@ -58,8 +58,7 @@ return {
 		"numToStr/Comment.nvim",
 		version = "*",
 		event = { "CursorHold", "CursorMoved", "ModeChanged" },
-		config = require("config.utils").load("conf/Comment"),
-		init = require("config.utils").load("init/Comment"),
+		config = require("utils").load("conf/Comment"),
 	},
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",

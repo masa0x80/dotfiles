@@ -42,7 +42,7 @@ local on_attach = function(client, bufnr)
 		local startIndex = 1
 		local _, _, path = string.find(line, pattern, startIndex)
 		if path ~= nil then
-			require("config.utils").preview(vim.fn.expand("%:p:h") .. "/" .. path)
+			require("utils").preview(vim.fn.expand("%:p:h") .. "/" .. path)
 		else
 			require("hover").hover()
 		end
@@ -59,8 +59,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
 
 	-- NOTE: 意図しない時（diagnosticsを見ている時とか）に hover() が発火してしまうのでコメントアウト
-	-- vim.api.nvim_create_autocmd({ "CursorHold" }, {
-	-- 	group = "_",
+	-- require("utils").create_autocmd({ "CursorHold" }, {
 	-- 	callback = function()
 	-- 		require("hover").hover()
 	-- 	end,
@@ -68,12 +67,12 @@ local on_attach = function(client, bufnr)
 
 	if vim.g.formatter_enabled then
 		if client.name == "rubocop" or client.name == "terraformls" then
-			vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+			require("utils").create_autocmd({ "BufWritePre" }, {
 				buffer = bufnr,
 				command = "Format",
 			})
 		elseif client.name == "eslint" then
-			vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+			require("utils").create_autocmd({ "BufWritePre" }, {
 				buffer = bufnr,
 				command = "EslintFixAll",
 			})
@@ -114,8 +113,7 @@ saga.setup({
 		enable = false,
 	},
 })
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-	group = "_",
+require("utils").create_autocmd({ "BufEnter" }, {
 	callback = function()
 		require("lspsaga").config.lightbulb.sign = vim.o.ft ~= "markdown"
 	end,
@@ -133,8 +131,8 @@ keymap("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 -- Setup neovim lua configuration
 require("neodev").setup()
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
 -- Setup mason so it can manage external tooling
 require("mason").setup({ ui = { border = "rounded" } })

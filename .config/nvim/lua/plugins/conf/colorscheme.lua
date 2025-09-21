@@ -20,8 +20,7 @@ require("everforest").setup({
 })
 require("everforest").load()
 
-vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
-	group = "_",
+require("utils").create_autocmd({ "VimEnter", "WinEnter" }, {
 	pattern = { "*" },
 	-- u00A0 ' ' no-break space
 	-- u2000 ' ' en quad
