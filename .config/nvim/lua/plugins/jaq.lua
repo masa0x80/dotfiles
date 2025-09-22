@@ -61,8 +61,6 @@ return {
 					end
 					vim.cmd("Jaq")
 				end,
-				noremap = true,
-				silent = true,
 				desc = "QuickRun",
 			},
 		},

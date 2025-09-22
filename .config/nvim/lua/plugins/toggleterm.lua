@@ -7,15 +7,11 @@ return {
 		{
 			"<Leader>tf",
 			"<Cmd>TermFloat<CR>",
-			noremap = true,
-			silent = true,
 			desc = "<v:count1>ToggleTerm direction=float",
 		},
 		{
 			"<Leader>tb",
 			"<Cmd>TermBottom<CR>",
-			noremap = true,
-			silent = true,
 			desc = "<v:count1>ToggleTerm direction=horizontal",
 		},
 	},

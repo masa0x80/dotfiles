@@ -18,10 +18,10 @@ return {
 		"David-Kunz/treesitter-unit",
 		version = "*",
 		keys = {
-			{ "iu", ':lua require"treesitter-unit".select()<CR>', noremap = true, mode = "x" },
-			{ "au", ':lua require"treesitter-unit".select(true)<CR>', noremap = true, mode = "x" },
-			{ "iu", ':<C-u>lua require"treesitter-unit".select()<CR>', noremap = true, mode = "o" },
-			{ "au", ':<C-u>lua require"treesitter-unit".select(true)<CR>', noremap = true, mode = "o" },
+			{ "iu", ':lua require"treesitter-unit".select()<CR>', mode = "x" },
+			{ "au", ':lua require"treesitter-unit".select(true)<CR>', mode = "x" },
+			{ "iu", ':<C-u>lua require"treesitter-unit".select()<CR>', mode = "o" },
+			{ "au", ':<C-u>lua require"treesitter-unit".select(true)<CR>', mode = "o" },
 		},
 	},
 	{

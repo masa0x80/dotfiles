@@ -119,14 +119,13 @@ require("utils").create_autocmd({ "BufEnter" }, {
 	end,
 })
 
-local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
-keymap("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>", opts)
+keymap("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>", {})
 
-keymap("n", "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", opts)
+keymap("n", "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", {})
 
-keymap("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-keymap("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+keymap("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", {})
+keymap("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", {})
 
 -- Setup neovim lua configuration
 require("neodev").setup()

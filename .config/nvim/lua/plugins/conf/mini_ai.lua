@@ -24,6 +24,10 @@ clue.setup({
 		-- `g` key
 		mode_nx("g"),
 
+		mode_nx("<C-g>"),
+		mode_nx("<C-;>"),
+		mode_nx("<C-,>"),
+
 		-- Marks
 		mode_nx("'"),
 		mode_nx("`"),

@@ -24,26 +24,26 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 map("n", "Q", "<Nop>")
 
 -- Windows
-map("n", "<C-w>-", "<Cmd>split<CR>")
-map("n", "<C-w>\\", "<Cmd>vsplit<CR>L")
-map("n", "<C-w>o", "<NOP>")
-map("n", "<C-w>O", "<Cmd>only<CR>")
+map("n", "<C-w>-", "<Cmd>split<CR>", { desc = "split" })
+map("n", "<C-w>\\", "<Cmd>vsplit<CR>L", { desc = "vsplit" })
+map("n", "<C-w>o", "<NOP>", { desc = "NOP" })
+map("n", "<C-w>O", "<Cmd>only<CR>", { desc = "only" })
 
 -- Tabs
-map("n", "<C-,><C-t>", "<Cmd>tabedit %:p<CR>")
-map("n", "<C-t><C-t>", "g<Tab>")
-map("n", "<C-t><C-n>", "<Cmd>tabnext<CR>")
-map("n", "<C-t><C-p>", "<Cmd>tabprevious<CR>")
-map("n", "<C-t>N", "<Cmd>tabmove +<CR>")
-map("n", "<C-t>P", "<Cmd>tabmove -<CR>")
+map("n", "<C-,><C-t>", "<Cmd>tabedit %:p<CR>", { desc = "tabedit %:p" })
+map("n", "<C-t><C-t>", "g<Tab>", { desc = "g<Tab>" })
+map("n", "<C-t><C-n>", "<Cmd>tabnext<CR>", { desc = "tabnext" })
+map("n", "<C-t><C-p>", "<Cmd>tabprevious<CR>", { desc = "tabprev" })
+map("n", "<C-t>N", "<Cmd>tabmove +<CR>", { desc = "tabmove +" })
+map("n", "<C-t>P", "<Cmd>tabmove -<CR>", { desc = "tabmove -" })
 
 -- Replace
 map("n", "<C-,>re", ":<C-u>%s;<C-r><C-w>;g<Left><Left>;", { desc = "[re]place Current Word" })
-map("n", "<C-,>R", "*Ncgn", { noremap = true, silent = true, desc = "[R]eplace Current Word `*cgn`" })
+map("n", "<C-,>R", "*Ncgn", { desc = "[R]eplace Current Word `*cgn`" })
 
 -- marks
-map("n", "<C-g><C-m>", "`mzt10<C-y>")
-map("n", "<C-g><C-;>", "zt10<C-y>")
+map("n", "<C-g><C-m>", "`mzt10<C-y>", { desc = "`mzt10<C-y>" })
+map("n", "<C-g><C-;>", "zt10<C-y>", { desc = "zt10<C-y>" })
 map("n", "<C-g><C-h>", function()
 	ok, _ = pcall(vim.cmd, "marks n")
 	if ok then
@@ -52,14 +52,14 @@ map("n", "<C-g><C-h>", function()
 	vim.cmd("normal! `zzt10k10j")
 end)
 
-map("n", "<C-;>C", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { noremap = true, silent = true, desc = "cd $PWD" })
+map("n", "<C-;>C", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { desc = "cd $PWD" })
 map("n", "<C-;>S", "<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>", { desc = "cd $SCRAPBOOK_DIR" })
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#u%E3%81%A7%E3%83%AA%E3%83%89%E3%82%A5
-map("n", "U", "<C-r>")
+map("n", "U", "<C-r>", { desc = "undo" })
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#y%E3%81%A7%E8%A1%8C%E6%9C%AB%E3%81%BE%E3%81%A7%E3%82%B3%E3%83%94%E3%83%BC
-map("n", "Y", "y$")
+map("n", "Y", "y$", { desc = "y$" })
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#x%E3%81%A7%E5%89%8A%E9%99%A4
 map("n", "x", '"_x')
@@ -102,6 +102,8 @@ end)
 map("i", "<A-;>", "…")
 map("i", "<A-Space>", " ")
 
+map("i", "<C-g><C-n>", "<C-t>", { desc = "Indent" })
+map("i", "<C-g><C-p>", "<C-d>", { desc = "Dedent" })
 map("i", "<Tab>", "<C-t>", { desc = "Indent <<" })
 map("i", "<S-Tab>", "<C-d>", { desc = "Indent <<" })
 
@@ -109,10 +111,10 @@ map("i", "<S-Tab>", "<C-d>", { desc = "Indent <<" })
 
 -- # Command
 -- Esc
-map("n", "<C-g><C-g><C-g>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>")
+map("n", "<C-g><C-g><C-g>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", { desc = "nopaste; nohlsearch" })
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#i%3Cspace%3E%E3%81%A7word%E9%81%B8%E6%8A%9E
-map({ "o", "x" }, "i<Space>", "iW")
+map({ "o", "x" }, "i<Space>", "iW", { desc = "select a word" })
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%E3%82%B3%E3%83%94%E3%83%BC%E6%99%82%E3%81%AB%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E4%BD%8D%E7%BD%AE%E3%82%92%E4%BF%9D%E5%AD%98
 map("x", "y", function()
 	vim.fn.execute("normal! myy`y")
@@ -121,13 +123,17 @@ end)
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%E3%83%9A%E3%83%BC%E3%82%B9%E3%83%88%E6%99%82%E3%81%AB%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%81%AE%E5%A4%89%E6%9B%B4%E3%82%92%E9%98%B2%E6%AD%A2
 map("x", "p", "P")
 
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%3C%2C-%3E%E3%81%A7%E9%80%A3%E7%B6%9A%E3%81%97%E3%81%A6%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88%E3%82%92%E6%93%8D%E4%BD%9C
+map("x", "<", "<gv")
+map("x", ">", ">gv")
+
 -- https://zenn.dev/vim_jp/articles/2024-06-05-vim-middle-class-features#%E5%BC%95%E7%94%A8%E7%AC%A6%E3%81%A7%E5%9B%B2%E3%81%BE%E3%82%8C%E3%81%9F%E7%AE%87%E6%89%80%E5%85%A8%E4%BD%93%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B
 for _, quote in ipairs({ '"', "'", "`" }) do
 	vim.keymap.set({ "x", "o" }, "a" .. quote, "2i" .. quote)
 end
 
 -- Save
-map({ "n", "v" }, "<C-;><C-;>", "<Cmd>write<CR>")
+map({ "n", "v" }, "<C-;><C-;>", "<Cmd>write<CR>", { desc = "Save" })
 
 -- Emascs style
 map({ "i", "c" }, "<C-b>", "<Left>", { desc = "Emacs like left" })
@@ -138,4 +144,4 @@ map({ "i", "c" }, "<C-h>", "<BS>", { desc = "Emacs like bs" })
 map({ "i", "c" }, "<C-d>", "<Del>", { desc = "Emacs like del" })
 
 -- Jira
-map("n", "<C-;>j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>")
+map("n", "<C-;>j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", { desc = "Jira" })

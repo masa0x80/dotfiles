@@ -6,8 +6,6 @@ return {
 		{
 			"<Leader>gp",
 			"<Cmd>TracePR<CR>",
-			noremap = true,
-			silent = true,
 		},
 	},
 }

@@ -2,5 +2,5 @@ return {
 	"nvim-mini/mini.bracketed",
 	version = "*",
 	event = "VeryLazy",
-	opts = {},
+	config = require("utils").load("conf/mini_bracketed"),
 }

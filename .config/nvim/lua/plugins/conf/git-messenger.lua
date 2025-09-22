@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-map("n", "<C-g><C-l>", "<Plug>(git-messenger)<CR>", { desc = "Show Git Log" })
+map("n", "<C-g><C-g><C-l>", "<Plug>(git-messenger)<CR>", { desc = "Show Git Log" })
 
 require("utils").create_autocmd({ "FileType" }, {
 	pattern = "gitmessengerpopup",

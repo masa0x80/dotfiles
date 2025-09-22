@@ -12,6 +12,8 @@ require("telekasten").setup({
 	template_new_daily = home .. "/" .. "templates/daily.md",
 	template_new_weekly = home .. "/" .. "templates/weekly.md",
 
+	journal_auto_open = true,
+
 	calendar_opts = {
 		-- calendar week display mode: 1 .. 'WK01', 2 .. 'WK 1', 3 .. 'KW01', 4 .. 'KW 1', 5 .. '1'
 		weeknm = 1,

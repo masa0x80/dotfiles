@@ -95,31 +95,29 @@ return {
 	"renerocksai/telekasten.nvim",
 	version = "*",
 	keys = {
-		{ "<C-;>z", "<Cmd>Telekasten panel<CR>", noremap = true, silent = true },
-		{ "<C-;>i", "<Cmd>Telekasten insert_link<CR>", noremap = true, silent = true },
-		{ "<C-;>I", "<Cmd>Telekasten insert_img_link<CR>", noremap = true, silent = true },
-		{ "g]", "<Cmd>Telekasten follow_link<CR>", noremap = true, silent = true },
-		{ "g[", "<Cmd>Telekasten show_backlinks<CR>", noremap = true, silent = true },
-		{ "<C-;>n", "<Cmd>Telekasten repline_note<CR>", noremap = true, silent = true },
-		{ "<C-;>r", "<Cmd>Telekasten find_friends<CR>", noremap = true, silent = true },
-		{ "<C-;>t", "<Cmd>Telekasten show_tags<CR>", noremap = true, silent = true },
+		{ "<C-;>z", "<Cmd>Telekasten panel<CR>", desc = "Telekasten panel" },
+		{ "<C-;>i", "<Cmd>Telekasten insert_link<CR>", desc = "Telekasten insert_link" },
+		{ "<C-;>I", "<Cmd>Telekasten insert_img_link<CR>", desc = "Telekasten insert_img_link" },
+		{ "<C-;>l", "<Cmd>Telekasten follow_link<CR>", desc = "Telekasten follow_link" },
+		{ "<C-;>b", "<Cmd>Telekasten show_backlinks<CR>", desc = "Telekasten show_backlinks" },
+		{ "<C-;>n", "<Cmd>Telekasten rename_note<CR>", desc = "Telekasten rename_note" },
+		{ "<C-;>r", "<Cmd>Telekasten find_friends<CR>", desc = "Telekasten find_friends" },
+		{ "<C-;>T", "<Cmd>Telekasten show_tags<CR>", desc = "Telekasten show_tags" },
 		{
 			"<C-g><C-i>",
 			function()
 				toggle_check({ skip_progress = true })
 			end,
-			noremap = true,
-			silent = true,
 			mode = { "n", "i" },
+			desc = "Toggle check",
 		},
 		{
 			"<C-g><C-o>",
 			function()
 				toggle_check({ skip_progress = true, reverse = true })
 			end,
-			noremap = true,
-			silent = true,
 			mode = { "n", "i" },
+			desc = "Toggle check",
 		},
 		{
 			"<C-g><C-i>",
@@ -129,9 +127,8 @@ return {
 					toggle_check({ skip_progress = true, linenr = n })
 				end
 			end,
-			noremap = true,
-			silent = true,
 			mode = { "x" },
+			desc = "Toggle check",
 		},
 		{
 			"<C-g><C-o>",
@@ -141,25 +138,22 @@ return {
 					toggle_check({ skip_progress = true, linenr = n, reverse = true })
 				end
 			end,
-			noremap = true,
-			silent = true,
 			mode = { "x" },
+			desc = "Toggle check",
 		},
 		{
 			"<C-g><C-g><C-i>",
 			toggle_todo,
-			noremap = true,
-			silent = true,
 			mode = { "n", "i" },
+			desc = "Toggle todo",
 		},
 		{
 			"<C-g><C-g><C-o>",
 			function()
 				toggle_todo({ reverse = true })
 			end,
-			noremap = true,
-			silent = true,
 			mode = { "n", "i" },
+			desc = "Toggle todo",
 		},
 		{
 			"<C-g><C-g><C-i>",
@@ -169,9 +163,8 @@ return {
 					toggle_todo({ linenr = n })
 				end
 			end,
-			noremap = true,
-			silent = true,
 			mode = "x",
+			desc = "Toggle todo",
 		},
 		{
 			"<C-g><C-g><C-o>",
@@ -181,12 +174,11 @@ return {
 					toggle_todo({ linenr = n, reverse = true })
 				end
 			end,
-			noremap = true,
-			silent = true,
 			mode = "x",
+			desc = "Toggle todo",
 		},
-		{ "<C-;>d", "<Cmd>Telekasten goto_today<CR>", noremap = true, silent = true },
-		{ "<C-;>w", "<Cmd>Telekasten goto_thisweek<CR>", noremap = true, silent = true },
+		{ "<C-;>d", "<Cmd>Telekasten goto_today<CR>", desc = "Telekasten goto_today" },
+		{ "<C-;>w", "<Cmd>Telekasten goto_thisweek<CR>", desc = "Telekasten goto_thisweek" },
 		{
 			"<C-;>m",
 			function()
@@ -204,25 +196,22 @@ return {
 					vim.cmd("normal! P")
 				end
 			end,
-			noremap = true,
-			silent = true,
+			desc = "Telekasten goto_thismonth",
 		},
-		{ "<C-;>c", "<Cmd>Telekasten show_calendar<CR>", noremap = true, silent = true },
+		{ "<C-;>c", "<Cmd>Telekasten show_calendar<CR>", desc = "Telekasten show_calendar" },
 		{
 			"<C-;>k",
 			"<Cmd>lua require('telescope._extensions.kensaku').exports.kensaku({ cwd = require('telekasten').Cfg.home })<CR>",
-			noremap = true,
-			silent = true,
+			desc = "Telekasten kensaku",
 		},
-		{ "<C-;>v", "<Cmd>Telekasten switch_vault<CR>", noremap = true, silent = true },
+		{ "<C-;>v", "<Cmd>Telekasten switch_vault<CR>", desc = "Telekasten switch_vault" },
 		{
 			"<C-;>t",
 			function()
 				vim.fn.setreg("+", ("%s/%s.md"):format(vim.fn.expand("%:.:h"), os.date("%Y-%m-%d")))
 				require("telekasten").new_templated_note()
 			end,
-			noremap = true,
-			silent = true,
+			desc = "Telekasten new_templated_note",
 		},
 	},
 	config = require(".utils").load("conf/telekasten"),
