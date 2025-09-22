@@ -19,13 +19,21 @@ macos-titlebar-style = tabs
 shell-integration-features = no-title
 
 # quick-terminal
-quick-terminal-position = bottom
+quick-terminal-position = top
 quick-terminal-screen = mouse
 quick-terminal-animation-duration = 0
 
 keybind = cmd+enter=toggle_maximize
 
-keybind = cmd+physical:zero=goto_tab:1
+keybind = cmd+s>physical:zero=goto_tab:1
+keybind = cmd+s>physical:two=goto_tab:2
+keybind = cmd+s>physical:three=goto_tab:3
+keybind = cmd+s>physical:four=goto_tab:4
+keybind = cmd+s>physical:five=goto_tab:5
+keybind = cmd+s>physical:six=goto_tab:6
+keybind = cmd+s>physical:seven=goto_tab:7
+keybind = cmd+s>physical:eight=goto_tab:8
+keybind = cmd+s>physical:nine=goto_tab:9
 
 keybind = ctrl+s>ctrl+c=new_tab
 keybind = ctrl+s>c=new_tab
