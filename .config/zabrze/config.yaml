@@ -323,3 +323,6 @@ abbrevs:
   - name: "bookark"
     abbr: b
     snippet: "bookmark"
+  - name: "bookark-loop"
+    abbr: bl
+    snippet: "bookmark-loop"

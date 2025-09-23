@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+() {
+  while true; do
+    bookmark
+  done
+}
