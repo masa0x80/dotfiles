@@ -1,5 +1,5 @@
 require("mini.bracketed").setup({
-	oldfile = { suffix = "g", options = {} },
+	oldfile = { suffix = "e", options = {} },
 	treesitter = { suffix = "n", options = {} },
 })
 

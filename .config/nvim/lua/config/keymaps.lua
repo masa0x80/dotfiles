@@ -44,13 +44,12 @@ map("n", "<C-,>R", "*Ncgn", { desc = "[R]eplace Current Word `*cgn`" })
 -- marks
 map("n", "<C-g><C-m>", "`mzt10<C-y>", { desc = "`mzt10<C-y>" })
 map("n", "<C-g><C-;>", "zt10<C-y>", { desc = "zt10<C-y>" })
-map("n", "<C-g><C-h>", function()
-	ok, _ = pcall(vim.cmd, "marks n")
-	if ok then
-		vim.cmd("windo normal! `nzt10k10j")
+map("n", "<C-g><C-g><C-h>", function()
+	if pcall(vim.cmd, "marks f") then
+		vim.cmd("windo normal! `fzt10k10j")
 	end
 	vim.cmd("normal! `zzt10k10j")
-end)
+end, { desc = "`fzt10k10j" })
 
 map("n", "<C-;>C", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { desc = "cd $PWD" })
 map("n", "<C-;>S", "<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>", { desc = "cd $SCRAPBOOK_DIR" })
@@ -60,12 +59,6 @@ map("n", "U", "<C-r>", { desc = "undo" })
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#y%E3%81%A7%E8%A1%8C%E6%9C%AB%E3%81%BE%E3%81%A7%E3%82%B3%E3%83%94%E3%83%BC
 map("n", "Y", "y$", { desc = "y$" })
-
--- https://zenn.dev/vim_jp/articles/43d021f461f3a4#x%E3%81%A7%E5%89%8A%E9%99%A4
-map("n", "x", '"_x')
-map("n", "X", '"_D')
-map("x", "x", '"_x')
-map("o", "x", "d")
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E7%A9%BA%E8%A1%8C%E3%81%A7%E3%81%AE%E7%B7%A8%E9%9B%86%E9%96%8B%E5%A7%8B%E6%99%82%E3%81%AB%E8%87%AA%E5%8B%95%E3%81%A7%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88
 map("n", "i", function()
@@ -88,6 +81,29 @@ map("n", "F<CR>", "{")
 
 map("n", "<Space>;", "@:", { desc = "Re-run the last command" })
 map("n", "q:", "<Nop>", { desc = "Disable cmdwin" })
+
+map("n", "gf", function()
+	local cfile = vim.fn.expand("<cfile>")
+
+	local orig_wildignore = vim.o.wildignore
+	vim.o.wildignore = ""
+	local path = vim.fn.findfile(cfile)
+	vim.o.wildignore = orig_wildignore
+
+	if path ~= "" then
+		vim.api.nvim_feedkeys("gf", "n", false)
+	else
+		local dir = vim.fn.fnamemodify(cfile, ":h")
+		if vim.fn.isdirectory(dir) == 0 then
+			vim.fn.mkdir(dir, "p")
+		end
+		if string.find(cfile, ".", 1, true) ~= nil then
+			vim.cmd("edit " .. cfile)
+		else
+			vim.cmd("edit " .. cfile .. require("telekasten").Cfg.extension)
+		end
+	end
+end, { desc = "Go to file under cursor" })
 
 -- # Insert
 
@@ -142,6 +158,12 @@ map({ "i", "c" }, "<C-a>", "<Home>", { desc = "Emacs like home" })
 map({ "i", "c" }, "<C-e>", "<End>", { desc = "Emacs like end" })
 map({ "i", "c" }, "<C-h>", "<BS>", { desc = "Emacs like bs" })
 map({ "i", "c" }, "<C-d>", "<Del>", { desc = "Emacs like del" })
+
+-- https://zenn.dev/vim_jp/articles/43d021f461f3a4#x%E3%81%A7%E5%89%8A%E9%99%A4
+map("n", "x", '"_x')
+map("n", "X", '"_D')
+map("x", "x", '"_x')
+map("o", "x", "d")
 
 -- Jira
 map("n", "<C-;>j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", { desc = "Jira" })
