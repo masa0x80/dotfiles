@@ -847,7 +847,10 @@ return {
 					end,
 				}, function(choice)
 					vim.fn.execute(":0r " .. choice)
-					vim.fn.execute("%s/YYYY-MM-DD/" .. os.date("%Y-%m-%d") .. "/g")
+					local filename = vim.fn.expand("%:t:r")
+					local date_pattern = "(%d%d%d%d%-%d%d%-%d%d)"
+					local date = string.match(filename, date_pattern)
+					vim.fn.execute("%s/YYYY-MM-DD/" .. date .. "/g")
 				end)
 			end,
 		},

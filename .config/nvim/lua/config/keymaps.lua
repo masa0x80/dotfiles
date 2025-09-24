@@ -117,6 +117,7 @@ end)
 -- Insert ellipsis
 map("i", "<A-;>", "…")
 map("i", "<A-Space>", " ")
+map("i", "<A-->", "–")
 
 map("i", "<C-g><C-n>", "<C-t>", { desc = "Indent" })
 map("i", "<C-g><C-p>", "<C-d>", { desc = "Dedent" })
