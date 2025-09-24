@@ -52,6 +52,7 @@ vim.api.nvim_create_user_command("PlantUMLPreview", function()
 		"http://localhost:" .. port .. "/viewer.html?filename=" .. filename,
 	})
 	local group = "PlantUMLPreview:" .. filename
+	vim.api.nvim_create_augroup(group, { clear = true })
 	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 		group = group,
 		buffer = vim.fn.bufnr(),
