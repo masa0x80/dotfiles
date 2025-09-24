@@ -461,6 +461,15 @@ ul li::marker {
   height: 100%;
 }
 
+/* for plantuml */
+.markdown-body img[src^="http://127.0.0.1:8765/"]
+{
+  width: initial;
+  height: initial;
+  max-width: initial;
+  max-height: initial;
+}
+
 .markdown-body strong {
   background: linear-gradient(transparent 86%, #e8939a 0%);
 }
