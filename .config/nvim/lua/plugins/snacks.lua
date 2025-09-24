@@ -828,5 +828,28 @@ return {
 				end)
 			end,
 		},
+		{
+			"<C-;>t",
+			desc = "Apply template",
+			function()
+				local vault_path = require("telekasten").Cfg.home
+				local files = vim.fn.glob(vault_path .. "/templates/**/*", false, true)
+				local items = {}
+				for i, file in ipairs(files) do
+					local path = vim.fn.fnamemodify(file, ":.")
+					items[i] = path
+				end
+
+				vim.ui.select(items, {
+					prompt = "Select: ",
+					format_item = function(item)
+						return item
+					end,
+				}, function(choice)
+					vim.fn.execute(":0r " .. choice)
+					vim.fn.execute("%s/YYYY-MM-DD/" .. os.date("%Y-%m-%d") .. "/g")
+				end)
+			end,
+		},
 	},
 }

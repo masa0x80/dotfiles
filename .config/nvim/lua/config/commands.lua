@@ -84,5 +84,5 @@ vim.api.nvim_create_user_command("DisableCompletion", function()
 end, {})
 
 vim.api.nvim_create_user_command("ReplaceDate", function()
-	vim.fn.execute("s/YYYY-MM-DD/" .. os.date("%Y-%m-%d") .. "/g")
+	vim.fn.execute("%s/YYYY-MM-DD/" .. os.date("%Y-%m-%d") .. "/g")
 end, {})

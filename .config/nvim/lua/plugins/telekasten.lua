@@ -206,7 +206,7 @@ return {
 		},
 		{ "<C-;>v", "<Cmd>Telekasten switch_vault<CR>", desc = "Telekasten switch_vault" },
 		{
-			"<C-;>t",
+			"<C-;><C-t>",
 			function()
 				vim.fn.setreg("+", ("%s/%s.md"):format(vim.fn.expand("%:.:h"), os.date("%Y-%m-%d")))
 				require("telekasten").new_templated_note()
