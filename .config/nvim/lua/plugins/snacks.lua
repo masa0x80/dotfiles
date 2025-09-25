@@ -849,13 +849,26 @@ return {
 					if choice == nil then
 						return
 					end
-					vim.fn.execute(":0r " .. choice)
+
+					local l = vim.fn.line("$")
+					if l == 1 then
+						vim.fn.execute(":0r " .. choice)
+					else
+						vim.fn.execute(":" .. l)
+						vim.fn.execute(":r " .. choice)
+					end
 					local filename = vim.fn.expand("%:t:r")
 					local date_pattern = "(%d%d%d%d)%-(%d%d)%-(%d%d)"
 					local year, month, date = string.match(filename, date_pattern)
-					vim.fn.execute("%s/YYYY/" .. year .. "/g")
-					vim.fn.execute("%s/MM/" .. month .. "/g")
-					vim.fn.execute("%s/DD/" .. date .. "/g")
+					if year ~= nil then
+						pcall(vim.fn.execute, "%s/YYYY/" .. year .. "/g")
+					end
+					if month ~= nil then
+						pcall(vim.fn.execute, "%s/MM/" .. month .. "/g")
+					end
+					if date ~= nil then
+						pcall(vim.fn.execute, "%s/DD/" .. date .. "/g")
+					end
 				end)
 			end,
 		},
