@@ -94,6 +94,7 @@ end
 return {
 	"renerocksai/telekasten.nvim",
 	version = "*",
+	cmd = { "Telekasten" },
 	keys = {
 		{ "<C-;>z", "<Cmd>Telekasten panel<CR>", desc = "Telekasten panel" },
 		{ "<C-;>i", "<Cmd>Telekasten insert_link<CR>", desc = "Telekasten insert_link" },
