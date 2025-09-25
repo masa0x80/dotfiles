@@ -8,7 +8,7 @@ set -euo pipefail
   rg_prefix='rg --files-with-matches'
   selected="$(
     FZF_DEFAULT_COMMAND="$rg_prefix ''" \
-      fzf --sort --preview="[[ ! -z {} ]] && rg --pretty --context 5 {q} {}" \
+      fzf --sort --preview="[[ ! -z {} ]] && rg --pretty --ignore-case -N --context 5 {q} {}" \
         --phony -q "" \
         --bind "change:reload:$rg_prefix {q}" \
         --preview-window="90%:wrap"
