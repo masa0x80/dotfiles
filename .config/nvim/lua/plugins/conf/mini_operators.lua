@@ -1,4 +1,5 @@
 require("mini.operators").setup({
-	replace = { prefix = "<C-g><C-r>" },
+	sort = { prefix = "<C-g>s" },
+	replace = { prefix = "<C-g>r" },
 	exchange = { prefix = "g/" },
 })
