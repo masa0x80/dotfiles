@@ -25,16 +25,16 @@ quick-terminal-animation-duration = 0
 
 keybind = cmd+enter=toggle_maximize
 
-keybind = ctrl+s>physical:one=goto_tab:1
+keybind = ctrl+s>physical:one=goto_tab:9
 keybind = ctrl+s>physical:two=goto_tab:2
 keybind = ctrl+s>physical:three=goto_tab:3
 keybind = ctrl+s>physical:four=goto_tab:4
 keybind = ctrl+s>physical:five=goto_tab:5
 keybind = ctrl+s>physical:six=goto_tab:6
 keybind = ctrl+s>physical:seven=goto_tab:7
-keybind = ctrl+s>physical:eight=goto_tab:8
-keybind = ctrl+s>physical:nine=goto_tab:9
-keybind = ctrl+s>physical:zero=goto_tab:1
+keybind = ctrl+s>physical:eight=goto_tab:1
+keybind = ctrl+s>physical:nine=goto_tab:2
+keybind = ctrl+s>physical:zero=goto_tab:3
 
 keybind = ctrl+s>ctrl+c=new_tab
 keybind = ctrl+s>c=new_tab
