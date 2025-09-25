@@ -166,7 +166,7 @@ return {
 			desc = "File Explorer",
 		},
 		{
-			"-",
+			"<C-->",
 			function()
 				Snacks.explorer(vim.tbl_deep_extend("force", explorer_opts, {
 					layout = {
@@ -846,11 +846,16 @@ return {
 						return item
 					end,
 				}, function(choice)
+					if choice == nil then
+						return
+					end
 					vim.fn.execute(":0r " .. choice)
 					local filename = vim.fn.expand("%:t:r")
-					local date_pattern = "(%d%d%d%d%-%d%d%-%d%d)"
-					local date = string.match(filename, date_pattern)
-					vim.fn.execute("%s/YYYY-MM-DD/" .. date .. "/g")
+					local date_pattern = "(%d%d%d%d)%-(%d%d)%-(%d%d)"
+					local year, month, date = string.match(filename, date_pattern)
+					vim.fn.execute("%s/YYYY/" .. year .. "/g")
+					vim.fn.execute("%s/MM/" .. month .. "/g")
+					vim.fn.execute("%s/DD/" .. date .. "/g")
 				end)
 			end,
 		},
