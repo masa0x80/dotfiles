@@ -45,8 +45,8 @@ keybind = ctrl+s>n=next_tab
 keybind = ctrl+shift+n=move_tab:1
 keybind = ctrl+shift+p=move_tab:-1
 
-keybind = ctrl+s>-=new_split:down
-keybind = ctrl+s>\=new_split:right
+keybind = ctrl+s>ctrl+-=new_split:down
+keybind = ctrl+s>ctrl+\=new_split:right
 keybind = ctrl+s>ctrl+i=goto_split:next
 keybind = ctrl+s>i=goto_split:next
 keybind = ctrl+s>ctrl+o=goto_split:previous
