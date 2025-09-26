@@ -138,7 +138,7 @@
                                         "bundle_identifiers": [
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.github\\.wez\\.wezterm$",
-                                            "^com\\.mitchellh\\.ghostty"
+                                            "^com\\.mitchellh\\.ghostty$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -161,7 +161,7 @@
                                         "bundle_identifiers": [
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.github\\.wez\\.wezterm$",
-                                            "^com\\.mitchellh\\.ghostty"
+                                            "^com\\.mitchellh\\.ghostty$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -189,7 +189,7 @@
                                         "bundle_identifiers": [
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.github\\.wez\\.wezterm$",
-                                            "^com\\.mitchellh\\.ghostty"
+                                            "^com\\.mitchellh\\.ghostty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -213,7 +213,7 @@
                                         "bundle_identifiers": [
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.github\\.wez\\.wezterm$",
-                                            "^com\\.mitchellh\\.ghostty"
+                                            "^com\\.mitchellh\\.ghostty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -282,7 +282,7 @@
                                         "bundle_identifiers": [
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.github\\.wez\\.wezterm$",
-                                            "^com\\.mitchellh\\.ghostty"
+                                            "^com\\.mitchellh\\.ghostty$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     },
@@ -373,7 +373,7 @@
                                         "bundle_identifiers": [
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.github\\.wez\\.wezterm$",
-                                            "^com\\.mitchellh\\.ghostty"
+                                            "^com\\.mitchellh\\.ghostty$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1098,6 +1098,27 @@
                                     "modifiers": { "mandatory": ["command"] }
                                 },
                                 "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/bookmark-wrapper" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Activate Ghostty",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.mitchellh\\.ghostty$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": { "mandatory": ["command", "control"] }
+                                },
+                                "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/activate-ghostty" }],
                                 "type": "basic"
                             }
                         ]
