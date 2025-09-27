@@ -1,5 +1,26 @@
 require("mini.operators").setup({
-	sort = { prefix = "<C-g>s" },
-	replace = { prefix = "<C-g>r" },
-	exchange = { prefix = "g/" },
+	evaluate = {
+		prefix = "<C-g>=",
+	},
+
+	-- Exchange text regions
+	exchange = {
+		prefix = "<C-g>x",
+		reindent_linewise = true,
+	},
+
+	-- Multiply (duplicate) text
+	multiply = {
+		prefix = "<C-g>m",
+	},
+
+	-- Replace text with register
+	replace = {
+		prefix = "<C-g>r",
+	},
+
+	-- Sort text
+	sort = {
+		prefix = "<C-g>s",
+	},
 })
