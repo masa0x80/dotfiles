@@ -4,13 +4,13 @@ require("telekasten").setup({
 
 	auto_set_filetype = false,
 
-	dailies = home .. "/" .. "daily/" .. os.date("%Y"),
-	weeklies = home .. "/" .. "weekly/" .. os.date("%Y"),
-	templates = home .. "/" .. "templates",
+	dailies = ("%s/daily/%s"):format(home, os.date("%Y")),
+	weeklies = ("%s/weekly/%s"):format(home, os.date("%Y")),
+	templates = ("%s/templates"):format(home),
 
-	template_new_note = home .. "/" .. "templates/new_note.md",
-	template_new_daily = home .. "/" .. "templates/daily.md",
-	template_new_weekly = home .. "/" .. "templates/weekly.md",
+	template_new_note = ("%s/templates/new_note.md"):format(home),
+	template_new_daily = ("%s/templates/daily.md"):format(home),
+	template_new_weekly = ("%s/templates/weekly.md"):format(home),
 
 	journal_auto_open = true,
 

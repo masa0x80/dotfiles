@@ -179,7 +179,23 @@ return {
 			desc = "Toggle todo",
 		},
 		{ "<C-;>d", "<Cmd>Telekasten goto_today<CR>", desc = "Telekasten goto_today" },
-		{ "<C-;>w", "<Cmd>Telekasten goto_thisweek<CR>", desc = "Telekasten goto_thisweek" },
+		{
+			"<C-;>w",
+			function()
+				local cfg = require("telekasten").Cfg
+				local vault_path = cfg.home
+				local year = os.date("%Y")
+				local month = os.date("%m")
+				local d = os.date("%-d")
+				local week_of_month = (d - 1) / 7 + 1
+				local file_path = ("%s/weekly/%d/%s-w%d.md"):format(vault_path, year, month, week_of_month)
+				vim.fn.execute("edit " .. file_path)
+				if vim.fn.filereadable(file_path) == 0 then
+					vim.fn.execute((":0r %s"):format(cfg.template_new_weekly))
+				end
+			end,
+			desc = "Telekasten goto_thisweek",
+		},
 		{
 			"<C-;>m",
 			function()
@@ -187,14 +203,9 @@ return {
 				local year = os.date("%Y")
 				local month = os.date("%m")
 				local file_path = ("%s/monthly/%s/%s-%s.md"):format(vault_path, year, year, month)
-				if vim.fn.filereadable(file_path) == 0 then
-					vim.fn.execute(("edit %s/templates/monthly.md"):format(vault_path))
-					vim.fn.execute("%y")
-					vim.fn.execute("bd")
-				end
 				vim.fn.execute(("edit %s"):format(file_path))
 				if vim.fn.filereadable(file_path) == 0 then
-					vim.cmd("normal! P")
+					vim.fn.execute((":0r %s/templates/monthly.md"):format(vault_path))
 				end
 			end,
 			desc = "Telekasten goto_thismonth",
