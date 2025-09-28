@@ -83,6 +83,27 @@ vim.api.nvim_create_user_command("DisableCompletion", function()
 	vim.b.completion = false
 end, {})
 
-vim.api.nvim_create_user_command("ReplaceDate", function()
-	vim.fn.execute("%s/YYYY-MM-DD/" .. os.date("%Y-%m-%d") .. "/g")
+vim.api.nvim_create_user_command("ReplaceDate", function(opts)
+	local date = opts.args
+	if date == "" then
+		date = os.date("%Y-%m-%d")
+	end
+
+	local date_pattern = "(%d%d%d%d)%-(%d%d)%-(%d%d)"
+	local year, month, date = string.match(date, date_pattern)
+	if year ~= nil then
+		pcall(vim.fn.execute, "%s/YYYY/" .. year .. "/g")
+	end
+	if month ~= nil then
+		pcall(vim.fn.execute, "%s/MM/" .. month .. "/g")
+	end
+	if date ~= nil then
+		pcall(vim.fn.execute, "%s/DD/" .. date .. "/g")
+	end
+end, { nargs = "?" })
+
+vim.api.nvim_create_user_command("RestoreCursor", function()
+	if pcall(vim.cmd, "marks f", { silent = true }) then
+		vim.cmd("normal! `fzt10k10j")
+	end
 end, {})

@@ -858,16 +858,12 @@ return {
 						vim.fn.execute(":r " .. choice)
 					end
 					local filename = vim.fn.expand("%:t:r")
-					local date_pattern = "(%d%d%d%d)%-(%d%d)%-(%d%d)"
-					local year, month, date = string.match(filename, date_pattern)
-					if year ~= nil then
-						pcall(vim.fn.execute, "%s/YYYY/" .. year .. "/g")
-					end
-					if month ~= nil then
-						pcall(vim.fn.execute, "%s/MM/" .. month .. "/g")
-					end
+					local date_pattern = "(%d%d%d%d%-%d%d%-%d%d)"
+					local date = string.match(filename, date_pattern)
 					if date ~= nil then
-						pcall(vim.fn.execute, "%s/DD/" .. date .. "/g")
+						vim.cmd("ReplaceDate " .. date)
+					else
+						vim.cmd("ReplaceDate")
 					end
 				end)
 			end,

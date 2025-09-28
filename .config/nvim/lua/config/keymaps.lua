@@ -45,9 +45,7 @@ map("n", "<C-,>R", "*Ncgn", { desc = "[R]eplace Current Word `*cgn`" })
 map("n", "<C-g><C-m>", "`mzt10<C-y>", { desc = "`mzt10<C-y>" })
 map("n", "<C-g><C-;>", "zt10<C-y>", { desc = "zt10<C-y>" })
 map("n", "<C-g><C-g><C-h>", function()
-	if pcall(vim.cmd, "marks f") then
-		vim.cmd("windo normal! `fzt10k10j")
-	end
+	vim.cmd("windo RestoreCursor")
 	vim.cmd("normal! `zzt10k10j")
 end, { desc = "`fzt10k10j" })
 
