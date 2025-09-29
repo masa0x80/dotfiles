@@ -35,6 +35,16 @@ keybind = ctrl+s>physical:seven=goto_tab:7
 keybind = ctrl+s>physical:eight=goto_tab:1
 keybind = ctrl+s>physical:nine=goto_tab:2
 keybind = ctrl+s>physical:zero=goto_tab:3
+keybind = ctrl+s>ctrl+physical:one=goto_tab:9
+keybind = ctrl+s>ctrl+physical:two=goto_tab:2
+keybind = ctrl+s>ctrl+physical:three=goto_tab:3
+keybind = ctrl+s>ctrl+physical:four=goto_tab:4
+keybind = ctrl+s>ctrl+physical:five=goto_tab:5
+keybind = ctrl+s>ctrl+physical:six=goto_tab:6
+keybind = ctrl+s>ctrl+physical:seven=goto_tab:7
+keybind = ctrl+s>ctrl+physical:eight=goto_tab:1
+keybind = ctrl+s>ctrl+physical:nine=goto_tab:2
+keybind = ctrl+s>ctrl+physical:zero=goto_tab:3
 
 keybind = ctrl+s>ctrl+c=new_tab
 keybind = ctrl+s>c=new_tab
