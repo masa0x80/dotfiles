@@ -16,6 +16,12 @@ vim.g.maplocalleader = " "
 
 -- # Normal
 
+-- Better window navigation
+map("n", "<C-h>", "<C-w>h", { desc = "Focus left" })
+map("n", "<C-j>", "<C-w>j", { desc = "Focus down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Focus up" })
+map("n", "<C-l>", "<C-w>l", { desc = "Focus right" })
+
 -- Remap for dealing with word wrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
