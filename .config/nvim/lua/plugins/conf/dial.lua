@@ -1,7 +1,7 @@
 local augend = require("dial.augend")
 require("dial.config").augends:register_group({
 	default = {
-		augend.integer.alias.decimal_int,
+		augend.integer.alias.decimal,
 		augend.integer.alias.hex, -- nonnegative hex number  (0x01, 0x1a1f, etc.)
 		augend.integer.alias.octal,
 		augend.integer.alias.binary,
