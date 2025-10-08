@@ -61,6 +61,9 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 65 "<dic
 # Change "Move focus to next window" shortcut
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>48</integer><integer>524288</integer></array><key>type</key><string>standard</string></dict></dict>"
 
+# Move window by Drag with Comamnd + Control
+defaults write -g NSWindowShouldDragOnGesture -bool true
+
 killall Dock
 killall Finder
 killall SystemUIServer

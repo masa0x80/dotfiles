@@ -1,0 +1,2 @@
+# vim: ft=tmux
+source $XDG_CONFIG_HOME/tmux/copy.conf
