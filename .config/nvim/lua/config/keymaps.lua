@@ -36,7 +36,12 @@ map("n", "<C-w>o", "<NOP>", { desc = "NOP" })
 map("n", "<C-w>O", "<Cmd>only<CR>", { desc = "only" })
 
 -- Tabs
-map("n", "<C-,><C-t>", "<Cmd>tabedit %:p<CR>", { desc = "tabedit %:p" })
+map("n", "<C-,><C-t>", function()
+	vim.fn.execute("normal! mt")
+	vim.fn.execute(":tabedit %:p")
+	vim.fn.execute("normal! `t")
+	vim.fn.execute(":delm t")
+end, { desc = "tabedit %:p" })
 map("n", "<C-t><C-t>", "g<Tab>", { desc = "g<Tab>" })
 map("n", "<C-t><C-n>", "<Cmd>tabnext<CR>", { desc = "tabnext" })
 map("n", "<C-t><C-p>", "<Cmd>tabprevious<CR>", { desc = "tabprev" })
@@ -139,7 +144,7 @@ map({ "o", "x" }, "i<Space>", "iW", { desc = "select a word" })
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%E3%82%B3%E3%83%94%E3%83%BC%E6%99%82%E3%81%AB%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E4%BD%8D%E7%BD%AE%E3%82%92%E4%BF%9D%E5%AD%98
 map("x", "y", function()
 	vim.fn.execute("normal! myy`y")
-	vim.fn.execute(":delm y<CR>")
+	vim.fn.execute(":delm y")
 end)
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%E3%83%9A%E3%83%BC%E3%82%B9%E3%83%88%E6%99%82%E3%81%AB%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%81%AE%E5%A4%89%E6%9B%B4%E3%82%92%E9%98%B2%E6%AD%A2
 map("x", "p", "P")
@@ -173,4 +178,4 @@ map("x", "x", '"_x')
 map("o", "x", "d")
 
 -- Jira
-map("n", "<C-;>j", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", { desc = "Jira" })
+map("n", "<C-;>J", ":<C-u>%s;\\(<C-r><C-w>\\);" .. vim.fn.expand("$JIRA_BASE_URL") .. "\\1;<CR>", { desc = "Jira" })

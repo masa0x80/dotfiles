@@ -31,6 +31,7 @@ local options = {
 	termguicolors = true,
 	sidescrolloff = 3,
 	laststatus = 3,
+	showtabline = 0,
 	completeopt = {
 		"menu",
 		"menuone",
