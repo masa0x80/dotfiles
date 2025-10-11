@@ -166,7 +166,7 @@ return {
 			desc = "File Explorer",
 		},
 		{
-			"<C-->",
+			"-",
 			function()
 				Snacks.explorer(vim.tbl_deep_extend("force", explorer_opts, {
 					layout = {

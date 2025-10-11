@@ -1,4 +1,5 @@
 require("everforest").setup({
+	transparent_background_level = 2,
 	on_highlights = function(hl, palette)
 		hl.ExtraWhiteSpace = { fg = palette.none, bg = palette.bg_blue }
 		hl.MarkdownBullet = { fg = palette.grey1, bg = palette.none }

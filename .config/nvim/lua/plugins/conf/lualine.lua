@@ -84,8 +84,62 @@ local function selectionCount()
 	return tostring(n) .. " lines, " .. tostring(chars) .. " characters"
 end
 
+local colors = require("everforest.colours").generate_palette(
+	vim.tbl_extend("keep", { transparent_background_level = 2 }, require("everforest.init").default_config),
+	vim.o.background
+)
+local theme = {
+	normal = {
+		a = { bg = colors.green, fg = colors.bg0, gui = "bold" },
+		b = { bg = colors.bg3, fg = colors.fg },
+		c = { bg = colors.none, fg = colors.fg },
+		x = { bg = colors.none, fg = colors.fg },
+		y = { bg = colors.bg3, fg = colors.fg },
+		z = { bg = colors.green, fg = colors.bg0 },
+	},
+	insert = {
+		a = { bg = colors.fg, fg = colors.bg0, gui = "bold" },
+		b = { bg = colors.bg3, fg = colors.fg },
+		c = { bg = colors.none, fg = colors.fg },
+	},
+	visual = {
+		a = { bg = colors.red, fg = colors.bg0, gui = "bold" },
+		b = { bg = colors.bg3, fg = colors.fg },
+		c = { bg = colors.none, fg = colors.fg },
+	},
+	replace = {
+		a = { bg = colors.orange, fg = colors.bg0, gui = "bold" },
+		b = { bg = colors.bg3, fg = colors.fg },
+		c = { bg = colors.bg1, fg = colors.fg },
+	},
+	command = {
+		a = { bg = colors.aqua, fg = colors.bg0, gui = "bold" },
+		b = { bg = colors.bg3, fg = colors.fg },
+		c = { bg = colors.bg1, fg = colors.fg },
+	},
+	terminal = {
+		a = { bg = colors.purple, fg = colors.bg0, gui = "bold" },
+		b = { bg = colors.bg3, fg = colors.fg },
+		c = { bg = colors.bg1, fg = colors.fg },
+	},
+	inactive = {
+		a = { bg = colors.bg1, fg = colors.grey1, gui = "bold" },
+		b = { bg = colors.bg1, fg = colors.grey1 },
+		c = { bg = colors.bg1, fg = colors.grey1 },
+	},
+}
+
+local color = require("lualine.themes.everforest")
 require("lualine").setup({
 	options = {
+		theme = theme,
+		-- theme = vim.tbl_deep_extend("keep", color, {
+		-- 	normal = {
+		-- 		x = color.normal.c,
+		-- 		y = color.normal.b,
+		-- 		z = color.normal.a,
+		-- 	},
+		-- }),
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 	},
@@ -96,6 +150,7 @@ require("lualine").setup({
 		lualine_z = { "location", "progress" },
 	},
 	winbar = {
+		lualine_a = { "buffers" },
 		lualine_c = {
 			{
 				"navic",
@@ -105,7 +160,9 @@ require("lualine").setup({
 				},
 			},
 		},
-		lualine_z = { "filename" },
+		lualine_z = {
+			"tabs",
+		},
 	},
 	inactive_winbar = {
 		lualine_c = {

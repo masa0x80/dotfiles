@@ -1,11 +1,11 @@
-theme = Everforest Dark   Hard
+theme = Everforest Dark Hard
 
 font-family = ""
 font-family = Pending Mono HWNF
 font-size = 14
 alpha-blending = linear
 
-custom-shader = ./shaders/cursor_smear.glsl
+custom-shader = ./shaders/cursor.glsl
 
 mouse-hide-while-typing
 
@@ -15,8 +15,7 @@ background-blur-radius = 18
 macos-non-native-fullscreen = true
 macos-option-as-alt = false
 macos-window-buttons = hidden
-macos-titlebar-style = tabs
-shell-integration-features = no-title
+macos-titlebar-style = hidden
 
 # quick-terminal
 quick-terminal-position = top
@@ -24,52 +23,6 @@ quick-terminal-screen = mouse
 quick-terminal-animation-duration = 0
 
 keybind = cmd+enter=toggle_maximize
-
-keybind = ctrl+s>physical:one=goto_tab:9
-keybind = ctrl+s>physical:two=goto_tab:2
-keybind = ctrl+s>physical:three=goto_tab:3
-keybind = ctrl+s>physical:four=goto_tab:4
-keybind = ctrl+s>physical:five=goto_tab:5
-keybind = ctrl+s>physical:six=goto_tab:6
-keybind = ctrl+s>physical:seven=goto_tab:7
-keybind = ctrl+s>physical:eight=goto_tab:1
-keybind = ctrl+s>physical:nine=goto_tab:2
-keybind = ctrl+s>physical:zero=goto_tab:3
-keybind = ctrl+s>ctrl+physical:one=goto_tab:9
-keybind = ctrl+s>ctrl+physical:two=goto_tab:2
-keybind = ctrl+s>ctrl+physical:three=goto_tab:3
-keybind = ctrl+s>ctrl+physical:four=goto_tab:4
-keybind = ctrl+s>ctrl+physical:five=goto_tab:5
-keybind = ctrl+s>ctrl+physical:six=goto_tab:6
-keybind = ctrl+s>ctrl+physical:seven=goto_tab:7
-keybind = ctrl+s>ctrl+physical:eight=goto_tab:1
-keybind = ctrl+s>ctrl+physical:nine=goto_tab:2
-keybind = ctrl+s>ctrl+physical:zero=goto_tab:3
-
-keybind = ctrl+s>ctrl+c=new_tab
-keybind = ctrl+s>c=new_tab
-keybind = ctrl+s>ctrl+p=previous_tab
-keybind = ctrl+s>p=previous_tab
-keybind = ctrl+s>ctrl+n=next_tab
-keybind = ctrl+s>n=next_tab
-keybind = ctrl+shift+n=move_tab:1
-keybind = ctrl+shift+p=move_tab:-1
-
-keybind = ctrl+s>-=new_split:down
-keybind = ctrl+s>ctrl+-=new_split:down
-keybind = ctrl+s>\=new_split:right
-keybind = ctrl+s>ctrl+\=new_split:right
-keybind = ctrl+s>ctrl+i=goto_split:next
-keybind = ctrl+s>i=goto_split:next
-keybind = ctrl+s>ctrl+o=goto_split:previous
-keybind = ctrl+s>o=goto_split:previous
-keybind = ctrl+s>z=toggle_split_zoom
-keybind = ctrl+s>equal=equalize_splits
-
-keybind = ctrl+down=jump_to_prompt:1
-keybind = ctrl+up=jump_to_prompt:-1
-keybind = ctrl+cmd+j=scroll_page_lines:1
-keybind = ctrl+cmd+k=scroll_page_lines:-1
 
 keybind = shift+up=adjust_selection:up
 keybind = shift+down=adjust_selection:down

@@ -36,12 +36,12 @@ float getSdfParallelogram(in vec2 p, in vec2 v0, in vec2 v1, in vec2 v2, in vec2
     return s * sqrt(d);
 }
 
-vec2 normalize(vec2 value, float isPosition) {
+vec2 norm(vec2 value, float isPosition) {
     return (value * 2.0 - (iResolution.xy * isPosition)) / iResolution.y;
 }
 
 float antialising(float distance) {
-    return 1. - smoothstep(0., normalize(vec2(2., 2.), 0.).x, distance);
+    return 1. - smoothstep(0., norm(vec2(2., 2.), 0.).x, distance);
 }
 
 float determineStartVertexFactor(vec2 a, vec2 b) {
@@ -60,33 +60,22 @@ float ease(float x) {
     return pow(1.0 - x, 3.0);
 }
 
-// Use this site to convert from HEX to vec4
-// https://enchanted.games/app/colour-converter/
-// const vec4 TRAIL_COLOR = vec4(1., 1., 0., 1.0); // yellow
-// const vec4 TRAIL_COLOR = vec4(0.976, 0.302, 1.0, 1.0); // cursor
-// const vec4 TRAIL_COLOR = vec4(0.914, 0.702, 0.992, 1.0); // light cursor
-// const vec4 TRAIL_COLOR = vec4(0.016, 0.82, 0.976, 1.0); // cyan
-// const vec4 TRAIL_COLOR = vec4(0.216, 0.957, 0.6, 1.0); // green
-// const vec4 TRAIL_COLOR = vec4(0.53, 0.23, 0.12, 0.1);
-const vec4 TRAIL_COLOR = vec4(0.408, 0.408, 0.408, 1.0);
-const float OPACITY = 0.6;
+const vec4 START_COLOR = vec4(0.894, 0.588, 0.467, 1.0);
+const vec4 END_COLOR = vec4(0.0, 0.0, 0.0, 1.0);
 const float DURATION = 0.2; //IN SECONDS
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
 {
-
-    #if !defined(WEB)
     fragColor = texture(iChannel0, fragCoord.xy / iResolution.xy);
-    #endif
     // Normalization for fragCoord to a space of -1 to 1;
-    vec2 vu = normalize(fragCoord, 1.);
+    vec2 vu = norm(fragCoord, 1.);
     vec2 offsetFactor = vec2(-.5, 0.5);
 
     // Normalization for cursor position and size;
     // cursor xy has the postion in a space of -1 to 1;
     // zw has the width and height
-    vec4 currentCursor = vec4(normalize(iCurrentCursor.xy, 1.), normalize(iCurrentCursor.zw, 0.));
-    vec4 previousCursor = vec4(normalize(iPreviousCursor.xy, 1.), normalize(iPreviousCursor.zw, 0.));
+    vec4 currentCursor = vec4(norm(iCurrentCursor.xy, 1.), norm(iCurrentCursor.zw, 0.));
+    vec4 previousCursor = vec4(norm(iPreviousCursor.xy, 1.), norm(iPreviousCursor.zw, 0.));
 
     // When drawing a parellelogram between cursors for the trail i need to determine where to start at the top-left or top-right vertex of the cursor
     float vertexFactor = determineStartVertexFactor(currentCursor.xy, previousCursor.xy);
@@ -109,11 +98,18 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     float lineLength = distance(centerCC, centerCP);
 
     vec4 newColor = vec4(fragColor);
-    // Draw trail
-    newColor = mix(newColor, TRAIL_COLOR, antialising(sdfTrail));
+
+    // Compute fade factor based on distance along the trail
+    float fadeFactor = 1.0 - smoothstep(lineLength, sdfCurrentCursor, easedProgress * lineLength);
+
+    vec4 cursorColor = mix(START_COLOR, END_COLOR, easedProgress);
+    vec4 trailColor = mix(START_COLOR, END_COLOR, fadeFactor);
+
+    // Blend trail with fade effect
+    newColor = mix(newColor, trailColor, antialising(sdfTrail));
+
     // Draw current cursor
-    newColor = mix(newColor, TRAIL_COLOR, antialising(sdfCurrentCursor));
+    newColor = mix(newColor, cursorColor, antialising(sdfCurrentCursor));
     newColor = mix(newColor, fragColor, step(sdfCurrentCursor, 0.));
-    // newColor = mix(fragColor, newColor, OPACITY);
     fragColor = mix(fragColor, newColor, step(sdfCurrentCursor, easedProgress * lineLength));
 }
