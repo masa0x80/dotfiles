@@ -58,6 +58,7 @@ return {
 		"numToStr/Comment.nvim",
 		version = "*",
 		event = { "CursorHold", "CursorMoved", "ModeChanged" },
+		init = require("utils").load("init/Comment"),
 		config = require("utils").load("conf/Comment"),
 	},
 	{

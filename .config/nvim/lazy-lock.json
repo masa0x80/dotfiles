@@ -79,7 +79,7 @@
   "plenary.nvim": { "branch": "master", "commit": "50012918b2fc8357b87cff2a7f7f0446e47da174" },
   "presenting.nvim": { "branch": "main", "commit": "7d7e18892fed8c7443a0d9c1c2cab82f18da70a1" },
   "render-markdown.nvim": { "branch": "main", "commit": "ea3678daff66656a9e1c20914d204b7c841c5030" },
-  "schemastore.nvim": { "branch": "main", "commit": "0a900e539511a4461701f241278626ce6ec8d331" },
+  "schemastore.nvim": { "branch": "main", "commit": "ee246c602853b47514ab7f26d616d8ad6b2578fa" },
   "screenkey.nvim": { "branch": "main", "commit": "16390931d847b1d5d77098daccac4e55654ac9e2" },
   "snacks.nvim": { "branch": "main", "commit": "da230e3ca8146da4b73752daaf0a1d07d343c12d" },
   "statuscol.nvim": { "branch": "main", "commit": "c46172d0911aa5d49ba5f39f4351d1bb7aa289cc" },
@@ -100,5 +100,6 @@
   "vim-repeat": { "branch": "master", "commit": "8106e142dfdc278ff3eaaadd7b362ad7949d4357" },
   "vim-slim": { "branch": "master", "commit": "a0a57f75f20a03d5fa798484743e98f4af623926" },
   "vimdoc-ja": { "branch": "master", "commit": "cb1d9a6fdb76df3fdca686d23853ad8f6a9523b9" },
-  "vscode-js-debug": { "branch": "main", "commit": "bc551bf4f87a6ef9330b28514bf7447cbbdb2a9e" }
+  "vscode-js-debug": { "branch": "main", "commit": "bc551bf4f87a6ef9330b28514bf7447cbbdb2a9e" },
+  "winresizer": { "branch": "master", "commit": "d1c5a4533b07879275878d4aefa91468421576e4" }
 }

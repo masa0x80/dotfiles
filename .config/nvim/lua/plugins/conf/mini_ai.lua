@@ -66,7 +66,6 @@ clue.setup({
 		clue.gen_clues.g(),
 		clue.gen_clues.marks(),
 		clue.gen_clues.registers({ show_contents = true }),
-		clue.gen_clues.windows({ submode_resize = true, submode_move = true }),
 		clue.gen_clues.z(),
 	},
 })

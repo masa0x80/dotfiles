@@ -30,8 +30,8 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 map("n", "Q", "<Nop>")
 
 -- Windows
-map("n", "<C-w><C-->", "<Cmd>split<CR>", { desc = "split" })
-map("n", "<C-w><C-\\>", "<Cmd>vsplit<CR>L", { desc = "vsplit" })
+map("n", "<C-w>-", "<Cmd>split<CR>", { desc = "split" })
+map("n", "<C-w>\\", "<Cmd>vsplit<CR>L", { desc = "vsplit" })
 map("n", "<C-w>o", "<NOP>", { desc = "NOP" })
 map("n", "<C-w>O", "<Cmd>only<CR>", { desc = "only" })
 
