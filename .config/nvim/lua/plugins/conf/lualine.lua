@@ -1,13 +1,11 @@
 local filename = {
-	{
-		"filename",
+	"filename",
 
-		-- 0: Just the filename
-		-- 1: Relative path
-		-- 2: Absolute path
-		-- 3: Absolute path, with tilde as the home directory
-		path = 1,
-	},
+	-- 0: Just the filename
+	-- 1: Relative path
+	-- 2: Absolute path
+	-- 3: Absolute path, with tilde as the home directory
+	path = 1,
 }
 
 local lsp_names = function()
@@ -133,38 +131,20 @@ local color = require("lualine.themes.everforest")
 require("lualine").setup({
 	options = {
 		theme = theme,
-		-- theme = vim.tbl_deep_extend("keep", color, {
-		-- 	normal = {
-		-- 		x = color.normal.c,
-		-- 		y = color.normal.b,
-		-- 		z = color.normal.a,
-		-- 	},
-		-- }),
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 	},
 	sections = {
-		lualine_c = filename,
+		lualine_c = { filename },
 		lualine_x = { selectionCount, lsp_names },
 		lualine_y = { "encoding", "fileformat", "filetype" },
 		lualine_z = { "location", "progress" },
 	},
-	winbar = {
+	tabline = {
 		lualine_a = { "buffers" },
-		lualine_c = {
-			{
-				"navic",
-				color_correction = "static",
-				navic_opts = {
-					highlight = true,
-				},
-			},
-		},
-		lualine_z = {
-			"tabs",
-		},
+		lualine_z = { "tabs" },
 	},
-	inactive_winbar = {
+	winbar = {
 		lualine_c = {
 			{
 				"navic",
@@ -175,5 +155,8 @@ require("lualine").setup({
 			},
 		},
 		lualine_z = { "filename" },
+	},
+	inactive_winbar = {
+		lualine_y = { "filename" },
 	},
 })
