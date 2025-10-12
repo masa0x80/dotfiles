@@ -5,6 +5,8 @@ font-family = Pending Mono HWNF
 font-size = 14
 alpha-blending = linear
 
+term = ghostty
+
 custom-shader = ./shaders/cursor.glsl
 
 mouse-hide-while-typing

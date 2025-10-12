@@ -22,6 +22,7 @@ config.use_cap_height_to_scale_fallback_fonts = true
 config.color_scheme = "Everforest Dark (Gogh)"
 config.window_decorations = "RESIZE"
 config.use_fancy_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = true
 config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 64
 config.scrollback_lines = 10000
