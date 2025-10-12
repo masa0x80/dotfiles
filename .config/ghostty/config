@@ -7,7 +7,7 @@ alpha-blending = linear
 
 term = ghostty
 
-custom-shader = ./shaders/cursor.glsl
+# custom-shader = ./shaders/cursor.glsl
 
 mouse-hide-while-typing
 
