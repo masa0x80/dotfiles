@@ -131,20 +131,22 @@ local color = require("lualine.themes.everforest")
 require("lualine").setup({
 	options = {
 		theme = theme,
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 	},
 	sections = {
+		lualine_a = { { "mode", separator = { left = "", right = "" } } },
 		lualine_c = { filename },
 		lualine_x = { selectionCount, lsp_names },
 		lualine_y = { "encoding", "fileformat", "filetype" },
-		lualine_z = { "location", "progress" },
+		lualine_z = { "location", { "progress", separator = { left = "", right = "" } } },
 	},
 	tabline = {
-		lualine_a = { "buffers" },
-		lualine_z = { "tabs" },
+		lualine_a = { { "buffers", separator = { left = "", right = "" } } },
+		lualine_z = { { "tabs", separator = { left = "", right = "" } } },
 	},
 	winbar = {
+		lualine_a = { { "filename", separator = { left = "", right = "" } } },
 		lualine_c = {
 			{
 				"navic",
@@ -154,9 +156,8 @@ require("lualine").setup({
 				},
 			},
 		},
-		lualine_z = { "filename" },
 	},
 	inactive_winbar = {
-		lualine_y = { "filename" },
+		lualine_a = { { "filename", separator = { left = "", right = "" } } },
 	},
 })
