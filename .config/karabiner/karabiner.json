@@ -333,7 +333,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.microsoft\\.Outlook$"
+                                            "^com\\.microsoft\\.Powerpoint$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -349,8 +349,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.microsoft\\.Powerpoint$",
-                                            "^com\\.microsoft\\.Outlook$"
+                                            "^com\\.microsoft\\.Powerpoint$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
