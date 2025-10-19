@@ -110,3 +110,6 @@ brew "rage"
 
 brew "starship"
 brew "sheldon"
+
+brew "vhs"
+brew "jj"
