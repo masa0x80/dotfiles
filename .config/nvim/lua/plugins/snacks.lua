@@ -835,7 +835,15 @@ return {
 				local vault_path = require("telekasten").Cfg.home
 				local files = vim.fn.glob(vault_path .. "/templates/**/*", false, true)
 				local items = {}
-				for i, file in ipairs(files) do
+				for i, file in
+					ipairs(vim.iter(files)
+						:filter(function(v)
+							if vim.fn.filereadable(v) == 1 then
+								return v
+							end
+						end)
+						:totable())
+				do
 					local path = vim.fn.fnamemodify(file, ":.")
 					items[i] = path
 				end
