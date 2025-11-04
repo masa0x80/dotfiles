@@ -44,6 +44,7 @@ config.inactive_pane_hsb = {
 	brightness = 0.8,
 }
 config.default_cursor_style = "BlinkingBlock"
+config.enable_csi_u_key_encoding = true
 config.term = "wezterm"
 
 utils.merge_tables(config, keys)

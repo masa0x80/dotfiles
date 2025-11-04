@@ -133,6 +133,7 @@ require("lualine").setup({
 		theme = theme,
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
+		always_show_tabline = false,
 	},
 	sections = {
 		lualine_a = { { "mode", separator = { left = "", right = "" } } },
@@ -142,8 +143,24 @@ require("lualine").setup({
 		lualine_z = { "location", { "progress", separator = { left = "", right = "" } } },
 	},
 	tabline = {
-		lualine_a = { { "buffers", separator = { left = "", right = "" } } },
-		lualine_z = { { "tabs", separator = { left = "", right = "" } } },
+		lualine_a = {
+			{
+				"navic",
+				color_correction = "static",
+				navic_opts = {
+					highlight = true,
+				},
+			},
+		},
+		lualine_z = {
+			{
+				"tabs",
+				separator = { left = "", right = "" },
+				cond = function()
+					return #vim.fn.gettabinfo() > 1
+				end,
+			},
+		},
 	},
 	winbar = {
 		lualine_a = { { "filename", separator = { left = "", right = "" } } },
@@ -154,6 +171,9 @@ require("lualine").setup({
 				navic_opts = {
 					highlight = true,
 				},
+				cond = function()
+					return #vim.fn.gettabinfo() == 1
+				end,
 			},
 		},
 	},
