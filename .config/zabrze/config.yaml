@@ -12,6 +12,34 @@ abbrevs:
     abbr: md
     snippet: "mkdir -p"
 
+  - name: "jj bookmark set main -r @"
+    abbr: jbsm
+    snippet: "jj bookmark set main -r @"
+  - name: "jj bookmark set"
+    abbr: jbs
+    snippet: "jj bookmark set"
+  - name: "jj git push"
+    abbr: jp
+    snippet: "jj git push"
+  - name: "jj git fetch"
+    abbr: jf
+    snippet: "jj git fetch"
+  - name: "jj log"
+    abbr: jl
+    snippet: "jj log"
+  - name: "jj status"
+    abbr: js
+    snippet: "jj status"
+  - name: "jj diff"
+    abbr: jdi
+    snippet: "jj diff"
+  - name: "jj desc"
+    abbr: jde
+    snippet: "jj desc"
+  - name: "jj new"
+    abbr: jn
+    snippet: "jj new"
+
   - name: "git add"
     abbr: ga
     snippet: "git add"
@@ -320,9 +348,9 @@ abbrevs:
     snippet: "npm run test"
     if: test -e package.json
 
-  - name: "bookark"
+  - name: "bookmark"
     abbr: b
     snippet: "bookmark"
-  - name: "bookark-loop"
+  - name: "bookmark-loop"
     abbr: bl
     snippet: "bookmark-loop"
