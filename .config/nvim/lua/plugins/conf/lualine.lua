@@ -137,13 +137,14 @@ require("lualine").setup({
 	},
 	sections = {
 		lualine_a = { { "mode", separator = { left = "", right = "" } } },
-		lualine_c = { filename },
-		lualine_x = { selectionCount, lsp_names },
+		lualine_c = { lsp_names },
+		lualine_x = { selectionCount },
 		lualine_y = { "encoding", "fileformat", "filetype" },
 		lualine_z = { "location", { "progress", separator = { left = "", right = "" } } },
 	},
 	tabline = {
-		lualine_a = {
+		lualine_b = { filename },
+		lualine_c = {
 			{
 				"navic",
 				color_correction = "static",
