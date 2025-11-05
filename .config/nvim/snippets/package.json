@@ -13,7 +13,8 @@
       },
       {
         "language": [
-          "gitcommit"
+          "gitcommit",
+          "jjdescription"
         ],
         "path": "gitcommit.json"
       },
