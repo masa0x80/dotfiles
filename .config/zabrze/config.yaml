@@ -12,6 +12,9 @@ abbrevs:
     abbr: md
     snippet: "mkdir -p"
 
+  - name: "j"
+    abbr: j
+    snippet: "jj"
   - name: "jj bookmark set main -r @"
     abbr: jbsm
     snippet: "jj bookmark set main -r @"
