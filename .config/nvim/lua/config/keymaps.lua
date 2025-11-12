@@ -114,7 +114,7 @@ map("n", "gf", function()
 	end
 end, { desc = "Go to file under cursor" })
 
-map("n", "g<C-f>", function()
+map("n", "<C-g><C-f>", function()
 	local cfile = vim.fn.expand("<cfile>")
 
 	local orig_wildignore = vim.o.wildignore
@@ -123,7 +123,7 @@ map("n", "g<C-f>", function()
 	vim.o.wildignore = orig_wildignore
 
 	if path ~= "" then
-		vim.api.nvim_feedkeys("gf", "n", false)
+		vim.cmd("tabedit " .. path)
 	else
 		local dir = vim.fn.fnamemodify(cfile, ":h")
 		if vim.fn.isdirectory(dir) == 0 then
