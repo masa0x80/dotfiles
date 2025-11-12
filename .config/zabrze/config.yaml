@@ -18,6 +18,9 @@ abbrevs:
   - name: "jj bookmark set main -r @"
     abbr: jbsm
     snippet: "jj bookmark set main -r @"
+  - name: "jj bookmark set main -r @"
+    abbr: jbm
+    snippet: "jj bookmark set main -r @"
   - name: "jj bookmark set"
     abbr: jbs
     snippet: "jj bookmark set"
