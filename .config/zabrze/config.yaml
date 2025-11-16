@@ -33,8 +33,14 @@ abbrevs:
   - name: "jj log"
     abbr: jl
     snippet: "jj log"
+  - name: "jj log"
+    abbr: jlg
+    snippet: "jj log"
   - name: "jj status"
     abbr: js
+    snippet: "jj status"
+  - name: "jj status"
+    abbr: jst
     snippet: "jj status"
   - name: "jj diff"
     abbr: jdi
