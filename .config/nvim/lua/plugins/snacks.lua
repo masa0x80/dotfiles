@@ -808,7 +808,7 @@ return {
 			end,
 		},
 		{
-			"<C-;>O",
+			"<C-;><C-o>",
 			desc = "[Obsidian] Open tmp file",
 			function()
 				local vault_path = require("telekasten").Cfg.home
