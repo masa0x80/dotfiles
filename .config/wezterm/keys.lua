@@ -60,12 +60,6 @@ M.keys = {
 		mods = "SUPER",
 		action = act.EmitEvent("toggle-opacity"),
 	},
-
-	{
-		key = "j",
-		mods = "SUPER",
-		action = act.EmitEvent("open-bookmark"),
-	},
 }
 
 M.key_tables = {

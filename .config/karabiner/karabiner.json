@@ -1089,27 +1089,6 @@
                         ]
                     },
                     {
-                        "description": "bookmark",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": { "mandatory": ["command"] }
-                                },
-                                "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/bookmark-wrapper" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Activate Ghostty",
                         "manipulators": [
                             {
@@ -1122,8 +1101,8 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "p",
-                                    "modifiers": { "mandatory": ["command", "control"] }
+                                    "key_code": "j",
+                                    "modifiers": { "mandatory": ["command"] }
                                 },
                                 "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/activate-ghostty" }],
                                 "type": "basic"

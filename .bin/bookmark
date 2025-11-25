@@ -5,10 +5,11 @@ set -euo pipefail
 () {
   : ${BOOKMARKS_DIR:=$SCRAPBOOK_DIR/bookmarks}
   cd $BOOKMARKS_DIR
-  rg_prefix='rg --files-with-matches'
+  rg_prefix='rg -i --files-with-matches'
   selected="$(
     FZF_DEFAULT_COMMAND="$rg_prefix ''" \
       fzf --sort --preview="[[ ! -z {} ]] && rg --pretty --ignore-case -N --context 5 {q} {}" \
+        --bind=ctrl-u:page-up,ctrl-d:page-down,ctrl-j:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-/:deselect-all,ctrl-q:deselect-all \
         --phony -q "" \
         --bind "change:reload:$rg_prefix {q}" \
         --preview-window="90%:wrap"
