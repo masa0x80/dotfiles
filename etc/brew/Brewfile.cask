@@ -10,6 +10,7 @@ cask "devtoys"
 cask "docker"
 cask "figma"
 cask "finicky"
+cask 'google-earth-pro'
 cask "google-cloud-sdk"
 cask "ghostty"
 cask "itsycal"
