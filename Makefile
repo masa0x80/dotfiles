@@ -89,7 +89,7 @@ mise:
 
 .PHONY: python
 python: mise
-	pip install --upgrade pip
+	mise x -- pip install --upgrade pip
 
 # rust {{{
 
