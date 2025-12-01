@@ -16,6 +16,12 @@ vim.g.maplocalleader = " "
 
 -- # Normal
 
+-- brackets
+vim.keymap.set("n", "<C-p>", "[", { desc = "[", remap = true })
+vim.keymap.set("n", "<C-n>", "]", { desc = "]", remap = true })
+vim.keymap.set("n", "<C-S-p>", "{", { desc = "{", remap = true })
+vim.keymap.set("n", "<C-S-n>", "}", { desc = "}", remap = true })
+
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h", { desc = "Focus left" })
 map("n", "<C-j>", "<C-w>j", { desc = "Focus down" })
@@ -32,6 +38,8 @@ map("n", "Q", "<Nop>")
 -- Windows
 map("n", "<C-w>-", "<Cmd>split<CR>", { desc = "split" })
 map("n", "<C-w>\\", "<Cmd>vsplit<CR>L", { desc = "vsplit" })
+map("n", "<C-w>;", "<Cmd>vsplit<CR>L", { desc = "vsplit" })
+map("n", "<C-w>_", "<C-w>=", { desc = "<C-w>=" })
 map("n", "<C-w>o", "<NOP>", { desc = "NOP" })
 map("n", "<C-w>O", "<Cmd>only<CR>", { desc = "only" })
 

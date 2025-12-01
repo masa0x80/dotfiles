@@ -11,3 +11,6 @@ rules:
 
   - expected: "$1on$2"
     pattern: "/([\\dA-Z])-on-([\\dA-Z])/"
+
+  - expected: "1on1"
+    pattern: "/1 on 1/"
