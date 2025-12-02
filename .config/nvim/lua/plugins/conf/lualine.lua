@@ -137,6 +137,7 @@ require("lualine").setup({
 	},
 	sections = {
 		lualine_a = { { "mode", separator = { left = "", right = "" } } },
+		lualine_b = { filename, "diff", "diagnostics" },
 		lualine_c = { lsp_names },
 		lualine_x = { selectionCount },
 		lualine_y = { "encoding", "fileformat", "filetype" },
