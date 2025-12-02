@@ -183,8 +183,8 @@ map("x", "p", "P")
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%3C%2C-%3E%E3%81%A7%E9%80%A3%E7%B6%9A%E3%81%97%E3%81%A6%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88%E3%82%92%E6%93%8D%E4%BD%9C
 map("x", "<", "<gv", { desc = "Indent" })
 map("x", ">", ">gv", { desc = "Dedent" })
-map("x", "<C-g><C-n>", "<gv", { desc = "Indent" })
-map("x", "<C-g><C-p>", ">gv", { desc = "Dedent" })
+map("x", "<C-g><C-n>", ">gv", { desc = "Indent" })
+map("x", "<C-g><C-p>", "<gv", { desc = "Dedent" })
 
 -- https://zenn.dev/vim_jp/articles/2024-06-05-vim-middle-class-features#%E5%BC%95%E7%94%A8%E7%AC%A6%E3%81%A7%E5%9B%B2%E3%81%BE%E3%82%8C%E3%81%9F%E7%AE%87%E6%89%80%E5%85%A8%E4%BD%93%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%99%E3%82%8B
 for _, quote in ipairs({ '"', "'", "`" }) do

@@ -11,7 +11,7 @@ brew shellenv >> $zsh_cache
 source $zsh_cache
 
 # misc
-(( ${+commands[mise]} )) && mise mise activate zsh >> $zsh_cache
+(( ${+commands[mise]} )) && mise activate zsh >> $zsh_cache
 (( ${+commands[fzf]} )) && fzf --zsh >> $zsh_cache
 (( ${+commands[direnv]} )) && direnv hook zsh >> $zsh_cache
 (( ${+commands[starship]} )) && starship init zsh >> $zsh_cache
