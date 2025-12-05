@@ -1068,7 +1068,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.vivaldi\\.Vivaldi$"
+                                            "^com\\.vivaldi\\.vivaldi$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1076,6 +1076,22 @@
                                 "from": {
                                     "key_code": "open_bracket",
                                     "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "kl ▶ <Esc>",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "simultaneous": [
+                                      { "key_code": "k" },
+                                      { "key_code": "l" }
+                                    ],
+                                    "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [{ "key_code": "escape" }],
                                 "type": "basic"
