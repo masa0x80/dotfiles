@@ -237,14 +237,43 @@ return {
 					Snacks.picker.files({
 						hidden = true,
 						ignored = true,
+						sort = {
+							fields = { "file:asc" },
+						},
 					})
 				else
 					Snacks.picker.git_files({
 						untracked = true,
+						sort = {
+							fields = { "file:asc" },
+						},
 					})
 				end
 			end,
 			desc = "Find Files",
+		},
+		{
+			"<Leader>fr",
+			function()
+				local root = require("snacks.git").get_root()
+				if root == nil then
+					Snacks.picker.files({
+						hidden = true,
+						ignored = true,
+						sort = {
+							fields = { "file:desc" },
+						},
+					})
+				else
+					Snacks.picker.git_files({
+						untracked = true,
+						sort = {
+							fields = { "file:desc" },
+						},
+					})
+				end
+			end,
+			desc = "Find Files (rev)",
 		},
 		{
 			"<Leader>F",
@@ -252,12 +281,53 @@ return {
 				Snacks.picker.files({
 					hidden = true,
 					ignored = true,
+					sort = {
+						fields = { "file:asc" },
+					},
 				})
 			end,
 			desc = "Find Git Files",
 		},
 		{
+			"<Leader>R",
+			function()
+				Snacks.picker.files({
+					hidden = true,
+					ignored = true,
+					sort = {
+						fields = { "file:desc" },
+					},
+				})
+			end,
+			desc = "Find Git Files (rev)",
+		},
+		{
 			"<C-;>ff",
+			function()
+				local root = require("snacks.git").get_root()
+				if root == nil then
+					Snacks.picker.files({
+						hidden = true,
+						ignored = true,
+						cwd = require("telekasten").Cfg.home,
+						sort = {
+							fields = { "file:asc" },
+						},
+					})
+				else
+					Snacks.picker.git_files({
+						untracked = true,
+						cwd = require("telekasten").Cfg.home,
+						sort = {
+							fields = { "file:asc" },
+						},
+					})
+				end
+			end,
+			desc = "Find Git Files (under Telekasten home)",
+		},
+		{
+			"<C-;>fr",
 			function()
 				local root = require("snacks.git").get_root()
 				if root == nil then
@@ -279,7 +349,7 @@ return {
 					})
 				end
 			end,
-			desc = "Find Git Files (under Telekasten home)",
+			desc = "Find Git Files (under Telekasten home; rev)",
 		},
 		{
 			"<C-;>F",
@@ -289,11 +359,28 @@ return {
 					hidden = true,
 					ignored = true,
 					sort = {
-						fields = { "file:desc" },
+						fields = { "file:asc" },
 					},
 				})
 			end,
 			desc = "Find Files (under Telekasten home)",
+		},
+		{
+			"<C-;>R",
+			function()
+				Snacks.picker.files({
+					cwd = require("telekasten").Cfg.home,
+					hidden = true,
+					ignored = true,
+					sort = {
+						fields = { "file:desc" },
+						sort = {
+							fields = { "file:desc" },
+						},
+					},
+				})
+			end,
+			desc = "Find Files (under Telekasten home; rev)",
 		},
 		{
 			"<Leader>fl",
@@ -303,7 +390,7 @@ return {
 			desc = "Buffer Lines",
 		},
 		{
-			"<Leader>fr",
+			"<Leader>re",
 			function()
 				Snacks.picker.recent({
 					filter = {
@@ -317,14 +404,14 @@ return {
 			desc = "Recent",
 		},
 		{
-			"<Leader>fR",
+			"<Leader>RE",
 			function()
 				Snacks.picker.recent()
 			end,
 			desc = "Recent",
 		},
 		{
-			"<C-;>fr",
+			"<C-;>re",
 			function()
 				Snacks.picker.recent({
 					filter = {
@@ -338,7 +425,7 @@ return {
 			desc = "Recent (under Telekasten home)",
 		},
 		{
-			"<C-;>fR",
+			"<C-;>RE",
 			function()
 				Snacks.picker.recent()
 			end,
@@ -606,7 +693,7 @@ return {
 			desc = "Quickfix List",
 		},
 		{
-			"<Leader>R",
+			"<Leader>rr",
 			function()
 				Snacks.picker.resume()
 			end,

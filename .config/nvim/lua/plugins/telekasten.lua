@@ -102,7 +102,6 @@ return {
 		{ "<C-;>l", "<Cmd>Telekasten follow_link<CR>", desc = "Telekasten follow_link" },
 		{ "<C-;>b", "<Cmd>Telekasten show_backlinks<CR>", desc = "Telekasten show_backlinks" },
 		{ "<C-;>n", "<Cmd>Telekasten rename_note<CR>", desc = "Telekasten rename_note" },
-		{ "<C-;>r", "<Cmd>Telekasten find_friends<CR>", desc = "Telekasten find_friends" },
 		{ "<C-;>T", "<Cmd>Telekasten show_tags<CR>", desc = "Telekasten show_tags" },
 		{
 			"<C-g><C-i>",
