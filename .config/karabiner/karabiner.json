@@ -11,11 +11,7 @@
                                     "key_code": "m",
                                     "modifiers": { "mandatory": ["control"] }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "return_or_enter"
-                                    }
-                                ],
+                                "to": [{ "key_code": "return_or_enter" }],
                                 "type": "basic"
                             }
                         ]
@@ -849,9 +845,15 @@
                                     "modifiers": { "mandatory": ["control"] }
                                 },
                                 "to": [
-                                  { "key_code": "v", "modifiers": ["control"] },
+                                  {
+                                    "key_code": "v",
+                                    "modifiers": ["control"]
+                                  },
                                   { "key_code": "g" },
-                                  { "key_code": "v", "modifiers": ["control"] },
+                                  {
+                                    "key_code": "v",
+                                    "modifiers": ["control"]
+                                  },
                                   { "key_code": "r" }
                                 ],
                                 "type": "basic"
@@ -1083,22 +1085,6 @@
                         ]
                     },
                     {
-                        "description": "j; ▶ <Esc>",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "simultaneous": [
-                                      { "key_code": "j" },
-                                      { "key_code": "semicolon" }
-                                    ],
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "escape" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Global Zoom Mute",
                         "manipulators": [
                             {
@@ -1117,6 +1103,30 @@
                             {
                                 "from": {
                                     "key_code": "backslash",
+                                    "modifiers": { "mandatory": ["control", "command"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "a",
+                                        "modifiers": ["command", "shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "hyphen",
                                     "modifiers": { "mandatory": ["control", "command"] }
                                 },
                                 "to": [
@@ -1151,28 +1161,235 @@
                         ]
                     },
                     {
-                        "description": "NuPhy Air60 Custom",
+                        "description": "Combos (except for Cornix)",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "identifiers": [
                                             {
-                                                "product_id": 591,
-                                                "vendor_id": 1452
+                                                "product_id": 1,
+                                                "vendor_id": 57624
                                             }
                                         ],
-                                        "type": "device_if"
+                                        "type": "device_unless"
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "backslash",
-                                    "modifiers": {
-                                        "mandatory": ["control"],
-                                        "optional": ["shift"]
-                                    }
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "j" },
+                                        { "key_code": "semicolon" }
+                                    ]
                                 },
-                                "to": [{ "key_code": "grave_accent_and_tilde" }],
+                                "to": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "h" },
+                                        { "key_code": "j" }
+                                    ]
+                                },
+                                "to": [{ "key_code": "delete_or_backspace" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "f" },
+                                        { "key_code": "g" }
+                                    ]
+                                },
+                                "to": [{ "key_code": "delete_forward" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "k" },
+                                        { "key_code": "l" }
+                                    ]
+                                },
+                                "to": [{ "key_code": "hyphen" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "s" },
+                                        { "key_code": "d" }
+                                    ]
+                                },
+                                "to": [{ "key_code": "equal_sign" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "comma" },
+                                        { "key_code": "period" }
+                                    ]
+                                },
+                                "to": [{ "key_code": "slash" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "c" },
+                                        { "key_code": "v" }
+                                    ]
+                                },
+                                "to": [{ "key_code": "quote" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "m" },
+                                        { "key_code": "comma" }
+                                    ]
+                                },
+                                "to": [{
+                                  "key_code": "quote",
+                                  "modifiers": ["left_shift"]
+                                }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "d" },
+                                        { "key_code": "f" }
+                                    ]
+                                },
+                                "to": [{
+                                  "key_code": "9",
+                                  "modifiers": ["left_shift"]}
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "j" },
+                                        { "key_code": "k" }
+                                    ]
+                                },
+                                "to": [{
+                                  "key_code": "0",
+                                  "modifiers": ["left_shift"]}
+                                ],
                                 "type": "basic"
                             }
                         ]
