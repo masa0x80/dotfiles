@@ -14,3 +14,8 @@ rules:
 
   - expected: "1on1"
     pattern: "/1 on 1/"
+
+  - expected: "$1"
+    pattern: "/([\\(（)[  ]/"
+  - expected: "$1"
+    pattern: "/[  ]([\\)）])/"

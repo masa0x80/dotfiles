@@ -91,16 +91,25 @@ vim.api.nvim_create_user_command("ReplaceDate", function(opts)
 
 	local date_pattern = "(%d%d%d%d)%-(%d%d)%-(%d%d)"
 	local year, month, date = string.match(date, date_pattern)
+	local range
+	if opts.range == 2 then
+		range = opts.line1 .. "," .. opts.line2
+	else
+		range = "%"
+	end
 	if year ~= nil then
-		pcall(vim.fn.execute, "%s/YYYY/" .. year .. "/g")
+		pcall(vim.fn.execute, range .. "s/YYYY/" .. year .. "/g")
 	end
 	if month ~= nil then
-		pcall(vim.fn.execute, "%s/MM/" .. month .. "/g")
+		pcall(vim.fn.execute, range .. "s/MM/" .. month .. "/g")
 	end
 	if date ~= nil then
-		pcall(vim.fn.execute, "%s/DD/" .. date .. "/g")
+		pcall(vim.fn.execute, range .. "s/DD/" .. date .. "/g")
 	end
-end, { nargs = "?" })
+end, {
+	nargs = "?",
+	range = 2,
+})
 
 vim.api.nvim_create_user_command("RestoreCursor", function()
 	if pcall(vim.cmd, "marks f", { silent = true }) then
