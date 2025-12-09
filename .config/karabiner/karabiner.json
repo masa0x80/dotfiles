@@ -886,15 +886,6 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "right_shift",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "right_shift" }],
-                                "to_if_alone": [{ "key_code": "japanese_kana" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
                                     "key_code": "left_command",
                                     "modifiers": { "optional": ["any"] }
                                 },
@@ -1266,8 +1257,8 @@
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
-                                        { "key_code": "s" },
-                                        { "key_code": "d" }
+                                        { "key_code": "period" },
+                                        { "key_code": "up_arrow" }
                                     ]
                                 },
                                 "to": [{ "key_code": "equal_sign" }],
@@ -1390,6 +1381,54 @@
                                   "key_code": "0",
                                   "modifiers": ["left_shift"]}
                                 ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "a" },
+                                        { "key_code": "s" }
+                                    ]
+                                },
+                                "to": [{
+                                  "key_code": "open_bracket"
+                                }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "l" },
+                                        { "key_code": "semicolon" }
+                                    ]
+                                },
+                                "to": [{
+                                  "key_code": "close_bracket"
+                                }],
                                 "type": "basic"
                             }
                         ]
