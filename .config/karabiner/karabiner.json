@@ -1279,8 +1279,9 @@
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
-                                        { "key_code": "m" },
-                                        { "key_code": "up_arrow" }
+                                        { "key_code": "j" },
+                                        { "key_code": "k" },
+                                        { "key_code": "l" }
                                     ]
                                 },
                                 "to": [{ "key_code": "slash" }],
