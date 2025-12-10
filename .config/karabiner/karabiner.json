@@ -1279,8 +1279,8 @@
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
-                                        { "key_code": "comma" },
-                                        { "key_code": "period" }
+                                        { "key_code": "m" },
+                                        { "key_code": "up_arrow" }
                                     ]
                                 },
                                 "to": [{ "key_code": "slash" }],
@@ -1398,8 +1398,8 @@
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
-                                        { "key_code": "a" },
-                                        { "key_code": "s" }
+                                        { "key_code": "d" },
+                                        { "key_code": "v" }
                                     ]
                                 },
                                 "to": [{
@@ -1422,8 +1422,8 @@
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
-                                        { "key_code": "l" },
-                                        { "key_code": "semicolon" }
+                                        { "key_code": "k" },
+                                        { "key_code": "m" }
                                     ]
                                 },
                                 "to": [{
