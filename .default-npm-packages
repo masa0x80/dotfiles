@@ -12,3 +12,4 @@ tsx
 markdown-table-formatter
 @nestjs/cli
 jsmigemo
+@anthropic-ai/claude-code
