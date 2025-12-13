@@ -147,13 +147,6 @@ end, { desc = "Go to file under cursor" })
 
 -- # Insert
 
--- Insertモードを抜けたときにIMEオフ
-map("i", "<Esc>", function()
-	local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
-	vim.fn.execute("!im-select com.apple.keylayout.ABC", "silent")
-	vim.api.nvim_feedkeys(esc, "n", true)
-end)
-
 -- Insert ellipsis
 map("i", "<A-;>", "…")
 map("i", "<A-Space>", " ")

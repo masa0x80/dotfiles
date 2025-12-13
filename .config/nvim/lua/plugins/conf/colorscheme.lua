@@ -22,7 +22,6 @@ require("everforest").setup({
 require("everforest").load()
 
 require("utils").create_autocmd({ "VimEnter", "WinEnter" }, {
-	pattern = { "*" },
 	-- u00A0 ' ' no-break space
 	-- u2000 ' ' en quad
 	-- u2001 ' ' em quad

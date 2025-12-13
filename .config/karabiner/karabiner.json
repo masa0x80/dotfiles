@@ -1070,7 +1070,10 @@
                                     "key_code": "open_bracket",
                                     "modifiers": { "mandatory": ["control"] }
                                 },
-                                "to": [{ "key_code": "escape" }],
+                                "to": [
+                                    { "key_code": "escape" },
+                                    { "key_code": "japanese_eisuu" }
+                                ],
                                 "type": "basic"
                             }
                         ]
@@ -1173,7 +1176,10 @@
                                         { "key_code": "semicolon" }
                                     ]
                                 },
-                                "to": [{ "key_code": "escape" }],
+                                "to": [
+                                    { "key_code": "escape" },
+                                    { "key_code": "japanese_eisuu" }
+                                ],
                                 "type": "basic"
                             },
                             {
@@ -1279,7 +1285,7 @@
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
-                                        { "key_code": "h" },
+                                        { "key_code": "k" },
                                         { "key_code": "semicolon" }
                                     ]
                                 },
@@ -1400,6 +1406,54 @@
                                     "simultaneous": [
                                         { "key_code": "d" },
                                         { "key_code": "v" }
+                                    ]
+                                },
+                                "to": [{
+                                  "key_code": "open_bracket"
+                                }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "f" },
+                                        { "key_code": "b" }
+                                    ]
+                                },
+                                "to": [{
+                                  "key_code": "close_bracket"
+                                }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "j" },
+                                        { "key_code": "n" }
                                     ]
                                 },
                                 "to": [{
