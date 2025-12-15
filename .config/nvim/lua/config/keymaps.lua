@@ -1,14 +1,4 @@
-local map = function(modes, lhs, rhs, opts)
-	vim.keymap.set(
-		modes,
-		lhs,
-		rhs,
-		vim.tbl_extend("force", {
-			noremap = true,
-			silent = true,
-		}, opts or {})
-	)
-end
+local map = require("utils").map
 
 -- <Space> as leader key
 vim.g.mapleader = " "

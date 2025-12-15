@@ -13,6 +13,18 @@ M.create_autocmd = function(event, opts)
 	)
 end
 
+M.map = function(modes, lhs, rhs, opts)
+	vim.keymap.set(
+		modes,
+		lhs,
+		rhs,
+		vim.tbl_extend("force", {
+			noremap = true,
+			silent = true,
+		}, opts or {})
+	)
+end
+
 M.preview = function(path)
 	vim.fn.execute(string.format("!open '%s'", path))
 end
