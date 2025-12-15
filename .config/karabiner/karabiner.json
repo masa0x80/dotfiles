@@ -1055,6 +1055,30 @@
                         ]
                     },
                     {
+                        "description": "<Esc>",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.github\\.wez\\.wezterm$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    { "key_code": "escape" },
+                                    { "key_code": "japanese_eisuu" }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "<C-[> ▶ <Esc>（Raycast対応）",
                         "manipulators": [
                             {
@@ -1150,6 +1174,30 @@
                                     "modifiers": { "mandatory": ["command"] }
                                 },
                                 "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/activate-ghostty" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Disable QUIT",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": { "mandatory": ["left_command"] }
+                                },
+                                "to": [{ "key_code": "q" }],
                                 "type": "basic"
                             }
                         ]
@@ -1263,8 +1311,8 @@
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
-                                        { "key_code": "period" },
-                                        { "key_code": "up_arrow" }
+                                        { "key_code": "s" },
+                                        { "key_code": "d" }
                                     ]
                                 },
                                 "to": [{ "key_code": "equal_sign" }],
@@ -1404,6 +1452,30 @@
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
+                                        { "key_code": "p" },
+                                        { "key_code": "delete_or_backspace" }
+                                    ]
+                                },
+                                "to": [{
+                                    "key_code": "grave_accent_and_tilde"
+                                }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 57624
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
                                         { "key_code": "d" },
                                         { "key_code": "v" }
                                     ]
@@ -1500,23 +1572,6 @@
                         {
                             "from": { "key_code": "caps_lock" },
                             "to": [{ "key_code": "left_control" }]
-                        }
-                    ]
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 591,
-                        "vendor_id": 1452
-                    },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "backslash" },
-                            "to": [{ "key_code": "delete_or_backspace" }]
-                        },
-                        {
-                            "from": { "key_code": "delete_or_backspace" },
-                            "to": [{ "key_code": "backslash" }]
                         }
                     ]
                 },
