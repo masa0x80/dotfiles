@@ -1067,8 +1067,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "escape",
-                                    "modifiers": { "mandatory": ["control"] }
+                                    "key_code": "escape"
                                 },
                                 "to": [
                                     { "key_code": "escape" },
