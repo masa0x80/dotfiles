@@ -1129,30 +1129,6 @@
                                     }
                                 ],
                                 "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1,
-                                                "vendor_id": 57624
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "hyphen",
-                                    "modifiers": { "mandatory": ["control", "command"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "a",
-                                        "modifiers": ["command", "shift"]
-                                    }
-                                ],
-                                "type": "basic"
                             }
                         ]
                     },
@@ -1332,8 +1308,8 @@
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
-                                        { "key_code": "k" },
-                                        { "key_code": "semicolon" }
+                                        { "key_code": "quote" },
+                                        { "key_code": "return_or_enter" }
                                     ]
                                 },
                                 "to": [{ "key_code": "slash" }],
@@ -1451,32 +1427,8 @@
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
-                                        { "key_code": "p" },
-                                        { "key_code": "delete_or_backspace" }
-                                    ]
-                                },
-                                "to": [{
-                                    "key_code": "grave_accent_and_tilde"
-                                }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1,
-                                                "vendor_id": 57624
-                                            }
-                                        ],
-                                        "type": "device_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "modifiers": { "optional": ["any"] },
-                                    "simultaneous": [
                                         { "key_code": "d" },
-                                        { "key_code": "v" }
+                                        { "key_code": "c" }
                                     ]
                                 },
                                 "to": [{

@@ -238,14 +238,14 @@ return {
 						hidden = true,
 						ignored = true,
 						sort = {
-							fields = { "file:asc" },
+							fields = { "file:desc" },
 						},
 					})
 				else
 					Snacks.picker.git_files({
 						untracked = true,
 						sort = {
-							fields = { "file:asc" },
+							fields = { "file:desc" },
 						},
 					})
 				end
@@ -261,14 +261,14 @@ return {
 						hidden = true,
 						ignored = true,
 						sort = {
-							fields = { "file:desc" },
+							fields = { "file:asc" },
 						},
 					})
 				else
 					Snacks.picker.git_files({
 						untracked = true,
 						sort = {
-							fields = { "file:desc" },
+							fields = { "file:asc" },
 						},
 					})
 				end
@@ -282,7 +282,7 @@ return {
 					hidden = true,
 					ignored = true,
 					sort = {
-						fields = { "file:asc" },
+						fields = { "file:desc" },
 					},
 				})
 			end,
@@ -295,7 +295,7 @@ return {
 					hidden = true,
 					ignored = true,
 					sort = {
-						fields = { "file:desc" },
+						fields = { "file:asc" },
 					},
 				})
 			end,
@@ -311,7 +311,7 @@ return {
 						ignored = true,
 						cwd = require("telekasten").Cfg.home,
 						sort = {
-							fields = { "file:asc" },
+							fields = { "file:desc" },
 						},
 					})
 				else
@@ -319,7 +319,7 @@ return {
 						untracked = true,
 						cwd = require("telekasten").Cfg.home,
 						sort = {
-							fields = { "file:asc" },
+							fields = { "file:desc" },
 						},
 					})
 				end
@@ -336,7 +336,7 @@ return {
 						ignored = true,
 						cwd = require("telekasten").Cfg.home,
 						sort = {
-							fields = { "file:desc" },
+							fields = { "file:asc" },
 						},
 					})
 				else
@@ -344,7 +344,7 @@ return {
 						untracked = true,
 						cwd = require("telekasten").Cfg.home,
 						sort = {
-							fields = { "file:desc" },
+							fields = { "file:asc" },
 						},
 					})
 				end
@@ -359,7 +359,7 @@ return {
 					hidden = true,
 					ignored = true,
 					sort = {
-						fields = { "file:asc" },
+						fields = { "file:desc" },
 					},
 				})
 			end,
@@ -373,10 +373,7 @@ return {
 					hidden = true,
 					ignored = true,
 					sort = {
-						fields = { "file:desc" },
-						sort = {
-							fields = { "file:desc" },
-						},
+						fields = { "file:asc" },
 					},
 				})
 			end,
