@@ -8,7 +8,7 @@ set -euo pipefail
   rg_prefix='rg -i --files-with-matches'
   selected="$(
     FZF_DEFAULT_COMMAND="$rg_prefix ''" \
-      fzf --sort --preview="[[ ! -z {} ]] && rg --pretty --ignore-case -N {q} {}" \
+      fzf --sort --ansi --preview="[[ ! -z {} ]] && rg -l --ignore-case {q} {} | xargs rg --passthru --ignore-case -N --color=always {q}" \
         --bind=ctrl-u:page-up,ctrl-d:page-down,ctrl-j:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-/:deselect-all,ctrl-q:deselect-all \
         --phony -q "" \
         --bind "ctrl-o:execute-silent: open 'obsidian://open?path=$BOOKMARKS_DIR/{1}'" \
