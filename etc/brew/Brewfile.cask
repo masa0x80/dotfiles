@@ -31,9 +31,6 @@ cask "wezterm"
 cask "visual-studio-code"
 cask "vlc"
 
-tap "steipete/tap"
-cask "repobar"
-
 cask "google-chrome"
 cask "vivaldi"
 cask "microsoft-edge"

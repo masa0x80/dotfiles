@@ -1,0 +1,5 @@
+#!/usr/bin/osascript
+
+tell application "Wezterm"
+  activate
+end tell
