@@ -896,9 +896,9 @@ return {
 			desc = "[Obsidian] Open tmp file",
 			function()
 				local vault_path = require("telekasten").Cfg.home
-				local vault_name = vim.fs.basename(vault_path)
-				vim.fn.execute(("tabedit %s/tmp.md"):format(vault_path))
-				vim.fn.jobstart(("open 'obsidian://open?vault=%s&file=tmp'"):format(vault_name))
+				local path = ("tabedit %s/tmp.md"):format(vault_path)
+				vim.fn.execute(("tabedit %s"):format(path))
+				vim.fn.jobstart(("open 'obsidian://open?path=%s'"):format(path))
 			end,
 		},
 		{
