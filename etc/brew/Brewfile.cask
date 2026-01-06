@@ -15,7 +15,6 @@ cask "google-earth-pro"
 cask "gcloud-cli"
 cask "ghostty"
 cask "itsycal"
-cask "gitify"
 cask "jordanbaird-ice"
 cask "joplin"
 cask "karabiner-elements"
@@ -47,3 +46,5 @@ cask "font-moralerspace"
 
 tap "masa0x80/tap"
 cask "font-pending-mono-hwnf"
+
+cask "tonisives/tap/ovim"

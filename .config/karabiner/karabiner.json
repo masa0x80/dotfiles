@@ -1365,7 +1365,7 @@
                                         { "key_code": "comma" }
                                     ]
                                 },
-                                "to": [{ "key_code": "slash" }],
+                                "to": [{ "key_code": "backslash" }],
                                 "type": "basic"
                             },
                             {
@@ -1387,7 +1387,7 @@
                                         { "key_code": "l" }
                                     ]
                                 },
-                                "to": [{ "key_code": "backslash" }],
+                                "to": [{ "key_code": "slash" }],
                                 "type": "basic"
                             },
                             {
