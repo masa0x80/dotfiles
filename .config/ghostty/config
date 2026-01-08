@@ -5,7 +5,7 @@ font-family = Pending Mono HWNF
 font-size = 14
 alpha-blending = linear
 
-term = xterm-ghostty
+term = ghostty
 
 # custom-shader = ./shaders/cursor.glsl
 
@@ -20,7 +20,7 @@ macos-window-buttons = hidden
 macos-titlebar-style = hidden
 
 # quick-terminal
-quick-terminal-position = top
+quick-terminal-position = center
 quick-terminal-screen = mouse
 quick-terminal-animation-duration = 0
 
