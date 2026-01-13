@@ -30,12 +30,9 @@ abbrevs:
   - name: "jj git fetch"
     abbr: jf
     snippet: "jj git fetch"
-  - name: "jj log"
+  - name: "jj log --reversed"
     abbr: jl
-    snippet: "jj log"
-  - name: "jj log"
-    abbr: jlg
-    snippet: "jj log"
+    snippet: "jj log --reversed"
   - name: "jj status"
     abbr: js
     snippet: "jj status"
