@@ -9,8 +9,8 @@ return {
 			down = "J",
 			up = "K",
 
-			line_left = "<C-g><C-h>",
-			line_right = "<C-g><C-l>",
+			line_left = "",
+			line_right = "",
 			line_down = "<C-g><C-j>",
 			line_up = "<C-g><C-k>",
 		},

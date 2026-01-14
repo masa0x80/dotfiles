@@ -75,7 +75,7 @@ return {
 									elseif ctx.kind == "Copilot" then
 										icon = ""
 									else
-										icon = lspkind.symbolic(ctx.kind)
+										icon = lspkind.symbol_map[ctx.kind]
 									end
 
 									return icon .. ctx.icon_gap
