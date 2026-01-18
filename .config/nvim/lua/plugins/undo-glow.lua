@@ -5,6 +5,7 @@ local colors = require("everforest.colours").generate_palette(
 
 return {
 	"y3owk1n/undo-glow.nvim",
+	version = "*",
 	event = { "VeryLazy" },
 	---@type UndoGlow.Config
 	opts = {

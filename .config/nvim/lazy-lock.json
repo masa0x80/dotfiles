@@ -79,6 +79,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "82aa306873db26c91f1c175bd902514a627a5d95" },
   "schemastore.nvim": { "branch": "main", "commit": "fb7b9034285a5658c746faa12eff8c1c9d9b11b1" },
   "screenkey.nvim": { "branch": "main", "commit": "16390931d847b1d5d77098daccac4e55654ac9e2" },
+  "sidekick.nvim": { "branch": "main", "commit": "dc2710af65a542eb3010136d7664b626633f0229" },
   "smear-cursor.nvim": { "branch": "main", "commit": "c85bdbb25db096fbcf616bc4e1357bd61fe2c199" },
   "snacks.nvim": { "branch": "main", "commit": "a4e46becca45eb65c73a388634b1ce8aad629ae0" },
   "statuscol.nvim": { "branch": "main", "commit": "c46172d0911aa5d49ba5f39f4351d1bb7aa289cc" },
@@ -94,13 +95,13 @@
   "treesitter-indent-object.nvim": { "branch": "master", "commit": "35e5037acd7e16fabfb2b3e506b3bbcf123f615e" },
   "treesitter-unit": { "branch": "main", "commit": "89968a1f8c72427691088e6d09d26a52c2ddc6f4" },
   "trouble.nvim": { "branch": "main", "commit": "748ca2789044607f19786b1d837044544c55e80a" },
-  "undo-glow.nvim": { "branch": "main", "commit": "25314a94cdfd84a3ca62bada1f88ed00982659ac" },
+  "undo-glow.nvim": { "branch": "main", "commit": "ac70916caa2f4e57419bb4c1a2e303cdb7bb57e2" },
   "vim-ambiwidth": { "branch": "main", "commit": "4fd05792acac85d29bb0dc08f720a49093abefad" },
   "vim-maketable": { "branch": "master", "commit": "d72e73f333c64110524197ec637897bd1464830f" },
   "vim-repeat": { "branch": "master", "commit": "8106e142dfdc278ff3eaaadd7b362ad7949d4357" },
   "vim-sandwich": { "branch": "master", "commit": "785fb39d79bb843b545f1d8a9265bd8f2e2285f8" },
   "vim-slim": { "branch": "master", "commit": "a0a57f75f20a03d5fa798484743e98f4af623926" },
-  "vimdoc-ja": { "branch": "master", "commit": "378163484728ee38c20a8152c00162f5c418494a" },
+  "vimdoc-ja": { "branch": "master", "commit": "7319a846707984100d97d3273afa959711131c5b" },
   "vscode-js-debug": { "branch": "main", "commit": "bc551bf4f87a6ef9330b28514bf7447cbbdb2a9e" },
   "winresizer": { "branch": "master", "commit": "d1c5a4533b07879275878d4aefa91468421576e4" }
 }
