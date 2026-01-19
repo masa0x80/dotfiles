@@ -338,6 +338,17 @@
   font-size: 28px;
 }
 
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
 .markdown-body h1 {
   font-size: 2.25em;
   border-bottom: 1px solid #e06c75;
@@ -457,8 +468,7 @@ ul li::marker {
 }
 
 /* for plantuml */
-.markdown-body img[src^="http://127.0.0.1:8765/"]
-{
+.markdown-body img[src^="http://127.0.0.1:8765/"] {
   width: initial;
   height: initial;
   min-width: 30em;
@@ -467,8 +477,7 @@ ul li::marker {
   max-height: initial;
 }
 
-.markdown-body img:not([src^="http://127.0.0.1:8765/"]):hover
-{
+.markdown-body img:not([src^="http://127.0.0.1:8765/"]):hover {
   width: 100%;
   height: 100%;
   transition: all 0.3s ease;
