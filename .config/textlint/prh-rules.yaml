@@ -16,6 +16,6 @@ rules:
     pattern: "/1 on 1/"
 
   - expected: "$1"
-    pattern: "/([\\(（)[  ]/"
+    pattern: "/([\\(（])[  ]/"
   - expected: "$1"
     pattern: "/[  ]([\\)）])/"
