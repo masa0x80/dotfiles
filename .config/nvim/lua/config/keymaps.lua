@@ -45,6 +45,16 @@ map("n", "<C-t><C-n>", "<Cmd>tabnext<CR>", { desc = "tabnext" })
 map("n", "<C-t><C-p>", "<Cmd>tabprevious<CR>", { desc = "tabprev" })
 map("n", "<C-t>N", "<Cmd>tabmove +<CR>", { desc = "tabmove +" })
 map("n", "<C-t>P", "<Cmd>tabmove -<CR>", { desc = "tabmove -" })
+map("n", "<C-t>1", "<Cmd>tabmove 1<CR>", { desc = "tabnext 1" })
+map("n", "<C-t>2", "<Cmd>tabmove 2<CR>", { desc = "tabnext 2" })
+map("n", "<C-t>3", "<Cmd>tabmove 3<CR>", { desc = "tabnext 3" })
+map("n", "<C-t>4", "<Cmd>tabmove 4<CR>", { desc = "tabnext 4" })
+map("n", "<C-t>5", "<Cmd>tabmove 5<CR>", { desc = "tabnext 5" })
+map("n", "<C-t>6", "<Cmd>tabmove 6<CR>", { desc = "tabnext 6" })
+map("n", "<C-t>7", "<Cmd>tabmove 7<CR>", { desc = "tabnext 7" })
+map("n", "<C-t>8", "<Cmd>tabmove 8<CR>", { desc = "tabnext 8" })
+map("n", "<C-t>9", "<Cmd>tabmove 9<CR>", { desc = "tabnext 9" })
+map("n", "<C-t>0", "<Cmd>tablast<CR>", { desc = "tablast" })
 
 -- Replace
 map("n", "<C-,>re", ":<C-u>%s;<C-r><C-w>;g<Left><Left>;", { desc = "[re]place Current Word" })
@@ -126,6 +136,7 @@ map("n", "<C-g><C-f>", function()
 			vim.cmd("tabedit " .. cfile .. require("telekasten").Cfg.extension)
 		end
 	end
+	vim.fn.execute(":tabmove")
 end, { desc = "Go to file under cursor" })
 
 -- # Insert
