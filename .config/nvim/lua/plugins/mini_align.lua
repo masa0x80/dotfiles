@@ -2,5 +2,9 @@ return {
 	"nvim-mini/mini.align",
 	version = "*",
 	event = "VeryLazy",
-	opts = {},
+	opts = {
+		mappings = {
+			start = "<CR>",
+		},
+	},
 }

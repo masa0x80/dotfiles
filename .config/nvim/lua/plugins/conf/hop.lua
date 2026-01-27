@@ -2,15 +2,15 @@ local hop = require("hop")
 hop.setup({})
 
 local map = require("utils").map
-map("", "<CR>", function()
+map("", "<CR><CR>", function()
 	hop.hint_vertical()
 end, {})
 
 local directions = require("hop.hint").HintDirection
-map("", "<A-f>", "f", { remap = false })
-map("", "<A-F>", "F", { remap = false })
-map("", "<A-t>", "t", { remap = false })
-map("", "<A-T>", "T", { remap = false })
+map("", "<C-g>f", "f", { remap = false })
+map("", "<C-g>F", "F", { remap = false })
+map("", "<C-g>t", "t", { remap = false })
+map("", "<C-g>T", "T", { remap = false })
 map("", "f", function()
 	hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
 end, { remap = true })

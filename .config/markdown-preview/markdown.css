@@ -338,15 +338,8 @@
   font-size: 28px;
 }
 
-.markdown-body p,
-.markdown-body blockquote,
-.markdown-body ul,
-.markdown-body ol,
-.markdown-body dl,
-.markdown-body table,
-.markdown-body pre {
-  margin-top: 16px;
-  margin-bottom: 32px;
+li.source-line > p.source-line {
+  margin-block-end: 0;
 }
 
 .markdown-body h1 {
@@ -527,10 +520,6 @@ s {
 
 .source-line {
   padding-left: 0.3em;
-}
-p.source-line {
-  margin-block-start: 1em;
-  margin-block-end: 0;
 }
 :not(.source-line) > p.source-line {
   padding: 0 1em;

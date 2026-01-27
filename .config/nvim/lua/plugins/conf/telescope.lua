@@ -35,11 +35,6 @@ telescope.setup({
 				["<C-j>"] = actions.preview_scrolling_down,
 				["<C-c>"] = { "<Esc>", type = "command" },
 				["<C-c><C-c>"] = actions.close,
-				["<A-l>"] = function()
-					local selection = require("telescope.actions.state").get_selected_entry()
-					local path = vim.fn.fnamemodify(selection.path, ":p:t")
-					vim.notify(path, vim.log.levels.INFO, { title = "File Path" })
-				end,
 				["<C-S-k>"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = selection.path
@@ -59,11 +54,6 @@ telescope.setup({
 				["<C-j>"] = actions.preview_scrolling_down,
 				["q"] = actions.close,
 				["<C-c>"] = actions.close,
-				["<A-l>"] = function()
-					local selection = require("telescope.actions.state").get_selected_entry()
-					local path = vim.fn.fnamemodify(selection.path, ":p:t")
-					vim.notify(path, vim.log.levels.INFO, { title = "File Path" })
-				end,
 				["yy"] = function()
 					local selection = require("telescope.actions.state").get_selected_entry()
 					local path = vim.fn.fnamemodify(selection.path, ":p:t")

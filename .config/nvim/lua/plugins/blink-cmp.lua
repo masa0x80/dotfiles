@@ -8,8 +8,17 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			"fang2hou/blink-copilot",
-			"rafamadriz/friendly-snippets",
-			"L3MON4D3/LuaSnip",
+			{
+				{
+					"L3MON4D3/LuaSnip",
+					config = function()
+						require("luasnip.loaders.from_vscode").load({
+							exclude = { "markdown" },
+						})
+					end,
+					dependencies = { "rafamadriz/friendly-snippets" },
+				},
+			},
 		},
 		enabled = function()
 			return vim.bo.filetype ~= "prompt" and vim.b.completion ~= false
@@ -120,7 +129,7 @@ return {
 			sources = {
 				default = function()
 					if vim.bo.filetype == "markdown" then
-						return { "lsp", "path", "copilot" }
+						return { "lsp", "snippets", "path", "copilot" }
 					else
 						return { "lsp", "snippets", "buffer", "path", "copilot" }
 					end
