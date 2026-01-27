@@ -338,6 +338,22 @@
   font-size: 28px;
 }
 
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-block-end: 1em;
+}
+.markdown-body details {
+  margin-left: 2em;
+  margin-block-end: 1em;
+}
+
 li.source-line > p.source-line {
   margin-block-end: 0;
 }
