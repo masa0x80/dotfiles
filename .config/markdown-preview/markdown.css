@@ -352,6 +352,8 @@
 .markdown-body details {
   margin-left: 2em;
   margin-block-end: 1em;
+  border: 1px dashed #c0c0c0;
+  padding: 0.5em;
 }
 
 li.source-line > p.source-line {
@@ -473,7 +475,7 @@ ul li::marker {
   display: block;
   width: 30%;
   height: auto;
-  margin-right: 1em;
+  margin: 1em;
 }
 
 /* for plantuml */
