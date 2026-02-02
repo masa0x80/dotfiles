@@ -8,17 +8,8 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			"fang2hou/blink-copilot",
-			{
-				{
-					"L3MON4D3/LuaSnip",
-					config = function()
-						require("luasnip.loaders.from_vscode").load({
-							exclude = { "markdown" },
-						})
-					end,
-					dependencies = { "rafamadriz/friendly-snippets" },
-				},
-			},
+			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
 		},
 		enabled = function()
 			return vim.bo.filetype ~= "prompt" and vim.b.completion ~= false
@@ -52,7 +43,7 @@ return {
 					end,
 					"fallback",
 				},
-				["<C-CR>"] = { "show", "show_documentation", "hide_documentation" },
+				["<C-g><C-g>"] = { "show", "show_documentation", "hide_documentation" },
 				["<CR>"] = {
 					"accept",
 					"fallback",
@@ -84,6 +75,9 @@ return {
 				},
 				menu = {
 					border = "rounded",
+					auto_show = function(ctx, items)
+						return vim.bo.filetype ~= "markdown"
+					end,
 					draw = {
 						components = {
 							kind_icon = {

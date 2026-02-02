@@ -55,6 +55,12 @@ map("n", "<C-t>7", "<Cmd>tabnext 7<CR>", { desc = "tabnext 7" })
 map("n", "<C-t>8", "<Cmd>tabnext 8<CR>", { desc = "tabnext 8" })
 map("n", "<C-t>9", "<Cmd>tabnext 9<CR>", { desc = "tabnext 9" })
 map("n", "<C-t>0", "<Cmd>tablast<CR>", { desc = "tablast" })
+map("n", "<C-t>q", "<Cmd>tabnext 1<CR>", { desc = "tabnext 1" })
+map("n", "<C-t>w", "<Cmd>tabnext 2<CR>", { desc = "tabnext 2" })
+map("n", "<C-t>e", "<Cmd>tabnext 3<CR>", { desc = "tabnext 3" })
+map("n", "<C-t>i", "<Cmd>tablast<CR><Cmd>-2tabnext<CR>", { desc = "tablast -1" })
+map("n", "<C-t>o", "<Cmd>tablast<CR><Cmd>-tabnext<CR>", { desc = "tablast -1" })
+map("n", "<C-t>p", "<Cmd>tablast<CR>", { desc = "tablast" })
 
 -- Replace
 map("n", "<C-,>re", ":<C-u>%s;<C-r><C-w>;g<Left><Left>;", { desc = "[re]place Current Word" })
