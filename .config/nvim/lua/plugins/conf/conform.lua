@@ -39,7 +39,6 @@ require("conform").setup({
 			"delete_single_space_before_marks",
 			"delete_single_space_after_marks",
 			"delete_jira_status_icon",
-			"format_jira_link",
 			"markdown_todo_format",
 			"replace_ordered_list",
 			"textlint",
