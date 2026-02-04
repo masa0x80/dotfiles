@@ -43,7 +43,7 @@ return {
 					end,
 					"fallback",
 				},
-				["<C-g><C-g>"] = { "show", "show_documentation", "hide_documentation" },
+				["<C-l>"] = { "show", "show_documentation", "hide_documentation" },
 				["<CR>"] = {
 					"accept",
 					"fallback",
