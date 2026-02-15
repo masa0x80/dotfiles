@@ -60,7 +60,7 @@ M.hidden_formatters = {
 	delete_jira_status_icon = {
 		command = "sed",
 		args = {
-			("s|\\[!\\[\\](%s.*)\\(.*\\)\\](\\(\\S*\\)) - \\([^ ]*\\) [^ ]* \\?|[\\1 \\3](\\2)|g"):format(
+			("s|\\[!\\[\\](%s.*)\\(.*\\)\\](\\(\\S*\\))[  ]-[  ]\\(.*\\)[  ][^  ]*[  ]\\?|[\\1 \\3](\\2)|g"):format(
 				vim.fn.expand("$JIRA_BASE_URL"):gsub("/browse", "")
 			),
 		},
