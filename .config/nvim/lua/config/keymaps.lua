@@ -93,7 +93,7 @@ map("n", "gV", "`[v`]")
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#%E7%9B%B4%E5%89%8D%E3%83%BB%E7%9B%B4%E5%BE%8C%E3%81%AE%E7%A9%BA%E8%A1%8C%E3%81%AB%E9%A3%9B%E3%81%B6
 map("n", "f<CR>", "}")
-map("n", "b<CR>", "{")
+map("n", "F<CR>", "{")
 
 map("n", "<Space>;", "@:", { desc = "Re-run the last command" })
 map("n", "q:", "<Nop>", { desc = "Disable cmdwin" })
