@@ -13,7 +13,7 @@ set -euo pipefail
         --phony -q "" \
         --bind "ctrl-o:execute-silent: open 'obsidian://open?path=$BOOKMARKS_DIR/{1}'" \
         --bind "change:reload:$rg_prefix {q}" \
-        --preview-window="90%:wrap"
+        --preview-window="bottom,80%,wrap"
   )"
 
   test -z "$selected" && return
