@@ -1344,7 +1344,7 @@
                                         { "key_code": "comma" }
                                     ]
                                 },
-                                "to": [{ "key_code": "slash" }],
+                                "to": [{ "key_code": "equal_sign" }],
                                 "type": "basic"
                             },
                             {
@@ -1413,7 +1413,7 @@
                                         { "key_code": "m" }
                                     ]
                                 },
-                                "to": [{ "key_code": "equal_sign" }],
+                                "to": [{ "key_code": "slash" }],
                                 "type": "basic"
                             },
                             {

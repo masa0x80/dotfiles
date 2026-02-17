@@ -106,6 +106,7 @@ vim.api.nvim_create_user_command("ReplaceDate", function(opts)
 	if date ~= nil then
 		pcall(vim.fn.execute, range .. "s/DD/" .. date .. "/g")
 	end
+	vim.fn.execute("nohlsearch")
 end, {
 	nargs = "?",
 	range = 2,
