@@ -1,6 +1,6 @@
---background '#292C33'
+--background '#181926'
 --no-window-controls
---font 'UDEV Gothic NFLG'
+--font 'Pending Mono HWNF'
 --pad-horiz 0
 --pad-vert 0
---theme OneDark
+--theme='Catppuccin Macchiato'

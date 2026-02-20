@@ -103,6 +103,7 @@ rust-update: mise
 
 .PHONY: bat
 bat: brew
+	./scripts/bat
 	cd ~/.config/bat && bat cache --build
 
 .PHONY: silicon
@@ -120,6 +121,10 @@ sheldon:
 .PHONY: passage
 passage:
 	./scripts/passage
+
+.PHONY: tmux-plugins
+tmux-plugins:
+	./scripts/tmux-plugins
 
 .PHONY: term-definition
 term-definition:

@@ -4,9 +4,6 @@ format = """
 $username\
 $hostname\
 $directory\
-$git_branch\
-$git_state\
-$git_status\
 $cmd_duration\
 $line_break\
 $python\
@@ -18,19 +15,6 @@ style = "blue"
 [character]
 success_symbol = "[ミ:匚＞](purple)"
 error_symbol = "[ミX匚＞](red)"
-
-[git_branch]
-format = "[$branch]($style)"
-style = "green"
-
-[git_status]
-format = "[[($conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-stashed = "≡"
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "green"
 
 [cmd_duration]
 format = "[$duration]($style) "

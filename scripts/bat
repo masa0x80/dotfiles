@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+if [ ! -f .config/bat/themes/Catppuccin%20Macchiato.tmTheme ]; then
+  cd "$(bat --config-dir)/themes"
+  curl -s -O https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
+fi

@@ -1,40 +1,27 @@
 # vim: ft=tmux
 
-# black        #282c34
-# blue         #7fbbb3
-# yellow       #e69875
-# red          #e67e80
-# white        #d3c6aa
-# green        #a7c080
-# visual_grey  #343f44
-# comment_grey #475258
-
-set -g mode-style "fg=#d3c6aa,bg=#475258"
-
-set -g message-style "fg=#282c34,bg=#e69875"
-set -g message-command-style "fg=#282c34,bg=#e69875"
-
-set -g pane-border-style "fg=#343f44"
-set -g pane-active-border-style "fg=#475258"
-
-set -g status "on"
-set -g status-justify "left"
-
-set -g status-style "fg=#475258,bg=#282c34"
-
-set -g status-left-length "100"
-set -g status-right-length "100"
-
-set -g status-left-style NONE
-set -g status-right-style NONE
-
-set -g status-left "#[fg=#282c34,bg=#282c34,nobold,nounderscore,noitalics]"
-set -g status-right "#[fg=#282c34,bg=#282c34,nobold,nounderscore,noitalics]#[fg=#3e4452,bg=#282c34,nobold,nounderscore,noitalics]#[fg=#d3c6aa,bg=#3e4452] #(cd #{pane_current_path}; test \"$(git rev-parse --is-inside-work-tree 2>/dev/null)\" = 'true' && echo \" $(git branch --show-current) | \")%Y-%m-%d | %H:%M #[fg=#3e4452,bg=#282c34,nobold,nounderscore,noitalics]"
-
-setw -g window-status-activity-style "underscore,fg=#e69875,bg=#282c34"
-setw -g window-status-separator ""
-setw -g window-status-style "NONE,fg=#475258,bg=#282c34"
-setw -g window-status-format "#[fg=#343f44,bg=#282c34,nobold,nounderscore,noitalics]#[fg=#859289,bg=#343f44,bold]###I #W #F#[fg=#343f44,bg=#282c34,nobold,nounderscore,noitalics]"
-setw -g window-status-current-format "#[fg=#a7c080,bg=#282c34,nobold,nounderscore,noitalics]#[fg=#232a2e,bg=#a7c080,bold]###I #W #F#[fg=#a7c080,bg=#282c34,nobold,nounderscore,noitalics]"
-
 set -g status-position top
+set -g renumber-windows on
+
+# Configure the catppuccin plugin
+set -g @catppuccin_flavor "macchiato"
+set -g @catppuccin_window_status_style "slanted"
+set -g @catppuccin_application_icon "󰆍 "
+set -g @catppuccin_status_left_separator ""
+set -g @catppuccin_status_middle_separator ""
+set -g @catppuccin_status_right_separator ""
+
+# Load catppuccin
+run ~/.config/tmux/plugins/catppuccin/tmux/catppuccin.tmux
+
+# Make the status line pretty and add some modules
+set -g status-right-length 100
+set -g status-left-length 100
+set -g status-left ""
+set -g status-right "#{E:@catppuccin_status_application}"
+set -agF status-right "#{E:@catppuccin_status_cpu}"
+set -agF status-right "#{E:@catppuccin_status_battery}"
+set -agF status-right "#{@catppuccin_status_gitmux}"
+
+run ~/.config/tmux/plugins/tmux-plugins/tmux-cpu/cpu.tmux
+run ~/.config/tmux/plugins/tmux-plugins/tmux-battery/battery.tmux

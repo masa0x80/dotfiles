@@ -6,6 +6,7 @@ local filename = {
 	-- 2: Absolute path
 	-- 3: Absolute path, with tilde as the home directory
 	path = 1,
+	separator = { left = "", right = "" },
 }
 
 local lsp_names = function()
@@ -82,48 +83,38 @@ local function selectionCount()
 	return tostring(n) .. " lines, " .. tostring(chars) .. " characters"
 end
 
-local colors = require("everforest.colours").generate_palette(
-	vim.tbl_extend("keep", { transparent_background_level = 2 }, require("everforest.init").default_config),
-	vim.o.background
-)
+local palette = require("catppuccin.palettes").get_palette("macchiato")
+local transparent_bg = palette.mantle
 local theme = {
 	normal = {
-		a = { bg = colors.green, fg = colors.bg0, gui = "bold" },
-		b = { bg = colors.bg3, fg = colors.fg },
-		c = { bg = colors.none, fg = colors.fg },
-		x = { bg = colors.none, fg = colors.fg },
-		y = { bg = colors.bg3, fg = colors.fg },
-		z = { bg = colors.green, fg = colors.bg0 },
+		a = { bg = palette.blue, fg = palette.mantle, gui = "bold" },
+		b = { bg = palette.surface0, fg = palette.blue },
+		c = { bg = transparent_bg, fg = palette.text },
 	},
 	insert = {
-		a = { bg = colors.fg, fg = colors.bg0, gui = "bold" },
-		b = { bg = colors.bg3, fg = colors.fg },
-		c = { bg = colors.none, fg = colors.fg },
-	},
-	visual = {
-		a = { bg = colors.red, fg = colors.bg0, gui = "bold" },
-		b = { bg = colors.bg3, fg = colors.fg },
-		c = { bg = colors.none, fg = colors.fg },
-	},
-	replace = {
-		a = { bg = colors.orange, fg = colors.bg0, gui = "bold" },
-		b = { bg = colors.bg3, fg = colors.fg },
-		c = { bg = colors.bg1, fg = colors.fg },
-	},
-	command = {
-		a = { bg = colors.aqua, fg = colors.bg0, gui = "bold" },
-		b = { bg = colors.bg3, fg = colors.fg },
-		c = { bg = colors.bg1, fg = colors.fg },
+		a = { bg = palette.green, fg = palette.base, gui = "bold" },
+		b = { bg = palette.surface0, fg = palette.green },
 	},
 	terminal = {
-		a = { bg = colors.purple, fg = colors.bg0, gui = "bold" },
-		b = { bg = colors.bg3, fg = colors.fg },
-		c = { bg = colors.bg1, fg = colors.fg },
+		a = { bg = palette.green, fg = palette.base, gui = "bold" },
+		b = { bg = palette.surface0, fg = palette.green },
+	},
+	command = {
+		a = { bg = palette.peach, fg = palette.base, gui = "bold" },
+		b = { bg = palette.surface0, fg = palette.peach },
+	},
+	visual = {
+		a = { bg = palette.mauve, fg = palette.base, gui = "bold" },
+		b = { bg = palette.surface0, fg = palette.mauve },
+	},
+	replace = {
+		a = { bg = palette.red, fg = palette.base, gui = "bold" },
+		b = { bg = palette.surface0, fg = palette.red },
 	},
 	inactive = {
-		a = { bg = colors.bg1, fg = colors.grey1, gui = "bold" },
-		b = { bg = colors.bg1, fg = colors.grey1 },
-		c = { bg = colors.bg1, fg = colors.grey1 },
+		a = { bg = transparent_bg, fg = palette.blue },
+		b = { bg = transparent_bg, fg = palette.surface1, gui = "bold" },
+		c = { bg = transparent_bg, fg = palette.overlay0 },
 	},
 }
 
@@ -137,13 +128,19 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { { "mode", separator = { left = "", right = "" } } },
 		lualine_b = { "diff", "diagnostics" },
-		lualine_c = {},
+		lualine_c = { lsp_names },
 		lualine_x = { selectionCount },
 		lualine_y = { "encoding", "fileformat", "filetype" },
 		lualine_z = { "location", { "progress", separator = { left = "", right = "" } } },
 	},
 	tabline = {
-		lualine_b = { lsp_names },
+		lualine_a = {
+			{
+				"tabs",
+				separator = { left = "", right = "" },
+			},
+		},
+		lualine_b = {},
 		lualine_c = {
 			{
 				"navic",
@@ -151,15 +148,6 @@ require("lualine").setup({
 				navic_opts = {
 					highlight = true,
 				},
-			},
-		},
-		lualine_z = {
-			{
-				"tabs",
-				separator = { left = "", right = "" },
-				cond = function()
-					return #vim.fn.gettabinfo() > 1
-				end,
 			},
 		},
 	},
@@ -167,14 +155,6 @@ require("lualine").setup({
 		lualine_a = { filename },
 		lualine_b = {
 			{
-				lsp_names,
-				cond = function()
-					return #vim.fn.gettabinfo() == 1
-				end,
-			},
-		},
-		lualine_c = {
-			{
 				"navic",
 				color_correction = "static",
 				navic_opts = {
@@ -185,8 +165,13 @@ require("lualine").setup({
 				end,
 			},
 		},
+		lualine_c = {},
 	},
 	inactive_winbar = {
-		lualine_a = { { "filename", separator = { left = "", right = "" } } },
+		lualine_a = {
+			vim.tbl_extend("force", filename, {
+				separator = { left = "", right = "" },
+			}),
+		},
 	},
 })

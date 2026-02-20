@@ -1,7 +1,4 @@
-local colors = require("everforest.colours").generate_palette(
-	vim.tbl_extend("keep", { transparent_background_level = 2 }, require("everforest.init").default_config),
-	vim.o.background
-)
+local palette = require("catppuccin.palettes").get_palette("macchiato")
 
 return {
 	"y3owk1n/undo-glow.nvim",
@@ -17,25 +14,25 @@ return {
 		},
 		highlights = {
 			undo = {
-				hl_color = { bg = colors.bg_red },
+				hl_color = { bg = palette.red },
 			},
 			redo = {
-				hl_color = { bg = colors.bg_green },
+				hl_color = { bg = palette.green },
 			},
 			yank = {
-				hl_color = { bg = colors.bg_yellow },
+				hl_color = { bg = palette.yellow },
 			},
 			paste = {
-				hl_color = { bg = colors.bg_blue },
+				hl_color = { bg = palette.peach },
 			},
 			search = {
-				hl_color = { bg = colors.bg_purple },
+				hl_color = { bg = palette.mauve },
 			},
 			comment = {
-				hl_color = { bg = colors.bg_dim },
+				hl_color = { bg = palette.teal },
 			},
 			cursor = {
-				hl_color = { bg = colors.bg_visual },
+				hl_color = { bg = palette.sky },
 			},
 		},
 		priority = 2048 * 3,

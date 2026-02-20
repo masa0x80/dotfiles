@@ -109,3 +109,5 @@ brew "sheldon"
 
 brew "vhs"
 brew "jj"
+
+brew "gitmux"

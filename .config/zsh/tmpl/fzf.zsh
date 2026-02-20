@@ -4,7 +4,12 @@
 
 if (( ${+commands[fzf]} )); then
   export FZF_DEFAULT_OPTS='--ansi --reverse --extended --multi --cycle --bind=ctrl-u:page-up,ctrl-d:page-down,ctrl-j:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-/:deselect-all,ctrl-q:deselect-all'
-  FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#d0d0d0,bg:#333333,hl:#5f87af --color=fg+:#d0d0d0,bg+:#262626,hl+:#61afef --color=info:#afaf87,prompt:#e06c75,pointer:#e5c07b --color=marker:#98c379,spinner:#aab2bf,header:#87afaf'
+  FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+      --color=spinner:#F4DBD6,hl:#ED8796 \
+      --color=fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6 \
+      --color=marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796 \
+      --color=selected-bg:#494D64 \
+      --color=border:#6E738D,label:#CAD3F5"
 
   if (( ${+commands[fd]} )); then
     export FZF_DEFAULT_COMMAND='command fd -c always -H --no-ignore-vcs -E .git -tf'

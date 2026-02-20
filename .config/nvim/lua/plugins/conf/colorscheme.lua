@@ -1,25 +1,24 @@
-require("everforest").setup({
-	transparent_background_level = 2,
-	on_highlights = function(hl, palette)
-		hl.ExtraWhiteSpace = { fg = palette.none, bg = palette.bg_blue }
-		hl.MarkdownBullet = { fg = palette.grey1, bg = palette.none }
-		hl.SnacksPickerDir = { fg = palette.grey1 }
-		hl.SnacksPickerPathHidden = { fg = palette.grey1 }
-		hl.SnacksPickerGitStatusUntracked = { fg = palette.purple }
-		hl["@markup.strong.markdown_inline"] = { sp = palette.red, bold = true, underdouble = true }
-		hl["@markup.strikethrough"] = { fg = palette.grey1, strikethrough = true }
-		hl.FlashMatch = { fg = palette.grey1, underline = true }
-		hl.FlashCurrent = { fg = palette.purple }
-		hl.FlashLabel = { fg = palette.orange }
-		hl.FlashBackdrop = { fg = palette.grey1 }
-		hl.GitSignsCurrentLineBlame = { fg = palette.bg5 }
-		hl.RenderMarkdownH1Bg = { bg = palette.bg1 }
-		hl.RenderMarkdownH4Bg = { bg = palette.bg3 }
-		hl.RenderMarkdownH5Bg = { bg = palette.bg2 }
-		hl.CurrentWord = { underdotted = true }
+require("catppuccin").setup({
+	flavour = "macchiato", -- latte, frappe, macchiato, mocha
+	background = { -- :h background
+		light = "latte",
+		dark = "macchiato",
+	},
+	transparent_background = true, -- disables setting the background color.
+	float = {
+		transparent = true,
+		solid = false,
+	},
+	custom_highlights = function(palette)
+		return {
+			ExtraWhiteSpace = { fg = palette.subtext0, bg = palette.surface0 },
+			MarkdownBullet = { fg = palette.overlay1, bg = palette.none },
+			["@markup.strong.markdown_inline"] = { sp = palette.red, bold = true, underdouble = true },
+			["@markup.strikethrough"] = { fg = palette.surface2, strikethrough = true },
+		}
 	end,
 })
-require("everforest").load()
+vim.cmd.colorscheme("catppuccin")
 
 require("utils").create_autocmd({ "VimEnter", "WinEnter" }, {
 	-- u00A0 ' ' no-break space
