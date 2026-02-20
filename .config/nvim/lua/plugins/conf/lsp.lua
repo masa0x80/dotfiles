@@ -57,8 +57,10 @@ require("utils").create_autocmd({ "BufEnter" }, {
 
 local keymap = vim.keymap.set
 keymap("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>", {})
+keymap("n", "gR", "<Cmd>Lspsaga rename<CR>", {})
 
 keymap("n", "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", {})
+keymap("n", "gC", "<Cmd>Lspsaga code_action<CR>", {})
 
 keymap("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", {})
 keymap("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", {})

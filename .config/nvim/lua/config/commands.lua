@@ -113,7 +113,7 @@ end, {
 })
 
 vim.api.nvim_create_user_command("RestoreCursor", function()
-	if pcall(vim.cmd, "marks f", { silent = true }) then
-		vim.cmd("normal! `fzt10k10j")
+	if pcall(vim.cmd, "marks m", { silent = true }) then
+		vim.cmd("normal! `mzt10k10j")
 	end
 end, {})

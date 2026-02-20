@@ -110,6 +110,7 @@ return {
 						["<C-b>"] = { "list_scroll_up", mode = { "n" } },
 						["<C-z>"] = { "select_all", mode = { "n", "i" } },
 						["<C-y>"] = { "yank", mode = { "n", "i" } },
+						["<C-l>"] = { "show_full_path", mode = { "n", "i" } },
 					},
 				},
 			},
@@ -122,6 +123,12 @@ return {
 				end,
 				ctr_b = function()
 					vim.fn.execute("normal h")
+				end,
+				show_full_path = function(picker)
+					local item = picker:current()
+					if item and item.file then
+						vim.notify(item.file, vim.log.levels.INFO)
+					end
 				end,
 			},
 			formatters = { file = { truncate = 128 } },

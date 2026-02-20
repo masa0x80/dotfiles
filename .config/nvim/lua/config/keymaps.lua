@@ -67,9 +67,9 @@ map("n", "<C-,>re", ":<C-u>%s;<C-r><C-w>;g<Left><Left>;", { desc = "[re]place Cu
 map("n", "<C-,>R", "*Ncgn", { desc = "[R]eplace Current Word `*cgn`" })
 
 -- marks
-map("n", "<C-g><CR>", "`mzt10<C-y>", { desc = "`mzt10<C-y>" })
+map("n", "<C-g><C-g><C-h>", "`mzt10<C-y>", { desc = "`mzt10<C-y>" })
 map("n", "<C-g><C-;>", "zt10<C-y>", { desc = "zt10<C-y>" })
-map("n", "<C-g><C-g><C-h>", function()
+map("n", "<C-g><CR>", function()
 	vim.cmd("windo RestoreCursor")
 	vim.cmd("normal! `zzt10k10j")
 end, { desc = "`fzt10k10j" })
