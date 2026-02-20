@@ -128,7 +128,12 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { { "mode", separator = { left = "", right = "" } } },
 		lualine_b = { "diff", "diagnostics" },
-		lualine_c = { lsp_names },
+		lualine_c = {
+			{
+				"navic",
+				color_correction = "static",
+			},
+		},
 		lualine_x = { selectionCount },
 		lualine_y = { "encoding", "fileformat", "filetype" },
 		lualine_z = { "location", { "progress", separator = { left = "", right = "" } } },
@@ -142,24 +147,14 @@ require("lualine").setup({
 		},
 		lualine_b = {},
 		lualine_c = {
-			{
-				"navic",
-				color_correction = "static",
-				navic_opts = {
-					highlight = true,
-				},
-			},
+			lsp_names,
 		},
 	},
 	winbar = {
 		lualine_a = { filename },
 		lualine_b = {
 			{
-				"navic",
-				color_correction = "static",
-				navic_opts = {
-					highlight = true,
-				},
+				lsp_names,
 				cond = function()
 					return #vim.fn.gettabinfo() == 1
 				end,
