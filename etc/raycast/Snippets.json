@@ -26,5 +26,9 @@
   { "name": "cm-remove", "text": "➖ Remove dependencies" },
   { "name": "cm-upgrade", "text": "⬆️ Upgrade dependencies" },
   { "name": "cm-downgrade", "text": "⬇️ Downgrade dependencies" },
-  { "name": "cm-init", "text": "🌱 Initial commit" }
+  { "name": "cm-init", "text": "🌱 Initial commit" },
+  {
+    "name": "echo (multi lines)",
+    "text": "cat << 'EOF' >> \/output\/file.txt\n\nEOF"
+  }
 ]
