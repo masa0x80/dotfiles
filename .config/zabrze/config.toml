@@ -1,0 +1,557 @@
+[[snippets]]
+name = "tail -f"
+abbr = "tailf"
+snippet = "tail -f"
+
+[[snippets]]
+name = "diff -u"
+abbr = "diff"
+snippet = "diff -u"
+
+[[snippets]]
+name = "watch -n 0.5"
+abbr = "watch"
+snippet = "watch -n 0.5"
+
+[[snippets]]
+name = "mkdir -p"
+abbr = "md"
+snippet = "mkdir -p"
+
+
+[[snippets]]
+name = "j"
+abbr = "j"
+snippet = "jj"
+
+[[snippets]]
+name = "jj bookmark set main -r @"
+abbr = "jbsm"
+snippet = "jj bookmark set main -r @"
+
+[[snippets]]
+name = "jj bookmark set main -r @"
+abbr = "jbm"
+snippet = "jj bookmark set main -r @"
+
+[[snippets]]
+name = "jj bookmark set"
+abbr = "jbs"
+snippet = "jj bookmark set"
+
+[[snippets]]
+name = "jj git push"
+abbr = "jp"
+snippet = "jj git push"
+
+[[snippets]]
+name = "jj git fetch"
+abbr = "jf"
+snippet = "jj git fetch"
+
+[[snippets]]
+name = "jj log --reversed"
+abbr = "jl"
+snippet = "jj log --reversed"
+
+[[snippets]]
+name = "jj status"
+abbr = "js"
+snippet = "jj status"
+
+[[snippets]]
+name = "jj status"
+abbr = "jst"
+snippet = "jj status"
+
+[[snippets]]
+name = "jj diff"
+abbr = "jdi"
+snippet = "jj diff"
+
+[[snippets]]
+name = "jj desc"
+abbr = "jde"
+snippet = "jj desc"
+
+[[snippets]]
+name = "jj new"
+abbr = "jn"
+snippet = "jj new"
+
+
+[[snippets]]
+name = "git add"
+abbr = "ga"
+snippet = "git add"
+
+[[snippets]]
+name = "git add --all"
+abbr = "gaa"
+snippet = "git add --all"
+
+[[snippets]]
+name = "git branch"
+abbr = "gb"
+snippet = "git branch"
+
+[[snippets]]
+name = "git branch -a"
+abbr = "gba"
+snippet = "git branch -a"
+
+[[snippets]]
+name = "git branch --remote"
+abbr = "gbr"
+snippet = "git branch --remote"
+
+[[snippets]]
+name = "git branch -u origin/$(git branch --show-current) $(git branch --show-current)"
+abbr = "gbu"
+snippet = "git branch -u origin/$(git branch --show-current) $(git branch --show-current)"
+evaluate = true
+
+[[snippets]]
+name = "git commit"
+abbr = "gc"
+snippet = "git commit"
+
+[[snippets]]
+name = "git commit --amend"
+abbr = "gc!"
+snippet = "git commit --amend"
+
+[[snippets]]
+name = "git checkout"
+abbr = "gco"
+snippet = "git checkout"
+
+[[snippets]]
+name = "git diff"
+abbr = "gd"
+snippet = "git diff"
+
+[[snippets]]
+name = "git diff --staged"
+abbr = "gds"
+snippet = "git diff --staged"
+
+[[snippets]]
+name = "git fetch"
+abbr = "gf"
+snippet = "git fetch"
+
+[[snippets]]
+name = "git fixup"
+abbr = "gfx"
+snippet = "git fixup"
+
+[[snippets]]
+name = "git fzf show"
+abbr = "lg"
+snippet = "git fzf show"
+
+[[snippets]]
+name = "git log --stat --color"
+abbr = "glg"
+snippet = "git log --stat --color"
+
+[[snippets]]
+name = "git log --stat --color -p"
+abbr = "glgp"
+snippet = "git log --stat --color -p"
+
+[[snippets]]
+name = "git log --oneline --color --graph"
+abbr = "glog"
+snippet = "git log --oneline --color --graph"
+
+[[snippets]]
+name = "git merge --no-ff"
+abbr = "gm"
+snippet = "git merge --no-ff"
+
+[[snippets]]
+name = "git push"
+abbr = "gp"
+snippet = "git push"
+
+[[snippets]]
+name = "git pull && git delete-merged-branches"
+abbr = "gpull"
+snippet = "git pull && git delete-merged-branches"
+
+[[snippets]]
+name = "git push"
+abbr = "gpush"
+snippet = "git push"
+
+[[snippets]]
+name = "git push --force-with-lease"
+abbr = "gpush!"
+snippet = "git push --force-with-lease"
+
+[[snippets]]
+name = "git rebase"
+abbr = "grb"
+snippet = "git rebase"
+
+[[snippets]]
+name = "git rebase $(git default-branch)"
+abbr = "grm"
+snippet = "git rebase $(git default-branch)"
+evaluate = true
+
+[[snippets]]
+name = "git rebase --abort"
+abbr = "gra"
+snippet = "git rebase --abort"
+
+[[snippets]]
+name = "git rebase --continue"
+abbr = "grc"
+snippet = "git rebase --continue"
+
+[[snippets]]
+name = "git rebase -i $(git fzf)"
+abbr = "gri"
+snippet = "git rebase -i $(git fzf)"
+
+[[snippets]]
+name = "git rebase --skip"
+abbr = "grs"
+snippet = "git rebase --skip"
+
+[[snippets]]
+name = "git revert $(git fzf)"
+abbr = "grv"
+snippet = "echo $(git fzf) | xargs -I {} git revert {}"
+
+[[snippets]]
+name = "git show"
+abbr = "gsh"
+snippet = "git show"
+
+[[snippets]]
+name = "git status -sb"
+abbr = "gst"
+snippet = "git status -sb"
+
+[[snippets]]
+name = "git tag -s"
+abbr = "gts"
+snippet = "git tag -s"
+
+[[snippets]]
+name = "git worktree"
+abbr = "gwt"
+snippet = "git worktree"
+
+[[snippets]]
+name = "git switch $(git default-branch)"
+abbr = "M"
+snippet = "git switch $(git default-branch)"
+evaluate = true
+
+[[snippets]]
+name = "git switch -c"
+abbr = "br"
+snippet = "git switch -c"
+
+[[snippets]]
+name = "git review"
+abbr = "R"
+snippet = "git review"
+
+[[snippets]]
+name = "git review"
+abbr = "review"
+snippet = "git review"
+
+[[snippets]]
+name = "lazygit"
+abbr = "LG"
+snippet = "lazygit"
+
+
+[[snippets]]
+name = "vagrant destroy -f"
+abbr = "vdf"
+snippet = "vagrant destroy -f"
+
+[[snippets]]
+name = "vagrant global-status"
+abbr = "vst"
+snippet = "vagrant global-status"
+
+
+[[snippets]]
+name = "rails c"
+abbr = "c"
+snippet = "rails c"
+
+[[snippets]]
+name = "rails s -p $RAILS_SERVER_PORT"
+abbr = "s"
+snippet = "rails s -p $RAILS_SERVER_PORT"
+evaluate = true
+
+[[snippets]]
+name = "rails db"
+abbr = "db"
+snippet = "rails db"
+
+[[snippets]]
+name = "rails routes"
+abbr = "rr"
+snippet = "rails routes"
+
+[[snippets]]
+name = "spring stop"
+abbr = "ss"
+snippet = "spring stop"
+
+[[snippets]]
+name = "bundle exec"
+abbr = "be"
+snippet = "bundle exec"
+
+[[snippets]]
+name = "bundle config set --local path vendor/bundle; bundle config set --local bin vendor/bin; bundle config set --local cache_all_platforms true; bundle install"
+abbr = "bi"
+snippet = "bundle config set --local path vendor/bundle; bundle config set --local bin vendor/bin; bundle config set --local cache_all_platforms true; bundle install"
+
+[[snippets]]
+name = "bundle config set --local path vendor/bundle; bundle config set --local bin vendor/bin; bundle config set --local cache_all_platforms true; bundle install --local"
+abbr = "bil"
+snippet = "bundle config set --local path vendor/bundle; bundle config set --local bin vendor/bin; bundle config set --local cache_all_platforms true; bundle install --local"
+
+[[snippets]]
+name = "solargraph download-core; solargraph bundle; solargraph config"
+abbr = "solargraph_init"
+snippet = "solargraph download-core; solargraph bundle; solargraph config"
+
+
+[[snippets]]
+name = "dc up -d"
+abbr = "dcu"
+snippet = "dc up -d"
+
+[[snippets]]
+name = "dc down"
+abbr = "dcd"
+snippet = "dc down"
+
+[[snippets]]
+name = "direnv allow"
+abbr = "da"
+snippet = "direnv allow"
+
+[[snippets]]
+name = "aws-vault exec $AWS_PROFILE --"
+abbr = "A"
+snippet = "aws-vault exec $AWS_PROFILE --"
+evaluate = true
+
+[[snippets]]
+name = "ghq get"
+abbr = "Get"
+snippet = "ghq get"
+
+[[snippets]]
+name = "| tee >(pbcopy)"
+abbr = "C"
+snippet = "| tee >(pbcopy)"
+global = true
+
+[[snippets]]
+name = "| fzf"
+abbr = "F"
+snippet = "| fzf"
+global = true
+if = "(( ${+commands[fzf]} ))"
+
+[[snippets]]
+name = "| rg"
+abbr = "G"
+snippet = "| rg"
+if = "(( ${+commands[rg]} ))"
+global = true
+
+[[snippets]]
+name = "| head"
+abbr = "H"
+snippet = "| head"
+global = true
+
+[[snippets]]
+name = "| tail"
+abbr = "T"
+snippet = "| tail"
+global = true
+
+[[snippets]]
+name = "| bat"
+abbr = "L"
+snippet = "| bat"
+if = "(( ${+commands[bat]} ))"
+global = true
+
+[[snippets]]
+name = "| jq"
+abbr = "J"
+snippet = "| jq ."
+if = "(( ${+commands[jq]} ))"
+global = true
+
+[[snippets]]
+name = ">/dev/null 2>&1"
+abbr = "N"
+snippet = ">/dev/null 2>&1"
+global = true
+
+[[snippets]]
+name = ">/dev/null"
+abbr = "N1"
+snippet = ">/dev/null"
+global = true
+
+[[snippets]]
+name = "2>/dev/null"
+abbr = "N2"
+snippet = "2>/dev/null"
+global = true
+
+[[snippets]]
+name = '$(git status -s | fzf --query="$@" | awk "{print \$2}")'
+abbr = "GST"
+snippet = '$(git status -s | fzf --query="$@" | awk "{print \$2}")'
+global = true
+
+[[snippets]]
+name = "$(git fzf)"
+abbr = "GH"
+snippet = "$(git fzf)"
+global = true
+
+[[snippets]]
+name = "mycli"
+abbr = "mysql"
+snippet = "mycli"
+if = "(( ${+commands[mycli]} ))"
+
+[[snippets]]
+name = "pgcli"
+abbr = "psql"
+snippet = "pgcli"
+if = "(( ${+commands[pgcli]} ))"
+
+[[snippets]]
+name = "g"
+abbr = "g"
+snippet = "rg --hidden"
+if = "(( ${+commands[rg]} ))"
+
+[[snippets]]
+name = "bat"
+abbr = "cat"
+snippet = "bat"
+if = "(( ${+commands[bat]} ))"
+
+[[snippets]]
+name = "ls -a"
+abbr = "l"
+snippet = "ls -a"
+if = "(( ${+commands[eza]} ))"
+
+[[snippets]]
+name = "ls -l --git"
+abbr = "ll"
+snippet = "ls -l --git"
+if = "(( ${+commands[eza]} ))"
+
+[[snippets]]
+name = "ls -la --git"
+abbr = "la"
+snippet = "ls -la --git"
+if = "(( ${+commands[eza]} ))"
+
+[[snippets]]
+name = "eza -T --icons"
+abbr = "tree"
+snippet = "eza -T --icons"
+if = "(( ${+commands[eza]} ))"
+
+[[snippets]]
+name = "rm"
+abbr = "rm"
+snippet = "rip"
+if = "(( ${+commands[rip]} ))"
+
+[[snippets]]
+name = "rmdir"
+abbr = "rd"
+snippet = "rip"
+if = "(( ${+commands[rip]} ))"
+
+[[snippets]]
+name = "rip"
+abbr = "rf"
+snippet = "rip"
+if = "(( ${+commands[rip]} ))"
+
+
+[[snippets]]
+name = "silicon --to-clipboard --from-clipboard -l ts"
+abbr = "Si"
+snippet = "silicon --to-clipboard --from-clipboard -l ts"
+if = "(( ${+commands[silicon]} ))"
+
+[[snippets]]
+name = 'silicon --to-clipboard --from-clipboard -l ts --highlight-lines "1;2-3"'
+abbr = "SI"
+snippet = 'silicon --to-clipboard --from-clipboard -l ts --highlight-lines "1;2-3"'
+if = "(( ${+commands[silicon]} ))"
+
+
+[[snippets]]
+name = "vi ~/.ssh/config"
+abbr = "ssh_config"
+snippet = "vi ~/.ssh/config"
+if = 'test -e "$HOME/.ssh/config"'
+
+[[snippets]]
+name = "vi ~/.ssh/config"
+abbr = "sconfig"
+snippet = "vi ~/.ssh/config"
+if = 'test -e "$HOME/.ssh/config"'
+
+[[snippets]]
+name = "vi ~/.ssh/config"
+abbr = "sconf"
+snippet = "vi ~/.ssh/config"
+if = 'test -e "$HOME/.ssh/config"'
+
+
+[[snippets]]
+name = "test"
+abbr = "t"
+snippet = "rspec"
+if = "(( ${+commands[rspec]} ))"
+
+[[snippets]]
+name = "test"
+abbr = "t"
+snippet = "npm run test"
+if = "test -e package.json"
+
+
+[[snippets]]
+name = "bookmark"
+abbr = "b"
+snippet = "bookmark"
+
+[[snippets]]
+name = "bookmark-loop"
+abbr = "bl"
+snippet = "bookmark-loop"
