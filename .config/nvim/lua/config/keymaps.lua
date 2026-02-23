@@ -67,12 +67,12 @@ map("n", "<C-,>re", ":<C-u>%s;<C-r><C-w>;g<Left><Left>;", { desc = "[re]place Cu
 map("n", "<C-,>R", "*Ncgn", { desc = "[R]eplace Current Word `*cgn`" })
 
 -- marks
-map("n", "<C-g><C-g><C-h>", "`mzt10<C-y>", { desc = "`mzt10<C-y>" })
-map("n", "<C-g><C-;>", "zt10<C-y>", { desc = "zt10<C-y>" })
+map("n", "<C-g><C-g><C-m>", "`mzt", { desc = "`mzt" })
+map("n", "<C-g><C-g><C-h>", "zt10<C-y>", { desc = "zt10<C-y>" })
 map("n", "<C-g><CR>", function()
 	vim.cmd("windo RestoreCursor")
 	vim.cmd("normal! `zzt10k10j")
-end, { desc = "`fzt10k10j" })
+end, { desc = "`zzt10k10j" })
 
 map("n", "<C-;>C", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { desc = "cd $PWD" })
 map("n", "<C-;>S", "<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>", { desc = "cd $SCRAPBOOK_DIR" })

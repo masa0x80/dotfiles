@@ -5,11 +5,11 @@
 if (( ${+commands[fzf]} )); then
   export FZF_DEFAULT_OPTS='--ansi --reverse --extended --multi --cycle --bind=ctrl-u:page-up,ctrl-d:page-down,ctrl-j:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-/:deselect-all,ctrl-q:deselect-all'
   FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-      --color=spinner:#F4DBD6,hl:#ED8796 \
-      --color=fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6 \
-      --color=marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796 \
-      --color=selected-bg:#494D64 \
-      --color=border:#6E738D,label:#CAD3F5"
+      --color=spinner:#F5E0DC,hl:#F38BA8 \
+      --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+      --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+      --color=selected-bg:#45475A \
+      --color=border:#6C7086,label:#CDD6F4"
 
   if (( ${+commands[fd]} )); then
     export FZF_DEFAULT_COMMAND='command fd -c always -H --no-ignore-vcs -E .git -tf'

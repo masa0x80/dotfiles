@@ -1,11 +1,14 @@
 #!/bin/zsh
 
-if [ ! -d .config/tmux/plugins/catppuccin/tmux ]; then
-  git clone https://github.com/catppuccin/tmux.git .config/tmux/plugins/catppuccin/tmux
+dirname=".config/tmux/plugins/catppuccin/tmux"
+if [ ! -d $dirname ]; then
+  git clone https://github.com/catppuccin/tmux.git $dirname
 fi
-if [ ! -d .config/tmux/plugins/tmux-plugins/tmux-battery ]; then
-  git clone https://github.com/tmux-plugins/tmux-battery.git .config/tmux/plugins/tmux-plugins/tmux-battery
+dirname=".config/tmux/plugins/tmux-plugins/tmux-battery"
+if [ ! -d $dirname ]; then
+  git clone https://github.com/tmux-plugins/tmux-battery.git $dirname
 fi
-if [ ! -d .config/tmux/plugins/tmux-plugins/tmux-cpu ]; then
-  git clone https://github.com/tmux-plugins/tmux-cpu.git .config/tmux/plugins/tmux-plugins/tmux-cpu
+dirname=".config/tmux/plugins/tmux-plugins/tmux-cpu"
+if [ ! -d $dirname ]; then
+  git clone https://github.com/tmux-plugins/tmux-cpu.git $dirname
 fi

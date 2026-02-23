@@ -27,6 +27,7 @@ install: \
 	mise \
 	python \
 	navi \
+	tmux-plugins \
 	bat \
 	silicon \
 	sheldon \
