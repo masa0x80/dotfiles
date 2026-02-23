@@ -29,6 +29,6 @@
   { "name": "cm-init", "text": "🌱 Initial commit" },
   {
     "name": "echo (multi lines)",
-    "text": "cat << 'EOF' >> \/output\/file.txt\n\nEOF"
+    "text": "cat << 'EOF' >> {cursor}\n\n\nEOF"
   }
 ]

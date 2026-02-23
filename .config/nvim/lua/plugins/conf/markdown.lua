@@ -89,7 +89,6 @@ require("markdown").setup({
 				string.match(line, UNORDERED_LIST_PATTERN)
 				or string.match(line, ORDERED_LIST_PATTERN)
 				or string.match(line, TASK_PATTERN)
-				or string.match(line, QUOTED_PATTERN)
 			then
 				vim.api.nvim_buf_set_text(0, row, 0, row, col, { "" })
 			else
