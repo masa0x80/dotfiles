@@ -64,6 +64,9 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 "<dic
 # Move window by Drag with Comamnd + Control
 defaults write -g NSWindowShouldDragOnGesture -bool true
 
+# Trackpad cursor speed
+defaults write -g com.apple.trackpad.scalig -float 5.0
+
 killall Dock
 killall Finder
 killall SystemUIServer
