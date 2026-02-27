@@ -3,3 +3,46 @@ idiomatic_version_file_enable_tools = ["node"]
 
 [settings.node]
 gpg_verify = false
+
+[tools]
+# https://github.com/rhysd/actionlint/tags
+actionlint = "latest"
+# https://github.com/aws/aws-sam-cli/releases
+aws-sam-cli = "latest"
+# https://github.com/99designs/aws-vault/tags
+aws-vault = "latest"
+# https://github.com/getsops/sops/tags
+sops = "v3.10.2"
+# https://github.com/neovim/neovim/releases
+neovim = "latest"
+
+# https://go.dev/dl/
+go = "latest"
+
+# https://github.com/corretto/corretto-21/tags
+java = "corretto-21.0.4.7.1"
+# https://gradle.org/install/
+gradle = "latest"
+# https://groovy.apache.org/download.html
+groovy = "latest"
+
+# https://nodejs.org/en/download
+node = "latest"
+# https://github.com/denoland/deno/tags
+deno = "latest"
+
+# https://www.python.org/downloads/
+python = "latest"
+
+# https://www.ruby-lang.org/en/downloads/releases/
+ruby = "latest"
+
+# https://github.com/rust-lang/rust/tags
+rust = "latest"
+
+# https://github.com/hashicorp/terraform/tags
+terraform = "latest"
+# https://github.com/terraform-docs/terraform-docs/tags
+terraform-docs = "latest"
+
+tree-sitter = "latest"
