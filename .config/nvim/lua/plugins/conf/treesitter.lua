@@ -34,7 +34,7 @@ local languages = {
 	"rust",
 	"scss",
 	"sql",
-	"swift",
+	-- "swift",
 	"terraform",
 	"toml",
 	"tsv",
