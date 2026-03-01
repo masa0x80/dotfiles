@@ -17,7 +17,9 @@ local lsp_names = function()
 	local ft = vim.api.nvim_eval("&filetype")
 	local linters = require("lint").linters_by_ft[ft]
 	for _, linter in ipairs(linters ~= nil and linters or {}) do
-		table.insert(clients, linter)
+		if not vim.tbl_contains(clients, linter) then
+			table.insert(clients, linter)
+		end
 	end
 	local filetype = require("conform").formatters_by_ft[ft]
 	for _, formatter in
@@ -25,7 +27,9 @@ local lsp_names = function()
 			return not vim.tbl_contains(vim.tbl_keys(require("utils").hidden_formatters), f)
 		end, filetype or {}))
 	do
-		table.insert(clients, formatter)
+		if not vim.tbl_contains(clients, formatter) then
+			table.insert(clients, formatter)
+		end
 	end
 	return #clients == 0 and "" or " " .. table.concat(clients, ", ")
 end
@@ -128,12 +132,7 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { { "mode", separator = { left = "", right = "" } } },
 		lualine_b = { "diff", "diagnostics" },
-		lualine_c = {
-			{
-				"navic",
-				color_correction = "static",
-			},
-		},
+		lualine_c = { lsp_names },
 		lualine_x = { selectionCount },
 		lualine_y = { "encoding", "fileformat", "filetype" },
 		lualine_z = { "location", { "progress", separator = { left = "", right = "" } } },
@@ -147,14 +146,18 @@ require("lualine").setup({
 		},
 		lualine_b = {},
 		lualine_c = {
-			lsp_names,
+			{
+				"navic",
+				color_correction = "static",
+			},
 		},
 	},
 	winbar = {
 		lualine_a = { filename },
 		lualine_b = {
 			{
-				lsp_names,
+				"navic",
+				color_correction = "static",
 				cond = function()
 					return #vim.fn.gettabinfo() == 1
 				end,
