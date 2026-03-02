@@ -98,52 +98,50 @@ map("n", "F<CR>", "{")
 map("n", "<Space>;", "@:", { desc = "Re-run the last command" })
 map("n", "q:", "<Nop>", { desc = "Disable cmdwin" })
 
+local gf = function(cmd)
+	local cfile = vim.fn.expand("<cfile>")
+
+	local orig_wildignore = vim.o.wildignore
+	vim.o.wildignore = ""
+	local path = vim.fn.findfile(cfile)
+	vim.o.wildignore = orig_wildignore
+
+	if path ~= "" then
+		if cmd == "edit" then
+			vim.api.nvim_feedkeys("gf", "n", false)
+		elseif cmd == "vsplit" then
+			vim.cmd("vsplit " .. path)
+		elseif cmd == "split" then
+			vim.cmd("split " .. path)
+		elseif cmd == "tabedit" then
+			vim.cmd("tabedit " .. path)
+		end
+	else
+		local dir = vim.fn.fnamemodify(cfile, ":h")
+		if vim.fn.isdirectory(dir) == 0 then
+			vim.fn.mkdir(dir, "p")
+		end
+		if string.find(cfile, ".", 1, true) ~= nil then
+			vim.cmd(cmd .. " " .. cfile)
+		else
+			vim.cmd(cmd .. " " .. cfile .. require("telekasten").Cfg.extension)
+		end
+	end
+end
+
 map("n", "gf", function()
-	local cfile = vim.fn.expand("<cfile>")
-
-	local orig_wildignore = vim.o.wildignore
-	vim.o.wildignore = ""
-	local path = vim.fn.findfile(cfile)
-	vim.o.wildignore = orig_wildignore
-
-	if path ~= "" then
-		vim.api.nvim_feedkeys("gf", "n", false)
-	else
-		local dir = vim.fn.fnamemodify(cfile, ":h")
-		if vim.fn.isdirectory(dir) == 0 then
-			vim.fn.mkdir(dir, "p")
-		end
-		if string.find(cfile, ".", 1, true) ~= nil then
-			vim.cmd("edit " .. cfile)
-		else
-			vim.cmd("edit " .. cfile .. require("telekasten").Cfg.extension)
-		end
-	end
-end, { desc = "Go to file under cursor" })
-
+	gf("edit")
+end, { desc = "Go to file under cursor (edit)" })
 map("n", "<C-g><C-f>", function()
-	local cfile = vim.fn.expand("<cfile>")
-
-	local orig_wildignore = vim.o.wildignore
-	vim.o.wildignore = ""
-	local path = vim.fn.findfile(cfile)
-	vim.o.wildignore = orig_wildignore
-
-	if path ~= "" then
-		vim.cmd("tabedit " .. path)
-	else
-		local dir = vim.fn.fnamemodify(cfile, ":h")
-		if vim.fn.isdirectory(dir) == 0 then
-			vim.fn.mkdir(dir, "p")
-		end
-		if string.find(cfile, ".", 1, true) ~= nil then
-			vim.cmd("tabedit " .. cfile)
-		else
-			vim.cmd("tabedit " .. cfile .. require("telekasten").Cfg.extension)
-		end
-	end
+	gf("tabedit")
 	vim.fn.execute(":tabmove")
-end, { desc = "Go to file under cursor" })
+end, { desc = "Go to file under cursor (tabedit)" })
+map("n", "<C-g><C-g><C-f>", function()
+	gf("vsplit")
+end, { desc = "Go to file under cursor (vsplit)" })
+map("n", "<C-g><C-g><C-->", function()
+	gf("split")
+end, { desc = "Go to file under cursor (split)" })
 
 -- # Insert
 
