@@ -7,8 +7,10 @@ require("catppuccin").setup({
 	},
 	custom_highlights = function(palette)
 		return {
-			ExtraWhiteSpace = { fg = palette.subtext0, bg = palette.surface0 },
+			ExtraWhiteSpace = { fg = palette.grey, bg = palette.surface0 },
 			MarkdownBullet = { fg = palette.overlay1, bg = palette.none },
+			RenderMarkdownCode = { bg = palette.surface1 },
+			["@markup.escape.markdown_inline"] = { fg = palette.subtext0, bg = palette.overlay2 },
 			["@markup.strong.markdown_inline"] = { sp = palette.red, bold = true, underdouble = true },
 			["@markup.strikethrough"] = { fg = palette.surface2, strikethrough = true },
 			NavicIconsDefault = { fg = palette.mauve },

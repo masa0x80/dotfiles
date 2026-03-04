@@ -6,7 +6,9 @@ require("render-markdown").setup({
 		signs = { "󰉴" },
 	},
 	code = {
-		border = "thick",
+		border = "thin",
+		position = "right",
+		width = "block",
 	},
 	bullet = {
 		icons = { "󱠦" },
