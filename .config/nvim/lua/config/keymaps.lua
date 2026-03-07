@@ -7,10 +7,10 @@ vim.g.maplocalleader = " "
 -- # Normal
 
 -- brackets
-vim.keymap.set("n", "<C-p>", "[", { desc = "[", remap = true })
-vim.keymap.set("n", "<C-n>", "]", { desc = "]", remap = true })
-vim.keymap.set("n", "<C-S-p>", "{", { desc = "{", remap = true })
-vim.keymap.set("n", "<C-S-n>", "}", { desc = "}", remap = true })
+map("n", "<C-p>", "[", { desc = "[", remap = true })
+map("n", "<C-n>", "]", { desc = "]", remap = true })
+map("n", "<C-S-p>", "{", { desc = "{", remap = true })
+map("n", "<C-S-n>", "}", { desc = "}", remap = true })
 
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h", { desc = "Focus left" })
@@ -95,6 +95,8 @@ map("n", "gV", "`[v`]")
 map("n", "f<CR>", "}")
 map("n", "F<CR>", "{")
 
+map("n", "<C-->", [[:s/\(\d\)\-\(\d\)/\1–\2/g<CR>]], { desc = "Replace hyphen with en dash" })
+
 map("n", "<Space>;", "@:", { desc = "Re-run the last command" })
 map("n", "q:", "<Nop>", { desc = "Disable cmdwin" })
 
@@ -152,6 +154,7 @@ map("i", "<C-g><C-l>", "<Esc>ea", { noremap = true, silent = true, desc = "forwa
 map("i", "<A-;>", "…")
 map("i", "<A-Space>", " ")
 map("i", "<A-->", "–")
+map("i", "<C-->", "–")
 
 map("i", "<C-g><C-n>", "<C-t>", { desc = "Indent" })
 map("i", "<C-g><C-p>", "<C-d>", { desc = "Dedent" })

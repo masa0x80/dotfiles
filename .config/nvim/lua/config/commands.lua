@@ -112,6 +112,18 @@ end, {
 	range = 2,
 })
 
+vim.api.nvim_create_user_command("ReplaceHyphen", function(opts)
+	local range = "%"
+	if opts.range == 2 then
+		range = opts.line1 .. "," .. opts.line2
+	end
+	vim.fn.execute(range .. [[s/\(\d\)\-\(\d\)/\1–\2/g]])
+	vim.fn.execute("nohlsearch")
+end, {
+	nargs = "?",
+	range = 2,
+})
+
 vim.api.nvim_create_user_command("RestoreCursor", function()
 	if pcall(vim.cmd, "marks m", { silent = true }) then
 		vim.cmd("normal! `mzt10k10j")

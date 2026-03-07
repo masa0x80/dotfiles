@@ -7,10 +7,11 @@ require("catppuccin").setup({
 	},
 	custom_highlights = function(palette)
 		return {
-			ExtraWhiteSpace = { fg = palette.grey, bg = palette.surface0 },
+			ExtraWhiteSpace1 = { underdotted = true },
+			ExtraWhiteSpace2 = { fg = palette.base, bg = palette.overlay2 },
+			ExtraWhiteSpace3 = { fg = palette.text, bg = palette.mantle },
+			ExtraWhiteSpace4 = { fg = palette.overlay2 },
 			MarkdownBullet = { fg = palette.overlay1, bg = palette.none },
-			RenderMarkdownCode = { bg = palette.surface1 },
-			["@markup.escape.markdown_inline"] = { fg = palette.subtext0, bg = palette.overlay2 },
 			["@markup.strong.markdown_inline"] = { sp = palette.red, bold = true, underdouble = true },
 			["@markup.strikethrough"] = { fg = palette.surface2, strikethrough = true },
 			NavicIconsDefault = { fg = palette.mauve },
@@ -48,6 +49,7 @@ require("catppuccin").setup({
 			NavicIconsUnit = { fg = palette.green },
 			NavicIconsValue = { fg = palette.peach },
 			NavicIconsVariable = { fg = palette.mauve },
+			NormalFloat = { bg = palette.surface0 },
 		}
 	end,
 })
@@ -69,5 +71,10 @@ require("utils").create_autocmd({ "VimEnter", "WinEnter" }, {
 	-- u200B '​' zero-width space
 	-- u202F ' ' narrow no-break space
 	-- u3000 '　' ideographic (zenkaku) space
-	command = [[call matchadd('ExtraWhiteSpace', "[\u00A0\u2000-\u200B\u202F\u3000]")]],
+	callback = function()
+		vim.fn.matchadd("ExtraWhiteSpace1", "[\u{00A0}]", 10)
+		vim.fn.matchadd("ExtraWhiteSpace2", "[\u{2000}-\u{200A}\u{202F}]", 10)
+		vim.fn.matchadd("ExtraWhiteSpace3", "[\u{200B}\u{3000}]", 10)
+		vim.fn.matchadd("ExtraWhiteSpace4", [[\s\+$]], 10)
+	end,
 })
