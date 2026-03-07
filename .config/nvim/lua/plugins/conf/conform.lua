@@ -1,12 +1,25 @@
 local formatters = {
 	textlint = {
 		command = "textlint",
-		args = { "--fix", "$FILENAME" },
-		stdin = false,
+		args = {
+			"-c",
+			vim.fn.expand("$XDG_CONFIG_HOME" .. "/textlint/textlintrc.yaml"),
+			"--fix",
+			"$FILENAME",
+			"--stdin",
+			"--stdin-filename",
+		},
+		exit_codes = { 0, 1 },
+		stdin = true,
 	},
 	markdownlint = {
 		command = "markdownlint-cli2",
-		args = { "--config", vim.fn.expand("$HOME/.config/markdownlint/.markdownlint.json"), "--fix", "$FILENAME" },
+		args = {
+			"--config",
+			vim.fn.expand("$HOME/.config/markdownlint/.markdownlint.json"),
+			"--fix",
+			"$FILENAME",
+		},
 		exit_codes = { 0, 1 },
 		stdin = false,
 	},

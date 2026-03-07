@@ -7,7 +7,7 @@ rules:
     pattern: "/：\\s?/"
 
   - expected: "$1か$2"
-    pattern: "/([\\d０-９一-十百千万億兆京])[ヶケ箇]([月所])/"
+    pattern: "/([\\d０-９一-十百千万億兆京数何])[ヶケカヵ箇]([月所])/"
 
   - expected: "$1on$2"
     pattern: "/([\\dA-Z])-on-([\\dA-Z])/"
@@ -19,3 +19,6 @@ rules:
     pattern: "/([\\(（])[  ]/"
   - expected: "$1"
     pattern: "/[  ]([\\)）])/"
+
+  - expected: "ください"
+    pattern: "/下さい/"
