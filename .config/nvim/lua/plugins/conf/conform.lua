@@ -5,11 +5,13 @@ local formatters = {
 			"-c",
 			vim.fn.expand("$XDG_CONFIG_HOME" .. "/textlint/textlintrc.yaml"),
 			"--fix",
-			"$FILENAME",
 			"--stdin",
 			"--stdin-filename",
+			"$FILENAME.txt",
+			"--format",
+			"fixed-result",
+			"--dry-run",
 		},
-		exit_codes = { 0, 1 },
 		stdin = true,
 	},
 	markdownlint = {
@@ -17,11 +19,9 @@ local formatters = {
 		args = {
 			"--config",
 			vim.fn.expand("$HOME/.config/markdownlint/.markdownlint.json"),
-			"--fix",
-			"$FILENAME",
+			"--format",
 		},
-		exit_codes = { 0, 1 },
-		stdin = false,
+		stdin = true,
 	},
 }
 for k, v in pairs(require("utils").hidden_formatters) do

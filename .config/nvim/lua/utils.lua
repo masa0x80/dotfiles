@@ -52,10 +52,12 @@ M.hidden_formatters = {
 	delete_single_space_before_marks = {
 		command = "sed",
 		args = { "s|\\(\\S\\) \\([。、)}]\\)|\\1\\2|g" },
+		stdin = true,
 	},
 	delete_single_space_after_marks = {
 		command = "sed",
 		args = { "s|\\([。、({]\\) \\(\\S\\)|\\1\\2|g" },
+		stdin = true,
 	},
 	delete_jira_status_icon = {
 		command = "sed",
@@ -64,14 +66,17 @@ M.hidden_formatters = {
 				vim.fn.expand("$JIRA_BASE_URL"):gsub("/browse", "")
 			),
 		},
+		stdin = true,
 	},
 	markdown_todo_format = {
 		command = "sed",
 		args = { "s|\\([-*+.)]\\) \\[\\]|\\1 [ ]|g" },
+		stdin = true,
 	},
 	replace_ordered_list = {
 		command = "sed",
 		args = { "s|^\\(\\s*\\)[0-9]\\+[\\.)] |\\11. |g" },
+		stdin = true,
 	},
 	markdown_table_formatter = {
 		command = "markdown-table-formatter",
