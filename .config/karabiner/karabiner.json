@@ -947,6 +947,24 @@
                         ]
                     },
                     {
+                        "description": "en dash",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "hyphen",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "hyphen",
+                                        "modifiers": ["option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "<Cmd-C-o> / <Cmd-C-i> ▶ <S-LeftArrow> / <S-RightArrow>",
                         "manipulators": [
                             {

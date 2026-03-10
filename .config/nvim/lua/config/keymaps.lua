@@ -152,8 +152,6 @@ map("i", "<C-g><C-l>", "<Esc>ea", { noremap = true, silent = true, desc = "forwa
 -- Insert ellipsis
 map("i", "<A-;>", "…")
 map("i", "<A-Space>", " ")
-map("i", "<A-->", "–")
-map("i", "<C-->", "–")
 
 map("i", "<C-g><C-n>", "<C-t>", { desc = "Indent" })
 map("i", "<C-g><C-p>", "<C-d>", { desc = "Dedent" })
