@@ -14,5 +14,8 @@ return {
 			line_down = "<C-g><C-j>",
 			line_up = "<C-g><C-k>",
 		},
+		options = {
+			reindent_linewise = false,
+		},
 	},
 }

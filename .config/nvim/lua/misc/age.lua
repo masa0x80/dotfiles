@@ -22,8 +22,12 @@ if recipient ~= nil and identity ~= nil then
 		pattern = "*.age",
 		callback = function()
 			vim.cmd("silent undo")
-			require("conform").format({ async = false, lsp_format = "fallback", range = nil })
-			vim.cmd("normal! `z")
+			vim.cmd("normal! `zzt10k10j")
+			require("conform").format({
+				async = true,
+				lsp_format = "fallback",
+				range = nil,
+			})
 		end,
 	})
 end

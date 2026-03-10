@@ -7,7 +7,7 @@ local formatters = {
 			"--fix",
 			"--stdin",
 			"--stdin-filename",
-			"$FILENAME.txt",
+			"$FILENAME.md",
 			"--format",
 			"fixed-result",
 			"--dry-run",
@@ -78,10 +78,17 @@ require("conform").setup({
 		["*"] = { "injected" },
 	},
 	formatters = formatters,
-	format_on_save = function()
+	format_on_save = function(bufnr)
 		if not vim.g.formatter_enabled then
 			return
 		end
+
+		local fname = vim.api.nvim_buf_get_name(bufnr)
+		local ext = vim.fn.fnamemodify(fname, ":e")
+		if ext == "age" then
+			return
+		end
+
 		return {
 			lsp_format = "fallback",
 			filter = function(client)
