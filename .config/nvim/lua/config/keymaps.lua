@@ -70,7 +70,7 @@ map("n", "<C-,>R", "*Ncgn", { desc = "[R]eplace Current Word `*cgn`" })
 map("n", "<C-g><C-h>", "`zzt", { desc = "`zzt" })
 map("n", "<C-g><C-g><C-h>", function()
 	vim.cmd("windo RestoreCursor")
-	vim.cmd("normal! `zzt10k10j")
+	vim.cmd(string.format("normal! `zzt%sj", vim.g.__age_line))
 end, { desc = "`zzt10k10j" })
 
 map("n", "<C-;>C", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { desc = "cd $PWD" })
