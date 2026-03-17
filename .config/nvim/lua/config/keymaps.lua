@@ -155,8 +155,43 @@ map("i", "<A-Space>", " ")
 
 map("i", "<C-g><C-n>", "<C-t>", { desc = "Indent" })
 map("i", "<C-g><C-p>", "<C-d>", { desc = "Dedent" })
-map("i", "<Tab>", "<C-t>", { desc = "Indent <<" })
-map("i", "<S-Tab>", "<C-d>", { desc = "Indent <<" })
+map("i", "<Tab>", function()
+	local line = vim.api.nvim_get_current_line()
+	local col = vim.api.nvim_win_get_cursor(0)[2]
+
+	if line:match("^%s*>") then
+		local prefix, rest = line:match("^(.*>%s*)(%S.*)$")
+		if not prefix then
+			prefix = line
+			rest = ""
+		end
+		local spaces = string.rep(" ", vim.bo.shiftwidth)
+		local new_line = prefix .. spaces .. rest
+		vim.api.nvim_set_current_line(new_line)
+		vim.api.nvim_win_set_cursor(0, { vim.fn.line("."), col + vim.bo.shiftwidth })
+	else
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-t>", true, false, true), "n", false)
+	end
+end, { desc = "Indent >>" })
+map("i", "<S-Tab>", function()
+	local line = vim.api.nvim_get_current_line()
+	local col = vim.api.nvim_win_get_cursor(0)[2]
+
+	if line:match("^%s*>") then
+		local prefix, spaces, rest = line:match("^(.*>)(%s+)(%S.*)$")
+		if not prefix then
+			return
+		end
+		local sw = vim.bo.shiftwidth
+		local space_count = #spaces - sw
+		local new_spaces = space_count > 0 and string.rep(" ", space_count) or " "
+		local new_line = prefix .. new_spaces .. rest
+		vim.api.nvim_set_current_line(new_line)
+		vim.api.nvim_win_set_cursor(0, { vim.fn.line("."), math.max(0, col - sw) })
+	else
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-d>", true, false, true), "n", false)
+	end
+end, { desc = "Indent <<" })
 
 -- # Visual
 

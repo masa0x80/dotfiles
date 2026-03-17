@@ -972,6 +972,7 @@ return {
 					else
 						vim.cmd("ReplaceDate")
 					end
+					vim.cmd("F")
 				end)
 			end,
 		},
