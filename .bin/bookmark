@@ -27,6 +27,7 @@ else
 fi
 
 for word in \$words; do
+  [[ -z \$word ]] && continue
   cmd="\$cmd | xargs rg -il '\$word'"
 done
 
