@@ -25,13 +25,15 @@ if recipient ~= nil and identity ~= nil then
 		pattern = "*.age",
 		callback = function()
 			vim.cmd("silent undo")
-			vim.cmd("windo RestoreCursor")
-			vim.cmd(string.format("normal! `zzt%sj", vim.g.__age_line))
+			vim.cmd("silent! windo RestoreCursor")
+			vim.cmd(string.format("silent! normal! `zzt%sj", vim.g.__age_line))
 			require("conform").format({
 				async = true,
 				lsp_format = "fallback",
 				range = nil,
-			})
+			}, function()
+				vim.notify("Complete", vim.log.levels.INFO, { title = "Comform" })
+			end)
 		end,
 	})
 end
