@@ -111,3 +111,5 @@ brew "vhs"
 brew "jj"
 
 brew "gitmux"
+
+brew "k1LoW/tap/mo"
