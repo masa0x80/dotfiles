@@ -51,7 +51,8 @@ M.js_based_languages = {
 M.hidden_formatters = {
 	delete_single_space_before_marks = {
 		command = "sed",
-		args = { "s|\\(\\S\\) \\([。、)}]\\)|\\1\\2|g" },
+		-- ' }}} は除外するために \@! を追加
+		args = { "s|\\(\\S\\) \\([。、)}]\\)\\@!|\\1\\2|g" },
 		stdin = true,
 	},
 	delete_single_space_after_marks = {
