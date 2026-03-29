@@ -37,7 +37,9 @@ vim.api.nvim_create_user_command("Format", function(args)
 			["end"] = { args.line2, end_line:len() },
 		}
 	end
-	require("conform").format({ async = true, lsp_format = "fallback", range = range })
+	require("conform").format({ async = true, lsp_format = "fallback", range = range }, function()
+		vim.notify("Complete", vim.log.levels.INFO, { title = "Conform" })
+	end)
 end, { range = true })
 
 require("conform").setup({
@@ -47,7 +49,6 @@ require("conform").setup({
 		lua = { "stylua" },
 		luau = { "stylua" },
 		python = { "black" },
-		make = { "" },
 		markdown = {
 			"delete_single_space_before_marks",
 			"delete_single_space_after_marks",
@@ -90,6 +91,7 @@ require("conform").setup({
 		end
 
 		return {
+			timeout_ms = 15000,
 			lsp_format = "fallback",
 			filter = function(client)
 				return client.name ~= "ts_ls"

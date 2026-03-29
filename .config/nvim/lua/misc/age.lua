@@ -32,7 +32,7 @@ if recipient ~= nil and identity ~= nil then
 				lsp_format = "fallback",
 				range = nil,
 			}, function()
-				vim.notify("Complete", vim.log.levels.INFO, { title = "Comform" })
+				vim.notify("Complete", vim.log.levels.INFO, { title = "Conform" })
 			end)
 		end,
 	})
