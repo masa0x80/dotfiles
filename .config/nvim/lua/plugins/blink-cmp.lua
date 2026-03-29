@@ -18,12 +18,11 @@ return {
 			cmdline = {
 				keymap = {
 					preset = "super-tab",
-					["<C-CR>"] = { "show", "show_documentation", "hide_documentation" },
-					["<Tab>"] = { "show", "fallback" },
+					["<C-l>"] = { "show", "show_documentation", "hide_documentation" },
 					["<CR>"] = { "accept", "fallback" },
 				},
 				completion = {
-					menu = { auto_show = false },
+					menu = { auto_show = true },
 					ghost_text = { enabled = false },
 				},
 			},
