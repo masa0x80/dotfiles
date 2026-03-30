@@ -22,7 +22,7 @@ return {
 					["<CR>"] = { "accept", "fallback" },
 				},
 				completion = {
-					menu = { auto_show = true },
+					menu = { auto_show = false },
 					ghost_text = { enabled = false },
 				},
 			},
