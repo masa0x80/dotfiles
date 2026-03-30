@@ -53,7 +53,7 @@ require("catppuccin").setup({
 		}
 	end,
 })
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("catppuccin-nvim")
 
 require("utils").create_autocmd({ "VimEnter", "WinEnter" }, {
 	-- u00A0 ' ' no-break space
