@@ -3,19 +3,19 @@ map(
 	"n",
 	"<leader>ogY",
 	'<Cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
-	{ silent = true }
+	{ silent = true, desc = "Open GitHub URL for current line in browser" }
 )
 map(
 	"v",
 	"<leader>ogY",
 	'<Cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
-	{ silent = true }
+	{ silent = true, desc = "Open GitHub URL for current selected lines in browser" }
 )
 map(
 	"n",
 	"<Leader>ogr",
 	'<Cmd>lua require"gitlinker".get_repo_url({action_callback = require"gitlinker.actions".open_in_browser})<CR>',
-	{ silent = true }
+	{ silent = true, desc = "Open GitHub URL for repository in browser" }
 )
 vim.api.nvim_create_user_command("GhOpenRepo", function()
 	require("gitlinker").get_repo_url({ action_callback = require("gitlinker.actions").open_in_browser })
