@@ -85,8 +85,9 @@ require("mason-lspconfig").setup({
 		"kotlin_language_server",
 		"lua_ls",
 		"marksman",
+		"oxfmt",
+		"oxlint",
 		"solargraph",
-		"stylelint_lsp",
 		"tailwindcss",
 		"terraformls",
 		"ts_ls",
@@ -101,6 +102,7 @@ local packages = {
 	"hadolint",
 	"shellcheck",
 	"shfmt",
+	"stylelint-language-server",
 	"stylua",
 	"tflint",
 }
