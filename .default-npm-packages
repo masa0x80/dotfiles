@@ -1,4 +1,3 @@
-
 prettier
 textlint
 textlint-filter-rule-allowlist
@@ -10,5 +9,4 @@ textlint-rule-terminology
 @textlint-rule/textlint-rule-no-invalid-control-character
 @textlint-rule/textlint-rule-pattern
 tsx
-markdown-table-formatter
 jsmigemo

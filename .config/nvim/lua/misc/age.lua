@@ -28,12 +28,10 @@ if recipient ~= nil and identity ~= nil then
 			vim.cmd("silent! windo RestoreCursor")
 			vim.cmd(string.format("silent! normal! `zzt%sj", vim.g.__age_line))
 			require("conform").format({
-				async = true,
+				async = false,
 				lsp_format = "fallback",
 				range = nil,
-			}, function()
-				vim.notify("Complete", vim.log.levels.INFO, { title = "Conform" })
-			end)
+			})
 		end,
 	})
 end

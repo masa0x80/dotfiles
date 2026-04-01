@@ -57,7 +57,6 @@ require("conform").setup({
 			"replace_ordered_list",
 			"textlint",
 			"markdownlint",
-			"markdown_table_formatter",
 		},
 		sh = { "shfmt" },
 		text = { "textlint" },
