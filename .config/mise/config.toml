@@ -6,43 +6,44 @@ gpg_verify = false
 
 [tools]
 # https://github.com/rhysd/actionlint/tags
-actionlint = "latest"
+actionlint = "1.7.12"
 # https://github.com/aws/aws-sam-cli/releases
-aws-sam-cli = "latest"
+aws-sam-cli = "1.157.1"
 # https://github.com/99designs/aws-vault/tags
-aws-vault = "latest"
+aws-vault = "7.2.0"
 # https://github.com/getsops/sops/tags
 sops = "v3.10.2"
 # https://github.com/neovim/neovim/releases
-neovim = "latest"
+neovim = "0.11.6"
 
 # https://go.dev/dl/
-go = "latest"
+go = "1.26.1"
 
 # https://github.com/corretto/corretto-21/tags
 java = "corretto-21.0.4.7.1"
 # https://gradle.org/install/
-gradle = "latest"
+gradle = "9.4.0"
 # https://groovy.apache.org/download.html
-groovy = "latest"
+groovy = "5.0.5"
 
 # https://nodejs.org/en/download
-node = "latest"
+node = "25.9.0"
 # https://github.com/denoland/deno/tags
-deno = "latest"
+deno = "2.7.11"
 
 # https://www.python.org/downloads/
-python = "latest"
+python = "3.14.3"
 
 # https://www.ruby-lang.org/en/downloads/releases/
-ruby = "latest"
+ruby = "4.0.2"
 
 # https://github.com/rust-lang/rust/tags
-rust = "latest"
+rust = "1.94.1"
 
 # https://github.com/hashicorp/terraform/tags
-terraform = "latest"
+terraform = "1.14.8"
 # https://github.com/terraform-docs/terraform-docs/tags
-terraform-docs = "latest"
+terraform-docs = "0.21.0"
 
-tree-sitter = "latest"
+# https://github.com/tree-sitter/tree-sitter/tags
+tree-sitter = "0.26.8"
