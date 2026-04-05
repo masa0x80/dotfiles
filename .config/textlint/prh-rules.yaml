@@ -1,24 +1,24 @@
 version: 1
 rules:
   - expected: " "
-    pattern: "/[ ]/"
+    pattern: /[ ]/
 
   - expected: ": "
-    pattern: "/：\\s?/"
+    pattern: /：\s?/
 
-  - expected: "$1か$2"
-    pattern: "/([\\d０-９一-十百千万億兆京数何])[ヶケカヵ箇]([月所])/"
+  - expected: $1か$2
+    pattern: /([\d０-９一-十百千万億兆京数何])[ヶケカヵ箇]([月所])/
 
-  - expected: "$1on$2"
-    pattern: "/([\\dA-Z])-on-([\\dA-Z])/"
+  - expected: $1on$2
+    pattern: /([\dA-Z])-on-([\dA-Z])/
 
-  - expected: "1on1"
-    pattern: "/1 on 1/"
+  - expected: 1on1
+    pattern: /1 on 1/
 
-  - expected: "$1"
-    pattern: "/([\\(（])[  ]/"
-  - expected: "$1"
-    pattern: "/[  ]([\\)）])/"
+  - expected: $1
+    pattern: /([\(（])[  ]/
+  - expected: $1
+    pattern: /[  ]([\)）])/
 
-  - expected: "ください"
-    pattern: "/下さい/"
+  - expected: ください
+    pattern: /下さい/

@@ -17,6 +17,7 @@ rules:
   prh:
     rulePaths:
       - ~/.config/textlint/prh-rules.yaml
+      - ~/.config.local/textlint/prh-rules.yaml
   "@textlint-rule/pattern":
     patterns:
       - pattern: "/(?<!一)(?<!合)(?<!引)(?<!招)(?<!誘)致しま(す|した|せん|しょう)/"
