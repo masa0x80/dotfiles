@@ -33,7 +33,7 @@ install: \
 	sheldon \
 	passage \
 	term-definition \
-	gen-zshrc \
+	gen-zshrc
 
 .PHONY: deploy
 deploy:
@@ -49,7 +49,7 @@ list:
 clean:
 	@echo 'Remove dot files in your home directory...'
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
-	-rm -rf$(DOTFILE)
+	-rm -rf $(DOTFILE)
 
 # brew {{{
 

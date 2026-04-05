@@ -83,6 +83,11 @@ require("conform").setup({
 			return
 		end
 
+		if vim.bo[bufnr].filetype == "make" then
+			-- Makefile で injected が動かないように
+			return
+		end
+
 		local fname = vim.api.nvim_buf_get_name(bufnr)
 		local ext = vim.fn.fnamemodify(fname, ":e")
 		if ext == "age" then

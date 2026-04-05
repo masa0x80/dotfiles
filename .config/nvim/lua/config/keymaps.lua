@@ -104,7 +104,7 @@ local gf = function(cmd)
 
 	local orig_wildignore = vim.o.wildignore
 	vim.o.wildignore = ""
-	local path = vim.fn.findfile(cfile)
+	local path = vim.fn.findfile(vim.fn.expand(cfile))
 	vim.o.wildignore = orig_wildignore
 
 	if path ~= "" then
