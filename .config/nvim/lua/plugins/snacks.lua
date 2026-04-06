@@ -957,12 +957,7 @@ return {
 						return
 					end
 
-					local l = vim.fn.line("$")
-					if l == 1 then
-						vim.fn.execute(":0r " .. choice)
-					else
-						vim.fn.execute(":r " .. choice)
-					end
+					vim.cmd("-1r " .. choice)
 					local filename = vim.fn.expand("%:t:r")
 					local date_pattern = "(%d%d%d%d%-%d%d%-%d%d)"
 					local date = string.match(filename, date_pattern)
