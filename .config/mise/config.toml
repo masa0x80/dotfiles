@@ -1,5 +1,6 @@
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
+install_before = "7d"
 
 [settings.node]
 gpg_verify = false
