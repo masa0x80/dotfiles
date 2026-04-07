@@ -7,7 +7,7 @@ if recipient ~= nil and identity ~= nil then
 	require("utils").create_autocmd({ "BufReadPost", "FileReadPost" }, {
 		pattern = "*.age",
 		callback = function()
-			vim.cmd(string.format("silent '[,']!rage --decrypt -i %s", identity))
+			vim.cmd("silent '[,']!_de")
 			vim.cmd("F")
 		end,
 	})
@@ -17,7 +17,7 @@ if recipient ~= nil and identity ~= nil then
 		callback = function()
 			vim.g.__age_line = vim.fn.line(".") - vim.fn.line("w0")
 			vim.cmd("normal! Hmz")
-			vim.cmd(string.format("silent '[,']!rage --encrypt -r %s -a", recipient))
+			vim.cmd("silent '[,']!_en")
 		end,
 	})
 

@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+if [ -z "$AGE_IDENTITY" ]; then
+  exit 1
+else
+  rage --decrypt -i $AGE_IDENTITY
+fi

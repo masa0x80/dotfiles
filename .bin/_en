@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+if [ -z "$AGE_RECIPIENT" ]; then
+  exit 1
+else
+  rage --encrypt -r $AGE_RECIPIENT -a
+fi
