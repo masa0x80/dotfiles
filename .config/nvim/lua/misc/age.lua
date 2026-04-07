@@ -27,11 +27,14 @@ if recipient ~= nil and identity ~= nil then
 			vim.cmd("silent undo")
 			vim.cmd("silent! windo RestoreCursor")
 			vim.cmd(string.format("silent! normal! `zzt%sj", vim.g.__age_line))
-			require("conform").format({
-				async = false,
-				lsp_format = "fallback",
-				range = nil,
-			})
+			if vim.g.formatter_enabled then
+				require("conform").format({
+					async = false,
+					timeout_ms = 50000,
+					lsp_format = "fallback",
+					range = nil,
+				})
+			end
 		end,
 	})
 end
