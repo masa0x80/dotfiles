@@ -6,26 +6,41 @@ install_before = "7d"
 gpg_verify = false
 
 [tools]
+# https://app-updates.agilebits.com/product_history/CLI2
+1password-cli = "2.33.1"
+
 # https://github.com/rhysd/actionlint/tags
 actionlint = "1.7.12"
+
+# https://github.com/aws/aws-cli/tags
+awscli = { version = "2.34.25", symlink_bins = "true" }
 # https://github.com/aws/aws-sam-cli/releases
 aws-sam-cli = "1.157.1"
 # https://github.com/99designs/aws-vault/tags
 aws-vault = "7.2.0"
-# https://github.com/getsops/sops/tags
-sops = "v3.10.2"
-# https://github.com/neovim/neovim/releases
-neovim = "0.11.6"
+
+# https://github.com/cli/cli/tags
+gh = "2.89.0"
 
 # https://go.dev/dl/
 go = "1.26.1"
 
 # https://github.com/corretto/corretto-21/tags
 java = "corretto-21.0.4.7.1"
+
 # https://gradle.org/install/
 gradle = "9.4.0"
 # https://groovy.apache.org/download.html
 groovy = "5.0.5"
+
+# https://github.com/jqlang/jq/tags
+jq = "1.8.1"
+
+# https://github.com/evilmartians/lefthook/tags
+lefthook = "2.1.4"
+
+# https://github.com/neovim/neovim/releases
+neovim = "0.11.6"
 
 # https://nodejs.org/en/download
 node = "25.9.0"
@@ -40,6 +55,9 @@ ruby = "4.0.2"
 
 # https://github.com/rust-lang/rust/tags
 rust = "1.94.1"
+
+# https://github.com/getsops/sops/tags
+sops = "v3.10.2"
 
 # https://github.com/hashicorp/terraform/tags
 terraform = "1.14.8"

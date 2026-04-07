@@ -21,7 +21,6 @@ brew "fzf"
 brew "gibo"
 brew "git"
 brew "jo"
-brew "jq"
 brew "lsof"
 brew "mas"
 brew "pass"
@@ -49,10 +48,6 @@ brew "mysql-client"
 brew "postgresql"
 brew "redis"
 
-brew "neovim"
-
-brew "awscli"
-
 brew "bat"
 brew "eza"
 brew "fd"
@@ -65,7 +60,6 @@ brew "grex"
 brew "rm-improved"
 
 brew "hub"
-brew "gh"
 brew "ghq"
 
 brew "csvq"
@@ -79,9 +73,6 @@ brew "xh"
 brew "yq"
 
 brew "protobuf"
-
-tap "arkweid/lefthook"
-brew "lefthook"
 
 brew "markdownlint-cli2"
 
