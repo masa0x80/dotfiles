@@ -3,5 +3,4 @@
 .zcompdump
 .zcompcache
 
-.zshrc
 *.zwc

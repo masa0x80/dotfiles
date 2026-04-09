@@ -1,8 +1,7 @@
 #!/bin/zsh
 
-tmpl_dir="$ZDOTDIR/tmpl"
 zshenv_cache="$XDG_CACHE_HOME/zshenv-cache.zsh"
-zshrc="$ZDOTDIR/.zshrc"
+zshrc_cache="$XDG_CACHE_HOME/zshrc-cache.zsh"
 
 # .zshenv cache
 echo -n > $zshenv_cache
@@ -38,58 +37,26 @@ esac
 echo "export TARGET_BROWSER=\"$target_browser\"" >> $zshenv_cache
 
 # Generate .zshrc
-echo -n > $zshrc
+echo -n > $zshrc_cache
 
 # misc
-(( ${+commands[mise]} )) && mise activate zsh >> $zshrc
-(( ${+commands[fzf]} )) && fzf --zsh >> $zshrc
-(( ${+commands[direnv]} )) && direnv hook zsh >> $zshrc
-(( ${+commands[starship]} )) && starship init zsh >> $zshrc
-
-cat $tmpl_dir/init.zsh >> $zshrc
+(( ${+commands[mise]} )) && mise activate zsh >> $zshrc_cache
+(( ${+commands[fzf]} )) && fzf --zsh >> $zshrc_cache
+(( ${+commands[direnv]} )) && direnv hook zsh >> $zshrc_cache
+(( ${+commands[starship]} )) && starship init zsh >> $zshrc_cache
 
 # sheldon
-sheldon source >> $zshrc
-
-for file (
-  $tmpl_dir/aliases.zsh(N)
-  $tmpl_dir/check-envrc-exist.zsh(N)
-  $tmpl_dir/check-local-git-config.zsh(N)
-  $tmpl_dir/complete-ssh-host.zsh(N)
-  $tmpl_dir/completion.zsh(N)
-  $tmpl_dir/dotdot.zsh(N)
-  $tmpl_dir/fzf.zsh(N)
-  $tmpl_dir/ghq.zsh(N)
-  $tmpl_dir/git-add.zsh(N)
-  $tmpl_dir/git-branch.zsh(N)
-  $tmpl_dir/key-bindings.zsh(N)
-  $tmpl_dir/navi.zsh(N)
-  $tmpl_dir/prompt.zsh(N)
-  $tmpl_dir/r.zsh(N)
-) cat $file >> $zshrc
-
-for file (
-  # Load gcloud
-  $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc(N)
-  $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc(N)
-) echo "zsh-defer source \"$file\"" >> $zshrc
+sheldon source >> $zshrc_cache
 
 # zabrze
-zabrze init --bind-keys >> $zshrc
-
-for file (
-  # Load local configurations
-  $HOME/.config.local/zsh/zshrc(N)
-  $HOME/.zshrc.local(N)
-) cat $file >> $zshrc
-
-cat $tmpl_dir/local-bin.zsh >> $zshrc
+zabrze init --bind-keys >> "$XDG_CACHE_HOME/zabrze-cache.zsh"
 
 # zcompile
 for file (
   $zshenv_cache
-  $zshrc
+  $zshrc_cache_cache
   $HOME/.zshenv(N)
+  $HOME/.zshrc(N)
   $HOME/.config.local/zsh/zshenv(N)
   $HOME/.zshenv.local(N)
 ) zcompile $file
