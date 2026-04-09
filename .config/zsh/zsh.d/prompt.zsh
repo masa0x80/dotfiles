@@ -10,4 +10,4 @@ _switch_starship_config() {
   fi
   export STARSHIP_CONFIG
 }
-add-zsh-hook precmd _switch_starship_config
+add-zsh-hook preexec _switch_starship_config
