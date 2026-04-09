@@ -26,11 +26,6 @@ export GOPATH=$HOME/go
 # RIPGREP
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/ripgreprc
 
-# grep
-export GREP_COlOR='1;31'
-export GREP_COlORS="mt=${GREP_COLOR}"
-alias grep='grep --color=auto'
-
 # rails (for rails server alias)
 export RAILS_SERVER_PORT=3000
 
@@ -49,9 +44,8 @@ for file (
   # Load .zshenv.local
   $HOME/.zshenv.local(N)
 
-  $XDG_CACHE_HOME/zsh-cache.zsh(N)
+  $XDG_CACHE_HOME/zshenv-cache.zsh(N)
 ) source $file
-
 
 typeset -U path PATH
 path=(
@@ -78,51 +72,8 @@ fpath=(
   $fpath
 )
 
-# EDITOR
-if (( ${+commands[nvim]} )); then
-  export EDITOR=nvim
-  alias vi=nvim
-  # manpager
-  export MANPAGER='nvim +Man!'
-elif (( ${+commands[vim]} )); then
-  export EDITOR=vim
-  alias vi=vim
-fi
-
-# ls
-if (( ${+commands[eza]} )); then
-  alias ls='eza --group-directories-first --icons'
-fi
-
 # Pager
 (( ${+commands[bat]} )) && export PAGER=bat
 
-export AGE_IDENTITY="$HOME/.config/age/key.txt"
-export AGE_RECIPIENT=$(grep -oP '(?<=# public key: ).+(?=)' $AGE_IDENTITY)
-export PASSAGE_IDENTITIES_FILE="$HOME/.ssh/key"
-export PASSAGE_RECIPIENTS_FILE="$HOME/.ssh/key.pub"
-export PASSAGE_AGE="$HOMEBREW_PREFIX/bin/rage"
-
 # less
 export LESS='-RFIX'
-
-# Browser
-identifier="$(defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure | awk -F'"' '/http;/{print window[(NR)-1]}{window[NR]=$2}')"
-case "$identifier" in
-"se.johnste.finicky")
-  TARGET_BROWSER="Vivaldi"
-  ;;
-"com.vivaldi.vivaldi")
-  TARGET_BROWSER="Vivaldi"
-  ;;
-"com.microsoft.edgemac")
-  TARGET_BROWSER="Microsoft Edge"
-  ;;
-"com.google.chrome")
-  TARGET_BROWSER="Google Chrome"
-  ;;
-*)
-  TARGET_BROWSER="Safari"
-  ;;
-esac
-export TARGET_BROWSER

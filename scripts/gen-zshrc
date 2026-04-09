@@ -1,22 +1,50 @@
 #!/bin/zsh
 
 tmpl_dir="$ZDOTDIR/tmpl"
-zsh_cache="$XDG_CACHE_HOME/zsh-cache.zsh"
+zshenv_cache="$XDG_CACHE_HOME/zshenv-cache.zsh"
 zshrc="$ZDOTDIR/.zshrc"
 
-echo -n > $zsh_cache
+# .zshenv cache
+echo -n > $zshenv_cache
 
 # homebrew
-brew shellenv >> $zsh_cache
-source $zsh_cache
+brew shellenv >> $zshenv_cache
+source $zshenv_cache
+
+export AGE_IDENTITY="$HOME/.config/age/key.txt"
+echo "export AGE_IDENTITY=$AGE_IDENTITY" >> $zshenv_cache
+echo "export AGE_RECIPIENT=\"$(grep -oP '(?<=# public key: ).+(?=)' "$AGE_IDENTITY")\"" >> $zshenv_cache
+echo "export PASSAGE_IDENTITIES_FILE=\"$HOME/.ssh/key\"" >> $zshenv_cache
+echo "export PASSAGE_RECIPIENTS_FILE=\"$HOME/.ssh/key.pub\"" >> $zshenv_cache
+echo "export PASSAGE_AGE=\"$HOMEBREW_PREFIX/bin/rage\"" >> $zshenv_cache
+
+# Browser
+identifier="$(defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure | awk -F'"' '/http;/{print window[(NR)-1]}{window[NR]=$2}')"
+target_browser="Safari"
+case "$identifier" in
+"se.johnste.finicky")
+  target_browser="Vivaldi"
+  ;;
+"com.vivaldi.vivaldi")
+  target_browser="Vivaldi"
+  ;;
+"com.microsoft.edgemac")
+  target_browser="Microsoft Edge"
+  ;;
+"com.google.chrome")
+  target_browser="Google Chrome"
+  ;;
+esac
+echo "export TARGET_BROWSER=\"$target_browser\"" >> $zshenv_cache
+
+# Generate .zshrc
+echo -n > $zshrc
 
 # misc
-(( ${+commands[mise]} )) && mise activate zsh >> $zsh_cache
-(( ${+commands[fzf]} )) && fzf --zsh >> $zsh_cache
-(( ${+commands[direnv]} )) && direnv hook zsh >> $zsh_cache
-(( ${+commands[starship]} )) && starship init zsh >> $zsh_cache
-
-echo -n > $zshrc
+(( ${+commands[mise]} )) && mise activate zsh >> $zshrc
+(( ${+commands[fzf]} )) && fzf --zsh >> $zshrc
+(( ${+commands[direnv]} )) && direnv hook zsh >> $zshrc
+(( ${+commands[starship]} )) && starship init zsh >> $zshrc
 
 cat $tmpl_dir/init.zsh >> $zshrc
 
@@ -24,6 +52,7 @@ cat $tmpl_dir/init.zsh >> $zshrc
 sheldon source >> $zshrc
 
 for file (
+  $tmpl_dir/aliases.zsh(N)
   $tmpl_dir/check-envrc-exist.zsh(N)
   $tmpl_dir/check-local-git-config.zsh(N)
   $tmpl_dir/complete-ssh-host.zsh(N)
@@ -37,11 +66,13 @@ for file (
   $tmpl_dir/navi.zsh(N)
   $tmpl_dir/prompt.zsh(N)
   $tmpl_dir/r.zsh(N)
+) cat $file >> $zshrc
 
+for file (
   # Load gcloud
   $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc(N)
   $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc(N)
-) cat $file >> $zshrc
+) echo "zsh-defer source \"$file\"" >> $zshrc
 
 # zabrze
 zabrze init --bind-keys >> $zshrc
@@ -56,6 +87,7 @@ cat $tmpl_dir/local-bin.zsh >> $zshrc
 
 # zcompile
 for file (
+  $zshenv_cache
   $zshrc
   $HOME/.zshenv(N)
   $HOME/.config.local/zsh/zshenv(N)

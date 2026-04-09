@@ -3,4 +3,4 @@ check-envrc-exist() {
     echo -e '\n\033[7;36m[WARN] [env] is not found in mise.toml.\033[0;39m'
   fi
 }
-add-zsh-hook precmd check-envrc-exist
+add-zsh-hook chpwd check-envrc-exist

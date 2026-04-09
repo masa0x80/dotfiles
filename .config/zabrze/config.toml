@@ -477,9 +477,9 @@ snippet = "ls -la --git"
 if = "(( ${+commands[eza]} ))"
 
 [[snippets]]
-name = "eza -T --icons"
+name = "eza --icons -T"
 abbr = "tree"
-snippet = "eza -T --icons"
+snippet = "eza --icons -T"
 if = "(( ${+commands[eza]} ))"
 
 [[snippets]]

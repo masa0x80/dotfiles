@@ -31,6 +31,4 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt share_history
 
-autoload -Uz url-quote-magic
-
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
