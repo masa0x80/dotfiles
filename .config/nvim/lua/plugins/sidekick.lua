@@ -1,6 +1,7 @@
 return {
 	"folke/sidekick.nvim",
 	version = "*",
+	event = "VeryLazy",
 	opts = {
 		-- add any options here
 		cli = {

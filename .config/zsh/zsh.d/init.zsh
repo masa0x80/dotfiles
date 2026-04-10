@@ -32,3 +32,6 @@ setopt hist_verify
 setopt share_history
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+# Set window name
+echo -ne "\033]2;$(current_dir)\007"
