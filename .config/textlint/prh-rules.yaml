@@ -10,10 +10,7 @@ rules:
     pattern: /([\d０-９一-十百千万億兆京数何])[ヶケカヵ箇]([月所])/
 
   - expected: $1on$2
-    pattern: /([\dA-Z])-on-([\dA-Z])/
-
-  - expected: 1on1
-    pattern: /1 on 1/
+    pattern: /([\d])[\- ]on[\- ]([\d])/
 
   - expected: $1
     pattern: /([\(（])[  ]/
