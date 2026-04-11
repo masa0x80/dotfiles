@@ -1,4 +1,3 @@
-require("config._")
 require("config.filetype")
 require("config.options")
 require("config.keymaps")
