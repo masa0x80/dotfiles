@@ -2,5 +2,31 @@ return {
 	"smoka7/hop.nvim",
 	version = "*",
 	event = "VeryLazy",
-	config = require("utils").load("conf/hop"),
+	config = function()
+		local hop = require("hop")
+		hop.setup({})
+
+		local map = require("utils").map
+		map("", "<CR><CR>", function()
+			hop.hint_vertical()
+		end, {})
+
+		local directions = require("hop.hint").HintDirection
+		map("", "<C-g>f", "f", { remap = false })
+		map("", "<C-g>F", "F", { remap = false })
+		map("", "<C-g>t", "t", { remap = false })
+		map("", "<C-g>T", "T", { remap = false })
+		map("", "f", function()
+			hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+		end, { remap = true })
+		map("", "F", function()
+			hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+		end, { remap = true })
+		map("", "t", function()
+			hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+		end, { remap = true })
+		map("", "T", function()
+			hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+		end, { remap = true })
+	end,
 }

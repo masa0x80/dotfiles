@@ -29,14 +29,12 @@ M.preview = function(path)
 	vim.fn.execute(string.format("!open '%s'", path))
 end
 
-M.load = function(name)
-	return function()
-		local path = string.format(vim.fn.expand("$HOME") .. "/.config.local/nvim/lua/plugins/%s.lua", name)
-		if vim.fn.filereadable(path) == 1 then
-			vim.fn.execute("luafile " .. path)
-		else
-			require(string.format("plugins.%s", name))
-		end
+M.require = function(name)
+	local path = string.format(vim.fn.expand("$HOME") .. "/.config.local/nvim/lua/%s.lua", string.gsub(name, "%.", "/"))
+	if vim.fn.filereadable(path) == 1 then
+		vim.fn.execute("luafile " .. path)
+	else
+		require(name)
 	end
 end
 

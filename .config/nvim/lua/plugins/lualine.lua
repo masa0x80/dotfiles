@@ -3,11 +3,215 @@ return {
 		"nvim-lualine/lualine.nvim",
 		version = "*",
 		event = "VeryLazy",
-		config = require("utils").load("conf/lualine"),
+		config = function()
+			local filename = {
+				"filename",
+
+				-- 0: Just the filename
+				-- 1: Relative path
+				-- 2: Absolute path
+				-- 3: Absolute path, with tilde as the home directory
+				path = 1,
+				separator = { left = "", right = "" },
+			}
+
+			local lsp_names = function()
+				local clients = {}
+				for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+					table.insert(clients, client.name)
+				end
+				local ft = vim.api.nvim_eval("&filetype")
+				local linters = require("lint").linters_by_ft[ft]
+				for _, linter in ipairs(linters ~= nil and linters or {}) do
+					if not vim.tbl_contains(clients, linter) then
+						table.insert(clients, linter)
+					end
+				end
+				local filetype = require("conform").formatters_by_ft[ft]
+				for _, formatter in
+					ipairs(vim.tbl_filter(function(f)
+						return not vim.tbl_contains(vim.tbl_keys(require("utils").hidden_formatters), f)
+					end, filetype or {}))
+				do
+					if not vim.tbl_contains(clients, formatter) then
+						table.insert(clients, formatter)
+					end
+				end
+				return #clients == 0 and "" or " " .. table.concat(clients, ", ")
+			end
+
+			-- ref. 【Neovim】lualineの表示をカスタムしてみる。Visualモードで選択された行数、文字数を表示してみる https://zenn.dev/glaucus03/articles/ff710d27de4e55
+			local function selectionCount()
+				local mode = vim.fn.mode()
+
+				-- 選択モードでない場合には無効
+				if not (mode:find("[vV\22]") ~= nil) then
+					return ""
+				end
+
+				local line1 = vim.fn.line("v")
+				local line2 = vim.fn.line(".")
+				local pos1 = vim.fn.col("v")
+				local pos2 = vim.fn.col(".")
+
+				if line1 == line2 and pos1 > pos2 then
+					local tmp = pos1
+					pos1 = pos2
+					pos2 = tmp
+				elseif line1 > line2 then
+					local tmp = line1
+					line1 = line2
+					line2 = tmp
+					tmp = pos1
+					pos1 = pos2
+					pos2 = tmp
+				end
+
+				if mode == "V" then
+					-- 行選択モードの場合は、各行全体をカウントする
+					pos1 = 1
+					pos2 = vim.fn.strlen(vim.fn.getline(line2)) + 1
+				end
+
+				local lines = vim.fn.getline(line1, line2)
+
+				local n = vim.fn.len(lines)
+				if mode == "V" then
+					lines[1] = lines[1]:sub(1, vim.fn.len(lines[1]))
+					lines[n] = lines[n]:sub(1, vim.fn.len(lines[n]))
+				else
+					if n == 1 then
+						lines = { lines[1]:sub(pos1, pos2) }
+					else
+						lines[1] = lines[1]:sub(pos1, vim.fn.len(lines[1]))
+						lines[n] = lines[n]:sub(1, pos2)
+					end
+				end
+
+				local str = vim.fn.join(lines, "")
+				local chars = vim.fn.strchars(str)
+				return tostring(n) .. " lines, " .. tostring(chars) .. " characters"
+			end
+
+			local palette = require("catppuccin.palettes").get_palette("macchiato")
+			local transparent_bg = palette.mantle
+			local theme = {
+				normal = {
+					a = { bg = palette.blue, fg = palette.mantle, gui = "bold" },
+					b = { bg = palette.surface0, fg = palette.blue },
+					c = { bg = transparent_bg, fg = palette.text },
+				},
+				insert = {
+					a = { bg = palette.green, fg = palette.base, gui = "bold" },
+					b = { bg = palette.surface0, fg = palette.green },
+				},
+				terminal = {
+					a = { bg = palette.green, fg = palette.base, gui = "bold" },
+					b = { bg = palette.surface0, fg = palette.green },
+				},
+				command = {
+					a = { bg = palette.peach, fg = palette.base, gui = "bold" },
+					b = { bg = palette.surface0, fg = palette.peach },
+				},
+				visual = {
+					a = { bg = palette.mauve, fg = palette.base, gui = "bold" },
+					b = { bg = palette.surface0, fg = palette.mauve },
+				},
+				replace = {
+					a = { bg = palette.red, fg = palette.base, gui = "bold" },
+					b = { bg = palette.surface0, fg = palette.red },
+				},
+				inactive = {
+					a = { bg = transparent_bg, fg = palette.blue },
+					b = { bg = transparent_bg, fg = palette.surface1, gui = "bold" },
+					c = { bg = transparent_bg, fg = palette.overlay0 },
+				},
+			}
+
+			require("lualine").setup({
+				options = {
+					theme = theme,
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+					always_show_tabline = false,
+				},
+				sections = {
+					lualine_a = { { "mode", separator = { left = "", right = "" } } },
+					lualine_b = { "diff", "diagnostics" },
+					lualine_c = { lsp_names },
+					lualine_x = { selectionCount },
+					lualine_y = { "encoding", "fileformat", "filetype" },
+					lualine_z = { "location", { "progress", separator = { left = "", right = "" } } },
+				},
+				tabline = {
+					lualine_a = {
+						{
+							"tabs",
+							separator = { left = "", right = "" },
+						},
+					},
+					lualine_b = {},
+					lualine_c = {
+						{
+							"navic",
+							color_correction = "static",
+						},
+					},
+				},
+				winbar = {
+					lualine_a = { filename },
+					lualine_b = {
+						{
+							"navic",
+							color_correction = "static",
+							cond = function()
+								return #vim.fn.gettabinfo() == 1
+							end,
+						},
+					},
+					lualine_c = {},
+				},
+				inactive_winbar = {
+					lualine_a = {
+						vim.tbl_extend("force", filename, {
+							separator = { left = "", right = "" },
+						}),
+					},
+				},
+			})
+		end,
 	},
 	{
 		"SmiteshP/nvim-navic",
 		version = "*",
-		config = require("utils").load("conf/navic"),
+		config = function()
+			local lspkind = require("lspkind")
+			local navic = require("nvim-navic")
+			navic.setup({
+				icons = {
+					File = lspkind.symbol_map["File"] .. " ",
+					Module = lspkind.symbol_map["Module"] .. " ",
+					Class = lspkind.symbol_map["Class"] .. " ",
+					Method = lspkind.symbol_map["Method"] .. " ",
+					Property = lspkind.symbol_map["Property"] .. " ",
+					Field = lspkind.symbol_map["Field"] .. " ",
+					Constructor = lspkind.symbol_map["Constructor"] .. " ",
+					Enum = lspkind.symbol_map["Enum"] .. " ",
+					Interface = lspkind.symbol_map["Interface"] .. " ",
+					Function = lspkind.symbol_map["Function"] .. " ",
+					Variable = lspkind.symbol_map["Variable"] .. " ",
+					Constant = lspkind.symbol_map["Constant"] .. " ",
+					EnumMember = lspkind.symbol_map["EnumMember"] .. " ",
+					Struct = lspkind.symbol_map["Struct"] .. " ",
+					Event = lspkind.symbol_map["Event"] .. " ",
+					Operator = lspkind.symbol_map["Operator"] .. " ",
+				},
+				lsp = {
+					auto_attach = true,
+				},
+				highlight = true,
+				depth_limit = 9,
+			})
+		end,
 	},
 }

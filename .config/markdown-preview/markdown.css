@@ -558,4 +558,5 @@ s {
   max-width: initial;
   min-height: 100vh;
   margin-bottom: 50vh;
+  background: var(--color-bg-primary);
 }

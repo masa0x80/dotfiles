@@ -1,3 +1,4 @@
+local require = require("utils").require
 require("misc.age")
 require("misc.gh")
 require("misc.markdown")

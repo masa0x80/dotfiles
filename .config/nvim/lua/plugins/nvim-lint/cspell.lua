@@ -4,7 +4,7 @@
 
 local cspell_config_dir = vim.fn.expand("$XDG_CONFIG_HOME/cspell")
 local cspell_data_dir = vim.fn.expand("$XDG_DATA_HOME/cspell")
-local dotfiles_local_dir = vim.fn.expand("~/.config.local/cspell")
+local dotfiles_local_dir = vim.fn.expand("$HOME/.config.local/cspell")
 local cspell_files = {
 	config = cspell_config_dir .. "/cspell.json",
 	dotfiles = cspell_config_dir .. "/dotfiles.txt",

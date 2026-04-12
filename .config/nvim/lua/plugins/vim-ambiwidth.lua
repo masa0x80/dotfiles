@@ -1,5 +1,7 @@
 return {
 	"rbtnn/vim-ambiwidth",
 	lazy = false,
-	init = require("utils").load("init/vim-ambiwidth"),
+	init = function()
+		vim.g.ambiwidth_cica_enabled = false
+	end,
 }

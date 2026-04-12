@@ -4,7 +4,12 @@ return {
 		version = "*",
 		cmd = "Copilot",
 		event = "InsertEnter",
-		config = require("utils").load("conf/copilot"),
+		config = function()
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
+		end,
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",

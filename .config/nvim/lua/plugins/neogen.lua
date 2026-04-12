@@ -1,7 +1,6 @@
 return {
 	"danymat/neogen",
 	version = "*",
-	opts = {},
 	keys = {
 		{
 			"<Leader>dF",
@@ -24,5 +23,7 @@ return {
 			desc = "neogen: type",
 		},
 	},
-	config = require("utils").load("conf/neogen"),
+	config = function()
+		require("neogen").setup({})
+	end,
 }

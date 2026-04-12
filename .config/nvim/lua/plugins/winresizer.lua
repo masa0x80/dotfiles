@@ -4,5 +4,7 @@ return {
 	keys = {
 		{ "<C-g><C-r>", nil, desc = "WinResizer" },
 	},
-	init = require("utils").load("init/winresizer"),
+	init = function()
+		vim.g.winresizer_start_key = "<C-g><C-r>"
+	end,
 }

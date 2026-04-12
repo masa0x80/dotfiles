@@ -3,7 +3,38 @@ return {
 		"petertriho/nvim-scrollbar",
 		version = "*",
 		event = { "BufNewFile", "BufRead" },
-		config = require("utils").load("conf/nvim-scrollbar"),
+		config = function()
+			local map = vim.keymap.set
+			map("n", "*", function()
+				require("lasterisk").search()
+				require("hlslens").start()
+			end)
+
+			map({ "n", "x" }, "g*", function()
+				require("lasterisk").search({ is_whole = false, silent = true })
+				require("hlslens").start()
+			end)
+
+			require("scrollbar").setup({
+				hide_if_all_visible = true,
+				marks = {
+					Search = {
+						highlight = "Orange",
+					},
+				},
+				excluded_filetypes = {
+					"",
+					"cmp_docs",
+					"cmp_menu",
+					"noice",
+					"prompt",
+					"TelescopePrompt",
+				},
+				handlers = {
+					search = true, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
+				},
+			})
+		end,
 	},
 	{
 		"rapan931/lasterisk.nvim",
