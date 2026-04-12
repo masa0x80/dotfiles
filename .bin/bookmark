@@ -3,6 +3,8 @@
 set -euo pipefail
 
 () {
+  echo -ne "\033]2;Bookmark Searcher\007"
+
   : ${BOOKMARKS_DIR:=$SCRAPBOOK_DIR/bookmarks}
   cd "$BOOKMARKS_DIR"
 
