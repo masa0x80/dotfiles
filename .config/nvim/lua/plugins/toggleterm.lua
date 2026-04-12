@@ -27,7 +27,7 @@ return {
 	config = function()
 		require("toggleterm").setup({
 			open_mapping = [[<C-\>]],
-			direction = "horizontal",
+			direction = "float",
 			float_opts = {
 				border = "curved",
 			},
