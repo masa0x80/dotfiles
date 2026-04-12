@@ -31,6 +31,7 @@ install: \
 	bat \
 	silicon \
 	sheldon \
+	claude \
 	passage \
 	term-definition \
 	gen-zshrc
@@ -88,10 +89,6 @@ mise:
 	mise install -y
 	mise up
 
-.PHONY: python
-python: mise
-	mise x -- pip install --upgrade pip
-
 # rust {{{
 
 .PHONY: rust-update
@@ -118,6 +115,10 @@ navi: brew
 .PHONY: sheldon
 sheldon:
 	./scripts/sheldon
+
+.PHONY: claude
+claude:
+	./scripts/claude
 
 .PHONY: passage
 passage:

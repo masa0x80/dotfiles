@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if type -q clude; then
+  echo "Claude is already installed."
+  exit 0
+else
+  curl -fsSL https://claude.ai/install.sh | bash
+fi

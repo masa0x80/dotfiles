@@ -39,5 +39,6 @@ for file (
 path=(
   $HOME/.bin.local(N-/)
   $HOME/.bin(N-/)
+  $HOME/.local/bin(N-/)
   $path
 )
