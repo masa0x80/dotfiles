@@ -2,6 +2,36 @@ local compose_path = vim.fn.expand("$DOTFILE/etc/plantuml/compose.yaml")
 local tmp_dir = "/tmp/plantuml-viewer/"
 local port = 8765
 
+local preview_bufnr = nil
+
+-- NOTE: dangerouslySetInnerHTML では <script> は実行されないけど <img onerror> は実行される
+local image_zoom_script =
+	[[<img src='_' onerror="if(!window._imgClick){window._imgClick=true;document.addEventListener('click',function(e){var t=e.target;if(t.tagName==='IMG'){t.classList.toggle('enlarged')}else{document.querySelectorAll('img.enlarged').forEach(function(i){i.classList.remove('enlarged')})}})}" style="display:none">]]
+
+local function remove_preview_script(bufnr)
+	local count = vim.api.nvim_buf_line_count(bufnr)
+	local last = vim.api.nvim_buf_get_lines(bufnr, count - 1, count, false)
+	if #last > 0 and last[1] == image_zoom_script then
+		vim.api.nvim_buf_set_lines(bufnr, count - 1, count, false, {})
+	end
+end
+
+local function cleanup_preview()
+	if not preview_bufnr then
+		return
+	end
+
+	local bufnr = preview_bufnr
+	preview_bufnr = nil
+
+	pcall(vim.api.nvim_del_augroup_by_name, "MarkdownPreview")
+
+	if vim.api.nvim_buf_is_valid(bufnr) then
+		remove_preview_script(bufnr)
+		vim.bo[bufnr].modified = false
+	end
+end
+
 local function start_plantuml_server()
 	vim.system({ "docker", "compose", "-f", compose_path, "up", "-d" }, { text = true }, function(obj)
 		if obj.code ~= 0 then
@@ -45,8 +75,65 @@ vim.api.nvim_create_user_command("StopPlantUmlServer", stop_plantuml_server, {})
 
 vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 	start_plantuml_server()
+
+	cleanup_preview()
+
+	-- プレビュー用の加工
+	local bufnr = vim.fn.bufnr()
+	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+	table.insert(lines, image_zoom_script)
+	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+	vim.bo[bufnr].modified = false
+
 	vim.cmd("MarkdownPreview")
+
+	preview_bufnr = bufnr
+	local group_id = vim.api.nvim_create_augroup("MarkdownPreview", { clear = true })
+
+	-- BufWritePreでスクリプトを消す
+	vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+		group = group_id,
+		buffer = bufnr,
+		callback = function()
+			if not preview_bufnr then
+				return
+			end
+
+			remove_preview_script(bufnr)
+		end,
+	})
+
+	-- BufWritePOstでスクリプトを再度挿入
+	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+		group = group_id,
+		buffer = bufnr,
+		callback = function()
+			if not preview_bufnr then
+				return
+			end
+
+			local cur = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+			table.insert(cur, image_zoom_script)
+			vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, cur)
+			vim.bo[bufnr].modified = false
+		end,
+	})
+
+	vim.api.nvim_create_autocmd({ "BufDelete", "BufWipeout" }, {
+		group = group_id,
+		buffer = bufnr,
+		callback = function()
+			cleanup_preview()
+		end,
+	})
+	vim.api.nvim_create_autocmd({ "VimLeave" }, {
+		group = group_id,
+		callback = function()
+			cleanup_preview()
+		end,
+	})
 end, {})
+
 vim.api.nvim_create_user_command("PlantUMLPreview", function()
 	start_plantuml_server()
 	local filename = vim.fn.expand("%:t")
@@ -66,7 +153,7 @@ vim.api.nvim_create_user_command("PlantUMLPreview", function()
 		("http://localhost:%d/viewer.html?filename=%s"):format(port2, filename),
 	})
 	local group = vim.api.nvim_create_augroup("PlantUMLPreview:" .. filename, { clear = true })
-	require("utils").create_autocmd({ "BufWritePost" }, {
+	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 		group = group,
 		buffer = vim.fn.bufnr(),
 		callback = write_svg,
