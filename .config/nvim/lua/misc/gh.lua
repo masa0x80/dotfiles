@@ -1,3 +1,7 @@
+vim.api.nvim_create_user_command("GhBrowse", function()
+	vim.fn.system("gh browse")
+end, {})
+
 vim.api.nvim_create_user_command("GhOpenPR", function()
 	vim.fn.system("gh pr view --web")
 end, {})
