@@ -41,4 +41,11 @@ return {
 		end,
 		desc = "Git Log File",
 	},
+	{
+		"<Leader>gb",
+		function()
+			Snacks.gitbrowse()
+		end,
+		desc = "GitBrowse",
+	},
 }

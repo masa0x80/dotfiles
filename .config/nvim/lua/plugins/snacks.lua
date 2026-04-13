@@ -19,6 +19,7 @@ return {
 		bigfile = { enabled = true },
 		dashboard = { enabled = false },
 		explorer = { enabled = true },
+		gitbrowse = { enabled = true },
 		image = { enabled = false },
 		indent = { enabled = false },
 		input = { enabled = true },
