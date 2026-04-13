@@ -78,4 +78,21 @@ M.explorer_opts = {
 	},
 }
 
+-- Git管理化ならgit_files、そうでなければfilesを使う
+-- @param opts? table additional options (cwd, sort, etc.)
+M.smart_files = function(opts)
+	opts = opts or {}
+	local root = require("snacks.git").get_root()
+	if root == nil then
+		Snacks.picker.files(vim.tbl_deep_extend("force", {
+			hidden = true,
+			ignored = true,
+		}, opts))
+	else
+		Snacks.picker.git_files(vim.tbl_deep_extend("force", {
+			untracked = true,
+		}, opts))
+	end
+end
+
 return M
