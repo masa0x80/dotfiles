@@ -1,6 +1,6 @@
 return {
 	{
-		"<Leader>gb",
+		"<Leader>gB",
 		function()
 			Snacks.picker.git_branches()
 		end,
@@ -47,13 +47,5 @@ return {
 			Snacks.picker.git_log_file()
 		end,
 		desc = "Git Log File",
-	},
-	{
-		"<Leader>gB",
-		function()
-			Snacks.gitbrowse()
-		end,
-		desc = "Git Browse",
-		mode = { "n", "v" },
 	},
 }
