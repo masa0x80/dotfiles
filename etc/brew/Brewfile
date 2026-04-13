@@ -106,3 +106,5 @@ brew "gitmux"
 brew "k1LoW/tap/mo"
 brew "homeport/tap/dyff"
 brew "Arthur-Ficial/tap/apfel"
+
+brew "use-tusk/tap/fence"
