@@ -62,29 +62,6 @@ return {
 		end,
 	},
 	{
-		"ruifm/gitlinker.nvim",
-		version = "*",
-		event = "VeryLazy",
-		config = function()
-			local map = vim.keymap.set
-			map("n", "<Leader>gb", function()
-				require("gitlinker").get_buf_range_url(
-					"n",
-					{ action_callback = require("gitlinker.actions").open_in_browser }
-				)
-			end, { silent = true, desc = "Open GitHub URL for current line in browser" })
-			map("v", "<Leader>gb", function()
-				require("gitlinker").get_buf_range_url(
-					"v",
-					{ action_callback = require("gitlinker.actions").open_in_browser }
-				)
-			end, { silent = true, desc = "Open GitHub URL for current selected lines in browser" })
-			vim.api.nvim_create_user_command("GhBrowse", function()
-				require("gitlinker").get_repo_url({ action_callback = require("gitlinker.actions").open_in_browser })
-			end, {})
-		end,
-	},
-	{
 		"lewis6991/gitsigns.nvim",
 		version = "*",
 		event = { "BufNewFile", "BufRead" },

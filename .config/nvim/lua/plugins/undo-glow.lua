@@ -1,42 +1,45 @@
-local palette = require("catppuccin.palettes").get_palette("macchiato")
-
 return {
 	"y3owk1n/undo-glow.nvim",
 	version = "*",
 	event = { "VeryLazy" },
+	dependencies = { "catppuccin/nvim" },
 	---@type UndoGlow.Config
-	opts = {
-		animation = {
-			enabled = true,
-			duration = 300,
-			animation_type = "zoom",
-			window_scoped = true,
-		},
-		highlights = {
-			undo = {
-				hl_color = { bg = palette.red },
+	opts = function()
+		local palette = require("catppuccin.palettes").get_palette("macchiato")
+
+		return {
+			animation = {
+				enabled = true,
+				duration = 300,
+				animation_type = "zoom",
+				window_scoped = true,
 			},
-			redo = {
-				hl_color = { bg = palette.green },
+			highlights = {
+				undo = {
+					hl_color = { bg = palette.red },
+				},
+				redo = {
+					hl_color = { bg = palette.green },
+				},
+				yank = {
+					hl_color = { bg = palette.yellow },
+				},
+				paste = {
+					hl_color = { bg = palette.peach },
+				},
+				search = {
+					hl_color = { bg = palette.mauve },
+				},
+				comment = {
+					hl_color = { bg = palette.teal },
+				},
+				cursor = {
+					hl_color = { bg = palette.sky },
+				},
 			},
-			yank = {
-				hl_color = { bg = palette.yellow },
-			},
-			paste = {
-				hl_color = { bg = palette.peach },
-			},
-			search = {
-				hl_color = { bg = palette.mauve },
-			},
-			comment = {
-				hl_color = { bg = palette.teal },
-			},
-			cursor = {
-				hl_color = { bg = palette.sky },
-			},
-		},
-		priority = 2048 * 3,
-	},
+			priority = 2048 * 3,
+		}
+	end,
 	keys = {
 		{
 			"u",
