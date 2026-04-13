@@ -2,7 +2,7 @@ return {
 	"klen/nvim-config-local",
 	version = "*",
 	lazy = false,
-	confing = function()
+	config = function()
 		require("config-local").setup({
 			config_files = { ".nvim/local.lua" },
 			hashfile = vim.fn.stdpath("data") .. "/config-local",

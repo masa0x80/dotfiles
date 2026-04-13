@@ -25,7 +25,6 @@ install: \
 	brew-init \
 	brew \
 	mise \
-	python \
 	navi \
 	tmux-plugins \
 	bat \

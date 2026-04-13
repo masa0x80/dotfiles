@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if type -q clude; then
+if [ -x "$HOME/.local/bin/claude" ]; then
   echo "Claude is already installed."
   exit 0
 else
