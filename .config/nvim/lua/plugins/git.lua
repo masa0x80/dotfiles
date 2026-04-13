@@ -173,7 +173,7 @@ return {
 					end, { desc = "Gitsigns: diffthis('~')" })
 					map("n", "<C-,>gtd", gs.toggle_deleted, { desc = "Gitsigns: toggle_deleted" })
 					map("n", "<C-,>gtb", gs.toggle_current_line_blame, { desc = "Gitsigns: toggle_current_line_blame" })
-					map("n", "<C-,>gb", function()
+					map("n", "<Leader>gB", function()
 						gs.blame_line({ full = true })
 					end, { desc = "Gitsigns: blame_line" })
 

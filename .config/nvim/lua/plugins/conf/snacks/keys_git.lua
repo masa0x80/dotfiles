@@ -1,12 +1,5 @@
 return {
 	{
-		"<Leader>gB",
-		function()
-			Snacks.picker.git_branches()
-		end,
-		desc = "Git Branches",
-	},
-	{
 		"<leader>gl",
 		function()
 			Snacks.picker.git_log_line()
