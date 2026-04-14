@@ -9,10 +9,11 @@ local image_zoom_script =
 	[[<img src='_' onerror="if(!window._imgClick){window._imgClick=true;document.addEventListener('click',function(e){var t=e.target;if(t.tagName==='IMG'){t.classList.toggle('enlarged')}else{document.querySelectorAll('img.enlarged').forEach(function(i){i.classList.remove('enlarged')})}})}" style="display:none">]]
 
 local function remove_preview_script(bufnr)
-	local count = vim.api.nvim_buf_line_count(bufnr)
-	local last = vim.api.nvim_buf_get_lines(bufnr, count - 1, count, false)
-	if #last > 0 and last[1] == image_zoom_script then
-		vim.api.nvim_buf_set_lines(bufnr, count - 1, count, false, {})
+	local first = vim.api.nvim_buf_get_lines(bufnr, 0, 2, false)
+	if #first > 2 and first[1] == image_zoom_script and first[2] == "" then
+		vim.api.nvim_buf_set_lines(bufnr, 0, 2, false, {})
+	elseif #first > 1 and first[1] == image_zoom_script then
+		vim.api.nvim_buf_set_lines(bufnr, 0, 1, false, {})
 	end
 end
 
@@ -81,7 +82,8 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 	-- プレビュー用の加工
 	local bufnr = vim.fn.bufnr()
 	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-	table.insert(lines, image_zoom_script)
+	table.insert(lines, 1, image_zoom_script)
+	table.insert(lines, 2, "")
 	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
 	vim.bo[bufnr].modified = false
 
@@ -113,7 +115,8 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 			end
 
 			local cur = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-			table.insert(cur, image_zoom_script)
+			table.insert(cur, 1, image_zoom_script)
+			table.insert(cur, 2, "")
 			vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, cur)
 			vim.bo[bufnr].modified = false
 		end,

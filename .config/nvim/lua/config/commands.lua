@@ -89,7 +89,7 @@ end, {
 vim.api.nvim_create_user_command("AddAbbrComma", function(opts)
 	local k = opts.fargs[1]
 	local v = opts.fargs[2]
-	local cmd = "iabbr " .. k .. " " .. v .. ":<Space>"
+	local cmd = "iabbr " .. k .. " " .. v .. ":"
 	vim.fn.execute(cmd)
 end, {
 	nargs = "*",
@@ -145,6 +145,6 @@ end, {
 
 vim.api.nvim_create_user_command("RestoreCursor", function()
 	if pcall(vim.cmd, "marks m", { silent = true }) then
-		vim.cmd("normal! `mzt10k10j")
+		vim.cmd("normal! `mzt")
 	end
 end, {})
