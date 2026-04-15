@@ -63,7 +63,7 @@ if (( ${+commands[fzf]} )); then
     }
 
     fzf-t-widget() {
-      if test "$LBUFFER" = "cd "; then
+      if [[ $LBUFFER = "cd " ]]; then
         fzf-cd-widget
       else
         fzf-file-widget

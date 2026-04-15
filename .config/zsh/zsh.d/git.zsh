@@ -1,7 +1,27 @@
+git-add() {
+  IFS=$'\n'
+  for f in $(git -c color.status=always status -s | fzf -m --query="$@" \
+    --preview 'F=$(echo {2..} | sed "s|\"\(.*\)\"|\1|");
+      [[ {1} = "??" ]] && bat --color=always "$F" || \
+      [[ {} =~ "^D. " ]] && git diff --color=always --cached -- "$F" || \
+      [[ {} =~ "^[MA]. " ]] && git diff --color=always --staged -- "$F" || \
+      git diff --color=always -- "$F"' | cut -c4-); do
+    if [[ -z $BUFFER ]]; then
+      BUFFER="git add"
+    fi
+    f="./${f:Q}"
+    BUFFER+=" ${f:q}"
+    zle end-of-line
+    zle accept-line
+  done
+}
+zle -N git-add
+bindkey "^g^a" git-add
+
 git-switch-local-branch() {
   local branch=$(git branch --color=always --format='%(refname:short)' --sort=-committerdate -l | fzf +m +s --preview 'git log --color=always --graph {1} --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN"')
-  if test -n "$branch"; then
-    if test "$BUFFER" = ''; then
+  if [[ -n $branch ]]; then
+    if [[ -z $BUFFER ]]; then
       BUFFER="git switch $branch"
       zle end-of-line
       zle accept-line
@@ -18,7 +38,7 @@ bindkey "^g^b" git-switch-local-branch
 git-switch-remote-branch() {
   git fetch
   local branch=$(git branch --color=always --format='%(refname:short)' --sort=-committerdate -r | grep -Ev '^origin$' | fzf +m +s --query="$BUFFER" --preview 'git log --color=always --graph {1} --format="%C(auto)%h%d %s %C(blue)%cr %C(green)%cN"' | sed -e 's|origin/||')
-  if test -n "$branch"; then
+  if [[ -n $branch ]]; then
     git branch --format='%(refname:short)' --sort=-committerdate -l | grep -E -q "^${branch}$"
     if [ "$?" = 1 ]; then
       BUFFER="git switch -t origin/$branch"
