@@ -1,70 +1,51 @@
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
 install_before = "7d"
+paranoid = true
+disable_backends = ["asdf"]
 
 [settings.node]
 gpg_verify = false
 
 [tools]
-# https://app-updates.agilebits.com/product_history/CLI2
-1password-cli = "2.33.1"
+"aqua:aws/session-manager-plugin" = "latest"
 
-# https://github.com/rhysd/actionlint/releases
-actionlint = "1.7.12"
+actionlint = "latest"
 
-# https://github.com/aws/aws-cli/releases
-awscli = { version = "2.34.25", symlink_bins = "true" }
-# https://github.com/aws/aws-sam-cli/releases
-aws-sam-cli = "1.157.1"
-# https://github.com/99designs/aws-vault/releases
-aws-vault = "7.2.0"
+awscli = "latest"
+aws-sam-cli = "latest"
+aws-vault = "latest"
 
-# https://github.com/cli/cli/releases
-gh = "2.89.0"
+gh = "latest"
 
-# https://go.dev/dl/
-go = "1.26.1"
+go = "latest"
 
-# https://github.com/corretto/corretto-25/releases
-java = "corretto-25.0.2.10.1"
+java = "latest"
+gradle = "latest"
+groovy = "latest"
 
-# https://gradle.org/install/
-gradle = "9.4.0"
-# https://groovy.apache.org/download.html
-groovy = "5.0.5"
+jq = "latest"
 
-# https://github.com/jqlang/jq/releases
-jq = "1.8.1"
-
-# https://github.com/evilmartians/lefthook/releases
-lefthook = "2.1.4"
+lefthook = "latest"
 
 # https://github.com/neovim/neovim/releases
 neovim = "0.11.6"
 
-# https://nodejs.org/en/download
-node = "25.9.0"
-# https://github.com/denoland/deno/releases
-deno = "2.7.11"
+node = "latest"
+deno = "latest"
 
-# https://www.python.org/downloads/
-python = "3.14.3"
-# https://github.com/astral-sh/uv/releases
-uv = "0.11.6"
+op = "latest"
 
-# https://www.ruby-lang.org/en/downloads/releases/
-ruby = "4.0.2"
+python = "latest"
+uv = "latest"
 
-# https://github.com/rust-lang/rust/releases
-rust = "1.94.1"
+ruby = "latest"
 
-# https://github.com/getsops/sops/releases
-sops = "v3.12.2"
+rust = "latest"
 
-# https://github.com/hashicorp/terraform/releases
-terraform = "1.14.8"
-# https://github.com/terraform-docs/terraform-docs/releases
-terraform-docs = "0.21.0"
+sops = "latest"
 
-# https://github.com/tree-sitter/tree-sitter/releases
-tree-sitter = "0.26.8"
+terraform = "latest"
+terraform-docs = "latest"
+
+tree-sitter = "latest"
