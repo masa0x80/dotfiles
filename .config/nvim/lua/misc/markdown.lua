@@ -5,15 +5,33 @@ local port = 8765
 local preview_bufnr = nil
 
 -- NOTE: dangerouslySetInnerHTML では <script> は実行されないけど <img onerror> は実行される
+-- 画像拡大
 local image_zoom_script =
-	[[<img src='_' onerror="if(!window._imgClick){window._imgClick=true;document.addEventListener('click',function(e){var t=e.target;if(t.tagName==='IMG'){t.classList.toggle('enlarged')}else{document.querySelectorAll('img.enlarged').forEach(function(i){i.classList.remove('enlarged')})}})}" style="display:none">]]
+	[[<img src='_' onerror="if(!window._imgClick){window._imgClick=true;document.addEventListener('click',function(e){var t=e.target;if(t.tagName==='IMG'){t.classList.toggle('enlarged')}else{document.querySelectorAll('img.enlarged').forEach(function(i){i.classList.remove('enlarged')})}})}" style="display:none;">]]
+-- GitHub-stle Alerts
+local alert_script =
+	[=[<img src='_' onerror="if(!window._ghAlert){window._ghAlert=true;var L={NOTE:'Note',TIP:'Tip',IMPORTANT:'Important',WARNING:'Warning',CAUTION:'Caution'};function _pa(){document.querySelectorAll('blockquote:not([data-alert])').forEach(function(b){var p=b.querySelector('p');if(!p)return;var m=p.textContent.match(/^\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/);if(!m)return;var tp=m[1].toLowerCase();b.setAttribute('data-alert',tp);b.className='markdown-alert markdown-alert-'+tp;var d=document.createElement('p');d.className='markdown-alert-title markdown-alert-title-'+tp;d.textContent=L[m[1]];p.innerHTML=p.innerHTML.replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/,'');b.insertBefore(d,b.firstChild);if(!p.textContent.trim()&&!p.innerHTML.trim())p.remove()})}_pa();new MutationObserver(_pa).observe(document.body||document.documentElement,{childList:true,subtree:true})}" style="display:none;">]=]
+-- detilsの開閉状態を保持
+local details_script =
+	[=[<img src='_' onerror="if(!window._ds){window._ds={};window._dr=false;document.addEventListener('toggle',function(e){if(window._dr)return;if(e.target.tagName==='DETAILS'){var a=document.querySelectorAll('details');for(var i=0;i<a.length;i++){if(a[i]===e.target){window._ds[i]=e.target.open;break}}}},true);new MutationObserver(function(){window._dr=true;document.querySelectorAll('details').forEach(function(d,i){if(window._ds[i]!==undefined)d.open=window._ds[i]});window._dr=false}).observe(document.body||document.documentElement,{childList:true,subtree:true})}" style="display:none;">]=]
 
+local scripts = { image_zoom_script, alert_script, details_script }
 local function remove_preview_script(bufnr)
-	local first = vim.api.nvim_buf_get_lines(bufnr, 0, 2, false)
-	if #first > 2 and first[1] == image_zoom_script and first[2] == "" then
-		vim.api.nvim_buf_set_lines(bufnr, 0, 2, false, {})
-	elseif #first > 1 and first[1] == image_zoom_script then
-		vim.api.nvim_buf_set_lines(bufnr, 0, 1, false, {})
+	local n = #scripts
+	local first = vim.api.nvim_buf_get_lines(bufnr, 0, n + 1, false)
+	local remove_count = 0
+	for i, script in ipairs(scripts) do
+		if first[i] == script then
+			remove_count = i
+		else
+			break
+		end
+	end
+	if remove_count > 0 and first[remove_count + 1] == "" then
+		remove_count = remove_count + 1
+	end
+	if remove_count > 0 then
+		vim.api.nvim_buf_set_lines(bufnr, 0, remove_count, false, {})
 	end
 end
 
@@ -82,8 +100,10 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 	-- プレビュー用の加工
 	local bufnr = vim.fn.bufnr()
 	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-	table.insert(lines, 1, image_zoom_script)
-	table.insert(lines, 2, "")
+	for i, script in ipairs(scripts) do
+		table.insert(lines, i, script)
+	end
+	table.insert(lines, #scripts + 1, "")
 	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
 	vim.bo[bufnr].modified = false
 
@@ -115,8 +135,10 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 			end
 
 			local cur = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-			table.insert(cur, 1, image_zoom_script)
-			table.insert(cur, 2, "")
+			for i, script in ipairs(scripts) do
+				table.insert(cur, i, script)
+			end
+			table.insert(cur, #scripts + 1, "")
 			vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, cur)
 			vim.bo[bufnr].modified = false
 		end,

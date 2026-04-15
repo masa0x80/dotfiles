@@ -560,3 +560,93 @@ s {
   margin-bottom: 50vh;
   background: var(--color-bg-primary);
 }
+
+.markdown-alert {
+  padding: 0.5em !important;
+  margin-bottom: 1em;
+  border-left: 4px solid;
+  color: var(--color-text-primary);
+  border-left-color: transparent !important;
+}
+.markdown-alert > :last-child {
+  margin-bottom: 0 !important;
+}
+.markdown-alert-title {
+  font-weight: 600;
+  margin-bottom: 0.25em !important;
+}
+.markdown-alert-note {
+  background-color: #ddf4ff;
+}
+.markdown-alert-title-note {
+  color: #0969da;
+}
+.markdown-alert-title-note::before {
+  content: "󰋽 ";
+}
+.markdown-alert-tip {
+  background-color: #dafbe1;
+}
+.markdown-alert-title-tip {
+  color: #1a7f37;
+}
+.markdown-alert-title-tip::before {
+  content: "󰌶 ";
+}
+.markdown-alert-important {
+  background-color: #fbefff;
+}
+.markdown-alert-title-important {
+  color: #8250df;
+}
+.markdown-alert-title-important::before {
+  content: "󰅾 ";
+}
+.markdown-alert-warning {
+  background-color: #fff8c5;
+}
+.markdown-alert-title-warning {
+  color: #9a6700;
+}
+.markdown-alert-title-warning::before {
+  content: "󰀪 ";
+}
+.markdown-alert-caution {
+  background-color: #ffebe9;
+}
+.markdown-alert-title-caution {
+  color: #cf222e;
+}
+.markdown-alert-title-caution::before {
+  content: "󰳦 ";
+}
+[data-theme="dark"] .markdown-alert-note {
+  background-color: #0c2d6b;
+}
+[data-theme="dark"] .markdown-alert-title-note {
+  color: #539bf5;
+}
+[data-theme="dark"] .markdown-alert-tip {
+  background-color: #0b3d1c;
+}
+[data-theme="dark"] .markdown-alert-title-tip {
+  color: #57ab5a;
+}
+[data-theme="dark"] .markdown-alert-important {
+  background-color: #2d1657;
+}
+[data-theme="dark"] .markdown-alert-title-important {
+  color: #b87fff;
+}
+[data-theme="dark"] .markdown-alert-warning {
+  background-color: #3b2e00;
+}
+[data-theme="dark"] .markdown-alert-title-warning {
+  color: #c69026;
+}
+[data-theme="dark"] .markdown-alert-caution {
+  background-color: #491318;
+}
+[data-theme="dark"] .markdown-alert-title-caution {
+  color: #e5534b;
+}
