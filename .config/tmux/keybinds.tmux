@@ -17,6 +17,9 @@ bind e select-window -t 3
 bind i select-window -t '{end}'\; select-window -t :-2
 bind o select-window -t '{end}'\; select-window -t :-
 bind p select-window -t '{end}'
+bind 8 select-window -t '{end}'\; select-window -t :-2
+bind 9 select-window -t '{end}'\; select-window -t :-
+bind 0 select-window -t '{end}'
 
 # Toggle Window
 bind C-s last-window
