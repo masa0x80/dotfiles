@@ -4,11 +4,12 @@ rules:
       space: never
       lintStyledNode: true
     ja-no-space-around-parentheses: true
+    ja-space-after-exclamation: false
+    ja-space-after-question: false
     ja-space-around-code:
       before: true
       after: true
-    ja-space-after-exclamation: false
-    ja-space-after-question: false
+    ja-space-around-link: true
   doubled-spaces: true
   no-zero-width-spaces: true
   terminology:

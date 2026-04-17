@@ -47,17 +47,6 @@ M.js_based_languages = {
 }
 
 M.hidden_formatters = {
-	delete_single_space_before_marks = {
-		command = "sed",
-		-- ' }}} は除外するために \@! を追加
-		args = { "s|\\(\\S\\) \\([。、)}]\\)\\@!|\\1\\2|g" },
-		stdin = true,
-	},
-	delete_single_space_after_marks = {
-		command = "sed",
-		args = { "s|\\([。、({]\\) \\(\\S\\)|\\1\\2|g" },
-		stdin = true,
-	},
 	delete_jira_status_icon = {
 		command = "sed",
 		args = {
@@ -67,21 +56,25 @@ M.hidden_formatters = {
 		},
 		stdin = true,
 	},
-	markdown_todo_format = {
+	space_around_links = {
 		command = "sed",
-		args = { "s|\\([-*+.)]\\) \\[\\]|\\1 [ ]|g" },
+		args = (function()
+			local open = "「『【（｛［〈《({[<｀'\"`\u{2018}\u{201c}"
+			local close = "」』】）｝］〉》)}]>｀'\"`\u{2019}\u{201d}"
+			local punct1 = "。、！？―〜＝：\\-~="
+			local punct2 = "。、！？―〜＝：\\-~=,\\.!?:"
+			local link = "\\[([^][]|[\\\\][][])*\\]\\([^)]*\\)"
+			return {
+				"-E",
+				-- リンク前にスペース（画像リンクと記号は除く）
+				("s/([^ \t!%s%s])(%s)/\\1 \\2/g; "):format(open, punct1, link)
+					-- 画像前にスペース
+					.. ("s/([^ \t%s%s])(!%s)/\\1 \\2/g; "):format(open, punct1, link)
+					-- リンク・画像の後ろにスペース（記号は除く）
+					.. ("s/(!?%s)([^ \t%s%s])/\\1 \\3/g"):format(link, close, punct2),
+			}
+		end)(),
 		stdin = true,
-	},
-	replace_ordered_list = {
-		command = "sed",
-		args = { "s|^\\(\\s*\\)[0-9]\\+[\\.)] |\\11. |g" },
-		stdin = true,
-	},
-	markdown_table_formatter = {
-		command = "markdown-table-formatter",
-		args = { "$FILENAME" },
-		exit_codes = { 0, 1 },
-		stdin = false,
 	},
 	injected = {},
 }

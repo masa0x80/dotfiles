@@ -7,7 +7,7 @@ local preview_bufnr = nil
 -- NOTE: dangerouslySetInnerHTML では <script> は実行されないけど <img onerror> は実行される
 -- 画像拡大
 local image_zoom_script =
-	[[<img src='_' onerror="if(!window._imgClick){window._imgClick=true;document.addEventListener('click',function(e){var t=e.target;if(t.tagName==='IMG'){t.classList.toggle('enlarged')}else{document.querySelectorAll('img.enlarged').forEach(function(i){i.classList.remove('enlarged')})}})}" style="display:none;">]]
+	[=[<img src='_' onerror="if(!window._imgClick){window._imgClick=true;document.addEventListener('click',function(e){var t=e.target;if(t.tagName==='IMG'){t.classList.toggle('enlarged');e.preventDefault();e.stopPropagation()}else{document.querySelectorAll('img.enlarged').forEach(function(i){i.classList.remove('enlarged')})}})}" style="display:none;">]=]
 -- GitHub-stle Alerts
 local alert_script =
 	[=[<img src='_' onerror="if(!window._ghAlert){window._ghAlert=true;var L={NOTE:'Note',TIP:'Tip',IMPORTANT:'Important',WARNING:'Warning',CAUTION:'Caution'};function _pa(){document.querySelectorAll('blockquote:not([data-alert])').forEach(function(b){var p=b.querySelector('p');if(!p)return;var m=p.textContent.match(/^\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/);if(!m)return;var tp=m[1].toLowerCase();b.setAttribute('data-alert',tp);b.className='markdown-alert markdown-alert-'+tp;var d=document.createElement('p');d.className='markdown-alert-title markdown-alert-title-'+tp;d.textContent=L[m[1]];p.innerHTML=p.innerHTML.replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/,'');b.insertBefore(d,b.firstChild);if(!p.textContent.trim()&&!p.innerHTML.trim())p.remove()})}_pa();new MutationObserver(_pa).observe(document.body||document.documentElement,{childList:true,subtree:true})}" style="display:none;">]=]

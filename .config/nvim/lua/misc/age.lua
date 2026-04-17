@@ -14,6 +14,7 @@ if recipient ~= nil and identity ~= nil then
 		pattern = "*.age",
 		callback = function()
 			local bufnr = vim.fn.bufnr()
+			vim.b[bufnr].bufnr = bufnr
 			vim.b[bufnr].line = vim.fn.line(".") - vim.fn.line("w0")
 			vim.cmd("normal! Hmz")
 			vim.cmd("silent '[,']!_en")
@@ -26,7 +27,7 @@ if recipient ~= nil and identity ~= nil then
 			vim.cmd("silent undo")
 			vim.cmd("silent! windo RestoreCursor")
 			local bufnr = vim.fn.bufnr()
-			vim.cmd(string.format("silent! normal! `zzt%sj", vim.b[bufnr].line))
+			vim.cmd(string.format("silent! normal! `zzt%dj", vim.b[bufnr].line))
 			if vim.g.formatter_enabled then
 				require("conform").format({
 					async = false,

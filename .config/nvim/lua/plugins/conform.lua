@@ -23,7 +23,7 @@ return {
 				command = "markdownlint-cli2",
 				args = {
 					"--config",
-					vim.fn.expand("$HOME/.config/markdownlint/.markdownlint.json"),
+					vim.fn.expand("$HOME/.config/markdownlint/.markdownlint.jsonc"),
 					"--format",
 				},
 				stdin = true,
@@ -55,11 +55,9 @@ return {
 				luau = { "stylua" },
 				python = { "black" },
 				markdown = {
-					"delete_single_space_before_marks",
-					"delete_single_space_after_marks",
 					"delete_jira_status_icon",
-					"markdown_todo_format",
-					"replace_ordered_list",
+					"space_around_links",
+
 					"textlint",
 					"markdownlint",
 				},
