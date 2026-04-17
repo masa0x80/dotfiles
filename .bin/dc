@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
 dc() {
-  local project_name=$(current_dir -)
+  local project_name="$(current_dir -)"
   local services=''
-  if test "$1" = up; then
+  if [[ $1 = up ]]; then
     local services=$(command ls | rg '(docker-)?compose(.local)?.ya?ml' | xargs yq eval -N '.services[] | path | .[-1] | select(. != "app")' *.y*ml | sort -u | fzf | tr '\n' ' ')
     test "$services" = '' && return
   fi
