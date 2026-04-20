@@ -143,9 +143,9 @@ end, {
 	range = 2,
 })
 
-vim.api.nvim_create_user_command("RestoreCursor", function()
-	local bufnr = vim.fn.bufnr()
-	if bufnr == vim.b[bufnr].bufnr and pcall(vim.cmd, "marks m", { silent = true }) then
+vim.api.nvim_create_user_command("RestoreCursor", function(opts)
+	local target_bufnr = tonumber(opts.args)
+	if target_bufnr and vim.fn.bufnr() == target_bufnr and pcall(vim.cmd, "silent marks m") then
 		vim.cmd("normal! `mzt")
 	end
-end, {})
+end, { nargs = "?" })
