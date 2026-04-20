@@ -112,37 +112,53 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 	preview_bufnr = bufnr
 	local group_id = vim.api.nvim_create_augroup("MarkdownPreview", { clear = true })
 
-	-- BufWritePreでスクリプトを消す
-	vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-		group = group_id,
-		buffer = bufnr,
-		callback = function()
-			if not preview_bufnr then
-				return
-			end
+	local pre_callback = function()
+		if not preview_bufnr then
+			return
+		end
 
-			remove_preview_script(bufnr)
-		end,
-	})
+		remove_preview_script(bufnr)
+	end
 
-	-- BufWritePOstでスクリプトを再度挿入
-	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-		group = group_id,
-		buffer = bufnr,
-		callback = function()
-			if not preview_bufnr then
-				return
-			end
+	local is_age = vim.fn.expand("%:e") == "age"
+	-- ageファイルの場合は保存前後でバッファーの内容を退避・復元するので、暗号化前のAgeEncryptPreだけでフックする
+	if is_age then
+		vim.api.nvim_create_autocmd({ "User" }, {
+			group = group_id,
+			pattern = "AgeEncryptPre",
+			callback = function()
+				if args.data.bufnr ~= bufnr then
+					return
+				end
 
-			local cur = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-			for i, script in ipairs(scripts) do
-				table.insert(cur, i, script)
-			end
-			table.insert(cur, #scripts + 1, "")
-			vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, cur)
-			vim.bo[bufnr].modified = false
-		end,
-	})
+				pre_callback()
+			end,
+		})
+	else
+		-- BufWritePreでスクリプトを消す
+		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+			group = group_id,
+			buffer = bufnr,
+			callback = pre_callback,
+		})
+		vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+			group = group_id,
+			buffer = bufnr,
+			callback = function()
+				if not preview_bufnr then
+					return
+				end
+
+				local cur = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+				for i, script in ipairs(scripts) do
+					table.insert(cur, i, script)
+				end
+				table.insert(cur, #scripts + 1, "")
+				vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, cur)
+				vim.bo[bufnr].modified = false
+			end,
+		})
+	end
 
 	vim.api.nvim_create_autocmd({ "BufDelete", "BufWipeout" }, {
 		group = group_id,

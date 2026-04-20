@@ -60,16 +60,6 @@ map("n", "<C-t>p", "<Cmd>tablast<CR>", { desc = "tablast" })
 map("n", "<C-,>re", ":<C-u>%s;<C-r><C-w>;g<Left><Left>;", { desc = "[re]place Current Word" })
 map("n", "<C-,>R", "*Ncgn", { desc = "[R]eplace Current Word `*cgn`" })
 
--- marks
-map("n", "<C-g><C-h>", "`zzt", { desc = "`zzt" })
-map("n", "<C-g><C-g><C-h>", function()
-	local bufnr = vim.fn.bufnr()
-	vim.cmd("windo RestoreCursor")
-	if vim.b[bufnr].line then
-		vim.cmd(string.format("normal! `zzt%sj", vim.b[bufnr].line))
-	end
-end, { desc = "`RestoreCursor & zzt" })
-
 map("n", "<C-;>C", "<Cmd>cd \\$PWD<CR><Cmd>pwd<CR>", { desc = "cd $PWD" })
 map("n", "<C-;>S", "<Cmd>cd \\$SCRAPBOOK_DIR<CR><Cmd>pwd<CR>", { desc = "cd $SCRAPBOOK_DIR" })
 
