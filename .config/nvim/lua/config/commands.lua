@@ -120,10 +120,10 @@ vim.api.nvim_create_user_command("ReplaceDate", function(opts)
 		pcall(vim.fn.execute, range .. "s/YYYY/" .. year .. "/g")
 	end
 	if month ~= nil then
-		pcall(vim.fn.execute, range .. "s/MM/" .. month .. "/g")
+		pcall(vim.fn.execute, range .. "s/MM/" .. tonumber(month) .. "/g")
 	end
 	if date ~= nil then
-		pcall(vim.fn.execute, range .. "s/DD/" .. date .. "/g")
+		pcall(vim.fn.execute, range .. "s/DD/" .. tonumber(date) .. "/g")
 	end
 	vim.fn.execute("nohlsearch")
 end, {
