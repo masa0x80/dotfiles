@@ -116,6 +116,12 @@ vim.api.nvim_create_user_command("ReplaceDate", function(opts)
 	else
 		range = "%"
 	end
+	if year ~= nil and month ~= nil and date ~= nil then
+		pcall(vim.fn.execute, range .. "s/YYYY-MM-DD/" .. string.format("%s-%s-%s", year, month, date) .. "/g")
+	end
+	if year ~= nil and month ~= nil then
+		pcall(vim.fn.execute, range .. "s/YYYY-MM/" .. string.format("%s-%s", year, month) .. "/g")
+	end
 	if year ~= nil then
 		pcall(vim.fn.execute, range .. "s/YYYY/" .. year .. "/g")
 	end
