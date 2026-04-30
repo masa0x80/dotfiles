@@ -55,6 +55,7 @@ if recipient ~= nil and identity ~= nil then
 					range = nil,
 				})
 			end
+			vim.api.nvim_exec_autocmds("User", { pattern = "AgeEncryptPost", data = { bufnr = bufnr } })
 		end,
 	})
 end

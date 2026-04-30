@@ -112,12 +112,18 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 	preview_bufnr = bufnr
 	local group_id = vim.api.nvim_create_augroup("MarkdownPreview", { clear = true })
 
+	local pos
 	local pre_callback = function()
 		if not preview_bufnr then
 			return
 		end
 
 		remove_preview_script(bufnr)
+		pos = vim.api.nvim_win_get_cursor(0)
+	end
+
+	local ajust_cursor = function(pos)
+		vim.api.nvim_win_set_cursor(0, { pos[1] + 4, pos[2] })
 	end
 
 	local is_age = vim.fn.expand("%:e") == "age"
@@ -127,11 +133,19 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 			group = group_id,
 			pattern = "AgeEncryptPre",
 			callback = function()
+				pos = vim.api.nvim_win_get_cursor(0)
 				if args.data.bufnr ~= bufnr then
 					return
 				end
 
 				pre_callback()
+			end,
+		})
+		vim.api.nvim_create_autocmd({ "User" }, {
+			group = group_id,
+			pattern = "AgeEncryptPost",
+			callback = function()
+				ajust_cursor(pos)
 			end,
 		})
 	else
@@ -156,6 +170,7 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 				table.insert(cur, #scripts + 1, "")
 				vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, cur)
 				vim.bo[bufnr].modified = false
+				ajust_cursor(pos)
 			end,
 		})
 	end

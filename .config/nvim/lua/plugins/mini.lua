@@ -8,7 +8,7 @@ return {
 		"nvim-mini/mini.ai",
 		version = "*",
 		event = "VeryLazy",
-		cofnig = function()
+		config = function()
 			local gen_ai_spec = require("mini.extra").gen_ai_spec
 			require("mini.ai").setup({
 				custom_textobjects = {
