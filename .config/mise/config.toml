@@ -4,6 +4,9 @@ install_before = "7d"
 paranoid = true
 disable_backends = ["asdf"]
 
+[settings.github]
+use_git_credentials = true
+
 [settings.node]
 gpg_verify = false
 
