@@ -57,26 +57,20 @@ eval $cmd
 EOF
   chmod +x $preview
 
-  selected="$(
-    FZF_DEFAULT_COMMAND="$and_search filtered" \
-      fzf --sort --ansi \
-        --bind "change:reload:$and_search \$(cat $state_file) {q}" \
-        --bind "ctrl-o:execute-silent:open 'obsidian://open?path=$BOOKMARKS_DIR/{1}'" \
-        --bind "ctrl-t:execute-silent([[ \$(cat $state_file) == 'filtered' ]] && echo 'all' > $state_file || echo 'filtered' > $state_file)+transform:[[ \$(cat $state_file) == 'all' ]] \
-            && echo \"reload($and_search all {q})+change-border-label('🌐 全記事 $suffix')\" \
-            || echo \"reload($and_search filtered {q})+change-border-label('📌 $rg_filter $suffix')\"" \
-        --bind ctrl-u:page-up,ctrl-d:page-down,ctrl-j:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-/:deselect-all,ctrl-q:deselect-all \
-        --border-label="📌 $rg_filter $suffix" \
-        --border=rounded \
-        --phony -q "" \
-        --preview="$preview {} {q}" \
-        --preview-window="bottom,80%,wrap"
-  )"
+  FZF_DEFAULT_COMMAND="$and_search filtered" \
+    fzf --sort --ansi \
+      --bind "change:reload:$and_search \$(cat $state_file) {q}" \
+      --bind "enter:execute-silent:open \"\$(head -n1 {1} | sed -e 's|^# \[.*\](\(.*\)).*|\1|')\"" \
+      --bind "ctrl-o:execute-silent:open 'obsidian://open?path=$BOOKMARKS_DIR/{1}'" \
+      --bind "ctrl-t:execute-silent([[ \$(cat $state_file) == 'filtered' ]] && echo 'all' > $state_file || echo 'filtered' > $state_file)+transform:[[ \$(cat $state_file) == 'all' ]] \
+          && echo \"reload($and_search all {q})+change-border-label('🌐 全記事 $suffix')\" \
+          || echo \"reload($and_search filtered {q})+change-border-label('📌 $rg_filter $suffix')\"" \
+      --bind ctrl-u:page-up,ctrl-d:page-down,ctrl-j:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-/:deselect-all,ctrl-q:deselect-all \
+      --border-label="📌 $rg_filter $suffix" \
+      --border=rounded \
+      --phony -q "" \
+      --preview="$preview {} {q}" \
+      --preview-window="bottom,80%,wrap"
 
   rm -f $state_file $and_search $preview
-  test -z "$selected" && return
-
-  for f in ${(f)selected}; do
-    open "$(head -n1 "$(echo "$f" | cut -d: -f1)" | sed -e 's|^# \[.*\](\(.*\)).*|\1|')"
-  done
 }
