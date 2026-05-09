@@ -12,6 +12,8 @@ _switch_starship_config() {
 add-zsh-hook preexec _switch_starship_config
 
 _set_window_name() {
-  echo -ne "\033]2;$(current_dir)\007"
+  if [[ -n $TMUX ]]; then
+    tmux rename-window -t $(tmux display-message -p -t "$TMUX_PANE" '#I') "$(current_dir)"
+  fi
 }
 add-zsh-hook chpwd _set_window_name

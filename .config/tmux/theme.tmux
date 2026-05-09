@@ -5,6 +5,8 @@ set -g renumber-windows on
 
 # Configure the catppuccin plugin
 set -g @catppuccin_flavor "mocha"
+set -g @catppuccin_window_text " #W"
+set -g @catppuccin_window_current_text " #W"
 set -g @catppuccin_window_status_style "slanted"
 set -g @catppuccin_application_icon "󰆍 "
 set -g @catppuccin_status_left_separator ""
