@@ -17,10 +17,6 @@ for file (
   $zsh_dir/key-bindings.zsh(N)
   $zsh_dir/navi.zsh(N)
   $zsh_dir/prompt.zsh(N)
-
-  # Load gcloud
-  $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc(N)
-  $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc(N)
 ) zsh-defer source $file
 
 # zabrze

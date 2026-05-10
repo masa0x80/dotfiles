@@ -85,7 +85,7 @@
 
       "font-0xproto-nerd-font"
 
-      "font-moralerspace"
+      "font-monaspace"
       "hanasuke/moralerspace/font-moralerspace"
 
       "masa0x80/tap/font-pending-mono-hwnf"
@@ -165,7 +165,7 @@
         DSDontWriteNetworkStores = true;
         DSDontWriteUSBStores = true;
       };
-      "com.apple.screncapture" = {
+      "com.apple.screencapture" = {
         name = "ScreenShot";
         show-thumbnail = false;
       };
@@ -181,7 +181,7 @@
   };
 
   # Activation scripts
-  system.activationScripts.postActivatio.text = ''
+  system.activationScripts.postActivation.text = ''
     # Disable Shortcuts for spotlight
     # ref. https://qiita.com/ry0f/items/f2c75f0a77b1012182d6
     defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 "<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>1048576</integer></array><key>type</key><string>standard</string></dict></dict>"

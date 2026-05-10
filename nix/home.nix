@@ -12,6 +12,10 @@
     gnused
     gnutar
     gnugrep
+    openssl
+    sqlite
+    gettext
+    getopt
     less
     rsync
     watch
@@ -52,7 +56,7 @@
     graphviz
     imagemagick
     vhs
-    jj
+    jujutsu
 
     # Nix tools
     nixd

@@ -49,16 +49,6 @@ for file (
 
 typeset -U path PATH
 path=(
-  $HOMEBREW_PREFIX/opt/curl/bin(N-/)
-  $HOMEBREW_PREFIX/opt/openssl/bin(N-/)
-  $HOMEBREW_PREFIX/opt/sqlite/bin(N-/)
-  $HOMEBREW_PREFIX/opt/gettext/bin(N-/)
-  $HOMEBREW_PREFIX/opt/gnu-getopt/bin(N-/)
-  $HOMEBREW_PREFIX/opt/grep/libexec/gnubin(N-/)
-  $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin(N-/)
-  $HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin(N-/)
-  $HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin(N-/)
-
   # golang
   $GOPATH/bin(N-/)
 
