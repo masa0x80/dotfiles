@@ -40,6 +40,10 @@ deploy:
 	@echo 'Deploy dotfiles.'
 	@echo ''
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+	@if [ -n "$(DOTFILE_LOCAL)" ] && [ -d "$(DOTFILE_LOCAL)" ]; then \
+		echo ''; \
+		$(MAKE) -C $(DOTFILE_LOCAL) deploy; \
+	fi
 
 .PHONY: list
 list:
