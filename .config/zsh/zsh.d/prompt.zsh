@@ -17,3 +17,6 @@ _set_window_name() {
   fi
 }
 add-zsh-hook chpwd _set_window_name
+
+# 初回実行
+_set_window_name
