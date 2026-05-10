@@ -1,3 +1,5 @@
+MAKEFLAGS += -j$(shell sysctl -n hw.ncpu)
+
 DOTFILE  := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 EXCLUDES := .DS_Store .git .luarc.json
 TARGETS  := $(wildcard .??*)
@@ -12,6 +14,8 @@ help:
 	@echo "make update         #=> Fetch changes"
 	@echo "make install        #=> Setup environment"
 	@echo "make deploy         #=> Create symlink"
+	@echo "make nix-update     #=> Update nixpkgs flake input"
+	@echo "make rust-update    #=> Update Rust crates"
 	@echo "make list           #=> List the files"
 	@echo "make clean          #=> Remove the dotfiles"
 
@@ -20,20 +24,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: \
-	brew-init \
-	nix-init \
-	nix \
-	mise \
-	navi \
-	tmux-plugins \
-	bat \
-	silicon \
-	sheldon \
-	claude \
-	passage \
-	term-definition \
-	gen-zshrc
+install: nix bat silicon navi mise tmux-plugins sheldon claude passage term-definition gen-zshrc
 
 .PHONY: deploy
 deploy:
@@ -70,38 +61,29 @@ MIN_RELEASE_DAYS ?= 7
 NIX := /nix/var/nix/profiles/default/bin/nix
 
 .PHONY: nix-init
-nix-init:
+nix-init: brew-init
 	./scripts/nix_init
 
 .PHONY: nix
-nix:
+nix: nix-init
 	sudo $(NIX) run nix-darwin -- switch --flake .#default --impure
 
 .PHONY: nix-update
 nix-update:
-	@COMMIT=$$(curl -s "https://api.github.com/repos/NixOS/nixpkgs/commits?sha=nixpkgs-unstable&until=$$(/bin/date -v-$(MIN_RELEASE_DAYS)d +%Y-%m-%dT00:00:00Z)&per_page=1" | jq -r '.[0].sha') && \
+	@COMMIT=$$(curl -sf "https://api.github.com/repos/NixOS/nixpkgs/commits?sha=nixpkgs-unstable&until=$$(/bin/date -v-$(MIN_RELEASE_DAYS)d +%Y-%m-%dT00:00:00Z)&per_page=1" | jq -re '.[0].sha') || { echo "Failed to fetch nixpkgs commit"; exit 1; }; \
 	echo "Updating nixpkgs to commit: $$COMMIT ($(MIN_RELEASE_DAYS) days old)" && \
 	$(NIX) flake update nixpkgs --override-input nixpkgs "github:NixOS/nixpkgs/$$COMMIT"
 
 # }}}
 
-# mise {{{
-
 .PHONY: mise
 mise:
-	mise plugin upgrade
 	mise install -y
 	mise up
-
-# rust {{{
 
 .PHONY: rust-update
 rust-update: mise
 	cargo install-update -a
-
-# }}}
-
-# }}}
 
 .PHONY: bat
 bat: nix
