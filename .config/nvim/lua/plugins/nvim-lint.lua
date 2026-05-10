@@ -56,6 +56,7 @@ return {
 		lint.linters_by_ft = {
 			["yaml.ghaction"] = { "actionlint" },
 			dockerfile = { "hadolint" },
+			nix = { "statix", "deadnix" },
 			zsh = { "shellcheck" },
 		}
 

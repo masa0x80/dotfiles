@@ -61,6 +61,7 @@ return {
 					"textlint",
 					"markdownlint",
 				},
+				nix = { "nixfmt" },
 				sh = { "shfmt" },
 				text = { "textlint" },
 

@@ -34,6 +34,10 @@ for file (
 
 # NOTE: must place before loading `$HOME/.config.local/zsh/zshrc`
 path=(
+  /etc/profiles/per-user/$USER/bin(N-/)
+  /run/current-system/sw/bin(N-/)
+  $HOME/.nix-profile/bin(N-/)
+
   $HOME/.bin.local(N-/)
   $HOME/.bin(N-/)
   $HOME/.local/bin(N-/)

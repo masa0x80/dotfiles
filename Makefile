@@ -21,9 +21,9 @@ update:
 
 .PHONY: install
 install: \
-	defaults \
 	brew-init \
-	brew \
+	nix-init \
+	nix \
 	mise \
 	navi \
 	tmux-plugins \
@@ -62,25 +62,26 @@ brew-init:
 	xcode-select --install 2>/dev/null || :
 	./scripts/brew_init
 
-.PHONY: brew
-brew:
-	brew bundle --file=etc/brew/Brewfile
-
-.PHONY: brew-cask
-brew-cask:
-	brew bundle --file=etc/brew/Brewfile.cask
-
-.PHONY: brew-mas
-brew-mas:
-	brew bundle --file=etc/brew/Brewfile.mas
-
 # }}}
 
-# defaults {{{
+# nix {{{
 
-.PHONY: defaults
-defaults:
-	./scripts/defaults
+MIN_RELEASE_DAYS ?= 7
+NIX := /nix/var/nix/profiles/default/bin/nix
+
+.PHONY: nix-init
+nix-init:
+	./scripts/nix_init
+
+.PHONY: nix
+nix:
+	sudo $(NIX) run nix-darwin -- switch --flake .#default --impure
+
+.PHONY: nix-update
+nix-update:
+	@COMMIT=$$(curl -s "https://api.github.com/repos/NixOS/nixpkgs/commits?sha=nixpkgs-unstable&until=$$(/bin/date -v-$(MIN_RELEASE_DAYS)d +%Y-%m-%dT00:00:00Z)&per_page=1" | jq -r '.[0].sha') && \
+	echo "Updating nixpkgs to commit: $$COMMIT ($(MIN_RELEASE_DAYS) days old)" && \
+	$(NIX) flake update nixpkgs --override-input nixpkgs "github:NixOS/nixpkgs/$$COMMIT"
 
 # }}}
 
@@ -103,16 +104,16 @@ rust-update: mise
 # }}}
 
 .PHONY: bat
-bat: brew
+bat: nix
 	./scripts/bat
 	cd ~/.config/bat && bat cache --build
 
 .PHONY: silicon
-silicon: brew
+silicon: nix
 	cd ~/.config/bat && silicon --build-cache
 
 .PHONY: navi
-navi: brew
+navi: nix
 	./scripts/navi
 
 .PHONY: sheldon

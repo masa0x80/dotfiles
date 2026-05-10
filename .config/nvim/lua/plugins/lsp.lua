@@ -75,61 +75,7 @@ return {
 
 			-- Setup neovim lua configuration
 			require("neodev").setup()
-
-			-- Setup mason so it can manage external tooling
-			require("mason").setup({ ui = { border = "rounded" } })
-
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"bashls",
-					"clangd",
-					"dockerls",
-					"eslint",
-					"gopls",
-					"jdtls",
-					"jsonls",
-					"kotlin_language_server",
-					"lua_ls",
-					"marksman",
-					"oxfmt",
-					"oxlint",
-					"solargraph",
-					"tailwindcss",
-					"terraformls",
-					"ts_ls",
-				},
-			})
-
-			-- https://github.com/williamboman/mason.nvim/issues/1309#issuecomment-1555018732
-			local packages = {
-				"black",
-				"cspell",
-				"goimports",
-				"hadolint",
-				"shellcheck",
-				"shfmt",
-				"stylelint-language-server",
-				"stylua",
-				"tflint",
-			}
-			local registry = require("mason-registry")
-			registry.refresh(function()
-				for _, pkg_name in ipairs(packages) do
-					local pkg = registry.get_package(pkg_name)
-					if not pkg:is_installed() then
-						pkg:install()
-					end
-				end
-			end)
 		end,
-	},
-	{
-		"williamboman/mason.nvim",
-		version = "*",
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		version = "*",
 	},
 	{
 		"folke/neodev.nvim",
