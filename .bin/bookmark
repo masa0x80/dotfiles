@@ -9,31 +9,29 @@ set -euo pipefail
   cd "$BOOKMARKS_DIR"
 
   suffix='(toggle: <C-t>  open: <C-o>)'
-  rg_filter='#必読'
   state_file=$(mktemp)
   echo 'filtered' > $state_file
 
   and_search=$(mktemp)
-  cat > $and_search <<EOF
+  cat > $and_search <<'EOF'
 #!/usr/bin/env zsh
 
-mode=\$1
-filter='$rg_filter'
+mode=$1
 shift
-words=(\${=@})
+words=(${=@})
 
-if [[ \$mode == 'all' ]]; then
+if [[ $mode == 'all' ]]; then
   cmd="rg -il ''"
 else
-  cmd="rg -il '\$filter'"
+  cmd="rg --files-without-match '#archived'"
 fi
 
-for word in \$words; do
-  [[ -z \$word ]] && continue
-  cmd="\$cmd | xargs rg -il '\$word'"
+for word in $words; do
+  [[ -z $word ]] && continue
+  cmd="$cmd | xargs rg -il '$word'"
 done
 
-eval \$cmd
+eval $cmd
 EOF
   chmod +x $and_search
 
@@ -64,9 +62,9 @@ EOF
       --bind "ctrl-o:execute-silent:open 'obsidian://open?path=$BOOKMARKS_DIR/{1}'" \
       --bind "ctrl-t:execute-silent([[ \$(cat $state_file) == 'filtered' ]] && echo 'all' > $state_file || echo 'filtered' > $state_file)+transform:[[ \$(cat $state_file) == 'all' ]] \
           && echo \"reload($and_search all {q})+change-border-label('🌐 全記事 $suffix')\" \
-          || echo \"reload($and_search filtered {q})+change-border-label('📌 $rg_filter $suffix')\"" \
+          || echo \"reload($and_search filtered {q})+change-border-label('📌 Pickup $suffix')\"" \
       --bind ctrl-u:page-up,ctrl-d:page-down,ctrl-j:preview-down,ctrl-k:preview-up,ctrl-g:toggle-all,ctrl-/:deselect-all,ctrl-q:deselect-all \
-      --border-label="📌 $rg_filter $suffix" \
+      --border-label="📌 Pickup $suffix" \
       --border=rounded \
       --phony -q "" \
       --preview="$preview {} {q}" \
