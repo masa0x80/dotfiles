@@ -156,8 +156,8 @@
       };
       NSGlobalDomain = {
         AppleLanguage = [
-          "en-US"
-          "ja-JP"
+          "en"
+          "ja"
         ];
         "com.apple.trackpad.scaling" = "3";
       };
@@ -187,8 +187,10 @@
     defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 "<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>1048576</integer></array><key>type</key><string>standard</string></dict></dict>"
     defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 65 "<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>49</integer><integer>1572864</integer></array><key>type</key><string>standard</string></dict></dict>"
 
-    # Change "Move focus to next window" shortcut
+    # Change "Move focus to next window" shortcut to `Alt + Tab`
+    /usr/libexec/PlistBuddy -c "Delete :AppleSymbolicHotKeys:27" ~/Library/Preferences/com.apple.symbolichotkeys.plist 2>/dev/null || true
     defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>48</integer><integer>524288</integer></array><key>type</key><string>standard</string></dict></dict>"
+    /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
 
   # Enable touch ID for sudo
