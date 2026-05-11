@@ -124,7 +124,7 @@
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
       AppleShowAllExtensions = true;
-      InitialKeyRepeat = 12;
+      InitialKeyRepeat = 6;
       KeyRepeat = 1;
       "com.apple.mouse.tapBehavior" = 1;
       NSWindowShouldDragOnGesture = true;
