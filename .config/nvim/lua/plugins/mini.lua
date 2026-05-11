@@ -136,7 +136,11 @@ return {
 		"nvim-mini/mini.cursorword",
 		version = "*",
 		event = "VeryLazy",
-		opts = {},
+		config = function()
+			require("mini.cursorword").setup({
+				delay = 128,
+			})
+		end,
 	},
 	{
 		"nvim-mini/mini.files",
