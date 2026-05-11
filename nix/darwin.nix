@@ -51,7 +51,6 @@
 
     casks = [
       "1password"
-      "alt-tab"
       "altair-graphql-client"
       "audacity"
       "box-drive"
@@ -124,7 +123,7 @@
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
       AppleShowAllExtensions = true;
-      InitialKeyRepeat = 6;
+      InitialKeyRepeat = 10;
       KeyRepeat = 1;
       "com.apple.mouse.tapBehavior" = 1;
       NSWindowShouldDragOnGesture = true;
