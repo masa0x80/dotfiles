@@ -1,3 +1,5 @@
+autoload -Uz compinit && compinit -C -d "$XDG_CACHE_HOME/zsh/zcompdump"
+
 # Move cursor to end of word if a full completion is inserted.
 setopt always_to_end
 
