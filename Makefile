@@ -1,23 +1,15 @@
 MAKEFLAGS += -j$(shell sysctl -n hw.ncpu)
 
-DOTFILE  := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-EXCLUDES := .DS_Store .git .luarc.json
-TARGETS  := $(wildcard .??*)
-DOTFILES := $(filter-out $(EXCLUDES), $(TARGETS))
-
 .PHONY: all
-all: deploy install
+all: install
 
 .PHONY: help
 help:
-	@echo "make all            #=> Updating, deploying and installing"
+	@echo "make all            #=> Deploying and installing"
 	@echo "make update         #=> Fetch changes"
 	@echo "make install        #=> Setup environment"
-	@echo "make deploy         #=> Create symlink"
 	@echo "make nix-update     #=> Update nixpkgs flake input"
 	@echo "make rust-update    #=> Update Rust crates"
-	@echo "make list           #=> List the files"
-	@echo "make clean          #=> Remove the dotfiles"
 
 .PHONY: update
 update:
@@ -25,26 +17,6 @@ update:
 
 .PHONY: install
 install: nix bat silicon navi mise tmux-plugins sheldon claude passage term-definition gen-zshrc
-
-.PHONY: deploy
-deploy:
-	@echo 'Deploy dotfiles.'
-	@echo ''
-	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
-	@if [ -n "$(DOTFILE_LOCAL)" ] && [ -d "$(DOTFILE_LOCAL)" ]; then \
-		echo ''; \
-		$(MAKE) -C $(DOTFILE_LOCAL) deploy; \
-	fi
-
-.PHONY: list
-list:
-	@$(foreach val, $(DOTFILES), ls -dF $(val);)
-
-.PHONY: clean
-clean:
-	@echo 'Remove dot files in your home directory...'
-	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
-	-rm -rf $(DOTFILE)
 
 # brew {{{
 

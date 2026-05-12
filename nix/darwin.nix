@@ -1,6 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
+let
+  localDir = builtins.getEnv "DTOFILES_LOCAL_DIR";
+  hasLocal = localDir != "" && builtins.pathExists "${localDir}/nix/home.nix";
+in
 {
+  imports = lib.optionals hasLocal [
+    "${localDir}/nix/darwin.nix"
+  ];
+
   # Nix is managed by Determinate Systems installer
   nix.enable = false;
 

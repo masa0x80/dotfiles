@@ -1,4 +1,4 @@
-local compose_path = vim.fn.expand("$DOTFILE/etc/plantuml/compose.yaml")
+local compose_path = vim.fn.expand("$DOTFILES_DIR/etc/plantuml/compose.yaml")
 local tmp_dir = "/tmp/plantuml-viewer/"
 local port = 8765
 
@@ -195,7 +195,7 @@ vim.api.nvim_create_user_command("PlantUMLPreview", function()
 	local filename = vim.fn.expand("%:t")
 	vim.fn.mkdir(tmp_dir, "p")
 	write_svg()
-	vim.uv.fs_copyfile(vim.fn.expand("$DOTFILE/etc/plantuml/viewer.html"), tmp_dir .. "viewer.html")
+	vim.uv.fs_copyfile(vim.fn.expand("$DOTFILES_DIR/etc/plantuml/viewer.html"), tmp_dir .. "viewer.html")
 	-- 前回起動したプロセスが残っていたらkill
 	local port2 = 8766
 	vim.system({ "pkill", "-f", "python -m http.server " .. port2 }):wait()

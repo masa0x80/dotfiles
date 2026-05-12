@@ -46,7 +46,10 @@
             users.users.${username}.home = "/Users/${username}";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit username; };
+            home-manager.extraSpecialArgs = {
+              inherit username;
+              dotfilesDir = builtins.getEnv "PWD";
+            };
             home-manager.users.${username} = import ./nix/home.nix;
           }
         ];

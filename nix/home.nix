@@ -1,9 +1,50 @@
-{ pkgs, username, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  username,
+  dotfilesDir,
+  ...
+}:
+
+let
+  localDir = builtins.getEnv "DTOFILES_LOCAL_DIR";
+  hasLocal = localDir != "" && builtins.pathExists "${localDir}/nix/home.nix";
+  mkSym = config.lib.file.mkOutOfStoreSymlink;
+in
+{
+  imports = lib.optionals hasLocal [
+    "${localDir}/nix/home.nix"
+  ];
+
   home.username = username;
   home.homeDirectory = "/Users/${username}";
   home.stateVersion = "24.11";
+
+  home.file = {
+    ".bashrc".source = mkSym "${dotfilesDir}/.bashrc";
+    ".bin".source = mkSym "${dotfilesDir}/.bin";
+    ".cargo".source = mkSym "${dotfilesDir}/.cargo";
+    ".config".source = mkSym "${dotfilesDir}/.config";
+    ".curlrc".source = mkSym "${dotfilesDir}/.curlrc";
+    ".default-cargo-crates".source = mkSym "${dotfilesDir}/.default-cargo-crates";
+    ".default-gems".source = mkSym "${dotfilesDir}/.default-gems";
+    ".default-go-packages".source = mkSym "${dotfilesDir}/.default-go-packages";
+    ".default-npm-packages".source = mkSym "${dotfilesDir}/.default-npm-packages";
+    ".default-python-packages".source = mkSym "${dotfilesDir}/.default-python-packages";
+    ".direnvrc".source = mkSym "${dotfilesDir}/.direnvrc";
+    ".editorconfig".source = mkSym "${dotfilesDir}/.editorconfig";
+    ".editrc".source = mkSym "${dotfilesDir}/.editrc";
+    ".gitmux.conf".source = mkSym "${dotfilesDir}/.gitmux.conf";
+    ".irbrc".source = mkSym "${dotfilesDir}/.irbrc";
+    ".myclirc".source = mkSym "${dotfilesDir}/.myclirc";
+    ".npmrc".source = mkSym "${dotfilesDir}/.npmrc";
+    ".prettierignore".source = mkSym "${dotfilesDir}/.prettierignore";
+    ".textlintrc.yaml".source = mkSym "${dotfilesDir}/.textlintrc.yaml";
+    ".tmux.conf".source = mkSym "${dotfilesDir}/.tmux.conf";
+    ".zshenv".source = mkSym "${dotfilesDir}/.zshenv";
+    ".zshrc".source = mkSym "${dotfilesDir}/.zshrc";
+  };
 
   home.packages = with pkgs; [
     # Core utilities

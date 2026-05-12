@@ -2,9 +2,9 @@
 export GHQ_ROOT="$HOME/.ghq"
 if (( ${+commands[ghq]} )); then
   if [[ -d "$GHQ_ROOT/github.com/masa0x80/dotfiles" ]]; then
-    export DOTFILE="$GHQ_ROOT/github.com/masa0x80/dotfiles"
+    export DOTFILES_DIR="$GHQ_ROOT/github.com/masa0x80/dotfiles"
   else
-    export DOTFILE="${DOTFILE:-$HOME/.dotfiles}"
+    export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.dotfiles}"
   fi
 fi
 

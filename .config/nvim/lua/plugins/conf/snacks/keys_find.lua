@@ -20,7 +20,7 @@ return {
 		"<Leader>fc",
 		function()
 			Snacks.picker.git_files({
-				cwd = os.getenv("DOTFILES"),
+				cwd = os.getenv("DOTFILES_DIR"),
 				untracked = true,
 				hidden = true,
 				ignored = true,
