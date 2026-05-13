@@ -15,7 +15,7 @@ return {
 				separator = { left = "", right = "" },
 			}
 
-			local function lsp_names())
+			local function lsp_names()
 				local clients = {}
 				for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
 					table.insert(clients, client.name)
