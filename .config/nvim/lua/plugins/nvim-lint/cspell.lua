@@ -53,7 +53,7 @@ if vim.fn.filereadable(cspell_files.dotfiles_local) ~= 1 then
 	io.popen("touch " .. cspell_files.dotfiles_local)
 end
 
-local cspell_append = function(opts)
+local function cspell_append(opts)
 	local target = opts.fargs[1]
 	local dictionary_name = target == "global" and "dotfiles" or target == "local" and "local" or "user"
 

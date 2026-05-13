@@ -103,7 +103,7 @@ return {
 				treesitter = { suffix = "n", options = {} },
 			})
 
-			local map = function(modes, lhs, rhs, opts)
+			local function map(modes, lhs, rhs, opts)
 				vim.keymap.set(
 					modes,
 					lhs,

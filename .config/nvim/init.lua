@@ -3,7 +3,7 @@ require("utils")
 require("config")
 require("misc")
 
-local load_if_exists = function(path)
+local function load_if_exists(path)
 	local p = string.format(vim.fn.expand("$HOME") .. "/.config.local/nvim/lua/%s", path)
 	if vim.fn.filereadable(p) == 1 then
 		vim.fn.execute("luafile " .. p)

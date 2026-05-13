@@ -86,7 +86,7 @@ map("n", "<C-->", [[:s/\(\d\)\-\(\d\)/\1–\2/g<CR>]], { desc = "Replace hyphen 
 map("n", "<Space>;", "@:", { desc = "Re-run the last command" })
 map("n", "q:", "<Nop>", { desc = "Disable cmdwin" })
 
-local gf = function(cmd)
+local function gf(cmd)
 	local cfile = vim.fn.expand("<cfile>")
 
 	local orig_wildignore = vim.o.wildignore

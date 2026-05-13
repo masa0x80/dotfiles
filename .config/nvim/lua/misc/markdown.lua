@@ -100,11 +100,12 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 	-- プレビュー用の加工
 	local bufnr = vim.fn.bufnr()
 	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-	for i, script in ipairs(scripts) do
-		table.insert(lines, i, script)
+	local header = {}
+	for _, script in ipairs(scripts) do
+		table.insert(header, script)
 	end
-	table.insert(lines, #scripts + 1, "")
-	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+	table.insert(header, "")
+	vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, header)
 	vim.bo[bufnr].modified = false
 
 	vim.cmd("MarkdownPreview")
@@ -112,18 +113,26 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 	preview_bufnr = bufnr
 	local group_id = vim.api.nvim_create_augroup("MarkdownPreview", { clear = true })
 
-	local pos
-	local pre_callback = function()
+	local function ppre_callback()
 		if not preview_bufnr then
 			return
 		end
 
 		remove_preview_script(bufnr)
-		pos = vim.api.nvim_win_get_cursor(0)
 	end
 
-	local ajust_cursor = function(pos)
-		vim.api.nvim_win_set_cursor(0, { pos[1] + 4, pos[2] })
+	local function post_callback()
+		if not preview_bufnr then
+			return
+		end
+
+		local header = {}
+		for _, script in ipairs(scripts) do
+			table.insert(header, script)
+		end
+		table.insert(header, "")
+		vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, header)
+		vim.bo[bufnr].modified = false
 	end
 
 	local is_age = vim.fn.expand("%:e") == "age"
@@ -145,7 +154,7 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 			group = group_id,
 			pattern = "AgeEncryptPost",
 			callback = function()
-				ajust_cursor(pos)
+				post_callback()
 			end,
 		})
 	else
@@ -158,20 +167,7 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 		vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 			group = group_id,
 			buffer = bufnr,
-			callback = function()
-				if not preview_bufnr then
-					return
-				end
-
-				local cur = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-				for i, script in ipairs(scripts) do
-					table.insert(cur, i, script)
-				end
-				table.insert(cur, #scripts + 1, "")
-				vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, cur)
-				vim.bo[bufnr].modified = false
-				ajust_cursor(pos)
-			end,
+			callback = post_callback,
 		})
 	end
 
