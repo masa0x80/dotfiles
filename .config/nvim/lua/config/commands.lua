@@ -109,41 +109,52 @@ vim.api.nvim_create_user_command("ReplaceDate", function(opts)
 	end
 
 	local date_pattern = "(%d%d%d%d)%-(%d%d)%-(%d%d)"
-	local year, month, date = string.match(date, date_pattern)
-	local range
+	local year, month, day = string.match(date, date_pattern)
+	local line1, line2
 	if opts.range == 2 then
-		range = opts.line1 .. "," .. opts.line2
+		line1, line2 = opts.line1 - 1, opts.line2
 	else
-		range = "%"
+		line1, line2 = 0, vim.api.nvim_buf_line_count(0)
 	end
-	if year ~= nil and month ~= nil and date ~= nil then
-		pcall(vim.fn.execute, range .. "s/YYYY-MM-DD/" .. string.format("%s-%s-%s", year, month, date) .. "/g")
+	local lines = vim.api.nvim_buf_get_lines(0, line1, line2, false)
+	for i, line in ipairs(lines) do
+		if year and month and day then
+			lines[i] = line:gsub("YYYY%-MM%-DD", string.format("%s-%s-%s", year, month, day))
+		end
+		if year and month then
+			line = line:gsub("YYYY%-MM", string.format("%s-%s", year, month))
+		end
+		if year then
+			line = line:gsub("YYYY", string.format("%s", year))
+		end
+		if month then
+			line = line:gsub("MM", tonumber(month))
+		end
+		if day then
+			line = line:gsub("DD", tonumber(day))
+		end
+		lines[i] = line
 	end
-	if year ~= nil and month ~= nil then
-		pcall(vim.fn.execute, range .. "s/YYYY-MM/" .. string.format("%s-%s", year, month) .. "/g")
-	end
-	if year ~= nil then
-		pcall(vim.fn.execute, range .. "s/YYYY/" .. year .. "/g")
-	end
-	if month ~= nil then
-		pcall(vim.fn.execute, range .. "s/MM/" .. tonumber(month) .. "/g")
-	end
-	if date ~= nil then
-		pcall(vim.fn.execute, range .. "s/DD/" .. tonumber(date) .. "/g")
-	end
-	vim.fn.execute("nohlsearch")
+	vim.api.nvim_buf_set_lines(0, line1, line2, false, lines)
 end, {
 	nargs = "?",
 	range = 2,
 })
 
 vim.api.nvim_create_user_command("ReplaceHyphen", function(opts)
-	local range = "%"
+	local line1, line2
 	if opts.range == 2 then
-		range = opts.line1 .. "," .. opts.line2
+		line1, line2 = opts.line1 - 1, opts.line2
+	else
+		line1, line2 = 0, vim.api.nvim_buf_line_count(0)
 	end
-	vim.fn.execute(range .. [[s/\(\d\)\-\(\d\)/\1–\2/g]])
-	vim.fn.execute("nohlsearch")
+	local lines = vim.api.nvim_buf_get_lines(0, line1, line2, false)
+	for i, line in ipairs(lines) do
+		line = line:gsub("%-(%d)", "–%1")
+		line = line:gsub("(%d)%-", "%1–")
+		lines[i] = line
+	end
+	vim.api.nvim_buf_set_lines(0, line1, line2, false, lines)
 end, {
 	nargs = "?",
 	range = 2,

@@ -159,7 +159,8 @@ return {
 		desc = "Apply template",
 		function()
 			local vault_path = require("telekasten").Cfg.home
-			local files = vim.fn.glob(vault_path .. "/templates/**/*", false, true)
+			local templates_dir = vault_path .. "/templates"
+			local files = vim.fn.glob(templates_dir .. "/**/*", false, true)
 			local items = {}
 			for i, file in
 				ipairs(vim.iter(files)
@@ -185,6 +186,24 @@ return {
 				end
 
 				vim.cmd("-1r " .. choice)
+
+				local function expand_includes()
+					local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+					for lnum, line in ipairs(lines) do
+						-- (.-) は非貪欲なキャプチャーで `includes%s+` の後の文字列を取得する
+						local ref = line:match("{{include%s+(.-)%s*}}")
+						if ref then
+							local path = ref:find("^/") and ref or (templates_dir .. "/" .. ref)
+							if vim.fn.filereadable(path) == 1 then
+								local content = vim.fn.readfile(path)
+								vim.api.nvim_buf_set_lines(0, lnum - 1, lnum, false, content)
+								return expand_includes()
+							end
+						end
+					end
+				end
+				expand_includes()
+
 				local filename = vim.fn.expand("%:t:r")
 				local date_pattern = "(%d%d%d%d%-%d%d%-%d%d)"
 				local date = string.match(filename, date_pattern)
