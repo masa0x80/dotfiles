@@ -193,7 +193,14 @@ return {
 						-- (.-) は非貪欲なキャプチャーで `includes%s+` の後の文字列を取得する
 						local ref = line:match("{{include%s+(.-)%s*}}")
 						if ref then
-							local path = ref:find("^/") and ref or (templates_dir .. "/" .. ref)
+							local path
+							if ref:find("^/") then
+								path = ref
+							elseif vim.fn.filereadable(templates_dir .. "/" .. ref) == 1 then
+								path = templates_dir .. "/" .. ref
+							else
+								path = vault_path .. "/" .. ref
+							end
 							if vim.fn.filereadable(path) == 1 then
 								local content = vim.fn.readfile(path)
 								vim.api.nvim_buf_set_lines(0, lnum - 1, lnum, false, content)
