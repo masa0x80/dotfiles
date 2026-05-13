@@ -8,7 +8,7 @@
 }:
 
 let
-  localDir = builtins.getEnv "DTOFILES_LOCAL_DIR";
+  localDir = builtins.getEnv "DOTFILES_LOCAL_DIR";
   hasLocal = localDir != "" && builtins.pathExists "${localDir}/nix/home.nix";
   mkSym = config.lib.file.mkOutOfStoreSymlink;
 in
@@ -88,6 +88,8 @@ in
     # Shell
     starship
     sheldon
+    tmux
+    lazygit
     direnv
     navi
 
@@ -141,11 +143,8 @@ in
     lazydocker
     dive
 
-    # Git TUI
-    lazygit
-    gitmux
-
     # Utilities
+    gitmux
     gibo
     pass
     rage

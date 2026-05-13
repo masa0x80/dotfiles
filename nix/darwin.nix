@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  localDir = builtins.getEnv "DTOFILES_LOCAL_DIR";
+  localDir = builtins.getEnv "DOTFILES_LOCAL_DIR";
   hasLocal = localDir != "" && builtins.pathExists "${localDir}/nix/home.nix";
 in
 {
@@ -131,7 +131,7 @@ in
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
       AppleShowAllExtensions = true;
-      InitialKeyRepeat = 10;
+      InitialKeyRepeat = 9;
       KeyRepeat = 1;
       "com.apple.mouse.tapBehavior" = 1;
       NSWindowShouldDragOnGesture = true;
