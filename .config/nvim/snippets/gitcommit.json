@@ -13,7 +13,7 @@
   },
   "shell": {
     "prefix": "cm-shell",
-    "body": ["🐚 $ "]
+    "body": ["🐚 \\$ "]
   },
   "docs": {
     "prefix": "cm-doc",
