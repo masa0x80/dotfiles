@@ -59,6 +59,7 @@ in
 
     casks = [
       "1password"
+      "alt-tab"
       "altair-graphql-client"
       "audacity"
       "box-drive"
