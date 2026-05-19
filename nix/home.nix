@@ -148,6 +148,7 @@ in
     gibo
     pass
     rage
+    passage
     csvq
     markdownlint-cli2
     dyff

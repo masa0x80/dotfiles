@@ -16,7 +16,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: nix bat silicon navi mise tmux-plugins sheldon claude passage term-definition gen-zshrc
+install: nix bat silicon navi mise tmux-plugins sheldon claude term-definition gen-zshrc
 
 # brew {{{
 
@@ -44,7 +44,7 @@ nix: nix-init
 nix-update:
 	@COMMIT=$$(curl -sf $(if $(shell command -v gh 2>/dev/null),-H "Authorization: token $$(gh auth token)") "https://api.github.com/repos/NixOS/nixpkgs/commits?sha=nixpkgs-unstable&until=$$(/bin/date -v-$(MIN_RELEASE_DAYS)d +%Y-%m-%dT00:00:00Z)&per_page=1" | jq -re '.[0].sha') || { echo "Failed to fetch nixpkgs commit"; exit 1; }; \
 	echo "Updating nixpkgs to commit: $$COMMIT ($(MIN_RELEASE_DAYS) days old)" && \
-	sudo $(NIX) flake update nixpkgs --override-input nixpkgs "github:NixOS/nixpkgs/$$COMMIT"
+	$(NIX) flake update nixpkgs --override-input nixpkgs "github:NixOS/nixpkgs/$$COMMIT"
 
 # }}}
 
@@ -77,10 +77,6 @@ sheldon:
 .PHONY: claude
 claude:
 	./scripts/claude
-
-.PHONY: passage
-passage:
-	./scripts/passage
 
 .PHONY: tmux-plugins
 tmux-plugins:
