@@ -161,66 +161,63 @@ return {
 			local vault_path = require("telekasten").Cfg.home
 			local templates_dir = vault_path .. "/templates"
 			local files = vim.fn.glob(templates_dir .. "/**/*", false, true)
-			local items = {}
-			for i, file in
-				ipairs(vim.iter(files)
-					:filter(function(v)
-						if vim.fn.filereadable(v) == 1 then
-							return v
-						end
-					end)
-					:totable())
-			do
-				local path = vim.fn.fnamemodify(file, ":.")
-				items[i] = path
-			end
+			local items = vim.iter(files)
+				:filter(function(v)
+					return vim.fn.filereadable(v) == 1
+				end)
+				:map(function(file)
+					return { text = vim.fn.fnamemodify(file, ":."), file = file }
+				end)
+				:totable()
 
-			vim.ui.select(items, {
-				prompt = "Select: ",
-				format_item = function(item)
-					return item
+			Snacks.picker({
+				title = "Apply template",
+				items = items,
+				format = function(item)
+					return { { item.text } }
 				end,
-			}, function(choice)
-				if choice == nil then
-					return
-				end
-
-				vim.cmd("-1r " .. choice)
-
-				local function expand_includes()
-					local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-					for lnum, line in ipairs(lines) do
-						-- (.-) は非貪欲なキャプチャーで `includes%s+` の後の文字列を取得する
-						local ref = line:match("{{include%s+(.-)%s*}}")
-						if ref then
-							local path
-							if ref:find("^/") then
-								path = ref
-							elseif vim.fn.filereadable(templates_dir .. "/" .. ref) == 1 then
-								path = templates_dir .. "/" .. ref
-							else
-								path = vault_path .. "/" .. ref
-							end
-							if vim.fn.filereadable(path) == 1 then
-								local content = vim.fn.readfile(path)
-								vim.api.nvim_buf_set_lines(0, lnum - 1, lnum, false, content)
-								return expand_includes()
+				preview = "file",
+				confirm = function(picker, item)
+					picker:close()
+					if not item then
+						return
+					end
+					vim.cmd("-1r " .. item.file)
+					local function expand_includes()
+						local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+						for lnum, line in ipairs(lines) do
+							-- (.-) は非貪欲なキャプチャーで `includes%s+` の後の文字列を取得する
+							local ref = line:match("{{include%s+(.-)%s*}}")
+							if ref then
+								local path
+								if ref:find("^/") then
+									path = ref
+								elseif vim.fn.filereadable(templates_dir .. "/" .. ref) == 1 then
+									path = templates_dir .. "/" .. ref
+								else
+									path = vault_path .. "/" .. ref
+								end
+								if vim.fn.filereadable(path) == 1 then
+									local content = vim.fn.readfile(path)
+									vim.api.nvim_buf_set_lines(0, lnum - 1, lnum, false, content)
+									return expand_includes()
+								end
 							end
 						end
 					end
-				end
-				expand_includes()
+					expand_includes()
 
-				local filename = vim.fn.expand("%:t:r")
-				local date_pattern = "(%d%d%d%d%-%d%d%-%d%d)"
-				local date = string.match(filename, date_pattern)
-				if date ~= nil then
-					vim.cmd("ReplaceDate " .. date)
-				else
-					vim.cmd("ReplaceDate")
-				end
-				vim.cmd("F")
-			end)
+					local filename = vim.fn.expand("%:t:r")
+					local date_pattern = "(%d%d%d%d%-%d%d%-%d%d)"
+					local date = string.match(filename, date_pattern)
+					if date ~= nil then
+						vim.cmd("ReplaceDate " .. date)
+					else
+						vim.cmd("ReplaceDate")
+					end
+					vim.cmd("F")
+				end,
+			})
 		end,
 	},
 }
