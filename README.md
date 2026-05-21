@@ -3,8 +3,6 @@
 [![MIT LICENSE](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![macOS](https://img.shields.io/badge/platform-macOS%20)](#installation)
 
-## Overview
-
 ## Installation
 
 好きなところにCloneして `make` を実行すると、 `$HOME` 配下にシンボリックリンクを張り、`nix` を使って各種ツールのインストールを行います。
@@ -13,7 +11,7 @@
 git clone https://github.com/masa0x80/dotfiles.local.git ~/.dotfiles.local
 git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-DOTFILES_LOCAL_DIR=~/.dotfiles.local make
+make DOTFILES_LOCAL_DIR=~/.dotfiles.local
 ```
 
 ## Update packages
