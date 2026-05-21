@@ -541,6 +541,7 @@ s {
 
 .markdown-body table th {
   border-bottom: 4px double var(--color-markdown-table-border);
+  text-align: left;
 }
 
 .source-line {
