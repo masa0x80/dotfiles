@@ -1,4 +1,5 @@
 MAKEFLAGS += -j$(shell sysctl -n hw.ncpu)
+DOTFILES_LOCAL_DIR ?= $(HOME)/.ghq/github.com/masa0x80/dotfiles.local
 
 .PHONY: all
 all: install
@@ -16,7 +17,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: nix bat silicon navi mise tmux-plugins sheldon claude term-definition gen-zshrc
+install: mise bat silicon navi mise tmux-plugins sheldon claude term-definition gen-zshrc
 
 # brew {{{
 
@@ -38,7 +39,7 @@ nix-init: brew-init
 
 .PHONY: nix
 nix: nix-init
-	sudo $(if $(shell command -v gh 2>/dev/null),NIX_CONFIG="access-tokens = github.com=$$(gh auth token)") $(NIX) run nix-darwin -- switch --flake .#default --impure
+	sudo DOTFILES_LOCAL_DIR=$(DOTFILES_LOCAL_DIR) $(if $(shell command -v gh 2>/dev/null),NIX_CONFIG="access-tokens = github.com=$$(gh auth token)") $(NIX) run nix-darwin -- switch --flake .#default --impure
 
 .PHONY: nix-update
 nix-update:
@@ -49,7 +50,7 @@ nix-update:
 # }}}
 
 .PHONY: mise
-mise:
+mise: nix
 	mise install -y
 	mise up
 
@@ -71,7 +72,7 @@ navi: nix
 	./scripts/navi
 
 .PHONY: sheldon
-sheldon:
+sheldon: nix
 	./scripts/sheldon
 
 .PHONY: claude
@@ -87,5 +88,5 @@ term-definition:
 	./scripts/term-definition
 
 .PHONY: gen-zshrc
-gen-zshrc:
+gen-zshrc: nix
 	./scripts/gen-zshrc
