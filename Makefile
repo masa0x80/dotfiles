@@ -1,5 +1,4 @@
 MAKEFLAGS += -j$(shell sysctl -n hw.ncpu)
-DOTFILES_LOCAL_DIR ?= $(HOME)/.ghq/github.com/masa0x80/dotfiles.local
 
 .PHONY: all
 all: install
@@ -39,7 +38,7 @@ nix-init: brew-init
 
 .PHONY: nix
 nix: nix-init
-	sudo DOTFILES_LOCAL_DIR=$(DOTFILES_LOCAL_DIR) $(if $(shell command -v gh 2>/dev/null),NIX_CONFIG="access-tokens = github.com=$$(gh auth token)") $(NIX) run nix-darwin -- switch --flake .#default --impure
+	sudo -E $(if $(shell command -v gh 2>/dev/null),NIX_CONFIG="access-tokens = github.com=$$(gh auth token)") $(NIX) run nix-darwin -- switch --flake .#default --impure
 
 .PHONY: nix-update
 nix-update:

@@ -8,7 +8,34 @@
 好きなところにCloneして `make` を実行すると、 `$HOME` 配下にシンボリックリンクを張り、`nix` を使って各種ツールのインストールを行います。
 
 ```sh
-git clone https://github.com/masa0x80/dotfiles.local.git ~/.dotfiles.local
+git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+make
+```
+
+デフォルトではGitの設定が行われません。  
+下記要領でファイルを準備して名前やメールアドレスの設定を行ってください。
+
+```sh
+$ mkdir -p $HOME/.config.local/git
+$ cat <<EOF >$HOME/.config.local/git/config
+[user]
+  name  = YOUR_NAME
+  email = YOUR_EMAIL
+[core]
+  hooksPath = ~/.config.local/git/hooks
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+EOF
+```
+
+ref. <https://github.com/masa0x80/dotfiles.local>
+
+### ローカル設定も込みでセットアップ
+
+ローカル設定用のリポジトリーをあらかじめCloneして、make時に指定するとローカル設定も込でセットアップできます。
+
+```sh
 git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 make DOTFILES_LOCAL_DIR=~/.dotfiles.local
