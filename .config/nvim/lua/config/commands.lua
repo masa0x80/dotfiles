@@ -119,7 +119,7 @@ vim.api.nvim_create_user_command("ReplaceDate", function(opts)
 	local lines = vim.api.nvim_buf_get_lines(0, line1, line2, false)
 	for i, line in ipairs(lines) do
 		if year and month and day then
-			lines[i] = line:gsub("%f[%a]YYYY%-MM%-DD%f[%A]", string.format("%s-%s-%s", year, month, day))
+			line = line:gsub("%f[%a]YYYY%-MM%-DD%f[%A]", string.format("%s-%s-%s", year, month, day))
 		end
 		if year and month then
 			line = line:gsub("%f[%a]YYYY%-MM%f[%A]", string.format("%s-%s", year, month))
