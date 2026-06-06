@@ -79,6 +79,11 @@ name = "jj new"
 abbr = "jn"
 snippet = "jj new"
 
+[[snippets]]
+name = "jj rebase"
+abbr = "jre"
+snippet = "jj-rebase"
+
 
 [[snippets]]
 name = "git add"
