@@ -556,7 +556,8 @@ name = "bookmark"
 abbr = "b"
 snippet = "bookmark"
 
+
 [[snippets]]
-name = "bookmark-loop"
-abbr = "bl"
-snippet = "bookmark-loop"
+name = "claude"
+abbr = "cl"
+snippet = "claude"
