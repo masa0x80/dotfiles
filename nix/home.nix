@@ -152,7 +152,6 @@ in
     csvq
     markdownlint-cli2
     dyff
-    terminal-notifier
 
     # Tools for macOS
     blueutil

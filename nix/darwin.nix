@@ -47,9 +47,11 @@ in
       "use-tusk/tap"
       "hanasuke/moralerspace"
       "masa0x80/tap"
+      "vjeantet/tap"
     ];
 
     brews = [
+      "alerter"
       "mas"
       "ical-buddy"
       "totp-cli"
