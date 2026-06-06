@@ -9,6 +9,7 @@ help:
 	@echo "make update         #=> Fetch changes"
 	@echo "make install        #=> Setup environment"
 	@echo "make nix-update     #=> Update nixpkgs flake input"
+	@echo "make nix-gc         #=> GC old Nix generations"
 	@echo "make rust-update    #=> Update Rust crates"
 
 .PHONY: update
@@ -45,6 +46,15 @@ nix-update:
 	@COMMIT=$$(curl -sf $(if $(shell command -v gh 2>/dev/null),-H "Authorization: token $$(gh auth token)") "https://api.github.com/repos/NixOS/nixpkgs/commits?sha=nixpkgs-unstable&until=$$(/bin/date -v-$(MIN_RELEASE_DAYS)d +%Y-%m-%dT00:00:00Z)&per_page=1" | jq -re '.[0].sha') || { echo "Failed to fetch nixpkgs commit"; exit 1; }; \
 	echo "Updating nixpkgs to commit: $$COMMIT ($(MIN_RELEASE_DAYS) days old)" && \
 	$(NIX) flake update nixpkgs --override-input nixpkgs "github:NixOS/nixpkgs/$$COMMIT"
+	$(NIX) flake update home-manager
+
+GC_OLDER_THAN_DAYS ?= 14
+
+.PHONY: nix-gc
+nix-gc:
+	nix-collect-garbage --delete-older-than $(GC_OLDER_THAN_DAYS)d
+	sudo -E nix-collect-garbage --delete-older-than $(GC_OLDER_THAN_DAYS)d
+	$(NIX) store optimise
 
 # }}}
 

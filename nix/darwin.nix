@@ -46,7 +46,6 @@ in
       "daipeihust/tap"
       "use-tusk/tap"
       "hanasuke/moralerspace"
-      "masa0x80/tap"
       "vjeantet/tap"
     ];
 
@@ -76,7 +75,6 @@ in
       "itsycal"
       "karabiner-elements"
       "keycastr"
-      "obs"
       "obsidian"
       "raycast"
       "rectangle"
@@ -97,8 +95,6 @@ in
 
       "font-monaspace"
       "hanasuke/moralerspace/font-moralerspace"
-
-      "masa0x80/tap/font-pending-mono-hwnf"
 
       "tonisives/tap/ovim"
     ];
