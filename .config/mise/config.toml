@@ -13,8 +13,6 @@ gpg_verify = false
 [tools]
 "aqua:aws/session-manager-plugin" = "latest"
 
-actionlint = "latest"
-
 awscli = "latest"
 aws-sam-cli = "latest"
 aws-vault = "latest"
@@ -28,6 +26,7 @@ gradle = "latest"
 groovy = "latest"
 
 jq = "latest"
+yq = "latest"
 
 lefthook = "latest"
 

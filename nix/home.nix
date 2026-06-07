@@ -81,7 +81,6 @@ in
     rm-improved
     fzf
     xh
-    yq
     jo
     catimg
 
@@ -121,6 +120,7 @@ in
     typescript-language-server
 
     # Linters/Formatters
+    actionlint
     black
     cspell
     (lib.meta.hiPrio gopls)
