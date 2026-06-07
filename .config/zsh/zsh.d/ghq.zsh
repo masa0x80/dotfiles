@@ -1,5 +1,3 @@
-# NOTE: must place before loading `$HOME/.config.local/zsh/zshrc
-export GHQ_ROOT="$HOME/.ghq"
 if (( ${+commands[ghq]} )); then
   if [[ -d "$GHQ_ROOT/github.com/masa0x80/dotfiles" ]]; then
     export DOTFILES_DIR="$GHQ_ROOT/github.com/masa0x80/dotfiles"
