@@ -92,8 +92,6 @@ in
       "visual-studio-code"
       "vlc"
 
-      "google-japanese-ime"
-
       "google-chrome"
       "vivaldi"
       "microsoft-edge"
