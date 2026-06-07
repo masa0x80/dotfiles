@@ -47,6 +47,7 @@ nix-update:
 	echo "Updating nixpkgs to commit: $$COMMIT ($(MIN_RELEASE_DAYS) days old)" && \
 	$(NIX) flake update nixpkgs --override-input nixpkgs "github:NixOS/nixpkgs/$$COMMIT"
 	$(NIX) flake update home-manager
+	$(NIX) flake update nix-darwin
 
 GC_OLDER_THAN_DAYS ?= 14
 

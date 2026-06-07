@@ -38,6 +38,9 @@
     {
       darwinConfigurations.default = nix-darwin.lib.darwinSystem {
         inherit system;
+        specialArgs = {
+          inherit username;
+        };
         modules = [
           ./nix/darwin.nix
           home-manager.darwinModules.home-manager
