@@ -5,11 +5,11 @@ set -euo pipefail
 revision="${1:-@}"
 
 dest=$(jj log --color=always \
-  -T '"«" ++ change_id.shortest() ++ "» " ++ if(bookmarks, bookmarks.join(" ") ++ " ", "") ++ description.first_line() ++ "\n"' |
+  -T '"[ " ++ change_id.shortest() ++ " ] " ++ if(bookmarks, bookmarks.join(" ") ++ " ", "") ++ description.first_line() ++ "\n"' |
   fzf --ansi --no-sort \
     --header "Select destination for rebase of ${revision}" \
-    --preview "jj show --color=always $(echo {} | sed 's/.*«\(.*\)».*/\1/')" |
-  sed 's/.*«\(.*\)».*/\1/')
+    --preview 'jj show --color=always "$(echo {} | sed "s/.*\[ \(.*\) \].*/\1/")"' |
+  sed 's/.*\[ \(.*\) \].*/\1/')
 
 [ -z "$dest" ] && exit 1
 
