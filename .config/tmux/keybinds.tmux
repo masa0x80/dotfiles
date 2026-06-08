@@ -5,7 +5,7 @@ bind A command-prompt -I '#W' 'rename-window %%'
 
 # 同一ディレクトリーで開くように
 bind c new-window -a -c '#{pane_current_path}'
-bind C new-window
+bind C new-window -a -c '#{pane_current_path}'\; swap-window -t :-\; select-window -t :-
 
 # next / prev window
 bind -r C-n next-window
