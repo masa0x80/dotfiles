@@ -52,10 +52,11 @@ in
     };
 
     taps = [
-      "ryooooooga/tap"
       "daipeihust/tap"
-      "use-tusk/tap"
       "hanasuke/moralerspace"
+      "ryooooooga/tap"
+      "tonisives/tap"
+      "use-tusk/tap"
     ];
 
     brews = [
@@ -67,10 +68,9 @@ in
     ];
 
     casks = [
+      "altair-graphql-client"
       "1password"
       "alt-tab"
-      "altair-graphql-client"
-      "audacity"
       "box-drive"
       "cleanshot"
       "deskpad"
@@ -84,13 +84,13 @@ in
       "karabiner-elements"
       "keycastr"
       "obsidian"
+      "onedrive"
       "raycast"
       "rectangle"
       "slack"
       "thaw"
       "wezterm"
       "visual-studio-code"
-      "vlc"
 
       "google-chrome"
       "vivaldi"
@@ -108,10 +108,6 @@ in
     ];
 
     masApps = {
-      "Hand Mirror" = 1502839586;
-      "Onedrive" = 823766827;
-      "Screen Cursor" = 1577211880;
-      "ScreenPointer" = 1368204906;
       "Xcode" = 497799835;
     };
   };
@@ -177,7 +173,7 @@ in
       TrackpadFourFingerVertSwipeGesture = 2;
 
       # 慣性スクロール
-      TrackpadMomentumScroll = false;
+      TrackpadMomentumScroll = true;
 
       # 3本指ドラッグ
       Dragging = false;
@@ -201,7 +197,7 @@ in
       FXEnableExtensionChangeWarning = false;
       # finderの終了ができるように
       QuitMenuItem = true;
-      # パスバーの有効か
+      # パスバーの有効化
       ShowPathbar = true;
       # ステータスバーの有効化
       ShowStatusBar = true;
@@ -258,6 +254,22 @@ in
           "65" = {
             enabled = false;
           };
+          # CleanShotを使用するためScreenshot and recording optionsを無効化
+          "28" = {
+            enabled = false;
+          };
+          "29" = {
+            enabled = false;
+          };
+          "30" = {
+            enabled = false;
+          };
+          "31" = {
+            enabled = false;
+          };
+          "184" = {
+            enabled = false;
+          };
         };
       };
       "com.apple.finder" = {
@@ -276,19 +288,6 @@ in
       "com.apple.screencapture" = {
         name = "ScreenShot";
         show-thumbnail = false;
-      };
-      "com.apple.HIToolbox" = {
-        AppleEnabledInputSources = [
-          {
-            InputSourceKind = "Keyboard Layout";
-            "KeyboardLayout ID" = 252;
-            "KeyboardLayout Name" = "ABC";
-          }
-          {
-            "Bundle iD" = "com.google.inputmethod.Japanese";
-            InputSorceKind = "Keyboard Input Method";
-          }
-        ];
       };
       "com.apple.AdLib" = {
         allowApplePersonalizedAdvertising = false;
