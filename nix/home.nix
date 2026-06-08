@@ -36,6 +36,7 @@ in
     ".editorconfig".source = mkSym "${dotfilesDir}/.editorconfig";
     ".editrc".source = mkSym "${dotfilesDir}/.editrc";
     ".gitmux.conf".source = mkSym "${dotfilesDir}/.gitmux.conf";
+    ".homebrew".source = mkSym "${dotfilesDir}/.homebrew";
     ".irbrc".source = mkSym "${dotfilesDir}/.irbrc";
     ".myclirc".source = mkSym "${dotfilesDir}/.myclirc";
     ".npmrc".source = mkSym "${dotfilesDir}/.npmrc";

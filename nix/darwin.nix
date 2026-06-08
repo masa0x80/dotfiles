@@ -56,7 +56,6 @@ in
       "hanasuke/moralerspace"
       "ryooooooga/tap"
       "tonisives/tap"
-      "use-tusk/tap"
     ];
 
     brews = [
