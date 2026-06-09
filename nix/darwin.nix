@@ -49,6 +49,9 @@ in
       upgrade = true;
       cleanup = "uninstall";
       extraFlags = [ "--force" ];
+      extraEnv = {
+        HOMEBREW_NO_REQUIRE_TAP_TRUST = "1";
+      };
     };
 
     taps = [
