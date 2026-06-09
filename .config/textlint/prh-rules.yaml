@@ -17,5 +17,8 @@ rules:
   - expected: $1
     pattern: /[  ]([\)）])/
 
+  - expected: $1
+    pattern: /([、。] )/
+
   - expected: ください
     pattern: /下さい/
