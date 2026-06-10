@@ -56,7 +56,7 @@ EOF
   chmod +x $preview
 
   FZF_DEFAULT_COMMAND="$and_search filtered" \
-    fzf --sort --ansi \
+    fzf +m --sort --ansi \
       --bind "change:reload:$and_search \$(cat $state_file) {q}" \
       --bind "enter:execute-silent:open \"\$(head -n1 {1} | sed -e 's|^# \[.*\](\(.*\)).*|\1|')\"" \
       --bind "ctrl-o:execute-silent:open 'obsidian://open?path=$BOOKMARKS_DIR/{1}'" \
