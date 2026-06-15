@@ -98,5 +98,5 @@ term-definition:
 	./scripts/term-definition
 
 .PHONY: gen-zshrc
-gen-zshrc: nix
+gen-zshrc:
 	./scripts/gen-zshrc

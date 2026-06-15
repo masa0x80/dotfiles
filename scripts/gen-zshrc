@@ -17,25 +17,6 @@ echo "export PASSAGE_IDENTITIES_FILE=\"$HOME/.ssh/key\"" >> $zshenv_cache
 echo "export PASSAGE_RECIPIENTS_FILE=\"$HOME/.ssh/key.pub\"" >> $zshenv_cache
 echo "export PASSAGE_AGE=\"$HOMEBREW_PREFIX/bin/rage\"" >> $zshenv_cache
 
-# Browser
-identifier="$(defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure | awk -F'"' '/http;/{print window[(NR)-1]}{window[NR]=$2}')"
-target_browser="Safari"
-case "$identifier" in
-"se.johnste.finicky")
-  target_browser="Vivaldi"
-  ;;
-"com.vivaldi.vivaldi")
-  target_browser="Vivaldi"
-  ;;
-"com.microsoft.edgemac")
-  target_browser="Microsoft Edge"
-  ;;
-"com.google.chrome")
-  target_browser="Google Chrome"
-  ;;
-esac
-echo "export TARGET_BROWSER=\"$target_browser\"" >> $zshenv_cache
-
 # Generate .zshrc
 echo -n > $zshrc_cache
 

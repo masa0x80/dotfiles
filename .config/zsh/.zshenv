@@ -36,6 +36,7 @@ export GIT_HOOK_DIR="$XDG_CONFIG_HOME/git/hooks"
 
 export HOMEBREW_NO_ANALYTICS=1
 
+export TARGET_BROWSER='Safari'
 export JIRA_BASE_URL='https://jira.atlassian.com'
 
 # https://github.com/nivekuil/rip

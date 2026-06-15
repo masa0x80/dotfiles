@@ -12,30 +12,11 @@
 # @raycast.description This script reopen URL of currently opened page.
 # @raycast.author KIMURA Masayuki
 #
-# @raycast.argument1 { "type": "text", "placeholder": "Browser", "optional": true }
+# @raycast.argument1 { "type": "dropdown", "data": [{"title": "Brave", "value": "Brave Browser"}, {"title": "Chrome", "value": "Google Chrome"}, {"title": "Edge", "value": "Microsoft Edge"}, {"title": "Safari", "value": "Safari"}, {"title": "Vivaldi", "value": "Vivaldi"}], "placeholder": "Safari", "optional": true }
 
 CURRENT_DIR=$(
   cd "$(dirname "$0")" || exit
   pwd
 )
 source "$CURRENT_DIR/utils/_fetch_url_and_page_title"
-
-if [ "$1" = "" ]; then
-  open "$url"
-else
-  case "$1" in
-  "v" | "vivaldi" | "Vivaldi")
-    browser="Vivaldi"
-    ;;
-  "e" | "edge" | "Edge" | "Microsoft Edge")
-    browser="Microsoft Edge"
-    ;;
-  "c" | "chrome" | "Chrome" | "Google Chrome")
-    browser="Google Chrome"
-    ;;
-  "s" | "safari" | "Safari")
-    browser="Safari"
-    ;;
-  esac
-  open -a "$browser" "$url"
-fi
+open -a "${1:-Safari}" "$url"
