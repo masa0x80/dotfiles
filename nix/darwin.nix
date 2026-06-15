@@ -8,6 +8,11 @@
 let
   localDir = builtins.getEnv "DOTFILES_LOCAL_DIR";
   hasLocal = localDir != "" && builtins.pathExists "${localDir}/nix/home.nix";
+  httpProxy = builtins.getEnv "http_proxy";
+  proxyEnv = lib.optionalAttrs (httpProxy != "") {
+    http_proxy = httpProxy;
+    https_proxy = httpProxy;
+  };
 in
 {
   imports = lib.optionals hasLocal [
@@ -51,7 +56,8 @@ in
       extraFlags = [ "--force" ];
       extraEnv = {
         HOMEBREW_NO_REQUIRE_TAP_TRUST = "1";
-      };
+      }
+      // proxyEnv;
     };
 
     taps = [
