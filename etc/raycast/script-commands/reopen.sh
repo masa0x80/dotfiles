@@ -19,4 +19,4 @@ CURRENT_DIR=$(
   pwd
 )
 source "$CURRENT_DIR/utils/_fetch_url_and_page_title"
-open -a "${1:-Safari}" "$url"
+open -a "${1:-Microsoft Edge}" "$url"
