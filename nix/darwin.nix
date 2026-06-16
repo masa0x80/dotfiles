@@ -304,11 +304,6 @@ in
       "com.microsoft.VSCode" = {
         ApplePressAndHoldEnabled = false;
       };
-      "com.microsoft.Outlook" = {
-        NSUserKeyEquivalents = {
-          "Clear Formatting" = "@l";
-        };
-      };
     };
   };
 

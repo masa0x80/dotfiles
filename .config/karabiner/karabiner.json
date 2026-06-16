@@ -835,7 +835,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.vivaldi\\.Vivaldi$"
+                                            "^com\\.vivaldi\\.Vivaldi$",
+                                            "^com\\.brave\\.Browser$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -855,6 +856,32 @@
                                     "modifiers": ["control"]
                                   },
                                   { "key_code": "r" }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Developer Tools",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.brave\\.Browser$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "i",
+                                    "modifiers": { "mandatory": ["command", "shift"] }
+                                },
+                                "to": [
+                                  {
+                                    "key_code": "i",
+                                    "modifiers": ["command", "option"]
+                                  }
                                 ],
                                 "type": "basic"
                             }
