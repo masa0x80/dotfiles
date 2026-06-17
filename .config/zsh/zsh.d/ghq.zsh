@@ -7,8 +7,6 @@ if (( ${+commands[ghq]} )); then
 fi
 
 r() {
-  local repo=$(ghq list -p | sed "s|$HOME/||" | fzf +m --query="$@" \
-    --preview 'bat --color=always ~/{}/README.md 2>/dev/null || echo "No README.md"')
-
-  [[ -n "$repo" ]] && cd "$HOME/$repo"
+  local root=$(ghq root)
+  cd "$root/$(ghq list | fzf +m --query="$@" --preview "bat --color=always $root/{}/README.md 2>/dev/null || echo 'No README.md'")"
 }
