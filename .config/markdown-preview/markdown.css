@@ -484,21 +484,10 @@ ul li::marker {
 }
 
 .markdown-body img.enlarged {
-  width: 100%;
-  height: 100%;
+  height: auto;
   max-width: initial;
   max-height: initial;
   cursor: zoom-out;
-}
-
-/* for plantuml */
-.markdown-body img[src^="http://127.0.0.1:8765/"].enlarged {
-  width: initial;
-  height: initial;
-  min-width: 30em;
-  min-height: auto;
-  max-width: initial;
-  max-height: initial;
 }
 
 .markdown-body strong {
