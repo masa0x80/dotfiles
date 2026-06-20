@@ -25,6 +25,22 @@ return {
 		input = { enabled = true },
 		picker = {
 			enabled = true,
+			preview = function(ctx)
+				local path = Snacks.picker.util.path(ctx.item)
+				if path and path:match("%.age$") then
+					local ft = path:match("%.(%w+)%.age$")
+					if ft == "md" then
+						ft = "markdown"
+					end
+					ctx.preview:set_title(vim.fn.fnamemodify(path, ":t"))
+					return Snacks.picker.preview.cmd(
+						{ "sh", "-c", "_de < " .. vim.fn.shellescape(path) },
+						ctx,
+						{ ft = ft }
+					)
+				end
+				return Snacks.picker.preview.file(ctx)
+			end,
 			win = {
 				list = {
 					keys = {
