@@ -1,6 +1,6 @@
 local grep_opts = {
 	hidden = true,
-	args = { "--pre=_de", "-pre-glob=*.age" },
+	args = { "--pre=_de", "--pre-glob=*.age" },
 }
 
 return {
