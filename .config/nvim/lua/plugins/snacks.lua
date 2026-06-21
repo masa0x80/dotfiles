@@ -28,15 +28,12 @@ return {
 			preview = function(ctx)
 				local path = Snacks.picker.util.path(ctx.item)
 				if path and path:match("%.age$") then
-					local ft = path:match("%.(%w+)%.age$")
-					if ft == "md" then
-						ft = "markdown"
-					end
+					local ext = path:match("%.(%w+)%.age$") or ""
+					local bat_opts = ext ~= "" and (" --language=" .. ext) or ""
 					ctx.preview:set_title(vim.fn.fnamemodify(path, ":t"))
 					return Snacks.picker.preview.cmd(
-						{ "sh", "-c", "_de < " .. vim.fn.shellescape(path) },
-						ctx,
-						{ ft = ft }
+						{ "sh", "-c", "_de " .. vim.fn.shellescape(path) .. " | bat " .. bat_opts },
+						ctx
 					)
 				end
 				return Snacks.picker.preview.file(ctx)

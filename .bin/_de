@@ -3,5 +3,9 @@
 if [ -z "$AGE_IDENTITY" ]; then
   exit 1
 else
-  rage --decrypt -i $AGE_IDENTITY
+  if [ -z "$1" ]; then
+    rage --decrypt -i "$AGE_IDENTITY"
+  else
+    rage --decrypt -i "$AGE_IDENTITY" "$1"
+  fi
 fi

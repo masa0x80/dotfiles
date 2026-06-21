@@ -3,5 +3,9 @@
 if [ -z "$AGE_RECIPIENT" ]; then
   exit 1
 else
-  rage --encrypt -r $AGE_RECIPIENT -a
+  if [ -z "$AGE_IDENTITY" ]; then
+    rage --encrypt -r $AGE_RECIPIENT -a
+  else
+    rage --encrypt -r $AGE_RECIPIENT -a "$1"
+  fi
 fi
