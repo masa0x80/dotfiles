@@ -2,7 +2,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		version = "*",
-		event = { "VeryLazy", "BufReadPre" },
+		event = "VeryLazy",
 		config = function()
 			vim.diagnostic.config({
 				signs = {
@@ -75,6 +75,24 @@ return {
 
 			-- Setup neovim lua configuration
 			require("neodev").setup()
+
+			vim.lsp.enable({
+				"bashls",
+				"clangd",
+				"cssls",
+				"eslint",
+				"html",
+				"jdtls",
+				"jsonls",
+				"kotlin_language_server",
+				"lua_ls",
+				"marksman",
+				"nixd",
+				"solargraph",
+				"tailwindcss",
+				"terrarmls",
+				"ts_ls",
+			})
 		end,
 	},
 	{
