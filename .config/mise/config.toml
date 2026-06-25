@@ -1,7 +1,8 @@
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
 install_before = "7d"
-paranoid = true
+# ↓Nix管理している関係で非グローバル設定となるので、環境変数で設定します
+# paranoid = true
 disable_backends = ["asdf"]
 
 [settings.github]
