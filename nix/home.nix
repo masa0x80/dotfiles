@@ -113,7 +113,6 @@ in
     jdt-language-server
     kotlin-language-server
     lua-language-server
-    marksman
     solargraph
     tailwindcss-language-server
     terraform-ls

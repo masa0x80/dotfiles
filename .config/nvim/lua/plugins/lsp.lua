@@ -83,7 +83,6 @@ return {
 				"jsonls",
 				"kotlin_language_server",
 				"lua_ls",
-				"marksman",
 				"nixd",
 				"solargraph",
 				"tailwindcss",
