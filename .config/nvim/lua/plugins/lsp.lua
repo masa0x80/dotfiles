@@ -73,9 +73,6 @@ return {
 			keymap("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", {})
 			keymap("n", "<C-p>d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", {})
 
-			-- Setup neovim lua configuration
-			require("neodev").setup()
-
 			vim.lsp.enable({
 				"bashls",
 				"clangd",
@@ -96,8 +93,10 @@ return {
 		end,
 	},
 	{
-		"folke/neodev.nvim",
+		"folke/lazydev.nvim",
 		version = "*",
+		ft = "lua",
+		opts = {},
 	},
 	{
 		"nvimdev/lspsaga.nvim",
