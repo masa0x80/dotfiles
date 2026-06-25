@@ -9,7 +9,7 @@ rules:
     ja-space-around-code:
       before: true
       after: true
-    ja-space-around-link: true
+    ja-space-around-link: false
   doubled-spaces: true
   no-zero-width-spaces: true
   terminology:
