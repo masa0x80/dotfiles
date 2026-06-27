@@ -1,8 +1,17 @@
-source "$XDG_CACHE_HOME/zshrc-cache.zsh"
+# NOTE: must place before loading `$HOME/.config.local/zsh/zshrc`
+path=(
+  /nix/var/nix/profiles/default/bin(N-/)
+  /etc/profiles/per-user/$USER/bin(N-/)
+  /run/current-system/sw/bin(N-/)
+  $HOME/.nix-profile/bin(N-/)
 
-zsh-defer source "$XDG_CACHE_HOME/mise-cache.zsh"
-zsh-defer source "$XDG_CACHE_HOME/fzf-cache.zsh"
-zsh-defer source "$XDG_CACHE_HOME/direnv-cache.zsh"
+  $HOME/.bin.local(N-/)
+  $HOME/.bin(N-/)
+  $HOME/.local/bin(N-/)
+  $path
+)
+
+source "$XDG_CACHE_HOME/zshrc-cache.zsh"
 
 zsh_dir="$ZDOTDIR/zsh.d"
 for file (
@@ -23,24 +32,8 @@ for file (
   $zsh_dir/prompt.zsh(N)
 ) zsh-defer source $file
 
-# zabrze
-zsh-defer source "$XDG_CACHE_HOME/zabrze-cache.zsh"
-
 for file (
   # Load local configurations
   $HOME/.config.local/zsh/zshrc(N)
   $HOME/.zshrc.local(N)
 ) source $file
-
-# NOTE: must place before loading `$HOME/.config.local/zsh/zshrc`
-path=(
-  /nix/var/nix/profiles/default/bin(N-/)
-  /etc/profiles/per-user/$USER/bin(N-/)
-  /run/current-system/sw/bin(N-/)
-  $HOME/.nix-profile/bin(N-/)
-
-  $HOME/.bin.local(N-/)
-  $HOME/.bin(N-/)
-  $HOME/.local/bin(N-/)
-  $path
-)

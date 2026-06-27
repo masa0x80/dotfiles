@@ -2,6 +2,7 @@
 
 zshenv_cache="$XDG_CACHE_HOME/zshenv-cache.zsh"
 zshrc_cache="$XDG_CACHE_HOME/zshrc-cache.zsh"
+zshrc_defer_cache="$XDG_CACHE_HOME/zshrc-defer-cache.zsh"
 
 # .zshenv cache
 echo -n > $zshenv_cache
@@ -11,9 +12,8 @@ echo -n > $zshenv_cache
 brew shellenv | grep -v 'path_helper' >> $zshenv_cache
 source $zshenv_cache
 
-export AGE_IDENTITY="$HOME/.config/age/key.txt"
-echo "export AGE_IDENTITY=$AGE_IDENTITY" >> $zshenv_cache
-echo "export AGE_RECIPIENT=\"$(grep -oP '(?<=# public key: ).+(?=)' "$AGE_IDENTITY")\"" >> $zshenv_cache
+echo "export AGE_IDENTITY=\"$HOME/.ssh/age\"" >> $zshenv_cache
+echo "export AGE_RECIPIENT=\"$HOME/.ssh/age.pub\"" >> $zshenv_cache
 echo "export PASSAGE_IDENTITIES_FILE=\"$HOME/.ssh/key\"" >> $zshenv_cache
 echo "export PASSAGE_RECIPIENTS_FILE=\"$HOME/.ssh/key.pub\"" >> $zshenv_cache
 echo "export PASSAGE_AGE=\"$HOMEBREW_PREFIX/bin/rage\"" >> $zshenv_cache
@@ -24,19 +24,18 @@ echo -n > $zshrc_cache
 (( ${+commands[sheldon]} )) && sheldon source >> $zshrc_cache
 (( ${+commands[starship]} )) && starship init zsh >> $zshrc_cache
 
-(( ${+commands[mise]} )) && mise activate zsh | sed '/^_mise_hook$/d; /add-zsh-hook precmd/d' > "$XDG_CACHE_HOME/mise-cache.zsh"
-(( ${+commands[fzf]} )) && fzf --zsh > "$XDG_CACHE_HOME/fzf-cache.zsh"
-(( ${+commands[direnv]} )) && direnv hook zsh | sed '/typeset -ag precmd_functions/,/^fi$/d' > "$XDG_CACHE_HOME/direnv-cache.zsh"
-(( ${+commands[zabrze]} )) && zabrze init --bind-keys > "$XDG_CACHE_HOME/zabrze-cache.zsh"
+echo -n > $zshrc_defer_cache
+(( ${+commands[mise]} )) && mise activate zsh | sed '/^_mise_hook$/d' >> $zshrc_defer_cache
+(( ${+commands[fzf]} )) && fzf --zsh >> $zshrc_defer_cache
+(( ${+commands[direnv]} )) && direnv hook zsh >> $zshrc_defer_cache
+(( ${+commands[zabrze]} )) && zabrze init --bind-keys >> $zshrc_defer_cache
+echo "zsh-defer source \"$zshrc_defer_cache\"" >> $zshrc_cache
 
 # zcompile
 for file (
   $zshenv_cache
   $zshrc_cache
-  $XDG_CACHE_HOME/mise-cache.zsh
-  $XDG_CACHE_HOME/fzf-cache.zsh
-  $XDG_CACHE_HOME/direnv-cache.zsh
-  $XDG_CACHE_HOME/zabrze-cache.zsh
+  $zshrc_defer_cache
   $HOME/.zshenv(N)
   $HOME/.zshrc(N)
   $HOME/.config.local/zsh/zshenv(N)

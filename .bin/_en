@@ -1,11 +1,11 @@
 #!/usr/bin/env zsh
 
-if [ -z "$AGE_RECIPIENT" ]; then
+if [ ! -r "$AGE_RECIPIENT" ]; then
   exit 1
 else
   if [ -z "$i" ]; then
-    rage --encrypt -r $AGE_RECIPIENT -a
+    rage --encrypt -R $AGE_RECIPIENT -a
   else
-    rage --encrypt -r $AGE_RECIPIENT -a "$1"
+    rage --encrypt -R $AGE_RECIPIENT -a "$1"
   fi
 fi
