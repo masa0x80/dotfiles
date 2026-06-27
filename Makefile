@@ -17,7 +17,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: mise bat silicon navi mise tmux-plugins sheldon claude term-definition gen-zshrc
+install: mise bat silicon navi mise tmux-plugins sheldon claude term-definition
 
 # brew {{{
 
@@ -96,7 +96,3 @@ tmux-plugins:
 .PHONY: term-definition
 term-definition:
 	./scripts/term-definition
-
-.PHONY: gen-zshrc
-gen-zshrc:
-	./scripts/gen-zshrc

@@ -42,13 +42,17 @@ export JIRA_BASE_URL='https://jira.atlassian.com'
 # https://github.com/nivekuil/rip
 export GRAVEYARD="$XDG_DATA_HOME/trash"
 
+export AGE_IDENTITY="$HOME/.ssh/age"
+export AGE_RECIPIENT="$HOME/.ssh/age.pub"
+export PASSAGE_IDENTITIES_FILE="$HOME/.ssh/key"
+export PASSAGE_RECIPIENTS_FILE="$HOME/.ssh/key.pub"
+export PASSAGE_AGE="$HOMEBREW_PREFIX/bin/rage"
+
 for file (
   # Load .config.local
   $HOME/.config.local/zsh/zshenv(N)
   # Load .zshenv.local
   $HOME/.zshenv.local(N)
-
-  $XDG_CACHE_HOME/zshenv-cache.zsh(N)
 ) source $file
 
 typeset -U path PATH
@@ -65,6 +69,7 @@ fpath=(
   $ZDOTDIR/functions(N-/)
   $fpath
 )
+eval "$(brew shellenv)"
 
 # Pager
 (( ${+commands[bat]} )) && export PAGER=bat

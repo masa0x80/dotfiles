@@ -11,14 +11,16 @@ path=(
   $path
 )
 
-source "$XDG_CACHE_HOME/zshrc-cache.zsh"
+(( ${+commands[sheldon]} )) && eval "$(sheldon source)"
+(( ${+commands[starship]} )) && eval "$(starship init zsh)"
+(( ${+commands[mise]} )) && eval "$(mise activate zsh)"
+(( ${+commands[fzf]} )) && eval "$(fzf --zsh)"
+(( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
+(( ${+commands[zabrze]} )) && eval "$(zabrze init --bind-keys)"
 
 zsh_dir="$ZDOTDIR/zsh.d"
 for file (
   $zsh_dir/init.zsh(N)
-) source $file
-
-for file (
   $zsh_dir/checker.zsh(N)
   $zsh_dir/aliases.zsh(N)
   $zsh_dir/complete-ssh-host.zsh(N)
@@ -30,9 +32,7 @@ for file (
   $zsh_dir/key-bindings.zsh(N)
   $zsh_dir/navi.zsh(N)
   $zsh_dir/prompt.zsh(N)
-) zsh-defer source $file
 
-for file (
   # Load local configurations
   $HOME/.config.local/zsh/zshrc(N)
   $HOME/.zshrc.local(N)

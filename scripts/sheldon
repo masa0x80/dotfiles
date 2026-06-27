@@ -1,9 +1,3 @@
 #!/bin/zsh
 
 sheldon lock --update
-
-for file (
-  $XDG_DATA_HOME/sheldon/repos/**/*.zsh(N)
-  $XDG_DATA_HOME/sheldon/repos/**/*/*/fast-highlight(N)
-  $XDG_DATA_HOME/sheldon/repos/**/*/*/fast-string-highlight(N)
-) zcompile $file
