@@ -35,7 +35,6 @@ export RAILS_SERVER_PORT=3000
 export GIT_HOOK_DIR="$XDG_CONFIG_HOME/git/hooks"
 
 export HOMEBREW_NO_ANALYTICS=1
-export MISE_PARANOID=1
 
 export TARGET_BROWSER='Safari'
 export JIRA_BASE_URL='https://jira.atlassian.com'

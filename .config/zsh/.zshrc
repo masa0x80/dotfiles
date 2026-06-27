@@ -20,7 +20,7 @@ for file (
 ) zsh-defer source $file
 
 # zabrze
-source "$XDG_CACHE_HOME/zabrze-cache.zsh"
+zsh-defer source "$XDG_CACHE_HOME/zabrze-cache.zsh"
 
 for file (
   # Load local configurations

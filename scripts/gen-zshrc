@@ -7,7 +7,8 @@ zshrc_cache="$XDG_CACHE_HOME/zshrc-cache.zsh"
 echo -n > $zshenv_cache
 
 # homebrew
-brew shellenv >> $zshenv_cache
+# no_global_rcsを設定しているので `path_helper` 呼び出しは不要
+brew shellenv | grep -v 'path_helper' >> $zshenv_cache
 source $zshenv_cache
 
 export AGE_IDENTITY="$HOME/.config/age/key.txt"
@@ -35,7 +36,8 @@ zabrze init --bind-keys >> "$XDG_CACHE_HOME/zabrze-cache.zsh"
 # zcompile
 for file (
   $zshenv_cache
-  $zshrc_cache_cache
+  $zshrc_cache
+  $XDG_CACHE_HOME/zabrze-cache.zsh
   $HOME/.zshenv(N)
   $HOME/.zshrc(N)
   $HOME/.config.local/zsh/zshenv(N)

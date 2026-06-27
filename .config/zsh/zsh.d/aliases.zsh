@@ -1,3 +1,7 @@
+# mise
+alias mise-install='MISE_PRANOID=1 mise install'
+alias mise-upgrade='MISE_PRANOID=1 mise upgrade'
+
 # grep
 export GREP_COlOR='1;31'
 export GREP_COlORS="mt=${GREP_COLOR}"
