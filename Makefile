@@ -82,7 +82,7 @@ navi: nix
 	./scripts/navi
 
 .PHONY: sheldon
-sheldon: nix
+sheldon:
 	./scripts/sheldon
 
 .PHONY: claude

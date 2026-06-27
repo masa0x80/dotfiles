@@ -1,3 +1,4 @@
+[[ -d "$XDG_CACHE_HOME/zsh" ]] || mkdir -p "$XDG_CACHE_HOME/zsh"
 autoload -Uz compinit && compinit -C -d "$XDG_CACHE_HOME/zsh/zcompdump"
 
 # Move cursor to end of word if a full completion is inserted.
