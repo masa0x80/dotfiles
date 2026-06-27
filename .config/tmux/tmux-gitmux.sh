@@ -6,7 +6,7 @@ jj_opts="--no-pager --ignore-working-copy -R $dir"
 if jj root $jj_opts &>/dev/null; then
   branch=$(jj log $jj_opts -r @ --no-graph -T 'self.bookmarks().join(", ")' 2>/dev/null)
   if [ -z "$branch" ]; then
-    branch=$(jj log $jj_opts -r @ --no-graph -T '"«" ++ self.change_id().shortest() ++ "» " ++ description.first_line()' 2>/dev/null)
+    branch=$(jj log $jj_opts -r @ --no-graph -T 'if(description.first_line(), "«" ++ self.change_id().shortest() ++ "» " ++ description.first_line(), "«" ++ self.change_id().shortest() ++ "»")' 2>/dev/null)
   fi
 
   conflict=$(jj log $jj_opts -r @ --no-graph -T 'if(self.conflict(), "true", "")' 2>/dev/null)
