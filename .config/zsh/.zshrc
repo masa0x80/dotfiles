@@ -1,5 +1,9 @@
 source "$XDG_CACHE_HOME/zshrc-cache.zsh"
 
+zsh-defer source "$XDG_CACHE_HOME/mise-cache.zsh"
+zsh-defer source "$XDG_CACHE_HOME/fzf-cache.zsh"
+zsh-defer source "$XDG_CACHE_HOME/direnv-cache.zsh"
+
 zsh_dir="$ZDOTDIR/zsh.d"
 for file (
   $zsh_dir/init.zsh(N)

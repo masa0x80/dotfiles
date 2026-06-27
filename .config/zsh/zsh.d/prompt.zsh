@@ -16,7 +16,7 @@ _set_window_name() {
     tmux rename-window -t $(tmux display-message -p -t "$TMUX_PANE" '#I') "$(current_dir)"
   fi
 }
-add-zsh-hook chpwd _set_window_name
+add-zsh-hook preexec _set_window_name
 
 # 初回実行
-_set_window_name
+zsh-defer _set_window_name

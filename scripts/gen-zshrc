@@ -21,22 +21,21 @@ echo "export PASSAGE_AGE=\"$HOMEBREW_PREFIX/bin/rage\"" >> $zshenv_cache
 # Generate .zshrc
 echo -n > $zshrc_cache
 
-# misc
-(( ${+commands[mise]} )) && mise activate zsh >> $zshrc_cache
-(( ${+commands[fzf]} )) && fzf --zsh >> $zshrc_cache
-(( ${+commands[direnv]} )) && direnv hook zsh >> $zshrc_cache
+(( ${+commands[sheldon]} )) && sheldon source >> $zshrc_cache
 (( ${+commands[starship]} )) && starship init zsh >> $zshrc_cache
 
-# sheldon
-sheldon source >> $zshrc_cache
-
-# zabrze
-zabrze init --bind-keys >> "$XDG_CACHE_HOME/zabrze-cache.zsh"
+(( ${+commands[mise]} )) && mise activate zsh | sed '/^_mise_hook$/d; /add-zsh-hook precmd/d' > "$XDG_CACHE_HOME/mise-cache.zsh"
+(( ${+commands[fzf]} )) && fzf --zsh > "$XDG_CACHE_HOME/fzf-cache.zsh"
+(( ${+commands[direnv]} )) && direnv hook zsh | sed '/typeset -ag precmd_functions/,/^fi$/d' > "$XDG_CACHE_HOME/direnv-cache.zsh"
+(( ${+commands[zabrze]} )) && zabrze init --bind-keys > "$XDG_CACHE_HOME/zabrze-cache.zsh"
 
 # zcompile
 for file (
   $zshenv_cache
   $zshrc_cache
+  $XDG_CACHE_HOME/mise-cache.zsh
+  $XDG_CACHE_HOME/fzf-cache.zsh
+  $XDG_CACHE_HOME/direnv-cache.zsh
   $XDG_CACHE_HOME/zabrze-cache.zsh
   $HOME/.zshenv(N)
   $HOME/.zshrc(N)
