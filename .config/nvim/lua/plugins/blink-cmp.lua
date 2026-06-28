@@ -121,10 +121,13 @@ return {
 			},
 			sources = {
 				default = function()
-					if vim.bo.filetype == "markdown" then
-						return { "lsp", "snippets", "path", "copilot" }
-					else
+					local ft = vim.bo.filetype
+					if ft == "gitcommit" or ft == "jjdescription" then
 						return { "lsp", "snippets", "buffer", "path", "copilot" }
+					elseif ft == "markdown" then
+						return { "lsp", "snippets", "path" }
+					else
+						return { "lsp", "snippets", "buffer", "path" }
 					end
 				end,
 				providers = {

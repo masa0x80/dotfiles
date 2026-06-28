@@ -3,11 +3,17 @@ return {
 		"zbirenbaum/copilot.lua",
 		version = "*",
 		cmd = "Copilot",
+		ft = { "gitcommit", "jjdescription" },
 		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
 				suggestion = { enabled = false },
 				panel = { enabled = false },
+				filetypes = {
+					["*"] = false,
+					gitcommit = true,
+					jjdescription = true,
+				},
 			})
 		end,
 	},
