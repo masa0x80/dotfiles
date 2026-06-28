@@ -28,4 +28,4 @@ keybind = cmd+enter=toggle_maximize
 
 keybind = ctrl+i=text:\x09
 
-keybind = global:ctrl+cmd+p=toggle_quick_terminal
+keybind = global:ctrl+cmd+p=text:\x11

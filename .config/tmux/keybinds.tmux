@@ -3,9 +3,10 @@
 # Window名変更
 bind A command-prompt -I '#W' 'rename-window %%'
 
-# Sessionを1つプールしておき、new-windowやsplit-window時に使う
+# Sessionをプールしておき、new-windowやsplit-window時に使う
 set-hook -g session-created 'run-shell "\
-  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool"'
+  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool"; \
+  tmux has-session -t _popup 2>/dev/null || tmux new-session -d -s _popup"'
 
 # Paneフォーカス時にpoolのカレントディレクトリーを変更する
 set-hook -g pane-focus-in 'run-shell "\
@@ -155,3 +156,6 @@ bind -T copy-mode-vi C-v send -X rectangle-toggle
 # for mac
 bind -T copy-mode-vi Enter send -X copy-pipe-and-cancel 'pbcopy'
 bind -T copy-mode-vi y     send -X copy-pipe-and-cancel 'pbcopy'
+
+# Popup
+bind -n C-q run-shell "tmux-popup 90% 90%"

@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+tmux-popup() {
+  local width="${1:-80%}"
+  local height="${2:-80%}"
+
+  local session="$(tmux display-message -p -F "#{session_name}")"
+
+  if [[ "$session" == _popup ]]; then
+    tmux detach-client
+  else
+    tmux has-session -t _popup 2>/dev/null || tmux new-session -d -s _popup
+    tmux display-popup -xC -yC -w"$width" -h"$height" -E "tmux attach -t _popup"
+  fi
+}
+tmux-popup "$@"
