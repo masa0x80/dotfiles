@@ -56,6 +56,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 zsh_dir="$ZDOTDIR/zsh.d"
 for file (
   $zsh_dir/checker.zsh(N)
+  $zsh_dir/tmux-pool-sync.zsh(N)
   $zsh_dir/aliases.zsh(N)
   $zsh_dir/complete-ssh-host.zsh(N)
   $zsh_dir/completion.zsh(N)

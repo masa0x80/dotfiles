@@ -1,13 +1,18 @@
 # vim: ft=tmux
 
-# window名変更
+# Window名変更
 bind A command-prompt -I '#W' 'rename-window %%'
 
-# sessionを1つプールしておき、new-windowやsplit-window時に使う
+# Sessionを1つプールしておき、new-windowやsplit-window時に使う
 set-hook -g session-created 'run-shell "\
   tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool"'
 
-# 同一ディレクトリーで開くように
+# Paneフォーカス時にpoolのカレントディレクトリーを変更する
+set-hook -g pane-focus-in 'run-shell "\
+  tmux has-session -t _pool 2>/dev/null && \
+  tmux send-keys -t _pool \" cd \\\"#{pane_current_path}\\\" && clear\" Enter"'
+
+# new-window (poolしてあるsessionを使う）
 bind c run-shell '\
   path="#{pane_current_path}"; \
   tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool; \
@@ -16,9 +21,8 @@ bind c run-shell '\
     win=$(tmux list-windows -t _pool -F "##{window_index}" | head -1); \
     tmux move-window -a -s "_pool:$win"; \
     tmux select-window -t "$pane"; \
-    tmux send-keys " cd \"$path\"" Enter; \
   else \
-    tmux new-window -a -c "$path"; \
+    tmux new-window -a -c "${pane_current_path}"; \
   fi; \
   tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool'
 bind C run-shell '\
@@ -29,9 +33,8 @@ bind C run-shell '\
     win=$(tmux list-windows -t _pool -F "##{window_index}" | head -1); \
     tmux move-window -b -s "_pool:$win"; \
     tmux select-window -t "$pane"; \
-    tmux send-keys " cd \"$path\"" Enter; \
   else \
-    tmux new-window -a -c "$path"; \
+    tmux new-window -a -c "${pane_current_path}"; \
     tmux swap-window -t :-; \
     tmux select-window -t :-; \
   fi; \
@@ -67,7 +70,7 @@ bind > join-pane -t :+
 bind < join-pane -t :-
 bind J command-prompt -1 'join-pane -ht :%%'
 
-# Pane分割 (同一ディレクトリーで開くように)
+# Pane分割 (poolしてあるsessionを使う）
 bind - run-shell '\
   path="#{pane_current_path}"; \
   tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool; \
@@ -75,9 +78,8 @@ bind - run-shell '\
   if [ -n "$pane" ]; then \
     win=$(tmux list-windows -t _pool -F "##{window_index}" | head -1); \
     tmux join-pane -v -s "_pool:$win"; \
-    tmux send-keys " cd \"$path\"" Enter; \
   else \
-    tmux split-window -v -c "$path"; \
+    tmux split-window -v -c "${pane_current_path}"; \
   fi; \
   tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool'
 bind \\ run-shell '\
@@ -87,7 +89,6 @@ bind \\ run-shell '\
   if [ -n "$pane" ]; then \
     win=$(tmux list-windows -t _pool -F "##{window_index}" | head -1); \
     tmux join-pane -h -s "_pool:$win"; \
-    tmux send-keys " cd \"$path\"" Enter; \
   else \
     tmux split-window -h -c "$path"; \
   fi; \
@@ -99,9 +100,8 @@ bind \; run-shell '\
   if [ -n "$pane" ]; then \
     win=$(tmux list-windows -t _pool -F "##{window_index}" | head -1); \
     tmux join-pane -h -s "_pool:$win"; \
-    tmux send-keys " cd \"$path\"" Enter; \
   else \
-    tmux split-window -h -c "$path"; \
+    tmux split-window -h -c "${pane_current_path}"; \
   fi; \
   tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool'
 
