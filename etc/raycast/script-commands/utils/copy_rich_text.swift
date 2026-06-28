@@ -4,8 +4,8 @@ import AppKit
 // swiftc -o copy_rich_text copy_rich_text.swift
 
 guard CommandLine.arguments.count == 3 else {
-    print("Usage: copy_rich_text <url> <title>\n", stderr)
-    exit(1)
+  print("Usage: copy_rich_text <url> <title>\n", stderr)
+  exit(1)
 }
 
 let url = CommandLine.arguments[1]

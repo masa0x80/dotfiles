@@ -85,6 +85,7 @@ return {
 				"lua_ls",
 				"nixd",
 				"solargraph",
+				"sourcekit",
 				"tailwindcss",
 				"terrarmls",
 				"ts_ls",
