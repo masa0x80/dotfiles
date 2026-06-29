@@ -5,7 +5,7 @@ bind A command-prompt -I '#W' 'rename-window %%'
 
 # Sessionをプールしておき、new-windowやsplit-window時に使う
 set-hook -g session-created 'run-shell "\
-  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool"; \
+  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool; \
   tmux has-session -t _popup 2>/dev/null || tmux new-session -d -s _popup"'
 
 # Paneフォーカス時にpoolのカレントディレクトリーを変更する
