@@ -1124,15 +1124,15 @@
                         ]
                     },
                     {
-                        "description": "<C-[> ▶ <Esc>（Raycast対応）",
+                        "description": "<C-[>/<C-m> ▶ <Esc>/<Enter>（Raycast）",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.vivaldi\\.vivaldi$"
+                                            "^com\\.raycast\\.macos$"
                                         ],
-                                        "type": "frontmost_application_unless"
+                                        "type": "frontmost_application_if"
                                     }
                                 ],
                                 "from": {
@@ -1143,6 +1143,22 @@
                                     { "key_code": "escape" },
                                     { "key_code": "japanese_eisuu" }
                                 ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.raycast\\.macos$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [{ "key_code": "japanese_eisuu" }],
                                 "type": "basic"
                             }
                         ]
