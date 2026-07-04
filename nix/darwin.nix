@@ -78,7 +78,6 @@ in
     casks = [
       "altair-graphql-client"
       "1password"
-      "alt-tab"
       "box-drive"
       "cleanshot"
       "deskpad"
