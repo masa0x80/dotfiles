@@ -123,7 +123,7 @@ return {
 				default = function()
 					local ft = vim.bo.filetype
 					if ft == "gitcommit" or ft == "jjdescription" then
-						return { "lsp", "snippets", "buffer", "path", "copilot" }
+						return { "snippets", "copilot", "lsp", "buffer", "path" }
 					elseif ft == "markdown" then
 						return { "lsp", "snippets", "path" }
 					else
