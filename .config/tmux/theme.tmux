@@ -13,6 +13,7 @@ set -g @catppuccin_status_left_separator ""
 set -g @catppuccin_status_middle_separator ""
 set -g @catppuccin_status_right_separator ""
 set -g @catppuccin_gitmux_icon ""
+set -g @cpu_percentage_format "%4.1f%%"
 
 # Load catppuccin
 run ~/.config/tmux/plugins/catppuccin/tmux/catppuccin.tmux
