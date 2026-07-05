@@ -8,29 +8,32 @@ set -g @catppuccin_flavor "mocha"
 set -g @catppuccin_window_text " #W"
 set -g @catppuccin_window_current_text " #W"
 set -g @catppuccin_window_status_style "slanted"
+set -g @catppuccin_status_background "#{@catppuccin_status_module_text_bg}"
 set -g @catppuccin_application_icon "󰆍 "
-set -g @catppuccin_status_left_separator ""
-set -g @catppuccin_status_middle_separator ""
-set -g @catppuccin_status_right_separator ""
+set -g @catppuccin_status_left_separator   ""
+set -gF @catppuccin_status_middle_separator "#[fg=#{@catppuccin_status_module_text_bg}]"
+set -g @catppuccin_status_right_separator  ""
 set -g @catppuccin_gitmux_icon ""
 set -g @cpu_percentage_format "%4.1f%%"
 
 # Load catppuccin
 run ~/.config/tmux/plugins/catppuccin/tmux/catppuccin.tmux
+set -g window-status-separator ""
 
 set -g @catppuccin_gitmux_text ' #(bash ~/.config/tmux/tmux-gitmux.sh "#{pane_current_path}")'
 
 set -gqF "@catppuccin_status_claude" \
-  "#[fg=#{@thm_mauve}]#[bg=default]#{@catppuccin_status_left_separator}"
+  "#[fg=#{@thm_mauve}]#{@catppuccin_status_left_separator}"
 set -agF "@catppuccin_status_claude" \
   "#[fg=#{@thm_crust},bg=#{@thm_mauve}]󰚩 "
 set -agF "@catppuccin_status_claude" \
   "#{@catppuccin_status_middle_separator}"
 set -agF "@catppuccin_status_claude" \
-  "#[fg=#{@thm_fg},bg=#{E:@catppuccin_status_module_text_bg}]"
-set -ag "@catppuccin_status_claude" " #(tmux-claude-agents)"
+  "#[fg=#{@thm_fg},bg=#{E:@catppuccin_status_module_text_bg}] "
+set -ag "@catppuccin_status_claude" \
+  "#(tmux-claude-agents)"
 set -agF "@catppuccin_status_claude" \
-  "#[fg=#{E:@catppuccin_status_module_text_bg}]#[bg=default]#{@catppuccin_status_right_separator}"
+  "#{@catppuccin_status_middle_separator}"
 
 # Make the status line pretty and add some modules
 set -g status-right-length 80
