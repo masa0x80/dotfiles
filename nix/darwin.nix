@@ -277,6 +277,18 @@ in
           "184" = {
             enabled = false;
           };
+          # Move focus to next windowをAlt + Tabに
+          "27" = {
+            enabled = true;
+            value = {
+              parameters = [
+                65535
+                48
+                524288
+              ];
+              type = "standard";
+            };
+          };
         };
       };
       "com.apple.finder" = {
@@ -312,10 +324,6 @@ in
     # ref. https://qiita.com/ry0f/items/f2c75f0a77b1012182d6
     defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 "<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>1048576</integer></array><key>type</key><string>standard</string></dict></dict>"
     defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 65 "<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>49</integer><integer>1572864</integer></array><key>type</key><string>standard</string></dict></dict>"
-
-    # Change "Move focus to next window" shortcut to `Alt + Tab`
-    /usr/libexec/PlistBuddy -c "Delete :AppleSymbolicHotKeys:27" ~/Library/Preferences/com.apple.symbolichotkeys.plist 2>/dev/null || true
-    defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>48</integer><integer>524288</integer></array><key>type</key><string>standard</string></dict></dict>"
 
     # macOS設定を再起動なしで即時反映する
     /usr/bin/sudo -u ${username} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
