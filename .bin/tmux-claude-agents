@@ -3,5 +3,5 @@
 claude agents --json 2>/dev/null | jq -r --exit-status '
   select(length > 0) |
   ([.[] | select(.status == "paused" or .status == "waiting")] | length) as $paused |
-  "\(length)" + (if $paused > 0 then " [🔴 \($paused)]" else "" end)
+  "\(length)" + (if $paused > 0 then "🔴\($paused)" else "" end)
 ' | tr -d '\n'
