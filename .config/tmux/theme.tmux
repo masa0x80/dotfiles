@@ -30,7 +30,7 @@ set -agF "@catppuccin_status_claude" \
   "#[fg=#{@thm_fg},bg=#{E:@catppuccin_status_module_text_bg}]"
 set -ag "@catppuccin_status_claude" " #(tmux-claude-agents)"
 set -agF "@catppuccin_status_claude" \
-  "#[fg=#{E:@catppuccin_status_module_text_bg}}]#[bg=default]#{@catppuccin_status_right_separator}"
+  "#[fg=#{E:@catppuccin_status_module_text_bg}]#[bg=default]#{@catppuccin_status_right_separator}"
 
 # Make the status line pretty and add some modules
 set -g status-right-length 80
