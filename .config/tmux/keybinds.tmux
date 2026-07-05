@@ -1,8 +1,5 @@
 # vim: ft=tmux
 
-# Window名変更
-bind A command-prompt -I '#W' 'rename-window %%'
-
 # Sessionをプールしておき、new-windowやsplit-window時に使う
 set-hook -g session-created 'run-shell "\
   tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool; \
@@ -41,36 +38,6 @@ bind C run-shell '\
   fi; \
   tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool'
 
-# next / prev window
-bind -r C-n next-window
-bind -r C-p previous-window
-
-bind q select-window -t 1
-bind w select-window -t 2
-bind e select-window -t 3
-bind i select-window -t '{end}'\; select-window -t :-2
-bind o select-window -t '{end}'\; select-window -t :-
-bind p select-window -t '{end}'
-bind 8 select-window -t '{end}'\; select-window -t :-2
-bind 9 select-window -t '{end}'\; select-window -t :-
-bind 0 select-window -t '{end}'
-
-# Toggle Window
-bind C-s last-window
-
-bind * list-client
-
-# Windowの移動
-bind P swap-window -t :-\; select-window -t :-
-bind N swap-window -t :+\; select-window -t :+
-bind I swap-window -t :-\; select-window -t :-
-bind O swap-window -t :+\; select-window -t :+
-
-# Paneの移動
-bind > join-pane -t :+
-bind < join-pane -t :-
-bind J command-prompt -1 'join-pane -ht :%%'
-
 # Pane分割 (poolしてあるsessionを使う）
 bind - run-shell '\
   path="#{pane_current_path}"; \
@@ -105,6 +72,39 @@ bind \; run-shell '\
     tmux split-window -h -c "${pane_current_path}"; \
   fi; \
   tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool'
+
+# Window名変更
+bind A command-prompt -I '#W' 'rename-window %%'
+
+# next / prev window
+bind -r C-n next-window
+bind -r C-p previous-window
+
+bind q select-window -t 1
+bind w select-window -t 2
+bind e select-window -t 3
+bind i select-window -t '{end}'\; select-window -t :-2
+bind o select-window -t '{end}'\; select-window -t :-
+bind p select-window -t '{end}'
+bind 8 select-window -t '{end}'\; select-window -t :-2
+bind 9 select-window -t '{end}'\; select-window -t :-
+bind 0 select-window -t '{end}'
+
+# Toggle Window
+bind C-s last-window
+
+bind * list-client
+
+# Windowの移動
+bind P swap-window -t :-\; select-window -t :-
+bind N swap-window -t :+\; select-window -t :+
+bind I swap-window -t :-\; select-window -t :-
+bind O swap-window -t :+\; select-window -t :+
+
+# Paneの移動
+bind > join-pane -t :+
+bind < join-pane -t :-
+bind J command-prompt -1 'join-pane -ht :%%'
 
 bind r rotate-window
 bind C-r rotate-window
