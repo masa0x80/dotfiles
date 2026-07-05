@@ -1,0 +1,25 @@
+#!/bin/bash
+
+agents_json=$(claude agents --json 2>/dev/null)
+
+if [ -z "$agents_json" ] || [ "$agents_json" = "[]" ]; then
+  exit 0
+fi
+
+count=$(echo "$agents_json" | jq -r 'length')
+running=$(echo "$agents_json" | jq -r '[.[] | select(.status == "running")] | length')
+paused=$(echo "$agents_json" | jq -r '[.[] | select(.status == "paused" or .status == "waiting")] | length')
+
+if [ "$count" -eq 0 ]; then
+  exit 0
+fi
+
+parts=""
+if [ "$running" -gt 0 ]; then
+  parts="🟡 ${running}"
+fi
+if [ "$paused" -gt 0 ]; then
+  parts="${parts:+$parts }🔴 ${paused}"
+fi
+
+echo "${parts:-${count}}"
