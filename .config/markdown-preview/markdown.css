@@ -336,6 +336,7 @@
 .markdown-body {
   font-family: "Pending Mono HWNF";
   font-size: 28px;
+  border-width: 0px;
 }
 
 .markdown-body p,
