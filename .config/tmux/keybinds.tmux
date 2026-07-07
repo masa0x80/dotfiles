@@ -13,46 +13,42 @@ set-hook -g pane-focus-in 'run-shell "\
 # new-window (poolしてあるsessionを使う）
 bind c run-shell '\
   path="#{pane_current_path}"; \
-  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool; \
   pane=$(tmux list-windows -t _pool -F "##{window_index} ##{pane_id}" | head -1 | awk "{print \$2}"); \
   if [ -n "$pane" ]; then \
     win=$(tmux list-windows -t _pool -F "##{window_index}" | head -1); \
     tmux move-window -a -s "_pool:$win"; \
     tmux select-window -t "$pane"; \
   else \
-    tmux new-window -a -c "${pane_current_path}"; \
+    tmux new-window -a -c "$path"; \
   fi; \
-  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool'
+  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -c "$path" -s _pool'
 bind C run-shell '\
   path="#{pane_current_path}"; \
-  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool; \
   pane=$(tmux list-windows -t _pool -F "##{window_index} ##{pane_id}" | head -1 | awk "{print \$2}"); \
   if [ -n "$pane" ]; then \
     win=$(tmux list-windows -t _pool -F "##{window_index}" | head -1); \
     tmux move-window -b -s "_pool:$win"; \
     tmux select-window -t "$pane"; \
   else \
-    tmux new-window -a -c "${pane_current_path}"; \
+    tmux new-window -a -c "$path"; \
     tmux swap-window -t :-; \
     tmux select-window -t :-; \
   fi; \
-  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool'
+  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -c "$path" -s _pool'
 
 # Pane分割 (poolしてあるsessionを使う）
 bind - run-shell '\
   path="#{pane_current_path}"; \
-  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool; \
   pane=$(tmux list-windows -t _pool -F "##{window_index} ##{pane_id}" | head -1 | awk "{print \$2}"); \
   if [ -n "$pane" ]; then \
     win=$(tmux list-windows -t _pool -F "##{window_index}" | head -1); \
     tmux join-pane -v -s "_pool:$win"; \
   else \
-    tmux split-window -v -c "${pane_current_path}"; \
+    tmux split-window -v -c "$path"; \
   fi; \
-  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool'
+  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -c "$path" -s _pool'
 bind \\ run-shell '\
   path="#{pane_current_path}"; \
-  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool; \
   pane=$(tmux list-windows -t _pool -F "##{window_index} ##{pane_id}" | head -1 | awk "{print \$2}"); \
   if [ -n "$pane" ]; then \
     win=$(tmux list-windows -t _pool -F "##{window_index}" | head -1); \
@@ -60,18 +56,17 @@ bind \\ run-shell '\
   else \
     tmux split-window -h -c "$path"; \
   fi; \
-  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool'
+  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -c "$path" -s _pool'
 bind \; run-shell '\
   path="#{pane_current_path}"; \
-  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool; \
   pane=$(tmux list-windows -t _pool -F "##{window_index} ##{pane_id}" | head -1 | awk "{print \$2}"); \
   if [ -n "$pane" ]; then \
     win=$(tmux list-windows -t _pool -F "##{window_index}" | head -1); \
     tmux join-pane -h -s "_pool:$win"; \
   else \
-    tmux split-window -h -c "${pane_current_path}"; \
+    tmux split-window -h -c "$path"; \
   fi; \
-  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -s _pool'
+  tmux has-session -t _pool 2>/dev/null || tmux new-session -d -c "$path" -s _pool'
 
 # Window名変更
 bind A command-prompt -I '#W' 'rename-window %%'
