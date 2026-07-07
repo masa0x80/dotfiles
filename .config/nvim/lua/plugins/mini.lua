@@ -138,7 +138,7 @@ return {
 		event = "VeryLazy",
 		config = function()
 			require("mini.cursorword").setup({
-				delay = 128,
+				delay = 300,
 			})
 		end,
 	},
