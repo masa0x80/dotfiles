@@ -541,6 +541,17 @@ s {
   padding: 0 1em;
 }
 
+.markdown-body blockquote {
+  margin-block-end: 0 !important;
+  border-left: 8px solid var(--color-markdown-blockquote-border) !important;
+}
+blockquote > p.source-line {
+  padding: 0 !important;
+}
+blockquote > p.source-line:last-child {
+  margin-block-end: 0 !important;
+}
+
 #page-header {
   display: none;
 }
