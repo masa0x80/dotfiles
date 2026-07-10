@@ -2,19 +2,19 @@
   "exclusionRules": [
     {
       "passKeys": "ukjopn/?d.vlxsyem!#rafzcg",
-      "pattern": "https?://mail.google.com/*"
+      "pattern": "https://mail.google.com/*"
     },
     {
       "passKeys": "njpkt1d2w3m4x5a6ycez/?",
-      "pattern": "https?://calendar.google.com/*"
+      "pattern": "https://calendar.google.com/*"
     },
     {
       "passKeys": "ukjopn/?d.vlxsyem!#rafzcgUG",
-      "pattern": "https?://outlook.office\\d{3}?.com/*"
+      "pattern": "https://outlook.cloud.microsoft/mail/*"
     },
     {
       "passKeys": "jklNP.,<>123456780cftim",
-      "pattern": "https?://www.youtube.com/*"
+      "pattern": "https://www.youtube.com/*"
     },
     {
       "passKeys": "[",
@@ -22,7 +22,7 @@
     }
   ],
   "grabBackFocus": true,
-  "keyMappings": "unmap K\nunmap J\nunmap <C-M-h>\n\nmap d scrollPageDown\nmap u scrollPageUp\n\nmap D removeTab\nmap U restoreTab\n\nmap R reload hard\n\nmap t Vomnibar.activateInNewTab\nmap O Vomnibar.activateEditUrl\nmap T Vomnibar.activateEditUrlInNewTab\nmap <C-;> Vomnibar.activateTabSelection\n\nmap <C-b> scrollPageUp\nmap <C-f> scrollPageDown\nmap <C-u> scrollFullPageUp\nmap <C-d> scrollFullPageDown\nmap <C-p> previousTab\nmap <C-n> nextTab\nmap <C-o> previousTab\nmap <C-i> nextTab\nmap <C-t><C-t> visitPreviousTab\nmap <C-s><C-s> visitPreviousTab\n\nmap gp togglePinTab\n\nmap <C-v> passNextKey\nmap \\ passNextKey count=999999",
+  "keyMappings": "unmap K\nunmap J\nunmap <C-M-h>\n\nmap d removeTab\nmap u restoreTab\n\nmap R reload hard\n\nmap t Vomnibar.activateInNewTab\nmap O Vomnibar.activateEditUrl\nmap T Vomnibar.activateEditUrlInNewTab\nmap <C-;> Vomnibar.activateTabSelection\n\nmap <C-b> scrollPageUp\nmap <C-f> scrollPageDown\nmap <C-u> scrollFullPageUp\nmap <C-d> scrollFullPageDown\nmap <C-p> previousTab\nmap <C-n> nextTab\nmap <C-o> previousTab\nmap <C-i> nextTab\nmap <C-t><C-t> visitPreviousTab\nmap <C-s><C-s> visitPreviousTab\n\nmap gp togglePinTab\n\nmap <C-v> passNextKey\nmap \\ passNextKey count=999999",
   "linkHintCharacters": "fjdksla;ghtyrueiwoqpvncmx/z",
   "nextPatterns": "next,more,newer,>,›,→,»,≫,>>,次",
   "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<,前",
