@@ -846,16 +846,16 @@
                                     "modifiers": { "mandatory": ["control"] }
                                 },
                                 "to": [
-                                  {
-                                    "key_code": "v",
-                                    "modifiers": ["control"]
-                                  },
-                                  { "key_code": "g" },
-                                  {
-                                    "key_code": "v",
-                                    "modifiers": ["control"]
-                                  },
-                                  { "key_code": "r" }
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": ["control"]
+                                    },
+                                    { "key_code": "g" },
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": ["control"]
+                                    },
+                                    { "key_code": "r" }
                                 ],
                                 "type": "basic"
                             }
@@ -878,10 +878,10 @@
                                     "modifiers": { "mandatory": ["command", "shift"] }
                                 },
                                 "to": [
-                                  {
-                                    "key_code": "i",
-                                    "modifiers": ["command", "option"]
-                                  }
+                                    {
+                                        "key_code": "i",
+                                        "modifiers": ["command", "option"]
+                                    }
                                 ],
                                 "type": "basic"
                             }
@@ -1112,9 +1112,7 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "from": {
-                                    "key_code": "escape"
-                                },
+                                "from": { "key_code": "escape" },
                                 "to": [
                                     { "key_code": "escape" },
                                     { "key_code": "japanese_eisuu" }
@@ -1261,9 +1259,11 @@
                                         { "key_code": "f" }
                                     ]
                                 },
-                                "to": [{
-                                  "key_code": "9",
-                                  "modifiers": ["left_shift"]}
+                                "to": [
+                                    {
+                                        "key_code": "9",
+                                        "modifiers": ["left_shift"]
+                                    }
                                 ],
                                 "type": "basic"
                             },
@@ -1286,9 +1286,11 @@
                                         { "key_code": "k" }
                                     ]
                                 },
-                                "to": [{
-                                  "key_code": "0",
-                                  "modifiers": ["left_shift"]}
+                                "to": [
+                                    {
+                                        "key_code": "0",
+                                        "modifiers": ["left_shift"]
+                                    }
                                 ],
                                 "type": "basic"
                             },
@@ -1385,6 +1387,15 @@
                         "is_pointing_device": true,
                         "product_id": 2240,
                         "vendor_id": 13364
+                    },
+                    "ignore": false
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 61167,
+                        "vendor_id": 6421
                     },
                     "ignore": false
                 }
