@@ -38,66 +38,17 @@
                         ]
                     },
                     {
-                        "description": "カーソル移動: <A-h> / <A-j> / <A-k> / <A-l>",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "h",
-                                    "modifiers": {
-                                        "mandatory": ["option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "left_arrow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": ["option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "down_arrow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": {
-                                        "mandatory": ["option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "up_arrow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": {
-                                        "mandatory": ["option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "right_arrow" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "カーソル移動: <C-f> / <C-b> / <C-n> / <C-p>",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.microsoft\\.Excel$",
-                                            "^com\\.microsoft\\.Powerpoint$",
-                                            "^com\\.microsoft\\.Outlook$"
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^com\\.mitchellh\\.ghostty$"
                                         ],
-                                        "type": "frontmost_application_if"
+                                        "type": "frontmost_application_unless"
                                     }
                                 ],
                                 "from": {
@@ -111,11 +62,11 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.microsoft\\.Excel$",
-                                            "^com\\.microsoft\\.Powerpoint$",
-                                            "^com\\.microsoft\\.Outlook$"
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^com\\.mitchellh\\.ghostty$"
                                         ],
-                                        "type": "frontmost_application_if"
+                                        "type": "frontmost_application_unless"
                                     }
                                 ],
                                 "from": {
@@ -129,11 +80,11 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.vivaldi\\.Vivaldi$",
-                                            "^com\\.microsoft\\.Outlook$",
-                                            "^com\\.tinyspeck\\.slackmacgap$"
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^com\\.mitchellh\\.ghostty$"
                                         ],
-                                        "type": "frontmost_application_if"
+                                        "type": "frontmost_application_unless"
                                     }
                                 ],
                                 "from": {
@@ -147,11 +98,11 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.vivaldi\\.Vivaldi$",
-                                            "^com\\.microsoft\\.Outlook$",
-                                            "^com\\.tinyspeck\\.slackmacgap$"
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^com\\.mitchellh\\.ghostty$"
                                         ],
-                                        "type": "frontmost_application_if"
+                                        "type": "frontmost_application_unless"
                                     }
                                 ],
                                 "from": {
