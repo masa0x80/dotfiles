@@ -44,6 +44,9 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^com\\.microsoft\\.edgemac$",
+                                            "^com\\.vivaldi\\.Vivaldi$",
+                                            "^com\\.brave\\.Browser$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.github\\.wez\\.wezterm$",
                                             "^com\\.mitchellh\\.ghostty$"
@@ -62,6 +65,9 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^com\\.microsoft\\.edgemac$",
+                                            "^com\\.vivaldi\\.Vivaldi$",
+                                            "^com\\.brave\\.Browser$",
                                             "^com\\.googlecode\\.iterm2$",
                                             "^com\\.github\\.wez\\.wezterm$",
                                             "^com\\.mitchellh\\.ghostty$"
