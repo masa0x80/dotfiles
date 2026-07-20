@@ -250,6 +250,9 @@ in
           "en"
           "ja"
         ];
+        NSUserKeyEquivalents = {
+          Minimize = "~@m";
+        };
       };
       "com.apple.symbolichotkeys" = {
         AppleSymbolicHotKeys = {

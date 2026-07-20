@@ -4,12 +4,20 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "<C-m>",
+                        "description": "<C-m>や<Cmd-m>でEnter",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "m",
                                     "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [{ "key_code": "return_or_enter" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": { "mandatory": ["command"] }
                                 },
                                 "to": [{ "key_code": "return_or_enter" }],
                                 "type": "basic"
