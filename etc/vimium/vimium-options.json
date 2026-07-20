@@ -13,7 +13,7 @@
       "pattern": "https://outlook.cloud.microsoft/mail/*"
     },
     {
-      "passKeys": "jklNP.,<>123456780cftim",
+      "passKeys": "jklNP.,123456780cftim",
       "pattern": "https://www.youtube.com/*"
     },
     {
