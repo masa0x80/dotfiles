@@ -54,6 +54,7 @@ return {
 					NavicIconsUnit = { fg = palette.green },
 					NavicIconsValue = { fg = palette.peach },
 					NavicIconsVariable = { fg = palette.mauve },
+					GitSignsCurrentLineBlame = { fg = palette.overlay1 },
 					NormalFloat = { bg = palette.surface0 },
 				}
 			end,
