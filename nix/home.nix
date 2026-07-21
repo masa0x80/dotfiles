@@ -153,7 +153,7 @@ in
     dyff
 
     # Tools for macOS
-    blueutil
+    # blueutil
     pinentry_mac
     pngpaste
   ];
