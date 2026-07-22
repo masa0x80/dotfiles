@@ -13,17 +13,17 @@
       "pattern": "https://outlook.cloud.microsoft/mail/*"
     },
     {
-      "passKeys": "jklNP.,123456780cftim",
-      "pattern": "https://www.youtube.com/*"
-    },
-    {
       "passKeys": "[",
       "pattern": "https://.*confluence.*"
+    },
+    {
+      "passKeys": "jklNP.,123456780cftim",
+      "pattern": "https://www.youtube.com/*"
     }
   ],
   "grabBackFocus": true,
   "keyMappings": "unmap K\nunmap J\nunmap <C-M-h>\n\nmap d removeTab\nmap u restoreTab\n\nmap R reload hard\n\nmap t Vomnibar.activateInNewTab\nmap O Vomnibar.activateEditUrl\nmap T Vomnibar.activateEditUrlInNewTab\nmap <C-;> Vomnibar.activateTabSelection\n\nmap <C-b> scrollPageUp\nmap <C-f> scrollPageDown\nmap <C-u> scrollFullPageUp\nmap <C-d> scrollFullPageDown\nmap <C-p> previousTab\nmap <C-n> nextTab\nmap <C-o> previousTab\nmap <C-i> nextTab\nmap <C-t><C-t> visitPreviousTab\nmap <C-s><C-s> visitPreviousTab\n\nmap gp togglePinTab\n\nmap <C-v> passNextKey\nmap \\ passNextKey count=999999",
-  "linkHintCharacters": "fjdksla;ghtyrueiwoqpvncmx/z",
+  "linkHintCharacters": "fja;dkslghtyqpruwoeivnz/cmx",
   "nextPatterns": "next,more,newer,>,›,→,»,≫,>>,次",
   "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<,前",
   "searchEngines": "",
