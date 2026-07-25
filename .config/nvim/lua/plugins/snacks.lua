@@ -27,14 +27,16 @@ return {
 			enabled = true,
 			preview = function(ctx)
 				local path = Snacks.picker.util.path(ctx.item)
-				if path and path:match("%.age$") then
-					local ext = path:match("%.(%w+)%.age$") or ""
-					local bat_opts = ext ~= "" and (" --language=" .. ext) or ""
+				if path and path:match("%.age%.%w+$") then
 					ctx.preview:set_title(vim.fn.fnamemodify(path, ":t"))
-					return Snacks.picker.preview.cmd(
-						{ "sh", "-c", "_de " .. vim.fn.shellescape(path) .. " | bat " .. bat_opts },
-						ctx
-					)
+					return Snacks.picker.preview.cmd({
+						"sh",
+						"-c",
+						"_de "
+							.. vim.fn.shellescape(path)
+							.. " | bat --paging=never --file-name="
+							.. vim.fn.shellescape(path),
+					}, ctx)
 				end
 				return Snacks.picker.preview.file(ctx)
 			end,
