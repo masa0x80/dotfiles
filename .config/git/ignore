@@ -25,3 +25,5 @@ git-worktrees/*
 .jj
 
 aicontext
+
+**/.claude/.cc-writes/
