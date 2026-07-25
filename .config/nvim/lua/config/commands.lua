@@ -69,21 +69,9 @@ end, {
 
 vim.api.nvim_create_user_command("F", function(opts)
 	local ft = opts.fargs[1]
-	if ft ~= nil then
-		vim.bo.filetype = ft
-	else
-		ft = string.match(vim.fn.expand("%:t"), "%.(%w+)%.%w+")
-		if ft ~= nil then
-			if ft == "md" then
-				vim.bo.filetype = "markdown"
-			else
-				vim.bo.filetype = ft
-			end
-			vim.fn.execute("TSBufEnable " .. vim.bo.filetype)
-		end
-	end
+	vim.bo.filetype = ft
 end, {
-	nargs = "?",
+	nargs = 1,
 })
 
 vim.api.nvim_create_user_command("AddAbbrComma", function(opts)

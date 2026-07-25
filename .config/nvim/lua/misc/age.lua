@@ -4,16 +4,24 @@ local identity = vim.fn.getenv("AGE_IDENTITY")
 if recipient ~= nil and identity ~= nil then
 	local saved_state = {}
 
+	require("utils").create_autocmd({ "BufReadPre", "FileReadPre" }, {
+		pattern = "*.age.*",
+		callback = function()
+			vim.opt.eventignore:append("FileType")
+		end,
+	})
+
 	require("utils").create_autocmd({ "BufReadPost", "FileReadPost" }, {
-		pattern = "*.age",
+		pattern = "*.age.*",
 		callback = function()
 			vim.cmd("silent %!_de")
-			vim.cmd("F")
+			vim.opt.eventignore:remove("FileType")
+			vim.cmd("filetype detect")
 		end,
 	})
 
 	require("utils").create_autocmd({ "BufWritePre", "FileWritePre" }, {
-		pattern = "*.age",
+		pattern = "*.age.*",
 		callback = function()
 			local bufnr = vim.fn.bufnr()
 			local views = {}
@@ -32,7 +40,7 @@ if recipient ~= nil and identity ~= nil then
 	})
 
 	require("utils").create_autocmd({ "BufWritePost", "FileWritePost" }, {
-		pattern = "*.age",
+		pattern = "*.age.*",
 		callback = function()
 			local bufnr = vim.fn.bufnr()
 			local state = saved_state[bufnr]
