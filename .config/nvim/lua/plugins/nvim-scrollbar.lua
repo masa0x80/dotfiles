@@ -4,6 +4,11 @@ return {
 		version = "*",
 		event = { "BufNewFile", "BufRead" },
 		config = function()
+			require("hlslens").setup({
+				nearest_only = true,
+				virt_priority = 64,
+			})
+
 			local map = vim.keymap.set
 			map("n", "*", function()
 				require("lasterisk").search()
