@@ -215,7 +215,7 @@ return {
 					else
 						vim.cmd("ReplaceDate")
 					end
-					vim.cmd("filetype detect")
+					pcall(vim.cmd, "filetype detect")
 				end,
 			})
 		end,
