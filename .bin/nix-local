@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+
+nix-local() {
+  test -e .envrc && return 1
+
+  echo 'use flake' >.envrc
+  echo 'export NIX_CONFIG="access-tokens = github.com=$(gh auth token)"' >>.envrc
+  direnv allow
+
+  cat <<'EOF' > flake.nix
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-utils.url = "github.numtide/flake-utils";
+  };
+
+  output =
+    { nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            # nodejs_26
+          ];
+        };
+      }
+    );
+}
+EOF
+}
+nix-local
