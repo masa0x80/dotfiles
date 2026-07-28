@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # nixpkgs-hoge.url = "github:NixOS/nixpkgs/${commit-hash}";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,6 +18,7 @@
     {
       nix-darwin,
       home-manager,
+      # nixpkgs-hoge,
       ...
     }:
     let

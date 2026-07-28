@@ -156,6 +156,8 @@ in
     # blueutil
     pinentry_mac
     pngpaste
+
+    # nixpkgs-hoge
   ];
 
   home.activation.createScreenshotDir = ''
