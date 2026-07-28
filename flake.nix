@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # https://lazamar.co.uk/nix-versions/
     # nixpkgs-hoge.url = "github:NixOS/nixpkgs/${commit-hash}";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
