@@ -39,7 +39,7 @@ nix-init: brew-init
 
 .PHONY: nix
 nix: nix-init
-	sudo -E $(if $(shell command -v gh 2>/dev/null),NIX_CONFIG="access-tokens = github.com=$$(gh auth token)") $(NIX) run nix-darwin -- switch --flake .#default --impure
+	sudo -E $(if $(shell command -v gh 2>/dev/null),NIX_CONFIG="access-tokens = github.com=$$(gh auth token)") HOST=$$(scutil --get LocalHostName) $(NIX) run nix-darwin -- switch --flake . --impure
 
 .PHONY: nix-update
 nix-update:

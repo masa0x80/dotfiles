@@ -15,8 +15,6 @@
 
   outputs =
     {
-      self,
-      nixpkgs,
       nix-darwin,
       home-manager,
       ...
@@ -34,9 +32,17 @@
           user
         else
           throw "Cannot determine username. Run with sudo.";
+      hostName =
+        let
+          name = builtins.getEnv "HOST";
+        in
+        if name != "" then
+          name
+        else
+          throw "HOST environment variable is not set. Run with: sudo HOST=$HOST";
     in
     {
-      darwinConfigurations.default = nix-darwin.lib.darwinSystem {
+      darwinConfigurations.${hostName} = nix-darwin.lib.darwinSystem {
         inherit system;
         specialArgs = {
           inherit username;

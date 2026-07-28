@@ -64,7 +64,6 @@ in
       "daipeihust/tap"
       "hanasuke/moralerspace"
       "ryooooooga/tap"
-      "tonisives/tap"
     ];
 
     brews = [
@@ -110,8 +109,6 @@ in
 
       "font-monaspace"
       "hanasuke/moralerspace/font-moralerspace"
-
-      "tonisives/tap/ovim"
     ];
 
     masApps = {
