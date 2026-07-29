@@ -3,9 +3,9 @@
 nix-local() {
   test -e .envrc && return 1
 
-  echo 'use flake' >.envrc
-  echo 'export NIX_CONFIG="access-tokens = github.com=$(gh auth token)"' >>.envrc
-  direnv allow
+  echo 'export NIX_CONFIG="access-tokens = github.com=$(gh auth token)"' >.envrc
+  echo >>.envrc
+  echo 'use flake' >>.envrc
 
   cat <<'EOF' > flake.nix
 {
