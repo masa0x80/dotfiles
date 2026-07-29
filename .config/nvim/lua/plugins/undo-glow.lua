@@ -2,7 +2,9 @@ return {
 	"y3owk1n/undo-glow.nvim",
 	version = "*",
 	event = { "VeryLazy" },
-	dependencies = { "catppuccin/nvim" },
+	dependencies = {
+		{ "catppuccin/nvim", version = "*" },
+	},
 	---@type UndoGlow.Config
 	opts = function()
 		local palette = require("catppuccin.palettes").get_palette("macchiato")

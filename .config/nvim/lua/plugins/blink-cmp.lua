@@ -7,9 +7,9 @@ return {
 		version = "*",
 		event = "VeryLazy",
 		dependencies = {
-			"fang2hou/blink-copilot",
-			"L3MON4D3/LuaSnip",
-			"rafamadriz/friendly-snippets",
+			{ "fang2hou/blink-copilot", version = "*" },
+			{ "L3MON4D3/LuaSnip", version = "*" },
+			{ "rafamadriz/friendly-snippets", version = "*" },
 		},
 		enabled = function()
 			return vim.bo.filetype ~= "prompt" and vim.b.completion ~= false

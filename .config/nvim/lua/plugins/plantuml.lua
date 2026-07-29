@@ -9,7 +9,10 @@ return {
 		version = "*",
 		ft = "plantuml",
 		dependencies = {
-			"tyru/open-browser.vim",
+			{
+				"tyru/open-browser.vim",
+				version = "*",
+			},
 		},
 	},
 }

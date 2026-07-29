@@ -219,6 +219,6 @@ return {
 		})
 	end,
 	dependencies = {
-		"renerocksai/calendar-vim",
+		{ "renerocksai/calendar-vim", version = "*" },
 	},
 }

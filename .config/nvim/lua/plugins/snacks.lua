@@ -20,7 +20,7 @@ return {
 		dashboard = { enabled = false },
 		explorer = { enabled = true },
 		gitbrowse = { enabled = true },
-		image = { enabled = false },
+		image = { enabled = true },
 		indent = { enabled = false },
 		input = { enabled = true },
 		picker = {
