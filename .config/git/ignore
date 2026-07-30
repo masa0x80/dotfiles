@@ -27,3 +27,5 @@ git-worktrees/*
 aicontext
 
 **/.claude/.cc-writes/
+
+.direnv/
