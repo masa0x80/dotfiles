@@ -110,7 +110,7 @@ command = "workspace-tools.pick-workspace"
 description = "Pick workspace (fzf)"
 
 [[keys.command]]
-key = "prefix+q"
+key = "ctrl+q"
 type = "plugin_action"
 command = "workspace-tools.misc"
 description = "Open _misc workspace"
