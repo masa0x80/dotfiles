@@ -42,6 +42,14 @@
 !/karabiner/karabiner.json
 !/karabiner/.editorconfig
 
+!/herdr
+/herdr/*
+!/herdr/config.toml
+!/herdr/plugins
+/herdr/plugins/*
+!/herdr/plugins/pool/
+!/herdr/plugins/workspace-tools/
+
 !/hadolint.yaml
 !/mise.toml
 !/starship.toml

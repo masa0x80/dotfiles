@@ -1,0 +1,158 @@
+id = "workspace-tools"
+name = "Workspace Tools"
+version = "0.1.0"
+min_herdr_version = "0.7.0"
+description = "fzf workspace picker, pane relocation, tab/workspace reordering"
+platforms = ["macos", "linux"]
+
+[[actions]]
+id = "pick-workspace"
+title = "Pick workspace (fzf)"
+command = ["./ws.zsh", "pick-workspace"]
+
+[[actions]]
+id = "move-pane"
+title = "Move pane to workspace (fzf)"
+command = ["./ws.zsh", "move-pane"]
+
+[[actions]]
+id = "misc"
+title = "Open _misc workspace"
+command = ["./ws.zsh", "misc"]
+
+[[actions]]
+id = "tab-move-next"
+title = "Move tab right"
+command = ["./ws.zsh", "tab-move", "next"]
+
+[[actions]]
+id = "tab-move-prev"
+title = "Move tab left"
+command = ["./ws.zsh", "tab-move", "prev"]
+
+[[actions]]
+id = "ws-move-next"
+title = "Move workspace down"
+command = ["./ws.zsh", "ws-move", "next"]
+
+[[actions]]
+id = "ws-move-prev"
+title = "Move workspace up"
+command = ["./ws.zsh", "ws-move", "prev"]
+
+[[actions]]
+id = "tab-1"
+title = "Focus tab 1 from left"
+command = ["./ws.zsh", "tab-select", "1"]
+
+[[actions]]
+id = "tab-2"
+title = "Focus tab 2 from left"
+command = ["./ws.zsh", "tab-select", "2"]
+
+[[actions]]
+id = "tab-3"
+title = "Focus tab 3 from left"
+command = ["./ws.zsh", "tab-select", "3"]
+
+[[actions]]
+id = "tab-4"
+title = "Focus tab 4 from left"
+command = ["./ws.zsh", "tab-select", "4"]
+
+[[actions]]
+id = "tab-5"
+title = "Focus tab 5 from left"
+command = ["./ws.zsh", "tab-select", "5"]
+
+[[actions]]
+id = "tab-6"
+title = "Focus tab 6 from left"
+command = ["./ws.zsh", "tab-select", "6"]
+
+[[actions]]
+id = "tab-7"
+title = "Focus tab 7 from left"
+command = ["./ws.zsh", "tab-select", "7"]
+
+[[actions]]
+id = "tab-right-1"
+title = "Focus rightmost tab"
+command = ["./ws.zsh", "tab-select", "-1"]
+
+[[actions]]
+id = "tab-right-2"
+title = "Focus 2nd tab from right"
+command = ["./ws.zsh", "tab-select", "-2"]
+
+[[actions]]
+id = "tab-right-3"
+title = "Focus 3rd tab from right"
+command = ["./ws.zsh", "tab-select", "-3"]
+
+[[actions]]
+id = "ws-1"
+title = "Focus workspace 1 from top"
+command = ["./ws.zsh", "ws-select", "1"]
+
+[[actions]]
+id = "ws-2"
+title = "Focus workspace 2 from top"
+command = ["./ws.zsh", "ws-select", "2"]
+
+[[actions]]
+id = "ws-3"
+title = "Focus workspace 3 from top"
+command = ["./ws.zsh", "ws-select", "3"]
+
+[[actions]]
+id = "ws-4"
+title = "Focus workspace 4 from top"
+command = ["./ws.zsh", "ws-select", "4"]
+
+[[actions]]
+id = "ws-5"
+title = "Focus workspace 5 from top"
+command = ["./ws.zsh", "ws-select", "5"]
+
+[[actions]]
+id = "ws-6"
+title = "Focus workspace 6 from top"
+command = ["./ws.zsh", "ws-select", "6"]
+
+[[actions]]
+id = "ws-7"
+title = "Focus workspace 7 from top"
+command = ["./ws.zsh", "ws-select", "7"]
+
+[[actions]]
+id = "ws-end-1"
+title = "Focus last workspace"
+command = ["./ws.zsh", "ws-select", "-1"]
+
+[[actions]]
+id = "ws-end-2"
+title = "Focus 2nd workspace from end"
+command = ["./ws.zsh", "ws-select", "-2"]
+
+[[actions]]
+id = "ws-end-3"
+title = "Focus 3rd workspace from end"
+command = ["./ws.zsh", "ws-select", "-3"]
+
+# fzf は TTY が要るので、action から開く popup ペインとして持つ
+[[panes]]
+id = "picker-focus"
+title = "Workspace picker"
+placement = "popup"
+width = "60%"
+height = "40%"
+command = ["./ws.zsh", "picker-focus"]
+
+[[panes]]
+id = "picker-move"
+title = "Move pane to workspace"
+placement = "popup"
+width = "60%"
+height = "40%"
+command = ["./ws.zsh", "picker-move"]

@@ -11,9 +11,23 @@ _switch_starship_config() {
 }
 add-zsh-hook preexec _switch_starship_config
 
-_set_window_name() {
-  if [[ -n $TMUX ]]; then
-    tmux rename-window -t $(tmux display-message -p -t "$TMUX_PANE" '#I') "$(current_dir)"
+_herdr_ws_tool="${XDG_CONFIG_HOME:-$HOME/.config}/herdr/plugins/workspace-tools/ws.zsh"
+
+# pane_id は移動で変わるので、起動時に不変の terminal_id を覚えておく
+_herdr_my_terminal_id() {
+  if [[ -z $_herdr_terminal_id && -n $HERDR_PANE_ID ]]; then
+    _herdr_terminal_id="$("$_herdr_ws_tool" terminal-id "$HERDR_PANE_ID" 2>/dev/null)"
   fi
+  [[ -n $_herdr_terminal_id ]]
+}
+
+_set_window_name() {
+  [[ -n $HERDR_ENV && -z $_herdr_quiet && -x $_herdr_ws_tool ]] || return
+  local name="$(current_dir)"
+  # 名前が変わったときだけ herdr を叩く
+  [[ $name == "$_herdr_last_tab_name" ]] && return
+  _herdr_my_terminal_id || return
+  _herdr_last_tab_name="$name"
+  ("$_herdr_ws_tool" tab-name "$_herdr_terminal_id" "$name" &) >/dev/null 2>&1
 }
 add-zsh-hook precmd _set_window_name

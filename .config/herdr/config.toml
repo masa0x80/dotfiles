@@ -1,0 +1,262 @@
+onboarding = false
+
+[theme]
+name = "catppuccin"
+
+[terminal]
+new_cwd = "follow"
+
+[session]
+resume_agents_on_restore = true
+
+[ui]
+copy_on_select = true
+prompt_new_tab_name = false
+hide_tab_bar_when_single_tab = true
+accent = "#cba6f7"
+
+[keys]
+prefix = "ctrl+s"
+
+last_pane = "prefix+ctrl+semicolon"
+cycle_pane_next = "prefix+tab"
+cycle_pane_previous = "prefix+ctrl+o"
+
+rename_tab = "prefix+ctrl+a"
+rename_pane = "prefix+a"
+close_pane = "prefix+shift+q"
+
+focus_pane_left = "prefix+ctrl+h"
+focus_pane_down = "prefix+ctrl+j"
+focus_pane_up = "prefix+ctrl+k"
+focus_pane_right = "prefix+ctrl+l"
+
+swap_pane_left = "prefix+shift+h"
+swap_pane_down = "prefix+shift+j"
+swap_pane_up = "prefix+shift+k"
+swap_pane_right = "prefix+shift+l"
+
+next_tab = "prefix+ctrl+n"
+previous_tab = "prefix+ctrl+p"
+next_workspace = "prefix+ctrl+]"
+previous_workspace = "prefix+ctrl+["
+
+resize_mode = "prefix+shift+r"
+copy_mode = "prefix+ctrl+f"
+
+reload_config = "prefix+shift+e"
+
+detach = "prefix+d"
+zoom = "prefix+z"
+
+toggle_sidebar = "prefix+w"
+
+# 事前にプールしておいた zsh ペインを使う版に差し替えるので、
+# 組み込みのタブ作成 / ペイン分割のバインドは外す
+new_tab = ""
+split_vertical = ""
+split_horizontal = ""
+switch_tab = ""
+
+# prefix+shift+n はタブの位置移動に使うので、ワークスペース作成をずらす
+new_workspace = "prefix+t"
+
+[[keys.command]]
+key = "prefix+c"
+type = "plugin_action"
+command = "zsh-session-pool.new-tab"
+description = "New tab (pooled)"
+
+[[keys.command]]
+key = "prefix+shift+c"
+type = "plugin_action"
+command = "zsh-session-pool.new-tab-before"
+description = "New tab before current (pooled)"
+
+[[keys.command]]
+key = "prefix+backslash"
+type = "plugin_action"
+command = "zsh-session-pool.split-right"
+description = "Split right (pooled)"
+
+[[keys.command]]
+key = "prefix+v"
+type = "plugin_action"
+command = "zsh-session-pool.split-right"
+description = "Split right (pooled)"
+
+[[keys.command]]
+key = "prefix+minus"
+type = "plugin_action"
+command = "zsh-session-pool.split-down"
+description = "Split down (pooled)"
+
+[[keys.command]]
+key = "prefix+h"
+type = "plugin_action"
+command = "zsh-session-pool.split-down"
+description = "Split down (pooled)"
+
+[[keys.command]]
+key = "prefix+space"
+type = "plugin_action"
+command = "workspace-tools.move-pane"
+description = "Move pane to workspace (fzf)"
+
+[[keys.command]]
+key = "prefix+b"
+type = "plugin_action"
+command = "workspace-tools.pick-workspace"
+description = "Pick workspace (fzf)"
+
+[[keys.command]]
+key = "prefix+q"
+type = "plugin_action"
+command = "workspace-tools.misc"
+description = "Open _misc workspace"
+
+[[keys.command]]
+key = "prefix+shift+n"
+type = "plugin_action"
+command = "workspace-tools.tab-move-next"
+description = "Move tab right"
+
+[[keys.command]]
+key = "prefix+shift+p"
+type = "plugin_action"
+command = "workspace-tools.tab-move-prev"
+description = "Move tab left"
+
+[[keys.command]]
+key = "prefix+1"
+type = "plugin_action"
+command = "workspace-tools.tab-1"
+description = "Focus tab 1 from left"
+
+[[keys.command]]
+key = "prefix+2"
+type = "plugin_action"
+command = "workspace-tools.tab-2"
+description = "Focus tab 2 from left"
+
+[[keys.command]]
+key = "prefix+3"
+type = "plugin_action"
+command = "workspace-tools.tab-3"
+description = "Focus tab 3 from left"
+
+[[keys.command]]
+key = "prefix+4"
+type = "plugin_action"
+command = "workspace-tools.tab-4"
+description = "Focus tab 4 from left"
+
+[[keys.command]]
+key = "prefix+5"
+type = "plugin_action"
+command = "workspace-tools.tab-5"
+description = "Focus tab 5 from left"
+
+[[keys.command]]
+key = "prefix+6"
+type = "plugin_action"
+command = "workspace-tools.tab-6"
+description = "Focus tab 6 from left"
+
+[[keys.command]]
+key = "prefix+7"
+type = "plugin_action"
+command = "workspace-tools.tab-7"
+description = "Focus tab 7 from left"
+
+# 8 / 9 / 0 は右端から数える（tmux の bind 8/9/0 と同じ）
+[[keys.command]]
+key = "prefix+8"
+type = "plugin_action"
+command = "workspace-tools.tab-right-3"
+description = "Focus 3rd tab from right"
+
+[[keys.command]]
+key = "prefix+9"
+type = "plugin_action"
+command = "workspace-tools.tab-right-2"
+description = "Focus 2nd tab from right"
+
+[[keys.command]]
+key = "prefix+0"
+type = "plugin_action"
+command = "workspace-tools.tab-right-1"
+description = "Focus rightmost tab"
+
+[[keys.command]]
+key = "prefix+shift+1"
+type = "plugin_action"
+command = "workspace-tools.ws-1"
+description = "Focus workspace 1 from top"
+
+[[keys.command]]
+key = "prefix+shift+2"
+type = "plugin_action"
+command = "workspace-tools.ws-2"
+description = "Focus workspace 2 from top"
+
+[[keys.command]]
+key = "prefix+shift+3"
+type = "plugin_action"
+command = "workspace-tools.ws-3"
+description = "Focus workspace 3 from top"
+
+[[keys.command]]
+key = "prefix+shift+4"
+type = "plugin_action"
+command = "workspace-tools.ws-4"
+description = "Focus workspace 4 from top"
+
+[[keys.command]]
+key = "prefix+shift+5"
+type = "plugin_action"
+command = "workspace-tools.ws-5"
+description = "Focus workspace 5 from top"
+
+[[keys.command]]
+key = "prefix+shift+6"
+type = "plugin_action"
+command = "workspace-tools.ws-6"
+description = "Focus workspace 6 from top"
+
+[[keys.command]]
+key = "prefix+shift+7"
+type = "plugin_action"
+command = "workspace-tools.ws-7"
+description = "Focus workspace 7 from top"
+
+# shift+8 / 9 / 0 はタブ側と同じく末尾から数える
+[[keys.command]]
+key = "prefix+shift+8"
+type = "plugin_action"
+command = "workspace-tools.ws-end-3"
+description = "Focus 3rd workspace from end"
+
+[[keys.command]]
+key = "prefix+shift+9"
+type = "plugin_action"
+command = "workspace-tools.ws-end-2"
+description = "Focus 2nd workspace from end"
+
+[[keys.command]]
+key = "prefix+shift+0"
+type = "plugin_action"
+command = "workspace-tools.ws-end-1"
+description = "Focus last workspace"
+
+[[keys.command]]
+key = "prefix+}"
+type = "plugin_action"
+command = "workspace-tools.ws-move-next"
+description = "Move workspace down"
+
+[[keys.command]]
+key = "prefix+{"
+type = "plugin_action"
+command = "workspace-tools.ws-move-prev"
+description = "Move workspace up"

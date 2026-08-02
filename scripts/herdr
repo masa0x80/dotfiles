@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+# プラグインを herdr に登録する（登録済みなら上書きされるだけ）
+plugin_dir="${XDG_CONFIG_HOME:-$HOME/.config}/herdr/plugins"
+for dir ($plugin_dir/*/herdr-plugin.toml(N:h)) herdr plugin link "$dir"

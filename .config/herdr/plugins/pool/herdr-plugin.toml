@@ -1,0 +1,40 @@
+id = "zsh-session-pool"
+name = "Zsh Session Pool"
+version = "0.1.0"
+min_herdr_version = "0.7.0"
+description = "Pre-warmed zsh panes for instant new tabs and splits"
+platforms = ["macos", "linux"]
+
+# tmux の `set-hook -g session-created` 相当。
+# herdr 0.7.4 は [[startup]] を読み飛ばす（0.7.5 以降で動く）ので、
+# それまでは workspace.created / pane.focused 側でプールを用意する。
+[[startup]]
+command = ["./pool.zsh", "ensure"]
+
+[[events]]
+on = "workspace.created"
+command = ["./pool.zsh", "ensure"]
+
+[[events]]
+on = "pane.focused"
+command = ["./pool.zsh", "focus-sync"]
+
+[[actions]]
+id = "new-tab"
+title = "New tab (pooled)"
+command = ["./pool.zsh", "new-tab"]
+
+[[actions]]
+id = "new-tab-before"
+title = "New tab before current (pooled)"
+command = ["./pool.zsh", "new-tab-before"]
+
+[[actions]]
+id = "split-right"
+title = "Split right (pooled)"
+command = ["./pool.zsh", "split-right"]
+
+[[actions]]
+id = "split-down"
+title = "Split down (pooled)"
+command = ["./pool.zsh", "split-down"]

@@ -82,6 +82,7 @@ in
     fzf
     xh
     jo
+    jq
     catimg
 
     # Shell
