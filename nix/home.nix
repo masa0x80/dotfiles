@@ -88,6 +88,7 @@ in
     starship
     sheldon
     tmux
+    herdr
     lazygit
     direnv
     navi
