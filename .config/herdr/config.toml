@@ -188,63 +188,64 @@ type = "plugin_action"
 command = "workspace-tools.tab-right-1"
 description = "Focus rightmost tab"
 
+## ワークスペース選択はshift+数字で行う
 [[keys.command]]
-key = "prefix+shift+1"
+key = "prefix+!"
 type = "plugin_action"
 command = "workspace-tools.ws-1"
 description = "Focus workspace 1 from top"
 
 [[keys.command]]
-key = "prefix+shift+2"
+key = "prefix+@"
 type = "plugin_action"
 command = "workspace-tools.ws-2"
 description = "Focus workspace 2 from top"
 
 [[keys.command]]
-key = "prefix+shift+3"
+key = "prefix+#"
 type = "plugin_action"
 command = "workspace-tools.ws-3"
 description = "Focus workspace 3 from top"
 
 [[keys.command]]
-key = "prefix+shift+4"
+key = "prefix+$"
 type = "plugin_action"
 command = "workspace-tools.ws-4"
 description = "Focus workspace 4 from top"
 
 [[keys.command]]
-key = "prefix+shift+5"
+key = "prefix+%"
 type = "plugin_action"
 command = "workspace-tools.ws-5"
 description = "Focus workspace 5 from top"
 
 [[keys.command]]
-key = "prefix+shift+6"
+key = "prefix+^"
 type = "plugin_action"
 command = "workspace-tools.ws-6"
 description = "Focus workspace 6 from top"
 
 [[keys.command]]
-key = "prefix+shift+7"
+key = "prefix+&"
 type = "plugin_action"
 command = "workspace-tools.ws-7"
 description = "Focus workspace 7 from top"
 
-# shift+8 / 9 / 0 はタブ側と同じく末尾から数える
+# * / ( / ) はタブ側と同じく末尾から数える
 [[keys.command]]
-key = "prefix+shift+8"
+key = "prefix+*"
 type = "plugin_action"
 command = "workspace-tools.ws-end-3"
 description = "Focus 3rd workspace from end"
 
 [[keys.command]]
-key = "prefix+shift+9"
+key = "prefix+("
 type = "plugin_action"
 command = "workspace-tools.ws-end-2"
 description = "Focus 2nd workspace from end"
 
 [[keys.command]]
-key = "prefix+shift+0"
+key = "prefix+)"
 type = "plugin_action"
 command = "workspace-tools.ws-end-1"
 description = "Focus last workspace"
