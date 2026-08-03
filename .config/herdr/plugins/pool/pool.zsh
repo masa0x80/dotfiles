@@ -1,10 +1,7 @@
 #!/bin/zsh -f
 # herdr session pool
 #
-# tmux では `_pool` セッションに zsh を起動しておき、new-window / split-window の
-# 際にそのウィンドウを move-window / join-pane で持ってくることで、シェルの起動
-# 待ちを無くしていた。herdr でも同じことを、`_pool` ワークスペースと
-# `herdr pane move` でやる。
+# `_pool` ワークスペースで起動しておいた zsh プロセスを使うことで pane の作成を高速化する。
 #
 #   pool.zsh ensure              プールを作成 / 補充する
 #   pool.zsh new-tab [after|before]
@@ -124,11 +121,17 @@ ensure() {
   [[ -n $cwd && -d $cwd ]] || cwd=$(target_cwd)
 
   ws=$(pool_ws)
+
   if [[ -z $ws ]]; then
     ws=$(api workspace create --label $label --cwd $cwd --no-focus |
       jq -r '.result.workspace.workspace_id // empty')
     [[ -n $ws ]] || return 1
   fi
+
+  # _pool は常に先頭に固定する（workspace.move も CLI には無いのでソケット直叩き）
+  local -a ids=(${(f)"$(api workspace list | jq -r '.result.workspaces[].workspace_id')"})
+  local -i i=${ids[(Ie)$ws]}
+  (( i > 1 )) && raw workspace.move "{\"workspace_id\":\"$ws\",\"insert_index\":0}" >/dev/null
 
   local -i n=$(pool_panes $ws | grep -c .)
   while (( n < size )); do
@@ -246,11 +249,6 @@ case ${1:-} in
       print -r -- ${HERDR_PLUGIN_CONTEXT_JSON:-'{}'} |
         jq -r '"\(.workspace_label // "")\t\(.focused_pane_cwd // "")"'
     )"
-    if [[ $ws_label != $label ]]; then
-      cmd_sync "$pane_cwd"
-      # 0.7.4 には [[startup]] が無いので、プールの復旧はここで面倒を見る
-      ensure
-    fi
     ;;
   *)
     print -ru2 -- "usage: pool.zsh {ensure|new-tab [before]|new-tab-before|split-right|split-down|sync [path]|focus-sync}"

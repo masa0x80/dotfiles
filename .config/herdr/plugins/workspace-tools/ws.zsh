@@ -108,10 +108,17 @@ cmd_misc() {
     head -n1)
   if [[ -n $id ]]; then
     api workspace focus $id >/dev/null
-  else
-    # --cwd を渡さないので terminal.new_cwd の設定に従う
-    api workspace create --label $misc_label --focus >/dev/null
+    return
   fi
+
+  # --cwd を渡さないので terminal.new_cwd の設定に従う
+  local ws=$(api workspace create --label $misc_label --focus |
+    jq -r '.result.workspace.workspace_id // empty')
+  [[ -n $ws ]] || return 1
+
+  local -a ids=(${(f)"$(api workspace list | jq -r '.result.workspaces[].workspace_id')"})
+  local -i i=${ids[(Ie)$ws]}
+  (( i > 1 )) && raw workspace.move "{\"workspace_id\":\"$ws\",\"insert_index\":0}" >/dev/null
 }
 
 # tab.move / workspace.move の insert_index は「元の並びでその位置にある要素の
