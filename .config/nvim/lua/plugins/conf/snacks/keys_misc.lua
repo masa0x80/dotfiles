@@ -215,6 +215,7 @@ return {
 					else
 						vim.cmd("ReplaceDate")
 					end
+					vim.api.nvim_exec_autocmds("User", { pattern = "TemplateApplied" })
 					pcall(vim.cmd, "filetype detect")
 				end,
 			})
