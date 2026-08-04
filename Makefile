@@ -32,6 +32,10 @@ brew-init:
 
 MIN_RELEASE_DAYS ?= 7
 NIX := /nix/var/nix/profiles/default/bin/nix
+GH := $(shell command -v gh 2>/dev/null)
+NIX_ACCESS_TOKENS = access-tokens = github.com=$$(gh auth token)
+NIX_CONFIG_ENV = $(if $(GH),NIX_CONFIG="$(NIX_ACCESS_TOKENS)")
+NIX_CONFIG_EXPORT = $(if $(GH),export NIX_CONFIG="$(NIX_ACCESS_TOKENS)";)
 
 .PHONY: nix-init
 nix-init: brew-init
@@ -39,14 +43,15 @@ nix-init: brew-init
 
 .PHONY: nix
 nix: nix-init
-	sudo -E $(if $(shell command -v gh 2>/dev/null),NIX_CONFIG="access-tokens = github.com=$$(gh auth token)") HOST=$$(scutil --get LocalHostName) $(NIX) run nix-darwin -- switch --flake . --impure
+	sudo -E $(NIX_ACCESS_ENV) HOST=$$(scutil --get LocalHostName) $(NIX) run nix-darwin -- switch --flake . --impure
 
 .PHONY: nix-update
 nix-update:
-	@COMMIT=$$(curl -sf $(if $(shell command -v gh 2>/dev/null),-H "Authorization: token $$(gh auth token)") "https://api.github.com/repos/NixOS/nixpkgs/commits?sha=nixpkgs-unstable&until=$$(/bin/date -v-$(MIN_RELEASE_DAYS)d +%Y-%m-%dT00:00:00Z)&per_page=1" | jq -re '.[0].sha') || { echo "Failed to fetch nixpkgs commit"; exit 1; }; \
+	@$(NIX_CONFIG_EXPORT) \
+	COMMIT=$$(curl -sf $(if $(GH),-H "Authorization: token $$(gh auth token)") "https://api.github.com/repos/NixOS/nixpkgs/commits?sha=nixpkgs-unstable&until=$$(/bin/date -v-$(MIN_RELEASE_DAYS)d +%Y-%m-%dT00:00:00Z)&per_page=1" | jq -re '.[0].sha') || { echo "Failed to fetch nixpkgs commit"; exit 1; }; \
 	echo "Updating nixpkgs to commit: $$COMMIT ($(MIN_RELEASE_DAYS) days old)" && \
-	$(NIX) flake update nixpkgs --override-input nixpkgs "github:NixOS/nixpkgs/$$COMMIT"
-	$(NIX) flake update home-manager
+	$(NIX) flake update nixpkgs --override-input nixpkgs "github:NixOS/nixpkgs/$$COMMIT" && \
+	$(NIX) flake update home-manager && \
 	$(NIX) flake update nix-darwin
 
 GC_OLDER_THAN_DAYS ?= 14
