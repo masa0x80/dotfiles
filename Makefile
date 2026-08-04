@@ -17,7 +17,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: mise bat silicon navi tmux-plugins herdr sheldon claude term-definition
+install: mise bat silicon navi tmux-plugins herdr sheldon claude
 
 # brew {{{
 
@@ -96,7 +96,3 @@ tmux-plugins:
 .PHONY: herdr
 herdr: nix
 	./scripts/herdr
-
-.PHONY: term-definition
-term-definition:
-	./scripts/term-definition

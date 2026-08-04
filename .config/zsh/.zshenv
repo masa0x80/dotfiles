@@ -16,6 +16,10 @@ export XDG_DATA_HOME=$HOME/.local/share
 # ghq
 export GHQ_ROOT="$HOME/.ghq"
 
+if [[ -n "$HERDR_ENV" ]]; then
+  export TERM="xterm-ghostty"
+fi
+
 # zsh
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
