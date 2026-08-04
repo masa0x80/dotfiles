@@ -33,15 +33,6 @@ in
     cmake
     pkg-config
 
-    # Libraries
-    boost
-    gdbm
-    gettext
-    libgit2
-    libsodium
-    libyaml
-    openssl
-
     # LLVM
     llvm
   ];
@@ -72,6 +63,17 @@ in
       "totp-cli"
       "zabrze"
       "im-select"
+
+      # ネイティブ拡張のビルド時に使うライブラリー（ruby-buildなどはbrewで入れたものしか使えない）
+      "boost"
+      "gdbm"
+      "gettext"
+      "gmp"
+      "libgit2"
+      "libsodium"
+      "libyaml"
+      "openssl"
+      "readline"
     ];
 
     casks = [
