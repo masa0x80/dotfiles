@@ -86,6 +86,12 @@ command = "zsh-session-pool.split-right"
 description = "Split right (pooled)"
 
 [[keys.command]]
+key = "prefix+;"
+type = "plugin_action"
+command = "zsh-session-pool.split-right"
+description = "Split right (pooled)"
+
+[[keys.command]]
 key = "prefix+minus"
 type = "plugin_action"
 command = "zsh-session-pool.split-down"
@@ -98,13 +104,13 @@ command = "zsh-session-pool.split-down"
 description = "Split down (pooled)"
 
 [[keys.command]]
-key = "prefix+space"
+key = "prefix+m"
 type = "plugin_action"
 command = "workspace-tools.move-pane"
 description = "Move pane to workspace (fzf)"
 
 [[keys.command]]
-key = "prefix+b"
+key = "prefix+space"
 type = "plugin_action"
 command = "workspace-tools.pick-workspace"
 description = "Pick workspace (fzf)"
@@ -118,14 +124,26 @@ description = "Open _misc workspace"
 [[keys.command]]
 key = "prefix+shift+n"
 type = "plugin_action"
-command = "workspace-tools.tab-move-next"
+command = "workspace-tools.move-tab-next"
 description = "Move tab right"
 
 [[keys.command]]
 key = "prefix+shift+p"
 type = "plugin_action"
-command = "workspace-tools.tab-move-prev"
+command = "workspace-tools.move-tab-prev"
 description = "Move tab left"
+
+[[keys.command]]
+key = "prefix+<"
+type = "plugin_action"
+command = "workspace-tools.join-tab-prev"
+description = "Join pane to previous tab"
+
+[[keys.command]]
+key = "prefix+>"
+type = "plugin_action"
+command = "workspace-tools.join-tab-next"
+description = "Join pane to next tab"
 
 [[keys.command]]
 key = "prefix+1"
@@ -253,11 +271,11 @@ description = "Focus last workspace"
 [[keys.command]]
 key = "prefix+}"
 type = "plugin_action"
-command = "workspace-tools.ws-move-next"
+command = "workspace-tools.move-ws-next"
 description = "Move workspace down"
 
 [[keys.command]]
 key = "prefix+{"
 type = "plugin_action"
-command = "workspace-tools.ws-move-prev"
+command = "workspace-tools.move-ws-prev"
 description = "Move workspace up"

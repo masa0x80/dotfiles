@@ -1,21 +1,19 @@
 #!/bin/zsh -f
 # herdr workspace tools
 #
-# キーバインドから叩くのは action、fzf を使うものは TTY が必要なので
-# action が popup ペイン（= plugin pane）を開き、その中で fzf を回す。
-#
-#   ws.zsh pick-workspace       fzf でワークスペースを選んでフォーカスする（popup を開く）
-#   ws.zsh move-pane            現在のペインを fzf で選んだワークスペースへ移す（popup を開く）
-#   ws.zsh picker-focus         ↑ の popup 側の実処理
-#   ws.zsh picker-move          ↑ の popup 側の実処理
-#   ws.zsh misc                 _misc ワークスペースを開く（あればフォーカス）
-#   ws.zsh tab-move next|prev   タブの位置を前後に入れ替える
-#   ws.zsh ws-move next|prev    ワークスペースの位置を前後に入れ替える
-#   ws.zsh tab-select <n>       現在のワークスペースの n 番目のタブへ移る
+#   ws.zsh pick-workspace       fzf で workspace を選んで focus する（popup を開く）
+#   ws.zsh move-pane            現在の pane を fzf で選んだ workspace へ移す（popup を開く）
+#   ws.zsh focus-picker         ↑ の popup 側の実処理
+#   ws.zsh move-picker          ↑ の popup 側の実処理
+#   ws.zsh misc                 _misc workspace を開く（あればフォーカス）
+#   ws.zsh move-tab next|prev   tab の位置を前後に入れ替える
+#   ws.zsh join-move next|prev  現在の pane を隣の tab へ join する
+#   ws.zsh move-ws next|prev    workspace の位置を前後に入れ替える
+#   ws.zsh select-tab <n>       現在の workspace の n 番目の tab へ移る
 #                               （正: 左から 1 起点 / 負: 右から -1 起点）
-#   ws.zsh ws-select <n>        n 番目のワークスペースへ移る（同じ添字の規則）
+#   ws.zsh select-ws <n>        n 番目の workspace へ移る（同じ添字の規則）
 #   ws.zsh terminal-id <pane>   pane の terminal_id（移動しても変わらない）を引く
-#   ws.zsh tab-name <tid> <名>  terminal_id からタブを引いて名前を付ける
+#   ws.zsh tab-name <tid> <名>  terminal_id から tab を引いて名前を付ける
 
 emulate -L zsh
 setopt no_nomatch
@@ -67,28 +65,40 @@ ws_rows() {
     | "\(.workspace_id)\t\(if .focused then "*" else " " end) \(.label)"'
 }
 
+# SPECIAL WORKSPACE ID
+local new_ws_key='+new'
+
 pick_ws() {
-  local rows=$(ws_rows)
-  [[ -n $rows ]] || return 1
-  print -r -- $rows |
+  local rows=$(ws_rows) head=$2
+  [[ -n $rows || -n $head ]] || return 1
+  {
+    [[ -n $head ]] && printf '%s\t+ %s\n' $new_ws_key $head
+    [[ -n $rows ]] && print -r -- $rows
+  } |
     fzf --layout=reverse --info=inline --no-multi --prompt="$1" \
       --delimiter=$'\t' --with-nth=2 |
     cut -f1
 }
 
-cmd_picker_focus() {
+cmd_focus_picker() {
   local id=$(pick_ws 'workspace> ')
   [[ -n $id ]] || return 0
   api workspace focus $id >/dev/null
 }
 
-cmd_picker_move() {
+cmd_move_picker() {
   local src
   [[ -r $src_file ]] && src=$(<$src_file)
   rm -f $src_file
   [[ -n $src ]] || return 1
-  local id=$(pick_ws 'move pane to> ')
+  local id=$(pick_ws 'move pane to> ' 'new workspace')
   [[ -n $id ]] || return 0
+
+  if [[ $id == "$new_ws_key" ]]; then
+    api pane move $src --new-workspace --focus >/dev/null
+    return
+  fi
+
   api pane move $src --new-tab --workspace $id --focus >/dev/null
 }
 
@@ -99,7 +109,7 @@ cmd_move_pane() {
   [[ -n $src ]] || return 1
   mkdir -p $state_dir
   print -r -- $src >$src_file
-  open_picker picker-move
+  open_picker move-picker
 }
 
 cmd_misc() {
@@ -142,7 +152,7 @@ insert_index() {
   (( p > c )) && print -r -- $(( p + 1 )) || print -r -- $p
 }
 
-cmd_tab_move() {
+cmd_move_tab() {
   local dir=$1 ws=${HERDR_WORKSPACE_ID:-} cur=${HERDR_TAB_ID:-}
   [[ -n $ws && -n $cur ]] || return 1
   local -a ids=(${(f)"$(api tab list --workspace $ws | jq -r '.result.tabs[].tab_id')"})
@@ -151,7 +161,26 @@ cmd_tab_move() {
   raw tab.move "{\"tab_id\":\"$cur\",\"insert_index\":$n}" >/dev/null
 }
 
-cmd_ws_move() {
+cmd_join_tab() {
+  local dir=$1 ws=${HERDR_WORKSPACE_ID:-} cur=${HERDR_TAB_ID:-} pane=${HERDR_PANE_ID:-}
+  [[ -n $pane ]] || pane=$(api pane current --current | jq -r '.result.pane.pane_id // empty')
+  [[ -n $pane && -n $ws && -n $cur ]] || return 1
+
+  local -a ids=(${(f)"$(api tab list --workspace $ws | jq -r '.result.tabs[].tab_id')"})
+  (( $#ids > 1 )) || return 0
+  local -i i=${ids[(Ie)$cur]}
+  (( i )) || return 1
+
+  local -i n=$#ids p
+  if [[ $dir == next ]]; then
+    (( p = i % n + 1 ))
+  else
+    (( p = (i + n - 2) % n + 1 ))
+  fi
+  api pane move $pane --tab ${ids[p]} --split right --focus >/dev/null
+}
+
+cmd_move_ws() {
   local dir=$1 cur=${HERDR_WORKSPACE_ID:-}
   [[ -n $cur ]] || return 1
   local -a ids=(${(f)"$(api workspace list | jq -r '.result.workspaces[].workspace_id')"})
@@ -161,7 +190,7 @@ cmd_ws_move() {
 }
 
 # zsh の添字は負数で末尾から数えられるので、左からの位置と右からの位置を同じ式で扱える
-cmd_tab_select() {
+cmd_select_tab() {
   local -i idx=$1
   (( idx )) || return 1
 
@@ -177,7 +206,7 @@ cmd_tab_select() {
 }
 
 # サイドバーの並びと番号が一致するよう、_pool も 1 枚として数える
-cmd_ws_select() {
+cmd_select_ws() {
   local -i idx=$1
   (( idx )) || return 1
   local -a ids=(${(f)"$(api workspace list | jq -r '.result.workspaces[].workspace_id')"})
@@ -213,19 +242,20 @@ cmd_tab_name() {
 }
 
 case ${1:-} in
-  pick-workspace) open_picker picker-focus ;;
+  pick-workspace) open_picker focus-picker ;;
   move-pane) cmd_move_pane ;;
-  picker-focus) cmd_picker_focus ;;
-  picker-move) cmd_picker_move ;;
+  focus-picker) cmd_focus_picker ;;
+  move-picker) cmd_move_picker ;;
   misc) cmd_misc ;;
-  tab-move) cmd_tab_move ${2:-next} ;;
-  ws-move) cmd_ws_move ${2:-next} ;;
-  tab-select) cmd_tab_select ${2:-0} ;;
-  ws-select) cmd_ws_select ${2:-0} ;;
+  move-tab) cmd_move_tab ${2:-next} ;;
+  join-tab) cmd_join_tab ${2:-next} ;;
+  move-ws) cmd_move_ws ${2:-next} ;;
+  select-tab) cmd_select_tab ${2:-0} ;;
+  select-ws) cmd_select_ws ${2:-0} ;;
   terminal-id) cmd_terminal_id ${2:-} ;;
   tab-name) cmd_tab_name ${2:-} ${3:-} ;;
   *)
-    print -ru2 -- "usage: ws.zsh {pick-workspace|move-pane|misc|tab-move next|prev|ws-move next|prev|tab-select <n>|ws-select <n>|terminal-id <pane>|tab-name <tid> <name>}"
+    print -ru2 -- "usage: ws.zsh {pick-workspace|move-pane|focus-picker|move-picker|misc|move-tab next|prev|join-tab next|prev|move-ws next|prev|select-tab <n>|select-ws <n>|terminal-id <pane>|tab-name <tid> <name>}"
     exit 2
     ;;
 esac

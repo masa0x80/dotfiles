@@ -21,138 +21,148 @@ title = "Open _misc workspace"
 command = ["./ws.zsh", "misc"]
 
 [[actions]]
-id = "tab-move-next"
+id = "move-tab-next"
 title = "Move tab right"
-command = ["./ws.zsh", "tab-move", "next"]
+command = ["./ws.zsh", "move-tab", "next"]
 
 [[actions]]
-id = "tab-move-prev"
+id = "move-tab-prev"
 title = "Move tab left"
-command = ["./ws.zsh", "tab-move", "prev"]
+command = ["./ws.zsh", "move-tab", "prev"]
 
 [[actions]]
-id = "ws-move-next"
+id = "join-tab-next"
+title = "Join pane to next tab"
+command = ["./ws.zsh", "join-tab", "next"]
+
+[[actions]]
+id = "join-tab-prev"
+title = "Join pane to previous tab"
+command = ["./ws.zsh", "join-tab", "prev"]
+
+[[actions]]
+id = "move-ws-next"
 title = "Move workspace down"
-command = ["./ws.zsh", "ws-move", "next"]
+command = ["./ws.zsh", "move-ws", "next"]
 
 [[actions]]
-id = "ws-move-prev"
+id = "move-ws-prev"
 title = "Move workspace up"
-command = ["./ws.zsh", "ws-move", "prev"]
+command = ["./ws.zsh", "move-ws", "prev"]
 
 [[actions]]
 id = "tab-1"
 title = "Focus tab 1 from left"
-command = ["./ws.zsh", "tab-select", "1"]
+command = ["./ws.zsh", "select-tab", "1"]
 
 [[actions]]
 id = "tab-2"
 title = "Focus tab 2 from left"
-command = ["./ws.zsh", "tab-select", "2"]
+command = ["./ws.zsh", "select-tab", "2"]
 
 [[actions]]
 id = "tab-3"
 title = "Focus tab 3 from left"
-command = ["./ws.zsh", "tab-select", "3"]
+command = ["./ws.zsh", "select-tab", "3"]
 
 [[actions]]
 id = "tab-4"
 title = "Focus tab 4 from left"
-command = ["./ws.zsh", "tab-select", "4"]
+command = ["./ws.zsh", "select-tab", "4"]
 
 [[actions]]
 id = "tab-5"
 title = "Focus tab 5 from left"
-command = ["./ws.zsh", "tab-select", "5"]
+command = ["./ws.zsh", "select-tab", "5"]
 
 [[actions]]
 id = "tab-6"
 title = "Focus tab 6 from left"
-command = ["./ws.zsh", "tab-select", "6"]
+command = ["./ws.zsh", "select-tab", "6"]
 
 [[actions]]
 id = "tab-7"
 title = "Focus tab 7 from left"
-command = ["./ws.zsh", "tab-select", "7"]
+command = ["./ws.zsh", "select-tab", "7"]
 
 [[actions]]
 id = "tab-right-1"
 title = "Focus rightmost tab"
-command = ["./ws.zsh", "tab-select", "-1"]
+command = ["./ws.zsh", "select-tab", "-1"]
 
 [[actions]]
 id = "tab-right-2"
 title = "Focus 2nd tab from right"
-command = ["./ws.zsh", "tab-select", "-2"]
+command = ["./ws.zsh", "select-tab", "-2"]
 
 [[actions]]
 id = "tab-right-3"
 title = "Focus 3rd tab from right"
-command = ["./ws.zsh", "tab-select", "-3"]
+command = ["./ws.zsh", "select-tab", "-3"]
 
 [[actions]]
 id = "ws-1"
 title = "Focus workspace 1 from top"
-command = ["./ws.zsh", "ws-select", "1"]
+command = ["./ws.zsh", "select-ws", "1"]
 
 [[actions]]
 id = "ws-2"
 title = "Focus workspace 2 from top"
-command = ["./ws.zsh", "ws-select", "2"]
+command = ["./ws.zsh", "select-ws", "2"]
 
 [[actions]]
 id = "ws-3"
 title = "Focus workspace 3 from top"
-command = ["./ws.zsh", "ws-select", "3"]
+command = ["./ws.zsh", "select-ws", "3"]
 
 [[actions]]
 id = "ws-4"
 title = "Focus workspace 4 from top"
-command = ["./ws.zsh", "ws-select", "4"]
+command = ["./ws.zsh", "select-ws", "4"]
 
 [[actions]]
 id = "ws-5"
 title = "Focus workspace 5 from top"
-command = ["./ws.zsh", "ws-select", "5"]
+command = ["./ws.zsh", "select-ws", "5"]
 
 [[actions]]
 id = "ws-6"
 title = "Focus workspace 6 from top"
-command = ["./ws.zsh", "ws-select", "6"]
+command = ["./ws.zsh", "select-ws", "6"]
 
 [[actions]]
 id = "ws-7"
 title = "Focus workspace 7 from top"
-command = ["./ws.zsh", "ws-select", "7"]
+command = ["./ws.zsh", "select-ws", "7"]
 
 [[actions]]
 id = "ws-end-1"
 title = "Focus last workspace"
-command = ["./ws.zsh", "ws-select", "-1"]
+command = ["./ws.zsh", "select-ws", "-1"]
 
 [[actions]]
 id = "ws-end-2"
 title = "Focus 2nd workspace from end"
-command = ["./ws.zsh", "ws-select", "-2"]
+command = ["./ws.zsh", "select-ws", "-2"]
 
 [[actions]]
 id = "ws-end-3"
 title = "Focus 3rd workspace from end"
-command = ["./ws.zsh", "ws-select", "-3"]
+command = ["./ws.zsh", "select-ws", "-3"]
 
 # fzf は TTY が要るので、action から開く popup ペインとして持つ
 [[panes]]
-id = "picker-focus"
+id = "focus-picker"
 title = "Workspace picker"
 placement = "popup"
 width = "60%"
 height = "40%"
-command = ["./ws.zsh", "picker-focus"]
+command = ["./ws.zsh", "focus-picker"]
 
 [[panes]]
-id = "picker-move"
+id = "move-picker"
 title = "Move pane to workspace"
 placement = "popup"
 width = "60%"
 height = "40%"
-command = ["./ws.zsh", "picker-move"]
+command = ["./ws.zsh", "move-picker"]
