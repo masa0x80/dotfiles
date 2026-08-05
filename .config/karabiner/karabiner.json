@@ -1228,48 +1228,21 @@
                         ]
                     },
                     {
-                        "description": "Disable QUIT",
+                        "description": "QUIT（長押し）",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "q",
                                     "modifiers": { "mandatory": ["left_command"] }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "tab",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "q",
-                                    "modifiers": { "mandatory": ["left_command", "left_shift"] }
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_miliseconds": 128
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "tab",
-                                        "modifiers": ["command", "shift"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "QUIT",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "q",
-                                    "modifiers": { "mandatory": ["left_option"] }
-                                },
-                                "to": [
+                                "to_if_held_down": [
                                     {
                                         "key_code": "q",
-                                        "modifiers": ["command"]
+                                        "modifiers": ["command"],
+                                        "repeat": false
                                     }
                                 ],
                                 "type": "basic"
