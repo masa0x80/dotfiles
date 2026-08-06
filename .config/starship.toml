@@ -4,6 +4,10 @@ format = """
 $username\
 $hostname\
 $directory\
+$git_branch\
+${custom.git_detached}\
+${custom.jj}\
+$git_status\
 $cmd_duration\
 $line_break\
 $python\
@@ -23,3 +27,49 @@ style = "yellow"
 [python]
 format = "[$virtualenv]($style) "
 style = "bright-black"
+
+[custom.jj]
+command = "bash ~/.config/starship/jj.sh"
+when = 'd=$PWD; while [ -n "$d" ]; do [ -d "$d/.jj" ] && exit 0; d=${d%/*}; done; exit 1'
+shell = ["bash", "--noprofile", "--norc"]
+format = "$output "
+unsafe_no_escape = true
+
+[git_branch]
+format = "[$branch]($style)"
+style = "green"
+# jj colocated では HEAD が常に detached なので、custom.jj が chage を出す
+only_attached = true
+
+[custom.git_detached]
+command = 'git rev-parse --short HEAD'
+require_repo = true
+when = 'd=$PWD; while [ -n "$d" ]; do [ -d "$d/.jj" ] && exit 1; d=${d%/*}; done; ! git symbolic-ref -q HEAD >/dev/null 2>&1'
+shell = ["bash", "--noprofile", "--norc"]
+format = "[:$output]($style) "
+style = "bold mauve"
+
+[git_status]
+format = '([$ahead_behind$all_status]($style) )'
+style = "fg"
+conflicted = "[✖ $count](bold red)"
+staged = "[●$count](bold green)"
+modified = "[✚ $count](bold yellow)"
+untracked = "[… $count](bold mauve)"
+deleted = "[✖ $count](red)"
+renamed = "[» $count](bold teal)"
+stashed = "[⚑$count](bold blue)"
+ahead = "[↑$count](fg)"
+behind = "[↓$count](fg)"
+diverged = "[↓$behind_count↑$ahead_count](fg)"
+up_to_date = "[✔](bold rosewater)"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+mauve = "#cba6f7"
+red = "#f38ba8"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+blue = "#89b4fa"
+fg = "#cdd6f4"

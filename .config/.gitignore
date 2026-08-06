@@ -50,7 +50,9 @@
 !/herdr/plugins/pool/
 !/herdr/plugins/workspace-tools/
 
-!/hadolint.yaml
-!/mise.toml
+!/starship/
 !/starship.toml
 !/starship2.toml
+
+!/hadolint.yaml
+!/mise.toml
