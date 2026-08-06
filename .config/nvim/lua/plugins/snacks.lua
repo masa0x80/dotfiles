@@ -69,6 +69,7 @@ return {
 						["<C-z>"] = { "select_all", mode = { "n", "i" } },
 						["<C-y>"] = { "yank", mode = { "n", "i" } },
 						["<C-l>"] = { "show_full_path", mode = { "n", "i" } },
+						["<C-o>"] = { "change_cwd", mode = { "n", "i" } },
 					},
 				},
 			},
@@ -87,6 +88,12 @@ return {
 					if item and item.file then
 						vim.notify(item.file, vim.log.levels.INFO)
 					end
+				end,
+				change_cwd = function(picker)
+					require("plugins.conf.snacks").dir_prompt(picker:cwd(), function(dir)
+						picker:set_cwd(dir)
+						picker:find({ refresh = true })
+					end)
 				end,
 			},
 			formatters = { file = { truncate = 128 } },

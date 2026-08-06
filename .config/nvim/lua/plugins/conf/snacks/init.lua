@@ -85,6 +85,25 @@ M.explorer_opts = {
 	},
 }
 
+M.dir_prompt = function(default, cb)
+	default = default or vim.fn.getcwd()
+	vim.ui.input({
+		prompt = "Directory: ",
+		default = vim.fn.fnamemodify(default, ":~") .. "/",
+		completion = "dir",
+	}, function(input)
+		if input == nil or vim.trim(input) == "" then
+			return
+		end
+		local dir = vim.fn.expand(vim.trim(input))
+		if vim.fn.isdirectory(dir) == 0 then
+			Snacks.notify.error("Not a directory: `" .. dir .. "`")
+			return
+		end
+		cb(vim.fs.normalize(vim.fn.fnamemodify(dir, ":p")))
+	end)
+end
+
 -- Git管理化ならgit_files、そうでなければfilesを使う
 -- @param opts? table additional options (cwd, sort, etc.)
 M.smart_files = function(opts)

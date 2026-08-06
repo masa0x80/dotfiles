@@ -55,7 +55,9 @@ return {
 
 		"<C-;>sG",
 		function()
-			Snacks.picker.grep_word(vim.tbl_extend("force", grep_opts, {}))
+			Snacks.picker.grep_word(vim.tbl_extend("force", grep_opts, {
+				cwd = require("telekasten").Cfg.home,
+			}))
 		end,
 		mode = { "n", "x" },
 		desc = "Visual selection or word (under Telekasten home)",
@@ -64,7 +66,9 @@ return {
 
 		"<C-;>G",
 		function()
-			Snacks.picker.grep_word(vim.tbl_extend("force", grep_opts, {}))
+			Snacks.picker.grep_word(vim.tbl_extend("force", grep_opts, {
+				cwd = require("telekasten").Cfg.home,
+			}))
 		end,
 		mode = { "n", "x" },
 		desc = "Visual selection or word (under Telekasten home)",
