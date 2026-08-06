@@ -29,7 +29,7 @@ format = "[$virtualenv]($style) "
 style = "bright-black"
 
 [custom.jj]
-command = "bash ~/.config/starship/jj.sh"
+command = "bash $HOME/.config/starship/jj.sh"
 when = 'd=$PWD; while [ -n "$d" ]; do [ -d "$d/.jj" ] && exit 0; d=${d%/*}; done; exit 1'
 shell = ["bash", "--noprofile", "--norc"]
 format = "$output "
