@@ -5,6 +5,30 @@ min_herdr_version = "0.7.0"
 description = "fzf workspace picker, pane relocation, tab/workspace reordering"
 platforms = ["macos", "linux"]
 
+[[startup]]
+command = ["./ws.zsh", "rename-space-names"]
+
+[[events]]
+on = "pane.focused"
+command = ["./ws.zsh", "rename-space-names"]
+
+[[events]]
+on = "pane.moved"
+command = ["./ws.zsh", "rename-space-names"]
+
+[[events]]
+on = "pane.closed"
+command = ["./ws.zsh", "rename-space-names"]
+
+[[events]]
+on = "workspace.created"
+command = ["./ws.zsh", "rename-space-names"]
+
+[[actions]]
+id = "rename-space-names"
+title = "Refresh workspace names"
+command = ["./ws.zsh", "rename-space-names"]
+
 [[actions]]
 id = "pick-workspace"
 title = "Pick workspace (fzf)"

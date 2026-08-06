@@ -1,29 +1,32 @@
 #!/bin/zsh -f
 # herdr workspace tools
 #
-#   ws.zsh pick-workspace       fzf で workspace を選んで focus する（popup を開く）
-#   ws.zsh move-pane            現在の pane を fzf で選んだ workspace へ移す（popup を開く）
-#   ws.zsh focus-picker         ↑ の popup 側の実処理
-#   ws.zsh move-picker          ↑ の popup 側の実処理
-#   ws.zsh misc                 _misc workspace を開く（あればフォーカス）
-#   ws.zsh move-tab next|prev   tab の位置を前後に入れ替える
-#   ws.zsh join-move next|prev  現在の pane を隣の tab へ join する
-#   ws.zsh move-ws next|prev    workspace の位置を前後に入れ替える
-#   ws.zsh select-tab <n>       現在の workspace の n 番目の tab へ移る
-#                               （正: 左から 1 起点 / 負: 右から -1 起点）
-#   ws.zsh select-ws <n>        n 番目の workspace へ移る（同じ添字の規則）
-#   ws.zsh terminal-id <pane>   pane の terminal_id（移動しても変わらない）を引く
-#   ws.zsh tab-name <tid> <名>  terminal_id から tab を引いて名前を付ける
+#   ws.zsh pick-workspace          fzf で workspace を選んで focus する（popup を開く）
+#   ws.zsh move-pane               現在の pane を fzf で選んだ workspace へ移す（popup を開く）
+#   ws.zsh focus-picker            ↑ の popup 側の実処理
+#   ws.zsh move-picker             ↑ の popup 側の実処理
+#   ws.zsh misc                    _misc workspace を開く（あればフォーカス）
+#   ws.zsh move-tab next|prev      tab の位置を前後に入れ替える
+#   ws.zsh join-move next|prev     現在の pane を隣の tab へ join する
+#   ws.zsh move-ws next|prev       workspace の位置を前後に入れ替える
+#   ws.zsh select-tab <n>          現在の workspace の n 番目の tab へ移る
+#                                  （正: 左から 1 起点 / 負: 右から -1 起点）
+#   ws.zsh select-ws <n>           n 番目の workspace へ移る（同じ添字の規則）
+#   ws.zsh terminal-id <pane>      pane の terminal_id（移動しても変わらない）を引く
+#   ws.zsh rename-tab-name <tid>   terminal_id から tab を引いて名前を付ける
+#   ws.zsh rename-space-names      SidebarのSpace名をつけ直す
 
 emulate -L zsh
 setopt no_nomatch
 
 # herdr サーバーの環境は対話シェルとは限らないので、最低限の PATH を補う
+# current_dir が $HOME/.bin にあるのでそこにも PATH を通す
 path=(
   /etc/profiles/per-user/$USER/bin(N-/)
   /run/current-system/sw/bin(N-/)
   /nix/var/nix/profiles/default/bin(N-/)
   /opt/homebrew/bin(N-/)
+  $HOME/.bin(N-/)
   $path
 )
 
@@ -223,13 +226,20 @@ cmd_terminal_id() {
   api pane get $pane | jq -r '.result.pane.terminal_id // empty'
 }
 
-cmd_tab_name() {
-  local tid=$1 name=$2
-  [[ -n $tid && -n $name ]] || return 1
+dir_name() {
+  (( ${+commands[current_dir]} )) || return 1
+  local dir=$1
+  [[ -d $dir ]] || return 1
+  (cd -- $dir && current_dir) 2>/dev/null
+}
 
-  local tab ws
-  IFS=$'\t' read -r tab ws <<<"$(api pane list |
-    jq -r --arg t $tid '(.result.panes[] | select(.terminal_id == $t)) | "\(.tab_id)\t\(.workspace_id)"' |
+cmd_rename_tab_name() {
+  local tid=$1
+  [[ -n $tid ]] || return 1
+
+  local tab ws cwd
+  IFS=$'\x1f' read -r tab ws cwd <<<"$(api pane list |
+    jq -r --arg t $tid '(.result.panes[] | select(.terminal_id == $t)) | [.tab_id, .workspace_id, .cwd] | join("\u001f")' |
     head -n1)"
   [[ -n $tab ]] || return 1
 
@@ -238,7 +248,42 @@ cmd_tab_name() {
     jq -r --arg w $ws '.result.workspaces[] | select(.workspace_id == $w) | .label')
   [[ $label == $pool_label ]] && return 0
 
+  local name=$(dir_name $cwd) || return 0
+  [[ -n $name ]] || return 0
   api tab rename $tab $name >/dev/null
+}
+
+local space_token=${HERDR_SPACE_TOKEN:-space}
+
+# 区切りをUnit Separator (0x1f)にすることで、空白の連続に対応
+space_rows() {
+  api api snapshot | jq -r --arg t $space_token '
+    .result.snapshot as $s
+    | $s.workspaces[]
+    | . as $w
+    | ($s.layouts[] | select(.tab_id == $w.active_tab_id) | .focused_pane_id) as $pane
+    | (($s.panes[] | select(.pane_id == $pane) | .cwd) // "") as $cwd
+    | [$w.workspace_id, $w.label, ($w.tokens[$t] // ""), $cwd]
+    | join("\u001f")'
+}
+
+cmd_rename_space_names() {
+  local row ws label cur cwd name
+  for row in ${(f)"$(space_rows)"}; do
+    IFS=$'\x1f' read -r ws label cur cwd <<<"$row"
+    [[ -n $ws ]] || continue
+    [[ $label == $pool_label ]] && continue
+
+    # _misc はそのまま
+    if [[ $label == $misc_label ]]; then
+      name=$label
+    else
+      name=$(dir_name $cwd) || continue
+    fi
+    # 差分がないときはcontinue
+    [[ -n $name && $name != $cur ]] || continue
+    api workspace report-metadata $ws --source $plugin --token $space_token=$name >/dev/null
+  done
 }
 
 case ${1:-} in
@@ -253,9 +298,10 @@ case ${1:-} in
   select-tab) cmd_select_tab ${2:-0} ;;
   select-ws) cmd_select_ws ${2:-0} ;;
   terminal-id) cmd_terminal_id ${2:-} ;;
-  tab-name) cmd_tab_name ${2:-} ${3:-} ;;
+  rename-tab-name) cmd_rename_tab_name ${2:-} ;;
+  rename-space-names) cmd_rename_space_names ;;
   *)
-    print -ru2 -- "usage: ws.zsh {pick-workspace|move-pane|focus-picker|move-picker|misc|move-tab next|prev|join-tab next|prev|move-ws next|prev|select-tab <n>|select-ws <n>|terminal-id <pane>|tab-name <tid> <name>}"
+    print -ru2 -- "usage: ws.zsh {pick-workspace|move-pane|focus-picker|move-picker|misc|move-tab next|prev|join-tab next|prev|move-ws next|prev|select-tab <n>|select-ws <n>|terminal-id <pane>|rename-tab-name <tid>|rename-space-names}"
     exit 2
     ;;
 esac

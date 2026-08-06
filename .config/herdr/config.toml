@@ -15,6 +15,9 @@ prompt_new_tab_name = false
 hide_tab_bar_when_single_tab = true
 accent = "#cba6f7"
 
+[ui.sidebar.spaces]
+rows = [["state_icon", "$space"]]
+
 [keys]
 prefix = "ctrl+s"
 

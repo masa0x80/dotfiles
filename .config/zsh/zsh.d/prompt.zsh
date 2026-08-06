@@ -23,11 +23,13 @@ _herdr_my_terminal_id() {
 
 _set_window_name() {
   [[ -n $HERDR_ENV && -z $_herdr_quiet && -x $_herdr_ws_tool ]] || return
-  local name="$(current_dir)"
-  # 名前が変わったときだけ herdr を叩く
-  [[ $name == "$_herdr_last_tab_name" ]] && return
+  # CWDが変わったときだけ herdr を叩く
+  [[ $PWD == "$_herdr_last_pwd" ]] && return
   _herdr_my_terminal_id || return
-  _herdr_last_tab_name="$name"
-  ("$_herdr_ws_tool" tab-name "$_herdr_terminal_id" "$name" &) >/dev/null 2>&1
+  _herdr_last_pwd="$PWD"
+
+  # cd では pane.focused が飛ばないので名称変更をここで行う
+  ("$_herdr_ws_tool" rename-tab-name "$_herdr_terminal_id" &) >/dev/null 2>&1
+  ("$_herdr_ws_tool" rename-space-names &) >/dev/null 2>&1
 }
 add-zsh-hook precmd _set_window_name
