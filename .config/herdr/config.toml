@@ -19,7 +19,7 @@ accent = "#cba6f7"
 prefix = "ctrl+s"
 
 last_pane = "prefix+ctrl+semicolon"
-cycle_pane_next = "prefix+tab"
+cycle_pane_next = "prefix+ctrl+i"
 cycle_pane_previous = "prefix+ctrl+o"
 
 rename_tab = "prefix+ctrl+a"
