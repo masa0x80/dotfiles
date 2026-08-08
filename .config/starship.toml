@@ -1,5 +1,7 @@
 continuation_prompt = '[❯❯ ](purple)'
 
+palette = "catppuccin_mocha"
+
 format = """
 $username\
 $hostname\
@@ -36,7 +38,7 @@ format = "$output "
 unsafe_no_escape = true
 
 [git_branch]
-format = "[$branch]($style)"
+format = "[$branch]($style) "
 style = "green"
 # jj colocated では HEAD が常に detached なので、custom.jj が chage を出す
 only_attached = true
@@ -52,17 +54,18 @@ style = "bold mauve"
 [git_status]
 format = '([$ahead_behind$all_status]($style) )'
 style = "fg"
-conflicted = "[✖ $count](bold red)"
+use_git_executable = true
+conflicted = "[✖$count](bold red)"
 staged = "[●$count](bold green)"
-modified = "[✚ $count](bold yellow)"
-untracked = "[… $count](bold mauve)"
-deleted = "[✖ $count](red)"
-renamed = "[» $count](bold teal)"
+modified = "[✚$count](bold yellow)"
+untracked = "[…$count](bold mauve)"
+deleted = "[✖$count](red)"
+renamed = "[»$count](bold teal)"
 stashed = "[⚑$count](bold blue)"
-ahead = "[↑$count](fg)"
-behind = "[↓$count](fg)"
-diverged = "[↓$behind_count↑$ahead_count](fg)"
-up_to_date = "[✔](bold rosewater)"
+ahead = "[↑·$count](fg)"
+behind = "[↓·$count](fg)"
+diverged = "[↓·$behind_count↑$ahead_count](fg)"
+up_to_date = ""
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"

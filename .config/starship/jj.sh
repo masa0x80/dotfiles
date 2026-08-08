@@ -3,17 +3,18 @@
 set -uo pipefail
 
 readonly C_RESET=$'\033[0m'
-readonly C_BRANCH=$'\033[1;38;2;205;214;244m'
+readonly C_BOOKMARK=$'\033[38;2;166;227;161m'
+readonly C_CHANGE=$'\033[38;2;205;214;244m'
 readonly C_CONFLICT=$'\033[1;38;2;243;139;168m'
-readonly C_STAGED=$'\033[1;38;2;166;227;161m'
+readonly C_ADDED=$'\033[1;38;2;203;166;247m'
 readonly C_MODIFIED=$'\033[1;38;2;249;226;175m'
-readonly C_DELETED=$'\033[1;38;2;243;139;168m'
+readonly C_DELETED=$'\033[38;2;243;139;168m'
 readonly C_RENAMED=$'\033[1;38;2;148;226;213m'
 readonly C_CLEAN=$'\033[1;38;2;245;224;220m'
 
 # 区切りを Unit Separator (0x1f) に
 read -r -d '' out < <(
-  jj log --no-pager --ignore-working-copy -r @ --no-graph -T '
+  jj log --no-pager -r @ --no-graph -T '
     self.bookmarks().join(", ") ++ "\x1f" ++
     self.change_id().shortest() ++ "\x1f" ++
     description.first_line() ++ "\x1f" ++
@@ -44,18 +45,16 @@ fi
 
 # bookmarkがあればそれを表示、無ければ «change_id» + 説明文
 if [[ -n $bookmarks && -n $show_bookmarks ]]; then
-  label="$bookmarks"
+  result="${C_BOOKMARK}$bookmarks${C_RESET}"
 elif [[ -n $desc ]]; then
-  label="«${change_id}» ${desc}"
+  result="${C_CHANGE}«${change_id}» ${desc}${C_RESET}"
 else
-  label="«${change_id}»"
+  result="${C_CHANGE}«${change_id}»${C_RESET}"
 fi
-
-result="${C_BRANCH}${label}${C_RESET}"
 
 # conflictはgit statusから読み取れないので colocated でも出す
 if [[ -n $conflict ]]; then
-  result+=" ${C_CONFLICT}✖ conflict${C_RESET}"
+  result+=" ${C_CONFLICT}✖${conflict}${C_RESET}"
 fi
 
 # colocatedでは差分数/clean表示はgit_statusに委ねる
@@ -76,10 +75,10 @@ if [[ -z $colocated ]]; then
       esac
     done
 
-    ((added > 0)) && result+=" ${C_STAGED}● ${added}${C_RESET}"
-    ((modified > 0)) && result+=" ${C_MODIFIED}✚ ${modified}${C_RESET}"
-    ((removed > 0)) && result+=" ${C_DELETED}✖ ${removed}${C_RESET}"
-    ((renamed > 0)) && result+=" ${C_RENAMED}» ${renamed}${C_RESET}"
+    ((added > 0)) && result+=" ${C_ADDED}…${added}${C_RESET}"
+    ((modified > 0)) && result+=" ${C_MODIFIED}✚${modified}${C_RESET}"
+    ((removed > 0)) && result+=" ${C_DELETED}✖${removed}${C_RESET}"
+    ((renamed > 0)) && result+=" ${C_RENAMED}»${renamed}${C_RESET}"
   fi
 fi
 
