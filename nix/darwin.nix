@@ -245,13 +245,16 @@ in
 
     CustomUserPreferences = {
       NSGlobalDomain = {
-        AppleLanguage = [
+        AppleLanguages = [
           "en"
           "ja"
         ];
         NSUserKeyEquivalents = {
           Minimize = "~@m";
         };
+      };
+      "com.apple.Music" = {
+        AppleLanguages = [ "ja" ];
       };
       "com.apple.symbolichotkeys" = {
         AppleSymbolicHotKeys = {
