@@ -18,6 +18,9 @@ accent = "#cba6f7"
 [ui.sidebar.spaces]
 rows = [["state_icon", "$space"]]
 
+[ui.sidebar.agents]
+rows = [["state_icon", "workspace"], ["tab", "agent"], ["terminal_title"]]
+
 [keys]
 prefix = "ctrl+s"
 
