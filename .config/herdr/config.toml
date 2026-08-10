@@ -28,8 +28,8 @@ last_pane = "prefix+ctrl+semicolon"
 cycle_pane_next = "prefix+tab"
 cycle_pane_previous = "prefix+ctrl+o"
 
-rename_tab = "prefix+ctrl+a"
-rename_pane = "prefix+a"
+rename_tab = "prefix+r"
+rename_pane = "prefix+ctrl+r"
 close_pane = "prefix+shift+q"
 
 focus_pane_left = "prefix+ctrl+h"
@@ -98,6 +98,12 @@ command = "zsh-session-pool.split-right"
 description = "Split right (pooled)"
 
 [[keys.command]]
+key = "prefix+ctrl+a"
+type = "plugin_action"
+command = "workspace-tools.jump-blocked"
+description = "Jump to blocked agent"
+
+[[keys.command]]
 key = "prefix+minus"
 type = "plugin_action"
 command = "zsh-session-pool.split-down"
@@ -108,6 +114,7 @@ key = "prefix+h"
 type = "plugin_action"
 command = "zsh-session-pool.split-down"
 description = "Split down (pooled)"
+
 
 [[keys.command]]
 key = "prefix+m"

@@ -75,6 +75,11 @@ title = "Move workspace up"
 command = ["./ws.zsh", "move-ws", "prev"]
 
 [[actions]]
+id = "jump-blocked"
+title = "Jump to blocked agent"
+command = ["./ws.zsh", "jump-blocked"]
+
+[[actions]]
 id = "tab-1"
 title = "Focus tab 1 from left"
 command = ["./ws.zsh", "select-tab", "1"]

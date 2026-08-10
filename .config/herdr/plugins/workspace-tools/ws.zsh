@@ -12,6 +12,7 @@
 #   ws.zsh select-tab <n>          現在の workspace の n 番目の tab へ移る
 #                                  （正: 左から 1 起点 / 負: 右から -1 起点）
 #   ws.zsh select-ws <n>           n 番目の workspace へ移る（同じ添字の規則）
+#   ws.zsh jump-blocked            blocked な agent に飛ぶ
 #   ws.zsh terminal-id <pane>      pane の terminal_id（移動しても変わらない）を引く
 #   ws.zsh rename-tab-name <tid>   terminal_id から tab を引いて名前を付ける
 #   ws.zsh rename-space-names      SidebarのSpace名をつけ直す
@@ -218,6 +219,20 @@ cmd_select_ws() {
   api workspace focus $ws >/dev/null
 }
 
+cmd_jump_blocked() {
+  local -a ids=(${(f)"$(api agent list |
+    jq -r '.result.agents[] | select(.agent_status == "blocked") | .pane_id' |
+    sort)"})
+  (( $#ids )) || return 0
+
+  # 今 focus している pane が候補に含まれるなら、その次から探す
+  local cur=$(api pane list | jq -r '.result.panes[] | select(.focused) | .pane_id' | head -n1)
+  local -i i=${ids[(Ie)$cur]}
+  local -i n=$(( i % $#ids + 1 ))
+
+  api agent focus ${ids[n]} >/dev/null
+}
+
 # pane_id はタブ / ワークスペース間の移動で変わるが terminal_id は変わらないので、
 # シェルは起動時にこれを覚えておけば以後ずっと自分のタブを引ける
 cmd_terminal_id() {
@@ -297,11 +312,12 @@ case ${1:-} in
   move-ws) cmd_move_ws ${2:-next} ;;
   select-tab) cmd_select_tab ${2:-0} ;;
   select-ws) cmd_select_ws ${2:-0} ;;
+  jump-blocked) cmd_jump_blocked ;;
   terminal-id) cmd_terminal_id ${2:-} ;;
   rename-tab-name) cmd_rename_tab_name ${2:-} ;;
   rename-space-names) cmd_rename_space_names ;;
   *)
-    print -ru2 -- "usage: ws.zsh {pick-workspace|move-pane|focus-picker|move-picker|misc|move-tab next|prev|join-tab next|prev|move-ws next|prev|select-tab <n>|select-ws <n>|terminal-id <pane>|rename-tab-name <tid>|rename-space-names}"
+    print -ru2 -- "usage: ws.zsh {pick-workspace|move-pane|focus-picker|move-picker|misc|move-tab next|prev|join-tab next|prev|move-ws next|prev|select-tab <n>|select-ws <n>|jump-blocked|terminal-id <pane>|rename-tab-name <tid>|rename-space-names}"
     exit 2
     ;;
 esac
