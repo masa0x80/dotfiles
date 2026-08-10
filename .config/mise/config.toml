@@ -32,7 +32,7 @@ yq = "latest"
 lefthook = "latest"
 
 # https://github.com/neovim/neovim/releases
-neovim = "0.11.7"
+neovim = "latest"
 
 node = "latest"
 deno = "latest"

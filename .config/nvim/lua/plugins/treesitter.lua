@@ -1,136 +1,170 @@
+local languages = {
+	"bash",
+	"c",
+	"c_sharp",
+	"cpp",
+	"css",
+	"csv",
+	"diff",
+	"dockerfile",
+	"dtd", -- for xml
+	"git_config",
+	"git_rebase",
+	"gitattributes",
+	"gitignore",
+	"go",
+	"graphql",
+	"hcl", -- for terraform
+	"html",
+	"java",
+	"javascript",
+	"jq",
+	"jsdoc",
+	"json",
+	"kotlin",
+	"lua",
+	"luadoc",
+	"luap",
+	"make",
+	"markdown",
+	"markdown_inline",
+	"python",
+	"query",
+	"regex",
+	"ruby",
+	"rust",
+	"scss",
+	"sql",
+	"swift",
+	"terraform",
+	"toml",
+	"tsv",
+	"tsx",
+	"typescript",
+	"vim",
+	"vimdoc",
+	"xml",
+	"yaml",
+}
+
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		version = "*",
-		event = "VeryLazy",
+		branch = "main",
+		lazy = false,
 		build = ":TSUpdate",
 		config = function()
-			local languages = {
-				"bash",
-				"c",
-				"c_sharp",
-				"cpp",
-				"css",
-				"csv",
-				"diff",
-				"dockerfile",
-				"git_config",
-				"git_rebase",
-				"gitattributes",
-				"gitignore",
-				"go",
-				"graphql",
-				"html",
-				"java",
-				"javascript",
-				"jq",
-				"jsdoc",
-				"json",
-				"jsonc",
-				"kotlin",
-				"lua",
-				"luadoc",
-				"luap",
-				"make",
-				"markdown",
-				"markdown_inline",
-				"python",
-				"query",
-				"regex",
-				"ruby",
-				"rust",
-				"scss",
-				"sql",
-				-- "swift",
-				"terraform",
-				"toml",
-				"tsv",
-				"tsx",
-				"typescript",
-				"vim",
-				"vimdoc",
-				"xml",
-				"yaml",
-			}
+			require("nvim-treesitter").setup({})
 
-			require("nvim-ts-autotag").setup({})
+			-- 未インストールのパーサーを非同期でインストール
+			local installed = {}
+			for _, lang in ipairs(require("nvim-treesitter.config").get_installed("parsers")) do
+				installed[lang] = true
+			end
 
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = languages,
-				highlight = {
-					enable = true,
-					-- 調子悪いのでオフに
-					additional_vim_regex_highlighting = false,
-				},
-				indent = {
-					enable = true,
-				},
-				incremental_selection = {
-					enable = true,
-					keymaps = {
-						node_incremental = "v",
-						scope_incremental = "<C-i>",
-						node_decremental = "V",
-					},
-				},
-				textobjects = {
-					select = {
-						enable = true,
-						lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-						keymaps = {
-							-- You can use the capture groups defined in textobjects.scm
-							["aa"] = "@parameter.outer",
-							["ia"] = "@parameter.inner",
-							["af"] = "@function.outer",
-							["if"] = "@function.inner",
-							["ac"] = "@class.outer",
-							["ic"] = "@class.inner",
-						},
-					},
-					move = {
-						enable = true,
-						set_jumps = true, -- whether to set jumps in the jumplist
-						goto_next_start = {
-							["f]"] = "@function.outer",
-							["c]"] = "@class.outer",
-						},
-						goto_next_end = {
-							["F]"] = "@function.outer",
-							["C]"] = "@class.outer",
-						},
-						goto_previous_start = {
-							["f["] = "@function.outer",
-							["c["] = "@class.outer",
-						},
-						goto_previous_end = {
-							["F["] = "@function.outer",
-							["C["] = "@class.outer",
-						},
-					},
-					swap = {
-						enable = true,
-						swap_next = {
-							["<leader>sn"] = "@parameter.inner",
-						},
-						swap_previous = {
-							["<leader>sp"] = "@parameter.inner",
-						},
-					},
-				},
-				-- https://github.com/tadmccorkle/markdown.nvim
-				markdown = {
-					enable = true,
-				},
+			local missing = vim.tbl_filter(function(lang)
+				return not installed[lang]
+			end, languages)
+
+			if #missing > 0 then
+				require("nvim-treesitter").install(missing)
+			end
+
+			vim.api.nvim_create_autocmd("FileType", {
+				group = vim.api.nvim_create_augroup("TreesitterStart", { clear = true }),
+				callback = function(args)
+					local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+					if not lang or not vim.treesitter.language.add(lang) then
+						return
+					end
+
+					vim.treesitter.start(args.buf, lang)
+					vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
 			})
+
+			vim.keymap.set("x", "v", function()
+				vim.treesitter.select("parent")
+			end, { desc = "Treesitter: 選択を親ノードに拡大" })
+			vim.keymap.set("x", "V", function()
+				vim.treesitter.select("child")
+			end, { desc = "Treesitter: 選択を子ノードに縮小" })
 		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		version = "*",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		event = "VeryLazy",
+		config = function()
+			require("nvim-treesitter-textobjects").setup({
+				select = {
+					lookahead = true,
+				},
+				move = {
+					set_jumps = true,
+				},
+			})
+
+			local select = require("nvim-treesitter-textobjects.select")
+			local move = require("nvim-treesitter-textobjects.move")
+			local swap = require("nvim-treesitter-textobjects.swap")
+
+			local selections = {
+				["aa"] = "@parameter.outer",
+				["ia"] = "@parameter.inner",
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+			}
+			for lhs, query in pairs(selections) do
+				vim.keymap.set({ "x", "o" }, lhs, function()
+					select.select_textobject(query, "textobjects")
+				end, { desc = "Select " .. query })
+			end
+
+			local movements = {
+				goto_next_start = {
+					["f]"] = "@function.outer",
+					["c]"] = "@class.outer",
+				},
+				goto_next_end = {
+					["F]"] = "@function.outer",
+					["C]"] = "@class.outer",
+				},
+				goto_previous_start = {
+					["f["] = "@function.outer",
+					["c["] = "@class.outer",
+				},
+				goto_previousend_ = {
+					["F["] = "@function.outer",
+					["C["] = "@class.outer",
+				},
+			}
+			for func, keymaps in pairs(movements) do
+				for lhs, query in pairs(keymaps) do
+					vim.keymap.set({ "n", "x", "o" }, lhs, function()
+						move[func](query, "textobjects")
+					end, { desc = func .. " " .. query })
+				end
+			end
+
+			vim.keymap.set("n", "<Leader>sn", function()
+				swap.swap_next("@parameter.inner")
+			end, { desc = "Swap next parameter" })
+			vim.keymap.set("n", "<Leader>sp", function()
+				swap.swap_previous("@parameter.inner")
+			end, { desc = "Swap previous parameter" })
+		end,
 	},
 	{
 		"windwp/nvim-ts-autotag",
 		version = "*",
+		event = "VeryLazy",
+		config = function()
+			require("nvim-ts-autotag").setup({})
+		end,
 	},
 	{
 		"David-Kunz/treesitter-unit",
@@ -204,5 +238,8 @@ return {
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		version = "*",
+		init = function()
+			vim.g.skip_ts_context_commentstring_module = true
+		end,
 	},
 }
