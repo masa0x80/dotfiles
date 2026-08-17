@@ -287,10 +287,11 @@ cmd_rename_space_names() {
   for row in ${(f)"$(space_rows)"}; do
     IFS=$'\x1f' read -r ws label cur cwd <<<"$row"
     [[ -n $ws ]] || continue
-    [[ $label == $pool_label ]] && continue
 
-    # _misc はそのまま
-    if [[ $label == $misc_label ]]; then
+    if [[ $label == $pool_label ]]; then
+      name=_
+    elif [[ $label == $misc_label ]]; then
+      # _misc はそのまま
       name=$label
     else
       name=$(dir_name $cwd) || continue
