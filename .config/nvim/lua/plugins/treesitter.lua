@@ -211,27 +211,41 @@ return {
 		version = "*",
 		event = { "VeryLazy" },
 		init = function()
-			local map = vim.api.nvim_set_keymap
+			for _, a in ipairs({
+				{ "<C-_><C-_>", "n", "comment_toggle_linewise_current", "Toggle line-comment" },
+				{ "<C-_><C-_>", "x", "comment_toggle_linewise_visual", "Toggle line-comment" },
+				{ "<C-_><C-b>", "n", "comment_toggle_blockwise_current", "Toggle block-comment" },
+				{ "<C-_><C-b>", "x", "comment_toggle_blockwise_visual", "Toggle block-comment" },
+			}) do
+				local lhs, mode, target, desc = a[1], a[2], a[3], a[4]
 
-			-- line-comment
-			map("n", "<C-_><C-_>", "gcc", { desc = "Toggle line-comment" })
-			map("v", "<C-_><C-_>", "gc", { desc = "Toggle line-comment" })
+				local rhs = function()
+					local ok, undo_glow = pcall(require, "undo-glow")
+					if ok then
+						undo_glow.highlight_changes({ hlgroup = "UgComment" })
+					end
 
-			-- block-comment
-			map("n", "<C-_><C-b>", "gbc", { desc = "Toggle block-comment" })
-			map("v", "<C-_><C-b>", "gb", { desc = "Toggle block-comment" })
+					return "<Plug>(" .. target .. ")"
+				end
 
-			-- line-comment (for Ghostty)
-			map("n", "<C-/><C-/>", "gcc", { desc = "Toggle line-comment" })
-			map("v", "<C-/><C-/>", "gc", { desc = "Toggle line-comment" })
-
-			-- block-comment (for Ghostty)
-			map("n", "<C-/><C-b>", "gbc", { desc = "Toggle block-comment" })
-			map("v", "<C-/><C-b>", "gb", { desc = "Toggle block-comment" })
+				local ghostty = (lhs:gsub("<C%-_>", "<C-/>"))
+				for _, key in ipairs({ lhs, ghostty }) do
+					vim.keymap.set(mode, key, rhs, { expr = true, remap = true, desc = desc })
+				end
+			end
 		end,
 		config = function()
+			local ts_pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
+
 			require("Comment").setup({
-				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+				pre_hook = function(ctx)
+					local ok, cstr = pcall(ts_pre_hook, ctx)
+					if ok and cstr then
+						return cstr
+					end
+
+					return require("Comment.ft").get(vim.bo.filetype, ctx.ctype) or vim.bo.commentstring
+				end,
 			})
 		end,
 	},
