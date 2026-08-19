@@ -97,7 +97,8 @@ return {
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = false },
-		statuscolumn = { enabled = true },
+		-- statuscol.nvim で設定しているのでSnacks側は無効化
+		statuscolumn = { enabled = false },
 		words = { enabled = true },
 	},
 	keys = keys,

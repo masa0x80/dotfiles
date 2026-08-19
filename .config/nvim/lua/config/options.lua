@@ -88,6 +88,11 @@ vim.opt.iskeyword:append("-")
 -- store tabpages and globals in session
 vim.opt.sessionoptions:append("tabpages,globals")
 
+-- Luaプラグインだけを使うので、レガシーなRemote Plugin Providerは使わない
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 -- disable netrw
 vim.g.loaded_netrw = true
 vim.g.loaded_netrwPlugin = true

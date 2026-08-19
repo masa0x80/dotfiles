@@ -8,7 +8,7 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			{ "fang2hou/blink-copilot", version = "*" },
-			{ "L3MON4D3/LuaSnip", version = "*" },
+			{ "L3MON4D3/LuaSnip", version = "*", build = "make install_jsregexp" },
 			{ "rafamadriz/friendly-snippets", version = "*" },
 		},
 		opts = {

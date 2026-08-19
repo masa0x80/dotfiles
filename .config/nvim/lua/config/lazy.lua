@@ -51,6 +51,9 @@ require("lazy").setup(specs, {
 	defaults = {
 		lazy = true,
 	},
+	rocks = {
+		enabled = false,
+	},
 	performance = {
 		rtp = {
 			disabled_plugins = {

@@ -16,6 +16,11 @@ return {
 				animation_type = "zoom",
 				window_scoped = true,
 			},
+			-- 透過背景だとアニメーションの色計算ができないのでフォールバックを指定
+			fallback_for_transparency = {
+				bg = palette.base,
+				fg = palette.text,
+			},
 			highlights = {
 				undo = {
 					hl_color = { bg = palette.red },

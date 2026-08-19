@@ -84,6 +84,7 @@ in
     jo
     jq
     catimg
+    lynx
 
     # Shell
     starship
