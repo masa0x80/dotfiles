@@ -39,6 +39,7 @@ local src_file=$state_dir/src_pane
 # プールは実装の都合で存在しているだけなので、選択肢には出さない
 local pool_label=${HERDR_POOL_LABEL:-_pool}
 local misc_label=${HERDR_MISC_LABEL:-_misc}
+local space_token=${HERDR_SPACE_TOKEN:-space}
 
 (( ${+commands[jq]} )) || exit 0
 
@@ -63,10 +64,11 @@ open_picker() {
 
 # "<workspace_id>\t<表示>" の一覧
 ws_rows() {
-  api workspace list | jq -r --arg pool $pool_label '
+  api workspace list | jq -r --arg pool $pool_label --arg t $space_token '
     .result.workspaces[]
     | select(.label != $pool)
-    | "\(.workspace_id)\t\(if .focused then "*" else " " end) \(.label)"'
+    | (if (.tokens[$t] // "") == "" then .label else .tokens[$t] end) as $name
+    | "\(.workspace_id)\t\(if .focused then "*" else " " end) \($name)"'
 }
 
 # SPECIAL WORKSPACE ID
@@ -267,8 +269,6 @@ cmd_rename_tab_name() {
   [[ -n $name ]] || return 0
   api tab rename $tab $name >/dev/null
 }
-
-local space_token=${HERDR_SPACE_TOKEN:-space}
 
 # 区切りをUnit Separator (0x1f)にすることで、空白の連続に対応
 space_rows() {

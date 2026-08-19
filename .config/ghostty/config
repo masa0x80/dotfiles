@@ -29,3 +29,14 @@ keybind = cmd+enter=toggle_maximize
 keybind = ctrl+i=text:\x09
 
 keybind = global:ctrl+cmd+p=text:\x11
+
+# `macos-option-as-alt = false` のままにしたいので手動設定する
+keybind = alt+1=esc:1
+keybind = alt+2=esc:2
+keybind = alt+3=esc:3
+keybind = alt+4=esc:4
+keybind = alt+5=esc:5
+keybind = alt+6=esc:6
+keybind = alt+7=esc:7
+keybind = alt+8=esc:8
+keybind = alt+9=esc:9

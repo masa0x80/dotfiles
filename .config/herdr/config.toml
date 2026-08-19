@@ -42,6 +42,8 @@ swap_pane_down = "prefix+shift+j"
 swap_pane_up = "prefix+shift+k"
 swap_pane_right = "prefix+shift+l"
 
+focus_agent = "alt+1..9"
+
 next_tab = "prefix+ctrl+n"
 previous_tab = "prefix+ctrl+p"
 next_workspace = "prefix+ctrl+]"
