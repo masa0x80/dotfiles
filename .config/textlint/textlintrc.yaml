@@ -4,6 +4,7 @@ rules:
       space: never
       lintStyledNode: true
     ja-no-space-around-parentheses: true
+    ja-no-space-around-slash: false
     ja-space-after-exclamation: false
     ja-space-after-question: false
     ja-space-around-code:
