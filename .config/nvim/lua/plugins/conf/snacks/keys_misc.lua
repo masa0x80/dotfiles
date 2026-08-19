@@ -1,5 +1,6 @@
 local conf = require("plugins.conf.snacks")
 local explorer_opts = conf.explorer_opts
+local git_root_or_cwd = conf.git_root_or_cwd
 
 return {
 	{
@@ -128,7 +129,11 @@ return {
 		"<C-;>o",
 		desc = "Open in Obsidian",
 		function()
-			local path = vim.fs.relpath(vim.fs.dirname(require("snacks.git").get_root()), vim.fn.expand("%:p"))
+			local path = vim.fs.relpath(vim.fs.dirname(git_root_or_cwd()), vim.fn.expand("%:p"))
+			if not path then
+				Snacks.notify.error("Not under the Obsidian vault")
+				return
+			end
 			vim.fn.jobstart(("open 'obsidian://vault/%s'"):format(path))
 		end,
 	},
@@ -192,6 +197,8 @@ return {
 								local path
 								if ref:find("^/") then
 									path = ref
+								elseif ref:find("^~/") then
+									path = vim.fn.expand(ref)
 								elseif vim.fn.filereadable(templates_dir .. "/" .. ref) == 1 then
 									path = templates_dir .. "/" .. ref
 								else

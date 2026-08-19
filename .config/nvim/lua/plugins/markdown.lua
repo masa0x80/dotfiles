@@ -18,13 +18,11 @@ return {
 				local bs = vim.api.nvim_replace_termcodes("<C-h>", true, false, true)
 				if string.match(line, UNORDERED_LIST_PATTERN) then
 					if col == indent + 2 then
-						print(col .. " " .. indent)
 						vim.api.nvim_buf_set_text(0, row, indent, row, col, { "" })
 					else
 						vim.api.nvim_buf_set_text(0, row, indent, row, col, { "- " })
 					end
 				elseif string.match(line, ORDERED_LIST_PATTERN) then
-					print(col .. " " .. indent)
 					if col == indent + 3 then
 						vim.api.nvim_buf_set_text(0, row, indent, row, col, { "" })
 					else
@@ -165,7 +163,7 @@ return {
 		"iamcco/markdown-preview.nvim",
 		version = "*",
 		build = function(plugin)
-			if vim.fn.executable("npx") then
+			if vim.fn.executable("npx") == 1 then
 				vim.cmd("!cd " .. plugin.dir .. " && cd app && npx --yes yarn install")
 			else
 				vim.cmd([[Lazy load markdown-preview.nvim]])

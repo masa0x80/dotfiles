@@ -27,16 +27,13 @@ return {
 			enabled = true,
 			preview = function(ctx)
 				local path = Snacks.picker.util.path(ctx.item)
-				if path and path:match("%.age%.%w+$") then
+				local ext = path and path:match("%.age%.(%w+)$")
+				if ext then
 					ctx.preview:set_title(vim.fn.fnamemodify(path, ":t"))
-					return Snacks.picker.preview.cmd({
-						"sh",
-						"-c",
-						"_de "
-							.. vim.fn.shellescape(path)
-							.. " | bat --paging=never --file-name="
-							.. vim.fn.shellescape(path),
-					}, ctx)
+					-- NOTE: ftを渡すとtermモードを使わないので `[Process exited 0]` が出ない
+					return Snacks.picker.preview.cmd({ "_de", path }, ctx, {
+						ft = vim.filetype.match({ filename = "x." .. ext }) or ext,
+					})
 				end
 				return Snacks.picker.preview.file(ctx)
 			end,
@@ -58,14 +55,12 @@ return {
 						["<C-j>"] = { "preview_scroll_down", mode = { "n", "i" } },
 						["<C-k>"] = { "preview_scroll_up", mode = { "n", "i" } },
 						["<C-a>"] = { "ctr_a", mode = { "i" } },
-						---@diagnostic disable-next-line: duplicate-index
 						["<C-f>"] = { "ctr_f", mode = { "i" } },
-						---@diagnostic disable-next-line: duplicate-index
 						["<C-b>"] = { "ctr_b", mode = { "i" } },
-						---@diagnostic disable-next-line: duplicate-index
-						["<C-f>"] = { "list_scroll_down", mode = { "n" } },
-						---@diagnostic disable-next-line: duplicate-index
-						["<C-b>"] = { "list_scroll_up", mode = { "n" } },
+						-- NOTE: 別モードであっても同じKeyに対しての設定は後勝ちになってしまうので、Keyを明示する
+						--       snacks.win が spec[1] を lhs として扱ってくれる
+						list_scroll_down_n = { "<C-f>", "list_scroll_down", mode = { "n" } },
+						list_scroll_up_n = { "<C-b>", "list_scroll_up", mode = { "n" } },
 						["<C-z>"] = { "select_all", mode = { "n", "i" } },
 						["<C-y>"] = { "yank", mode = { "n", "i" } },
 						["<C-l>"] = { "show_full_path", mode = { "n", "i" } },
@@ -103,7 +98,7 @@ return {
 		scope = { enabled = true },
 		scroll = { enabled = false },
 		statuscolumn = { enabled = true },
-		words = { enabled = false },
+		words = { enabled = true },
 	},
 	keys = keys,
 }

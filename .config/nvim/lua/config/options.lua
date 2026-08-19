@@ -1,3 +1,8 @@
+-- NOTE: 標準の runtime/ftplugin/markdown.vim が shiftwidth/tabstop/softtabstop を 4 に変えてしまうと
+-- markdownlint の MD007 (ul-indent = 2) と食い違うので無効化する
+-- `filetype plugin indent on` より前に設定が必要
+vim.g.markdown_recommended_style = 0
+
 vim.cmd([[
     filetype plugin indent on
     syntax on
@@ -30,7 +35,7 @@ local options = {
 	cursorcolumn = true,
 	number = true, -- set numbered lines
 	relativenumber = true, -- set relative numbered lines
-	numberwidth = 4, -- set number column width to 2 {default 4}
+	numberwidth = 4, -- set number column width {default 4}
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
 	termguicolors = true,

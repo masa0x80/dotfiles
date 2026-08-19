@@ -87,7 +87,7 @@ return {
 				"solargraph",
 				"sourcekit",
 				"tailwindcss",
-				"terrarmls",
+				"terraformls",
 				"ts_ls",
 			})
 		end,

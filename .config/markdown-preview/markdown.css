@@ -356,7 +356,8 @@
   padding: 0.5em;
 }
 
-li.source-line > p.source-line {
+.markdown-body details > *,
+li.source-line > * {
   margin-block-end: 0;
 }
 

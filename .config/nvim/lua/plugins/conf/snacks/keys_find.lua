@@ -1,5 +1,6 @@
 local conf = require("plugins.conf.snacks")
 local smart_files = conf.smart_files
+local git_root_or_cwd = conf.git_root_or_cwd
 
 return {
 	{
@@ -130,7 +131,7 @@ return {
 				filter = {
 					cwd = true,
 					paths = {
-						[Snacks.git.get_root() .. "/.git/COMMIT_EDITMSG"] = false,
+						[git_root_or_cwd() .. "/.git/COMMIT_EDITMSG"] = false,
 					},
 				},
 			})

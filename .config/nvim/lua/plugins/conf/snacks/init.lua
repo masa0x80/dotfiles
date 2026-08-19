@@ -85,6 +85,10 @@ M.explorer_opts = {
 	},
 }
 
+M.git_root_or_cwd = function()
+	return require("snacks.git").get_root() or vim.fn.getcwd()
+end
+
 M.dir_prompt = function(default, cb)
 	default = default or vim.fn.getcwd()
 	vim.ui.input({

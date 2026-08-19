@@ -11,7 +11,7 @@ end, { desc = "Toggle auto format enabled / disabled" })
 vim.api.nvim_create_user_command("DisableFormatter", function()
 	vim.g.formatter_enabled = false
 	vim.notify("Formatter disabled")
-end, { desc = "Disalbe auto format" })
+end, { desc = "Disable auto format" })
 vim.api.nvim_create_user_command("EnableFormatter", function()
 	vim.g.formatter_enabled = true
 	vim.notify("Formatter enabled")

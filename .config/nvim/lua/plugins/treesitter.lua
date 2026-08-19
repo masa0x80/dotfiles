@@ -137,7 +137,7 @@ return {
 					["f["] = "@function.outer",
 					["c["] = "@class.outer",
 				},
-				goto_previousend_ = {
+				goto_previous_end = {
 					["F["] = "@function.outer",
 					["C["] = "@class.outer",
 				},

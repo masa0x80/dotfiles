@@ -11,7 +11,6 @@ vim.api.nvim_create_user_command("Silicon", function(opts)
 		cmd = cmd .. "--from-clipboard"
 	end
 	vim.fn.jobstart(cmd)
-	print(cmd)
 end, {
 	range = 2,
 })
@@ -26,7 +25,6 @@ vim.api.nvim_create_user_command("SiliconHighlight", function(opts)
 		cmd = cmd .. " --highlight-lines " .. opts.line1 .. "-" .. opts.line2
 	end
 	vim.fn.jobstart(cmd)
-	print(cmd)
 end, {
 	range = 2,
 })

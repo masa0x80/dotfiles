@@ -57,6 +57,7 @@ return {
 			["yaml.ghaction"] = { "actionlint" },
 			dockerfile = { "hadolint" },
 			nix = { "statix", "deadnix" },
+			bash = { "shellcheck" },
 			zsh = { "shellcheck" },
 		}
 

@@ -11,10 +11,12 @@ return {
 			{ "L3MON4D3/LuaSnip", version = "*" },
 			{ "rafamadriz/friendly-snippets", version = "*" },
 		},
-		enabled = function()
-			return vim.bo.filetype ~= "prompt" and vim.b.completion ~= false
-		end,
 		opts = {
+			-- NOTE: lazy.nvimの `enabled` は起動時のみに評価されるので、
+			-- バッファーごとの判定は blink.cmp 側で制御する
+			enabled = function()
+				return vim.bo.filetype ~= "prompt" and vim.b.completion ~= false
+			end,
 			cmdline = {
 				keymap = {
 					preset = "super-tab",

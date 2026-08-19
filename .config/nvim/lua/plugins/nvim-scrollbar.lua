@@ -47,6 +47,6 @@ return {
 	},
 	{
 		"kevinhwang91/nvim-hlslens",
-		version = "*",
+		-- version = "*",
 	},
 }

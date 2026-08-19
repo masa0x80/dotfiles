@@ -17,8 +17,8 @@ local cspell_files = {
 
 -- dotfiles辞書がなければ作成
 if vim.fn.filereadable(cspell_files.dotfiles) ~= 1 then
-	io.popen("mkdir -p " .. cspell_data_dir)
-	io.popen("touch " .. cspell_files.dotfiles)
+	vim.fn.mkdir(cspell_data_dir, "p")
+	io.close(io.open(cspell_files.user, "a"))
 end
 
 -- 辞書がなければダウンロード
@@ -49,22 +49,38 @@ end
 
 -- dotfiles.local辞書がなければ作成
 if vim.fn.filereadable(cspell_files.dotfiles_local) ~= 1 then
-	io.popen("mkdir -p " .. dotfiles_local_dir)
-	io.popen("touch " .. cspell_files.dotfiles_local)
+	vim.fn.mkdir(dotfiles_local_dir, "p")
+	iio.close(io.open(cspell_files.dotfiles_local, "a"))
 end
+
+local dictionary_keys = {
+	global = "dotfiles",
+	["local"] = "dotfiles_local",
+	user = "user",
+}
 
 local function cspell_append(opts)
 	local target = opts.fargs[1]
-	local dictionary_name = target == "global" and "dotfiles" or target == "local" and "local" or "user"
+	local dictionary_name = dictionary_keys[target] or "user"
 
 	local word = opts.fargs[2]
 	if not word or word == "" then
 		-- 引数がなければcwordを取得
 		word = vim.fn.expand("<cword>"):lower()
 	end
+	if word == "" then
+		vim.notify("No word to append.", vim.log.levels.WARN, {})
+		return
+	end
 
-	-- shellのechoコマンドで辞書ファイルに追記
-	io.popen("echo " .. word .. " >> " .. cspell_files[dictionary_name])
+	-- 辞書ファイルに追記
+	local f = io.open(cspell_files[dictionary_name], "a")
+	if not f then
+		vim.notify("Failed to open " .. cspell_files[dictionary_name], vim.log.levels.ERROR, {})
+		return
+	end
+	f:write(word .. "\n")
+	f:close()
 
 	-- 追加した単語および辞書を表示
 	vim.notify('"' .. word .. '" is appended to ' .. dictionary_name .. " dictionary.", vim.log.levels.INFO, {})
@@ -79,8 +95,8 @@ end
 vim.api.nvim_create_user_command("CSpellAppend", cspell_append, { nargs = "*" })
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
-keymap("n", "<Leader>ag", "<Cmd>CSpellAppend dotfiles<CR>", opts)
-keymap("n", "<Leader>al", "<Cmd>CSpellAppend dotfiles_local<CR>", opts)
+keymap("n", "<Leader>ag", "<Cmd>CSpellAppend global<CR>", opts)
+keymap("n", "<Leader>al", "<Cmd>CSpellAppend local<CR>", opts)
 keymap("n", "<Leader>au", "<Cmd>CSpellAppend user<CR>", opts)
 
 vim.api.nvim_create_user_command("OpenCSpellDotfile", "edit " .. cspell_files.dotfiles, {})
