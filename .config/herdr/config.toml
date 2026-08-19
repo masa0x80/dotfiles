@@ -294,3 +294,6 @@ key = "prefix+{"
 type = "plugin_action"
 command = "workspace-tools.move-ws-prev"
 description = "Move workspace up"
+
+[experimental]
+kitty_graphics = true
