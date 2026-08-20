@@ -1,7 +1,14 @@
+local conf = require("plugins.conf.snacks")
+
 local grep_opts = {
 	hidden = true,
 	args = { "--pre=_de", "--pre-glob=*.age.*" },
 }
+
+-- TelekastenのVault配下を対象に
+local function telekasten_grep_opts()
+	return vim.tbl_extend("force", grep_opts, { cwd = conf.telekasten_home })
+end
 
 return {
 	{
@@ -45,9 +52,7 @@ return {
 	{
 		"<C-;>sg",
 		function()
-			Snacks.picker.grep(vim.tbl_extend("force", grep_opts, {
-				cwd = require("telekasten").Cfg.home,
-			}))
+			Snacks.picker.grep(telekasten_grep_opts())
 		end,
 		desc = "Grep (under Telekasten home)",
 	},
@@ -55,9 +60,7 @@ return {
 
 		"<C-;>sG",
 		function()
-			Snacks.picker.grep_word(vim.tbl_extend("force", grep_opts, {
-				cwd = require("telekasten").Cfg.home,
-			}))
+			Snacks.picker.grep_word(telekasten_grep_opts())
 		end,
 		mode = { "n", "x" },
 		desc = "Visual selection or word (under Telekasten home)",
@@ -66,9 +69,7 @@ return {
 
 		"<C-;>G",
 		function()
-			Snacks.picker.grep_word(vim.tbl_extend("force", grep_opts, {
-				cwd = require("telekasten").Cfg.home,
-			}))
+			Snacks.picker.grep_word(telekasten_grep_opts())
 		end,
 		mode = { "n", "x" },
 		desc = "Visual selection or word (under Telekasten home)",

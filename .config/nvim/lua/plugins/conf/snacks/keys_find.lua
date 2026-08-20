@@ -1,6 +1,26 @@
 local conf = require("plugins.conf.snacks")
-local smart_files = conf.smart_files
-local git_root_or_cwd = conf.git_root_or_cwd
+
+local function find_opts(order, cwd)
+	return { cwd = cwd, sort = { fields = { "file:" .. order } } }
+end
+
+local function all_files(order, cwd)
+	Snacks.picker.files(vim.tbl_extend("force", find_opts(order, cwd), {
+		hidden = true,
+		ignored = true,
+	}))
+end
+
+local function recent(root)
+	Snacks.picker.recent({
+		filter = {
+			cwd = true,
+			paths = {
+				[root .. "/.git/COMMIT_EDITMSG"] = false,
+			},
+		},
+	})
+end
 
 return {
 	{
@@ -32,88 +52,56 @@ return {
 	{
 		"<Leader>ff",
 		function()
-			smart_files({ sort = { fields = { "file:desc" } } })
+			conf.smart_files(find_opts("desc"))
 		end,
 		desc = "Find Files",
 	},
 	{
 		"<Leader>fr",
 		function()
-			smart_files({ sort = { fields = { "file:asc" } } })
+			conf.smart_files(find_opts("asc"))
 		end,
 		desc = "Find Files (rev)",
 	},
 	{
 		"<Leader>F",
 		function()
-			Snacks.picker.files({
-				hidden = true,
-				ignored = true,
-				sort = {
-					fields = { "file:desc" },
-				},
-			})
+			all_files("desc")
 		end,
 		desc = "Find Git Files",
 	},
 	{
 		"<Leader>R",
 		function()
-			Snacks.picker.files({
-				hidden = true,
-				ignored = true,
-				sort = {
-					fields = { "file:asc" },
-				},
-			})
+			all_files("asc")
 		end,
 		desc = "Find Git Files (rev)",
 	},
 	{
 		"<C-;>ff",
 		function()
-			smart_files({
-				cwd = require("telekasten").Cfg.home,
-				sort = { fields = { "file:desc" } },
-			})
+			conf.smart_files(find_opts("desc", conf.telekasten_home()))
 		end,
 		desc = "Find Git Files (under Telekasten home)",
 	},
 	{
 		"<C-;>fr",
 		function()
-			smart_files({
-				cwd = require("telekasten").Cfg.home,
-				sort = { fields = { "file:asc" } },
-			})
+			conf.smart_files(find_opts("asc", conf.telekasten_home()))
 		end,
 		desc = "Find Git Files (under Telekasten home; rev)",
 	},
 	{
 		"<C-;>F",
 		function()
-			Snacks.picker.files({
-				cwd = require("telekasten").Cfg.home,
-				hidden = true,
-				ignored = true,
-				sort = {
-					fields = { "file:desc" },
-				},
-			})
+			all_files("desc", conf.telekasten_home())
 		end,
 		desc = "Find Files (under Telekasten home)",
 	},
 	{
 		"<C-;>R",
 		function()
-			Snacks.picker.files({
-				cwd = require("telekasten").Cfg.home,
-				hidden = true,
-				ignored = true,
-				sort = {
-					fields = { "file:asc" },
-				},
-			})
+			all_files("asc", conf.telekasten_home())
 		end,
 		desc = "Find Files (under Telekasten home; rev)",
 	},
@@ -127,14 +115,7 @@ return {
 	{
 		"<Leader>re",
 		function()
-			Snacks.picker.recent({
-				filter = {
-					cwd = true,
-					paths = {
-						[git_root_or_cwd() .. "/.git/COMMIT_EDITMSG"] = false,
-					},
-				},
-			})
+			recent(conf.git_root_or_cwd())
 		end,
 		desc = "Recent",
 	},
@@ -148,21 +129,14 @@ return {
 	{
 		"<C-;>re",
 		function()
-			Snacks.picker.recent({
-				filter = {
-					cwd = true,
-					paths = {
-						[require("telekasten").Cfg.home .. "/.git/COMMIT_EDITMSG"] = false,
-					},
-				},
-			})
+			recent(conf.telekasten_home())
 		end,
 		desc = "Recent (under Telekasten home)",
 	},
 	{
 		"<C-;>RE",
 		function()
-			Snacks.picker.recent()
+			Snacks.picker.recent({ filter = { cwd = conf.telekasten_home() } })
 		end,
 		desc = "Recent (under Telekasten home)",
 	},
