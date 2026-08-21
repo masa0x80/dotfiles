@@ -57,7 +57,7 @@ reload_config = "prefix+shift+e"
 detach = "prefix+d"
 zoom = "prefix+z"
 
-toggle_sidebar = "prefix+w"
+toggle_sidebar = "prefix+ctrl+."
 
 # 事前にプールしておいた zsh ペインを使う版に差し替えるので、
 # 組み込みのタブ作成 / ペイン分割のバインドは外す
