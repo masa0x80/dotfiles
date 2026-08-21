@@ -50,7 +50,8 @@ next_workspace = "prefix+ctrl+]"
 previous_workspace = "prefix+ctrl+["
 
 resize_mode = "prefix+shift+r"
-copy_mode = "prefix+ctrl+f"
+edit_scrollback = "prefix+ctrl+f"
+copy_mode = "prefix+f"
 
 reload_config = "prefix+shift+e"
 
@@ -167,13 +168,31 @@ command = "workspace-tools.tab-1"
 description = "Focus tab 1 from left"
 
 [[keys.command]]
+key = "prefix+q"
+type = "plugin_action"
+command = "workspace-tools.tab-1"
+description = "Focus tab 1 from left"
+
+[[keys.command]]
 key = "prefix+2"
 type = "plugin_action"
 command = "workspace-tools.tab-2"
 description = "Focus tab 2 from left"
 
 [[keys.command]]
+key = "prefix+w"
+type = "plugin_action"
+command = "workspace-tools.tab-2"
+description = "Focus tab 2 from left"
+
+[[keys.command]]
 key = "prefix+3"
+type = "plugin_action"
+command = "workspace-tools.tab-3"
+description = "Focus tab 3 from left"
+
+[[keys.command]]
+key = "prefix+e"
 type = "plugin_action"
 command = "workspace-tools.tab-3"
 description = "Focus tab 3 from left"
@@ -210,13 +229,31 @@ command = "workspace-tools.tab-right-3"
 description = "Focus 3rd tab from right"
 
 [[keys.command]]
+key = "prefix+i"
+type = "plugin_action"
+command = "workspace-tools.tab-right-3"
+description = "Focus 3rd tab from right"
+
+[[keys.command]]
 key = "prefix+9"
 type = "plugin_action"
 command = "workspace-tools.tab-right-2"
 description = "Focus 2nd tab from right"
 
 [[keys.command]]
+key = "prefix+o"
+type = "plugin_action"
+command = "workspace-tools.tab-right-2"
+description = "Focus 2nd tab from right"
+
+[[keys.command]]
 key = "prefix+0"
+type = "plugin_action"
+command = "workspace-tools.tab-right-1"
+description = "Focus rightmost tab"
+
+[[keys.command]]
+key = "prefix+p"
 type = "plugin_action"
 command = "workspace-tools.tab-right-1"
 description = "Focus rightmost tab"
