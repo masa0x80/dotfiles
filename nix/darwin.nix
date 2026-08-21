@@ -72,6 +72,7 @@ in
       "libgit2"
       "libsodium"
       "libyaml"
+      "mysql-client"
       "openssl"
       "readline"
     ];
