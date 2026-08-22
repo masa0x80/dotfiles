@@ -104,12 +104,8 @@ local function gf(cmd)
 	if path ~= "" then
 		if cmd == "edit" then
 			vim.api.nvim_feedkeys("gf", "n", false)
-		elseif cmd == "vsplit" then
-			vim.cmd("vsplit " .. path)
-		elseif cmd == "split" then
-			vim.cmd("split " .. path)
-		elseif cmd == "tabedit" then
-			vim.cmd("tabedit " .. path)
+		else
+			vim.cmd(cmd .. " " .. path)
 		end
 	else
 		local dir = vim.fn.fnamemodify(cfile, ":h")

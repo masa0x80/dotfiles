@@ -29,11 +29,21 @@ M.preview = function(path)
 	vim.fn.execute(string.format("!open '%s'", path))
 end
 
-M.require = function(name)
-	local path = string.format(vim.fn.expand("$HOME") .. "/.config.local/nvim/lua/%s.lua", string.gsub(name, "%.", "/"))
+local local_lua_dir = vim.fn.expand("$HOME") .. "/.config.local/nvim/lua/"
+
+-- $HOME/.config.local/nvim/lua/ 配下に指定パスのファイルがあれば読み込む
+M.load_if_exists = function(rel_path)
+	local path = local_lua_dir .. rel_path
 	if vim.fn.filereadable(path) == 1 then
 		vim.fn.execute("luafile " .. path)
-	else
+		return true
+	end
+	return false
+end
+
+-- $HOME/.config.local/nvim/lua/ 配下に同名モジュールがあればそちらを、なければ通常の require を読み込む
+M.require = function(name)
+	if not M.load_if_exists(string.gsub(name, "%.", "/") .. ".lua") then
 		require(name)
 	end
 end

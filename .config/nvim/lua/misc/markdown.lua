@@ -99,7 +99,6 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 
 	-- プレビュー用の加工
 	local bufnr = vim.fn.bufnr()
-	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
 	local header = {}
 	for _, script in ipairs(scripts) do
 		table.insert(header, script)
