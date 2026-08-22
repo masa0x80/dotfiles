@@ -473,7 +473,6 @@ ul li::marker {
 }
 
 .markdown-body img {
-  display: block;
   width: 30%;
   height: auto;
   margin: 1em;
