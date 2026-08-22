@@ -50,8 +50,8 @@ next_workspace = "prefix+ctrl+]"
 previous_workspace = "prefix+ctrl+["
 
 resize_mode = "prefix+shift+r"
-edit_scrollback = "prefix+ctrl+f"
-copy_mode = "prefix+f"
+edit_scrollback = "prefix+f"
+copy_mode = "prefix+ctrl+f"
 
 reload_config = "prefix+shift+e"
 

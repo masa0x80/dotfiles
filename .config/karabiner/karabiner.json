@@ -4,14 +4,14 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "tilde",
+                        "description": "grave_accent",
                         "manipulators": [
                             {
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
-                                        { "key_code": "equal_sign" },
-                                        { "key_code": "hyphen" }
+                                        { "key_code": "k" },
+                                        { "key_code": "quote" }
                                     ]
                                 },
                                 "to": [{ "key_code": "grave_accent_and_tilde" }],
@@ -24,8 +24,8 @@
                                         "optional": ["any"]
                                     },
                                     "simultaneous": [
-                                        { "key_code": "equal_sign" },
-                                        { "key_code": "hyphen" }
+                                        { "key_code": "k" },
+                                        { "key_code": "quote" }
                                     ]
                                 },
                                 "to": [
