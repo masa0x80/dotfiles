@@ -1,6 +1,7 @@
 local compose_path = vim.fn.expand("$DOTFILES_DIR/etc/plantuml/compose.yaml")
 local tmp_dir = "/tmp/plantuml-viewer/"
 local port = 8765
+local file_port = 8766
 
 local preview_bufnr = nil
 
@@ -14,8 +15,11 @@ local alert_script =
 -- detailsの開閉状態を保持
 local details_script =
 	[=[<img src='_' onerror="if(!window._ds){window._ds={};window._dr=false;document.addEventListener('toggle',function(e){if(window._dr)return;if(e.target.tagName==='DETAILS'){var a=document.querySelectorAll('details');for(var i=0;i<a.length;i++){if(a[i]===e.target){window._ds[i]=e.target.open;break}}}},true);new MutationObserver(function(){window._dr=true;document.querySelectorAll('details').forEach(function(d,i){if(window._ds[i]!==undefined)d.open=window._ds[i]});window._dr=false}).observe(document.body||document.documentElement,{childList:true,subtree:true})}" style="display:none;">]=]
+-- markdown-preview.nvimはplantumlを圧縮してURLに埋め込む際にバグがあり画像が壊れる場合があるので、
+-- nvim側でSVG化して画像を挿入することにしプラグイン生成のimgタグは非表示にする。
+local hide_uml_img_style = ('<style>img[src*="127.0.0.1:%d/svg/"]{display:none}</style>'):format(port)
 
-local scripts = { image_zoom_script, alert_script, details_script }
+local scripts = { hide_uml_img_style, image_zoom_script, alert_script, details_script }
 local function remove_preview_script(bufnr)
 	local n = #scripts
 	local first = vim.api.nvim_buf_get_lines(bufnr, 0, n + 1, false)
@@ -35,6 +39,32 @@ local function remove_preview_script(bufnr)
 	end
 end
 
+local uml_img_template = [=[<img src="_" data-uml="%s" onerror="this.onerror=null;this.src='http://127.0.0.1:%d/%s'">]=]
+
+local function uml_img_tag(name)
+	return uml_img_template:format(name, file_port, name)
+end
+
+local uml_img_pattern = '^<img src="_" data%-uml="uml%-%x+%.svg"'
+local uml_error_line = "<p data-uml-error>PlantUML のレンダリングに失敗しました</p>"
+local uml_error_pattern = "^<p data%-uml%-error>"
+
+-- プレビュー用に挿入したSVG画像を消す
+local function remove_uml_images(bufnr)
+	if not vim.api.nvim_buf_is_valid(bufnr) then
+		return
+	end
+
+	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+	for i = #lines, 1, -1 do
+		if lines[i]:match(uml_img_pattern) or lines[i]:match(uml_error_pattern) then
+			-- 挿入時につけた直後の空行も消す
+			local last = lines[i + 1] == "" and i + 1 or i
+			vim.api.nvim_buf_set_lines(bufnr, i - 1, last, false, {})
+		end
+	end
+end
+
 local function cleanup_preview()
 	if not preview_bufnr then
 		return
@@ -47,6 +77,7 @@ local function cleanup_preview()
 
 	if vim.api.nvim_buf_is_valid(bufnr) then
 		remove_preview_script(bufnr)
+		remove_uml_images(bufnr)
 		vim.bo[bufnr].modified = false
 	end
 end
@@ -61,6 +92,141 @@ end
 
 local function stop_plantuml_server()
 	vim.system({ "docker", "compose", "-f", compose_path, "down" })
+end
+
+local function start_file_server()
+	-- すでに起動してたらそれを使う
+	local check = vim.system({ "curl", "-s", "-o", "/dev/null", "-m", "1", ("http://127.0.0.1:%d/"):format(file_port) })
+		:wait()
+	if check.code == 0 then
+		return
+	end
+
+	-- 応答が無い場合はハングしている可能性があるので、ポートを掴んでいるプロセスを掃除してから起動し直す
+	vim.system({ "pkill", "-f", "python -m http.server " .. file_port }):wait()
+	vim.system({ "python", "-m", "http.server", tostring(file_port), "--directory", tmp_dir })
+end
+
+-- @startgantt や @startmindmap のように図の種類が書かれている場合はそのまま送信
+local function wrap_uml(body)
+	if ("\n" .. body):match("\n%s*@start") then
+		return body
+	end
+	return "@startuml\n" .. body .. "\n@enduml"
+end
+
+-- バッファー内のplantumlブロックを列挙
+local function find_plantuml_blocks(bufnr)
+	local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+	local blocks = {}
+	local i = 1
+	while i <= #lines do
+		local fence, info = lines[i]:match("^(```+)(.*)$")
+		if fence and info:lower():find("plantuml", 1, true) then
+			local j = i + 1
+			while j <= #lines and not lines[j]:match("^" .. fence .. "%s*$") do
+				j = j + 1
+			end
+			-- 閉じてないブロックとからのブロックは無視
+			if j <= #lines and j > i + 1 then
+				table.insert(blocks, {
+					lnum = i,
+					source = wrap_uml(table.concat(vim.list_slice(lines, i + 1, j - 1), "\n")),
+				})
+			end
+			i = j + 1
+		else
+			i = i + 1
+		end
+	end
+	return blocks
+end
+
+-- SVG画像をtmp_dirに置く
+local function render_uml(source, callback, attempt)
+	attempt = attempt or 1
+	local name = ("uml-%s.svg"):format(vim.fn.sha256(source):sub(1, 16))
+	local path = tmp_dir .. name
+	if vim.uv.fs_stat(path) then
+		callback(name)
+		return
+	end
+
+	vim.system({
+		"curl",
+		"-s",
+		"-f",
+		"-H",
+		"Content-Type: application/text; charset=UTF-8",
+		"--data-binary",
+		"@-",
+		("http://127.0.0.1:%d/svg/"):format(port),
+	}, { text = true, stdin = source }, function(obj)
+		if obj.code ~= 0 or obj.stdout == "" then
+			-- コンテナ起動を待つ
+			if attempt < 15 then
+				vim.defer_fn(function()
+					render_uml(source, callback, attempt + 1)
+				end, 1000)
+			else
+				callback(nil)
+			end
+			return
+		end
+
+		local f = io.open(path, "w")
+		if not f then
+			callback(nil)
+			return
+		end
+		f:write(obj.stdout)
+		f:close()
+		callback(name)
+	end)
+end
+
+local function refresh_uml_images(bufnr)
+	remove_uml_images(bufnr)
+
+	local blocks = find_plantuml_blocks(bufnr)
+	if #blocks == 0 then
+		return
+	end
+
+	vim.fn.mkdir(tmp_dir, "p")
+	start_file_server()
+
+	local results = {}
+	local remaining = #blocks
+	for _, block in ipairs(blocks) do
+		render_uml(block.source, function(name)
+			if name then
+				table.insert(results, { lnum = block.lnum, line = uml_img_tag(name) })
+			else
+				table.insert(results, { lnum = block.lnum, line = uml_error_line })
+			end
+
+			remaining = remaining - 1
+			if remaining > 0 then
+				return
+			end
+
+			vim.schedule(function()
+				if not preview_bufnr or not vim.api.nvim_buf_is_valid(bufnr) then
+					return
+				end
+
+				table.sort(results, function(a, b)
+					return a.lnum > b.lnum
+				end)
+				-- HTMLブロックは空行までが範囲なので、空行を挟む必要がある
+				for _, result in ipairs(results) do
+					vim.api.nvim_buf_set_lines(bufnr, result.lnum - 1, result.lnum - 1, false, { result.line, "" })
+				end
+				vim.bo[bufnr].modified = false
+			end)
+		end)
+	end
 end
 
 local function write_svg()
@@ -110,6 +276,8 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 	vim.cmd("MarkdownPreview")
 
 	preview_bufnr = bufnr
+	refresh_uml_images(bufnr)
+
 	local group_id = vim.api.nvim_create_augroup("MarkdownPreview", { clear = true })
 
 	local function pre_callback()
@@ -118,6 +286,7 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 		end
 
 		remove_preview_script(bufnr)
+		remove_uml_images(bufnr)
 	end
 
 	local function post_callback()
@@ -132,6 +301,8 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 		table.insert(header, "")
 		vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, header)
 		vim.bo[bufnr].modified = false
+
+		refresh_uml_images(bufnr)
 	end
 
 	local is_age = vim.fn.expand("%:e") == "age"
@@ -191,16 +362,15 @@ vim.api.nvim_create_user_command("PlantUMLPreview", function()
 	write_svg()
 	vim.uv.fs_copyfile(vim.fn.expand("$DOTFILES_DIR/etc/plantuml/viewer.html"), tmp_dir .. "viewer.html")
 	-- 前回起動したプロセスが残っていたらkill
-	local port2 = 8766
-	vim.system({ "pkill", "-f", "python -m http.server " .. port2 }):wait()
-	vim.system({ "python", "-m", "http.server", port2, "--directory", tmp_dir })
+	vim.system({ "pkill", "-f", "python -m http.server " .. file_port }):wait()
+	vim.system({ "python", "-m", "http.server", file_port, "--directory", tmp_dir })
 	vim.system({
 		"open",
 		"-n",
 		"-a",
 		vim.fn.expand("$TARGET_BROWSER"),
 		"--args",
-		("http://localhost:%d/viewer.html?filename=%s"):format(port2, filename),
+		("http://localhost:%d/viewer.html?filename=%s"):format(file_port, filename),
 	})
 	local group = vim.api.nvim_create_augroup("PlantUMLPreview:" .. filename, { clear = true })
 	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
