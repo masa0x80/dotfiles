@@ -116,6 +116,8 @@ return {
 			end
 			map("n", "[t", "<Cmd>tabprevious<CR>", { desc = ":tabprev" })
 			map("n", "]t", "<Cmd>tabnext<CR>", { desc = ":tabnext" })
+			map("n", "[<C-t>", "<Cmd>tabprevious<CR>", { desc = ":tabprev" })
+			map("n", "]<C-t>", "<Cmd>tabnext<CR>", { desc = ":tabnext" })
 			map("n", "[T", "<Cmd>tabfirst<CR>", { desc = ":tabfirst" })
 			map("n", "]T", "<Cmd>tablast<CR>", { desc = ":tablast" })
 		end,
