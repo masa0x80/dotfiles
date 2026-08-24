@@ -265,13 +265,15 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 
 	-- プレビュー用の加工
 	local bufnr = vim.fn.bufnr()
-	local header = {}
-	for _, script in ipairs(scripts) do
-		table.insert(header, script)
+	if vim.bo.filetype == "markdown" then
+		local header = {}
+		for _, script in ipairs(scripts) do
+			table.insert(header, script)
+		end
+		table.insert(header, "")
+		vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, header)
+		vim.bo[bufnr].modified = false
 	end
-	table.insert(header, "")
-	vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, header)
-	vim.bo[bufnr].modified = false
 
 	vim.cmd("MarkdownPreview")
 
@@ -294,13 +296,15 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 			return
 		end
 
-		local header = {}
-		for _, script in ipairs(scripts) do
-			table.insert(header, script)
+		if vim.bo.filetype == "markdown" then
+			local header = {}
+			for _, script in ipairs(scripts) do
+				table.insert(header, script)
+			end
+			table.insert(header, "")
+			vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, header)
+			vim.bo[bufnr].modified = false
 		end
-		table.insert(header, "")
-		vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, header)
-		vim.bo[bufnr].modified = false
 
 		refresh_uml_images(bufnr)
 	end
