@@ -40,28 +40,52 @@ map("n", "<C-,><C-t>", function()
 	vim.fn.execute("normal! `t")
 	vim.fn.execute(":delm t")
 end, { desc = "tabedit %:p" })
-map("n", "<C-t><C-t>", "g<Tab>", { desc = "g<Tab>" })
-map("n", "<C-t><C-n>", "<Cmd>tabnext<CR>", { desc = "tabnext" })
-map("n", "<C-t><C-p>", "<Cmd>tabprevious<CR>", { desc = "tabprev" })
-map("n", "<C-t>N", function()
+local function tabmove_wrap(forward)
 	local current = vim.fn.tabpagenr()
-	local last = vim.fn.tabpagenr("$")
-	vim.cmd("tabmove " .. (current == last and 0 or "+"))
-end, { desc = "tabmove + (wrap)" })
-map("n", "<C-t>P", function()
-	local current = vim.fn.tabpagenr()
-	vim.cmd("tabmove " .. (current == 1 and "$" or "-"))
-end, { desc = "tabmove - (wrap)" })
-for i = 1, 9 do
-	map("n", "<C-t>" .. i, "<Cmd>tabnext " .. i .. "<CR>", { desc = "tabnext " .. i })
+	if forward then
+		local last = vim.fn.tabpagenr("$")
+		vim.cmd("tabmove " .. (current == last and 0 or "+"))
+	else
+		vim.cmd("tabmove " .. (current == 1 and "$" or "-"))
+	end
 end
-map("n", "<C-t>0", "<Cmd>tablast<CR>", { desc = "tablast" })
-map("n", "<C-t>q", "<Cmd>tabnext 1<CR>", { desc = "tabnext 1" })
-map("n", "<C-t>w", "<Cmd>tabnext 2<CR>", { desc = "tabnext 2" })
-map("n", "<C-t>e", "<Cmd>tabnext 3<CR>", { desc = "tabnext 3" })
-map("n", "<C-t>i", "<Cmd>tablast<CR><Cmd>-2tabnext<CR>", { desc = "tablast -1" })
-map("n", "<C-t>o", "<Cmd>tablast<CR><Cmd>-tabnext<CR>", { desc = "tablast -1" })
-map("n", "<C-t>p", "<Cmd>tablast<CR>", { desc = "tablast" })
+
+local tab_keymaps = {
+	{ suffix = "<C-t>", action = "g<Tab>", desc = "g<Tab>" },
+	{ suffix = "<C-n>", action = "<Cmd>tabnext<CR>", desc = "tabnext" },
+	{ suffix = "<C-p>", action = "<Cmd>tabprevious<CR>", desc = "tabprev" },
+	{
+		suffix = "N",
+		action = function()
+			tabmove_wrap(true)
+		end,
+		desc = "tabmove + (wrap)",
+	},
+	{
+		suffix = "P",
+		action = function()
+			tabmove_wrap(false)
+		end,
+		desc = "tabmove - (wrap)",
+	},
+	{ suffix = "0", action = "<Cmd>tablast<CR>", desc = "tablast" },
+	{ suffix = "q", action = "<Cmd>tabnext 1<CR>", desc = "tabnext 1" },
+	{ suffix = "w", action = "<Cmd>tabnext 2<CR>", desc = "tabnext 2" },
+	{ suffix = "e", action = "<Cmd>tabnext 3<CR>", desc = "tabnext 3" },
+	{ suffix = "i", action = "<Cmd>tablast<CR><Cmd>-2tabnext<CR>", desc = "tablast -0" },
+	{ suffix = "o", action = "<Cmd>tablast<CR><Cmd>-tabnext<CR>", desc = "tablast -1" },
+	{ suffix = "p", action = "<Cmd>tablast<CR>", desc = "tablast" },
+}
+
+local herdr_prefix = "<C-s>"
+for _, k in ipairs({ "<C-t>", herdr_prefix }) do
+	for _, km in ipairs(tab_keymaps) do
+		map("n", k .. km.suffix, km.action, { desc = km.desc })
+	end
+	for i = 1, 9 do
+		map("n", k .. i, "<Cmd>tabnext " .. i .. "<CR>", { desc = "tabnext " .. i })
+	end
+end
 
 -- Replace
 map("n", "<C-,>re", ":<C-u>%s;<C-r><C-w>;g<Left><Left>;", { desc = "[re]place Current Word" })
