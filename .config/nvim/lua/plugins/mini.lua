@@ -120,6 +120,13 @@ return {
 			map("n", "]<C-t>", "<Cmd>tabnext<CR>", { desc = ":tabnext" })
 			map("n", "[T", "<Cmd>tabfirst<CR>", { desc = ":tabfirst" })
 			map("n", "]T", "<Cmd>tablast<CR>", { desc = ":tablast" })
+
+			vim.keymap.set("n", "[<C-f>", "[f", { remap = true, desc = "File backward" })
+			vim.keymap.set("n", "]<C-f>", "]f", { remap = true, desc = "File forward" })
+			vim.keymap.set("n", "[<C-e>", "[e", { remap = true, desc = "Oldfile backward" })
+			vim.keymap.set("n", "]<C-e>", "]e", { remap = true, desc = "Oldfile forward" })
+			vim.keymap.set("n", "[<C-n>", "[n", { remap = true, desc = "Treesitter backward" })
+			vim.keymap.set("n", "]<C-n>", "]n", { remap = true, desc = "Treesitter forward" })
 		end,
 	},
 	{
