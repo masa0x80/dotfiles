@@ -29,6 +29,34 @@ M.preview = function(path)
 	vim.fn.execute(string.format("!open '%s'", path))
 end
 
+local function replace_selected_lines(fn)
+	local first, last = vim.fn.line("v"), vim.fn.line(".")
+	if first > last then
+		first, last = last, first
+	end
+
+	local lines = vim.api.nvim_buf_get_lines(0, first - 1, last, false)
+	for i, line in ipairs(lines) do
+		lines[i] = fn(line)
+	end
+	vim.api.nvim_buf_set_lines(0, first - 1, last, false, lines)
+
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+end
+
+M.quote_selection = function()
+	replace_selected_lines(function(line)
+		-- 空行はスペースなし
+		return line == "" and ">" or "> " .. line
+	end)
+end
+
+M.unquote_selection = function()
+	replace_selected_lines(function(line)
+		return (line:gsub("^(%s*)>%s?", "%1", 1))
+	end)
+end
+
 local local_lua_dir = vim.fn.expand("$HOME") .. "/.config.local/nvim/lua/"
 
 -- $HOME/.config.local/nvim/lua/ 配下に指定パスのファイルがあれば読み込む

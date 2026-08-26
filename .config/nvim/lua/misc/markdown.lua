@@ -186,46 +186,48 @@ local function render_uml(source, callback, attempt)
 end
 
 local function refresh_uml_images(bufnr)
-	remove_uml_images(bufnr)
+	if vim.bo.filetype == "markdown" then
+		remove_uml_images(bufnr)
 
-	local blocks = find_plantuml_blocks(bufnr)
-	if #blocks == 0 then
-		return
-	end
+		local blocks = find_plantuml_blocks(bufnr)
+		if #blocks == 0 then
+			return
+		end
 
-	vim.fn.mkdir(tmp_dir, "p")
-	start_file_server()
+		vim.fn.mkdir(tmp_dir, "p")
+		start_file_server()
 
-	local results = {}
-	local remaining = #blocks
-	for _, block in ipairs(blocks) do
-		render_uml(block.source, function(name)
-			if name then
-				table.insert(results, { lnum = block.lnum, line = uml_img_tag(name) })
-			else
-				table.insert(results, { lnum = block.lnum, line = uml_error_line })
-			end
+		local results = {}
+		local remaining = #blocks
+		for _, block in ipairs(blocks) do
+			render_uml(block.source, function(name)
+				if name then
+					table.insert(results, { lnum = block.lnum, line = uml_img_tag(name) })
+				else
+					table.insert(results, { lnum = block.lnum, line = uml_error_line })
+				end
 
-			remaining = remaining - 1
-			if remaining > 0 then
-				return
-			end
-
-			vim.schedule(function()
-				if not preview_bufnr or not vim.api.nvim_buf_is_valid(bufnr) then
+				remaining = remaining - 1
+				if remaining > 0 then
 					return
 				end
 
-				table.sort(results, function(a, b)
-					return a.lnum > b.lnum
+				vim.schedule(function()
+					if not preview_bufnr or not vim.api.nvim_buf_is_valid(bufnr) then
+						return
+					end
+
+					table.sort(results, function(a, b)
+						return a.lnum > b.lnum
+					end)
+					-- HTMLブロックは空行までが範囲なので、空行を挟む必要がある
+					for _, result in ipairs(results) do
+						vim.api.nvim_buf_set_lines(bufnr, result.lnum - 1, result.lnum - 1, false, { result.line, "" })
+					end
+					vim.bo[bufnr].modified = false
 				end)
-				-- HTMLブロックは空行までが範囲なので、空行を挟む必要がある
-				for _, result in ipairs(results) do
-					vim.api.nvim_buf_set_lines(bufnr, result.lnum - 1, result.lnum - 1, false, { result.line, "" })
-				end
-				vim.bo[bufnr].modified = false
 			end)
-		end)
+		end
 	end
 end
 
