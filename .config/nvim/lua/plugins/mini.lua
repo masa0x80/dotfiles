@@ -177,6 +177,9 @@ return {
 			require("mini.misc").setup()
 
 			MiniMisc.setup_restore_cursor()
+			vim.keymap.set("n", "<C-w>o", function()
+				require("mini.misc").zoom()
+			end, { desc = "zoom toggle" })
 		end,
 	},
 	{

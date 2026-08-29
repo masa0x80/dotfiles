@@ -30,7 +30,6 @@ map("n", "<C-w>-", "<Cmd>split<CR>", { desc = "split" })
 map("n", "<C-w>\\", "<Cmd>vsplit<CR>L", { desc = "vsplit" })
 map("n", "<C-w>;", "<Cmd>vsplit<CR>L", { desc = "vsplit" })
 map("n", "<C-w>_", "<C-w>=", { desc = "<C-w>=" })
-map("n", "<C-w>o", "<NOP>", { desc = "NOP" })
 map("n", "<C-w>O", "<Cmd>only<CR>", { desc = "only" })
 
 -- Tabs
@@ -210,8 +209,13 @@ end, { desc = "Indent <<" })
 -- # Visual
 
 -- # Command
--- Esc
-map("n", "<C-g><C-g><C-g>", ":set nopaste<CR>:nohlsearch<CR>:cclose<CR>:lclose<CR>", { desc = "nopaste; nohlsearch" })
+-- Esc（<Cmd>を使ってCmdlineChangedを発火させない）
+map(
+	"n",
+	"<C-g><C-g><C-g>",
+	"<Cmd>set nopaste<CR><Cmd>nohlsearch<CR><Cmd>cclose<CR><Cmd>lclose<CR>",
+	{ desc = "nopaste; nohlsearch" }
+)
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#i%3Cspace%3E%E3%81%A7word%E9%81%B8%E6%8A%9E
 map({ "o", "x" }, "i<Space>", "iW", { desc = "select a word" })

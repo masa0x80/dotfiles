@@ -22,7 +22,7 @@ _herdr_my_terminal_id() {
 }
 
 _set_window_name() {
-  [[ -n $HERDR_ENV && -z $_herdr_quiet && -x $_herdr_ws_tool ]] || return
+  [[ -n $HERDR_ENV && -x $_herdr_ws_tool ]] || return
   # CWDが変わったときだけ herdr を叩く
   [[ $PWD == "$_herdr_last_pwd" ]] && return
   _herdr_my_terminal_id || return
