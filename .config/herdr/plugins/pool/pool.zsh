@@ -7,7 +7,6 @@
 #   pool.zsh new-tab [after|before]
 #                                プールから 1 枚取り出して現在のタブの右 / 左に足す
 #   pool.zsh split right|down    プールから 1 枚取り出して現在のペインを分割する
-#   pool.zsh sync [path]         プールのカレントディレクトリーを path に揃える
 #   pool.zsh focus-sync          pane.focused イベント用の sync
 
 emulate -L zsh
@@ -31,10 +30,11 @@ local label=${HERDR_POOL_LABEL:-_pool}
 # 2 以上にしておくと、1 枚取り出してもプールのワークスペースが空にならず、
 # サイドバーから消えて再作成される瞬きが起きない
 local -i size=${HERDR_POOL_SIZE:-2}
-# HERDR_PLUGIN_STATE_DIR はプラグイン経由の起動でしか渡ってこないので、
-# zsh の chpwd フックから直接叩かれたときは herdr-plugin.toml の id から組む
+# プールから取り出したペインを目的のディレクトリーへ cd するかどうか。
+# デフォルトは OFF（プールのペインは起動時のディレクトリーのまま使う）
+local -i cd_on_take=${HERDR_POOL_CD:-0}
+# HERDR_PLUGIN_STATE_DIR が渡ってこないときは herdr-plugin.toml の id から組む
 local state_dir=${HERDR_PLUGIN_STATE_DIR:-${XDG_STATE_HOME:-$HOME/.local/state}/herdr/plugins/zsh-session-pool}
-local cwd_file=$state_dir/cwd
 
 (( ${+commands[jq]} )) || exit 0
 
@@ -98,14 +98,13 @@ target_cwd() {
 }
 
 # プールから持ってきたペインを目的のディレクトリーに合わせる。
-# sync 済みなら何も送らないので、実際にはほとんど no-op になる。
+# cd_on_take が立っているときだけ有効（既に同じディレクトリーなら no-op）。
 settle() {
+  (( cd_on_take )) || return 0
   local pane=$1 from=$2 to=$3
   [[ -n $pane && -n $to && $from != $to ]] || return 0
   api pane run $pane " cd -- ${(q)to} && clear" >/dev/null
 }
-
-last_cwd() { [[ -r $cwd_file ]] && print -r -- "$(<$cwd_file)" }
 
 ensure() {
   # イベントは並行して飛んでくるので、補充は 1 プロセスだけに任せる
@@ -116,9 +115,7 @@ ensure() {
   mkdir $lock 2>/dev/null || return 0
   trap "rmdir ${(q)lock} 2>/dev/null" EXIT
 
-  local ws cwd
-  cwd=$(last_cwd)
-  [[ -n $cwd && -d $cwd ]] || cwd=$(target_cwd)
+  local ws cwd=$(target_cwd)
 
   ws=$(pool_ws)
 
@@ -208,29 +205,6 @@ cmd_split() {
   ensure
 }
 
-# プール側のシェルを先回りで cd させておく。
-# cwd_file を先に書くので、送り込んだ cd が pool 側の chpwd フックを
-# 再び呼んでも 2 周目は打ち切られる。
-cmd_sync() {
-  local want=${1:-}
-  [[ -n $want ]] || want=$(target_cwd)
-  [[ -d $want ]] || return 0
-  [[ $want != "$(last_cwd)" ]] || return 0
-
-  local ws=$(pool_ws)
-  [[ -n $ws ]] || return 0
-
-  mkdir -p $state_dir
-  print -r -- $want >$cwd_file
-
-  # _herdr_quiet を立てている間だけ zsh 側のフックを黙らせる
-  # （プールへの cd がプール同期やタブ名変更を呼び返さないように）
-  local pane
-  for pane in ${(f)"$(pool_panes $ws)"}; do
-    api pane run $pane " _herdr_quiet=1; cd -- ${(q)want}; _herdr_quiet=; clear" >/dev/null
-  done
-}
-
 case ${1:-} in
   ensure)
     # プール自身の作成イベントで呼び戻されたときは何もしない
@@ -241,7 +215,6 @@ case ${1:-} in
   split) cmd_split ${2:-right} ;;
   split-right) cmd_split right ;;
   split-down) cmd_split down ;;
-  sync) cmd_sync ${2:-} ;;
   focus-sync)
     # プール自身のフォーカスでは何もしない
     local ws_label pane_cwd
@@ -251,7 +224,7 @@ case ${1:-} in
     )"
     ;;
   *)
-    print -ru2 -- "usage: pool.zsh {ensure|new-tab [before]|new-tab-before|split-right|split-down|sync [path]|focus-sync}"
+    print -ru2 -- "usage: pool.zsh {ensure|new-tab [before]|new-tab-before|split-right|split-down|focus-sync}"
     exit 2
     ;;
 esac
