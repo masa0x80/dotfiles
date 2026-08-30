@@ -244,15 +244,6 @@ in
       NSAutomaticSpellingCorrectionEnabled = false;
     };
 
-    CustomSystemPreferences = {
-      # ref. macOSでメモリを使い続けるCursorUIViewServiceを無効化する https://zenn.dev/discus0434/articles/disable-cursoruiviewservice-macos
-      "/Library/Preferences/FeatureFlags/Domain/UIKit" = {
-        redesigned_text_cursor = {
-          Enabled = false;
-        };
-      };
-    };
-
     CustomUserPreferences = {
       NSGlobalDomain = {
         AppleLanguages = [
@@ -334,11 +325,6 @@ in
   };
 
   # Activation scripts
-  # system.defaults.CustomSystemPreferencesの書き込み先を用意
-  system.activationScripts.preActivation.text = ''
-    mkdir -p /Library/Preferences/FeatureFlags/Domain
-  '';
-
   system.activationScripts.postActivation.text = ''
     # Disable Shortcuts for spotlight
     # ref. https://qiita.com/ry0f/items/f2c75f0a77b1012182d6
