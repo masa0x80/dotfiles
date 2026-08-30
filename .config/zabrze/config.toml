@@ -50,6 +50,11 @@ abbr = "jf"
 snippet = "jj git fetch"
 
 [[snippets]]
+name = "jj revert --onto @ -r"
+abbr = "jrv"
+snippet = "jj revert --onto @ -r"
+
+[[snippets]]
 name = "jj log --reversed"
 abbr = "jl"
 snippet = "jj log --reversed"
