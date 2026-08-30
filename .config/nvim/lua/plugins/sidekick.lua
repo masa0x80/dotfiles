@@ -5,10 +5,6 @@ return {
 	opts = {
 		-- add any options here
 		cli = {
-			mux = {
-				backend = "tmux",
-				enabled = true,
-			},
 			win = {
 				keys = {
 					stopinsert = { "<Esc>", "stopinsert", mode = "t" },

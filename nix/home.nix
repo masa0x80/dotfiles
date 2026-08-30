@@ -35,13 +35,11 @@ in
     ".direnvrc".source = mkSym "${dotfilesDir}/.direnvrc";
     ".editorconfig".source = mkSym "${dotfilesDir}/.editorconfig";
     ".editrc".source = mkSym "${dotfilesDir}/.editrc";
-    ".gitmux.conf".source = mkSym "${dotfilesDir}/.gitmux.conf";
     ".irbrc".source = mkSym "${dotfilesDir}/.irbrc";
     ".myclirc".source = mkSym "${dotfilesDir}/.myclirc";
     ".npmrc".source = mkSym "${dotfilesDir}/.npmrc";
     ".prettierignore".source = mkSym "${dotfilesDir}/.prettierignore";
     ".textlintrc.yaml".source = mkSym "${dotfilesDir}/.textlintrc.yaml";
-    ".tmux.conf".source = mkSym "${dotfilesDir}/.tmux.conf";
     ".zshenv".source = mkSym "${dotfilesDir}/.zshenv";
     ".zshrc".source = mkSym "${dotfilesDir}/.zshrc";
   };
@@ -89,7 +87,6 @@ in
     # Shell
     starship
     sheldon
-    tmux
     herdr
     lazygit
     direnv
@@ -146,7 +143,6 @@ in
     dive
 
     # Utilities
-    gitmux
     gibo
     pass
     rage

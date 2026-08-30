@@ -17,7 +17,7 @@ update:
 	git pull --no-commit origin main
 
 .PHONY: install
-install: mise bat silicon navi tmux-plugins herdr sheldon claude
+install: mise bat silicon navi herdr sheldon claude
 
 # brew {{{
 
@@ -93,10 +93,6 @@ sheldon:
 .PHONY: claude
 claude:
 	./scripts/claude
-
-.PHONY: tmux-plugins
-tmux-plugins:
-	./scripts/tmux-plugins
 
 .PHONY: herdr
 herdr: nix

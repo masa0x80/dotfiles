@@ -338,7 +338,7 @@ in
   # Enable touch ID for sudo
   security.pam.services.sudo_local = {
     touchIdAuth = true;
-    reattach = true; # for tmux
+    reattach = true; # for herdr
   };
 
   # Used for backwards compatibility
