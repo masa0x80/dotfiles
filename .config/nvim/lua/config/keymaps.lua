@@ -30,6 +30,7 @@ map("n", "<C-w>-", "<Cmd>split<CR>", { desc = "split" })
 map("n", "<C-w>\\", "<Cmd>vsplit<CR>L", { desc = "vsplit" })
 map("n", "<C-w>;", "<Cmd>vsplit<CR>L", { desc = "vsplit" })
 map("n", "<C-w>_", "<C-w>=", { desc = "<C-w>=" })
+map("n", "<C-w>o", "<NOP>", { desc = "NOP" })
 map("n", "<C-w>O", "<Cmd>only<CR>", { desc = "only" })
 
 -- Tabs
