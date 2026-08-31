@@ -8,7 +8,7 @@ local preview_bufnr = nil
 -- NOTE: dangerouslySetInnerHTML では <script> は実行されないけど <img onerror> は実行される
 -- 画像拡大
 local image_zoom_script =
-	[=[<img src='_' onerror="if(!window._imgZoom){var _K='_mdImgZoom';var _ld=function(){try{return JSON.parse(sessionStorage.getItem(_K))||{}}catch(_){return{}}};window._imgZoom=_ld();var _sv=function(){try{sessionStorage.setItem(_K,JSON.stringify(window._imgZoom))}catch(_){}};var _ikey=function(t){var s=t.getAttribute('src')||'';var a=document.getElementsByTagName('img');var n=0;for(var i=0;i<a.length;i++){if(a[i]===t)break;if((a[i].getAttribute('src')||'')===s)n++}return s+'#'+n};var _noAnim=function(t,fn){var p=t.style.transition;t.style.transition='none';fn();void t.offsetWidth;t.style.transition=p};var _iap=function(t,w){t.classList.add('enlarged');if(w){t.style.width=w;return w}var nw=t.naturalWidth;if(!nw){t.addEventListener('load',function(){var r;_noAnim(t,function(){r=_iap(t)});if(r){window._imgZoom[_ikey(t)]=r;_sv()}},{once:true});return null}var cw=(t.closest('.markdown-body')||document.body).clientWidth;var r=nw>cw?nw+'px':'100%';t.style.width=r;return r};var _ires=function(){var a=document.getElementsByTagName('img');for(var i=0;i<a.length;i++){var t=a[i];if(t.getAttribute('src')==='_')continue;var v=window._imgZoom[_ikey(t)];if(v){if(!t.classList.contains('enlarged'))_noAnim(t,function(){_iap(t,typeof v==='string'?v:null)})}else if(t.classList.contains('enlarged'))_noAnim(t,function(){t.classList.remove('enlarged');t.style.width=''})}};document.addEventListener('click',function(e){var t=e.target;if(t.tagName!=='IMG')return;var k=_ikey(t);if(t.classList.contains('enlarged')){delete window._imgZoom[k];t.classList.remove('enlarged');t.style.width=''}else{window._imgZoom[k]=_iap(t)||true}_sv();e.preventDefault();e.stopPropagation()});_ires();new MutationObserver(_ires).observe(document.body||document.documentElement,{childList:true,subtree:true})}" style="display:none;">]=]
+	[=[<img src='_' onerror="if(!window._imgZoom){var _K='_mdImgZoom';var _ld=function(){try{return JSON.parse(sessionStorage.getItem(_K))||{}}catch(_){return{}}};window._imgZoom=_ld();var _sv=function(){try{sessionStorage.setItem(_K,JSON.stringify(window._imgZoom))}catch(_){}};var _ikey=function(t){var u=t.getAttribute('data-uml-key');if(u)return u;var s=t.getAttribute('src')||'';var a=document.getElementsByTagName('img');var n=0;for(var i=0;i<a.length;i++){if(a[i]===t)break;if((a[i].getAttribute('src')||'')===s)n++}return s+'#'+n};var _noAnim=function(t,fn){var p=t.style.transition;t.style.transition='none';fn();void t.offsetWidth;t.style.transition=p};var _iap=function(t,w){t.classList.add('enlarged');if(w){t.style.width=w;return w}var nw=t.naturalWidth;if(!nw){t.addEventListener('load',function(){var r;_noAnim(t,function(){r=_iap(t)});if(r){window._imgZoom[_ikey(t)]=r;_sv()}},{once:true});return null}var cw=(t.closest('.markdown-body')||document.body).clientWidth;var r=nw>cw?nw+'px':'100%';t.style.width=r;return r};var _ires=function(){var a=document.getElementsByTagName('img');for(var i=0;i<a.length;i++){var t=a[i];if(t.getAttribute('src')==='_')continue;var v=window._imgZoom[_ikey(t)];if(v){if(!t.classList.contains('enlarged'))_noAnim(t,function(){_iap(t,(typeof v==='string'&&!t.hasAttribute('data-uml-key'))?v:null)})}else if(t.classList.contains('enlarged'))_noAnim(t,function(){t.classList.remove('enlarged');t.style.width=''})}};document.addEventListener('click',function(e){var t=e.target;if(t.tagName!=='IMG')return;var k=_ikey(t);if(t.classList.contains('enlarged')){delete window._imgZoom[k];t.classList.remove('enlarged');t.style.width=''}else{window._imgZoom[k]=_iap(t)||true}_sv();e.preventDefault();e.stopPropagation()});_ires();new MutationObserver(_ires).observe(document.body||document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['src']})}" style="display:none;">]=]
 -- GitHub-style Alerts
 local alert_script =
 	[=[<img src='_' onerror="if(!window._ghAlert){window._ghAlert=true;var L={NOTE:'Note',TIP:'Tip',IMPORTANT:'Important',WARNING:'Warning',CAUTION:'Caution'};function _pa(){document.querySelectorAll('blockquote:not([data-alert])').forEach(function(b){var p=b.querySelector('p');if(!p)return;var m=p.textContent.match(/^\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/);if(!m)return;var tp=m[1].toLowerCase();b.setAttribute('data-alert',tp);b.className='markdown-alert markdown-alert-'+tp;var d=document.createElement('p');d.className='markdown-alert-title markdown-alert-title-'+tp;d.textContent=L[m[1]];p.innerHTML=p.innerHTML.replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/,'');b.insertBefore(d,b.firstChild);if(!p.textContent.trim()&&!p.innerHTML.trim())p.remove()})}_pa();new MutationObserver(_pa).observe(document.body||document.documentElement,{childList:true,subtree:true})}" style="display:none;">]=]
@@ -39,10 +39,12 @@ local function remove_preview_script(bufnr)
 	end
 end
 
-local uml_img_template = [=[<img src="_" data-uml="%s" onerror="this.onerror=null;this.src='http://127.0.0.1:%d/%s'">]=]
+-- data-uml-keyは拡大状態保存キー（図を編集するとURLのハッシュ値が変わるので、出現順をキーに使う）
+local uml_img_template =
+	[=[<img src="_" data-uml="%s" data-uml-key="uml-%d" onerror="this.onerror=null;this.src='http://127.0.0.1:%d/%s'">]=]
 
-local function uml_img_tag(name)
-	return uml_img_template:format(name, file_port, name)
+local function uml_img_tag(name, index)
+	return uml_img_template:format(name, index, file_port, name)
 end
 
 local uml_img_pattern = '^<img src="_" data%-uml="uml%-%x+%.svg"'
@@ -199,10 +201,10 @@ local function refresh_uml_images(bufnr)
 
 		local results = {}
 		local remaining = #blocks
-		for _, block in ipairs(blocks) do
+		for index, block in ipairs(blocks) do
 			render_uml(block.source, function(name)
 				if name then
-					table.insert(results, { lnum = block.lnum, line = uml_img_tag(name) })
+					table.insert(results, { lnum = block.lnum, line = uml_img_tag(name, index) })
 				else
 					table.insert(results, { lnum = block.lnum, line = uml_error_line })
 				end
