@@ -65,7 +65,7 @@ split_horizontal = ""
 switch_tab = ""
 
 # prefix+shift+n はタブの位置移動に使うので、ワークスペース作成をずらす
-new_workspace = "prefix+t"
+new_workspace = "prefix+enter"
 
 [[keys.command]]
 key = "prefix+c"
