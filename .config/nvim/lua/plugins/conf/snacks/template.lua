@@ -21,7 +21,7 @@ local function expand_includes(vault_path, templates_dir)
 			if vim.fn.filereadable(path) == 1 then
 				local content = vim.fn.readfile(path)
 				vim.api.nvim_buf_set_lines(0, lnum - 1, lnum, false, content)
-				return expand_includes()
+				return expand_includes(vault_path, templates_dir)
 			end
 		end
 	end
