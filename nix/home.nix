@@ -44,6 +44,7 @@ in
     ".zshrc".source = mkSym "${dotfilesDir}/.zshrc";
   };
 
+  # NixOS Search https://search.nixos.org/packages
   home.packages = with pkgs; [
     # Core utilities
     coreutils

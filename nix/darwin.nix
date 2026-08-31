@@ -81,6 +81,7 @@ in
       "altair-graphql-client"
       "1password"
       "box-drive"
+      "claude"
       "cleanshot"
       "deskpad"
       "devtoys"
