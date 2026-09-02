@@ -1,3 +1,6 @@
+# timeoutなどのWARNはプロンプトを汚すので抑制
+export STARSHIP_LOG=error
+
 export STARSHIP_CONFIG1="$HOME/.config/starship.toml"
 export STARSHIP_CONFIG2="$HOME/.config/starship2.toml"
 

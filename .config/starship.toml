@@ -2,6 +2,10 @@ continuation_prompt = '[❯❯ ](purple)'
 
 palette = "catppuccin_mocha"
 
+# herdrのセッション復元時に複数paneが同時起動し、プロセス生成が詰まるので設定値を変更する
+command_timeout = 1000
+scan_timeout = 100
+
 format = """
 $username\
 $hostname\
