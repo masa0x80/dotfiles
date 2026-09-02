@@ -314,7 +314,7 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 	end
 
 	local is_age = vim.fn.expand("%:e") == "age"
-	-- ageファイルの場合は保存前後でバッファーの内容を退避・復元するので、暗号化前のAgeEncryptPreだけでフックする
+	-- ageファイルの場合はBufWriteCmdで暗号化するので、フォーマットよりも前に処理されるAgeEncryptPre/Postでフックする
 	if is_age then
 		vim.api.nvim_create_autocmd({ "User" }, {
 			group = group_id,
