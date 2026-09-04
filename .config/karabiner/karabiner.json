@@ -1046,29 +1046,41 @@
                         ]
                     },
                     {
-                        "description": "<Cmd-C-o> / <Cmd-C-i> ▶ <S-LeftArrow> / <S-RightArrow>",
+                        "description": "IME変換範囲変更: <C-S-n> / <C-S-p> ▶ <S-RightArrow> / <S-LeftArrow>",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "input_source": [{ "language": "ja" }],
+                                        "type": "input_source_if"
+                                    }
+                                ],
                                 "from": {
-                                    "key_code": "o",
-                                    "modifiers": { "mandatory": ["command", "control"] }
+                                    "key_code": "n",
+                                    "modifiers": { "mandatory": ["control", "shift"] }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_arrow",
+                                        "key_code": "right_arrow",
                                         "modifiers": ["shift"]
                                     }
                                 ],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "input_source": [{ "language": "ja" }],
+                                        "type": "input_source_if"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "i",
-                                    "modifiers": { "mandatory": ["command", "control"] }
+                                    "modifiers": { "mandatory": ["control", "shift"] }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_arrow",
+                                        "key_code": "left_arrow",
                                         "modifiers": ["shift"]
                                     }
                                 ],
