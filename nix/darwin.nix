@@ -79,6 +79,7 @@ in
 
     casks = [
       "altair-graphql-client"
+      "alt-tab"
       "1password"
       "box-drive"
       "claude"
