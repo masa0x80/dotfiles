@@ -8,7 +8,7 @@ local preview_bufnr = nil
 -- NOTE: dangerouslySetInnerHTML では <script> は実行されないけど <img onerror> は実行される
 -- 画像拡大
 local image_zoom_script =
-	[=[<img src='_' onerror="if(!window._imgZoom){var _K='_mdImgZoom';var _ld=function(){try{return JSON.parse(sessionStorage.getItem(_K))||{}}catch(_){return{}}};window._imgZoom=_ld();var _sv=function(){try{sessionStorage.setItem(_K,JSON.stringify(window._imgZoom))}catch(_){}};var _ikey=function(t){var u=t.getAttribute('data-uml-key');if(u)return u;var s=t.getAttribute('src')||'';var a=document.getElementsByTagName('img');var n=0;for(var i=0;i<a.length;i++){if(a[i]===t)break;if((a[i].getAttribute('src')||'')===s)n++}return s+'#'+n};var _noAnim=function(t,fn){var p=t.style.transition;t.style.transition='none';fn();void t.offsetWidth;t.style.transition=p};var _iap=function(t,w){t.classList.add('enlarged');if(w){t.style.width=w;return w}var nw=t.naturalWidth;if(!nw){t.addEventListener('load',function(){var r;_noAnim(t,function(){r=_iap(t)});if(r){window._imgZoom[_ikey(t)]=r;_sv()}},{once:true});return null}var cw=(t.closest('.markdown-body')||document.body).clientWidth;var r=nw>cw?nw+'px':'100%';t.style.width=r;return r};var _ires=function(){var a=document.getElementsByTagName('img');for(var i=0;i<a.length;i++){var t=a[i];if(t.getAttribute('src')==='_')continue;var v=window._imgZoom[_ikey(t)];if(v){if(!t.classList.contains('enlarged'))_noAnim(t,function(){_iap(t,(typeof v==='string'&&!t.hasAttribute('data-uml-key'))?v:null)})}else if(t.classList.contains('enlarged'))_noAnim(t,function(){t.classList.remove('enlarged');t.style.width=''})}};document.addEventListener('click',function(e){var t=e.target;if(t.tagName!=='IMG')return;var k=_ikey(t);if(t.classList.contains('enlarged')){delete window._imgZoom[k];t.classList.remove('enlarged');t.style.width=''}else{window._imgZoom[k]=_iap(t)||true}_sv();e.preventDefault();e.stopPropagation()});_ires();new MutationObserver(_ires).observe(document.body||document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['src']})}" style="display:none;">]=]
+	[=[<img src='_' onerror="if(!window._imgZoom){var _K='_mdImgZoom';var _ld=function(){try{return JSON.parse(sessionStorage.getItem(_K))||{}}catch(_){return{}}};window._imgZoom=_ld();var _sv=function(){try{sessionStorage.setItem(_K,JSON.stringify(window._imgZoom))}catch(_){}};var _ikey=function(t){var u=t.getAttribute('data-uml-key');if(u)return u;var s=t.getAttribute('src')||'';var a=document.getElementsByTagName('img');var n=0;for(var i=0;i<a.length;i++){if(a[i]===t)break;if((a[i].getAttribute('src')||'')===s)n++}return s+'#'+n};var _noAnim=function(t,fn){var p=t.style.transition;t.style.transition='none';fn();void t.offsetWidth;t.style.transition=p};var _iap=function(t,w){t.classList.add('enlarged');if(t.hasAttribute('data-uml-key')){t.style.width='100%';return '100%'}if(w){t.style.width=w;return w}var nw=t.naturalWidth;if(!nw){t.addEventListener('load',function(){var r;_noAnim(t,function(){r=_iap(t)});if(r){window._imgZoom[_ikey(t)]=r;_sv()}},{once:true});return null}var cw=(t.closest('.markdown-body')||document.body).clientWidth;var r=nw>cw?nw+'px':'100%';t.style.width=r;return r};var _ires=function(){var a=document.getElementsByTagName('img');for(var i=0;i<a.length;i++){var t=a[i];if(t.getAttribute('src')==='_')continue;var v=window._imgZoom[_ikey(t)];if(v){if(!t.classList.contains('enlarged'))_noAnim(t,function(){_iap(t,(typeof v==='string'&&!t.hasAttribute('data-uml-key'))?v:null)})}else if(t.classList.contains('enlarged'))_noAnim(t,function(){t.classList.remove('enlarged');t.style.width=''})}};document.addEventListener('click',function(e){var t=e.target;if(t.tagName!=='IMG')return;var k=_ikey(t);if(t.classList.contains('enlarged')){delete window._imgZoom[k];t.classList.remove('enlarged');t.style.width=''}else{window._imgZoom[k]=_iap(t)||true}_sv();e.preventDefault();e.stopPropagation()});_ires();new MutationObserver(_ires).observe(document.body||document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['src']})}" style="display:none;">]=]
 -- GitHub-style Alerts
 local alert_script =
 	[=[<img src='_' onerror="if(!window._ghAlert){window._ghAlert=true;var L={NOTE:'Note',TIP:'Tip',IMPORTANT:'Important',WARNING:'Warning',CAUTION:'Caution'};function _pa(){document.querySelectorAll('blockquote:not([data-alert])').forEach(function(b){var p=b.querySelector('p');if(!p)return;var m=p.textContent.match(/^\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/);if(!m)return;var tp=m[1].toLowerCase();b.setAttribute('data-alert',tp);b.className='markdown-alert markdown-alert-'+tp;var d=document.createElement('p');d.className='markdown-alert-title markdown-alert-title-'+tp;d.textContent=L[m[1]];p.innerHTML=p.innerHTML.replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/,'');b.insertBefore(d,b.firstChild);if(!p.textContent.trim()&&!p.innerHTML.trim())p.remove()})}_pa();new MutationObserver(_pa).observe(document.body||document.documentElement,{childList:true,subtree:true})}" style="display:none;">]=]
@@ -96,17 +96,41 @@ local function stop_plantuml_server()
 	vim.system({ "docker", "compose", "-f", compose_path, "down" })
 end
 
-local function start_file_server()
+local function is_file_server_running()
 	-- すでに起動してたらそれを使う
 	local check = vim.system({ "curl", "-s", "-o", "/dev/null", "-m", "1", ("http://127.0.0.1:%d/"):format(file_port) })
 		:wait()
-	if check.code == 0 then
+	return check.code == 0
+end
+
+local function start_file_server()
+	-- 起動してたらそれを使う
+	if is_file_server_running() then
 		return
 	end
 
-	-- 応答が無い場合はハングしている可能性があるので、ポートを掴んでいるプロセスを掃除してから起動し直す
-	vim.system({ "pkill", "-f", "python -m http.server " .. file_port }):wait()
-	vim.system({ "python", "-m", "http.server", tostring(file_port), "--directory", tmp_dir })
+	vim.system({ "pkill", "-f", "http.server " .. file_port }):wait()
+	-- stdout/stderrを捨てないと、nvim終了後にゾンビプロセスになる
+	-- --bind 127.0.0.1がないとLANからtmp_dirが見えてしまう
+	vim.system({
+		"python",
+		"-m",
+		"http.server",
+		tostring(file_port),
+		"--bind",
+		"127.0.0.1",
+		"--directory",
+		tmp_dir,
+	}, { stdout = false, stderr = false })
+
+	-- サーバー起動前に画像が要求されないように待つ
+	for _ = 1, 20 do
+		vim.uv.sleep(50)
+		if is_file_server_running() then
+			return
+		end
+	end
+	vim.notify("ファイルサーバーの起動に失敗しました", vim.log.levels.ERROR)
 end
 
 -- @startgantt や @startmindmap のように図の種類が書かれている場合はそのまま送信
@@ -233,32 +257,6 @@ local function refresh_uml_images(bufnr)
 	end
 end
 
-local function write_svg()
-	local filepath = vim.fn.expand("%:p")
-	local filename = vim.fn.expand("%:t")
-	local outfile = tmp_dir .. "out.svg"
-	vim.system({
-		"curl",
-		"-s",
-		"-H",
-		"Content-Type: application/text; charset=UTF-8",
-		"--data-binary",
-		"@" .. filepath,
-		("http://localhost:%d/svg/"):format(port),
-	}, { text = true }, function(obj)
-		if obj.code ~= 0 then
-			return
-		end
-		local f = io.open(outfile, "w")
-		if not f then
-			return
-		end
-		f:write(obj.stdout)
-		f:close()
-		vim.uv.fs_copyfile(outfile, tmp_dir .. filename .. ".svg")
-	end)
-end
-
 vim.api.nvim_create_user_command("StartPlantUmlServer", start_plantuml_server, {})
 vim.api.nvim_create_user_command("StopPlantUmlServer", stop_plantuml_server, {})
 
@@ -360,31 +358,6 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 		callback = function()
 			cleanup_preview()
 		end,
-	})
-end, {})
-
-vim.api.nvim_create_user_command("PlantUMLPreview", function()
-	start_plantuml_server()
-	local filename = vim.fn.expand("%:t")
-	vim.fn.mkdir(tmp_dir, "p")
-	write_svg()
-	vim.uv.fs_copyfile(vim.fn.expand("$DOTFILES_DIR/etc/plantuml/viewer.html"), tmp_dir .. "viewer.html")
-	-- 前回起動したプロセスが残っていたらkill
-	vim.system({ "pkill", "-f", "python -m http.server " .. file_port }):wait()
-	vim.system({ "python", "-m", "http.server", file_port, "--directory", tmp_dir })
-	vim.system({
-		"open",
-		"-n",
-		"-a",
-		vim.fn.expand("$TARGET_BROWSER"),
-		"--args",
-		("http://localhost:%d/viewer.html?filename=%s"):format(file_port, filename),
-	})
-	local group = vim.api.nvim_create_augroup("PlantUMLPreview:" .. filename, { clear = true })
-	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-		group = group,
-		buffer = vim.fn.bufnr(),
-		callback = write_svg,
 	})
 end, {})
 
