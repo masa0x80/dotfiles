@@ -132,7 +132,7 @@ in
 
     dock = {
       # Dockのアイコンサイズ
-      tilesize = 64;
+      tilesize = 32;
       # Dockの自動非表示
       autohide = true;
       # アプリ起動時のアニメーション
