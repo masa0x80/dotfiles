@@ -104,6 +104,11 @@ return {
 					map("i", "<C-h>", backspace, opts)
 				end,
 			})
+
+			vim.keymap.set("n", "<C-g>i", "gs$i", { remap = true, desc = "Toggle italic to end of line" })
+			vim.keymap.set("n", "<C-g>b", "gs$b", { remap = true, desc = "Toggle bold to end of line" })
+			vim.keymap.set("n", "<C-g>s", "gs$s", { remap = true, desc = "Toggle strikethrough to end of line" })
+			vim.keymap.set("n", "<C-g>c", "gs$c", { remap = true, desc = "Toggle code to end of line" })
 		end,
 	},
 	{
