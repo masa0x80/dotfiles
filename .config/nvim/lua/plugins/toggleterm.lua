@@ -3,7 +3,7 @@ return {
 	version = "*",
 	cmd = { "ToggleTerm", "TermExec" },
 	keys = {
-		{ "<C-\\>" },
+		{ "<C-g>\\" },
 		{
 			"<Leader>tf",
 			"<Cmd>TermFloat<CR>",
@@ -26,7 +26,7 @@ return {
 	end,
 	config = function()
 		require("toggleterm").setup({
-			open_mapping = [[<C-\>]],
+			open_mapping = [[<C-g>\]],
 			direction = "float",
 			float_opts = {
 				border = "curved",

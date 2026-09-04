@@ -212,30 +212,61 @@ return {
 		event = { "VeryLazy" },
 		init = function()
 			for _, a in ipairs({
-				{ "<C-_><C-_>", "n", "comment_toggle_linewise_current", "Toggle line-comment" },
-				{ "<C-_><C-_>", "x", "comment_toggle_linewise_visual", "Toggle line-comment" },
-				{ "<C-_><C-b>", "n", "comment_toggle_blockwise_current", "Toggle block-comment" },
-				{ "<C-_><C-b>", "x", "comment_toggle_blockwise_visual", "Toggle block-comment" },
+				{ "\\\\", "n", "comment_toggle_linewise_current", "Toggle line-comment" },
+				{ "\\\\", "x", "comment_toggle_linewise_visual", "Toggle line-comment" },
+				{ "\\<C-b>", "n", "comment_toggle_blockwise_current", "Toggle block-comment" },
+				{ "\\<C-b>", "x", "comment_toggle_blockwise_visual", "Toggle block-comment" },
 			}) do
 				local lhs, mode, target, desc = a[1], a[2], a[3], a[4]
 
 				local rhs = function()
 					local ok, undo_glow = pcall(require, "undo-glow")
 					if ok then
+						vim.g.ug_ignore_cursor_moved = true
 						undo_glow.highlight_changes({ hlgroup = "UgComment" })
 					end
 
 					return "<Plug>(" .. target .. ")"
 				end
 
-				local ghostty = (lhs:gsub("<C%-_>", "<C-/>"))
-				for _, key in ipairs({ lhs, ghostty }) do
-					vim.keymap.set(mode, key, rhs, { expr = true, remap = true, desc = desc })
-				end
+				vim.keymap.set(mode, lhs, rhs, { expr = true, remap = true, desc = desc })
 			end
 		end,
 		config = function()
 			local ts_pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
+
+			-- ```ts のような拡張子表記もfiletypeに寄せる
+			local function to_filetype(lang)
+				if type(require("Comment.ft").get(lang)) == "table" then
+					return lang
+				end
+
+				return vim.filetype.match({ filename = "x." .. lang })
+			end
+
+			-- lnum行を含むコードブロックの言語を返す
+			-- plantumlなどtreesitterのパーサーがないものはinfo stringから拾う
+			local function fenced_filetype(lnum)
+				if vim.bo.filetype ~= "markdown" then
+					return nil
+				end
+
+				local fence, lang
+				for _, line in ipair(vim.api.nvim_buf_get_lines(0, 0, lnum - 1, false)) do
+					if fence then
+						if line:match("^%s*" .. fence .. "%s*$") then
+							fence, lang = nil, nil
+						else
+							local open, info = line:match("^%s*(```+)(.*)$")
+							if open then
+								fence, lang = open, info:lower():match("^%s*([%w_+#%-]+")
+							end
+						end
+					end
+				end
+
+				return lang and to_filetype(lang) or nil
+			end
 
 			require("Comment").setup({
 				pre_hook = function(ctx)
@@ -244,7 +275,9 @@ return {
 						return cstr
 					end
 
-					return require("Comment.ft").get(vim.bo.filetype, ctx.ctype) or vim.bo.commentstring
+					local ft = fenced_filetype(ctx.range.srow) or vim.bo.filetype
+
+					return require("Comment.ft").get(ft, ctx.ctype) or vim.bo.commentstring
 				end,
 			})
 		end,
