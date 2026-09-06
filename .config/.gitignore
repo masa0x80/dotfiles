@@ -5,11 +5,12 @@
 !/asdf
 !/bat
 !/cspell
+!/dprint
 !/fence
 !/git
 !/ghostty
 !/lazygit
-!/markdownlint
+!/mado
 !/markdown-preview
 !/mise
 !/nvim

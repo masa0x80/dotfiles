@@ -124,9 +124,11 @@ in
     actionlint
     black
     cspell
+    dprint
     (lib.meta.hiPrio gopls)
     gotools
     hadolint
+    mado
     shellcheck
     shfmt
     stylua
@@ -150,7 +152,6 @@ in
     rage
     passage
     csvq
-    markdownlint-cli2
     dyff
 
     # Tools for macOS

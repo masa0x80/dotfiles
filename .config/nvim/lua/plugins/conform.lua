@@ -19,12 +19,14 @@ return {
 				},
 				stdin = true,
 			},
-			markdownlint = {
-				command = "markdownlint-cli2",
+			dprint = {
+				command = "dprint",
 				args = {
+					"fmt",
+					"--stdin",
+					"$FILENAME",
 					"--config",
-					vim.fn.expand("$HOME/.config/markdownlint/.markdownlint.jsonc"),
-					"--format",
+					vim.fn.expand("$XDG_CONFIG_HOME" .. "/dprint/dprint.json"),
 				},
 				stdin = true,
 			},
@@ -47,6 +49,13 @@ return {
 			end)
 		end, { range = true })
 
+		local markdown_formatters = {
+			"delete_jira_status_icon",
+			"space_around_links",
+			"textlint",
+			"dprint",
+		}
+
 		require("conform").setup({
 			formatters_by_ft = {
 				ruby = { "rubocop" },
@@ -54,15 +63,11 @@ return {
 				lua = { "stylua" },
 				luau = { "stylua" },
 				python = { "black" },
-				markdown = {
-					"delete_jira_status_icon",
-					"space_around_links",
-
-					"textlint",
-					"markdownlint",
-				},
+				markdown = markdown_formatters,
 				nix = { "nixfmt" },
 				sh = { "shfmt" },
+				toml = { "dprint" },
+				dockerfile = { "dprint" },
 				text = { "textlint" },
 
 				javascript = { "prettier" },
@@ -87,7 +92,8 @@ return {
 					return
 				end
 
-				if vim.bo[bufnr].filetype == "make" then
+				local ft = vim.bo[bufnr].filetype
+				if ft == "make" then
 					-- Makefile で injected が動かないように
 					return
 				end
@@ -98,13 +104,22 @@ return {
 					return
 				end
 
-				return {
+				local opts = {
 					timeout_ms = 15000,
 					lsp_format = "fallback",
 					filter = function(client)
 						return client.name ~= "ts_ls"
 					end,
 				}
+
+				if ft == "markdown" then
+					-- "*" 経由の injected フォーマッタがコードブロックを stylua 等でフォーマットしようとするが、
+					-- dprint 等で行数が変わった後に古い範囲を参照して index out of bounds になることがあるため
+					-- markdown では injected を使わず明示的なフォーマッタのみ実行する
+					opts.formatters = markdown_formatters
+				end
+
+				return opts
 			end,
 		})
 	end,

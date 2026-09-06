@@ -1,5 +1,5 @@
 -- NOTE: 標準の runtime/ftplugin/markdown.vim が shiftwidth/tabstop/softtabstop を 4 に変えてしまうと
--- markdownlint の MD007 (ul-indent = 2) と食い違うので無効化する
+-- mado の MD007 (ul-indent = 2) と食い違うので無効化する
 -- `filetype plugin indent on` より前に設定が必要
 vim.g.markdown_recommended_style = 0
 

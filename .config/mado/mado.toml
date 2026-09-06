@@ -1,0 +1,51 @@
+# markdownlint の .markdownlint.jsonc から移行した設定
+# 参照: https://github.com/akiomik/mado
+
+[lint]
+# MD018 (no-missing-space-atx) を無効化
+rules = [
+  "MD001",
+  "MD002",
+  "MD003",
+  "MD004",
+  "MD005",
+  "MD006",
+  "MD007",
+  "MD009",
+  "MD010",
+  "MD012",
+  "MD013",
+  "MD014",
+  "MD019",
+  "MD020",
+  "MD021",
+  "MD022",
+  "MD023",
+  "MD024",
+  "MD025",
+  "MD026",
+  "MD027",
+  "MD028",
+  "MD029",
+  "MD030",
+  "MD031",
+  "MD032",
+  "MD033",
+  "MD034",
+  "MD035",
+  "MD036",
+  "MD037",
+  "MD038",
+  "MD039",
+  "MD040",
+  "MD041",
+  "MD046",
+  "MD047",
+]
+
+[lint.md007]
+# after/ftplugin/markdown.lua の shiftwidth (2) に合わせる
+indent = 2
+
+# NOTE: MD031 (blanks-around-fences) の list_items オプションは mado 未対応のため、
+# 旧 .markdownlint.jsonc にあった「リスト内のコードブロック前後は空行不要」は再現できていない
