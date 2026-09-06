@@ -362,17 +362,17 @@ li.source-line > * {
 }
 
 .markdown-body h1 {
-  font-size: 2.25em;
+  font-size: 1.5em;
   border-bottom: 1px solid #e06c75;
   padding-bottom: 0em;
 }
 .markdown-body h2 {
-  font-size: 2em;
+  font-size: 1.5em;
   border-bottom: 1px solid #56b6c2;
   padding-bottom: 0em;
 }
 .markdown-body h3 {
-  font-size: 1.75em;
+  font-size: 1.5em;
   border-bottom: 1px solid #98c379;
 }
 .markdown-body h4 {
@@ -380,11 +380,11 @@ li.source-line > * {
   border-bottom: 1px solid #c678dd;
 }
 .markdown-body h5 {
-  font-size: 1.25em;
+  font-size: 1.5em;
   border-bottom: 1px solid #e2be7d;
 }
 .markdown-body h6 {
-  font-size: 1.05em;
+  font-size: 1.5em;
   border-bottom: 1px solid #abb2bf;
   color: var(--color-text-primary);
 }
