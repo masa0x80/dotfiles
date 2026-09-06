@@ -20,22 +20,35 @@ local details_script =
 local hide_uml_img_style = ('<style>img[src*="127.0.0.1:%d/svg/"]{display:none}</style>'):format(port)
 
 local scripts = { hide_uml_img_style, image_zoom_script, alert_script, details_script }
+
+local function insert_preview_script(bufnr)
+	local footer = { "" }
+	for _, script in ipairs(scripts) do
+		table.insert(footer, script)
+	end
+	vim.api.nvim_buf_set_lines(bufnr, -1, -1, false, footer)
+	vim.bo[bufnr].modified = false
+end
+
 local function remove_preview_script(bufnr)
-	local n = #scripts
-	local first = vim.api.nvim_buf_get_lines(bufnr, 0, n + 1, false)
-	local remove_count = 0
-	for i, script in ipairs(scripts) do
-		if first[i] == script then
-			remove_count = i
-		else
-			break
+	local total = vim.api.nvim_buf_line_count(bufnr)
+	for count = math.min(#scripts, total), 1, -1 do
+		local lines = vim.api.nvim_buf_get_lines(bufnr, total - count, total, false)
+		local matched = true
+		for i = 1, count do
+			if lines[i] ~= scripts[i] then
+				matched = false
+				break
+			end
 		end
-	end
-	if remove_count > 0 and first[remove_count + 1] == "" then
-		remove_count = remove_count + 1
-	end
-	if remove_count > 0 then
-		vim.api.nvim_buf_set_lines(bufnr, 0, remove_count, false, {})
+		if matched then
+			local start = total - count
+			if start > 0 and vim.api.nvim_buf_get_lines(bufnr, start - 1, start, false)[1] == "" then
+				start = start - 1
+			end
+			vim.api.nvim_buf_set_lines(bufnr, start, total, false, {})
+			return
+		end
 	end
 end
 
@@ -268,13 +281,7 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 	-- プレビュー用の加工
 	local bufnr = vim.fn.bufnr()
 	if vim.bo.filetype == "markdown" then
-		local header = {}
-		for _, script in ipairs(scripts) do
-			table.insert(header, script)
-		end
-		table.insert(header, "")
-		vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, header)
-		vim.bo[bufnr].modified = false
+		insert_preview_script(bufnr)
 	end
 
 	vim.cmd("MarkdownPreview")
@@ -299,13 +306,7 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 		end
 
 		if vim.bo.filetype == "markdown" then
-			local header = {}
-			for _, script in ipairs(scripts) do
-				table.insert(header, script)
-			end
-			table.insert(header, "")
-			vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, header)
-			vim.bo[bufnr].modified = false
+			insert_preview_script(bufnr)
 		end
 
 		refresh_uml_images(bufnr)
