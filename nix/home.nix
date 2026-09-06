@@ -69,6 +69,7 @@ in
 
     # CLI Tools
     bat
+    dust
     eza
     fd
     delta

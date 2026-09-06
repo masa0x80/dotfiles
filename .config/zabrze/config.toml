@@ -561,6 +561,11 @@ name = "bookmark"
 abbr = "b"
 snippet = "bookmark"
 
+[[snippets]]
+name = "dust"
+abbr = "du"
+snippet = "dust"
+if = "(( ${+commands[dust]} ))"
 
 [[snippets]]
 name = "claude"
