@@ -473,14 +473,24 @@ ul li::marker {
 }
 
 .markdown-body img {
-  width: 30%;
+  width: auto;
+  max-width: 30%;
   height: auto;
   margin: 1em;
+}
+
+.markdown-body img[data-uml-key] {
+  width: 100%;
+  max-width: 100%;
 }
 
 .markdown-body img {
   cursor: zoom-in;
   transition: all 0.2s ease;
+}
+
+.markdown-body img.no-zoom {
+  cursor: inherit;
 }
 
 .markdown-body img.enlarged {
