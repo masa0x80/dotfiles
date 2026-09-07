@@ -7,7 +7,7 @@
 
 let
   localDir = builtins.getEnv "DOTFILES_LOCAL_DIR";
-  hasLocal = localDir != "" && builtins.pathExists "${localDir}/nix/home.nix";
+  hasLocal = localDir != "" && builtins.pathExists "${localDir}/nix/darwin.nix";
   httpProxy = builtins.getEnv "http_proxy";
   proxyEnv = lib.optionalAttrs (httpProxy != "") {
     http_proxy = httpProxy;
@@ -132,7 +132,7 @@ in
 
     dock = {
       # Dockのアイコンサイズ
-      tilesize = 32;
+      tilesize = 48;
       # Dockの自動非表示
       autohide = true;
       # アプリ起動時のアニメーション

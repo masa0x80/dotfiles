@@ -115,6 +115,7 @@ in
     jdt-language-server
     kotlin-language-server
     lua-language-server
+    markdownlint-cli2
     solargraph
     tailwindcss-language-server
     terraform-ls
@@ -128,7 +129,6 @@ in
     (lib.meta.hiPrio gopls)
     gotools
     hadolint
-    mado
     shellcheck
     shfmt
     stylua

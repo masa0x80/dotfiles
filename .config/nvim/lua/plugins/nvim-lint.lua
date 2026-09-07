@@ -53,31 +53,12 @@ return {
 			end,
 		}
 
-		lint.linters.mado = {
-			cmd = "mado",
-			args = {
-				"--config",
-				vim.fn.expand("$XDG_CONFIG_HOME" .. "/mado/mado.toml"),
-				"check",
-				"--output-format",
-				"markdownlint",
-				"--quiet",
-			},
-			stdin = false,
-			ignore_exitcode = true,
-			parser = require("lint.parser").from_errorformat("%f:%l:%c %m", {
-				source = "mado",
-				severity = vim.diagnostic.severity.WARN,
-			}),
-		}
-
 		lint.linters_by_ft = {
 			["yaml.ghaction"] = { "actionlint" },
 			dockerfile = { "hadolint" },
 			nix = { "statix", "deadnix" },
 			bash = { "shellcheck" },
 			zsh = { "shellcheck" },
-			markdown = { "mado" },
 		}
 
 		require("utils").create_autocmd({ "BufWritePost" }, {

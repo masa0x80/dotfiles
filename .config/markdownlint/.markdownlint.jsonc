@@ -1,0 +1,5 @@
+{
+  "no-missing-space-atx": false,
+  // リスト内のコードブロックの前後に空白を入れない
+  "blanks-around-fences": { "list_items": false },
+}

@@ -32,10 +32,15 @@ brew-init:
 
 MIN_RELEASE_DAYS ?= 7
 NIX := /nix/var/nix/profiles/default/bin/nix
+DARWIN_REBUILD := /run/current-system/sw/bin/darwin-rebuild
 GH := $(shell command -v gh 2>/dev/null)
 NIX_ACCESS_TOKENS = access-tokens = github.com=$$(gh auth token)
-NIX_CONFIG_ENV = $(if $(GH),NIX_CONFIG="$(NIX_ACCESS_TOKENS)")
 NIX_CONFIG_EXPORT = $(if $(GH),export NIX_CONFIG="$(NIX_ACCESS_TOKENS)";)
+
+GHQ_ROOT ?= $(HOME)/.ghq
+DOTFILES_LOCAL_DIR ?= $(firstword $(wildcard $(GHQ_ROOT)/*/*/dotfiles.local))
+
+NIX_PRESERVE_ENV := NIX_CONFIG,HOST,PWD,DOTFILES_LOCAL_DIR,http_proxy,https_proxy
 
 .PHONY: nix-init
 nix-init: brew-init
@@ -43,7 +48,14 @@ nix-init: brew-init
 
 .PHONY: nix
 nix: nix-init
-	sudo -E $(NIX_ACCESS_ENV) HOST=$$(scutil --get LocalHostName) $(NIX) run nix-darwin -- switch --flake . --impure
+	@$(NIX_CONFIG_EXPORT) \
+	export HOST=$$(scutil --get LocalHostName); \
+	export DOTFILES_LOCAL_DIR="$(DOTFILES_LOCAL_DIR)"; \
+	if [ -x $(DARWIN_REBUILD) ]; then \
+		sudo --preserve-env=$(NIX_PRESERVE_ENV) $(DARWIN_REBUILD) switch --flake . --impure; \
+	else \
+		sudo --preserve-env=$(NIX_PRESERVE_ENV) $(NIX) run nix-darwin -- switch --flake . --impure; \
+	fi
 
 .PHONY: nix-update
 nix-update:
