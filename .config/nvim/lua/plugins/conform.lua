@@ -28,14 +28,14 @@ return {
 					"--config",
 					vim.fn.expand("$XDG_CONFIG_HOME" .. "/dprint/dprint.json"),
 				},
-				markdownlint = {
-					command = "markdownlint-cli2",
-					args = {
-						"--config",
-						vim.fn.expand("$HOME/.config/markdownlint/.markdownlint.jsonc"),
-						"--format",
-					},
-					stdin = true,
+				stdin = true,
+			},
+			markdownlint = {
+				command = "markdownlint-cli2",
+				args = {
+					"--config",
+					vim.fn.expand("$HOME/.config/markdownlint/.markdownlint.jsonc"),
+					"--format",
 				},
 				stdin = true,
 			},
