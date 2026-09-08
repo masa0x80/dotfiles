@@ -70,6 +70,10 @@ return {
 				require("nvim-treesitter").install(missing)
 			end
 
+			-- NOTE: markdownのindentは入れ子の深さxshiftwidthで計算されるので
+			-- markdownではautoindentとcommentsのリスト継続に委ねる
+			local skip_indentexpr = { markdown = true }
+
 			vim.api.nvim_create_autocmd("FileType", {
 				group = vim.api.nvim_create_augroup("TreesitterStart", { clear = true }),
 				callback = function(args)
@@ -79,7 +83,9 @@ return {
 					end
 
 					vim.treesitter.start(args.buf, lang)
-					vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+					if not skip_indentexpr[vim.bo[args.buf].filetype] then
+						vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+					end
 				end,
 			})
 
@@ -252,16 +258,14 @@ return {
 				end
 
 				local fence, lang
-				for _, line in ipair(vim.api.nvim_buf_get_lines(0, 0, lnum - 1, false)) do
+				for _, line in ipairs(vim.api.nvim_buf_get_lines(0, 0, lnum - 1, false)) do
+					local backticks, info = line:match("^%s*(```+)(.*)$")
 					if fence then
-						if line:match("^%s*" .. fence .. "%s*$") then
+						if backticks and #backticks >= #fence and info:match("^%s*$") then
 							fence, lang = nil, nil
-						else
-							local open, info = line:match("^%s*(```+)(.*)$")
-							if open then
-								fence, lang = open, info:lower():match("^%s*([%w_+#%-]+")
-							end
 						end
+					elseif backticks then
+						fence, lang = backticks, info:lower():match("^%s*([%w_+#%-]+)")
 					end
 				end
 
