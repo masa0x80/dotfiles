@@ -241,12 +241,13 @@ end
 map({ "n", "v" }, "<C-;><C-;>", "<Cmd>write<CR>", { desc = "Save" })
 
 -- Emascs style
-map({ "i", "c" }, "<C-b>", "<Left>", { desc = "Emacs like left" })
-map({ "i", "c" }, "<C-f>", "<Right>", { desc = "Emacs like right" })
-map({ "i", "c" }, "<C-a>", "<Home>", { desc = "Emacs like home" })
-map({ "i", "c" }, "<C-e>", "<End>", { desc = "Emacs like end" })
-map({ "i", "c" }, "<C-h>", "<BS>", { desc = "Emacs like bs" })
-map({ "i", "c" }, "<C-d>", "<Del>", { desc = "Emacs like del" })
+-- silentを付けるとcmdline modeでの再描画が抑止される
+map({ "i", "c" }, "<C-b>", "<Left>", { desc = "Emacs like left", silent = false })
+map({ "i", "c" }, "<C-f>", "<Right>", { desc = "Emacs like right", silent = false })
+map({ "i", "c" }, "<C-a>", "<Home>", { desc = "Emacs like home", silent = false })
+map({ "i", "c" }, "<C-e>", "<End>", { desc = "Emacs like end", silent = false })
+map({ "i", "c" }, "<C-h>", "<BS>", { desc = "Emacs like bs", silent = false })
+map({ "i", "c" }, "<C-d>", "<Del>", { desc = "Emacs like del", silent = false })
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#x%E3%81%A7%E5%89%8A%E9%99%A4
 map("n", "x", '"_x')
