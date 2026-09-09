@@ -218,7 +218,7 @@
                         ]
                     },
                     {
-                        "description": "カーソル移動: <Cmd-C-h> / <Cmd-C-l> ▶ <A-Left> / <A-Right>",
+                        "description": "カーソル移動（^Terminal）: <Cmd-C-h> / <Cmd-C-l> ▶ <A-Left> / <A-Right>",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -269,7 +269,7 @@
                         ]
                     },
                     {
-                        "description": "Terminal: カーソル移動: <Cmd-C-h> / <Cmd-C-l> ▶ <M-b> / <M-f>",
+                        "description": "カーソル移動（Terminal）: <Cmd-C-h> / <Cmd-C-l> ▶ <M-b> / <M-f>",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -410,6 +410,49 @@
                                         }
                                     ]
                                 },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "IME変換範囲変更: <C-S-n> / <C-S-p> ▶ <S-RightArrow> / <S-LeftArrow>",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "input_source": [{ "language": "ja" }],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": { "mandatory": ["control", "shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "input_source": [{ "language": "ja" }],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": { "mandatory": ["control", "shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
@@ -1039,49 +1082,6 @@
                                     {
                                         "key_code": "hyphen",
                                         "modifiers": ["option"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "IME変換範囲変更: <C-S-n> / <C-S-p> ▶ <S-RightArrow> / <S-LeftArrow>",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "input_source": [{ "language": "ja" }],
-                                        "type": "input_source_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "n",
-                                    "modifiers": { "mandatory": ["control", "shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_arrow",
-                                        "modifiers": ["shift"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "input_source": [{ "language": "ja" }],
-                                        "type": "input_source_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "i",
-                                    "modifiers": { "mandatory": ["control", "shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_arrow",
-                                        "modifiers": ["shift"]
                                     }
                                 ],
                                 "type": "basic"
