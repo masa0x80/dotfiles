@@ -10,7 +10,7 @@
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
-                                        { "key_code": "k" },
+                                        { "key_code": "j" },
                                         { "key_code": "quote" }
                                     ]
                                 },
@@ -24,7 +24,7 @@
                                         "optional": ["any"]
                                     },
                                     "simultaneous": [
-                                        { "key_code": "k" },
+                                        { "key_code": "j" },
                                         { "key_code": "quote" }
                                     ]
                                 },
