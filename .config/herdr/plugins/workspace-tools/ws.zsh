@@ -282,8 +282,18 @@ space_rows() {
     | join("\u001f")'
 }
 
+# $space トークンは pane 単位で持つため、agent 行 ($space を参照) に表示するには
+# workspace だけでなく、その workspace に属する各 pane にも反映する必要がある
+pane_rows() {
+  api api snapshot | jq -r --arg t $space_token '
+    .result.snapshot.panes[]
+    | [.pane_id, .workspace_id, (.tokens[$t] // "")]
+    | join("\u001f")'
+}
+
 cmd_rename_space_names() {
   local row ws label cur cwd name
+  typeset -A ws_name
   for row in ${(f)"$(space_rows)"}; do
     IFS=$'\x1f' read -r ws label cur cwd <<<"$row"
     [[ -n $ws ]] || continue
@@ -296,9 +306,21 @@ cmd_rename_space_names() {
     else
       name=$(dir_name $cwd) || continue
     fi
-    # 差分がないときはcontinue
-    [[ -n $name && $name != $cur ]] || continue
+    [[ -n $name ]] || continue
+    ws_name[$ws]=$name
+
+    # workspace側のトークンは差分がないときはcontinue
+    [[ $name != $cur ]] || continue
     api workspace report-metadata $ws --source $plugin --token $space_token=$name >/dev/null
+  done
+
+  local prow pane pws pcur
+  for prow in ${(f)"$(pane_rows)"}; do
+    IFS=$'\x1f' read -r pane pws pcur <<<"$prow"
+    [[ -n $pane && -n $pws ]] || continue
+    name=${ws_name[$pws]:-}
+    [[ -n $name && $name != $pcur ]] || continue
+    api pane report-metadata $pane --source $plugin --token $space_token=$name >/dev/null
   done
 }
 

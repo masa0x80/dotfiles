@@ -16,7 +16,7 @@ accent = "#cba6f7"
 rows = [["state_icon", "$space"]]
 
 [ui.sidebar.agents]
-rows = [["state_icon", "workspace"], ["tab", "agent"], ["terminal_title"]]
+rows = [["state_icon", "$space"], ["tab", "agent"], ["terminal_title"]]
 
 [keys]
 prefix = "ctrl+s"
@@ -114,7 +114,6 @@ key = "prefix+h"
 type = "plugin_action"
 command = "zsh-session-pool.split-down"
 description = "Split down (pooled)"
-
 
 [[keys.command]]
 key = "prefix+m"
