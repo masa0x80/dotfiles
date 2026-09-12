@@ -93,7 +93,10 @@
                                     {
                                         "bundle_identifiers": [
                                             "^com\\.microsoft\\.Powerpoint$",
-                                            "^com\\.microsoft\\.Excel$"
+                                            "^com\\.microsoft\\.Excel$",
+                                            "^com\\.tinyspeck\\.slackmacgap$",
+                                            "^jp\\.naver\\.line\\.mac$",
+                                            "^com\\.hnc\\.Discord$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
