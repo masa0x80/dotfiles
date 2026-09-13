@@ -421,12 +421,6 @@
                         "description": "IME変換範囲変更: <C-S-n> / <C-S-p> ▶ <S-RightArrow> / <S-LeftArrow>",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "input_source": [{ "language": "ja" }],
-                                        "type": "input_source_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "n",
                                     "modifiers": { "mandatory": ["control", "shift"] }
@@ -440,12 +434,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "input_source": [{ "language": "ja" }],
-                                        "type": "input_source_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": { "mandatory": ["control", "shift"] }
