@@ -561,6 +561,12 @@ blockquote > p.source-line:last-child {
   margin-block-end: 0 !important;
 }
 
+.markdown-body blockquote + p,
+.markdown-body blockquote + ul,
+.markdown-body blockquote + ol {
+  margin-block-start: 1em;
+}
+
 #page-header {
   display: none;
 }
