@@ -231,7 +231,7 @@ return {
 
 				-- Sort text
 				sort = {
-					prefix = "<C-g>s",
+					prefix = "<C-g>o",
 				},
 			})
 		end,
