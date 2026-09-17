@@ -156,10 +156,9 @@ return {
 					},
 				},
 				win_options = {
-					-- <C-g>s 直後の打ち消し線が反映されるように
 					concealcursor = {
 						default = vim.api.nvim_get_option_value("concealcursor", {}),
-						rendered = "nc",
+						rendered = "",
 					},
 				},
 			})
