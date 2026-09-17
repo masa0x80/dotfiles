@@ -102,6 +102,63 @@ end, {
 	range = 2,
 })
 
+local function is_blank(line)
+	return line:match("^%s*$") ~= nil
+end
+
+-- 対象行の行頭/行末に文字列を追加するコマンド定義
+-- （! を付けると空行も対象にする）
+local function create_insert_command(name, insert)
+	vim.api.nvim_create_user_command(name, function(opts)
+		if opts.args == "" then
+			vim.notify(name .. ": text is required", vim.log.levels.WARN)
+			return
+		end
+		local line1, line2 = opts.line1 - 1, opts.line2
+		local lines = vim.api.nvim_buf_get_lines(0, line1, line2, false)
+		vim.api.nvim_buf_set_lines(0, line1, line2, false, insert(lines, opts.args, opts.bang))
+	end, {
+		nargs = "*",
+		range = true,
+		bang = true,
+	})
+end
+
+-- 行頭に追加
+create_insert_command("Prepend", function(lines, text, include_blank)
+	local indent = nil
+	for _, line in ipairs(lines) do
+		if not is_blank(line) then
+			local width = line:match("^%s*")
+			if indent == nil or #width < #indent then
+				indent = width
+			end
+		end
+	end
+	indent = indent or ""
+
+	for i, line in ipairs(lines) do
+		if is_blank(line) then
+			if include_blank then
+				lines[i] = indent .. text
+			end
+		else
+			lines[i] = line:sub(1, #indent) .. text .. line:sub(#indent + 1)
+		end
+	end
+	return lines
+end)
+
+-- 行末に追加
+create_insert_command("Append", function(lines, text, include_blank)
+	for i, line in ipairs(lines) do
+		if include_blank or not is_blank(line) then
+			lines[i] = line .. text
+		end
+	end
+	return lines
+end)
+
 vim.api.nvim_create_user_command("ReplaceHyphen", function(opts)
 	local line1, line2 = buf_range(opts)
 	local lines = vim.api.nvim_buf_get_lines(0, line1, line2, false)
