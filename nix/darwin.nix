@@ -231,7 +231,7 @@ in
       "com.apple.trackpad.scaling" = 3.0;
 
       # キーリピート開始までの待ち時間
-      InitialKeyRepeat = 8;
+      InitialKeyRepeat = 9;
       # キーリピート速度（小さいほど速い）
       KeyRepeat = 1;
 
