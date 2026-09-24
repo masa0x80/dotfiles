@@ -18,6 +18,7 @@ return {
 					ExtraWhiteSpace4 = { fg = palette.overlay2 },
 					MarkdownBullet = { fg = palette.overlay1, bg = palette.none },
 					RenderMarkdownDash = { fg = palette.overlay1 },
+					RenderMarkdownCode = { bg = palette.surface0 },
 					["@markup.strong.markdown_inline"] = { fg = palette.mauve, bold = true, underdouble = true },
 					["@markup.strikethrough"] = { fg = palette.surface2, strikethrough = true },
 					NavicIconsDefault = { fg = palette.mauve },
