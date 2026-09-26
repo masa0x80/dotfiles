@@ -24,6 +24,7 @@ install: mise bat silicon navi herdr sheldon claude
 .PHONY: brew-init
 brew-init:
 	xcode-select --install 2>/dev/null || :
+	./scripts/agree_xcode_license
 	./scripts/brew_init
 
 # }}}

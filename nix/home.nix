@@ -52,6 +52,8 @@ in
     gnused
     gnutar
     gnugrep
+    # NOTE: /usr/bin/make は xcode-select の shim なので、Xcode更新後にライセンス同意が必要になるので自前で入れる
+    gnumake
     openssl
     sqlite
     gettext

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+output=$(/usr/bin/xcrun clang --version 2>&1) && exit 0
+
+case "$output" in
+*license*) ;;
+*)
+  # ライセンス同意でない場合は除外
+  exit 0
+  ;;
+esac
+
+# xcodebuildがない場合は、非対話での同意手段がない
+if ! /usr/bin/xcrun --find xcodebuild >/dev/null 2>&1; then
+  echo "Xcode license is not agreed to, but xcodebuild is unavailable." >&2
+  echo "$output" >&2
+  exit 1
+fi
+
+echo "Accepting the Xcode license (sudo required)…"
+sudo xcodebuild -license accept
