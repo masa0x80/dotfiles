@@ -182,6 +182,8 @@ cmd_new_tab() {
   fi
 
   move_new_tab "$new_tab" "$where"
+  # tab.moveで並び替えをするとactiveなtabが元のtabに戻るので明示的にfocusする
+  [[ -n $new_tab ]] && api tab focus $new_tab >/dev/null
   rename_tab "$new_tab" "$want"
 
   ensure
