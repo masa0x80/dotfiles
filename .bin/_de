@@ -4,8 +4,8 @@ if [ ! -r "$AGE_IDENTITY" ]; then
   exit 1
 else
   if [ -z "$1" ]; then
-    rage --decrypt -i "$AGE_IDENTITY"
+    rage --decrypt -o - -i "$AGE_IDENTITY"
   else
-    rage --decrypt -i "$AGE_IDENTITY" "$1"
+    rage --decrypt -o - -i "$AGE_IDENTITY" "$1"
   fi
 fi

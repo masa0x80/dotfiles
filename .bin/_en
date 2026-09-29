@@ -4,8 +4,8 @@ if [ ! -r "$AGE_RECIPIENT" ]; then
   exit 1
 else
   if [ -z "$i" ]; then
-    rage --encrypt -R $AGE_RECIPIENT -a
+    rage --encrypt -o - -R $AGE_RECIPIENT -a
   else
-    rage --encrypt -R $AGE_RECIPIENT -a "$1"
+    rage --encrypt -o - -R $AGE_RECIPIENT -a "$1"
   fi
 fi
