@@ -1229,6 +1229,89 @@
                         ]
                     },
                     {
+                        "description": "Ghostty: <C-s><C-s> ▶ <C-s><C-;>",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": ["^com\\.mitchellh\\.ghostty$"],
+                                        "type": "frontmost_application_if"
+                                    },
+                                    {
+                                        "name": "ghostty_ctrl_s",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "semicolon",
+                                        "modifiers": ["control"]
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "ghostty_ctrl_s",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": ["^com\\.mitchellh\\.ghostty$"],
+                                        "type": "frontmost_application_if"
+                                    },
+                                    {
+                                        "name": "ghostty_ctrl_s",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "s",
+                                        "modifiers": ["control"]
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "ghostty_ctrl_s",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "ghostty_ctrl_s",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_invoked": [
+                                        {
+                                            "set_variable": {
+                                                "name": "ghostty_ctrl_s",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Activate Ghostty",
                         "manipulators": [
                             {
@@ -1478,7 +1561,7 @@
                         "is_keyboard": true,
                         "is_pointing_device": true,
                         "product_id": 4380,
-                        "vendor_id":8748
+                        "vendor_id": 8748
                     },
                     "ignore": false
                 }
