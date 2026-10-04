@@ -1,0 +1,272 @@
+/* ========== 基本 ========== */
+:root {
+  --font-mono: "Pending Mono HWNF";
+  --color-muted: #c0c0c0;
+  --list-bullet: "󱠦 ";
+}
+
+.markdown-body {
+  font-family: var(--font-mono);
+  border-width: 0;
+}
+
+.markdown-body :is(p, blockquote, ul, ol, dl, table, pre) {
+  margin-block: 0 1em;
+}
+
+.markdown-body details {
+  margin-left: 2em;
+  margin-block-end: 1em;
+  border: 1px dashed var(--color-muted);
+  padding: 0.5em;
+}
+.markdown-body details > *,
+li.source-line > * {
+  margin-block-end: 0;
+}
+
+#page-header {
+  display: none;
+}
+#page-ctn {
+  max-width: initial;
+  min-height: 100vh;
+  margin-bottom: 50vh;
+  background: var(--color-bg-primary);
+}
+
+/* ========== 見出し ========== */
+.markdown-body :is(h1, h2, h3, h4, h5, h6) {
+  font-size: 1.5em;
+  border-bottom: 1px solid var(--heading-color);
+}
+.markdown-body h1 {
+  --heading-color: #e06c75;
+  padding-bottom: 0;
+}
+.markdown-body h2 {
+  --heading-color: #56b6c2;
+  padding-bottom: 0;
+}
+.markdown-body h3 {
+  --heading-color: #98c379;
+}
+.markdown-body h4 {
+  --heading-color: #c678dd;
+}
+.markdown-body h5 {
+  --heading-color: #e2be7d;
+}
+.markdown-body h6 {
+  --heading-color: #abb2bf;
+  color: var(--color-text-primary);
+}
+
+.markdown-body :is(h1, h2, h3, h4, h5, h6):hover .anchor {
+  visibility: hidden;
+}
+.markdown-body :is(h1, h2, h3, h4, h5, h6) a.anchor {
+  margin-left: -0.6em;
+}
+.markdown-body :is(h1, h2, h3, h4, h5, h6)::before {
+  color: var(--color-muted);
+  letter-spacing: -2px;
+}
+.markdown-body h1::before {
+  content: "#";
+}
+.markdown-body h2::before {
+  content: "##";
+}
+.markdown-body h3::before {
+  content: "###";
+}
+.markdown-body h4::before {
+  content: "####";
+}
+.markdown-body h5::before {
+  content: "#####";
+}
+.markdown-body h6::before {
+  content: "######";
+}
+
+/* ========== リスト ========== */
+.markdown-body ol li {
+  position: relative;
+  left: 1.2em;
+  padding-left: 0;
+  margin-left: -0.9em;
+}
+.markdown-body ul,
+.markdown-body :is(ul, ol) ul,
+.markdown-body :is(ul, ol) ul ul {
+  list-style: var(--list-bullet);
+}
+ul li::marker {
+  color: var(--color-muted);
+}
+
+.task-list-item {
+  padding-left: 0 !important;
+}
+.task-list-item input {
+  font: 0.8em var(--font-mono);
+  width: 0.8em;
+  height: 0.8em;
+  position: relative;
+  left: 0.1em;
+}
+.task-list-item input[disabled] {
+  border-radius: 2px;
+  border: 2px solid var(--color-muted);
+  appearance: none;
+}
+.task-list-item input[type="checkbox"]:checked {
+  border: none;
+  background-image: url('data:image/svg+xml;utf8,<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><rect width="16" height="16" fill="%2398c379" /><path fill="none" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12.6,5.17l-5.66,5.66L3.4,7.29"/></svg>');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* ========== インライン ========== */
+.markdown-body kbd {
+  font: 1em var(--font-mono) !important;
+}
+.markdown-body code {
+  font-family: var(--font-mono);
+}
+.markdown-body code:is(:before, :after) {
+  letter-spacing: 0.2em;
+  content: "`";
+}
+.markdown-body strong {
+  background: linear-gradient(transparent 86%, #e8939a 0%);
+}
+.markdown-body :is(em, i) {
+  font-style: italic;
+}
+.markdown-body del,
+s {
+  color: #7f848e;
+}
+
+/* ========== 画像 ========== */
+.markdown-body img {
+  width: auto;
+  max-width: 30%;
+  height: auto;
+  margin: 1em;
+  cursor: zoom-in;
+  transition: all 0.2s ease;
+}
+.markdown-body img[data-uml-key] {
+  width: 100%;
+  max-width: 100%;
+}
+.markdown-body img.no-zoom {
+  cursor: inherit;
+}
+.markdown-body img.enlarged {
+  height: auto;
+  max-width: initial;
+  max-height: initial;
+  cursor: zoom-out;
+}
+
+/* ========== テーブル ========== */
+.markdown-body table th {
+  border-bottom: 4px double var(--color-markdown-table-border);
+  text-align: left;
+}
+
+/* ========== 引用 ========== */
+.source-line {
+  padding-left: 0.3em;
+}
+:not(.source-line) > p.source-line {
+  padding: 0 1em;
+}
+.markdown-body blockquote {
+  margin-block-end: 0 !important;
+  border-left: 8px solid var(--color-markdown-blockquote-border) !important;
+}
+blockquote > p.source-line {
+  padding: 0 !important;
+}
+blockquote > p.source-line:last-child {
+  margin-block-end: 0 !important;
+}
+.markdown-body blockquote + :is(p, ul, ol) {
+  margin-block-start: 1em;
+}
+
+.markdown-body li > blockquote + :is(p, ul, ol) {
+  margin-block-start: 0;
+}
+
+/* ========== GitHub-style Alerts ========== */
+.markdown-alert {
+  padding: 0.5em !important;
+  margin-bottom: 1em;
+  border-left: 4px solid;
+  color: var(--color-text-primary);
+  border-left-color: transparent !important;
+  background-color: var(--alert-bg);
+}
+.markdown-alert > :last-child {
+  margin-bottom: 0 !important;
+}
+.markdown-alert-title {
+  font-weight: 600;
+  margin-bottom: 0.25em !important;
+  color: var(--alert-fg);
+}
+.markdown-alert-title::before {
+  content: var(--alert-icon);
+}
+.markdown-alert-note {
+  --alert-bg: #ddf4ff;
+  --alert-fg: #0969da;
+  --alert-icon: "󰋽 ";
+}
+[data-theme="dark"] .markdown-alert-note {
+  --alert-bg: #0c2d6b;
+  --alert-fg: #539bf5;
+}
+.markdown-alert-tip {
+  --alert-bg: #dafbe1;
+  --alert-fg: #1a7f37;
+  --alert-icon: "󰌶 ";
+}
+[data-theme="dark"] .markdown-alert-tip {
+  --alert-bg: #0b3d1c;
+  --alert-fg: #57ab5a;
+}
+.markdown-alert-important {
+  --alert-bg: #fbefff;
+  --alert-fg: #8250df;
+  --alert-icon: "󰅾 ";
+}
+[data-theme="dark"] .markdown-alert-important {
+  --alert-bg: #2d1657;
+  --alert-fg: #b87fff;
+}
+.markdown-alert-warning {
+  --alert-bg: #fff8c5;
+  --alert-fg: #9a6700;
+  --alert-icon: "󰀪 ";
+}
+[data-theme="dark"] .markdown-alert-warning {
+  --alert-bg: #3b2e00;
+  --alert-fg: #c69026;
+}
+.markdown-alert-caution {
+  --alert-bg: #ffebe9;
+  --alert-fg: #cf222e;
+  --alert-icon: "󰳦 ";
+}
+[data-theme="dark"] .markdown-alert-caution {
+  --alert-bg: #491318;
+  --alert-fg: #e5534b;
+}

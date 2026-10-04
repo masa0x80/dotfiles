@@ -179,7 +179,6 @@ return {
 		init = function()
 			vim.g.mkdp_filetypes = { "markdown", "mermaid", "plantuml" }
 			vim.g.mkdp_theme = "light"
-			vim.g.mkdp_markdown_css = vim.fn.expand("~/.config/markdown-preview/markdown.css")
 			local default_options = {
 				disable_sync_scroll = true,
 				uml = {

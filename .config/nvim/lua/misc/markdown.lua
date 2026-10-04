@@ -19,7 +19,23 @@ local details_script =
 -- nvim側でSVG化して画像を挿入することにしプラグイン生成のimgタグは非表示にする。
 local hide_uml_img_style = ('<style>img[src*="127.0.0.1:%d/svg/"]{display:none}</style>'):format(port)
 
-local scripts = { hide_uml_img_style, image_zoom_script, alert_script, details_script }
+-- custom.cssをstyleタグとして埋め込む
+-- バッファーの1行として挿入・削除するため、コメントと改行を除いて1行にする
+local function custom_style()
+	local f = io.open(vim.fn.expand("~/.config/markdown-preview/custom.css"), "r")
+	if not f then
+		return nil
+	end
+	local css = f:read("*a")
+	f:close()
+	css = css:gsub("/%*.-%*/", ""):gsub("%s+", " "):gsub("^%s+", ""):gsub("%s+$", "")
+	if css == "" then
+		return nil
+	end
+	return "<style>" .. css .. "</style>"
+end
+
+local scripts = { hide_uml_img_style, custom_style(), image_zoom_script, alert_script, details_script }
 
 local function insert_preview_script(bufnr)
 	local footer = { "" }
