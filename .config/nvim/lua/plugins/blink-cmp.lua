@@ -20,7 +20,7 @@ return {
 			cmdline = {
 				keymap = {
 					preset = "super-tab",
-					["<C-l>"] = { "show", "show_documentation", "hide_documentation" },
+					["<C-l>"] = { "show_and_insert", "select_next", "fallback" },
 					["<CR>"] = { "accept", "fallback" },
 				},
 				completion = {
