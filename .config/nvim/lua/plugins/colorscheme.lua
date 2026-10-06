@@ -58,6 +58,7 @@ return {
 					NavicIconsVariable = { fg = palette.mauve },
 					GitSignsCurrentLineBlame = { fg = palette.overlay1 },
 					NormalFloat = { bg = palette.surface0 },
+					LineNr = { fg = palette.surface2 },
 				}
 			end,
 		})
