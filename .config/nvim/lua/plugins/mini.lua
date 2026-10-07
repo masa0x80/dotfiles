@@ -188,8 +188,8 @@ return {
 		event = "VeryLazy",
 		opts = {
 			mappings = {
-				left = "H",
-				right = "L",
+				-- left = "H",
+				-- right = "L",
 				down = "J",
 				up = "K",
 

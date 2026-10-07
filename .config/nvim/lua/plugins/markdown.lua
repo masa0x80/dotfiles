@@ -7,7 +7,18 @@ return {
 			local UNORDERED_LIST_PATTERN = "^%s*[-*+][ >]*$"
 			local ORDERED_LIST_PATTERN = "^%s*%d+[%.%)][ >]*$"
 			local TASK_PATTERN = "^%s*[-*+] %[[x%- ]%] $"
+			local QUOTED_PREFIX_PATTERN = "^%s*>[ >]*"
 			local QUOTED_PATTERN = "^%s*>[ >]+$"
+
+			local function has_pattern(line)
+				if string.match(line, QUOTED_PATTERN) then
+					return true
+				end
+				local target = string.gsub(line, QUOTED_PREFIX_PATTERN, "", 1)
+				return string.match(target, UNORDERED_LIST_PATTERN) ~= nil
+					or string.match(target, ORDERED_LIST_PATTERN) ~= nil
+					or string.match(target, TASK_PATTERN) ~= nil
+			end
 
 			local function backspace()
 				local row = vim.fn.line(".") - 1
@@ -30,7 +41,7 @@ return {
 					end
 				elseif string.match(line, TASK_PATTERN) then
 					vim.api.nvim_buf_set_text(0, row, indent, row, col, { "- " })
-				elseif string.match(line, QUOTED_PATTERN) then
+				elseif string.match(line, QUOTED_PREFIX_PATTERN) then
 					vim.api.nvim_buf_set_text(0, row, indent, row, col, { "" })
 				else
 					vim.api.nvim_feedkeys(bs, "n", true)
@@ -89,11 +100,7 @@ return {
 
 						local cr = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
 
-						if
-							string.match(line, UNORDERED_LIST_PATTERN)
-							or string.match(line, ORDERED_LIST_PATTERN)
-							or string.match(line, TASK_PATTERN)
-						then
+						if has_pattern(line) then
 							vim.api.nvim_buf_set_text(0, row, 0, row, col, { "" })
 						else
 							vim.api.nvim_feedkeys(cr, "n", false)
