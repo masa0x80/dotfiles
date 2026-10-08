@@ -91,7 +91,7 @@ in
       "figma"
       "finicky"
       "gcloud-cli"
-      "ghostty"
+      "ghostty@tip"
       "itsycal"
       "karabiner-elements"
       "keycastr"
