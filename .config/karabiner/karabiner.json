@@ -418,11 +418,11 @@
                         ]
                     },
                     {
-                        "description": "IME変換範囲変更: <C-S-n> / <C-S-p> ▶ <S-RightArrow> / <S-LeftArrow>",
+                        "description": "IME変換範囲変更: <C-S-l> / <C-S-h> ▶ <S-RightArrow> / <S-LeftArrow>",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "n",
+                                    "key_code": "l",
                                     "modifiers": { "mandatory": ["control", "shift"] }
                                 },
                                 "to": [
@@ -435,7 +435,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "p",
+                                    "key_code": "h",
                                     "modifiers": { "mandatory": ["control", "shift"] }
                                 },
                                 "to": [
@@ -1234,7 +1234,9 @@
                             {
                                 "conditions": [
                                     {
-                                        "bundle_identifiers": ["^com\\.mitchellh\\.ghostty$"],
+                                        "bundle_identifiers": [
+                                            "^com\\.mitchellh\\.ghostty$"
+                                        ],
                                         "type": "frontmost_application_if"
                                     },
                                     {
@@ -1264,7 +1266,8 @@
                             {
                                 "conditions": [
                                     {
-                                        "bundle_identifiers": ["^com\\.mitchellh\\.ghostty$"],
+                                        "bundle_identifiers": [
+                                            "^com\\.mitchellh\\.ghostty$"],
                                         "type": "frontmost_application_if"
                                     },
                                     {
@@ -1517,6 +1520,59 @@
                                 "to": [
                                     { "key_code": "escape" },
                                     { "key_code": "japanese_eisuu" }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "azooKey: <C-;> と <C-'> を入れ替え",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_mode_id": "^com\\.apple\\.inputmethod\\.Japanese$",
+                                                "input_source_id": "^dev\\.ensan\\.inputmethod\\.azooKeyMac"
+                                            }
+                                        ],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "quote",
+                                        "modifiers": ["control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_mode_id": "^com\\.apple\\.inputmethod\\.Japanese$",
+                                                "input_source_id": "^dev\\.ensan\\.inputmethod\\.azooKeyMac"
+                                            }
+                                        ],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "quote",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "semicolon",
+                                        "modifiers": ["control"]
+                                    }
                                 ],
                                 "type": "basic"
                             }
