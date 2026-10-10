@@ -1526,6 +1526,129 @@
                         ]
                     },
                     {
+                        "description": "azooKey: <C-l><C-;> ▶ 半角英数 / <C-l><C-l> ▶ 全角英数",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_mode_id": "^com\\.apple\\.inputmethod\\.Japanese$",
+                                                "input_source_id": "^dev\\.ensan\\.inputmethod\\.azooKeyMac"
+                                            }
+                                        ],
+                                        "type": "input_source_if"
+                                    },
+                                    {
+                                        "name": "azookey_ctrl_l",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "quote",
+                                        "modifiers": ["control"]
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "azookey_ctrl_l",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_mode_id": "^com\\.apple\\.inputmethod\\.Japanese$",
+                                                "input_source_id": "^dev\\.ensan\\.inputmethod\\.azooKeyMac"
+                                            }
+                                        ],
+                                        "type": "input_source_if"
+                                    },
+                                    {
+                                        "name": "azookey_ctrl_l",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "l",
+                                        "modifiers": ["control"]
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "azookey_ctrl_l",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_mode_id": "^com\\.apple\\.inputmethod\\.Japanese$",
+                                                "input_source_id": "^dev\\.ensan\\.inputmethod\\.azooKeyMac"
+                                            }
+                                        ],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "azookey_ctrl_l",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "azookey_ctrl_l",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_invoked": [
+                                        {
+                                            "key_code": "l",
+                                            "modifiers": ["control"]
+                                        },
+                                        {
+                                            "set_variable": {
+                                                "name": "azookey_ctrl_l",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "azooKey: <C-;> と <C-'> を入れ替え",
                         "manipulators": [
                             {
