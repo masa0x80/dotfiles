@@ -47,6 +47,8 @@ in
       extraFlags = [ "--force" ];
       extraEnv = {
         HOMEBREW_NO_REQUIRE_TAP_TRUST = "1";
+        # auto_updates trueのcaskアプリは自身の更新に委ねる
+        HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS = "1";
       }
       // proxyEnv;
     };
