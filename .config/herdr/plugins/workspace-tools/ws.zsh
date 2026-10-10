@@ -5,7 +5,7 @@
 #   ws.zsh move-pane               現在の pane を fzf で選んだ workspace へ移す（popup を開く）
 #   ws.zsh focus-picker            ↑ の popup 側の実処理
 #   ws.zsh move-picker             ↑ の popup 側の実処理
-#   ws.zsh misc                    _misc workspace を開く（あればフォーカス）
+#   ws.zsh misc                    _misc workspace を開く（あればフォーカス、_misc上ならworkspaceに戻る）
 #   ws.zsh move-tab next|prev      tab の位置を前後に入れ替える
 #   ws.zsh join-move next|prev     現在の pane を隣の tab へ join する
 #   ws.zsh move-ws next|prev       workspace の位置を前後に入れ替える
@@ -36,6 +36,7 @@ local plugin=${HERDR_PLUGIN_ID:-workspace-tools}
 local socket=${HERDR_SOCKET_PATH:-${XDG_CONFIG_HOME:-$HOME/.config}/herdr/herdr.sock}
 local state_dir=${HERDR_PLUGIN_STATE_DIR:-${XDG_STATE_HOME:-$HOME/.local/state}/herdr/plugins/workspace-tools}
 local src_file=$state_dir/src_pane
+local misc_return_file=$state_dir/misc_return_ws
 # プールは実装の都合で存在しているだけなので、選択肢には出さない
 local pool_label=${HERDR_POOL_LABEL:-_pool}
 local misc_label=${HERDR_MISC_LABEL:-_misc}
@@ -119,9 +120,24 @@ cmd_move_pane() {
 }
 
 cmd_misc() {
-  local id=$(api workspace list |
-    jq -r --arg l $misc_label '.result.workspaces[] | select(.label == $l) | .workspace_id' |
-    head -n1)
+  local list=$(api workspace list)
+  local id=$(jq -r --arg l $misc_label '.result.workspaces[] | select(.label == $l) | .workspace_id' <<<$list | head -n1)
+  local cur=$(jq -r '.result.workspaces[] | select(.focused) | .workspace_id' <<<$list | head -n1)
+
+  # misc上ならその前にいたworkspaceに戻る
+  if [[ -n $id && $cur == $id ]]; then
+    local back
+    [[ -r $misc_return_file ]] && back=$(<$misc_return_file)
+    jq -e --arg w "$back" 'any(.result.workspaces[]; .workspace_id == $w)' <<<$list > /dev/null &&
+      api workspace focus $back >/dev/null
+    return
+  fi
+
+  if [[ -n $cur ]]; then
+    mkdir -p $state_dir
+    print -r -- $cur >$misc_return_file
+  fi
+
   if [[ -n $id ]]; then
     api workspace focus $id >/dev/null
     return
