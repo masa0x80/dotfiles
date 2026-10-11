@@ -11,10 +11,10 @@ local function all_files(order, cwd)
 	}))
 end
 
-local function recent(root)
+local function recent(root, cwd)
 	Snacks.picker.recent({
 		filter = {
-			cwd = true,
+			cwd = cwd or true,
 			paths = {
 				[root .. "/.git/COMMIT_EDITMSG"] = false,
 			},
@@ -129,7 +129,8 @@ return {
 	{
 		"<C-;>re",
 		function()
-			recent(conf.telekasten_home())
+			local home = conf.telekasten_home()
+			recent(home, home)
 		end,
 		desc = "Recent (under Telekasten home)",
 	},
