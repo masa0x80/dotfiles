@@ -1,5 +1,6 @@
-require:
+plugins:
   - standard
+  - standard-performance
   - rubocop-performance
 
 inherit_gem:
