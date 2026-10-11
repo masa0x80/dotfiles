@@ -116,7 +116,9 @@ end
 local function start_plantuml_server()
 	vim.system({ "docker", "compose", "-f", compose_path, "up", "-d" }, { text = true }, function(obj)
 		if obj.code ~= 0 then
-			vim.notify(tostring(obj.code), "error", { render = "default", timeout = 10000 })
+			vim.schedule(function()
+				vim.notify(tostring(obj.code), vim.log.levels.ERROR, { render = "default", timeout = 10000 })
+			end)
 		end
 	end)
 end
@@ -241,7 +243,7 @@ local function render_uml(source, callback, attempt)
 end
 
 local function refresh_uml_images(bufnr)
-	if vim.bo.filetype == "markdown" then
+	if vim.bo[bufnr].filetype == "markdown" then
 		remove_uml_images(bufnr)
 
 		local blocks = find_plantuml_blocks(bufnr)
@@ -296,7 +298,7 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 
 	-- プレビュー用の加工
 	local bufnr = vim.fn.bufnr()
-	if vim.bo.filetype == "markdown" then
+	if vim.bo[bufnr].filetype == "markdown" then
 		insert_preview_script(bufnr)
 	end
 
@@ -328,7 +330,7 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 		refresh_uml_images(bufnr)
 	end
 
-	local is_age = vim.fn.expand("%:e") == "age"
+	local is_age = vim.fn.expand("%:t"):find(".age.", 1, true) ~= nil
 	-- ageファイルの場合はBufWriteCmdで暗号化するので、フォーマットよりも前に処理されるAgeEncryptPre/Postでフックする
 	if is_age then
 		vim.api.nvim_create_autocmd({ "User" }, {
@@ -345,7 +347,11 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 		vim.api.nvim_create_autocmd({ "User" }, {
 			group = group_id,
 			pattern = "AgeEncryptPost",
-			callback = function()
+			callback = function(args)
+				if args.data.bufnr ~= bufnr then
+					return
+				end
+
 				post_callback()
 			end,
 		})
