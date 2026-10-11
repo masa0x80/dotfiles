@@ -100,9 +100,9 @@ return {
 				local d = os.date("%-d")
 				local week_of_month = (d - 1) / 7 + 1
 				local file_path = ("%s/weekly/%d/%s-w%d.md"):format(vault_path, year, month, week_of_month)
-				vim.fn.execute("edit " .. file_path)
+				vim.cmd("edit " .. file_path)
 				if vim.fn.filereadable(file_path) == 0 then
-					vim.fn.execute((":0r %s"):format(cfg.template_new_weekly))
+					vim.cmd(("0r %s"):format(cfg.template_new_weekly))
 				end
 			end,
 			desc = "Telekasten goto_thisweek",
@@ -114,9 +114,9 @@ return {
 				local year = os.date("%Y")
 				local month = os.date("%m")
 				local file_path = ("%s/monthly/%s/%s-%s.md"):format(vault_path, year, year, month)
-				vim.fn.execute(("edit %s"):format(file_path))
+				vim.cmd(("edit %s"):format(file_path))
 				if vim.fn.filereadable(file_path) == 0 then
-					vim.fn.execute((":0r %s/templates/monthly.md"):format(vault_path))
+					vim.cmd(("0r %s/templates/monthly.md"):format(vault_path))
 				end
 			end,
 			desc = "Telekasten goto_thismonth",
@@ -141,17 +141,17 @@ return {
 		vim.api.nvim_create_user_command("DeleteTodoMark", function(o)
 			if o.range == 0 then
 				pcall(function()
-					vim.fn.execute("%s/- \\[[x -]\\] [0-9][0-9]:[0-9][0-9]–[0-9][0-9]:[0-9][0-9] /- /g")
+					vim.cmd("%s/- \\[[x -]\\] [0-9][0-9]:[0-9][0-9]–[0-9][0-9]:[0-9][0-9] /- /g")
 				end)
 				pcall(function()
-					vim.fn.execute("%s/- \\[[x -]\\] <.*> /- /g")
+					vim.cmd("%s/- \\[[x -]\\] <.*> /- /g")
 				end)
 				pcall(function()
-					vim.fn.execute("%s/- \\[[x -]\\] /- /g")
+					vim.cmd("%s/- \\[[x -]\\] /- /g")
 				end)
 			else
 				pcall(function()
-					vim.fn.execute(
+					vim.cmd(
 						o.line1
 							.. ","
 							.. o.line2
@@ -159,13 +159,13 @@ return {
 					)
 				end)
 				pcall(function()
-					vim.fn.execute(o.line1 .. "," .. o.line2 .. "s/- \\[[x -]\\] <.*> /- /g")
+					vim.cmd(o.line1 .. "," .. o.line2 .. "s/- \\[[x -]\\] <.*> /- /g")
 				end)
 				pcall(function()
-					vim.fn.execute(o.line1 .. "," .. o.line2 .. "s/- \\[[x -]\\] /- /g")
+					vim.cmd(o.line1 .. "," .. o.line2 .. "s/- \\[[x -]\\] /- /g")
 				end)
 			end
-			vim.fn.execute("nohlsearch")
+			vim.cmd("nohlsearch")
 		end, {
 			range = 2,
 		})

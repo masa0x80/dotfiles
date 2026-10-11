@@ -13,7 +13,7 @@ end
 
 function M.open_tmp()
 	local path = ("%s/tmp.md"):format(conf.telekasten_home())
-	vim.fn.execute(("tabedit %s"):format(path))
+	vim.cmd(("tabedit %s"):format(path))
 	vim.fn.jobstart(("open 'obsidian://open?path=%s'"):format(path))
 end
 

@@ -50,13 +50,13 @@ return {
 	},
 	actions = {
 		ctr_a = function()
-			vim.fn.execute("normal I")
+			vim.cmd("normal I")
 		end,
 		ctr_f = function()
-			vim.fn.execute("normal l")
+			vim.cmd("normal l")
 		end,
 		ctr_b = function()
-			vim.fn.execute("normal h")
+			vim.cmd("normal h")
 		end,
 		show_full_path = function(picker)
 			local item = picker:current()
