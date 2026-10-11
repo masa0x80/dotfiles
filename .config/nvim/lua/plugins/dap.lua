@@ -48,6 +48,16 @@ return {
 			local set_hl = vim.api.nvim_set_hl
 			set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
+			-- 拡張は lazy=true でトリガーがないので、dapの読み込み時に require して読み込む
+			require("nvim-dap-virtual-text").setup({})
+			require("dap-vscode-js").setup({
+				debugger_path = vim.fn.resolve(vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"),
+				adapters = {
+					"pwa-node",
+					"pwa-chrome",
+				},
+			})
+
 			for _, language in ipairs(require("utils").js_based_languages) do
 				dap.configurations[language] = {
 					-- Debug single nodejs
@@ -66,7 +76,7 @@ return {
 						request = "attach",
 						name = "Attach (auto pick)",
 						processId = function()
-							require("dap.utils").pick_process({ filter = "node" })
+							return require("dap.utils").pick_process({ filter = "node" })
 						end,
 						cwd = "${workspaceFolder}",
 					},
@@ -170,26 +180,11 @@ return {
 			},
 		},
 	},
-	{
-		"theHamsta/nvim-dap-virtual-text",
-		opts = {},
-	},
+	{ "theHamsta/nvim-dap-virtual-text" },
 	{
 		"microsoft/vscode-js-debug",
 		build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && mv dist out",
 		commit = "bc551bf4f87a6ef9330b28514bf7447cbbdb2a9e",
 	},
-	{
-		"mxsdev/nvim-dap-vscode-js",
-		config = function()
-			require("dap-vscode-js").setup({
-				debugger_path = vim.fn.resolve(vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"),
-
-				adapters = {
-					"pwa-node",
-					"pwa-chrome",
-				},
-			})
-		end,
-	},
+	{ "mxsdev/nvim-dap-vscode-js" },
 }
