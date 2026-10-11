@@ -7,7 +7,7 @@ local grep_opts = {
 
 -- TelekastenのVault配下を対象に
 local function telekasten_grep_opts()
-	return vim.tbl_extend("force", grep_opts, { cwd = conf.telekasten_home })
+	return vim.tbl_extend("force", grep_opts, { cwd = conf.telekasten_home() })
 end
 
 return {
