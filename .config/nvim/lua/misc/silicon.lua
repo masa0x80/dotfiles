@@ -12,7 +12,7 @@ vim.api.nvim_create_user_command("Silicon", function(opts)
 	if opts.range == 0 then
 		cmd = cmd .. vim.fn.expand("%")
 	else
-		vim.cmd(opts.line1 .. "," .. opts.line2 .. "yank")
+		vim.cmd("silent " .. opts.line1 .. "," .. opts.line2 .. "yank")
 		cmd = cmd .. "--from-clipboard"
 	end
 	vim.fn.jobstart(cmd)

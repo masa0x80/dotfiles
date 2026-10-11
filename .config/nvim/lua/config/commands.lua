@@ -18,7 +18,7 @@ end, { desc = "Enable auto format" })
 local function create_filter_command(name, filter)
 	vim.api.nvim_create_user_command(name, function(opts)
 		local range = opts.range == 2 and (opts.line1 .. "," .. opts.line2) or "%"
-		vim.cmd(range .. "!" .. filter)
+		vim.cmd("silent " .. range .. "!" .. filter)
 	end, {
 		range = 2,
 	})
