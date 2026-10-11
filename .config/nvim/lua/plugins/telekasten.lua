@@ -3,11 +3,44 @@ local toggle_todo = util.toggle_todo
 local toggle_check = util.toggle_check
 local get_lines = util.get_lines
 
+-- x モードでは選択行すべてに適用する
+local function each_line(toggle, opts)
+	return function()
+		local lines = get_lines()
+		for n = lines[1], lines[2] do
+			toggle(vim.tbl_extend("force", opts, { linenr = n }))
+		end
+	end
+end
+
+local toggle_keys = {}
+for _, t in ipairs({
+	{ lhs = "<C-g><C-i>", toggle = toggle_check, opts = { skip_progress = true }, desc = "Toggle check" },
+	{
+		lhs = "<C-g><C-o>",
+		toggle = toggle_check,
+		opts = { skip_progress = true, reverse = true },
+		desc = "Toggle check",
+	},
+	{ lhs = "<C-g><C-g><C-i>", toggle = toggle_todo, opts = {}, desc = "Toggle todo" },
+	{ lhs = "<C-g><C-g><C-o>", toggle = toggle_todo, opts = { reverse = true }, desc = "Toggle todo" },
+}) do
+	table.insert(toggle_keys, {
+		t.lhs,
+		function()
+			t.toggle(t.opts)
+		end,
+		mode = { "n", "i" },
+		desc = t.desc,
+	})
+	table.insert(toggle_keys, { t.lhs, each_line(t.toggle, t.opts), mode = "x", desc = t.desc })
+end
+
 return {
 	"renerocksai/telekasten.nvim",
 	version = "*",
 	cmd = { "Telekasten" },
-	keys = {
+	keys = vim.list_extend({
 		{ "<C-;>z", "<Cmd>Telekasten panel<CR>", desc = "Telekasten panel" },
 		{ "<C-;>i", "<Cmd>Telekasten insert_link<CR>", desc = "Telekasten insert_link" },
 		{ "<C-;>I", "<Cmd>Telekasten insert_img_link<CR>", desc = "Telekasten insert_img_link" },
@@ -15,80 +48,6 @@ return {
 		{ "<C-;>b", "<Cmd>Telekasten show_backlinks<CR>", desc = "Telekasten show_backlinks" },
 		{ "<C-;>n", "<Cmd>Telekasten rename_note<CR>", desc = "Telekasten rename_note" },
 		{ "<C-;>T", "<Cmd>Telekasten show_tags<CR>", desc = "Telekasten show_tags" },
-		{
-			"<C-g><C-i>",
-			function()
-				toggle_check({ skip_progress = true })
-			end,
-			mode = { "n", "i" },
-			desc = "Toggle check",
-		},
-		{
-			"<C-g><C-o>",
-			function()
-				toggle_check({ skip_progress = true, reverse = true })
-			end,
-			mode = { "n", "i" },
-			desc = "Toggle check",
-		},
-		{
-			"<C-g><C-i>",
-			function()
-				local lines = get_lines()
-				for n = lines[1], lines[2] do
-					toggle_check({ skip_progress = true, linenr = n })
-				end
-			end,
-			mode = { "x" },
-			desc = "Toggle check",
-		},
-		{
-			"<C-g><C-o>",
-			function()
-				local lines = get_lines()
-				for n = lines[1], lines[2] do
-					toggle_check({ skip_progress = true, linenr = n, reverse = true })
-				end
-			end,
-			mode = { "x" },
-			desc = "Toggle check",
-		},
-		{
-			"<C-g><C-g><C-i>",
-			toggle_todo,
-			mode = { "n", "i" },
-			desc = "Toggle todo",
-		},
-		{
-			"<C-g><C-g><C-o>",
-			function()
-				toggle_todo({ reverse = true })
-			end,
-			mode = { "n", "i" },
-			desc = "Toggle todo",
-		},
-		{
-			"<C-g><C-g><C-i>",
-			function()
-				local lines = get_lines()
-				for n = lines[1], lines[2] do
-					toggle_todo({ linenr = n })
-				end
-			end,
-			mode = "x",
-			desc = "Toggle todo",
-		},
-		{
-			"<C-g><C-g><C-o>",
-			function()
-				local lines = get_lines()
-				for n = lines[1], lines[2] do
-					toggle_todo({ linenr = n, reverse = true })
-				end
-			end,
-			mode = "x",
-			desc = "Toggle todo",
-		},
 		{ "<C-;>d", "<Cmd>Telekasten goto_today<CR>", desc = "Telekasten goto_today" },
 		{
 			"<C-;>w",
@@ -136,7 +95,7 @@ return {
 			end,
 			desc = "Telekasten new_templated_note",
 		},
-	},
+	}, toggle_keys),
 	init = function()
 		local todo_mark_patterns = {
 			"- \\[[x -]\\] [0-9][0-9]:[0-9][0-9]–[0-9][0-9]:[0-9][0-9] ",
