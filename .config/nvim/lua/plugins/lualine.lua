@@ -16,28 +16,27 @@ return {
 			}
 
 			local function lsp_names()
-				local clients = {}
-				for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-					table.insert(clients, client.name)
-				end
-				local ft = vim.api.nvim_eval("&filetype")
-				local linters = require("lint").linters_by_ft[ft]
-				for _, linter in ipairs(linters ~= nil and linters or {}) do
-					if not vim.tbl_contains(clients, linter) then
-						table.insert(clients, linter)
+				local ft = vim.bo.filetype
+				local hidden = require("plugins.conf.formatters")
+				local candidates = vim.tbl_map(function(client)
+					return client.name
+				end, vim.lsp.get_clients({ bufnr = 0 }))
+				vim.list_extend(candidates, require("lint").linters_by_ft[ft] or {})
+				vim.list_extend(
+					candidates,
+					vim.tbl_filter(function(f)
+						return hidden[f] == nil
+					end, require("conform").formatters_by_ft[ft] or {})
+				)
+
+				local names, seen = {}, {}
+				for _, name in ipairs(candidates) do
+					if not seen[name] then
+						seen[name] = true
+						table.insert(names, name)
 					end
 				end
-				local filetype = require("conform").formatters_by_ft[ft]
-				for _, formatter in
-					ipairs(vim.tbl_filter(function(f)
-						return not vim.tbl_contains(vim.tbl_keys(require("plugins.conf.formatters")), f)
-					end, filetype or {}))
-				do
-					if not vim.tbl_contains(clients, formatter) then
-						table.insert(clients, formatter)
-					end
-				end
-				return #clients == 0 and "" or " " .. table.concat(clients, ", ")
+				return #names == 0 and "" or "\u{f1e6} " .. table.concat(names, ", ")
 			end
 
 			-- ref. 【Neovim】lualineの表示をカスタムしてみる。Visualモードで選択された行数、文字数を表示してみる https://zenn.dev/glaucus03/articles/ff710d27de4e55
@@ -45,52 +44,13 @@ return {
 				local mode = vim.fn.mode()
 
 				-- 選択モードでない場合には無効
-				if not (mode:find("[vV\22]") ~= nil) then
+				if not mode:find("[vV\22]") then
 					return ""
 				end
 
-				local line1 = vim.fn.line("v")
-				local line2 = vim.fn.line(".")
-				local pos1 = vim.fn.col("v")
-				local pos2 = vim.fn.col(".")
-
-				if line1 == line2 and pos1 > pos2 then
-					local tmp = pos1
-					pos1 = pos2
-					pos2 = tmp
-				elseif line1 > line2 then
-					local tmp = line1
-					line1 = line2
-					line2 = tmp
-					tmp = pos1
-					pos1 = pos2
-					pos2 = tmp
-				end
-
-				if mode == "V" then
-					-- 行選択モードの場合は、各行全体をカウントする
-					pos1 = 1
-					pos2 = vim.fn.strlen(vim.fn.getline(line2)) + 1
-				end
-
-				local lines = vim.fn.getline(line1, line2)
-
-				local n = vim.fn.len(lines)
-				if mode == "V" then
-					lines[1] = lines[1]:sub(1, vim.fn.len(lines[1]))
-					lines[n] = lines[n]:sub(1, vim.fn.len(lines[n]))
-				else
-					if n == 1 then
-						lines = { lines[1]:sub(pos1, pos2) }
-					else
-						lines[1] = lines[1]:sub(pos1, vim.fn.len(lines[1]))
-						lines[n] = lines[n]:sub(1, pos2)
-					end
-				end
-
-				local str = vim.fn.join(lines, "")
-				local chars = vim.fn.strchars(str)
-				return tostring(n) .. " lines, " .. tostring(chars) .. " characters"
+				local lines = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { type = mode })
+				local chars = vim.fn.strchars(table.concat(lines, ""))
+				return ("%d lines, %d characters"):format(#lines, chars)
 			end
 
 			local palette = require("catppuccin.palettes").get_palette("macchiato")
@@ -187,25 +147,29 @@ return {
 		config = function()
 			local lspkind = require("lspkind")
 			local navic = require("nvim-navic")
+			local icons = {}
+			for _, kind in ipairs({
+				"File",
+				"Module",
+				"Class",
+				"Method",
+				"Property",
+				"Field",
+				"Constructor",
+				"Enum",
+				"Interface",
+				"Function",
+				"Variable",
+				"Constant",
+				"EnumMember",
+				"Struct",
+				"Event",
+				"Operator",
+			}) do
+				icons[kind] = lspkind.symbol_map[kind] .. " "
+			end
 			navic.setup({
-				icons = {
-					File = lspkind.symbol_map["File"] .. " ",
-					Module = lspkind.symbol_map["Module"] .. " ",
-					Class = lspkind.symbol_map["Class"] .. " ",
-					Method = lspkind.symbol_map["Method"] .. " ",
-					Property = lspkind.symbol_map["Property"] .. " ",
-					Field = lspkind.symbol_map["Field"] .. " ",
-					Constructor = lspkind.symbol_map["Constructor"] .. " ",
-					Enum = lspkind.symbol_map["Enum"] .. " ",
-					Interface = lspkind.symbol_map["Interface"] .. " ",
-					Function = lspkind.symbol_map["Function"] .. " ",
-					Variable = lspkind.symbol_map["Variable"] .. " ",
-					Constant = lspkind.symbol_map["Constant"] .. " ",
-					EnumMember = lspkind.symbol_map["EnumMember"] .. " ",
-					Struct = lspkind.symbol_map["Struct"] .. " ",
-					Event = lspkind.symbol_map["Event"] .. " ",
-					Operator = lspkind.symbol_map["Operator"] .. " ",
-				},
+				icons = icons,
 				lsp = {
 					auto_attach = true,
 				},
