@@ -27,7 +27,6 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 WORDCHARS="${WORDCHARS//[\/=]}"
 
 # golang
-export GO111MODULE=on
 export GOPATH=$HOME/go
 
 # RIPGREP
@@ -50,7 +49,7 @@ export AGE_IDENTITY="$HOME/.ssh/age"
 export AGE_RECIPIENT="$HOME/.ssh/age.pub"
 export PASSAGE_IDENTITIES_FILE="$HOME/.ssh/key"
 export PASSAGE_RECIPIENTS_FILE="$HOME/.ssh/key.pub"
-export PASSAGE_AGE="$HOMEBREW_PREFIX/bin/rage"
+export PASSAGE_AGE=rage
 
 export HERDR_POOL_CD=1
 
@@ -75,7 +74,7 @@ fpath=(
   $ZDOTDIR/functions(N-/)
   $fpath
 )
-eval "$(brew shellenv)"
+(( ${+commands[brew]} )) && eval "$(brew shellenv)"
 
 # Pager
 (( ${+commands[bat]} )) && export PAGER=bat
