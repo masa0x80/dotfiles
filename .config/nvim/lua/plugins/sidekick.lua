@@ -108,10 +108,10 @@ return {
 		{
 			"<leader>aw",
 			function()
-				require("sidekick.cli").forcus()
+				require("sidekick.cli").focus()
 			end,
 			mode = { "n", "x" },
-			desc = "Sidekick Forcus",
+			desc = "Sidekick Focus",
 		},
 	},
 }
