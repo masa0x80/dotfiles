@@ -1,19 +1,10 @@
 -- NOTE: 標準の runtime/ftplugin/markdown.vim が shiftwidth/tabstop/softtabstop を 4 に変えてしまうと
 -- markdownlint の MD007 (ul-indent = 2) と食い違うので無効化する
--- `filetype plugin indent on` より前に設定が必要
 vim.g.markdown_recommended_style = 0
 
-vim.cmd([[
-    filetype plugin indent on
-    syntax on
-]])
-
 local options = {
-	backup = false, -- creates a backup file
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
 	conceallevel = 2, -- enable conceal
-	fileencoding = "utf-8", -- the encoding written to a file
-	hlsearch = true, -- highlight all matches on previous search pattern
 	ignorecase = true, -- ignore case in search patterns
 	mouse = "a", -- allow the mouse to be used in neovim
 	mousemoveevent = true, -- allow the mouse support
@@ -25,7 +16,7 @@ local options = {
 	swapfile = false, -- swapfile creation flag
 	undofile = true, -- enable persistent undo
 	updatetime = 2000, -- faster completion (4000ms default)
-	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+	writebackup = false, -- do not create a backup file before overwriting
 	expandtab = true, -- convert tabs to spaces
 	shiftwidth = 2, -- the number of spaces inserted for each indentation
 	shiftround = true,
@@ -38,7 +29,6 @@ local options = {
 	numberwidth = 4, -- set number column width {default 4}
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
-	termguicolors = true,
 	sidescrolloff = 3,
 	laststatus = 3,
 	showtabline = 0,
@@ -58,9 +48,9 @@ local options = {
 		".",
 		"./plugins",
 		"/usr/include",
-		vim.fn.fnameescape(vim.fn.expand("$DOTFILES_DIR/.config/nvim/lua")),
-		vim.fn.fnameescape(vim.fn.expand("$DOTFILES_DIR/.config/nvim/lua/config/plugins")),
-		vim.fn.fnameescape(vim.fn.expand("$SCRAPBOOK_DIR")),
+		vim.fn.expand("$DOTFILES_DIR/.config/nvim/lua"),
+		vim.fn.expand("$DOTFILES_DIR/.config/nvim/lua/config/plugins"),
+		vim.fn.expand("$SCRAPBOOK_DIR"),
 	},
 	suffixesadd = { ".md", ".lua" },
 	foldmethod = "expr",
@@ -92,9 +82,3 @@ vim.opt.sessionoptions:append("tabpages,globals")
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
-
--- disable netrw
-vim.g.loaded_netrw = true
-vim.g.loaded_netrwPlugin = true
-vim.g.loaded_netrwSettings = true
-vim.g.loaded_netrwFileHandlers = true

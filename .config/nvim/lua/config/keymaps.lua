@@ -34,12 +34,7 @@ map("n", "<C-w>o", "<NOP>", { desc = "NOP" })
 map("n", "<C-w>O", "<Cmd>only<CR>", { desc = "only" })
 
 -- Tabs
-map("n", "<C-,><C-t>", function()
-	vim.fn.execute("normal! mt")
-	vim.fn.execute(":tabedit %:p")
-	vim.fn.execute("normal! `t")
-	vim.fn.execute(":delm t")
-end, { desc = "tabedit %:p" })
+map("n", "<C-,><C-t>", "<Cmd>tab split<CR>", { desc = "tab split" })
 local function tabmove_wrap(forward)
 	local current = vim.fn.tabpagenr()
 	if forward then
@@ -150,7 +145,7 @@ map("n", "gf", function()
 end, { desc = "Go to file under cursor (edit)" })
 map("n", "<C-g><C-f>", function()
 	gf("tabedit")
-	vim.fn.execute(":tabmove")
+	vim.cmd.tabmove()
 end, { desc = "Go to file under cursor (tabedit)" })
 map("n", "<C-g><C-g><C-f>", function()
 	gf("vsplit")
@@ -170,6 +165,10 @@ map("i", "<A-Space>", " ")
 
 map("i", "<C-g><C-n>", "<C-t>", { desc = "Indent" })
 map("i", "<C-g><C-p>", "<C-d>", { desc = "Dedent" })
+local function feed(keys)
+	vim.api.nvim_feedkeys(vim.keycode(keys), "n", false)
+end
+
 map("i", "<Tab>", function()
 	local line = vim.api.nvim_get_current_line()
 	local col = vim.api.nvim_win_get_cursor(0)[2]
@@ -185,7 +184,7 @@ map("i", "<Tab>", function()
 		vim.api.nvim_set_current_line(new_line)
 		vim.api.nvim_win_set_cursor(0, { vim.fn.line("."), col + vim.bo.shiftwidth })
 	else
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-t>", true, false, true), "n", false)
+		feed("<C-t>")
 	end
 end, { desc = "Indent >>" })
 map("i", "<S-Tab>", function()
@@ -204,7 +203,7 @@ map("i", "<S-Tab>", function()
 		vim.api.nvim_set_current_line(new_line)
 		vim.api.nvim_win_set_cursor(0, { vim.fn.line("."), math.max(0, col - sw) })
 	else
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-d>", true, false, true), "n", false)
+		feed("<C-d>")
 	end
 end, { desc = "Indent <<" })
 
@@ -223,8 +222,8 @@ map(
 map({ "o", "x" }, "i<Space>", "iW", { desc = "select a word" })
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%E3%82%B3%E3%83%94%E3%83%BC%E6%99%82%E3%81%AB%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E4%BD%8D%E7%BD%AE%E3%82%92%E4%BF%9D%E5%AD%98
 map("x", "y", function()
-	vim.fn.execute("normal! myy`y")
-	vim.fn.execute(":delm y")
+	vim.cmd("normal! myy`y")
+	vim.cmd.delmarks("y")
 end)
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%3C%2C-%3E%E3%81%A7%E9%80%A3%E7%B6%9A%E3%81%97%E3%81%A6%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88%E3%82%92%E6%93%8D%E4%BD%9C

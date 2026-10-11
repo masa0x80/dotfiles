@@ -11,40 +11,28 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local local_lua_dir = vim.fn.expand("$HOME/.config.local/nvim/lua/")
-local base_lua_dir = vim.fn.stdpath("config") .. "/lua/"
+local plugin_dirs = {
+	vim.fn.stdpath("config") .. "/lua/plugins/",
+	vim.fn.expand("$HOME/.config.local/nvim/lua/plugins/"),
+}
 
--- $HOME/.config.local/nvim/lua/plugins/ 配下のプラグインを読み込み
-local local_plugins = {}
-for _, file in ipairs(vim.fn.glob(local_lua_dir .. "plugins/*.lua", false, true)) do
-	local name = vim.fn.fnamemodify(file, ":t")
-	local_plugins[name] = file
+-- ファイル名 => パス。後に指定したディレクトリ（$HOME/.config.local/nvim/lua/plugins/）が同名ファイルを上書きする
+local plugin_files = {}
+for _, dir in ipairs(plugin_dirs) do
+	for _, file in ipairs(vim.fn.glob(dir .. "*.lua", false, true)) do
+		plugin_files[vim.fn.fnamemodify(file, ":t")] = file
+	end
 end
 
-local specs = {}
-
 -- 読み込みに失敗したら通知する
-local function load_spec(file)
+local specs = {}
+for _, file in vim.spairs(plugin_files) do
 	local ok, spec = pcall(dofile, file)
 	if not ok then
 		vim.notify(("Failed to load plugin spec: %s\n%s"):format(file, spec), vim.log.levels.ERROR)
-		return
-	end
-	if spec then
+	elseif spec then
 		table.insert(specs, spec)
 	end
-end
-
--- $HOME/.config.local/nvim/lua/plugins/ 配下にファイルがあればそちらを優先する
-for _, file in ipairs(vim.fn.glob(base_lua_dir .. "plugins/*.lua", false, true)) do
-	local name = vim.fn.fnamemodify(file, ":t")
-	load_spec(local_plugins[name] or file)
-	local_plugins[name] = nil
-end
-
--- $HOME/.config.local/nvim/lua/plugins/ 配下だけにあるプラグインを追加
-for _, file in pairs(local_plugins) do
-	load_spec(file)
 end
 
 require("lazy").setup(specs, {

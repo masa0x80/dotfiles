@@ -1,27 +1,24 @@
 -- Formatter toggle
 vim.g.formatter_enabled = true
+local function set_formatter(enabled)
+	vim.g.formatter_enabled = enabled
+	vim.notify("Formatter " .. (enabled and "enabled" or "disabled"))
+end
 vim.api.nvim_create_user_command("ToggleFormatter", function()
-	vim.g.formatter_enabled = not vim.g.formatter_enabled
-	if vim.g.formatter_enabled then
-		vim.notify("Formatter enabled")
-	else
-		vim.notify("Formatter disabled")
-	end
+	set_formatter(not vim.g.formatter_enabled)
 end, { desc = "Toggle auto format enabled / disabled" })
 vim.api.nvim_create_user_command("DisableFormatter", function()
-	vim.g.formatter_enabled = false
-	vim.notify("Formatter disabled")
+	set_formatter(false)
 end, { desc = "Disable auto format" })
 vim.api.nvim_create_user_command("EnableFormatter", function()
-	vim.g.formatter_enabled = true
-	vim.notify("Formatter enabled")
+	set_formatter(true)
 end, { desc = "Enable auto format" })
 
 -- range 指定があればその範囲、なければバッファ全体にフィルターコマンドを適用するユーザーコマンドを定義する
 local function create_filter_command(name, filter)
 	vim.api.nvim_create_user_command(name, function(opts)
 		local range = opts.range == 2 and (opts.line1 .. "," .. opts.line2) or "%"
-		vim.fn.execute(range .. "!" .. filter)
+		vim.cmd(range .. "!" .. filter)
 	end, {
 		range = 2,
 	})
@@ -48,17 +45,16 @@ vim.api.nvim_create_user_command("AddAbbrComma", function(opts)
 	local k = opts.fargs[1]
 	local v = opts.fargs[2]
 	local cmd = "iabbr " .. k .. " " .. v .. ":"
-	vim.fn.execute(cmd)
+	vim.cmd(cmd)
 end, {
 	nargs = "*",
 })
 
-vim.api.nvim_create_user_command("EnableCompletion", function()
-	vim.b.completion = true
-end, {})
-vim.api.nvim_create_user_command("DisableCompletion", function()
-	vim.b.completion = false
-end, {})
+for name, enabled in pairs({ EnableCompletion = true, DisableCompletion = false }) do
+	vim.api.nvim_create_user_command(name, function()
+		vim.b.completion = enabled
+	end, {})
+end
 
 -- opts.range に応じて対象行範囲 (0-indexed、終端は exclusive) を返す
 local function buf_range(opts)
