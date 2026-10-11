@@ -81,6 +81,11 @@ return {
 			-- u202F ' ' narrow no-break space
 			-- u3000 '　' ideographic (zenkaku) space
 			callback = function()
+				-- matchaddはウインドウごとに一度だけ追加する
+				if vim.w.extra_whitespace_matched then
+					return
+				end
+				vim.w.extra_whitespace_matched = true
 				vim.fn.matchadd("ExtraWhiteSpace1", "[\u{00A0}]", 10)
 				vim.fn.matchadd("ExtraWhiteSpace2", "[\u{2000}-\u{200A}\u{202F}]", 10)
 				vim.fn.matchadd("ExtraWhiteSpace3", "[\u{200B}\u{3000}]", 10)
