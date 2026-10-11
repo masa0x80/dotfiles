@@ -233,7 +233,7 @@ return {
 		config = function()
 			require("mini.splitjoin").setup({
 				mappings = {
-					toggle = "ms",
+					toggle = "st",
 					split = "ss",
 					join = "sj",
 				},
