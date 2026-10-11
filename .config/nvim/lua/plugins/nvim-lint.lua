@@ -63,9 +63,8 @@ return {
 
 		require("utils").create_autocmd({ "BufWritePost" }, {
 			callback = function()
-				require("lint").try_lint()
-				require("lint").try_lint({ "cspell" })
-				require("lint").try_lint({ "textlint" })
+				lint.try_lint()
+				lint.try_lint({ "cspell", "textlint" })
 			end,
 		})
 

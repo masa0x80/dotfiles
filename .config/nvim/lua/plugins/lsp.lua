@@ -57,7 +57,7 @@ return {
 			})
 			require("utils").create_autocmd({ "BufEnter" }, {
 				callback = function()
-					require("lspsaga").config.lightbulb.sign = vim.o.ft ~= "markdown"
+					require("lspsaga").config.lightbulb.sign = vim.bo.filetype ~= "markdown"
 				end,
 			})
 

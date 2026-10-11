@@ -2,17 +2,25 @@ return {
 	"monaqa/dial.nvim",
 	version = "*",
 	keys = {
-		{ "<C-a>", "<Plug>(dial-increment)", noremap = true },
-		{ "<C-x>", "<Plug>(dial-decrement)", noremap = true },
-		{ "g<C-a>", "g<Plug>(dial-increment)", noremap = true },
-		{ "g<C-x>", "g<Plug>(dial-decrement)", noremap = true },
-		{ "<C-a>", "<Plug>(dial-increment)", noremap = true, mode = "v" },
-		{ "<C-x>", "<Plug>(dial-decrement)", noremap = true, mode = "v" },
-		{ "g<C-a>", "g<Plug>(dial-increment)", noremap = true, mode = "v" },
-		{ "g<C-x>", "g<Plug>(dial-decrement)", noremap = true, mode = "v" },
+		{ "<C-a>", "<Plug>(dial-increment)", mode = { "n", "v" } },
+		{ "<C-x>", "<Plug>(dial-decrement)", mode = { "n", "v" } },
+		{ "g<C-a>", "g<Plug>(dial-increment)", mode = { "n", "v" } },
+		{ "g<C-x>", "g<Plug>(dial-decrement)", mode = { "n", "v" } },
 	},
-	config = function(_, opts)
+	config = function()
 		local augend = require("dial.augend")
+		local month_augends = {}
+		for _, pattern in ipairs({ "%Y-%m", "%Y/%m" }) do
+			table.insert(
+				month_augends,
+				augend.date.new({
+					pattern = pattern,
+					default_kind = "day",
+					only_valid = true, -- 存在しない日付にはマッチさせない
+					word = false, -- 単語境界でなくてもマッチさせる
+				})
+			)
+		end
 		require("dial.config").augends:register_group({
 			default = {
 				augend.integer.alias.decimal,
@@ -31,22 +39,7 @@ return {
 				}),
 				augend.semver.alias.semver,
 				augend.misc.alias.markdown_header,
-				augend.date.new({
-					pattern = "%Y-%m",
-					default_kind = "day",
-					-- if true, it does not match dates which does not exist, such as 2022/05/32
-					only_valid = true,
-					-- if true, it only matches dates with word boundary
-					word = false,
-				}),
-				augend.date.new({
-					pattern = "%Y/%m",
-					default_kind = "day",
-					-- if true, it does not match dates which does not exist, such as 2022/05/32
-					only_valid = true,
-					-- if true, it only matches dates with word boundary
-					word = false,
-				}),
+				unpack(month_augends),
 			},
 		})
 	end,

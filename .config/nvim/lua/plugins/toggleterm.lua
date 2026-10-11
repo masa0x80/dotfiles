@@ -16,13 +16,11 @@ return {
 		},
 	},
 	init = function()
-		vim.api.nvim_create_user_command("TermFloat", function(opts)
-			vim.fn.execute(opts.args .. "ToggleTerm direction=float")
-		end, { nargs = "?" })
-
-		vim.api.nvim_create_user_command("TermBottom", function(opts)
-			vim.fn.execute(opts.args .. "ToggleTerm direction=horizontal")
-		end, { nargs = "?" })
+		for name, direction in pairs({ TermFloat = "float", TermBottom = "horizontal" }) do
+			vim.api.nvim_create_user_command(name, function(opts)
+				vim.cmd(opts.args .. "ToggleTerm direction=" .. direction)
+			end, { nargs = "?" })
+		end
 	end,
 	config = function()
 		require("toggleterm").setup({
@@ -34,16 +32,12 @@ return {
 			close_on_exit = true,
 		})
 
-		local map = vim.keymap.set
-		function _G.set_terminal_keymaps()
-			local opts = { buffer = 0 }
-			map("t", "<Esc>", [[<C-\><C-n>]], opts)
-		end
-
 		-- if you only want these mappings for toggle term use term://*toggleterm#* instead
 		require("utils").create_autocmd({ "TermOpen" }, {
 			pattern = "term://*",
-			command = "lua set_terminal_keymaps()",
+			callback = function(args)
+				vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { buffer = args.buf })
+			end,
 		})
 	end,
 }

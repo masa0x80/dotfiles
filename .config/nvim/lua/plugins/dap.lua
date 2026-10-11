@@ -2,57 +2,25 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		version = "*",
-		keys = {
-			{
-				"<C-,>b",
-				function()
-					require("dap").toggle_breakpoint()
-				end,
-				noremap = true,
-				desc = "DAP: Toggle Breakpoint",
-			},
-			{
-				"<C-,>c",
-				function()
-					require("dap").continue()
-				end,
-				noremap = true,
-				desc = "DAP: Continue",
-			},
-			{
-				"<C-,>s",
-				function()
-					require("dap").step_into()
-				end,
-				noremap = true,
-				desc = "DAP: Step Into",
-			},
-			{
-				"<C-,>n",
-				function()
-					require("dap").step_over()
-				end,
-				noremap = true,
-				desc = "DAP: Step Over",
-			},
-			{
-				"<C-,>f",
-				function()
-					require("dap").step_out()
-				end,
-				noremap = true,
-				desc = "DAP: Step Out",
-			},
-
-			{
-				"<C-,>du",
-				function()
-					require("dapui").toggle()
-				end,
-				noremap = true,
-				desc = "DAP: UI Open",
-			},
-		},
+		keys = (function()
+			local function key(lhs, desc, fn)
+				return {
+					lhs,
+					function()
+						require(fn[1])[fn[2]]()
+					end,
+					desc = "DAP: " .. desc,
+				}
+			end
+			return {
+				key("<C-,>b", "Toggle Breakpoint", { "dap", "toggle_breakpoint" }),
+				key("<C-,>c", "Continue", { "dap", "continue" }),
+				key("<C-,>s", "Step Into", { "dap", "step_into" }),
+				key("<C-,>n", "Step Over", { "dap", "step_over" }),
+				key("<C-,>f", "Step Out", { "dap", "step_out" }),
+				key("<C-,>du", "UI Open", { "dapui", "toggle" }),
+			}
+		end)(),
 		config = function()
 			local dap, dapui = require("dap"), require("dapui")
 

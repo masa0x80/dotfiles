@@ -103,17 +103,7 @@ return {
 				treesitter = { suffix = "n", options = {} },
 			})
 
-			local function map(modes, lhs, rhs, opts)
-				vim.keymap.set(
-					modes,
-					lhs,
-					rhs,
-					vim.tbl_extend("force", {
-						noremap = true,
-						silent = true,
-					}, opts or {})
-				)
-			end
+			local map = require("utils").map
 			map("n", "[t", "<Cmd>tabprevious<CR>", { desc = ":tabprev" })
 			map("n", "]t", "<Cmd>tabnext<CR>", { desc = ":tabnext" })
 			map("n", "[<C-t>", "<Cmd>tabprevious<CR>", { desc = ":tabprev" })
