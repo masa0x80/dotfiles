@@ -24,55 +24,22 @@ return {
 				},
 			})
 
-			local saga = require("lspsaga")
-			saga.setup({
-				ui = {
-					border = "rounded",
-					code_action = "",
-				},
-				code_action = {
-					keys = {
-						quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
-					},
-				},
-				lightbulb = {
-					virtual_text = false,
-				},
-				finder = {
-					default = "def+ref+imp",
-					keys = {
-						shuttle = { "[w", "<C-l>", "<C-h>" },
-						toggle_or_open = { "o", "<CR>" },
-						quit = { "q", "<ESC>", "<C-c>", "<C-c><C-c>" },
-						close = { "<C-c>k", "c" },
-					},
-				},
-				preview = {
-					lines_above = 9999,
-					lines_below = 9999,
-				},
-				symbol_in_winbar = {
-					enable = false,
-				},
-			})
-			require("utils").create_autocmd({ "BufEnter" }, {
-				callback = function()
-					require("lspsaga").config.lightbulb.sign = vim.bo.filetype ~= "markdown"
-				end,
-			})
-
 			local keymap = vim.keymap.set
 			for _, lhs in ipairs({ "<Leader>rn", "gR" }) do
-				keymap("n", lhs, "<Cmd>Lspsaga rename<CR>")
+				keymap("n", lhs, vim.lsp.buf.rename, { desc = "LSP: rename" })
 			end
 			for _, lhs in ipairs({ "<Leader>ca", "gC" }) do
-				keymap("n", lhs, "<Cmd>Lspsaga code_action<CR>")
+				keymap("n", lhs, vim.lsp.buf.code_action, { desc = "LSP: code action" })
 			end
 			for _, lhs in ipairs({ "]d", "<C-n>d" }) do
-				keymap("n", lhs, "<Cmd>Lspsaga diagnostic_jump_next<CR>")
+				keymap("n", lhs, function()
+					vim.diagnostic.jump({ count = vim.v.count1, float = true })
+				end, { desc = "Diagnostic: next" })
 			end
 			for _, lhs in ipairs({ "[d", "<C-p>d" }) do
-				keymap("n", lhs, "<Cmd>Lspsaga diagnostic_jump_prev<CR>")
+				keymap("n", lhs, function()
+					vim.diagnostic.jump({ count = -vim.v.count1, float = true })
+				end, { desc = "Diagnostic: prev" })
 			end
 
 			vim.lsp.enable({
@@ -99,10 +66,6 @@ return {
 		version = "*",
 		ft = "lua",
 		opts = {},
-	},
-	{
-		"nvimdev/lspsaga.nvim",
-		version = "*",
 	},
 	{
 		"b0o/schemastore.nvim",
