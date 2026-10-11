@@ -4,8 +4,8 @@ return {
 	keys = {
 		{ "<C-a>", "<Plug>(dial-increment)", mode = { "n", "v" } },
 		{ "<C-x>", "<Plug>(dial-decrement)", mode = { "n", "v" } },
-		{ "g<C-a>", "g<Plug>(dial-increment)", mode = { "n", "v" } },
-		{ "g<C-x>", "g<Plug>(dial-decrement)", mode = { "n", "v" } },
+		{ "g<C-a>", "g<Plug>(dial-g-increment)", mode = { "n", "v" } },
+		{ "g<C-x>", "g<Plug>(dial-g-decrement)", mode = { "n", "v" } },
 	},
 	config = function()
 		local augend = require("dial.augend")
@@ -15,7 +15,7 @@ return {
 				month_augends,
 				augend.date.new({
 					pattern = pattern,
-					default_kind = "day",
+					default_kind = "month",
 					only_valid = true, -- 存在しない日付にはマッチさせない
 					word = false, -- 単語境界でなくてもマッチさせる
 				})
