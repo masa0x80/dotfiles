@@ -1,5 +1,5 @@
 git-add() {
-  IFS=$'\n'
+  local IFS=$'\n'
   for f in $(git -c color.status=always status -s | fzf -m --query="$@" \
     --preview 'F=$(echo {2..} | sed "s|\"\(.*\)\"|\1|");
       [[ {1} = "??" ]] && bat --color=always "$F" || \
