@@ -12,6 +12,9 @@ return {
 			"--no-summary",
 			"--config",
 			vim.fn.expand("$XDG_CONFIG_HOME" .. "/cspell/cspell.json"),
+			function()
+				return "stdin://" .. vim.api.nvim_buf_get_name(0)
+			end,
 		}
 
 		lint.linters.textlint = {
@@ -42,8 +45,8 @@ return {
 							lnum = msg.line - 1,
 							col = msg.column - 1,
 							message = msg.message,
-							severity = msg.severity == 2 and vim.diagnostic.severity.WARN
-								or vim.diagnostic.severity.ERROR,
+							severity = msg.severity == 2 and vim.diagnostic.severity.ERROR
+								or vim.diagnostic.severity.WARN,
 							source = "textlint",
 						})
 					end
@@ -57,8 +60,8 @@ return {
 			["yaml.ghaction"] = { "actionlint" },
 			dockerfile = { "hadolint" },
 			nix = { "statix", "deadnix" },
+			sh = { "shellcheck" },
 			bash = { "shellcheck" },
-			zsh = { "shellcheck" },
 		}
 
 		require("utils").create_autocmd({ "BufWritePost" }, {
