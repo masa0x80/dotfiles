@@ -1,5 +1,5 @@
-local up = vim.api.nvim_replace_termcodes("<Up>", true, false, true)
-local down = vim.api.nvim_replace_termcodes("<Down>", true, false, true)
+local up = vim.keycode("<Up>")
+local down = vim.keycode("<Down>")
 
 return {
 	{
@@ -76,7 +76,7 @@ return {
 				},
 				menu = {
 					border = "rounded",
-					auto_show = function(ctx, items)
+					auto_show = function()
 						return vim.bo.filetype ~= "markdown"
 					end,
 					draw = {
@@ -85,7 +85,7 @@ return {
 								text = function(ctx)
 									local lspkind = require("lspkind")
 									local icon = ctx.kind_icon
-									if vim.tbl_contains({ "Path" }, ctx.source_name) then
+									if ctx.source_name == "Path" then
 										local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
 										if dev_icon then
 											icon = dev_icon
@@ -104,7 +104,7 @@ return {
 								-- keep the highlight groups in sync with the icons.
 								highlight = function(ctx)
 									local hl = ctx.kind_hl
-									if vim.tbl_contains({ "Path" }, ctx.source_name) then
+									if ctx.source_name == "Path" then
 										local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
 										if dev_icon then
 											hl = dev_hl

@@ -1,3 +1,20 @@
+local search_keys = {}
+for lhs, fn in pairs({ n = "search_next", N = "search_prev", ["*"] = "search_star", ["#"] = "search_hash" }) do
+	table.insert(search_keys, {
+		lhs,
+		function()
+			require("undo-glow")[fn]({
+				animation = {
+					animation_type = "strobe",
+				},
+			})
+		end,
+		mode = "n",
+		desc = "Highlight " .. fn:gsub("_", " "),
+		noremap = true,
+	})
+end
+
 return {
 	"y3owk1n/undo-glow.nvim",
 	version = "*",
@@ -47,7 +64,7 @@ return {
 			priority = 2048 * 3,
 		}
 	end,
-	keys = {
+	keys = vim.list_extend({
 		{
 			"u",
 			function()
@@ -87,58 +104,6 @@ return {
 			noremap = true,
 		},
 		{
-			"n",
-			function()
-				require("undo-glow").search_next({
-					animation = {
-						animation_type = "strobe",
-					},
-				})
-			end,
-			mode = "n",
-			desc = "Search next with highlight",
-			noremap = true,
-		},
-		{
-			"N",
-			function()
-				require("undo-glow").search_prev({
-					animation = {
-						animation_type = "strobe",
-					},
-				})
-			end,
-			mode = "n",
-			desc = "Search prev with highlight",
-			noremap = true,
-		},
-		{
-			"*",
-			function()
-				require("undo-glow").search_star({
-					animation = {
-						animation_type = "strobe",
-					},
-				})
-			end,
-			mode = "n",
-			desc = "Search star with highlight",
-			noremap = true,
-		},
-		{
-			"#",
-			function()
-				require("undo-glow").search_hash({
-					animation = {
-						animation_type = "strobe",
-					},
-				})
-			end,
-			mode = "n",
-			desc = "Search hash with highlight",
-			noremap = true,
-		},
-		{
 			"gc",
 			function()
 				require("undo-glow").comment_textobject()
@@ -147,7 +112,7 @@ return {
 			desc = "Comment textobject with highlight",
 			noremap = true,
 		},
-	},
+	}, search_keys),
 	init = function()
 		vim.api.nvim_create_autocmd("TextYankPost", {
 			desc = "Highlight when yanking (copying) text",
