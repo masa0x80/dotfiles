@@ -30,7 +30,7 @@ return {
 				local filetype = require("conform").formatters_by_ft[ft]
 				for _, formatter in
 					ipairs(vim.tbl_filter(function(f)
-						return not vim.tbl_contains(vim.tbl_keys(require("utils").hidden_formatters), f)
+						return not vim.tbl_contains(vim.tbl_keys(require("plugins.conf.formatters")), f)
 					end, filetype or {}))
 				do
 					if not vim.tbl_contains(clients, formatter) then

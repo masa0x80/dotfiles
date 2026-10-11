@@ -40,7 +40,7 @@ return {
 				stdin = true,
 			},
 		}
-		for k, v in pairs(require("utils").hidden_formatters) do
+		for k, v in pairs(require("plugins.conf.formatters")) do
 			formatters[k] = v
 		end
 
