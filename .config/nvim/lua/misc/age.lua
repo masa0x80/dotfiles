@@ -1,5 +1,5 @@
-local recipient = vim.fn.getenv("AGE_RECIPIENT")
-local identity = vim.fn.getenv("AGE_IDENTITY")
+local recipient = vim.env.AGE_RECIPIENT
+local identity = vim.env.AGE_IDENTITY
 
 if recipient ~= nil and identity ~= nil then
 	-- カーソル位置と `modified` を保ったままundo履歴を破棄
