@@ -15,6 +15,24 @@ return {
 		config = function()
 			local actions = require("telescope.actions")
 			local utils = require("utils")
+			local state = require("telescope.actions.state")
+
+			-- 選択中エントリのパスを modifier (fnamemodify の第2引数) で加工してレジスタにコピーする
+			local function copy_path(modifier)
+				return function()
+					local path = state.get_selected_entry().path
+					if modifier then
+						path = vim.fn.fnamemodify(path, modifier)
+					end
+					vim.fn.setreg("+", path)
+					vim.fn.setreg('"', path)
+					vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
+				end
+			end
+
+			local function preview_file()
+				utils.preview(state.get_selected_entry().path)
+			end
 
 			local telescope = require("telescope")
 			telescope.setup({
@@ -50,11 +68,7 @@ return {
 							["<C-j>"] = actions.preview_scrolling_down,
 							["<C-c>"] = { "<Esc>", type = "command" },
 							["<C-c><C-c>"] = actions.close,
-							["<C-S-k>"] = function()
-								local selection = require("telescope.actions.state").get_selected_entry()
-								local path = selection.path
-								utils.preview(path)
-							end,
+							["<C-S-k>"] = preview_file,
 						},
 						n = {
 							["<C-n>"] = actions.move_selection_next,
@@ -69,32 +83,10 @@ return {
 							["<C-j>"] = actions.preview_scrolling_down,
 							["q"] = actions.close,
 							["<C-c>"] = actions.close,
-							["yy"] = function()
-								local selection = require("telescope.actions.state").get_selected_entry()
-								local path = vim.fn.fnamemodify(selection.path, ":p:t")
-								vim.fn.setreg("+", path)
-								vim.fn.setreg('"', path)
-								vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
-							end,
-							["Y"] = function()
-								local selection = require("telescope.actions.state").get_selected_entry()
-								local path = vim.fn.fnamemodify(selection.path, ":.")
-								vim.fn.setreg("+", path)
-								vim.fn.setreg('"', path)
-								vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
-							end,
-							["<C-S-y>"] = function()
-								local selection = require("telescope.actions.state").get_selected_entry()
-								local path = selection.path
-								vim.fn.setreg("+", path)
-								vim.fn.setreg('"', path)
-								vim.notify(path, vim.log.levels.INFO, { title = "Copied" })
-							end,
-							["K"] = function()
-								local selection = require("telescope.actions.state").get_selected_entry()
-								local path = selection.path
-								utils.preview(path)
-							end,
+							["yy"] = copy_path(":p:t"),
+							["Y"] = copy_path(":."),
+							["<C-S-y>"] = copy_path(),
+							["K"] = preview_file,
 						},
 					},
 				},
