@@ -63,7 +63,7 @@ if [[ -z $colocated ]]; then
     # conflictしている場合はcleanマークは出さない
     [[ -z $conflict ]] && result+=" ${C_CLEAN}✔${C_RESET}"
   else
-    # stauts()はadded, modified, removed, renamed, copied を返す
+    # status()はadded, modified, removed, renamed, copied を返す
     IFS=',' read -r -a arr <<<"$statuses"
     added=0 modified=0 removed=0 renamed=0
     for s in "${arr[@]}"; do

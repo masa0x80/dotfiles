@@ -44,7 +44,7 @@ unsafe_no_escape = true
 [git_branch]
 format = "[$branch]($style) "
 style = "green"
-# jj colocated では HEAD が常に detached なので、custom.jj が chage を出す
+# jj colocated では HEAD が常に detached なので、custom.jj が change を出す
 only_attached = true
 
 [custom.git_detached]
