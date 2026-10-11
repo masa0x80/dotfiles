@@ -7,7 +7,6 @@
 #   pool.zsh new-tab [after|before]
 #                                プールから 1 枚取り出して現在のタブの右 / 左に足す
 #   pool.zsh split right|down    プールから 1 枚取り出して現在のペインを分割する
-#   pool.zsh focus-sync          pane.focused イベント用の sync
 
 emulate -L zsh
 setopt no_nomatch
@@ -217,16 +216,8 @@ case ${1:-} in
   split) cmd_split ${2:-right} ;;
   split-right) cmd_split right ;;
   split-down) cmd_split down ;;
-  focus-sync)
-    # プール自身のフォーカスでは何もしない
-    local ws_label pane_cwd
-    IFS=$'\t' read -r ws_label pane_cwd <<<"$(
-      print -r -- ${HERDR_PLUGIN_CONTEXT_JSON:-'{}'} |
-        jq -r '"\(.workspace_label // "")\t\(.focused_pane_cwd // "")"'
-    )"
-    ;;
   *)
-    print -ru2 -- "usage: pool.zsh {ensure|new-tab [before]|new-tab-before|split-right|split-down|focus-sync}"
+    print -ru2 -- "usage: pool.zsh {ensure|new-tab [before]|new-tab-before|split-right|split-down}"
     exit 2
     ;;
 esac

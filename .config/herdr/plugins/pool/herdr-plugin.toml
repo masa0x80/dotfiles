@@ -12,10 +12,6 @@ command = ["./pool.zsh", "ensure"]
 on = "workspace.created"
 command = ["./pool.zsh", "ensure"]
 
-[[events]]
-on = "pane.focused"
-command = ["./pool.zsh", "focus-sync"]
-
 [[actions]]
 id = "new-tab"
 title = "New tab (pooled)"
