@@ -28,7 +28,7 @@ return {
 		"rhysd/git-messenger.vim",
 		version = "*",
 		keys = {
-			{ "<C-g><C-l>", desc = "Show Git Log" },
+			{ "<C-g><C-l>", "<Plug>(git-messenger)", desc = "Show Git Log" },
 		},
 		init = function()
 			vim.g.git_messenger_always_into_popup = true
@@ -38,7 +38,6 @@ return {
 		end,
 		config = function()
 			local map = vim.keymap.set
-			map("n", "<C-g><C-g><C-l>", "<Plug>(git-messenger)<CR>", { desc = "Show Git Log" })
 
 			require("utils").create_autocmd({ "FileType" }, {
 				pattern = "gitmessengerpopup",
@@ -92,20 +91,20 @@ return {
 					-- Navigation
 					map("n", "]g", function()
 						if vim.wo.diff then
-							return "]g"
+							return "]c"
 						end
 						vim.schedule(function()
-							gs.next_hunk()
+							gs.nav_hunk("next")
 						end)
 						return "<Ignore>"
 					end, { expr = true, desc = "Gitsigns: next_hunk" })
 
 					map("n", "[g", function()
 						if vim.wo.diff then
-							return "[g"
+							return "[c"
 						end
 						vim.schedule(function()
-							gs.prev_hunk()
+							gs.nav_hunk("prev")
 						end)
 						return "<Ignore>"
 					end, { expr = true, desc = "Gitsigns: prev_hunk" })
@@ -113,7 +112,6 @@ return {
 					-- Actions
 					map({ "n", "v" }, "<C-,>gs", ":Gitsigns stage_hunk<CR>", { desc = "Gitsigns: stage_hunk" })
 					map({ "n", "v" }, "<C-,>gr", ":Gitsigns reset_hunk<CR>", { desc = "Gitsigns: reset_hunk" })
-					map("n", "<C-,>gu", gs.undo_stage_hunk, { desc = "Gitsigns: undo_stage_hunk" })
 					map("n", "<C-,>gS", gs.stage_buffer, { desc = "Gitsigns: stage_buffer" })
 					map("n", "<C-,>gR", gs.reset_buffer, { desc = "Gitsigns: reset_buffer" })
 					map("n", "<C-,>gp", gs.preview_hunk, { desc = "Gitsigns: preview_hunk" })
@@ -121,7 +119,7 @@ return {
 					map("n", "<C-,>gD", function()
 						gs.diffthis("~")
 					end, { desc = "Gitsigns: diffthis('~')" })
-					map("n", "<C-,>gtd", gs.toggle_deleted, { desc = "Gitsigns: toggle_deleted" })
+					map("n", "<C-,>gtd", gs.preview_hunk_inline, { desc = "Gitsigns: preview_hunk_inline" })
 					map("n", "<C-,>gtb", gs.toggle_current_line_blame, { desc = "Gitsigns: toggle_current_line_blame" })
 					map("n", "<Leader>gB", function()
 						gs.blame_line({ full = true })
