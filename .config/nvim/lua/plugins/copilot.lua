@@ -53,7 +53,7 @@ return {
 			{ "<Leader>cf", "<Cmd>CopilotChatFix<CR>", desc = "CopilotChat - Fix code", mode = { "n", "v" } },
 			{ "<Leader>ct", "<Cmd>CopilotChatTests<CR>", desc = "CopilotChat - Generate tests", mode = { "n", "v" } },
 			{ "<Leader>cr", "<Cmd>CopilotChatReview<CR>", desc = "CopilotChat - Review code", mode = { "n", "v" } },
-			{ "<Leader>cR", "<Cmd>CopilotChatRefactor<CR>", desc = "CopilotChat - Refactor code", mode = { "n", "v" } },
+			{ "<Leader>co", "<Cmd>CopilotChatOptimize<CR>", desc = "CopilotChat - Optimize code", mode = { "n", "v" } },
 		},
 	},
 }
