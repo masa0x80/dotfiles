@@ -4,7 +4,18 @@ return {
 		version = "*",
 		event = { "VeryLazy" },
 		init = function()
+			-- gc/gccもComment.nvim経由にする
 			for _, a in ipairs({
+				{ "gc", "n", "comment_toggle_linewise", "Toggle comment" },
+				{ "gc", "x", "comment_toggle_linewise_visual", "Toggle comment" },
+				{
+					"gcc",
+					"n",
+					function()
+						return vim.v.count == 0 and "comment_toggle_linewise_current" or "comment_toggle_linewise_count"
+					end,
+					"Toggle comment line",
+				},
 				{ "\\\\", "n", "comment_toggle_linewise_current", "Toggle line-comment" },
 				{ "\\\\", "x", "comment_toggle_linewise_visual", "Toggle line-comment" },
 				{ "\\<C-b>", "n", "comment_toggle_blockwise_current", "Toggle block-comment" },
@@ -19,7 +30,7 @@ return {
 						undo_glow.highlight_changes({ hlgroup = "UgComment" })
 					end
 
-					return "<Plug>(" .. target .. ")"
+					return "<Plug>(" .. (type(target) == "function" and target() or target) .. ")"
 				end
 
 				vim.keymap.set(mode, lhs, rhs, { expr = true, remap = true, desc = desc })
@@ -60,6 +71,7 @@ return {
 			end
 
 			require("Comment").setup({
+				mappings = { basic = false, extra = false },
 				pre_hook = function(ctx)
 					local ok, cstr = pcall(ts_pre_hook, ctx)
 					if ok and cstr then
