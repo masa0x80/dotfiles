@@ -26,7 +26,6 @@ return {
 				local indent = vim.fn.indent(".")
 				local line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
 
-				local bs = vim.api.nvim_replace_termcodes("<C-h>", true, false, true)
 				if string.match(line, UNORDERED_LIST_PATTERN) then
 					if col == indent + 2 then
 						vim.api.nvim_buf_set_text(0, row, indent, row, col, { "" })
@@ -44,7 +43,7 @@ return {
 				elseif string.match(line, QUOTED_PREFIX_PATTERN) then
 					vim.api.nvim_buf_set_text(0, row, indent, row, col, { "" })
 				else
-					vim.api.nvim_feedkeys(bs, "n", true)
+					vim.api.nvim_feedkeys(vim.keycode("<C-h>"), "n", true)
 				end
 			end
 
@@ -98,12 +97,10 @@ return {
 						local col = vim.fn.col("$") - 1
 						local line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
 
-						local cr = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
-
 						if has_pattern(line) then
 							vim.api.nvim_buf_set_text(0, row, 0, row, col, { "" })
 						else
-							vim.api.nvim_feedkeys(cr, "n", false)
+							vim.api.nvim_feedkeys(vim.keycode("<CR>"), "n", false)
 						end
 					end, opts)
 
@@ -112,10 +109,14 @@ return {
 				end,
 			})
 
-			vim.keymap.set("n", "<C-g>i", "gs$i", { remap = true, desc = "Toggle italic to end of line" })
-			vim.keymap.set("n", "<C-g>b", "gs$b", { remap = true, desc = "Toggle bold to end of line" })
-			vim.keymap.set("n", "<C-g>s", "gs$s", { remap = true, desc = "Toggle strikethrough to end of line" })
-			vim.keymap.set("n", "<C-g>c", "gs$c", { remap = true, desc = "Toggle code to end of line" })
+			for key, name in pairs({ i = "italic", b = "bold", s = "strikethrough", c = "code" }) do
+				vim.keymap.set(
+					"n",
+					"<C-g>" .. key,
+					"gs$" .. key,
+					{ remap = true, desc = "Toggle " .. name .. " to end of line" }
+				)
+			end
 		end,
 	},
 	{
@@ -164,7 +165,7 @@ return {
 				},
 				win_options = {
 					concealcursor = {
-						default = vim.api.nvim_get_option_value("concealcursor", {}),
+						default = vim.go.concealcursor,
 						rendered = "",
 					},
 				},
@@ -195,14 +196,12 @@ return {
 			}
 			vim.g.mkdp_preview_options = default_options
 
-			vim.api.nvim_create_user_command("EnableMDPScroll", function()
-				vim.g.mkdp_preview_options =
-					vim.tbl_deep_extend("force", default_options, { disable_sync_scroll = false })
-			end, {})
-			vim.api.nvim_create_user_command("DisableMDPScroll", function()
-				vim.g.mkdp_preview_options =
-					vim.tbl_deep_extend("force", default_options, { disable_sync_scroll = true })
-			end, {})
+			for name, disable in pairs({ EnableMDPScroll = false, DisableMDPScroll = true }) do
+				vim.api.nvim_create_user_command(name, function()
+					vim.g.mkdp_preview_options =
+						vim.tbl_deep_extend("force", default_options, { disable_sync_scroll = disable })
+				end, {})
+			end
 		end,
 	},
 }

@@ -15,42 +15,22 @@ local cspell_files = {
 	vim = cspell_data_dir .. "/vim.txt",
 }
 
--- dotfiles辞書がなければ作成
-if vim.fn.filereadable(cspell_files.dotfiles) ~= 1 then
-	vim.fn.mkdir(cspell_data_dir, "p")
-	io.close(io.open(cspell_files.user, "a"))
-end
-
--- 辞書がなければダウンロード
-for _, v in ipairs({
-	{
-		file_path = cspell_files.vim,
-		url = "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/vim/dict/vim.txt",
-	},
-	{
-		file_path = cspell_files.ruby,
-		url = "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/ruby/dict/ruby.txt",
-	},
-	{
-		file_path = cspell_files.lua,
-		url = "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/lua/dict/lua.txt",
-	},
-}) do
-	if vim.fn.filereadable(v.file_path) ~= 1 then
-		io.popen("curl -fsSLo " .. v.file_path .. " --create-dirs " .. v.url)
+-- 辞書ファイルがなければ空ファイルを作成
+for _, path in ipairs({ cspell_files.user, cspell_files.dotfiles_local }) do
+	if vim.fn.filereadable(path) ~= 1 then
+		vim.fn.mkdir(vim.fs.dirname(path), "p")
+		io.close(io.open(path, "a"))
 	end
 end
 
--- ユーザー辞書がなければ作成
-if vim.fn.filereadable(cspell_files.user) ~= 1 then
-	io.popen("mkdir -p " .. cspell_data_dir)
-	io.popen("touch " .. cspell_files.user)
-end
-
--- dotfiles.local辞書がなければ作成
-if vim.fn.filereadable(cspell_files.dotfiles_local) ~= 1 then
-	vim.fn.mkdir(dotfiles_local_dir, "p")
-	iio.close(io.open(cspell_files.dotfiles_local, "a"))
+-- 辞書がなければダウンロード
+local dict_base_url = "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries"
+for _, name in ipairs({ "vim", "ruby", "lua" }) do
+	local path = cspell_files[name]
+	if vim.fn.filereadable(path) ~= 1 then
+		vim.fn.mkdir(cspell_data_dir, "p")
+		vim.system({ "curl", "-fsSLo", path, ("%s/%s/dict/%s.txt"):format(dict_base_url, name, name) })
+	end
 end
 
 local dictionary_keys = {
@@ -86,18 +66,16 @@ local function cspell_append(opts)
 	vim.notify('"' .. word .. '" is appended to ' .. dictionary_name .. " dictionary.", vim.log.levels.INFO, {})
 
 	-- cspellをリロードするため、現在行を更新してすぐ戻す
-	if vim.api.nvim_get_option_value("modifiable", {}) then
+	if vim.bo.modifiable then
 		vim.api.nvim_set_current_line(vim.api.nvim_get_current_line())
-		vim.api.nvim_command("silent! undo")
+		vim.cmd("silent! undo")
 	end
 end
 
 vim.api.nvim_create_user_command("CSpellAppend", cspell_append, { nargs = "*" })
-local opts = { noremap = true, silent = true }
-local keymap = vim.keymap.set
-keymap("n", "<Leader>ag", "<Cmd>CSpellAppend global<CR>", opts)
-keymap("n", "<Leader>al", "<Cmd>CSpellAppend local<CR>", opts)
-keymap("n", "<Leader>au", "<Cmd>CSpellAppend user<CR>", opts)
+for key, target in pairs({ g = "global", l = "local", u = "user" }) do
+	require("utils").map("n", "<Leader>a" .. key, "<Cmd>CSpellAppend " .. target .. "<CR>")
+end
 
 vim.api.nvim_create_user_command("OpenCSpellDotfile", "edit " .. cspell_files.dotfiles, {})
 vim.api.nvim_create_user_command("OpenCSpellLocal", "edit " .. cspell_files.dotfiles_local, {})
