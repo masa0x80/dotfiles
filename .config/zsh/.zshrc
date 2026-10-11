@@ -53,10 +53,11 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 (( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
 (( ${+commands[zabrze]} )) && eval "$(zabrze init --bind-keys)"
 
+autoload -Uz add-zsh-hook
+
 zsh_dir="$ZDOTDIR/zsh.d"
 for file (
   $zsh_dir/checker.zsh(N)
-  $zsh_dir/herdr-pool.zsh(N)
   $zsh_dir/aliases.zsh(N)
   $zsh_dir/complete-ssh-host.zsh(N)
   $zsh_dir/completion.zsh(N)
