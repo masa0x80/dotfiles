@@ -3,8 +3,7 @@ alias mise-install='MISE_PARANOID=1 mise install'
 alias mise-upgrade='MISE_PARANOID=1 mise upgrade'
 
 # grep
-export GREP_COlOR='1;31'
-export GREP_COlORS="mt=${GREP_COLOR}"
+export GREP_COLORS='mt=1;31'
 alias grep='grep --color=auto'
 
 # EDITOR
