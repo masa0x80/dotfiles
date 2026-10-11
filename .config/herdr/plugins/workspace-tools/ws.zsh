@@ -7,7 +7,7 @@
 #   ws.zsh move-picker             ↑ の popup 側の実処理
 #   ws.zsh misc                    _misc workspace を開く（あればフォーカス、_misc上ならworkspaceに戻る）
 #   ws.zsh move-tab next|prev      tab の位置を前後に入れ替える
-#   ws.zsh join-move next|prev     現在の pane を隣の tab へ join する
+#   ws.zsh join-tab next|prev      現在の pane を隣の tab へ join する
 #   ws.zsh move-ws next|prev       workspace の位置を前後に入れ替える
 #   ws.zsh select-tab <n>          現在の workspace の n 番目の tab へ移る
 #                                  （正: 左から 1 起点 / 負: 右から -1 起点）
