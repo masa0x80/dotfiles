@@ -2,7 +2,6 @@
 /.*
 
 !/.gitignore
-!/asdf
 !/bat
 !/cspell
 !/dprint
@@ -23,10 +22,6 @@
 !/wezterm
 !/zsh
 !/zabrze
-
-!/direnv
-/direnv/*
-!/direnv/direnvrc
 
 !/hub
 /hub/*
@@ -54,4 +49,3 @@
 !/starship2.toml
 
 !/hadolint.yaml
-!/mise.toml
