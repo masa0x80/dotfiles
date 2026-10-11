@@ -6,20 +6,24 @@ return {
 		{ "<C-g>\\" },
 		{
 			"<Leader>tf",
-			"<Cmd>TermFloat<CR>",
+			function()
+				vim.cmd.TermFloat({ count = vim.v.count1 })
+			end,
 			desc = "<v:count1>ToggleTerm direction=float",
 		},
 		{
 			"<Leader>tb",
-			"<Cmd>TermBottom<CR>",
+			function()
+				vim.cmd.TermBottom({ count = vim.v.count1 })
+			end,
 			desc = "<v:count1>ToggleTerm direction=horizontal",
 		},
 	},
 	init = function()
 		for name, direction in pairs({ TermFloat = "float", TermBottom = "horizontal" }) do
 			vim.api.nvim_create_user_command(name, function(opts)
-				vim.cmd(opts.args .. "ToggleTerm direction=" .. direction)
-			end, { nargs = "?" })
+				vim.cmd(opts.count .. "ToggleTerm direction=" .. direction)
+			end, { count = true })
 		end
 	end,
 	config = function()
