@@ -22,14 +22,22 @@ return {
 		{
 			"]c",
 			function()
-				require("todo-comments").jump_next()
+				if vim.wo.diff then
+					vim.cmd.normal({ vim.v.count1 .. "]c", bang = true })
+				else
+					require("todo-comments").jump_next()
+				end
 			end,
 			desc = "Next Todo Comment",
 		},
 		{
 			"[c",
 			function()
-				require("todo-comments").jump_prev()
+				if vim.wo.diff then
+					vim.cmd.normal({ vim.v.count1 .. "[c", bang = true })
+				else
+					require("todo-comments").jump_prev()
+				end
 			end,
 			desc = "Previous Todo Comment",
 		},

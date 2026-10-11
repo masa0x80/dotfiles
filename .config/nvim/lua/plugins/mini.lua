@@ -98,6 +98,7 @@ return {
 		event = "VeryLazy",
 		config = function()
 			require("mini.bracketed").setup({
+				comment = { suffix = "" }, -- [c, ]c は todo-comments で使う
 				file = { suffix = "f", options = { wrap = false } },
 				oldfile = { suffix = "e", options = {} },
 				treesitter = { suffix = "n", options = {} },
