@@ -98,7 +98,7 @@ return {
 				local year = os.date("%Y")
 				local month = os.date("%m")
 				local d = os.date("%-d")
-				local week_of_month = (d - 1) / 7 + 1
+				local week_of_month = math.floor((d - 1) / 7) + 1
 				local file_path = ("%s/weekly/%d/%s-w%d.md"):format(vault_path, year, month, week_of_month)
 				vim.cmd("edit " .. file_path)
 				if vim.fn.filereadable(file_path) == 0 then
@@ -138,34 +138,17 @@ return {
 		},
 	},
 	init = function()
+		local todo_mark_patterns = {
+			"- \\[[x -]\\] [0-9][0-9]:[0-9][0-9]–[0-9][0-9]:[0-9][0-9] ",
+			"- \\[[x -]\\] <.*> ",
+			"- \\[[x -]\\] ",
+		}
 		vim.api.nvim_create_user_command("DeleteTodoMark", function(o)
-			if o.range == 0 then
-				pcall(function()
-					vim.cmd("%s/- \\[[x -]\\] [0-9][0-9]:[0-9][0-9]–[0-9][0-9]:[0-9][0-9] /- /g")
-				end)
-				pcall(function()
-					vim.cmd("%s/- \\[[x -]\\] <.*> /- /g")
-				end)
-				pcall(function()
-					vim.cmd("%s/- \\[[x -]\\] /- /g")
-				end)
-			else
-				pcall(function()
-					vim.cmd(
-						o.line1
-							.. ","
-							.. o.line2
-							.. "s/- \\[[x -]\\] [0-9][0-9]:[0-9][0-9]–[0-9][0-9]:[0-9][0-9] /- /g"
-					)
-				end)
-				pcall(function()
-					vim.cmd(o.line1 .. "," .. o.line2 .. "s/- \\[[x -]\\] <.*> /- /g")
-				end)
-				pcall(function()
-					vim.cmd(o.line1 .. "," .. o.line2 .. "s/- \\[[x -]\\] /- /g")
-				end)
+			local range = o.range == 0 and "%" or (o.line1 .. "," .. o.line2)
+			for _, pattern in ipairs(todo_mark_patterns) do
+				pcall(vim.cmd, range .. "s/" .. pattern .. "/- /g")
 			end
-			vim.cmd("nohlsearch")
+			vim.cmd.nohlsearch()
 		end, {
 			range = 2,
 		})
