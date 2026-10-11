@@ -62,16 +62,18 @@ return {
 			})
 
 			local keymap = vim.keymap.set
-			keymap("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>", {})
-			keymap("n", "gR", "<Cmd>Lspsaga rename<CR>", {})
-
-			keymap("n", "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", {})
-			keymap("n", "gC", "<Cmd>Lspsaga code_action<CR>", {})
-
-			keymap("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", {})
-			keymap("n", "<C-n>d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", {})
-			keymap("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", {})
-			keymap("n", "<C-p>d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", {})
+			for _, lhs in ipairs({ "<Leader>rn", "gR" }) do
+				keymap("n", lhs, "<Cmd>Lspsaga rename<CR>")
+			end
+			for _, lhs in ipairs({ "<Leader>ca", "gC" }) do
+				keymap("n", lhs, "<Cmd>Lspsaga code_action<CR>")
+			end
+			for _, lhs in ipairs({ "]d", "<C-n>d" }) do
+				keymap("n", lhs, "<Cmd>Lspsaga diagnostic_jump_next<CR>")
+			end
+			for _, lhs in ipairs({ "[d", "<C-p>d" }) do
+				keymap("n", lhs, "<Cmd>Lspsaga diagnostic_jump_prev<CR>")
+			end
 
 			vim.lsp.enable({
 				"bashls",
