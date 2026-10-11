@@ -4,7 +4,7 @@ if type lefthook > /dev/null 2>&1; then
   pj_root=$(git rev-parse --show-toplevel)
   [ ! -e "${pj_root}/lefthook.yml" ] && [ ! -e "${pj_root}/lefthook-local.yml" ] && exit 0
 
-  lefthook run $@
+  lefthook run "$@"
   lefthook_status=$?
   if test $lefthook_status -ne 0; then
     exit $lefthook_status
