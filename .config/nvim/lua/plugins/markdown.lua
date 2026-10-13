@@ -40,8 +40,6 @@ return {
 					end
 				elseif string.match(line, TASK_PATTERN) then
 					vim.api.nvim_buf_set_text(0, row, indent, row, col, { "- " })
-				elseif string.match(line, QUOTED_PREFIX_PATTERN) then
-					vim.api.nvim_buf_set_text(0, row, indent, row, col, { "" })
 				else
 					vim.api.nvim_feedkeys(vim.keycode("<C-h>"), "n", true)
 				end
