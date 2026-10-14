@@ -72,6 +72,7 @@ path=(
 )
 fpath=(
   $ZDOTDIR/functions(N-/)
+  $HOME/.local/share/zsh/site-functions(N-/)
   $fpath
 )
 (( ${+commands[brew]} )) && eval "$(brew shellenv)"
