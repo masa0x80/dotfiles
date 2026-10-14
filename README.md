@@ -5,7 +5,8 @@
 
 ## Installation
 
-好きなところにCloneして `make` を実行すると、 `$HOME` 配下にシンボリックリンクを張り、`nix` を使って各種ツールのインストールを行います。
+好きなところにCloneして `make` を実行すると、`mise bootstrap` で `$HOME` 配下にシンボリックリンクを張り、各種ツールのインストールとmacOSの設定を行います。
+設定内容はリポジトリー直下の `mise.toml` に宣言しています。
 
 ```sh
 git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
@@ -34,6 +35,7 @@ ref. <https://github.com/masa0x80/dotfiles.local>
 ### ローカル設定も込みでセットアップ
 
 ローカル設定用のリポジトリーをあらかじめCloneして、make時に指定するとローカル設定も込でセットアップできます。
+`$DOTFILES_LOCAL_DIR/mise.local.toml` が `mise.local.toml` としてコピーされ、`mise.toml` に重ねて適用されます。
 
 ```sh
 git clone https://github.com/masa0x80/dotfiles.git ~/.dotfiles
@@ -43,18 +45,10 @@ make DOTFILES_LOCAL_DIR=~/.dotfiles.local
 
 ## Update packages
 
-### flake.lockを更新
-
 ```sh
-# nixpkgs更新（7日前公開のもの）
-make nix-update
+# パッケージの更新も含めて適用
+make bootstrap
 
-# 14日前公開のものに変更する場合
-make nix-update MIN_RELEASE_DAYS=14
-```
-
-### 更新を適用
-
-```sh
-make nix
+# mise.toml から外したHomebrewのパッケージを削除
+make brew-prune
 ```

@@ -8,8 +8,8 @@ help:
 	@echo "make all            #=> Deploying and installing"
 	@echo "make update         #=> Fetch changes"
 	@echo "make install        #=> Setup environment"
-	@echo "make nix-update     #=> Update nixpkgs flake input"
-	@echo "make nix-gc         #=> GC old Nix generations"
+	@echo "make bootstrap      #=> Apply mise bootstrap (packages, dotfiles, macOS defaults)"
+	@echo "make brew-prune     #=> Uninstall Homebrew packages no longer declared"
 	@echo "make rust-update    #=> Update Rust crates"
 
 .PHONY: update
@@ -29,57 +29,48 @@ brew-init:
 
 # }}}
 
-# nix {{{
+# mise bootstrap {{{
 
-MIN_RELEASE_DAYS ?= 7
-NIX := /nix/var/nix/profiles/default/bin/nix
-DARWIN_REBUILD := /run/current-system/sw/bin/darwin-rebuild
-GH := $(shell command -v gh 2>/dev/null)
-NIX_ACCESS_TOKENS = access-tokens = github.com=$$(gh auth token)
-NIX_CONFIG_EXPORT = $(if $(GH),export NIX_CONFIG="$(NIX_ACCESS_TOKENS)";)
+# brew_init 直後でも brew/mise を参照できるようにする
+export PATH := /opt/homebrew/bin:$(PATH)
 
 GHQ_ROOT ?= $(HOME)/.ghq
 DOTFILES_LOCAL_DIR ?= $(firstword $(wildcard $(GHQ_ROOT)/*/*/dotfiles.local))
 
-NIX_PRESERVE_ENV := NIX_CONFIG,HOST,PWD,DOTFILES_LOCAL_DIR,http_proxy,https_proxy
+# auto_updates trueのcaskアプリは自身の更新に委ねる
+export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS := 1
 
-.PHONY: nix-init
-nix-init: brew-init
-	./scripts/nix_init
+.PHONY: mise-init
+mise-init: brew-init
+	./scripts/mise_init
 
-.PHONY: nix
-nix: nix-init
-	@$(NIX_CONFIG_EXPORT) \
-	export HOST=$$(scutil --get LocalHostName); \
-	export DOTFILES_LOCAL_DIR="$(DOTFILES_LOCAL_DIR)"; \
-	if [ -x $(DARWIN_REBUILD) ]; then \
-		sudo --preserve-env=$(NIX_PRESERVE_ENV) $(DARWIN_REBUILD) switch --flake . --impure; \
-	else \
-		sudo --preserve-env=$(NIX_PRESERVE_ENV) $(NIX) run nix-darwin -- switch --flake . --impure; \
+# DOTFILES_LOCAL_DIR の mise.local.toml を取り込む（@DOTFILES_LOCAL_DIR@ は実際のパスに置換する）
+.PHONY: mise-local
+mise-local:
+	@dir=$$(cd $(or $(DOTFILES_LOCAL_DIR),/nonexistent) 2>/dev/null && pwd); \
+	if [ -n "$$dir" ] && [ -f "$$dir/mise.local.toml" ]; then \
+		sed "s|@DOTFILES_LOCAL_DIR@|$$dir|g" "$$dir/mise.local.toml" >mise.local.toml; \
 	fi
 
-.PHONY: nix-update
-nix-update:
-	@$(NIX_CONFIG_EXPORT) \
-	COMMIT=$$(curl -sf $(if $(GH),-H "Authorization: token $$(gh auth token)") "https://api.github.com/repos/NixOS/nixpkgs/commits?sha=nixpkgs-unstable&until=$$(/bin/date -v-$(MIN_RELEASE_DAYS)d +%Y-%m-%dT00:00:00Z)&per_page=1" | jq -re '.[0].sha') || { echo "Failed to fetch nixpkgs commit"; exit 1; }; \
-	echo "Updating nixpkgs to commit: $$COMMIT ($(MIN_RELEASE_DAYS) days old)" && \
-	$(NIX) flake update nixpkgs --override-input nixpkgs "github:NixOS/nixpkgs/$$COMMIT" && \
-	$(NIX) flake update home-manager && \
-	$(NIX) flake update nix-darwin
+.PHONY: bootstrap
+bootstrap: mise-init mise-local
+	mise trust --quiet mise.toml
+	@if [ -f mise.local.toml ]; then mise trust --quiet mise.local.toml; fi
+	mise bootstrap --yes --update
+	mise bootstrap packages upgrade --yes
+# mise は自身でインストールしていないcaskを更新しないので、brewで更新する
+	brew upgrade --cask
 
-GC_OLDER_THAN_DAYS ?= 14
-
-.PHONY: nix-gc
-nix-gc:
-	nix-collect-garbage --delete-older-than $(GC_OLDER_THAN_DAYS)d
-	sudo -E nix-collect-garbage --delete-older-than $(GC_OLDER_THAN_DAYS)d
-	$(NIX) store optimise
+# 宣言から外したformulaを削除する（caskはmiseがインストールしたものだけが対象）
+.PHONY: brew-prune
+brew-prune: mise-local
+	mise bootstrap packages prune --manager brew
+	mise bootstrap packages prune --manager brew-cask
 
 # }}}
 
 .PHONY: mise
-mise: nix
-	mise install -y
+mise: bootstrap
 	mise up
 
 .PHONY: rust-update
@@ -87,16 +78,16 @@ rust-update: mise
 	cargo install-update -a
 
 .PHONY: bat
-bat: nix
+bat: bootstrap
 	./scripts/bat
 	cd ~/.config/bat && bat cache --build
 
 .PHONY: silicon
-silicon: nix
+silicon: bootstrap
 	cd ~/.config/bat && silicon --build-cache
 
 .PHONY: navi
-navi: nix
+navi: bootstrap
 	./scripts/navi
 
 .PHONY: sheldon
@@ -108,5 +99,5 @@ claude:
 	./scripts/claude
 
 .PHONY: herdr
-herdr: nix
+herdr: bootstrap
 	./scripts/herdr

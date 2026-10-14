@@ -50,5 +50,6 @@ sops = "latest"
 
 terraform = "latest"
 terraform-docs = "latest"
+tflint = "latest"
 
 tree-sitter = "latest"

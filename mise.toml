@@ -1,0 +1,468 @@
+# `make` (= `mise bootstrap`) で適用するマシン全体の設定
+# 常用ツールのバージョン管理は ~/.config/mise/config.toml の [tools] で行います
+# マシン固有の設定は $DOTFILES_LOCAL_DIR/mise.local.toml に書き、make 実行時にこのディレクトリへコピーします
+
+# Homebrew {{{
+
+[bootstrap.packages]
+# Core utilities
+# NOTE: /usr/bin/make は xcode-select の shim なので、Xcode更新後にライセンス同意が必要になるので自前で入れる
+"brew:coreutils" = "latest"
+"brew:curl" = "latest"
+"brew:gnu-sed" = "latest"
+"brew:gnu-tar" = "latest"
+"brew:grep" = "latest"
+"brew:make" = "latest"
+"brew:sqlite" = "latest"
+"brew:gnu-getopt" = "latest"
+"brew:less" = "latest"
+"brew:rsync" = "latest"
+"brew:watch" = "latest"
+"brew:lsof" = "latest"
+
+# Build tools
+"brew:autoconf" = "latest"
+"brew:automake" = "latest"
+"brew:cmake" = "latest"
+"brew:pkgconf" = "latest"
+"brew:llvm" = "latest"
+
+# ネイティブ拡張のビルド時に使うライブラリー（ruby-buildなどはbrewで入れたものしか使えない）
+"brew:boost" = "latest"
+"brew:gdbm" = "latest"
+"brew:gettext" = "latest"
+"brew:gmp" = "latest"
+"brew:libgit2" = "latest"
+"brew:libsodium" = "latest"
+"brew:libyaml" = "latest"
+"brew:mysql-client" = "latest"
+"brew:openssl@4" = "latest"
+"brew:readline" = "latest"
+
+# Git
+"brew:git" = "latest"
+"brew:hub" = "latest"
+"brew:ghq" = "latest"
+"brew:git-extras" = "latest"
+
+# CLI Tools
+"brew:bat" = "latest"
+"brew:dust" = "latest"
+"brew:eza" = "latest"
+"brew:fd" = "latest"
+"brew:git-delta" = "latest"
+"brew:difftastic" = "latest"
+"brew:ripgrep" = "latest"
+"brew:sd" = "latest"
+"brew:silicon" = "latest"
+"brew:grex" = "latest"
+"brew:rm-improved" = "latest"
+"brew:fzf" = "latest"
+"brew:xh" = "latest"
+"brew:jo" = "latest"
+"brew:catimg" = "latest"
+"brew:lynx" = "latest"
+
+# Shell
+"brew:mise" = "latest"
+"brew:starship" = "latest"
+"brew:sheldon" = "latest"
+"brew:herdr" = "latest"
+"brew:lazygit" = "latest"
+"brew:direnv" = "latest"
+"brew:navi" = "latest"
+"brew:ryooooooga/tap/zabrze" = "latest"
+
+# Development tools
+"brew:protobuf" = "latest"
+"brew:graphviz" = "latest"
+"brew:imagemagick" = "latest"
+"brew:vhs" = "latest"
+"brew:jj" = "latest"
+
+# LSP Servers
+"brew:bash-language-server" = "latest"
+"brew:vscode-langservers-extracted" = "latest"
+"brew:jdtls" = "latest"
+"brew:kotlin-language-server" = "latest"
+"brew:lua-language-server" = "latest"
+"brew:markdownlint-cli2" = "latest"
+"brew:solargraph" = "latest"
+"brew:tailwindcss-language-server" = "latest"
+"brew:terraform-ls" = "latest"
+"brew:typescript-language-server" = "latest"
+
+# Linters/Formatters
+"brew:actionlint" = "latest"
+"brew:black" = "latest"
+"brew:cspell" = "latest"
+"brew:dprint" = "latest"
+"brew:gopls" = "latest"
+"brew:hadolint" = "latest"
+"brew:shellcheck" = "latest"
+"brew:shfmt" = "latest"
+"brew:stylua" = "latest"
+"brew:oxlint" = "latest"
+
+# Database clients
+"brew:postgresql@18" = "latest"
+"brew:redis" = "latest"
+"brew:mycli" = "latest"
+"brew:pgcli" = "latest"
+
+# Container Tools
+"brew:lazydocker" = "latest"
+"brew:dive" = "latest"
+
+# Utilities
+"brew:mas" = "latest"
+"brew:ical-buddy" = "latest"
+"brew:totp-cli" = "latest"
+"brew:gibo" = "latest"
+"brew:pass" = "latest"
+"brew:rage" = "latest"
+"brew:tree" = "latest" # for passage
+"brew:qrencode" = "latest" # for passage
+"brew:csvq" = "latest"
+"brew:dyff" = "latest"
+
+# Tools for macOS
+"brew:blueutil" = "latest"
+"brew:pinentry-mac" = "latest"
+"brew:pngpaste" = "latest"
+"brew:pam-reattach" = "latest"
+
+# Casks
+"brew-cask:altair-graphql-client" = "latest"
+"brew-cask:alt-tab" = "latest"
+"brew-cask:azookey" = "latest"
+"brew-cask:1password" = "latest"
+"brew-cask:box-drive" = "latest"
+"brew-cask:claude" = "latest"
+"brew-cask:cleanshot" = "latest"
+"brew-cask:deskpad" = "latest"
+"brew-cask:devtoys" = "latest"
+"brew-cask:docker-desktop" = "latest"
+"brew-cask:figma" = "latest"
+"brew-cask:finicky" = "latest"
+"brew-cask:gcloud-cli" = "latest"
+"brew-cask:ghostty@tip" = "latest"
+"brew-cask:itsycal" = "latest"
+"brew-cask:karabiner-elements" = "latest"
+"brew-cask:keycastr" = "latest"
+"brew-cask:obsidian" = "latest"
+"brew-cask:onedrive" = "latest"
+"brew-cask:raycast" = "latest"
+"brew-cask:rectangle" = "latest"
+"brew-cask:slack" = "latest"
+"brew-cask:thaw" = "latest"
+"brew-cask:wezterm" = "latest"
+"brew-cask:visual-studio-code" = "latest"
+
+"brew-cask:google-chrome" = "latest"
+"brew-cask:vivaldi" = "latest"
+"brew-cask:microsoft-edge" = "latest"
+
+"brew-cask:font-biz-udpgothic" = "latest"
+"brew-cask:font-udev-gothic-nf" = "latest"
+"brew-cask:font-0xproto-nerd-font" = "latest"
+"brew-cask:font-monaspace" = "latest"
+"brew-cask:hanasuke/moralerspace/font-moralerspace" = "latest"
+
+# Mac App Store
+"mas:497799835" = "latest" # Xcode
+
+# }}}
+
+# dotfiles {{{
+
+[dotfiles]
+"~/.bashrc" = { source = ".bashrc", mode = "symlink" }
+"~/.bin" = { source = ".bin", mode = "symlink" }
+"~/.cargo" = { source = ".cargo", mode = "symlink" }
+"~/.config" = { source = ".config", mode = "symlink" }
+"~/.curlrc" = { source = ".curlrc", mode = "symlink" }
+"~/.default-cargo-crates" = { source = ".default-cargo-crates", mode = "symlink" }
+"~/.default-gems" = { source = ".default-gems", mode = "symlink" }
+"~/.default-go-packages" = { source = ".default-go-packages", mode = "symlink" }
+"~/.default-npm-packages" = { source = ".default-npm-packages", mode = "symlink" }
+"~/.default-python-packages" = { source = ".default-python-packages", mode = "symlink" }
+"~/.direnvrc" = { source = ".direnvrc", mode = "symlink" }
+"~/.editorconfig" = { source = ".editorconfig", mode = "symlink" }
+"~/.editrc" = { source = ".editrc", mode = "symlink" }
+"~/.irbrc" = { source = ".irbrc", mode = "symlink" }
+"~/.myclirc" = { source = ".myclirc", mode = "symlink" }
+"~/.npmrc" = { source = ".npmrc", mode = "symlink" }
+"~/.prettierignore" = { source = ".prettierignore", mode = "symlink" }
+"~/.textlintrc.yaml" = { source = ".textlintrc.yaml", mode = "symlink" }
+"~/.zshenv" = { source = ".zshenv", mode = "symlink" }
+"~/.zshrc" = { source = ".zshrc", mode = "symlink" }
+
+# passage はHomebrewやmiseで配布されていないので、cloneして post-repos hook で ~/.local にインストールする
+# NOTE: symlink だと $0 基準で platform/darwin.sh を探すため macOS 用の clip/getopt が読み込まれない
+[bootstrap.repos."~/.ghq/github.com/FiloSottile/passage"]
+url = "https://github.com/FiloSottile/passage.git"
+ref = "1.7.4a2"
+
+# }}}
+
+# macOS defaults {{{
+
+[bootstrap.macos.defaults."com.apple.menuextra.clock"]
+IsAnalog = true
+Show24Hour = true
+ShowSeconds = true
+
+[bootstrap.macos.defaults."com.apple.dock"]
+# Dockのアイコンサイズ
+tilesize = 48
+# Dockの自動非表示
+autohide = true
+# アプリ起動時のアニメーション
+launchanim = true
+# 起動中アプリのインジケーターを表示
+show-process-indicators = true
+# 最近使ったアプリをDockに表示
+show-recents = false
+# 4本指スプレッドでデスクトップ表示
+showDesktopGestureEnabled = true
+# 4本指上下スワイプでMission Control
+showMissionControlGestureEnabled = true
+# App Exposéジェスチャー
+showAppExposeGestureEnabled = false
+# Launchpadジェスチャー
+showLaunchpadGestureEnabled = false
+
+# 内蔵トラックパッドとBluetoothトラックパッドで同じ設定にする
+[bootstrap.macos.defaults."com.apple.AppleMultitouchTrackpad"]
+# タップでクリック
+Clicking = true
+# 2本指で右クリック
+TrackpadRightClick = true
+TrackpadCornerSecondaryClick = 0
+# 調べる＆データ検出
+ForceSuppressed = false
+# 3本指タップでの調べるは無効
+TrackpadThreeFingerTapGesture = 0
+# 静音クリック（0: 有効, 1: 無効）
+ActuationStrength = 0
+FirstClickThreshold = 2
+SecondClickThreshold = 2
+# 拡大縮小 / スマートズーム / 回転
+TrackpadPinch = true
+TrackpadTwoFingerDoubleTapGesture = true
+TrackpadRotate = true
+# ページ間スワイプ無効、フルスクリーン切替は4本指横スワイプ
+TrackpadThreeFingerHorizSwipeGesture = 0
+TrackpadFourFingerHorizSwipeGesture = 2
+# Mission Controlを4本指縦スワイプに割り当て
+TrackpadThreeFingerVertSwipeGesture = 0
+TrackpadFourFingerVertSwipeGesture = 2
+# 慣性スクロール
+TrackpadMomentumScroll = true
+# 3本指ドラッグ
+Dragging = false
+TrackpadThreeFingerDrag = false
+
+[bootstrap.macos.defaults."com.apple.driver.AppleBluetoothMultitouch.trackpad"]
+Clicking = true
+TrackpadRightClick = true
+TrackpadCornerSecondaryClick = 0
+ForceSuppressed = false
+TrackpadThreeFingerTapGesture = 0
+ActuationStrength = 0
+FirstClickThreshold = 2
+SecondClickThreshold = 2
+TrackpadPinch = true
+TrackpadTwoFingerDoubleTapGesture = true
+TrackpadRotate = true
+TrackpadThreeFingerHorizSwipeGesture = 0
+TrackpadFourFingerHorizSwipeGesture = 2
+TrackpadThreeFingerVertSwipeGesture = 0
+TrackpadFourFingerVertSwipeGesture = 2
+TrackpadMomentumScroll = true
+Dragging = false
+TrackpadThreeFingerDrag = false
+
+[bootstrap.macos.defaults."com.apple.universalaccess"]
+mouseDriverCursorSize = 3.0
+
+[bootstrap.macos.defaults."com.apple.finder"]
+# ソート時にフォルダを優先して表示
+_FXSortFoldersFirst = true
+# タイトルバーにフルパス表示
+_FXShowPosixPathInTitle = true
+# 隠しファイル表示
+AppleShowAllFiles = true
+# 拡張子を表示
+AppleShowAllExtensions = true
+# 拡張子変更の警告
+FXEnableExtensionChangeWarning = false
+# finderの終了ができるように
+QuitMenuItem = true
+# パスバーの有効化
+ShowPathbar = true
+# ステータスバーの有効化
+ShowStatusBar = true
+# デスクトップにディスクを表示しない
+ShowExternalHardDrivesOnDesktop = false
+ShowHardDrivesOnDesktop = false
+ShowMountedServersOnDesktop = false
+ShowRemovableMediaOnDesktop = false
+
+[bootstrap.macos.defaults.NSGlobalDomain]
+# 拡張子を常に表示
+AppleShowAllExtensions = true
+# ナチュラルスクロール
+"com.apple.swipescrolldirection" = true
+# ページ間スワイプを無効化
+AppleEnableSwipeNavigateWithScrolls = false
+# 音量変更時の音
+"com.apple.sound.beep.feedback" = 0
+# ダークモード
+AppleInterfaceStyle = "Dark"
+AppleKeyboardUIMode = 3
+# キー長押し時のアクセント入力を有効化
+ApplePressAndHoldEnabled = false
+# 調べる＆データ検出
+"com.apple.trackpad.forceClick" = false
+"com.apple.trackpad.scaling" = 3.0
+# キーリピート開始までの待ち時間
+InitialKeyRepeat = 10
+# キーリピート速度（小さいほど速い）
+KeyRepeat = 1
+# Cmd と Ctrl を押している時にのドラッグでウィンドウを移動できるように
+NSWindowShouldDragOnGesture = true
+# 入力補助の自動置換系を無効化
+NSAutomaticCapitalizationEnabled = false
+NSAutomaticDashSubstitutionEnabled = false
+NSAutomaticPeriodSubstitutionEnabled = false
+NSAutomaticQuoteSubstitutionEnabled = false
+NSAutomaticSpellingCorrectionEnabled = false
+
+[bootstrap.macos.defaults."com.apple.desktopservices"]
+# Avoid creating .DS_Store files on network or USB volumes
+DSDontWriteNetworkStores = true
+DSDontWriteUSBStores = true
+
+[bootstrap.macos.defaults."com.apple.screencapture"]
+name = "ScreenShot"
+show-thumbnail = false
+
+[bootstrap.macos.defaults."com.apple.AdLib"]
+allowApplePersonalizedAdvertising = false
+
+[bootstrap.macos.defaults."com.microsoft.VSCode"]
+ApplePressAndHoldEnabled = false
+
+[[bootstrap.macos.defaults_entries]]
+domain = "NSGlobalDomain"
+key = "AppleLanguages"
+value = ["en", "ja"]
+
+[[bootstrap.macos.defaults_entries]]
+domain = "NSGlobalDomain"
+key = "NSUserKeyEquivalents"
+path = ["Minimize"]
+value = "~@m"
+
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.Music"
+key = "AppleLanguages"
+value = ["ja"]
+
+# Spotlight検索を無効化
+# ref. https://qiita.com/ry0f/items/f2c75f0a77b1012182d6
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.symbolichotkeys"
+key = "AppleSymbolicHotKeys"
+path = ["64"]
+value = { enabled = false, value = { parameters = [32, 49, 1048576], type = "standard" } }
+
+# Finder検索ウィンドウを無効化
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.symbolichotkeys"
+key = "AppleSymbolicHotKeys"
+path = ["65"]
+value = { enabled = false, value = { parameters = [65535, 49, 1572864], type = "standard" } }
+
+# CleanShotを使用するためScreenshot and recording optionsを無効化
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.symbolichotkeys"
+key = "AppleSymbolicHotKeys"
+path = ["28"]
+value = { enabled = false }
+
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.symbolichotkeys"
+key = "AppleSymbolicHotKeys"
+path = ["29"]
+value = { enabled = false }
+
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.symbolichotkeys"
+key = "AppleSymbolicHotKeys"
+path = ["30"]
+value = { enabled = false }
+
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.symbolichotkeys"
+key = "AppleSymbolicHotKeys"
+path = ["31"]
+value = { enabled = false }
+
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.symbolichotkeys"
+key = "AppleSymbolicHotKeys"
+path = ["184"]
+value = { enabled = false }
+
+# Move focus to next windowをAlt + Tabに
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.symbolichotkeys"
+key = "AppleSymbolicHotKeys"
+path = ["27"]
+value = { enabled = true, value = { parameters = [65535, 48, 524288], type = "standard" } }
+
+# }}}
+
+# Enable touch ID for sudo {{{
+
+[bootstrap.files."/etc/pam.d/sudo_local"]
+owner = "root"
+group = "wheel"
+mode = "0444"
+# nix-darwin が張った /etc/static への symlink を置き換える
+replace = true
+content = """
+# Written by mise bootstrap
+auth       optional       /opt/homebrew/lib/pam/pam_reattach.so
+auth       sufficient     pam_tid.so
+"""
+
+# }}}
+
+[bootstrap.hooks]
+# サードパーティのtapをHomebrewに信頼させる（未tapでも登録でき、登録済みなら何もしない）
+pre-packages = "brew trust --tap daipeihust/tap ryooooooga/tap hanasuke/moralerspace"
+post-packages = [
+  # im-select の formula は sha256 が空で mise が評価できないので、brew で直接入れる
+  # NOTE: [bootstrap.packages] に無いので `make brew-prune` では削除対象になる（次の make で入れ直される）
+  "brew list --formula im-select >/dev/null 2>&1 || brew install daipeihust/tap/im-select",
+  # openssl のメジャーバージョンが上がったら知らせる（"brew:openssl@N" を更新するかの判断用）
+  # NOTE: [bootstrap.packages] のキーには変数を使えないので、宣言中のバージョンはキーから読み取る
+  '''
+declared=$(sed -n 's/^"brew:\(openssl@[0-9]*\)".*/\1/p' "{{ config_root }}/mise.toml")
+latest=$(brew info openssl 2>/dev/null | sed -n '1s/^==> \([^:]*\):.*/\1/p')
+[ -z "$latest" ] || [ "$latest" = "$declared" ] || echo "NOTE: openssl の最新は ${latest} です（mise.toml は ${declared}）"
+''',
+]
+# NOTE: /usr/bin/make は xcode-select の shim なので、brew の gmake を使う
+post-repos = "gmake -C ~/.ghq/github.com/FiloSottile/passage install PREFIX=$HOME/.local WITH_ZSHCOMP=yes WITH_BASHCOMP=no WITH_FISHCOMP=no"
+post-dotfiles = "mkdir -p ~/ScreenShots"
+# macOS設定を再起動なしで即時反映する
+post-defaults = [
+  "killall cfprefsd || true",
+  "/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u",
+  "killall Dock || true",
+]
