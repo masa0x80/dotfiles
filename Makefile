@@ -58,7 +58,7 @@ bootstrap: mise-init mise-local
 	@if [ -f mise.local.toml ]; then mise trust --quiet mise.local.toml; fi
 	mise bootstrap --yes --update
 	mise bootstrap packages upgrade --yes
-# mise は自身でインストールしていないcaskを更新しないので、brewで更新する
+	# mise は自身でインストールしていないcaskを更新しないので、brewで更新する
 	brew upgrade --cask
 
 # 宣言から外したformulaを削除する（caskはmiseがインストールしたものだけが対象）
