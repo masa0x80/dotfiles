@@ -1,8 +1,7 @@
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
 minimum_release_age = "7d"
-# ↓Nix管理している関係で非グローバル設定となるので、mise-install/mise-upgrade時に環境変数で設定します
-# paranoid = true
+paranoid = true
 disable_backends = ["asdf"]
 
 [settings.github]
