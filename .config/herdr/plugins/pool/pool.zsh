@@ -14,9 +14,6 @@ setopt no_nomatch
 # herdr サーバーの環境は対話シェルとは限らないので、最低限の PATH を補う
 # （タブ名に使う current_dir が ~/.bin にあるので、そこも通す）
 path=(
-  /etc/profiles/per-user/$USER/bin(N-/)
-  /run/current-system/sw/bin(N-/)
-  /nix/var/nix/profiles/default/bin(N-/)
   /opt/homebrew/bin(N-/)
   $HOME/.bin.local(N-/)
   $HOME/.bin(N-/)
