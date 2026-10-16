@@ -32,7 +32,10 @@ brew-init:
 # mise bootstrap {{{
 
 # brew_init 直後でも brew/mise を参照できるようにする
+# NOTE: PATHが通ってない場合に brew や mise 見つからない場合がある
 export PATH := /opt/homebrew/bin:$(PATH)
+BREW := /opt/homebrew/bin/brew
+MISE := /opt/homebrew/bin/mise
 
 GHQ_ROOT ?= $(HOME)/.ghq
 DOTFILES_LOCAL_DIR ?= $(firstword $(wildcard $(GHQ_ROOT)/*/*/dotfiles.local))
@@ -54,24 +57,24 @@ mise-local:
 
 .PHONY: bootstrap
 bootstrap: mise-init mise-local
-	mise trust --quiet mise.toml
-	@if [ -f mise.local.toml ]; then mise trust --quiet mise.local.toml; fi
-	mise bootstrap --yes --update
-	mise bootstrap packages upgrade --yes
+	$(MISE) trust --quiet mise.toml
+	@if [ -f mise.local.toml ]; then $(MISE) trust --quiet mise.local.toml; fi
+	$(MISE) bootstrap --yes --update
+	$(MISE) bootstrap packages upgrade --yes
 	@ # mise は自身でインストールしていないcaskを更新しないので、brewで更新する
-	brew upgrade --cask
+	$(BREW) upgrade --cask
 
 # 宣言から外したformulaを削除する（caskはmiseがインストールしたものだけが対象）
 .PHONY: brew-prune
 brew-prune: mise-local
-	mise bootstrap packages prune --manager brew
-	mise bootstrap packages prune --manager brew-cask
+	$(MISE) bootstrap packages prune --manager brew
+	$(MISE) bootstrap packages prune --manager brew-cask
 
 # }}}
 
 .PHONY: mise
 mise: bootstrap
-	mise up
+	$(MISE) up
 
 .PHONY: rust-update
 rust-update: mise
