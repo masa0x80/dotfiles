@@ -62,6 +62,17 @@ for file (
 
 typeset -U path PATH
 path=(
+  # keg-only
+  /opt/homebrew/opt/curl/bin(N-/)
+  /opt/homebrew/opt/sqlite/bin(N-/)
+
+  # GNU tools
+  /opt/homebrew/opt/gnu-getopt/bin(N-/)
+  /opt/homebrew/opt/grep/libexec/gnubin(N-/)
+  /opt/homebrew/opt/coreutils/libexec/gnubin(N-/)
+  /opt/homebrew/opt/gnu-sed/libexec/gnubin(N-/)
+  /opt/homebrew/opt/gnu-tar/libexec/gnubin(N-/)
+
   # golang
   $GOPATH/bin(N-/)
 
