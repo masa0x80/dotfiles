@@ -40,6 +40,9 @@ MISE := /opt/homebrew/bin/mise
 GHQ_ROOT ?= $(HOME)/.ghq
 DOTFILES_LOCAL_DIR ?= $(firstword $(wildcard $(GHQ_ROOT)/*/*/dotfiles.local))
 
+# .zshenv 未適用の初回実行でも node の default packages を読めるようにする
+export MISE_NODE_DEFAULT_PACKAGES_FILE ?= $(HOME)/.config/mise/default-npm-packages
+
 # auto_updates trueのcaskアプリは自身の更新に委ねる
 export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS := 1
 

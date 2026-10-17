@@ -2,16 +2,22 @@
 /.*
 
 !/.gitignore
+!/bash
 !/bat
 !/cspell
+!/curl
 !/dprint
+!/editline
 !/fence
 !/git
 !/ghostty
+!/irb
 !/lazygit
 !/markdownlint
 !/markdown-preview
 !/mise
+!/mycli
+!/npm
 !/nvim
 !/pry
 !/ripgrep

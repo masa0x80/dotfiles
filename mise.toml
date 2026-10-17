@@ -177,26 +177,15 @@
 # dotfiles {{{
 
 [dotfiles]
-"~/.bashrc" = { source = ".bashrc", mode = "symlink" }
 "~/.bin" = { source = ".bin", mode = "symlink" }
 "~/.cargo" = { source = ".cargo", mode = "symlink" }
 "~/.config" = { source = ".config", mode = "symlink" }
-"~/.curlrc" = { source = ".curlrc", mode = "symlink" }
-"~/.default-cargo-crates" = { source = ".default-cargo-crates", mode = "symlink" }
-"~/.default-gems" = { source = ".default-gems", mode = "symlink" }
-"~/.default-go-packages" = { source = ".default-go-packages", mode = "symlink" }
-"~/.default-npm-packages" = { source = ".default-npm-packages", mode = "symlink" }
-"~/.default-python-packages" = { source = ".default-python-packages", mode = "symlink" }
-"~/.direnvrc" = { source = ".direnvrc", mode = "symlink" }
 "~/.editorconfig" = { source = ".editorconfig", mode = "symlink" }
-"~/.editrc" = { source = ".editrc", mode = "symlink" }
-"~/.irbrc" = { source = ".irbrc", mode = "symlink" }
-"~/.myclirc" = { source = ".myclirc", mode = "symlink" }
-"~/.npmrc" = { source = ".npmrc", mode = "symlink" }
 "~/.prettierignore" = { source = ".prettierignore", mode = "symlink" }
-"~/.textlintrc.yaml" = { source = ".textlintrc.yaml", mode = "symlink" }
-"~/.zshenv" = { source = ".zshenv", mode = "symlink" }
-"~/.zshrc" = { source = ".zshrc", mode = "symlink" }
+# XDG Base Directoryに対応していないもの
+"~/.bashrc" = { source = ".config/bash/bashrc", mode = "symlink" }
+"~/.textlintrc.yaml" = { source = ".config/textlint/textlintrc.yaml", mode = "symlink" }
+"~/.zshenv" = { source = ".config/zsh/.zshenv", mode = "symlink" }
 
 # passage はHomebrewやmiseで配布されていないので、cloneして post-repos hook で ~/.local にインストールする
 # NOTE: symlink だと $0 基準で platform/darwin.sh を探すため macOS 用の clip/getopt が読み込まれない

@@ -7,8 +7,17 @@ disable_backends = ["asdf"]
 [settings.github]
 use_git_credentials = true
 
+[settings.go]
+default_packages_file = "~/.config/mise/default-go-packages"
+
 [settings.node]
 gpg_verify = false
+
+[settings.python]
+default_packages_file = "~/.config/mise/default-python-packages"
+
+[settings.ruby]
+default_packages_file = "~/.config/mise/default-gems"
 
 [tools]
 "aqua:aws/session-manager-plugin" = "latest"

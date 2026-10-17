@@ -32,6 +32,12 @@ export GOPATH=$HOME/go
 # RIPGREP
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/ripgreprc
 
+# XDG Base Directoryに寄せる
+export CURL_HOME=$XDG_CONFIG_HOME/curl
+export EDITRC=$XDG_CONFIG_HOME/editline/editrc
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export MISE_NODE_DEFAULT_PACKAGES_FILE=$XDG_CONFIG_HOME/mise/default-npm-packages
+
 # rails (for rails server alias)
 export RAILS_SERVER_PORT=3000
 

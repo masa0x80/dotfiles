@@ -13,7 +13,6 @@ cword
 dbname
 deno
 devtoys
-direnvrc
 divx
 dont
 dosini
