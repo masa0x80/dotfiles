@@ -328,6 +328,8 @@ NSAutomaticDashSubstitutionEnabled = false
 NSAutomaticPeriodSubstitutionEnabled = false
 NSAutomaticQuoteSubstitutionEnabled = false
 NSAutomaticSpellingCorrectionEnabled = false
+NSAutomaticTextCompletionEnabled = false
+WebAutomaticSpellingCorrectionEnabled = false
 
 [bootstrap.macos.defaults."com.apple.desktopservices"]
 # Avoid creating .DS_Store files on network or USB volumes
@@ -343,6 +345,10 @@ allowApplePersonalizedAdvertising = false
 
 [bootstrap.macos.defaults."com.microsoft.VSCode"]
 ApplePressAndHoldEnabled = false
+
+# azooKey
+[bootstrap.macos.defaults."dev.ensan.inputmethod.azooKeyMac"]
+"dev.ensan.inputmethod.azooKeyMac.preference.enableLiveConversion" = false
 
 [[bootstrap.macos.defaults_entries]]
 domain = "NSGlobalDomain"
