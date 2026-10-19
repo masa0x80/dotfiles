@@ -65,7 +65,7 @@ bootstrap: mise-init mise-local
 	$(MISE) bootstrap --yes --update
 	$(MISE) bootstrap packages upgrade --yes
 	@ # mise は自身でインストールしていないcaskを更新しないので、brewで更新する
-	$(BREW) upgrade --cask
+	$(BREW) upgrade --cask --yes
 
 # 宣言から外したformulaを削除する（caskはmiseがインストールしたものだけが対象）
 .PHONY: brew-prune
