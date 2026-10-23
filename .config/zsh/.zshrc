@@ -43,6 +43,9 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 (( ${+commands[sheldon]} )) && eval "$(sheldon source)"
 (( ${+commands[starship]} )) && eval "$(starship init zsh)"
+# NOTE: 親プロセスから引き継いだ古い __MISE_ORIG_PATH が残っていると、
+#       それ以降に追加した PATH が末尾に回されるので捨てる
+unset __MISE_ORIG_PATH
 (( ${+commands[mise]} )) && eval "$(mise activate zsh)"
 (( ${+commands[fzf]} )) && eval "$(fzf --zsh)"
 (( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
