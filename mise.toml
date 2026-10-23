@@ -440,20 +440,9 @@ auth       sufficient     pam_tid.so
 [bootstrap.hooks]
 # サードパーティのtapをHomebrewに信頼させる（未tapでも登録でき、登録済みなら何もしない）
 pre-packages = "brew trust --tap daipeihust/tap ryooooooga/tap hanasuke/moralerspace"
-post-packages = [
-  # im-select の formula は sha256 が空で mise が評価できないので、brew で直接入れる
-  # NOTE: [bootstrap.packages] に無いので `make brew-prune` では削除対象になる（次の make で入れ直される）
-  "brew list --formula im-select >/dev/null 2>&1 || brew install daipeihust/tap/im-select",
-  # バージョン付きで宣言した formula（"brew:openssl@4" など）のメジャーバージョンが上がったら知らせる
-  # NOTE: [bootstrap.packages] のキーには変数を使えないので、宣言中のバージョンはキーから読み取る
-  '''
-sed -n 's/^"brew:\([a-z0-9-]*@[0-9]*\)".*/\1/p' "{{ config_root }}/mise.toml" | while read -r declared; do
-  name=${declared%@*}
-  latest=$(brew info "$name" 2>/dev/null | sed -n '1s/^==> \([^:]*\):.*/\1/p')
-  [ -z "$latest" ] || [ "$latest" = "$declared" ] || printf '\033[1;35m%s\033[0m\n' "NOTE: ${name} の最新は ${latest} です（mise.toml は ${declared}）"
-done
-''',
-]
+# im-select の formula は sha256 が空で mise が評価できないので、brew で直接入れる
+# NOTE: [bootstrap.packages] に無いので `make brew-prune` では削除対象になる（次の make で入れ直される）
+post-packages = "brew list --formula im-select >/dev/null 2>&1 || brew install daipeihust/tap/im-select"
 # NOTE: /usr/bin/make は xcode-select の shim なので、brew の gmake を使う
 post-repos = "gmake -C ~/.ghq/github.com/FiloSottile/passage install PREFIX=$HOME/.local WITH_ZSHCOMP=yes WITH_BASHCOMP=no WITH_FISHCOMP=no"
 post-dotfiles = "mkdir -p ~/ScreenShots"

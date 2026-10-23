@@ -10,6 +10,7 @@ help:
 	@echo "make install        #=> Setup environment"
 	@echo "make bootstrap      #=> Apply mise bootstrap (packages, dotfiles, macOS defaults)"
 	@echo "make brew-prune     #=> Uninstall Homebrew packages no longer declared"
+	@echo "make brew-check     #=> Check for newer major versions of versioned formulas"
 	@echo "make rust-update    #=> Update Rust crates"
 
 .PHONY: update
@@ -18,6 +19,13 @@ update:
 
 .PHONY: install
 install: mise bat silicon navi herdr sheldon claude
+	@ # ログに埋もれないよう、全タスクの完了後に表示する
+	@./scripts/brew_check_versions
+
+# バージョン付きで宣言した formula のメジャーバージョンが上がっているかを確認する
+.PHONY: brew-check
+brew-check:
+	@./scripts/brew_check_versions
 
 # brew {{{
 
@@ -62,7 +70,7 @@ mise-local:
 bootstrap: mise-init mise-local
 	$(MISE) trust --quiet mise.toml
 	@if [ -f mise.local.toml ]; then $(MISE) trust --quiet mise.local.toml; fi
-	$(MISE) bootstrap --yes --update
+	$(MISE) bootstrap --update --yes
 	$(MISE) bootstrap packages upgrade --yes
 	@ # mise は自身でインストールしていないcaskを更新しないので、brewで更新する
 	$(BREW) upgrade --cask --yes
