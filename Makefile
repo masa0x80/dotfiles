@@ -105,7 +105,7 @@ navi: bootstrap
 	./scripts/navi
 
 .PHONY: sheldon
-sheldon:
+sheldon: bootstrap
 	./scripts/sheldon
 
 .PHONY: claude

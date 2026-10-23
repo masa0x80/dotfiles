@@ -179,13 +179,54 @@
 [dotfiles]
 "~/.bin" = { source = ".bin", mode = "symlink" }
 "~/.cargo" = { source = ".cargo", mode = "symlink" }
-"~/.config" = { source = ".config", mode = "symlink" }
 "~/.editorconfig" = { source = ".editorconfig", mode = "symlink" }
 "~/.prettierignore" = { source = ".prettierignore", mode = "symlink" }
 # XDG Base Directoryに対応していないもの
 "~/.bashrc" = { source = ".config/bash/bashrc", mode = "symlink" }
 "~/.textlintrc.yaml" = { source = ".config/textlint/textlintrc.yaml", mode = "symlink" }
 "~/.zshenv" = { source = ".config/zsh/.zshenv", mode = "symlink" }
+
+# NOTE: ~/.config は実ディレクトリとし、管理対象を個別にsymlinkする
+"~/.config/bash" = { source = ".config/bash", mode = "symlink" }
+"~/.config/bat" = { source = ".config/bat", mode = "symlink" }
+"~/.config/cspell" = { source = ".config/cspell", mode = "symlink" }
+"~/.config/curl" = { source = ".config/curl", mode = "symlink" }
+"~/.config/dprint" = { source = ".config/dprint", mode = "symlink" }
+"~/.config/editline" = { source = ".config/editline", mode = "symlink" }
+"~/.config/fence" = { source = ".config/fence", mode = "symlink" }
+"~/.config/ghostty" = { source = ".config/ghostty", mode = "symlink" }
+"~/.config/git" = { source = ".config/git", mode = "symlink" }
+"~/.config/hadolint.yaml" = { source = ".config/hadolint.yaml", mode = "symlink" }
+"~/.config/herdr" = { source = ".config/herdr", mode = "symlink" }
+"~/.config/hub" = { source = ".config/hub", mode = "symlink" }
+"~/.config/irb" = { source = ".config/irb", mode = "symlink" }
+"~/.config/karabiner" = { source = ".config/karabiner", mode = "symlink" }
+"~/.config/lazygit" = { source = ".config/lazygit", mode = "symlink" }
+"~/.config/markdown-preview" = { source = ".config/markdown-preview", mode = "symlink" }
+"~/.config/markdownlint" = { source = ".config/markdownlint", mode = "symlink" }
+"~/.config/mycli" = { source = ".config/mycli", mode = "symlink" }
+"~/.config/npm" = { source = ".config/npm", mode = "symlink" }
+"~/.config/nvim" = { source = ".config/nvim", mode = "symlink" }
+"~/.config/pgcli" = { source = ".config/pgcli", mode = "symlink" }
+"~/.config/pry" = { source = ".config/pry", mode = "symlink" }
+"~/.config/ripgrep" = { source = ".config/ripgrep", mode = "symlink" }
+"~/.config/rubocop" = { source = ".config/rubocop", mode = "symlink" }
+"~/.config/sheldon" = { source = ".config/sheldon", mode = "symlink" }
+"~/.config/silicon" = { source = ".config/silicon", mode = "symlink" }
+"~/.config/starship" = { source = ".config/starship", mode = "symlink" }
+"~/.config/starship.toml" = { source = ".config/starship.toml", mode = "symlink" }
+"~/.config/starship2.toml" = { source = ".config/starship2.toml", mode = "symlink" }
+"~/.config/textlint" = { source = ".config/textlint", mode = "symlink" }
+"~/.config/wezterm" = { source = ".config/wezterm", mode = "symlink" }
+"~/.config/zabrze" = { source = ".config/zabrze", mode = "symlink" }
+"~/.config/zsh" = { source = ".config/zsh", mode = "symlink" }
+
+# NOTE: ~/.config/mise配下は conf.d を除外してファイル単位でsymlinkする
+"~/.config/mise/config.toml" = { source = ".config/mise/config.toml", mode = "symlink" }
+"~/.config/mise/default-gems" = { source = ".config/mise/default-gems", mode = "symlink" }
+"~/.config/mise/default-go-packages" = { source = ".config/mise/default-go-packages", mode = "symlink" }
+"~/.config/mise/default-npm-packages" = { source = ".config/mise/default-npm-packages", mode = "symlink" }
+"~/.config/mise/default-python-packages" = { source = ".config/mise/default-python-packages", mode = "symlink" }
 
 # passage はHomebrewやmiseで配布されていないので、cloneして post-repos hook で ~/.local にインストールする
 # NOTE: symlink だと $0 基準で platform/darwin.sh を探すため macOS 用の clip/getopt が読み込まれない
