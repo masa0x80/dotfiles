@@ -9,6 +9,7 @@ help:
 	@echo "make update         #=> Fetch changes"
 	@echo "make install        #=> Setup environment"
 	@echo "make bootstrap      #=> Apply mise bootstrap (packages, dotfiles, macOS defaults)"
+	@echo "make local          #=> Run the local target of \$$DOTFILES_LOCAL_DIR/Makefile"
 	@echo "make brew-prune     #=> Uninstall Homebrew packages no longer declared"
 	@echo "make brew-check     #=> Check for newer major versions of versioned formulas"
 	@echo "make rust-update    #=> Update Rust crates"
@@ -67,7 +68,7 @@ mise-local:
 	fi
 
 .PHONY: bootstrap
-bootstrap: mise-init mise-local
+bootstrap: mise-init mise-local local
 	$(MISE) trust --quiet mise.toml
 	@if [ -f mise.local.toml ]; then $(MISE) trust --quiet mise.local.toml; fi
 	$(MISE) bootstrap --update --yes
@@ -80,6 +81,13 @@ bootstrap: mise-init mise-local
 brew-prune: mise-local
 	$(MISE) bootstrap packages prune --manager brew
 	$(MISE) bootstrap packages prune --manager brew-cask
+
+.PHONY: local
+local: mise-init
+	@dir=$$(cd $(or $(DOTFILES_LOCAL_DIR),/nonexistent) 2>/dev/null && pwd); \
+	if [ -n "$$dir" ] && [ -f "$$dir/Makefile" ]; then \
+		$(MAKE) -C "$$dir" local DOTFILES_DIR=$(CURDIR); \
+	fi
 
 # }}}
 
