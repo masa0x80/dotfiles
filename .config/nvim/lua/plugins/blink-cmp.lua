@@ -133,6 +133,20 @@ return {
 					end
 				end,
 				providers = {
+					snippets = {
+						opts = {
+							-- NOTE: *.pu.md の場合は markdown と plantuml のスニペットを読み込む
+							get_filetype = function()
+								if vim.api.nvim_buf_get_name(0):match("%.pu%.md$") then
+									return "markdown_plantuml"
+								end
+								return vim.bo.filetype
+							end,
+							extended_filetypes = {
+								markdown_plantuml = { "markdown", "plantuml" },
+							},
+						},
+					},
 					copilot = {
 						name = "copilot",
 						module = "blink-copilot",
