@@ -185,6 +185,7 @@ return {
 		init = function()
 			vim.g.mkdp_filetypes = { "markdown", "mermaid", "plantuml" }
 			vim.g.mkdp_theme = "light"
+			vim.g.mkdp_refresh_slow = 1
 			local default_options = {
 				disable_sync_scroll = true,
 				uml = {
