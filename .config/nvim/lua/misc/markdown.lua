@@ -37,12 +37,74 @@ end
 
 local scripts = { hide_uml_img_style, custom_style(), image_zoom_script, alert_script, details_script }
 
+-- プレビュー用の挿入・削除は直前の変更に統合し、単独のundoブロックにしない
+-- undo直後はundojoinできない(E790)ので、その場合は新しい変更になる
+local function set_lines_joined(bufnr, start, end_, lines)
+	vim.api.nvim_buf_call(bufnr, function()
+		pcall(vim.cmd.undojoin)
+		vim.api.nvim_buf_set_lines(bufnr, start, end_, false, lines)
+	end)
+end
+
+-- redoで使われる変更(undotreeのcurhead)の番号
+local function find_redo_seq(entries)
+	for _, entry in ipairs(entries) do
+		if entry.curhead then
+			return entry.seq
+		end
+		local seq = entry.alt and find_redo_seq(entry.alt)
+		if seq then
+			return seq
+		end
+	end
+	return nil
+end
+
+-- 保存時の削除・挿入をする前のundoツリー上の位置と内容
+local function get_undo_state(bufnr)
+	return vim.api.nvim_buf_call(bufnr, function()
+		local tree = vim.fn.undotree()
+		return {
+			seq = tree.seq_cur,
+			redo_seq = find_redo_seq(tree.entries),
+			lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false),
+		}
+	end)
+end
+
+-- undo直後に保存すると、保存時の削除・挿入が新しい分岐になりredoできなくなるので、
+-- 内容が保存前と同じならundoツリー上の位置を保存前に戻す
+local function restore_undo_position(bufnr, state)
+	if not state or not vim.api.nvim_buf_is_valid(bufnr) then
+		return
+	end
+
+	vim.api.nvim_buf_call(bufnr, function()
+		if vim.fn.undotree().seq_cur == state.seq then
+			return
+		end
+		if not vim.deep_equal(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false), state.lines) then
+			return
+		end
+		local view = vim.fn.winsaveview()
+		if state.redo_seq then
+			-- redoが新しい分岐ではなく元の変更を辿るように、元の変更を経由して戻る
+			vim.cmd("silent undo " .. state.redo_seq)
+			vim.cmd("silent undo")
+		else
+			vim.cmd("silent undo " .. state.seq)
+		end
+		vim.fn.winrestview(view)
+		vim.bo[bufnr].modified = false
+	end)
+end
+
 local function insert_preview_script(bufnr)
 	local footer = { "" }
 	for _, script in ipairs(scripts) do
 		table.insert(footer, script)
 	end
-	vim.api.nvim_buf_set_lines(bufnr, -1, -1, false, footer)
+	set_lines_joined(bufnr, -1, -1, footer)
 	vim.bo[bufnr].modified = false
 end
 
@@ -62,7 +124,7 @@ local function remove_preview_script(bufnr)
 			if start > 0 and vim.api.nvim_buf_get_lines(bufnr, start - 1, start, false)[1] == "" then
 				start = start - 1
 			end
-			vim.api.nvim_buf_set_lines(bufnr, start, total, false, {})
+			set_lines_joined(bufnr, start, total, {})
 			return
 		end
 	end
@@ -91,7 +153,7 @@ local function remove_uml_images(bufnr)
 		if lines[i]:match(uml_img_pattern) or lines[i]:match(uml_error_pattern) then
 			-- 挿入時につけた直後の空行も消す
 			local last = lines[i + 1] == "" and i + 1 or i
-			vim.api.nvim_buf_set_lines(bufnr, i - 1, last, false, {})
+			set_lines_joined(bufnr, i - 1, last, {})
 		end
 	end
 end
@@ -242,49 +304,56 @@ local function render_uml(source, callback, attempt)
 	end)
 end
 
-local function refresh_uml_images(bufnr)
-	if vim.bo[bufnr].filetype == "markdown" then
-		remove_uml_images(bufnr)
+-- on_doneはSVG画像の挿入が終わったとき(挿入しないときはすぐ)に呼ばれる
+local function refresh_uml_images(bufnr, on_done)
+	on_done = on_done or function() end
+	if vim.bo[bufnr].filetype ~= "markdown" then
+		on_done()
+		return
+	end
 
-		local blocks = find_plantuml_blocks(bufnr)
-		if #blocks == 0 then
-			return
-		end
+	remove_uml_images(bufnr)
 
-		vim.fn.mkdir(tmp_dir, "p")
-		start_file_server()
+	local blocks = find_plantuml_blocks(bufnr)
+	if #blocks == 0 then
+		on_done()
+		return
+	end
 
-		local results = {}
-		local remaining = #blocks
-		for index, block in ipairs(blocks) do
-			render_uml(block.source, function(name)
-				if name then
-					table.insert(results, { lnum = block.lnum, line = uml_img_tag(name, index) })
-				else
-					table.insert(results, { lnum = block.lnum, line = uml_error_line })
-				end
+	vim.fn.mkdir(tmp_dir, "p")
+	start_file_server()
 
-				remaining = remaining - 1
-				if remaining > 0 then
+	local results = {}
+	local remaining = #blocks
+	for index, block in ipairs(blocks) do
+		render_uml(block.source, function(name)
+			if name then
+				table.insert(results, { lnum = block.lnum, line = uml_img_tag(name, index) })
+			else
+				table.insert(results, { lnum = block.lnum, line = uml_error_line })
+			end
+
+			remaining = remaining - 1
+			if remaining > 0 then
+				return
+			end
+
+			vim.schedule(function()
+				if not preview_bufnr or not vim.api.nvim_buf_is_valid(bufnr) then
 					return
 				end
 
-				vim.schedule(function()
-					if not preview_bufnr or not vim.api.nvim_buf_is_valid(bufnr) then
-						return
-					end
-
-					table.sort(results, function(a, b)
-						return a.lnum > b.lnum
-					end)
-					-- HTMLブロックは空行までが範囲なので、空行を挟む必要がある
-					for _, result in ipairs(results) do
-						vim.api.nvim_buf_set_lines(bufnr, result.lnum - 1, result.lnum - 1, false, { result.line, "" })
-					end
-					vim.bo[bufnr].modified = false
+				table.sort(results, function(a, b)
+					return a.lnum > b.lnum
 				end)
+				-- HTMLブロックは空行までが範囲なので、空行を挟む必要がある
+				for _, result in ipairs(results) do
+					set_lines_joined(bufnr, result.lnum - 1, result.lnum - 1, { result.line, "" })
+				end
+				vim.bo[bufnr].modified = false
+				on_done()
 			end)
-		end
+		end)
 	end
 end
 
@@ -309,11 +378,14 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 
 	local group_id = vim.api.nvim_create_augroup("MarkdownPreview", { clear = true })
 
+	local save_state = nil
+
 	local function pre_callback()
 		if not preview_bufnr then
 			return
 		end
 
+		save_state = get_undo_state(bufnr)
 		remove_preview_script(bufnr)
 		remove_uml_images(bufnr)
 	end
@@ -327,7 +399,11 @@ vim.api.nvim_create_user_command("MarkdownPreviewWrapper", function()
 			insert_preview_script(bufnr)
 		end
 
-		refresh_uml_images(bufnr)
+		local state = save_state
+		save_state = nil
+		refresh_uml_images(bufnr, function()
+			restore_undo_position(bufnr, state)
+		end)
 	end
 
 	local is_age = vim.fn.expand("%:t"):find(".age.", 1, true) ~= nil
