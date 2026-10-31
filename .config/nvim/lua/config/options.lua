@@ -65,6 +65,7 @@ local options = {
 		fold = "┊",
 	},
 	helplang = "ja,en",
+	exrc = true, -- カレントディレクトリの .nvim.lua を読み込む（初回は :trust で許可が必要）
 }
 
 for k, v in pairs(options) do
