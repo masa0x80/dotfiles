@@ -227,8 +227,8 @@ map("x", "y", function()
 end)
 
 -- https://zenn.dev/vim_jp/articles/43d021f461f3a4#visual-%3C%2C-%3E%E3%81%A7%E9%80%A3%E7%B6%9A%E3%81%97%E3%81%A6%E3%82%A4%E3%83%B3%E3%83%87%E3%83%B3%E3%83%88%E3%82%92%E6%93%8D%E4%BD%9C
-map("x", "<", "<gv", { desc = "Indent" })
-map("x", ">", ">gv", { desc = "Dedent" })
+map("x", "<", "<gv", { desc = "Dedent" })
+map("x", ">", ">gv", { desc = "Indent" })
 map("x", "<C-g><C-n>", ">gv", { desc = "Indent" })
 map("x", "<C-g><C-p>", "<gv", { desc = "Dedent" })
 

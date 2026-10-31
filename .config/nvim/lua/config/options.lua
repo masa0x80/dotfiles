@@ -49,7 +49,7 @@ local options = {
 		"./plugins",
 		"/usr/include",
 		vim.fn.expand("$DOTFILES_DIR/.config/nvim/lua"),
-		vim.fn.expand("$DOTFILES_DIR/.config/nvim/lua/config/plugins"),
+		vim.fn.expand("$DOTFILES_DIR/.config/nvim/lua/plugins"),
 		vim.fn.expand("$SCRAPBOOK_DIR"),
 	},
 	suffixesadd = { ".md", ".lua" },

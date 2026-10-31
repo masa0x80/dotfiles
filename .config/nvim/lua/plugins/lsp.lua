@@ -19,7 +19,16 @@ return {
 				virtual_text = {
 					prefix = "",
 					format = function(diagnostic)
-						return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+						local meta = {}
+						for _, v in ipairs({ "source", "code" }) do
+							if diagnostic[v] ~= nil and diagnostic[v] ~= "" then
+								table.insert(meta, tostring(diagnostic[v]))
+							end
+						end
+						if #meta == 0 then
+							return diagnostic.message
+						end
+						return string.format("%s (%s)", diagnostic.message, table.concat(meta, ": "))
 					end,
 				},
 			})

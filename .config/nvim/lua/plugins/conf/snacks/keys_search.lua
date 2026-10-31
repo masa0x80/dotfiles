@@ -139,20 +139,6 @@ return {
 		end,
 		desc = "Resume",
 	},
-	{
-		"<Leader>st",
-		function()
-			Snacks.picker.todo_comments()
-		end,
-		desc = "Todo",
-	},
-	{
-		"<Leader>sT",
-		function()
-			Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME", "XXX" } })
-		end,
-		desc = "Todo/Fix/Fixme/XXX",
-	},
 
 	{
 		"<Leader>su",
