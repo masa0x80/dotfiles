@@ -30,21 +30,5 @@ return {
 
 			vim.keymap.set("n", "<Leader>m", "<Cmd>NoiceAll<CR>", { desc = "Show All Messages" })
 		end,
-		dependencies = {
-			"rcarriga/nvim-notify",
-			version = "*",
-			keys = {
-				{
-					"<leader>un",
-					function()
-						require("notify").dismiss({ silent = true, pending = true })
-					end,
-					desc = "Dismiss all Notifications",
-				},
-			},
-			opts = {
-				timeout = 10000,
-			},
-		},
 	},
 }
