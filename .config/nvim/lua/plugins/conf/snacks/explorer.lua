@@ -6,6 +6,17 @@ M.opts = {
 	hidden = true,
 	ignored = true,
 	exclude = { ".claude/.cc-writes" },
+	transform = function(item)
+		if not (item.dir and vim.fs.basename(item.file) == ".claude") then
+			return
+		end
+		for name in vim.fs.dir(item.file) do
+			if name ~= ".cc-writes" then
+				return
+			end
+		end
+		return false
+	end,
 	win = {
 		list = {
 			keys = {
