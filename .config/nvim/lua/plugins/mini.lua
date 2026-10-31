@@ -1,13 +1,13 @@
 return {
 	{
-		"nvim-mini/mini.nvim",
+		"nvim-mini/mini.extra",
 		version = "*",
-		lazy = false,
 	},
 	{
 		"nvim-mini/mini.ai",
 		version = "*",
 		event = "VeryLazy",
+		dependencies = { "nvim-mini/mini.extra" },
 		config = function()
 			local gen_ai_spec = require("mini.extra").gen_ai_spec
 			require("mini.ai").setup({
@@ -19,7 +19,13 @@ return {
 					N = gen_ai_spec.number(),
 				},
 			})
-
+		end,
+	},
+	{
+		"nvim-mini/mini.clue",
+		version = "*",
+		event = "VeryLazy",
+		config = function()
 			local function mode_nx(keys)
 				return { mode = "n", keys = keys }, { mode = "x", keys = keys }
 			end
