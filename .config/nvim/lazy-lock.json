@@ -1,7 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e51f2b142d88bb666dcaa77d93a07f4b419aca70" },
   "CopilotChat.nvim": { "branch": "main", "commit": "1e06be97df058fa0bb4af54659c39918a4999c86" },
-  "LuaSnip": { "branch": "master", "commit": "642b0c595e11608b4c18219e93b88d7637af27bc" },
   "blink-copilot": { "branch": "main", "commit": "41e91a659bd9b8cba9ba2ea68a69b52ba5a9ebd8" },
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
   "calendar-vim": { "branch": "master", "commit": "a7e73e02c92566bf427b2a1d6a61a8f23542cc21" },
