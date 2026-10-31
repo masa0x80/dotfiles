@@ -1,4 +1,5 @@
 local conf = require("plugins.conf.snacks")
+local kensaku = require("plugins.conf.snacks.kensaku")
 
 local grep_opts = {
 	hidden = true,
@@ -48,6 +49,20 @@ return {
 		end,
 		desc = "Visual selection or word",
 		mode = { "n", "x" },
+	},
+	{
+		"<Leader>k",
+		function()
+			kensaku.grep()
+		end,
+		desc = "Search by [K]ensaku",
+	},
+	{
+		"<C-;>k",
+		function()
+			kensaku.grep({ cwd = conf.telekasten_home() })
+		end,
+		desc = "Telekasten kensaku",
 	},
 	{
 		"<C-;>sg",

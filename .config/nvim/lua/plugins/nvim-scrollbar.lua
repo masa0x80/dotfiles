@@ -33,7 +33,6 @@ return {
 					"cmp_menu",
 					"noice",
 					"prompt",
-					"TelescopePrompt",
 				},
 				handlers = {
 					search = true, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you

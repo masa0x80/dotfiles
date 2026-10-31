@@ -81,11 +81,6 @@ return {
 			desc = "Telekasten goto_thismonth",
 		},
 		{ "<C-;>c", "<Cmd>Telekasten show_calendar<CR>", desc = "Telekasten show_calendar" },
-		{
-			"<C-;>k",
-			"<Cmd>lua require('telescope._extensions.kensaku').exports.kensaku({ cwd = require('telekasten').Cfg.home })<CR>",
-			desc = "Telekasten kensaku",
-		},
 		{ "<C-;>v", "<Cmd>Telekasten switch_vault<CR>", desc = "Telekasten switch_vault" },
 		{
 			"<C-;><C-t>",
@@ -162,5 +157,6 @@ return {
 	end,
 	dependencies = {
 		{ "renerocksai/calendar-vim", version = "*" },
+		{ "nvim-telescope/telescope.nvim" },
 	},
 }
