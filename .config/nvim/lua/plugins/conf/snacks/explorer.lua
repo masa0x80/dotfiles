@@ -5,6 +5,7 @@ local M = {}
 M.opts = {
 	hidden = true,
 	ignored = true,
+	exclude = { ".claude/.cc-writes" },
 	win = {
 		list = {
 			keys = {
