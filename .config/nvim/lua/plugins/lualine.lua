@@ -53,7 +53,7 @@ return {
 				return ("%d lines, %d characters"):format(#lines, chars)
 			end
 
-			local palette = require("catppuccin.palettes").get_palette("macchiato")
+			local palette = require("catppuccin.palettes").get_palette("mocha")
 			local transparent_bg = palette.mantle
 			local theme = {
 				normal = {

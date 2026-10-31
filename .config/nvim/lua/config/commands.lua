@@ -39,6 +39,7 @@ vim.api.nvim_create_user_command("F", function(opts)
 	vim.bo.filetype = ft
 end, {
 	nargs = 1,
+	complete = "filetype",
 })
 
 vim.api.nvim_create_user_command("AddAbbrComma", function(opts)
