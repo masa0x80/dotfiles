@@ -135,7 +135,7 @@ local function gf(cmd)
 		if string.find(cfile, ".", 1, true) ~= nil then
 			vim.cmd(cmd .. " " .. cfile)
 		else
-			vim.cmd(cmd .. " " .. cfile .. require("telekasten").Cfg.extension)
+			vim.cmd(cmd .. " " .. cfile .. ".md")
 		end
 	end
 end

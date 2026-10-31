@@ -6,9 +6,9 @@ local grep_opts = {
 	args = { "--pre=_de", "--pre-glob=*.age.*" },
 }
 
--- TelekastenのVault配下を対象に
-local function telekasten_grep_opts()
-	return vim.tbl_extend("force", grep_opts, { cwd = conf.telekasten_home() })
+-- ObsidianのVault配下を対象に
+local function vault_grep_opts()
+	return vim.tbl_extend("force", grep_opts, { cwd = conf.vault_home() })
 end
 
 return {
@@ -60,33 +60,33 @@ return {
 	{
 		"<C-;>k",
 		function()
-			kensaku.grep({ cwd = conf.telekasten_home() })
+			kensaku.grep({ cwd = conf.vault_home() })
 		end,
-		desc = "Telekasten kensaku",
+		desc = "Kensaku (under Vault)",
 	},
 	{
 		"<C-;>sg",
 		function()
-			Snacks.picker.grep(telekasten_grep_opts())
+			Snacks.picker.grep(vault_grep_opts())
 		end,
-		desc = "Grep (under Telekasten home)",
+		desc = "Grep (under Vault)",
 	},
 	{
 
 		"<C-;>sG",
 		function()
-			Snacks.picker.grep_word(telekasten_grep_opts())
+			Snacks.picker.grep_word(vault_grep_opts())
 		end,
 		mode = { "n", "x" },
-		desc = "Visual selection or word (under Telekasten home)",
+		desc = "Visual selection or word (under Vault)",
 	},
 	{
 
 		"<C-;>G",
 		function()
-			Snacks.picker.grep_word(telekasten_grep_opts())
+			Snacks.picker.grep_word(vault_grep_opts())
 		end,
 		mode = { "n", "x" },
-		desc = "Visual selection or word (under Telekasten home)",
+		desc = "Visual selection or word (under Vault)",
 	},
 }

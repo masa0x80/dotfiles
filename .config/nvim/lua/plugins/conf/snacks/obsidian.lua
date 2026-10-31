@@ -12,13 +12,13 @@ function M.open_current()
 end
 
 function M.open_tmp()
-	local path = ("%s/tmp.md"):format(conf.telekasten_home())
+	local path = ("%s/tmp.md"):format(conf.vault_home())
 	vim.cmd(("tabedit %s"):format(path))
 	vim.fn.jobstart(("open 'obsidian://open?path=%s'"):format(path))
 end
 
 function M.search()
-	local vault = vim.fs.basename(conf.telekasten_home())
+	local vault = vim.fs.basename(conf.vault_home())
 	vim.ui.input({ prompt = "Input query to search in Obsidian" }, function(input)
 		local query = input
 		vim.fn.jobstart(("open 'obsidian://search?vault=%s&query=%s'"):format(vault, query))

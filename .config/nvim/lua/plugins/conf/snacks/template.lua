@@ -28,7 +28,7 @@ local function expand_includes(vault_path, templates_dir)
 end
 
 function M.apply()
-	local vault_path = conf.telekasten_home()
+	local vault_path = conf.vault_home()
 	local templates_dir = vault_path .. "/templates"
 	local files = vim.fn.glob(templates_dir .. "/**/*", false, true)
 	local items = vim.iter(files)

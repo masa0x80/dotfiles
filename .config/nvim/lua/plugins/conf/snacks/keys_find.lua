@@ -80,30 +80,30 @@ return {
 	{
 		"<C-;>ff",
 		function()
-			conf.smart_files(find_opts("desc", conf.telekasten_home()))
+			conf.smart_files(find_opts("desc", conf.vault_home()))
 		end,
-		desc = "Find Git Files (under Telekasten home)",
+		desc = "Find Git Files (under Vault)",
 	},
 	{
 		"<C-;>fr",
 		function()
-			conf.smart_files(find_opts("asc", conf.telekasten_home()))
+			conf.smart_files(find_opts("asc", conf.vault_home()))
 		end,
-		desc = "Find Git Files (under Telekasten home; rev)",
+		desc = "Find Git Files (under Vault; rev)",
 	},
 	{
 		"<C-;>F",
 		function()
-			all_files("desc", conf.telekasten_home())
+			all_files("desc", conf.vault_home())
 		end,
-		desc = "Find Files (under Telekasten home)",
+		desc = "Find Files (under Vault)",
 	},
 	{
 		"<C-;>R",
 		function()
-			all_files("asc", conf.telekasten_home())
+			all_files("asc", conf.vault_home())
 		end,
-		desc = "Find Files (under Telekasten home; rev)",
+		desc = "Find Files (under Vault; rev)",
 	},
 	{
 		"<Leader>fl",
@@ -129,16 +129,16 @@ return {
 	{
 		"<C-;>re",
 		function()
-			local home = conf.telekasten_home()
+			local home = conf.vault_home()
 			recent(home, home)
 		end,
-		desc = "Recent (under Telekasten home)",
+		desc = "Recent (under Vault)",
 	},
 	{
 		"<C-;>RE",
 		function()
-			Snacks.picker.recent({ filter = { cwd = conf.telekasten_home() } })
+			Snacks.picker.recent({ filter = { cwd = conf.vault_home() } })
 		end,
-		desc = "Recent (under Telekasten home)",
+		desc = "Recent (under Vault)",
 	},
 }

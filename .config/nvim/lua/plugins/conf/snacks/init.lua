@@ -4,9 +4,9 @@ M.git_root_or_cwd = function()
 	return require("snacks.git").get_root() or vim.fn.getcwd()
 end
 
--- TelekastenのVaultのパス
-M.telekasten_home = function()
-	return require("telekasten").Cfg.home
+-- ObsidianのVaultのパス
+M.vault_home = function()
+	return require("plugins.conf.vault").home()
 end
 
 M.dir_prompt = function(default, cb)
