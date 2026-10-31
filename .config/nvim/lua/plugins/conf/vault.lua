@@ -30,24 +30,14 @@ local function with_md(path)
 	return vim.fn.fnamemodify(path, ":e") == "" and path .. ".md" or path
 end
 
--- テンプレートを読み込んで {{date}} を置換したうえで新規バッファに挿入する
-local function insert_template(name, date)
+-- テンプレートがあれば新規バッファに挿入し、:ReplaceDate で日付を置換する
+local function insert_template(name)
 	local template = ("%s/templates/%s"):format(M.home(), name)
 	if vim.fn.filereadable(template) == 0 then
 		return
 	end
-	local lines = vim.tbl_map(function(line)
-		return (line:gsub("{{date}}", date or os.date("%Y-%m-%d")))
-	end, vim.fn.readfile(template))
-	vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
-end
-
--- テンプレートがあれば、置換せずにそのまま先頭に読み込む
-local function read_template(name)
-	local template = ("%s/templates/%s"):format(M.home(), name)
-	if vim.fn.filereadable(template) == 1 then
-		vim.cmd("0r " .. vim.fn.fnameescape(template))
-	end
+	vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.fn.readfile(template))
+	vim.cmd("ReplaceDate " .. os.date("%Y-%m-%d"))
 end
 
 -- ファイルを開く。新規ファイルなら親ディレクトリを作ってから on_new を呼ぶ
@@ -169,7 +159,7 @@ end
 M.goto_today = function()
 	local date = os.date("%Y-%m-%d")
 	open(("%s/daily/%s/%s.md"):format(M.home(), os.date("%Y"), date), function()
-		insert_template("daily.md", date)
+		insert_template("daily.md")
 	end)
 end
 
@@ -177,14 +167,14 @@ M.goto_thisweek = function()
 	local week_of_month = math.floor((tonumber(os.date("%d")) - 1) / 7) + 1
 	local path = ("%s/weekly/%s/%s-w%d.md"):format(M.home(), os.date("%Y"), os.date("%m"), week_of_month)
 	open(path, function()
-		read_template("weekly.md")
+		insert_template("weekly.md")
 	end)
 end
 
 M.goto_thismonth = function()
 	local path = ("%s/monthly/%s/%s.md"):format(M.home(), os.date("%Y"), os.date("%Y-%m"))
 	open(path, function()
-		read_template("monthly.md")
+		insert_template("monthly.md")
 	end)
 end
 
