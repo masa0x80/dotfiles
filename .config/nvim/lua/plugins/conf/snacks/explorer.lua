@@ -2,20 +2,29 @@
 
 local M = {}
 
+-- meta トグルが無効なときに非表示にするディレクトリー
+local meta_dirs = { ".git", ".jj", ".claude" }
+
+---@param path string
+local function in_meta_dir(path)
+	for _, name in ipairs(meta_dirs) do
+		if path:find("/" .. vim.pesc(name) .. "/") or vim.fs.basename(path) == name then
+			return true
+		end
+	end
+	return false
+end
+
 M.opts = {
 	hidden = true,
 	ignored = true,
-	exclude = { ".claude/.cc-writes" },
-	transform = function(item)
-		if not (item.dir and vim.fs.basename(item.file) == ".claude") then
-			return
+	meta = false,
+	toggles = { meta = "M" },
+	exclude = { ".DS_Store" },
+	transform = function(item, ctx)
+		if not ctx.picker.opts.meta and in_meta_dir(item.file) then
+			return false
 		end
-		for name in vim.fs.dir(item.file) do
-			if name ~= ".cc-writes" then
-				return
-			end
-		end
-		return false
 	end,
 	win = {
 		list = {
@@ -26,6 +35,7 @@ M.opts = {
 				["y"] = { "copy_file_path" },
 				["Y"] = { "explorer_yank" },
 				["<Leader>h"] = { "toggle_hidden" },
+				["<Leader>H"] = { "toggle_meta" },
 				["H"] = false,
 				["<C-n>g"] = "explorer_git_next",
 				["<C-p>g"] = "explorer_git_prev",
