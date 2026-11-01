@@ -10,7 +10,7 @@
   { "name": "cm-perf", "text": "⚡️ perf: " },
   { "name": "cm-test", "text": "✅ test: " },
   { "name": "cm-chore", "text": "🔨 chore: " },
-  { "name": "cm-move-rename", "text": "🚚 move " },
+  { "name": "cm-move", "text": "🚚 move " },
   { "name": "cm-remove", "text": "🔥 remove: " },
   { "name": "cm-ci", "text": "👷 ci: " },
   { "name": "cm-merge", "text": "🔀 merge: " },

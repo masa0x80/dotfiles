@@ -40,7 +40,7 @@
     "body": ["🔨 [${1:scope}] chore: $0"]
   },
   "move-rename-files": {
-    "prefix": "cm-move-rename",
+    "prefix": "cm-move",
     "body": ["🚚 [${1:scope}] move $0"]
   },
   "remove-files": {
