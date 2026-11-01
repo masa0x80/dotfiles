@@ -68,30 +68,27 @@ end
 vim.api.nvim_create_user_command("ReplaceDate", function(opts)
 	local date = opts.args
 	if date == "" then
-		date = os.date("%Y-%m-%d")
+		date = os.date("%Y-%m-%d") --[[@as string]]
 	end
 
 	local date_pattern = "(%d%d%d%d)%-(%d%d)%-(%d%d)"
 	local year, month, day = string.match(date, date_pattern)
+	if not year then
+		return
+	end
+
+	-- MM/DD は0埋め、M/D は0なし
+	local values = {
+		YYYY = year,
+		MM = month,
+		DD = day,
+		M = tostring(tonumber(month)),
+		D = tostring(tonumber(day)),
+	}
 	local line1, line2 = buf_range(opts)
 	local lines = vim.api.nvim_buf_get_lines(0, line1, line2, false)
 	for i, line in ipairs(lines) do
-		if year and month and day then
-			line = line:gsub("%f[%a]YYYY%-MM%-DD%f[%A]", string.format("%s-%s-%s", year, month, day))
-		end
-		if year and month then
-			line = line:gsub("%f[%a]YYYY%-MM%f[%A]", string.format("%s-%s", year, month))
-		end
-		if year then
-			line = line:gsub("%f[%a]YYYY%f[%A]", string.format("%s", year))
-		end
-		if month then
-			line = line:gsub("%f[%a]MM%f[%A]", tonumber(month))
-		end
-		if day then
-			line = line:gsub("%f[%a]DD%f[%A]", tonumber(day))
-		end
-		lines[i] = line
+		lines[i] = line:gsub("{{(%u+)}}", values)
 	end
 	vim.api.nvim_buf_set_lines(0, line1, line2, false, lines)
 end, {
