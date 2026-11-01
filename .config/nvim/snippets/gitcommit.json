@@ -1,110 +1,110 @@
 {
   "feat": {
     "prefix": "cm-feat",
-    "body": ["🎸 feat: "]
-  },
-  "bug": {
-    "prefix": "cm-bug",
-    "body": ["🐛 bug: "]
+    "body": ["✨ [${1:scope}] feat: $0"]
   },
   "fix": {
     "prefix": "cm-fix",
-    "body": ["✏️ fix "]
+    "body": ["🐛 [${1:scope}] fix: $0"]
+  },
+  "typo": {
+    "prefix": "cm-typo",
+    "body": ["✏️ [${1:scope}] fix typo$0"]
   },
   "shell": {
     "prefix": "cm-shell",
-    "body": ["🐚 \\$ "]
+    "body": ["🐚 [${1:scope}] \\$ $0"]
   },
   "docs": {
     "prefix": "cm-doc",
-    "body": ["📚 docs: "]
+    "body": ["📝 [${1:scope}] docs: $0"]
   },
   "style": {
     "prefix": "cm-style",
-    "body": ["💄 style: "]
+    "body": ["💄 [${1:scope}] style: $0"]
   },
   "refactor": {
     "prefix": "cm-refactor",
-    "body": ["💡 refactor: "]
+    "body": ["♻️ [${1:scope}] refactor: $0"]
   },
   "perf": {
     "prefix": "cm-perf",
-    "body": ["⚡ perf: "]
+    "body": ["⚡️ [${1:scope}] perf: $0"]
   },
   "test": {
     "prefix": "cm-test",
-    "body": ["✅ test: "]
+    "body": ["✅ [${1:scope}] test: $0"]
   },
   "chore": {
     "prefix": "cm-chore",
-    "body": ["🤖 chore: "]
+    "body": ["🔨 [${1:scope}] chore: $0"]
   },
   "move-rename-files": {
     "prefix": "cm-move-rename",
-    "body": ["🚚 move "]
+    "body": ["🚚 [${1:scope}] move $0"]
   },
   "remove-files": {
     "prefix": "cm-remove",
-    "body": ["🔥 remove "]
+    "body": ["🔥 [${1:scope}] remove $0"]
   },
   "ci": {
     "prefix": "cm-ci",
-    "body": ["🎡 ci: "]
+    "body": ["👷 [${1:scope}] ci: $0"]
   },
   "merge": {
     "prefix": "cm-merge",
-    "body": ["💚 merge: "]
+    "body": ["🔀 [${1:scope}] merge: $0"]
   },
   "config": {
     "prefix": "cm-config",
-    "body": ["🔧 config: "]
+    "body": ["🔧 [${1:scope}] config: $0"]
   },
   "tweak": {
     "prefix": "cm-tweak",
-    "body": ["🩹 Tweaks"]
+    "body": ["🩹 [${1:scope}] Tweaks$0"]
   },
   "security": {
     "prefix": "cm-security",
-    "body": ["👮 security: "]
+    "body": ["🔒️ [${1:scope}] security: $0"]
   },
   "version": {
     "prefix": "cm-version",
-    "body": ["🔖 version: "]
+    "body": ["🔖 [${1:scope}] version: $0"]
   },
   "wip": {
     "prefix": "cm-wip",
-    "body": ["🚧 WIP"]
+    "body": ["🚧 [${1:scope}] WIP$0"]
   },
   "breaking": {
     "prefix": "cm-break",
-    "body": ["💥 BREAKING CHANGE: "]
+    "body": ["💥 [${1:scope}] BREAKING CHANGE: $0"]
   },
   "hotfix": {
     "prefix": "cm-hotfix",
-    "body": ["🚑️ Hotfix"]
+    "body": ["🚑️ [${1:scope}] Hotfix$0"]
   },
   "pin": {
     "prefix": "cm-pin",
-    "body": ["📌 Fix version"]
+    "body": ["📌 [${1:scope}] Fix version$0"]
   },
   "add-dependencies": {
     "prefix": "cm-add",
-    "body": ["➕ Add dependencies"]
+    "body": ["➕ [${1:scope}] Add dependencies$0"]
   },
   "remove-dependencies": {
-    "prefix": "cm-remove",
-    "body": ["➖ Remove dependencies"]
+    "prefix": "cm-rmdep",
+    "body": ["➖ [${1:scope}] Remove dependencies$0"]
   },
   "upgrade": {
     "prefix": "cm-up",
-    "body": ["⬆️ Upgrade dependencies"]
+    "body": ["⬆️ [${1:scope}] Upgrade dependencies$0"]
   },
   "downgrade": {
     "prefix": "cm-down",
-    "body": ["⬇️ Downgrade dependencies"]
+    "body": ["⬇️ [${1:scope}] Downgrade dependencies$0"]
   },
   "init": {
     "prefix": "cm-init",
-    "body": ["🌱 Initial commit"]
+    "body": ["🎉 Initial commit"]
   }
 }
