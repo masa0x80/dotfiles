@@ -178,7 +178,7 @@
 
 [dotfiles]
 "~/.bin" = { source = ".bin", mode = "symlink" }
-"~/.cargo" = { source = ".cargo", mode = "symlink" }
+"~/.cargo/config.toml" = { source = ".cargo/config.toml", mode = "symlink" }
 "~/.editorconfig" = { source = ".editorconfig", mode = "symlink" }
 "~/.prettierignore" = { source = ".prettierignore", mode = "symlink" }
 # XDG Base Directoryに対応していないもの
