@@ -1,18 +1,25 @@
 # timeoutなどのWARNはプロンプトを汚すので抑制
 export STARSHIP_LOG=error
 
-export STARSHIP_CONFIG1="$HOME/.config/starship.toml"
-export STARSHIP_CONFIG2="$HOME/.config/starship2.toml"
-
-_switch_starship_config() {
-  if [ "$STARSHIP_CONFIG" = "$STARSHIP_CONFIG1" ]; then
-    STARSHIP_CONFIG="$STARSHIP_CONFIG2"
-  else
-    STARSHIP_CONFIG="$STARSHIP_CONFIG1"
-  fi
-  export STARSHIP_CONFIG
+# コマンド実行ごとにプロンプトの顔を「ミ」「彡」で切り替える
+# 顔は starship.toml の env_var.STARSHIP_FACE_OK / env_var.STARSHIP_FACE_NG で表示する
+_starship_face=ミ
+_toggle_starship_face() {
+  [[ $_starship_face == ミ ]] && _starship_face=彡 || _starship_face=ミ
 }
-add-zsh-hook preexec _switch_starship_config
+add-zsh-hook preexec _toggle_starship_face
+
+# 色を character と揃えるため、成功・失敗で別の変数に入れる
+# STARSHIP_CMD_STATUS は先に登録された starship の precmd が保存した直前のステータス
+_export_starship_face() {
+  unset STARSHIP_FACE_OK STARSHIP_FACE_NG
+  if (( ${STARSHIP_CMD_STATUS:-0} == 0 )); then
+    export STARSHIP_FACE_OK=$_starship_face
+  else
+    export STARSHIP_FACE_NG=$_starship_face
+  fi
+}
+add-zsh-hook precmd _export_starship_face
 
 _herdr_ws_tool="${XDG_CONFIG_HOME:-$HOME/.config}/herdr/plugins/workspace-tools/ws.zsh"
 

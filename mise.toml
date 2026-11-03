@@ -213,7 +213,6 @@
 "~/.config/silicon" = { source = ".config/silicon", mode = "symlink" }
 "~/.config/starship" = { source = ".config/starship", mode = "symlink" }
 "~/.config/starship.toml" = { source = ".config/starship.toml", mode = "symlink" }
-"~/.config/starship2.toml" = { source = ".config/starship2.toml", mode = "symlink" }
 "~/.config/textlint" = { source = ".config/textlint", mode = "symlink" }
 "~/.config/wezterm" = { source = ".config/wezterm", mode = "symlink" }
 "~/.config/zabrze" = { source = ".config/zabrze", mode = "symlink" }

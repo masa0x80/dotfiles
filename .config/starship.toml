@@ -17,14 +17,26 @@ $git_status\
 $cmd_duration\
 $line_break\
 $python\
+${env_var.STARSHIP_FACE_OK}\
+${env_var.STARSHIP_FACE_NG}\
 $character"""
 
 [directory]
 style = "blue"
 
+# 顔はコマンド実行ごとに zsh 側（zsh.d/prompt.zsh）で切り替えて環境変数で渡す
+# 成功時は STARSHIP_FACE_OK、失敗時は STARSHIP_FACE_NG のどちらか一方だけが設定される
+[env_var.STARSHIP_FACE_OK]
+format = "[$env_value]($style)"
+style = "purple"
+
+[env_var.STARSHIP_FACE_NG]
+format = "[$env_value]($style)"
+style = "red"
+
 [character]
-success_symbol = "[ミ:匚＞](purple)"
-error_symbol = "[ミX匚＞](red)"
+success_symbol = "[:匚＞](purple)"
+error_symbol = "[X匚＞](red)"
 
 [cmd_duration]
 format = "[$duration]($style) "
