@@ -64,7 +64,7 @@ return {
 				go = { "goimports" },
 				lua = { "stylua" },
 				luau = { "stylua" },
-				python = { "black" },
+				python = { "ruff_format" },
 				markdown = {
 					"delete_jira_status_icon",
 					"space_around_links",

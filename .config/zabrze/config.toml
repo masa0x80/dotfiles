@@ -336,11 +336,6 @@ name = "bundle config set --local path vendor/bundle; bundle config set --local 
 abbr = "bil"
 snippet = "bundle config set --local path vendor/bundle; bundle config set --local bin vendor/bin; bundle config set --local cache_all_platforms true; bundle install --local"
 
-[[snippets]]
-name = "solargraph download-core; solargraph bundle; solargraph config"
-abbr = "solargraph_init"
-snippet = "solargraph download-core; solargraph bundle; solargraph config"
-
 
 [[snippets]]
 name = "dc up -d"
