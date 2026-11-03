@@ -57,6 +57,9 @@ export PASSAGE_IDENTITIES_FILE="$HOME/.ssh/key"
 export PASSAGE_RECIPIENTS_FILE="$HOME/.ssh/key.pub"
 export PASSAGE_AGE=rage
 
+export CURL_CA_BUNDLE=/opt/homebrew/etc/ca-certificates/cert.pem
+export GIT_SSL_CAINFO=/opt/homebrew/etc/ca-certificates/cert.pem
+
 for file (
   # Load .config.local
   $HOME/.config.local/zsh/zshenv(N)
