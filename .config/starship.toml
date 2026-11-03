@@ -63,11 +63,13 @@ style = "green"
 only_attached = true
 
 [custom.git_detached]
-command = 'git rev-parse --short HEAD'
+# 判定は git-detached.sh 側で行う（when でシェルや git を起動するとその分遅くなる）
+command = ". $HOME/.config/starship/git-detached.sh"
 require_repo = true
-when = 'd=$PWD; while [ -n "$d" ]; do [ -d "$d/.jj" ] && exit 1; d=${d%/*}; done; ! git symbolic-ref -q HEAD >/dev/null 2>&1'
+when = true
 shell = ["bash", "--noprofile", "--norc"]
-format = "[:$output]($style) "
+# 出力が空（attached や jj repo 内）なら何も出さない
+format = "([:$output]($style) )"
 style = "bold mauve"
 
 [git_status]
