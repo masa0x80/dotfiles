@@ -1,0 +1,73 @@
+#!/bin/sh
+# core.hooksPath の各フックから呼ばれる共通ディスパッチャー
+#
+#   usage: _dispatch <hook-name> [hook args...]
+#
+# 1. プロジェクトに lefthook の設定があれば `lefthook run <hook-name>` を実行する
+#    - lefthook はプロジェクトの mise 設定に従って解決する（なければ PATH から探す）
+#    - LEFTHOOK=0 でスキップ
+# 2. scripts/<hook-name> があれば実行する
+#    - DISABLE_<HOOK_NAME>=1（例: DISABLE_PRE_PUSH=1）でスキップ
+#
+# どちらかが失敗した時点で、その終了ステータスで終了する
+
+hook_name=$1
+shift
+script_dir=$(cd "$(dirname "$0")" && pwd)
+
+# pre-push などは stdin で ref の情報を受け取るので、複数の処理に渡せるよう保存しておく
+stdin_file=
+case $hook_name in
+pre-push | pre-receive | post-receive | post-rewrite | reference-transaction)
+  stdin_file=$(mktemp "${TMPDIR:-/tmp}/git-hook.XXXXXX") || exit 1
+  trap 'rm -f "$stdin_file"' EXIT
+  cat >"$stdin_file"
+  ;;
+esac
+
+run() {
+  if [ -n "$stdin_file" ]; then
+    "$@" <"$stdin_file"
+  else
+    "$@"
+  fi
+  status=$?
+  [ $status -eq 0 ] || exit $status
+}
+
+has_lefthook_config() {
+  pj_root=$(git rev-parse --show-toplevel 2>/dev/null) || return 1
+  for f in \
+    "$pj_root"/lefthook.* "$pj_root"/.lefthook.* \
+    "$pj_root"/lefthook-local.* "$pj_root"/.lefthook-local.* \
+    "$pj_root"/.config/lefthook.* "$pj_root"/.config/lefthook-local.*; do
+    [ -f "$f" ] && return 0
+  done
+  return 1
+}
+
+resolve_lefthook() {
+  if command -v mise >/dev/null 2>&1; then
+    mise which lefthook 2>/dev/null && return 0
+  fi
+  command -v lefthook
+}
+
+# 1. lefthook
+if [ "${LEFTHOOK:-1}" != 0 ] && has_lefthook_config; then
+  if lefthook_bin=$(resolve_lefthook); then
+    run "$lefthook_bin" run "$hook_name" "$@"
+  else
+    echo "[git-hook] lefthook の設定がありますが lefthook が見つからないためスキップします" >&2
+  fi
+fi
+
+# 2. scripts/<hook-name>
+disable_var="DISABLE_$(echo "$hook_name" | tr '[:lower:]-' '[:upper:]_')"
+eval "disabled=\${$disable_var:-}"
+hook_script="$script_dir/$hook_name"
+if [ -z "$disabled" ] && [ -f "$hook_script" ]; then
+  run sh "$hook_script" "$@"
+fi
+
+exit 0
