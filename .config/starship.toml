@@ -47,10 +47,13 @@ format = "[$virtualenv]($style) "
 style = "bright-black"
 
 [custom.jj]
-command = "bash $HOME/.config/starship/jj.sh"
-when = 'd=$PWD; while [ -n "$d" ]; do [ -d "$d/.jj" ] && exit 0; d=${d%/*}; done; exit 1'
+# shell の bash でそのまま読み込み、bash を二重に起動しない
+command = ". $HOME/.config/starship/jj.sh"
+# .jj の有無は jj.sh 側で判定する（when でシェルを起動するとその分遅くなる）
+when = true
 shell = ["bash", "--noprofile", "--norc"]
-format = "$output "
+# when = true なので jj repo 外でも module が出る。出力が空なら空白も出さない
+format = "($output )"
 unsafe_no_escape = true
 
 [git_branch]

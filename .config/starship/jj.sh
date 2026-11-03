@@ -12,6 +12,14 @@ readonly C_DELETED=$'\033[38;2;243;139;168m'
 readonly C_RENAMED=$'\033[1;38;2;148;226;213m'
 readonly C_CLEAN=$'\033[1;38;2;245;224;220m'
 
+# プロンプト表示のたびに実行されるので、外部コマンドはなるべく呼ばずに bash の組み込みで判定する
+# .jj を持つ workspace root を探す（無ければ jj を呼ばずに終了）
+root=$PWD
+while [[ -n $root && ! -d $root/.jj ]]; do
+  root=${root%/*}
+done
+[[ -n $root ]] || exit 0
+
 # 区切りを Unit Separator (0x1f) に
 read -r -d '' out < <(
   jj log --no-pager -r @ --no-graph -T '
@@ -29,11 +37,20 @@ IFS=$'\x1f' read -r bookmarks change_id desc conflict empty statuses <<<"$out"
 # jj repoでない or jj が失敗した場合は黙って終了
 [[ -n ${change_id:-} ]] || exit 0
 
-# gitがrepoを認識できるなら組み込みgitモジュールが反応する
-if git rev-parse --is-inside-work-tree &>/dev/null; then
+# workspace root に .git があれば colocated で、組み込みgitモジュールが反応する
+if [[ -e $root/.git ]]; then
   colocated=1
+  # .git がファイルの場合（git worktree など）は gitdir を辿る
+  gitdir=$root/.git
+  if [[ -f $gitdir ]]; then
+    read -r line <"$gitdir"
+    gitdir=${line#gitdir: }
+    [[ $gitdir == /* ]] || gitdir=$root/$gitdir
+  fi
   # git HEAD がbranchを指しているならbookmark名はgit_branch表示で対応
-  if git symbolic-ref -q HEAD &>/dev/null; then
+  head=""
+  [[ -r $gitdir/HEAD ]] && read -r head <"$gitdir/HEAD"
+  if [[ $head == ref:* ]]; then
     show_bookmarks=""
   else
     show_bookmarks=1
