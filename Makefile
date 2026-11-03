@@ -20,7 +20,7 @@ help:
 
 .PHONY: pull
 pull:
-	git pull --no-commit origin main
+	git pull --rebase --autostash origin main
 
 .PHONY: install
 install: mise-update bat silicon navi herdr sheldon claude
