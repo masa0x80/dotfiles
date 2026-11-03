@@ -68,6 +68,9 @@ for file (
 
 typeset -U path PATH
 path=(
+  # mise の shims（非対話シェルや、.zshrc で mise activate が遅延実行されるまでの間に使う）
+  $XDG_DATA_HOME/mise/shims(N-/)
+
   # keg-only
   /opt/homebrew/opt/curl/bin(N-/)
   /opt/homebrew/opt/sqlite/bin(N-/)

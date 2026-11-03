@@ -82,7 +82,15 @@ _eval_cache starship -- starship init zsh && source $REPLY
 #       それ以降に追加した PATH が末尾に回されるので捨てる
 unset __MISE_ORIG_PATH
 # NOTE: mise activate の出力には実行時の PATH が埋め込まれるのでキャッシュしない
-(( ${+commands[mise]} )) && eval "$(mise activate zsh)"
+#       代わりにプロンプト表示後に遅延実行する（それまでは .zshenv で PATH に入れた shims を使う）
+#       -2: mise の警告（untrusted な設定ファイルなど）が見えるよう stderr は捨てない
+if (( ${+commands[mise]} )); then
+  if (( ${+functions[zsh-defer]} )); then
+    zsh-defer -2 -c 'eval "$(mise activate zsh)"'
+  else
+    eval "$(mise activate zsh)"
+  fi
+fi
 _eval_cache fzf -- fzf --zsh && source $REPLY
 _eval_cache direnv -- direnv hook zsh && source $REPLY
 _eval_cache zabrze -- zabrze init --bind-keys && source $REPLY
