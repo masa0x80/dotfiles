@@ -1330,7 +1330,13 @@
                                     "key_code": "p",
                                     "modifiers": { "mandatory": ["command", "control"] }
                                 },
-                                "to": [{ "shell_command": "/usr/bin/osascript $HOME/.bin/activate-ghostty" }],
+                                "to": [
+                                    {
+                                        "key_code": "p",
+                                        "modifiers": ["command", "control"]
+                                    },
+                                    { "software_function": { "open_application": { "bundle_identifier": "com.mitchellh.ghostty" } } }
+                                ],
                                 "type": "basic"
                             }
                         ]
