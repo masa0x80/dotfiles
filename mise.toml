@@ -41,7 +41,6 @@
 
 # Git
 "brew:git" = "latest"
-"brew:hub" = "latest"
 "brew:ghq" = "latest"
 "brew:git-extras" = "latest"
 
@@ -198,7 +197,6 @@
 "~/.config/git" = { source = ".config/git", mode = "symlink" }
 "~/.config/hadolint.yaml" = { source = ".config/hadolint.yaml", mode = "symlink" }
 "~/.config/herdr" = { source = ".config/herdr", mode = "symlink" }
-"~/.config/hub" = { source = ".config/hub", mode = "symlink" }
 "~/.config/irb" = { source = ".config/irb", mode = "symlink" }
 "~/.config/karabiner" = { source = ".config/karabiner", mode = "symlink" }
 "~/.config/lazygit" = { source = ".config/lazygit", mode = "symlink" }

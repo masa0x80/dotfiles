@@ -29,10 +29,6 @@
 !/zsh
 !/zabrze
 
-!/hub
-/hub/*
-!/hub/config.tmpl
-
 !/pgcli
 /pgcli/*
 !/pgcli/config
