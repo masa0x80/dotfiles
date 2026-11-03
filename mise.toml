@@ -399,11 +399,6 @@ key = "NSUserKeyEquivalents"
 path = ["Minimize"]
 value = "~@m"
 
-[[bootstrap.macos.defaults_entries]]
-domain = "com.apple.Music"
-key = "AppleLanguages"
-value = ["ja"]
-
 # Spotlight検索を無効化
 # ref. https://qiita.com/ry0f/items/f2c75f0a77b1012182d6
 [[bootstrap.macos.defaults_entries]]
