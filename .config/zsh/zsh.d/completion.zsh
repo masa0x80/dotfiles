@@ -1,13 +1,18 @@
-[[ -d "$XDG_CACHE_HOME/zsh" ]] || mkdir -p "$XDG_CACHE_HOME/zsh"
-autoload -Uz compinit
-# dump が24時間以上古い場合のみ再生成する（それ以外は -C でチェックを省略して高速化）
-if [[ -n $XDG_CACHE_HOME/zsh/zcompdump(#qN.mh+24) ]]; then
-  compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
-  # NOTE: 補完関数の数が変わらないと dump は書き換えられないので、次の判定のために更新日時を進める
-  touch "$XDG_CACHE_HOME/zsh/zcompdump"
-else
-  compinit -C -d "$XDG_CACHE_HOME/zsh/zcompdump"
-fi
+() {
+  local dump=$XDG_CACHE_HOME/zsh/zcompdump
+  [[ -d ${dump:h} ]] || mkdir -p ${dump:h}
+  autoload -Uz compinit
+  # dump が24時間以上古い場合のみ再生成する（それ以外は -C でチェックを省略して高速化）
+  if [[ -n $dump(#qN.mh+24) ]]; then
+    compinit -d $dump
+    # NOTE: 補完関数の数が変わらないと dump は書き換えられないので、次の判定のために更新日時を進める
+    touch $dump
+  else
+    compinit -C -d $dump
+  fi
+  # バイトコードにコンパイルしておくと、次回以降の読み込みが速くなる（zsh は新しい .zwc を自動で使う）
+  [[ $dump.zwc -nt $dump ]] || zcompile $dump
+}
 
 # Move cursor to end of word if a full completion is inserted.
 setopt always_to_end

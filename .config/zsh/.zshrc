@@ -63,14 +63,17 @@ _eval_cache() {
   if [[ -s $REPLY ]]; then
     read -r line <$REPLY
     for dep in $deps; do [[ $dep -nt $REPLY ]] && line=; done
-    [[ $line == $stamp ]] && return 0
   fi
 
-  [[ -d ${REPLY:h} ]] || mkdir -p ${REPLY:h}
-  if ! { print -r -- $stamp && "$@" } >| $REPLY; then
-    rm -f $REPLY
-    return 1
+  if [[ $line != $stamp ]]; then
+    [[ -d ${REPLY:h} ]] || mkdir -p ${REPLY:h}
+    if ! { print -r -- $stamp && "$@" } >| $REPLY; then
+      rm -f $REPLY $REPLY.zwc
+      return 1
+    fi
   fi
+  # バイトコードにコンパイルしておく（source 時に zsh が新しい .zwc を自動で使う）
+  [[ $REPLY.zwc -nt $REPLY ]] || zcompile $REPLY
 }
 
 _eval_cache sheldon \

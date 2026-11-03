@@ -114,6 +114,7 @@ if (( ${+commands[brew]} )); then
       [[ -d ${cache:h} ]] || mkdir -p ${cache:h}
       brew shellenv zsh >| $cache
     fi
+    [[ $cache.zwc -nt $cache ]] || zcompile $cache
     source $cache
   }
 fi
