@@ -34,8 +34,6 @@ local socket=${HERDR_SOCKET_PATH:-${XDG_CONFIG_HOME:-$HOME/.config}/herdr/herdr.
 local state_dir=${HERDR_PLUGIN_STATE_DIR:-${XDG_STATE_HOME:-$HOME/.local/state}/herdr/plugins/workspace-tools}
 local src_file=$state_dir/src_pane
 local misc_return_file=$state_dir/misc_return_ws
-# プールは実装の都合で存在しているだけなので、選択肢には出さない
-local pool_label=${HERDR_POOL_LABEL:-_pool}
 local misc_label=${HERDR_MISC_LABEL:-_misc}
 local space_token=${HERDR_SPACE_TOKEN:-space}
 
@@ -62,9 +60,8 @@ open_picker() {
 
 # "<workspace_id>\t<表示>" の一覧
 ws_rows() {
-  api workspace list | jq -r --arg pool $pool_label --arg t $space_token '
+  api workspace list | jq -r --arg t $space_token '
     .result.workspaces[]
-    | select(.label != $pool)
     | (if (.tokens[$t] // "") == "" then .label else .tokens[$t] end) as $name
     | "\(.workspace_id)\t\(if .focused then "*" else " " end) \($name)"'
 }
@@ -224,7 +221,6 @@ cmd_select_tab() {
   api tab focus $tab >/dev/null
 }
 
-# サイドバーの並びと番号が一致するよう、_pool も 1 枚として数える
 cmd_select_ws() {
   local -i idx=$1
   (( idx )) || return 1
@@ -273,11 +269,6 @@ cmd_rename_tab_name() {
     head -n1)"
   [[ -n $tab ]] || return 1
 
-  # プールのタブは表に出ないので触らない
-  local label=$(api workspace list |
-    jq -r --arg w $ws '.result.workspaces[] | select(.workspace_id == $w) | .label')
-  [[ $label == $pool_label ]] && return 0
-
   local name=$(dir_name $cwd) || return 0
   [[ -n $name ]] || return 0
   api tab rename $tab $name >/dev/null
@@ -311,9 +302,7 @@ cmd_rename_space_names() {
     IFS=$'\x1f' read -r ws label cur cwd <<<"$row"
     [[ -n $ws ]] || continue
 
-    if [[ $label == $pool_label ]]; then
-      name=_
-    elif [[ $label == $misc_label ]]; then
+    if [[ $label == $misc_label ]]; then
       # _misc はそのまま
       name=$label
     else

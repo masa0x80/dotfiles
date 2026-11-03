@@ -57,8 +57,6 @@ export PASSAGE_IDENTITIES_FILE="$HOME/.ssh/key"
 export PASSAGE_RECIPIENTS_FILE="$HOME/.ssh/key.pub"
 export PASSAGE_AGE=rage
 
-export HERDR_POOL_CD=1
-
 for file (
   # Load .config.local
   $HOME/.config.local/zsh/zshenv(N)

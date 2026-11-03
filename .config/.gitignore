@@ -43,7 +43,6 @@
 !/herdr/config.toml
 !/herdr/plugins
 /herdr/plugins/*
-!/herdr/plugins/pool/
 !/herdr/plugins/workspace-tools/
 
 !/starship/
