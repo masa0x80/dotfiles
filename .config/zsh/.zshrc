@@ -29,12 +29,15 @@ setopt correct
 
 bindkey -e
 
-if (( ! ${+HISTFILE} )) typeset -g HISTFILE=${ZDOTDIR:-${HOME}}/.zhistory
+if (( ! ${+HISTFILE} )); then
+  [[ -d "$XDG_STATE_HOME/zsh" ]] || mkdir -p "$XDG_STATE_HOME/zsh"
+  typeset -g HISTFILE="$XDG_STATE_HOME/zsh/history"
+fi
 HISTSIZE=30000
 SAVEHIST=30000
 
 setopt hist_ignore_all_dups
-setopt hist_expire_dups_first
+setopt hist_reduce_blanks
 setopt hist_ignore_space
 setopt hist_verify
 setopt share_history
