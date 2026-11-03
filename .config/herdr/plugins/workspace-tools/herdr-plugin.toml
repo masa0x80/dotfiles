@@ -2,7 +2,7 @@ id = "workspace-tools"
 name = "Workspace Tools"
 version = "0.1.0"
 min_herdr_version = "0.7.0"
-description = "fzf workspace picker, pane relocation, tab/workspace reordering"
+description = "fzf workspace picker, pane relocation, tab creation and tab/workspace reordering"
 platforms = ["macos", "linux"]
 
 [[startup]]
@@ -43,6 +43,16 @@ command = ["./ws.zsh", "move-pane"]
 id = "misc"
 title = "Open _misc workspace"
 command = ["./ws.zsh", "misc"]
+
+[[actions]]
+id = "new-tab"
+title = "New tab after current"
+command = ["./ws.zsh", "new-tab", "after"]
+
+[[actions]]
+id = "new-tab-before"
+title = "New tab before current"
+command = ["./ws.zsh", "new-tab", "before"]
 
 [[actions]]
 id = "move-tab-next"

@@ -177,6 +177,35 @@ cmd_move_tab() {
   raw tab.move "{\"tab_id\":\"$cur\",\"insert_index\":$n}" >/dev/null
 }
 
+# 新しいタブを現在のタブの直後 / 直前に作る（組み込みの new_tab は末尾に追加される）
+cmd_new_tab() {
+  local where=$1 ws=${HERDR_WORKSPACE_ID:-} cur=${HERDR_TAB_ID:-} cwd
+  cwd=$(print -r -- ${HERDR_PLUGIN_CONTEXT_JSON:-'{}'} | jq -r '.focused_pane_cwd // empty')
+  [[ -n $cwd ]] || cwd=$(api pane current --current | jq -r '.result.pane.cwd // empty')
+  [[ -n $ws ]] || ws=$(api pane current --current | jq -r '.result.pane.workspace_id // empty')
+  [[ -n $ws ]] || return 1
+
+  local -a opts=(--workspace $ws --focus)
+  [[ -n $cwd && -d $cwd ]] && opts+=(--cwd $cwd)
+  local tab=$(api tab create $opts | jq -r '.result.tab.tab_id // empty')
+  [[ -n $tab && -n $cur ]] || return 0
+
+  local -a ids=(${(f)"$(api tab list --workspace $ws | jq -r '.result.tabs[].tab_id')"})
+  local -i i=${ids[(Ie)$cur]} n
+  (( i )) || return 0
+  # insert_index は「元の並びでその位置にある要素の手前へ差し込む」意味（0 起点）
+  # 現在のタブの位置を指せば直前、その次を指せば直後に入る
+  if [[ $where == before ]]; then
+    n=$(( i - 1 ))
+  else
+    n=$i
+  fi
+  # 指した先が新しいタブ自身なら既に目的の位置にいる
+  [[ ${ids[n+1]} == $tab ]] || raw tab.move "{\"tab_id\":\"$tab\",\"insert_index\":$n}" >/dev/null
+  # tab.move で並び替えるとアクティブなタブが元に戻るので、明示的にフォーカスする
+  api tab focus $tab >/dev/null
+}
+
 cmd_join_tab() {
   local dir=$1 ws=${HERDR_WORKSPACE_ID:-} cur=${HERDR_TAB_ID:-} pane=${HERDR_PANE_ID:-}
   [[ -n $pane ]] || pane=$(api pane current --current | jq -r '.result.pane.pane_id // empty')
@@ -333,6 +362,7 @@ case ${1:-} in
   move-picker) cmd_move_picker ;;
   misc) cmd_misc ;;
   move-tab) cmd_move_tab ${2:-next} ;;
+  new-tab) cmd_new_tab ${2:-after} ;;
   join-tab) cmd_join_tab ${2:-next} ;;
   move-ws) cmd_move_ws ${2:-next} ;;
   select-tab) cmd_select_tab ${2:-0} ;;

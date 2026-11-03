@@ -57,13 +57,26 @@ zoom = "prefix+z"
 
 toggle_sidebar = "prefix+ctrl+."
 
-new_tab = "prefix+c"
+# 組み込みの new_tab は末尾にタブを追加するので、現在のタブの隣に作る workspace-tools 版を使う
+new_tab = ""
 split_vertical = ["prefix+backslash", "prefix+v", "prefix+;"]
 split_horizontal = ["prefix+minus", "prefix+h"]
 switch_tab = ""
 
 # prefix+shift+n はタブの位置移動に使うので、ワークスペース作成をずらす
 new_workspace = "prefix+enter"
+
+[[keys.command]]
+key = "prefix+c"
+type = "plugin_action"
+command = "workspace-tools.new-tab"
+description = "New tab after current"
+
+[[keys.command]]
+key = "prefix+shift+c"
+type = "plugin_action"
+command = "workspace-tools.new-tab-before"
+description = "New tab before current"
 
 [[keys.command]]
 key = "prefix+ctrl+a"
