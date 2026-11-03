@@ -10,16 +10,24 @@
   path = ~/.config.local/git/config
 [push]
   default = current
+  autoSetupRemote = true
 [commit]
   verbose = true
 [merge]
   ff = false
+  conflictStyle = zdiff3
 [fetch]
   prune = true
 [pull]
   rebase = true
 [rebase]
   autosquash = true
+  autoStash = true
+  updateRefs = true
+[rerere]
+  enabled = true
+[branch]
+  sort = -committerdate
 [credential]
   helper = osxkeychain
 [pager]
@@ -46,6 +54,8 @@
   disabled = true
 [diff]
   tool = difftastic
+  algorithm = histogram
+  colorMoved = default
 [diff "sopsdiffer"]
   textconv = sops -d
 [difftool]
