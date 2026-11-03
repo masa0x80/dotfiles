@@ -44,15 +44,48 @@ setopt share_history
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-(( ${+commands[sheldon]} )) && eval "$(sheldon source)"
-(( ${+commands[starship]} )) && eval "$(starship init zsh)"
+# コマンドの出力をキャッシュし、そのパスを REPLY に入れる
+#   usage: _eval_cache <name> [-d <file>]... -- <command> [args...]
+# 実行ファイルの実体のパスが変わったとき（brew の Cellar のようにバージョンを含む）か、
+# -d で指定したファイルがキャッシュより新しいときだけ再生成する
+# NOTE: source を関数内で行うと typeset がローカル変数になるので、呼び出し側で source する
+_eval_cache() {
+  local name=$1 dep stamp line
+  local -a deps
+  shift
+  while [[ $1 == -d ]]; do deps+=($2); shift 2; done
+  [[ $1 == -- ]] && shift
+  local bin=${commands[$1]:A}
+  [[ -n $bin ]] || return 1
+
+  REPLY=$XDG_CACHE_HOME/zsh/eval/$name.zsh
+  stamp="# $bin"
+  if [[ -s $REPLY ]]; then
+    read -r line <$REPLY
+    for dep in $deps; do [[ $dep -nt $REPLY ]] && line=; done
+    [[ $line == $stamp ]] && return 0
+  fi
+
+  [[ -d ${REPLY:h} ]] || mkdir -p ${REPLY:h}
+  if ! { print -r -- $stamp && "$@" } >| $REPLY; then
+    rm -f $REPLY
+    return 1
+  fi
+}
+
+_eval_cache sheldon \
+  -d $XDG_CONFIG_HOME/sheldon/plugins.toml \
+  -d $XDG_DATA_HOME/sheldon/plugins.lock \
+  -- sheldon source && source $REPLY
+_eval_cache starship -- starship init zsh && source $REPLY
 # NOTE: 親プロセスから引き継いだ古い __MISE_ORIG_PATH が残っていると、
 #       それ以降に追加した PATH が末尾に回されるので捨てる
 unset __MISE_ORIG_PATH
+# NOTE: mise activate の出力には実行時の PATH が埋め込まれるのでキャッシュしない
 (( ${+commands[mise]} )) && eval "$(mise activate zsh)"
-(( ${+commands[fzf]} )) && eval "$(fzf --zsh)"
-(( ${+commands[direnv]} )) && eval "$(direnv hook zsh)"
-(( ${+commands[zabrze]} )) && eval "$(zabrze init --bind-keys)"
+_eval_cache fzf -- fzf --zsh && source $REPLY
+_eval_cache direnv -- direnv hook zsh && source $REPLY
+_eval_cache zabrze -- zabrze init --bind-keys && source $REPLY
 
 autoload -Uz add-zsh-hook
 
