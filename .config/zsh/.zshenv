@@ -92,7 +92,28 @@ fpath=(
   $HOME/.local/share/zsh/site-functions(N-/)
   $fpath
 )
-(( ${+commands[brew]} )) && eval "$(brew shellenv)"
+# brew shellenv の結果をキャッシュし、Homebrew が更新されたときだけ再生成する
+# NOTE: Homebrew のバージョンは git describe で決まるので、HEAD が指す ref ファイルの更新日時で判定する
+if (( ${+commands[brew]} )); then
+  () {
+    local brew_repo=${commands[brew]:A:h:h}
+    local cache=$XDG_CACHE_HOME/zsh/brew-shellenv.zsh
+    local head version_file
+    [[ -r $brew_repo/.git/HEAD ]] && head=$(<$brew_repo/.git/HEAD)
+    if [[ $head == ref:* ]]; then
+      version_file=$brew_repo/.git/${head#ref: }
+      # git gc で packed-refs にまとめられた場合
+      [[ -f $version_file ]] || version_file=$brew_repo/.git/packed-refs
+    else
+      version_file=$brew_repo/.git/HEAD
+    fi
+    if [[ ! -s $cache || $version_file -nt $cache ]]; then
+      [[ -d ${cache:h} ]] || mkdir -p ${cache:h}
+      brew shellenv zsh >| $cache
+    fi
+    source $cache
+  }
+fi
 
 # Pager
 (( ${+commands[bat]} )) && export PAGER=bat
