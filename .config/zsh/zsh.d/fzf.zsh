@@ -52,9 +52,8 @@ if (( ${+commands[fzf]} )); then
         return 0
       fi
       LBUFFER="${LBUFFER}${(q)dir}"
-      local ret=$?
       zle reset-prompt
-      return $ret
+      return 0
     }
 
     fzf-t-widget() {
