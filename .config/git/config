@@ -48,7 +48,6 @@
   fixup = !git commit --fixup $(git fzf) --no-verify
   delete-merged-branches = !git branch --no-color --merged | grep -E -v '^\\*|\\s(main|develop|master)$' | xargs git branch -d
 [ghq]
-  root = ~/go/src
   root = ~/.ghq
 [harrow]
   disabled = true
