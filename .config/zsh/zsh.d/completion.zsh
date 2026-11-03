@@ -1,5 +1,11 @@
 [[ -d "$XDG_CACHE_HOME/zsh" ]] || mkdir -p "$XDG_CACHE_HOME/zsh"
-autoload -Uz compinit && compinit -C -d "$XDG_CACHE_HOME/zsh/zcompdump"
+autoload -Uz compinit
+# dump が24時間以上古い場合のみ再生成する（それ以外は -C でチェックを省略して高速化）
+if [[ -n $XDG_CACHE_HOME/zsh/zcompdump(#qN.mh+24) ]]; then
+  compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
+else
+  compinit -C -d "$XDG_CACHE_HOME/zsh/zcompdump"
+fi
 
 # Move cursor to end of word if a full completion is inserted.
 setopt always_to_end
