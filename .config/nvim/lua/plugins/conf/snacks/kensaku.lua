@@ -1,12 +1,7 @@
--- kensaku.vim でローマ字の入力を日本語にもマッチする正規表現に変換して grep する
+-- ローマ字の入力を日本語にもマッチする正規表現に変換して grep する
 local M = {}
 
-local function to_regex(search)
-	local ok, regex = pcall(function()
-		return vim.fn["kensaku#query"](search, { rxop = vim.fn.eval("g:kensaku#rxop#javascript") })
-	end)
-	return ok and regex ~= "" and regex or search
-end
+local migemo = require("plugins.conf.migemo")
 
 ---@param opts? snacks.picker.grep.Config
 M.grep = function(opts)
@@ -22,7 +17,7 @@ M.grep = function(opts)
 				local pattern, args = search:match("^(.-)(%s+%-%-%s.*)$")
 				local c = ctx:clone()
 				c.filter = setmetatable(
-					{ search = to_regex(pattern or search) .. (args or "") },
+					{ search = migemo.query(pattern or search) .. (args or "") },
 					{ __index = ctx.filter }
 				)
 				ctx = c

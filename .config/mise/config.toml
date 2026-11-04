@@ -43,7 +43,6 @@ lefthook = "latest"
 neovim = "latest"
 
 node = "latest"
-deno = "latest"
 
 op = "latest"
 
