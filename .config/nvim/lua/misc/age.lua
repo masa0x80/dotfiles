@@ -85,6 +85,20 @@ if recipient ~= nil and identity ~= nil then
 		end,
 	})
 
+	-- :saveasはバッファー名を変えた直後に同期的にBufWriteCmdを発火させるので、次のイベントループまでフラグを残す
+	require("utils").create_autocmd("BufFilePost", {
+		pattern = "*.age.*",
+		callback = function(args)
+			local bufnr = args.buf
+			vim.b[bufnr].age_name_changed = true
+			vim.schedule(function()
+				if vim.api.nvim_buf_is_valid(bufnr) then
+					vim.b[bufnr].age_name_changed = nil
+				end
+			end)
+		end,
+	})
+
 	require("utils").create_autocmd("BufWriteCmd", {
 		pattern = "*.age.*",
 		callback = function(args)
@@ -96,7 +110,12 @@ if recipient ~= nil and identity ~= nil then
 
 			-- BufWriteCmdを定義するとBufWritePre/BufWritePostが発火しなくなるので自前対応
 			vim.api.nvim_exec_autocmds("User", { pattern = "AgeEncryptPre", data = { bufnr = bufnr } })
-			vim.api.nvim_exec_autocmds("BufWritePre", { buffer = bufnr })
+			-- LSPのファイルリネーム(:saveas)ではBufWritePreを発火させない
+			-- conformの同期フォーマットがvim.waitでイベントループを回すと、予約済みのobsidian.nvimのリロード(:edit)が
+			-- このautocmdの中で実行される。すると、BufReadPostが発火せず暗号文がバッファーに入り、それを再度暗号化してしまう
+			if not vim.b[bufnr].age_name_changed then
+				vim.api.nvim_exec_autocmds("BufWritePre", { buffer = bufnr })
+			end
 
 			local written = write_encrypted(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false), path)
 			if written and own_file then
