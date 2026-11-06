@@ -7,17 +7,8 @@ disable_backends = ["asdf"]
 [settings.github]
 use_git_credentials = true
 
-[settings.go]
-default_packages_file = "~/.config/mise/default-go-packages"
-
 [settings.node]
 gpg_verify = false
-
-[settings.python]
-default_packages_file = "~/.config/mise/default-python-packages"
-
-[settings.ruby]
-default_packages_file = "~/.config/mise/default-gems"
 
 [tools]
 "aqua:aws/session-manager-plugin" = "latest"
@@ -29,6 +20,9 @@ aws-vault = "latest"
 gh = "latest"
 
 go = "latest"
+"go:github.com/rhysd/vim-startuptime" = "latest"
+"go:github.com/sotarok/gw" = "latest"
+"go:honnef.co/go/tools/cmd/staticcheck" = "latest"
 
 java = "latest"
 gradle = "latest"
@@ -42,14 +36,18 @@ lefthook = "latest"
 # https://github.com/neovim/neovim/releases
 neovim = "latest"
 
-node = "latest"
+# NOTE: textlint はルールと同じ場所にインストールする必要があるので npm: backend にしない
+node = { version = "latest", postinstall = 'xargs npm install -g < "$HOME/.config/mise/default-npm-packages"' }
+"npm:oxfmt" = "latest"
+"npm:prettier" = "latest"
+"npm:tsx" = "latest"
 
 op = "latest"
 
-python = "latest"
+python = { version = "latest", postinstall = 'python -m pip install -r "$HOME/.config/mise/default-python-packages"' }
 uv = "latest"
 
-ruby = "latest"
+ruby = { version = "latest", postinstall = 'xargs gem install < "$HOME/.config/mise/default-gems"' }
 
 rust = "latest"
 

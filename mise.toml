@@ -221,7 +221,6 @@
 # NOTE: ~/.config/mise配下は conf.d を除外してファイル単位でsymlinkする
 "~/.config/mise/config.toml" = { source = ".config/mise/config.toml", mode = "symlink" }
 "~/.config/mise/default-gems" = { source = ".config/mise/default-gems", mode = "symlink" }
-"~/.config/mise/default-go-packages" = { source = ".config/mise/default-go-packages", mode = "symlink" }
 "~/.config/mise/default-npm-packages" = { source = ".config/mise/default-npm-packages", mode = "symlink" }
 "~/.config/mise/default-python-packages" = { source = ".config/mise/default-python-packages", mode = "symlink" }
 
