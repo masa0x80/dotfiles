@@ -133,7 +133,6 @@
 # Casks
 "brew-cask:altair-graphql-client" = "latest"
 "brew-cask:alt-tab" = "latest"
-"brew-cask:azookey" = "latest"
 "brew-cask:1password" = "latest"
 "brew-cask:box-drive" = "latest"
 "brew-cask:claude" = "latest"
@@ -382,10 +381,6 @@ allowApplePersonalizedAdvertising = false
 
 [bootstrap.macos.defaults."com.microsoft.VSCode"]
 ApplePressAndHoldEnabled = false
-
-# azooKey
-[bootstrap.macos.defaults."dev.ensan.inputmethod.azooKeyMac"]
-"dev.ensan.inputmethod.azooKeyMac.preference.enableLiveConversion" = false
 
 [[bootstrap.macos.defaults_entries]]
 domain = "NSGlobalDomain"
