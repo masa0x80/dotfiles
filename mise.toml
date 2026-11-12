@@ -472,9 +472,14 @@ auth       sufficient     pam_tid.so
 [bootstrap.hooks]
 # サードパーティのtapをHomebrewに信頼させる（未tapでも登録でき、登録済みなら何もしない）
 pre-packages = "brew trust --tap daipeihust/tap ryooooooga/tap hanasuke/moralerspace"
-# im-select の formula は sha256 が空で mise が評価できないので、brew で直接入れる
+# 以下は mise で扱えないのでbrewで直接入れる
+# - im-select の formula は sha256 が空で mise が評価できない
+# - meltype: tapリポジトリー名が homebrewk* ではないので、URLを明示してtapして入れる
 # NOTE: [bootstrap.packages] に無いので `make brew-prune` では削除対象になる（次の make で入れ直される）
-post-packages = "brew list --formula im-select >/dev/null 2>&1 || brew install daipeihust/tap/im-select"
+post-packages = [
+  "brew list --formula im-select >/dev/null 2>&1 || brew install daipeihust/tap/im-select",
+  "brew list --cask meltype >/dev/null 2>&1 || { brew tap yksr-melt/meltype https://github.com/yksr-melt/Meltype.git && brew install --cask yksr-melt/meltype/meltype; }",
+]
 # NOTE: /usr/bin/make は xcode-select の shim なので、brew の gmake を使う
 post-repos = "gmake -C ~/.ghq/github.com/FiloSottile/passage install PREFIX=$HOME/.local WITH_ZSHCOMP=yes WITH_BASHCOMP=no WITH_FISHCOMP=no"
 post-dotfiles = "mkdir -p ~/ScreenShots"
