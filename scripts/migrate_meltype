@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+src="$HOME/Library/Application Support/Meltype"
+dest="${0:A:h:h}/.config/meltype"
+
+[[ -d $src && ! -L $src ]] || exit 0
+
+mkdir -p "$dest"
+for f ("$src"/*(DN)) {
+  if [[ -e $dest/${f:t} ]]; then
+    mv -n "$f" "$dest/${f:t}.orig"
+  else
+    mv -n "$f" "$dest/"
+  fi
+}
+rmdir "$src" && echo "Moved $src to $dest"

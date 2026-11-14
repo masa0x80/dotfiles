@@ -71,6 +71,7 @@ mise-local-config:
 
 .PHONY: bootstrap
 bootstrap: mise-init mise-local-config pre-bootstrap
+	./scripts/migrate_meltype
 	$(MISE) trust --quiet mise.toml
 	@if [ -f mise.local.toml ]; then $(MISE) trust --quiet mise.local.toml; fi
 	$(MISE) bootstrap --update --yes
