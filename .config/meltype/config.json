@@ -1,0 +1,375 @@
+{
+  "$schema": "./config.schema.json",
+  "Enabled": true,
+  "JapaneseKeyboardOnly": false,
+  "AllowInjectedInput": false,
+  "Mode": "Tsf",
+  "ToggleShortcuts": [
+    {
+      "Key": 25,
+      "Modifiers": "None"
+    },
+    {
+      "Key": 192,
+      "Modifiers": "Alt"
+    }
+  ],
+  "AltKeysSwitchKeyboard": false,
+  "AutoCorrectAfterCommit": true,
+  "DirectModeAutoDetect": true,
+  "SigilWordsDirect": true,
+  "SnippetMark": ";",
+  "SpaceAroundEnglish": false,
+  "SpaceAroundNumbers": false,
+  "NumberKeysSelectCandidates": true,
+  "SpaceWidth": "Standard",
+  "EnterCommitsAsShown": false,
+  "AlphanumericKeyStartsAsTyped": false,
+  "FullWidthParentheses": false,
+  "SquareBrackets": false,
+  "EscStepsBack": false,
+  "EscRevertsSelectedClause": false,
+  "FunctionKeysAffectSelectedClause": false,
+  "PartialCommit": false,
+  "ControlKeys": "Standard",
+  "ControlKeyBindings": "",
+  "CursorIntoBrackets": false,
+  "CalculatorCandidates": false,
+  "LaughterAfterKana": false,
+  "ContextualLearning": false,
+  "ShowCandidatesWhileTyping": false,
+  "GitHubIssueCandidates": false,
+  "GitHubRepository": "",
+  "ClipboardCandidates": false,
+  "NowPlayingCandidates": true,
+  "ClockTimeZone": "",
+  "PauseHotkey": "",
+  "Punctuation": "Japanese",
+  "JapanesePunctuationAfterEnglish": false,
+  "LiveConversion": true,
+  "ConversionEngine": "Hybrid",
+  "UseZenzai": true,
+  "ZenzaiServerPath": "",
+  "ZenzaiModelPath": "",
+  "ZenzaiDevice": "",
+  "TranslationCandidates": true,
+  "PredictiveCandidates": true,
+  "EnglishNamePredictions": false,
+  "TabConversion": true,
+  "ContinueAfterConversion": false,
+  "SeparateKeyRoles": false,
+  "EnglishFirstInput": false,
+  "ConsonantAbbreviations": false,
+  "ShowCandidateMeanings": true,
+  "ShowTypedKeys": true,
+  "ShowGuide": true,
+  "ShowsGuide": false,
+  "CorrectTypos": true,
+  "Slash": "Slash",
+  "ZSymbols": true,
+  "ModeIndicator": "Never",
+  "EffectiveModeIndicator": "Never",
+  "ModeIndicatorJapaneseColor": "",
+  "ModeIndicatorDirectColor": "",
+  "ModeIndicatorTextColor": "",
+  "CompositionPlacement": "Overlay",
+  "CompositionSize": "Auto",
+  "CompositionFont": "",
+  "CompositionTheme": "Dark",
+  "CompositionOpacity": "Opaque",
+  "ShowNotifications": true,
+  "AutoUpdate": true,
+  "UpdatePrerelease": false,
+  "InputStyle": "Romaji",
+  "KanaLayout": "Jis",
+  "RomajiLayout": "Qwerty",
+  "AutoDetection": true,
+  "SettingsVersion": 10,
+  "Profiles": [
+    {
+      "Name": "\u6A19\u6E96",
+      "Values": null
+    }
+  ],
+  "ActiveProfile": "\u6A19\u6E96",
+  "LearningEnabled": true,
+  "ExcludeFullscreen": true,
+  "StopInGames": true,
+  "AppRules": [
+    {
+      "Process": "mstsc.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "msrdc.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "vmconnect.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "VirtualBoxVM.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "vmware-vmx.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "vmware.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "Resolve.exe",
+      "Enabled": true,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Paste",
+      "TextInput": false
+    },
+    {
+      "Process": "Code.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "Code - Insiders.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "Cursor.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "Windsurf.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "zed.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "devenv.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "idea64.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "pycharm64.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "webstorm64.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "rider64.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "clion64.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "goland64.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "phpstorm64.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "rubymine64.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "datagrip64.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "studio64.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "sublime_text.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "notepad\u002B\u002B.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "WindowsTerminal.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "cmd.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "powershell.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "pwsh.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "wezterm-gui.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "alacritty.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "mintty.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "rio.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "maya.exe",
+      "Enabled": true,
+      "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    }
+  ],
+  "AppKinds": [],
+  "FileLog": false,
+  "LogTypedText": false
+}

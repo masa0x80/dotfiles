@@ -223,6 +223,10 @@
 "~/.config/mise/default-npm-packages" = { source = ".config/mise/default-npm-packages", mode = "symlink" }
 "~/.config/mise/default-python-packages" = { source = ".config/mise/default-python-packages", mode = "symlink" }
 
+# NOTE: Meltypeはconfig.jsonをrenameで置き換えて保存し、ファイル単位のsymlinkを壊すので、ディレクトリーごとsymlinkする
+#       学習データ(conversions.json, languages.json)や生成される config.schema.json は .config/.gitignore で除外する
+"~/Library/Application Support/Meltype" = { source = ".config/meltype", mode = "symlink" }
+
 # passage はHomebrewやmiseで配布されていないので、cloneして post-repos hook で ~/.local にインストールする
 # NOTE: symlink だと $0 基準で platform/darwin.sh を探すため macOS 用の clip/getopt が読み込まれない
 [bootstrap.repos."~/.ghq/github.com/FiloSottile/passage"]

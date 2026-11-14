@@ -33,6 +33,10 @@
 /pgcli/*
 !/pgcli/config
 
+!/meltype
+/meltype/*
+!/meltype/config.json
+
 !/karabiner
 /karabiner/*
 !/karabiner/karabiner.json
