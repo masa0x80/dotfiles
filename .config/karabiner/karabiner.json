@@ -4,7 +4,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "meltype: 変換中の <C-;> ▶ 半角英数",
+                        "description": "meltype: 日本語モード中の <C-;> ▶ F10（変換中なら半角英数）",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -43,25 +43,6 @@
                                     ]
                                 },
                                 "to": [{ "key_code": "grave_accent_and_tilde" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "modifiers": {
-                                        "mandatory": ["shift"],
-                                        "optional": ["any"]
-                                    },
-                                    "simultaneous": [
-                                        { "key_code": "j" },
-                                        { "key_code": "quote" }
-                                    ]
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "grave_accent_and_tilde",
-                                        "modifiers": ["shift"]
-                                    }
-                                ],
                                 "type": "basic"
                             }
                         ]
@@ -127,6 +108,11 @@
                                             "^com\\.hnc\\.Discord$"
                                         ],
                                         "type": "frontmost_application_if"
+                                    },
+                                    {
+                                        "name": "ctrl_g",
+                                        "type": "variable_unless",
+                                        "value": 1
                                     }
                                 ],
                                 "from": {
@@ -946,7 +932,7 @@
                         ]
                     },
                     {
-                        "description": "Edge: <C-t> ▶ <Cmd-t> / <Cmd-Shift-i> ▶ <Cmd-Option-i>",
+                        "description": "Edge: <C-t> ▶ <Cmd-t>",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -965,27 +951,6 @@
                                     {
                                         "key_code": "t",
                                         "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.microsoft\\.edgemac$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "i",
-                                    "modifiers": { "mandatory": ["command", "shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "i",
-                                        "modifiers": ["command", "option"]
                                     }
                                 ],
                                 "type": "basic"
@@ -1026,12 +991,13 @@
                         ]
                     },
                     {
-                        "description": "Developer Tools (Brave)",
+                        "description": "Developer Tools (Edge/Brave): <Cmd-Shift-i> ▶ <Cmd-Option-i>",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^com\\.microsoft\\.edgemac$",
                                             "^com\\.brave\\.Browser$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -1234,7 +1200,7 @@
                         ]
                     },
                     {
-                        "description": "<C-[>/<C-m> ▶ <Esc>/<Enter>（Raycast）",
+                        "description": "<C-[> ▶ <Esc>（Raycast）",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1253,22 +1219,6 @@
                                     { "key_code": "escape" },
                                     { "key_code": "japanese_eisuu" }
                                 ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.raycast\\.macos$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "m",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [{ "key_code": "japanese_eisuu" }],
                                 "type": "basic"
                             }
                         ]
@@ -1433,7 +1383,7 @@
                                     "key_code": "quote",
                                     "modifiers": { "mandatory": ["command", "control"] }
                                 },
-                                "to": [{ "shell_command": "open -b com.mitchellh.ghostty" }],
+                                "to": [{ "software_function": { "open_application": { "bundle_identifier": "com.mitchellh.ghostty" } } }],
                                 "type": "basic"
                             }
                         ]
@@ -1454,7 +1404,12 @@
                                     "key_code": "quote",
                                     "modifiers": { "mandatory": ["command", "control"] }
                                 },
-                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to set visible of process \"Ghostty\" to false'" }],
+                                "to": [
+                                    {
+                                        "key_code": "h",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
@@ -1467,7 +1422,7 @@
                                     "key_code": "q",
                                     "modifiers": { "mandatory": ["left_command"] }
                                 },
-                                "parameters": { "basic.to_if_held_down_threshold_miliseconds": 128 },
+                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 128 },
                                 "to_if_held_down": [
                                     {
                                         "key_code": "q",
@@ -1480,20 +1435,9 @@
                         ]
                     },
                     {
-                        "description": "Combos (except for Cornix)",
+                        "description": "Combos",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1,
-                                                "vendor_id": 57624
-                                            }
-                                        ],
-                                        "type": "device_unless"
-                                    }
-                                ],
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
@@ -1510,17 +1454,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1,
-                                                "vendor_id": 57624
-                                            }
-                                        ],
-                                        "type": "device_unless"
-                                    }
-                                ],
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
@@ -1537,17 +1470,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1,
-                                                "vendor_id": 57624
-                                            }
-                                        ],
-                                        "type": "device_unless"
-                                    }
-                                ],
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
@@ -1559,17 +1481,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1,
-                                                "vendor_id": 57624
-                                            }
-                                        ],
-                                        "type": "device_unless"
-                                    }
-                                ],
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
@@ -1581,17 +1492,6 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 1,
-                                                "vendor_id": 57624
-                                            }
-                                        ],
-                                        "type": "device_unless"
-                                    }
-                                ],
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
@@ -1610,19 +1510,6 @@
                 ]
             },
             "devices": [
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 631,
-                        "vendor_id": 1452
-                    },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "caps_lock" },
-                            "to": [{ "key_code": "left_control" }]
-                        }
-                    ]
-                },
                 {
                     "identifiers": {
                         "is_keyboard": true,
