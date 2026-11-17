@@ -61,7 +61,7 @@
   "EnglishFirstInput": false,
   "ConsonantAbbreviations": false,
   "ShowCandidateMeanings": true,
-  "ShowTypedKeys": true,
+  "ShowTypedKeys": false,
   "ShowGuide": true,
   "ShowsGuide": false,
   "CorrectTypos": true,
