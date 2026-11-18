@@ -55,6 +55,7 @@ local options = {
 	suffixesadd = { ".md", ".lua" },
 	foldmethod = "expr",
 	foldexpr = "v:lua.vim.treesitter.foldexpr()",
+	foldtext = "v:lua.require'misc.foldtext'.foldtext()",
 	foldcolumn = "1",
 	foldlevel = 99,
 	foldlevelstart = 99,

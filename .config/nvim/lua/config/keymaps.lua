@@ -154,6 +154,12 @@ map("n", "<C-g><C-g><C-->", function()
 	gf("split")
 end, { desc = "Go to file under cursor (split)" })
 
+-- Folding
+map("n", "<C-g><C-l>", "zo", { desc = "Open fold" })
+map("n", "<C-g><C-h>", "zc", { desc = "Close fold" })
+map("n", "<Leader><C-g><C-l>", "zR", { desc = "Open all folds" })
+map("n", "<Leader><C-g><C-h>", "zM", { desc = "Close all folds" })
+
 -- # Insert
 
 map("i", "<C-g><C-h>", "<Esc>bi", { noremap = true, silent = true, desc = "backward-word" })
