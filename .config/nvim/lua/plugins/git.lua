@@ -28,7 +28,7 @@ return {
 		"rhysd/git-messenger.vim",
 		version = "*",
 		keys = {
-			{ "<C-g>L", "<Plug>(git-messenger)", desc = "Show Git Log" },
+			{ "<C-g>l", "<Plug>(git-messenger)", desc = "Show Git Log" },
 		},
 		init = function()
 			vim.g.git_messenger_always_into_popup = true
