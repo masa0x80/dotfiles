@@ -113,8 +113,6 @@ return {
 			local map = require("utils").map
 			map("n", "[t", "<Cmd>tabprevious<CR>", { desc = ":tabprev" })
 			map("n", "]t", "<Cmd>tabnext<CR>", { desc = ":tabnext" })
-			map("n", "[<C-t>", "<Cmd>tabprevious<CR>", { desc = ":tabprev" })
-			map("n", "]<C-t>", "<Cmd>tabnext<CR>", { desc = ":tabnext" })
 			map("n", "[T", "<Cmd>tabfirst<CR>", { desc = ":tabfirst" })
 			map("n", "]T", "<Cmd>tablast<CR>", { desc = ":tablast" })
 
@@ -124,6 +122,8 @@ return {
 			vim.keymap.set("n", "]<C-e>", "]e", { remap = true, desc = "Oldfile forward" })
 			vim.keymap.set("n", "[<C-n>", "[n", { remap = true, desc = "Treesitter backward" })
 			vim.keymap.set("n", "]<C-n>", "]n", { remap = true, desc = "Treesitter forward" })
+			vim.keymap.set("n", "[<C-t>", "[t", { remap = true, desc = "Tab backward" })
+			vim.keymap.set("n", "]<C-t>", "]t", { remap = true, desc = "Tab forward" })
 		end,
 	},
 	{
