@@ -154,7 +154,8 @@ s {
 /* ========== 画像 ========== */
 .markdown-body img {
   width: auto;
-  max-width: 30%;
+  /* %だとテーブルのセル内でセル幅に依存して潰れるのでvwにする */
+  max-width: 30vw;
   height: auto;
   margin: 1em;
   cursor: zoom-in;
