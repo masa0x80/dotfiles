@@ -538,6 +538,14 @@
                                             "^com\\.vivaldi\\.Vivaldi$"
                                         ],
                                         "type": "frontmost_application_if"
+                                    },
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_mode_id": "^io\\.github\\.yksr-melt\\.inputmethod\\.Meltype\\.Japanese$"
+                                            }
+                                        ],
+                                        "type": "input_source_unless"
                                     }
                                 ],
                                 "from": {
@@ -560,6 +568,14 @@
                                             "^com\\.vivaldi\\.Vivaldi$"
                                         ],
                                         "type": "frontmost_application_if"
+                                    },
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_mode_id": "^io\\.github\\.yksr-melt\\.inputmethod\\.Meltype\\.Japanese$"
+                                            }
+                                        ],
+                                        "type": "input_source_unless"
                                     }
                                 ],
                                 "from": {
@@ -588,6 +604,14 @@
                                             "^com\\.hnc\\.Discord$"
                                         ],
                                         "type": "frontmost_application_if"
+                                    },
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_mode_id": "^io\\.github\\.yksr-melt\\.inputmethod\\.Meltype\\.Japanese$"
+                                            }
+                                        ],
+                                        "type": "input_source_unless"
                                     }
                                 ],
                                 "from": {
@@ -611,6 +635,14 @@
                                             "^com\\.hnc\\.Discord$"
                                         ],
                                         "type": "frontmost_application_if"
+                                    },
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_mode_id": "^io\\.github\\.yksr-melt\\.inputmethod\\.Meltype\\.Japanese$"
+                                            }
+                                        ],
+                                        "type": "input_source_unless"
                                     }
                                 ],
                                 "from": {
@@ -731,6 +763,14 @@
                                             "^com\\.microsoft\\.Outlook$"
                                         ],
                                         "type": "frontmost_application_if"
+                                    },
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_mode_id": "^io\\.github\\.yksr-melt\\.inputmethod\\.Meltype\\.Japanese$"
+                                            }
+                                        ],
+                                        "type": "input_source_unless"
                                     }
                                 ],
                                 "from": {
@@ -752,6 +792,14 @@
                                             "^com\\.microsoft\\.Outlook$"
                                         ],
                                         "type": "frontmost_application_if"
+                                    },
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_mode_id": "^io\\.github\\.yksr-melt\\.inputmethod\\.Meltype\\.Japanese$"
+                                            }
+                                        ],
+                                        "type": "input_source_unless"
                                     }
                                 ],
                                 "from": {
