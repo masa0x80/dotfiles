@@ -1422,7 +1422,7 @@
                                     "key_code": "q",
                                     "modifiers": { "mandatory": ["left_command"] }
                                 },
-                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 128 },
+                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 1280 },
                                 "to_if_held_down": [
                                     {
                                         "key_code": "q",
