@@ -124,11 +124,59 @@ if(!window._mdImg){
 ]=])
 
 -- GitHub-style Alerts
-local alert_script =
-	[=[<img src='_' onerror="if(!window._ghAlert){window._ghAlert=true;var L={NOTE:'Note',TIP:'Tip',IMPORTANT:'Important',WARNING:'Warning',CAUTION:'Caution'};function _pa(){document.querySelectorAll('blockquote:not([data-alert])').forEach(function(b){var p=b.querySelector('p');if(!p)return;var m=p.textContent.match(/^\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/);if(!m)return;var tp=m[1].toLowerCase();b.setAttribute('data-alert',tp);b.className='markdown-alert markdown-alert-'+tp;var d=document.createElement('p');d.className='markdown-alert-title markdown-alert-title-'+tp;d.textContent=L[m[1]];p.innerHTML=p.innerHTML.replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/,'');b.insertBefore(d,b.firstChild);if(!p.textContent.trim()&&!p.innerHTML.trim())p.remove()})}_pa();new MutationObserver(_pa).observe(document.body||document.documentElement,{childList:true,subtree:true})}" style="display:none;">]=]
+local alert_script = onerror_script([=[
+if(!window._ghAlert){
+	window._ghAlert=true;
+	var L={NOTE:'Note',TIP:'Tip',IMPORTANT:'Important',WARNING:'Warning',CAUTION:'Caution'};
+	function _pa(){
+		document.querySelectorAll('blockquote:not([data-alert])').forEach(function(b){
+			var p=b.querySelector('p');
+			if(!p)return;
+			var m=p.textContent.match(/^\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/);
+			if(!m)return;
+			var tp=m[1].toLowerCase();
+			b.setAttribute('data-alert',tp);
+			b.className='markdown-alert markdown-alert-'+tp;
+			var d=document.createElement('p');
+			d.className='markdown-alert-title markdown-alert-title-'+tp;
+			d.textContent=L[m[1]];
+			p.innerHTML=p.innerHTML.replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/,'');
+			b.insertBefore(d,b.firstChild);
+			if(!p.textContent.trim()&&!p.innerHTML.trim())p.remove()
+		})
+	}
+	_pa();
+	new MutationObserver(_pa).observe(document.body||document.documentElement,{childList:true,subtree:true})
+}
+]=])
+
 -- detailsの開閉状態を保持
-local details_script =
-	[=[<img src='_' onerror="if(!window._ds){window._ds={};window._dr=false;document.addEventListener('toggle',function(e){if(window._dr)return;if(e.target.tagName==='DETAILS'){var a=document.querySelectorAll('details');for(var i=0;i<a.length;i++){if(a[i]===e.target){window._ds[i]=e.target.open;break}}}},true);new MutationObserver(function(){window._dr=true;document.querySelectorAll('details').forEach(function(d,i){if(window._ds[i]!==undefined)d.open=window._ds[i]});window._dr=false}).observe(document.body||document.documentElement,{childList:true,subtree:true})}" style="display:none;">]=]
+local details_script = onerror_script([=[
+if(!window._ds){
+	window._ds={};
+	window._dr=false;
+	document.addEventListener('toggle',function(e){
+		if(window._dr)return;
+		if(e.target.tagName==='DETAILS'){
+			var a=document.querySelectorAll('details');
+			for(var i=0;i<a.length;i++){
+				if(a[i]===e.target){
+					window._ds[i]=e.target.open;
+					break
+				}
+			}
+		}
+	},true);
+	new MutationObserver(function(){
+		window._dr=true;
+		document.querySelectorAll('details').forEach(function(d,i){
+			if(window._ds[i]!==undefined)d.open=window._ds[i]
+		});
+		window._dr=false
+	}).observe(document.body||document.documentElement,{childList:true,subtree:true})
+}
+]=])
+
 -- markdown-preview.nvimはplantumlを圧縮してURLに埋め込む際にバグがあり画像が壊れる場合があるので、
 -- nvim側でSVG化して画像を挿入することにしプラグイン生成のimgタグは非表示にする。
 local hide_uml_img_style = ('<style>img[src*="127.0.0.1:%d/svg/"]{display:none}</style>'):format(port)
