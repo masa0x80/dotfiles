@@ -74,7 +74,7 @@ end
 
 vim.api.nvim_create_user_command("CSpellAppend", cspell_append, { nargs = "*" })
 for key, target in pairs({ g = "global", l = "local", u = "user" }) do
-	require("utils").map("n", "<Leader>a" .. key, "<Cmd>CSpellAppend " .. target .. "<CR>")
+	require("utils").map("n", "<Leader>w" .. key, "<Cmd>CSpellAppend " .. target .. "<CR>")
 end
 
 vim.api.nvim_create_user_command("OpenCSpellDotfile", "edit " .. cspell_files.dotfiles, {})
