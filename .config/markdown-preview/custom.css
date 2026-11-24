@@ -159,11 +159,18 @@ s {
   height: auto;
   margin: 1em;
   cursor: zoom-in;
-  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+  /* outlineまでアニメーションするとホバー時に一瞬太く見えるので除外する */
+  transition:
+    all 0.2s ease,
+    outline 0s,
+    outline-offset 0s;
 }
-.markdown-body img[data-uml-key] {
-  width: 100%;
-  max-width: 100%;
+/* ホバー時に画像の範囲を示す（outlineはレイアウトに影響しない） */
+.markdown-body img:hover,
+.markdown-body img.resizing {
+  outline: 1px dashed #7f848e;
+  outline-offset: 2px;
 }
 .markdown-body img.no-zoom {
   cursor: inherit;
@@ -173,6 +180,10 @@ s {
   max-width: initial;
   max-height: initial;
   cursor: zoom-out;
+}
+/* 拡大/縮小のアニメーション中はpx指定の幅で補間するのでmax-widthで制限しない */
+.markdown-body img.zooming {
+  max-width: none;
 }
 /* 右下の角をドラッグしてリサイズ */
 .markdown-body img.resize-hover,
@@ -205,6 +216,7 @@ html.img-resizing * {
 .markdown-body blockquote {
   margin-block-end: 0 !important;
   border-left: 8px solid var(--color-markdown-blockquote-border) !important;
+  padding-left: 8px;
 }
 blockquote > p.source-line {
   padding: 0 !important;

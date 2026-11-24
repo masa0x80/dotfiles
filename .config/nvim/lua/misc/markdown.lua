@@ -40,6 +40,27 @@ if(!window._mdImg){
 		t.classList.toggle('enlarged',!!v.z);
 		t.style.width=v.z?(v.w||(nw?nw+'px':'')):'';
 	};
+	var animate=function(t,v){
+		var a=t.clientWidth;
+		var p=t.style.transition;
+		clearTimeout(t._mdZoom);
+		t.style.transition='none';
+		t.classList.remove('zooming');
+		apply(t,v);
+		var b=t.clientWidth;
+		t.classList.add('zooming');
+		t.style.width=a+'px';
+		void t.offsetWidth;
+		t.style.transition=p;
+		t.style.width=b+'px';
+		t._mdZoom=setTimeout(function(){
+			t.style.transition='none';
+			t.classList.remove('zooming');
+			apply(t,v);
+			void t.offsetWidth;
+			t.style.transition=p;
+		},250);
+	};
 	var sync=function(t){
 		var v=S[key(t)]||{};
 		var w=v.z?(v.w||(t.naturalWidth?t.naturalWidth+'px':'')):'';
@@ -50,7 +71,7 @@ if(!window._mdImg){
 			void t.offsetWidth;
 			t.style.transition=p;
 		}
-		t.classList.toggle('no-zoom',!v.z&&!v.w&&!t.hasAttribute('data-uml-key')&&t.naturalWidth<=t.clientWidth);
+		t.classList.toggle('no-zoom',!v.z&&!v.w&&t.naturalWidth<=t.clientWidth);
 	};
 	var refresh=function(){
 		var a=document.getElementsByTagName('img');
@@ -116,7 +137,7 @@ if(!window._mdImg){
 		v.z=!v.z;
 		if(v.z||v.w)S[k]=v;else delete S[k];
 		save();
-		apply(t,v);
+		animate(t,v);
 	},true);
 	refresh();
 	new MutationObserver(refresh).observe(document.body||document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['src']});
