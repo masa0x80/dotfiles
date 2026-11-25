@@ -21,21 +21,25 @@ return {
 			end)
 
 			require("scrollbar").setup({
-				hide_if_all_visible = true,
 				marks = {
 					Search = {
 						highlight = "Orange",
 					},
 				},
-				excluded_filetypes = {
-					"",
-					"cmp_docs",
-					"cmp_menu",
-					"noice",
-					"prompt",
+				exclude = {
+					filetypes = {
+						"",
+						"cmp_docs",
+						"cmp_menu",
+						"noice",
+						"prompt",
+					},
 				},
-				handlers = {
-					search = true, -- Requires hlslens to be loaded, will run require("scrollbar.handlers.search").setup() for you
+				providers = {
+					search = true,
+				},
+				scrollbar = {
+					hide_if_all_visible = true,
 				},
 			})
 		end,
