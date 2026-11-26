@@ -31,6 +31,7 @@
   "EscRevertsSelectedClause": false,
   "FunctionKeysAffectSelectedClause": false,
   "PartialCommit": false,
+  "ConversionStartsAtLastClause": false,
   "ControlKeys": "Mac",
   "ControlKeyBindings": "",
   "CursorIntoBrackets": false,
@@ -38,7 +39,6 @@
   "LaughterAfterKana": false,
   "ContextualLearning": false,
   "ShowCandidatesWhileTyping": false,
-  "GitHubIssueCandidates": false,
   "GitHubRepository": "",
   "ClipboardCandidates": false,
   "NowPlayingCandidates": true,
@@ -47,7 +47,6 @@
   "Punctuation": "Japanese",
   "JapanesePunctuationAfterEnglish": false,
   "LiveConversion": true,
-  "ConversionEngine": "Hybrid",
   "UseZenzai": true,
   "ZenzaiServerPath": "",
   "ZenzaiModelPath": "",
@@ -58,6 +57,7 @@
   "TabConversion": true,
   "ContinueAfterConversion": false,
   "SeparateKeyRoles": false,
+  "NonConvertCyclesKana": false,
   "EnglishFirstInput": false,
   "ConsonantAbbreviations": false,
   "ShowCandidateMeanings": true,
@@ -65,7 +65,7 @@
   "ShowGuide": true,
   "ShowsGuide": false,
   "CorrectTypos": true,
-  "Slash": "Slash",
+  "Slash": "MiddleDot",
   "ZSymbols": true,
   "ModeIndicator": "Never",
   "EffectiveModeIndicator": "Never",
@@ -76,15 +76,18 @@
   "CompositionSize": "Auto",
   "CompositionFont": "",
   "CompositionTheme": "Dark",
+  "CompositionCustomBackColor": "#202228",
+  "CompositionCustomTextColor": "#FFFFFF",
   "CompositionOpacity": "Opaque",
   "ShowNotifications": true,
   "AutoUpdate": true,
   "UpdatePrerelease": false,
+  "ShowReleaseNotesAfterUpdate": true,
   "InputStyle": "Romaji",
   "KanaLayout": "Jis",
   "RomajiLayout": "Qwerty",
   "AutoDetection": true,
-  "SettingsVersion": 10,
+  "SettingsVersion": 12,
   "Profiles": [
     {
       "Name": "\u6A19\u6E96",
@@ -364,6 +367,102 @@
       "Process": "maya.exe",
       "Enabled": true,
       "Profile": "Code",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "JumpClient.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "JumpDesktop.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "AnyDesk.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "TeamViewer.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "parsecd.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "rustdesk.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "strwinclt.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "tvnviewer.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "wfica32.exe",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "com.teamviewer.TeamViewer",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "com.philandro.anydesk",
+      "Enabled": false,
+      "Profile": "General",
+      "Kind": null,
+      "Commit": "Auto",
+      "TextInput": false
+    },
+    {
+      "Process": "tv.parsec.www",
+      "Enabled": false,
+      "Profile": "General",
       "Kind": null,
       "Commit": "Auto",
       "TextInput": false
