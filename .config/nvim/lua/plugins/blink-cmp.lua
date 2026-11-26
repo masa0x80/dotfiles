@@ -38,9 +38,6 @@ return {
 						end
 					end,
 					"snippet_forward",
-					function() -- sidekick next edit suggestion
-						return require("sidekick").nes_jump_or_apply()
-					end,
 					"fallback",
 				},
 				["<C-l>"] = { "show", "show_documentation", "hide_documentation" },
