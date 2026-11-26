@@ -1042,16 +1042,6 @@
                         "description": "IME",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "input_sources": [
-                                            {
-                                                "input_mode_id": "^io\\.github\\.yksr-melt\\.inputmethod\\.Meltype\\.Japanese$"
-                                            }
-                                        ],
-                                        "type": "input_source_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "left_command",
                                     "modifiers": { "optional": ["any"] }
@@ -1095,6 +1085,24 @@
                                     "modifiers": { "mandatory": ["control"] }
                                 },
                                 "to": [{ "key_code": "japanese_kana" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_mode_id": "^io\\.github\\.yksr-melt\\.inputmethod\\.Meltype\\.Japanese$"
+                                            }
+                                        ],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "quote",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [{ "key_code": "right_command" }],
                                 "type": "basic"
                             }
                         ]
