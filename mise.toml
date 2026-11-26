@@ -103,7 +103,7 @@
 "brew:oxlint" = "latest"
 
 # Database clients
-"brew:postgresql@18" = "latest"
+"brew:postgresql@19" = "latest"
 "brew:redis" = "latest"
 "brew:mycli" = "latest"
 "brew:pgcli" = "latest"
