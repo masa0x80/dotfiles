@@ -23,7 +23,6 @@
   "SpaceAroundNumbers": false,
   "NumberKeysSelectCandidates": true,
   "SpaceWidth": "FullWidth",
-  "EnterCommitsAsShown": false,
   "AlphanumericKeyStartsAsTyped": false,
   "FullWidthParentheses": true,
   "SquareBrackets": false,
@@ -36,13 +35,10 @@
   "ControlKeyBindings": "",
   "CursorIntoBrackets": false,
   "CalculatorCandidates": false,
-  "LaughterAfterKana": false,
   "ContextualLearning": false,
-  "ShowCandidatesWhileTyping": false,
   "GitHubRepository": "",
   "ClipboardCandidates": false,
   "NowPlayingCandidates": true,
-  "ClockTimeZone": "",
   "PauseHotkey": "",
   "Punctuation": "Japanese",
   "JapanesePunctuationAfterEnglish": false,
@@ -51,7 +47,6 @@
   "ZenzaiServerPath": "",
   "ZenzaiModelPath": "",
   "ZenzaiDevice": "",
-  "TranslationCandidates": true,
   "PredictiveCandidates": true,
   "EnglishNamePredictions": false,
   "TabConversion": true,
@@ -60,8 +55,7 @@
   "NonConvertCyclesKana": false,
   "EnglishFirstInput": false,
   "ConsonantAbbreviations": false,
-  "ShowCandidateMeanings": true,
-  "ShowTypedKeys": false,
+  "TypedKeys": "Off",
   "ShowGuide": true,
   "ShowsGuide": false,
   "CorrectTypos": true,
@@ -87,7 +81,7 @@
   "KanaLayout": "Jis",
   "RomajiLayout": "Qwerty",
   "AutoDetection": true,
-  "SettingsVersion": 12,
+  "SettingsVersion": 13,
   "Profiles": [
     {
       "Name": "\u6A19\u6E96",
@@ -469,6 +463,7 @@
     }
   ],
   "AppKinds": [],
+  "KeyCount": "Off",
   "FileLog": false,
   "LogTypedText": false
 }
